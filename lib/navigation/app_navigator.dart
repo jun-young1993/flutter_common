@@ -5,7 +5,25 @@ class AppNavigator {
       GlobalKey<NavigatorState>();
 
   /// 외부에서 route 생성 함수를 주입받을 수 있도록 변경
-  static late Route<dynamic> Function(RouteSettings settings) onGenerateRoute;
+  static Route<dynamic> Function(RouteSettings settings)? _userOnGenerateRoute;
+
+  static void setOnGenerateRoute(
+      Route<dynamic> Function(RouteSettings settings) onGenerateRoute) {
+    _userOnGenerateRoute = onGenerateRoute;
+  }
+
+  static Route<dynamic> onGenerateRoute(RouteSettings settings) {
+    currentRoute = settings.name;
+    if (_userOnGenerateRoute != null) {
+      return _userOnGenerateRoute!(settings);
+    }
+    // 기본 fallback: 빈 페이지
+    return MaterialPageRoute(
+      builder: (_) => const Scaffold(
+        body: Center(child: Text('No route defined')),
+      ),
+    );
+  }
 
   static Future<T?>? push<T>(String routeName, {Object? arguments}) =>
       state?.pushNamed<T>(routeName, arguments: arguments);
