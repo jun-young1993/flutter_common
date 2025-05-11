@@ -21,8 +21,8 @@ User _$UserFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$User {
   String get id => throw _privateConstructorUsedError;
-  String get username => throw _privateConstructorUsedError;
-  String get email => throw _privateConstructorUsedError;
+  String? get username => throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
   bool get isActive => throw _privateConstructorUsedError;
   String get createdAt => throw _privateConstructorUsedError;
@@ -44,8 +44,8 @@ abstract class $UserCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      String username,
-      String email,
+      String? username,
+      String? email,
       String type,
       bool isActive,
       String createdAt,
@@ -68,8 +68,8 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
   @override
   $Res call({
     Object? id = null,
-    Object? username = null,
-    Object? email = null,
+    Object? username = freezed,
+    Object? email = freezed,
     Object? type = null,
     Object? isActive = null,
     Object? createdAt = null,
@@ -80,14 +80,14 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      username: null == username
+      username: freezed == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
-              as String,
-      email: null == email
+              as String?,
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -117,8 +117,8 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      String username,
-      String email,
+      String? username,
+      String? email,
       String type,
       bool isActive,
       String createdAt,
@@ -138,8 +138,8 @@ class __$$UserImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? username = null,
-    Object? email = null,
+    Object? username = freezed,
+    Object? email = freezed,
     Object? type = null,
     Object? isActive = null,
     Object? createdAt = null,
@@ -150,14 +150,14 @@ class __$$UserImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      username: null == username
+      username: freezed == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
-              as String,
-      email: null == email
+              as String?,
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -197,9 +197,9 @@ class _$UserImpl extends _User {
   @override
   final String id;
   @override
-  final String username;
+  final String? username;
   @override
-  final String email;
+  final String? email;
   @override
   final String type;
   @override
@@ -256,8 +256,8 @@ class _$UserImpl extends _User {
 abstract class _User extends User {
   const factory _User(
       {required final String id,
-      required final String username,
-      required final String email,
+      required final String? username,
+      required final String? email,
       required final String type,
       required final bool isActive,
       required final String createdAt,
@@ -269,9 +269,9 @@ abstract class _User extends User {
   @override
   String get id;
   @override
-  String get username;
+  String? get username;
   @override
-  String get email;
+  String? get email;
   @override
   String get type;
   @override
