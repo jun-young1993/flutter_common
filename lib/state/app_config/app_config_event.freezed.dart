@@ -16,19 +16,20 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AppConfigEvent {
+  String get key => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initialize,
+    required TResult Function(String key) initialize,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initialize,
+    TResult? Function(String key)? initialize,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initialize,
+    TResult Function(String key)? initialize,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,6 +49,12 @@ mixin _$AppConfigEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Create a copy of AppConfigEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $AppConfigEventCopyWith<AppConfigEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -55,6 +62,8 @@ abstract class $AppConfigEventCopyWith<$Res> {
   factory $AppConfigEventCopyWith(
           AppConfigEvent value, $Res Function(AppConfigEvent) then) =
       _$AppConfigEventCopyWithImpl<$Res, AppConfigEvent>;
+  @useResult
+  $Res call({String key});
 }
 
 /// @nodoc
@@ -69,13 +78,29 @@ class _$AppConfigEventCopyWithImpl<$Res, $Val extends AppConfigEvent>
 
   /// Create a copy of AppConfigEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? key = null,
+  }) {
+    return _then(_value.copyWith(
+      key: null == key
+          ? _value.key
+          : key // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$InitializeEventImplCopyWith<$Res> {
+abstract class _$$InitializeEventImplCopyWith<$Res>
+    implements $AppConfigEventCopyWith<$Res> {
   factory _$$InitializeEventImplCopyWith(_$InitializeEventImpl value,
           $Res Function(_$InitializeEventImpl) then) =
       __$$InitializeEventImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String key});
 }
 
 /// @nodoc
@@ -88,51 +113,77 @@ class __$$InitializeEventImplCopyWithImpl<$Res>
 
   /// Create a copy of AppConfigEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? key = null,
+  }) {
+    return _then(_$InitializeEventImpl(
+      null == key
+          ? _value.key
+          : key // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$InitializeEventImpl implements InitializeEvent {
-  const _$InitializeEventImpl();
+  const _$InitializeEventImpl(this.key);
+
+  @override
+  final String key;
 
   @override
   String toString() {
-    return 'AppConfigEvent.initialize()';
+    return 'AppConfigEvent.initialize(key: $key)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitializeEventImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$InitializeEventImpl &&
+            (identical(other.key, key) || other.key == key));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, key);
+
+  /// Create a copy of AppConfigEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$InitializeEventImplCopyWith<_$InitializeEventImpl> get copyWith =>
+      __$$InitializeEventImplCopyWithImpl<_$InitializeEventImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initialize,
+    required TResult Function(String key) initialize,
   }) {
-    return initialize();
+    return initialize(key);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initialize,
+    TResult? Function(String key)? initialize,
   }) {
-    return initialize?.call();
+    return initialize?.call(key);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initialize,
+    TResult Function(String key)? initialize,
     required TResult orElse(),
   }) {
     if (initialize != null) {
-      return initialize();
+      return initialize(key);
     }
     return orElse();
   }
@@ -167,5 +218,15 @@ class _$InitializeEventImpl implements InitializeEvent {
 }
 
 abstract class InitializeEvent implements AppConfigEvent {
-  const factory InitializeEvent() = _$InitializeEventImpl;
+  const factory InitializeEvent(final String key) = _$InitializeEventImpl;
+
+  @override
+  String get key;
+
+  /// Create a copy of AppConfigEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$InitializeEventImplCopyWith<_$InitializeEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

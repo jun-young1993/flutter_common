@@ -1,8 +1,9 @@
+import 'package:flutter_common/models/app_config/app_config.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 abstract class AppRepository {
-  Future<String> getAppConfig();
+  Future<AppConfig> getAppConfig(String key);
 }
 
 class AppDefaultRepository extends AppRepository {
@@ -13,7 +14,7 @@ class AppDefaultRepository extends AppRepository {
       : _client = client ?? http.Client();
 
   @override
-  Future<String> getAppConfig(String key) async {
+  Future<AppConfig> getAppConfig(String key) async {
     try {
       final response = await _client.get(
         Uri.parse('$baseUrl/app-config/$key'),
@@ -24,8 +25,7 @@ class AppDefaultRepository extends AppRepository {
       );
 
       if (response.statusCode == 200) {
-        print(response.body);
-        return response.body;
+        return AppConfig.fromJson(jsonDecode(response.body));
       } else {
         throw Exception('Failed to load app config: ${response.statusCode}');
       }

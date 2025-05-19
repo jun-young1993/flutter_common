@@ -4,5 +4,5 @@ part 'app_config_event.freezed.dart';
 
 @freezed
 class AppConfigEvent with _$AppConfigEvent {
-  const factory AppConfigEvent.initialize() = InitializeEvent;
+  const factory AppConfigEvent.initialize(String key) = InitializeEvent;
 }
