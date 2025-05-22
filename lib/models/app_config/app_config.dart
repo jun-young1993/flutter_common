@@ -8,7 +8,10 @@ class AppConfig with _$AppConfig {
   const factory AppConfig({
     required String key,
     required String version,
-    @Default(null) String? description,
+    @Default("") String description,
+    @Default(false) bool isUpdateAvailable,
+    @Default("") String appleId,
+    @Default("") String packageName,
   }) = _AppConfig;
 
   const AppConfig._();

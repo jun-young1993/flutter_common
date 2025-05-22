@@ -7,6 +7,9 @@ class AppConfigState with _$AppConfigState {
     @Default("") String key,
     @Default("0.0.0") String version,
     @Default("") String description,
+    @Default(false) bool isUpdateAvailable,
+    @Default("") String appleId,
+    @Default("") String packageName,
   }) = _AppConfigState;
 
   factory AppConfigState.initialize() => const AppConfigState();

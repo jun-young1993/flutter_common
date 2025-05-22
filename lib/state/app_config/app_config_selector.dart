@@ -17,13 +17,12 @@ class AppConfigSelector<T>
         );
 }
 
-class RemoteAppConfigSelector extends AppConfigSelector<AppConfig?> {
-  RemoteAppConfigSelector(Widget Function(AppConfig? appConfig) builder,
+class RemoteAppConfigSelector extends AppConfigSelector<AppConfigState?> {
+  RemoteAppConfigSelector(Widget Function(AppConfigState? appConfig) builder,
       {Key? key})
       : super(
           key: key,
-          selector: (state) => AppConfig(
-              key: state.key ?? '', version: state.version ?? '0.0.0'),
+          selector: (state) => state,
           builder: (context, appConfig) => builder(appConfig),
         );
 }

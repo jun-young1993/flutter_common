@@ -1,9 +1,10 @@
+import 'package:flutter_common/constants/juny_constants.dart';
 import 'package:flutter_common/models/app_config/app_config.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 abstract class AppRepository {
-  Future<AppConfig> getAppConfig(String key);
+  Future<AppConfig> getAppConfig(AppKeys key);
 }
 
 class AppDefaultRepository extends AppRepository {
@@ -14,10 +15,14 @@ class AppDefaultRepository extends AppRepository {
       : _client = client ?? http.Client();
 
   @override
-  Future<AppConfig> getAppConfig(String key) async {
+  Future<AppConfig> getAppConfig(AppKeys key) async {
     try {
+      final keyString = JunyConstants.appKeys[key];
+      if (keyString == null) {
+        throw Exception('Invalid app key: $key');
+      }
       final response = await _client.get(
-        Uri.parse('$baseUrl/app-config/$key'),
+        Uri.parse('$baseUrl/app-config/$keyString'),
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',

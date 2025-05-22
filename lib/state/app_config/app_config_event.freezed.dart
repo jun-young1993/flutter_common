@@ -16,44 +16,49 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AppConfigEvent {
-  String get key => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String key) initialize,
+    required TResult Function(AppKeys key) initialize,
+    required TResult Function(AppKeys key, String version) checkCanUpdate,
+    required TResult Function() moveUpdateStore,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String key)? initialize,
+    TResult? Function(AppKeys key)? initialize,
+    TResult? Function(AppKeys key, String version)? checkCanUpdate,
+    TResult? Function()? moveUpdateStore,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String key)? initialize,
+    TResult Function(AppKeys key)? initialize,
+    TResult Function(AppKeys key, String version)? checkCanUpdate,
+    TResult Function()? moveUpdateStore,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitializeEvent value) initialize,
+    required TResult Function(CheckCanUpdateEvent value) checkCanUpdate,
+    required TResult Function(UpdateEvent value) moveUpdateStore,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitializeEvent value)? initialize,
+    TResult? Function(CheckCanUpdateEvent value)? checkCanUpdate,
+    TResult? Function(UpdateEvent value)? moveUpdateStore,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitializeEvent value)? initialize,
+    TResult Function(CheckCanUpdateEvent value)? checkCanUpdate,
+    TResult Function(UpdateEvent value)? moveUpdateStore,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  /// Create a copy of AppConfigEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $AppConfigEventCopyWith<AppConfigEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -62,8 +67,6 @@ abstract class $AppConfigEventCopyWith<$Res> {
   factory $AppConfigEventCopyWith(
           AppConfigEvent value, $Res Function(AppConfigEvent) then) =
       _$AppConfigEventCopyWithImpl<$Res, AppConfigEvent>;
-  @useResult
-  $Res call({String key});
 }
 
 /// @nodoc
@@ -78,29 +81,15 @@ class _$AppConfigEventCopyWithImpl<$Res, $Val extends AppConfigEvent>
 
   /// Create a copy of AppConfigEvent
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? key = null,
-  }) {
-    return _then(_value.copyWith(
-      key: null == key
-          ? _value.key
-          : key // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$InitializeEventImplCopyWith<$Res>
-    implements $AppConfigEventCopyWith<$Res> {
+abstract class _$$InitializeEventImplCopyWith<$Res> {
   factory _$$InitializeEventImplCopyWith(_$InitializeEventImpl value,
           $Res Function(_$InitializeEventImpl) then) =
       __$$InitializeEventImplCopyWithImpl<$Res>;
-  @override
   @useResult
-  $Res call({String key});
+  $Res call({AppKeys key});
 }
 
 /// @nodoc
@@ -122,7 +111,7 @@ class __$$InitializeEventImplCopyWithImpl<$Res>
       null == key
           ? _value.key
           : key // ignore: cast_nullable_to_non_nullable
-              as String,
+              as AppKeys,
     ));
   }
 }
@@ -133,7 +122,7 @@ class _$InitializeEventImpl implements InitializeEvent {
   const _$InitializeEventImpl(this.key);
 
   @override
-  final String key;
+  final AppKeys key;
 
   @override
   String toString() {
@@ -163,7 +152,9 @@ class _$InitializeEventImpl implements InitializeEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String key) initialize,
+    required TResult Function(AppKeys key) initialize,
+    required TResult Function(AppKeys key, String version) checkCanUpdate,
+    required TResult Function() moveUpdateStore,
   }) {
     return initialize(key);
   }
@@ -171,7 +162,9 @@ class _$InitializeEventImpl implements InitializeEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String key)? initialize,
+    TResult? Function(AppKeys key)? initialize,
+    TResult? Function(AppKeys key, String version)? checkCanUpdate,
+    TResult? Function()? moveUpdateStore,
   }) {
     return initialize?.call(key);
   }
@@ -179,7 +172,9 @@ class _$InitializeEventImpl implements InitializeEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String key)? initialize,
+    TResult Function(AppKeys key)? initialize,
+    TResult Function(AppKeys key, String version)? checkCanUpdate,
+    TResult Function()? moveUpdateStore,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -192,6 +187,8 @@ class _$InitializeEventImpl implements InitializeEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitializeEvent value) initialize,
+    required TResult Function(CheckCanUpdateEvent value) checkCanUpdate,
+    required TResult Function(UpdateEvent value) moveUpdateStore,
   }) {
     return initialize(this);
   }
@@ -200,6 +197,8 @@ class _$InitializeEventImpl implements InitializeEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitializeEvent value)? initialize,
+    TResult? Function(CheckCanUpdateEvent value)? checkCanUpdate,
+    TResult? Function(UpdateEvent value)? moveUpdateStore,
   }) {
     return initialize?.call(this);
   }
@@ -208,6 +207,8 @@ class _$InitializeEventImpl implements InitializeEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitializeEvent value)? initialize,
+    TResult Function(CheckCanUpdateEvent value)? checkCanUpdate,
+    TResult Function(UpdateEvent value)? moveUpdateStore,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -218,15 +219,281 @@ class _$InitializeEventImpl implements InitializeEvent {
 }
 
 abstract class InitializeEvent implements AppConfigEvent {
-  const factory InitializeEvent(final String key) = _$InitializeEventImpl;
+  const factory InitializeEvent(final AppKeys key) = _$InitializeEventImpl;
 
-  @override
-  String get key;
+  AppKeys get key;
 
   /// Create a copy of AppConfigEvent
   /// with the given fields replaced by the non-null parameter values.
-  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InitializeEventImplCopyWith<_$InitializeEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CheckCanUpdateEventImplCopyWith<$Res> {
+  factory _$$CheckCanUpdateEventImplCopyWith(_$CheckCanUpdateEventImpl value,
+          $Res Function(_$CheckCanUpdateEventImpl) then) =
+      __$$CheckCanUpdateEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({AppKeys key, String version});
+}
+
+/// @nodoc
+class __$$CheckCanUpdateEventImplCopyWithImpl<$Res>
+    extends _$AppConfigEventCopyWithImpl<$Res, _$CheckCanUpdateEventImpl>
+    implements _$$CheckCanUpdateEventImplCopyWith<$Res> {
+  __$$CheckCanUpdateEventImplCopyWithImpl(_$CheckCanUpdateEventImpl _value,
+      $Res Function(_$CheckCanUpdateEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AppConfigEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? key = null,
+    Object? version = null,
+  }) {
+    return _then(_$CheckCanUpdateEventImpl(
+      null == key
+          ? _value.key
+          : key // ignore: cast_nullable_to_non_nullable
+              as AppKeys,
+      null == version
+          ? _value.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CheckCanUpdateEventImpl implements CheckCanUpdateEvent {
+  const _$CheckCanUpdateEventImpl(this.key, this.version);
+
+  @override
+  final AppKeys key;
+  @override
+  final String version;
+
+  @override
+  String toString() {
+    return 'AppConfigEvent.checkCanUpdate(key: $key, version: $version)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CheckCanUpdateEventImpl &&
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.version, version) || other.version == version));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, key, version);
+
+  /// Create a copy of AppConfigEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CheckCanUpdateEventImplCopyWith<_$CheckCanUpdateEventImpl> get copyWith =>
+      __$$CheckCanUpdateEventImplCopyWithImpl<_$CheckCanUpdateEventImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AppKeys key) initialize,
+    required TResult Function(AppKeys key, String version) checkCanUpdate,
+    required TResult Function() moveUpdateStore,
+  }) {
+    return checkCanUpdate(key, version);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AppKeys key)? initialize,
+    TResult? Function(AppKeys key, String version)? checkCanUpdate,
+    TResult? Function()? moveUpdateStore,
+  }) {
+    return checkCanUpdate?.call(key, version);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AppKeys key)? initialize,
+    TResult Function(AppKeys key, String version)? checkCanUpdate,
+    TResult Function()? moveUpdateStore,
+    required TResult orElse(),
+  }) {
+    if (checkCanUpdate != null) {
+      return checkCanUpdate(key, version);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitializeEvent value) initialize,
+    required TResult Function(CheckCanUpdateEvent value) checkCanUpdate,
+    required TResult Function(UpdateEvent value) moveUpdateStore,
+  }) {
+    return checkCanUpdate(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitializeEvent value)? initialize,
+    TResult? Function(CheckCanUpdateEvent value)? checkCanUpdate,
+    TResult? Function(UpdateEvent value)? moveUpdateStore,
+  }) {
+    return checkCanUpdate?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitializeEvent value)? initialize,
+    TResult Function(CheckCanUpdateEvent value)? checkCanUpdate,
+    TResult Function(UpdateEvent value)? moveUpdateStore,
+    required TResult orElse(),
+  }) {
+    if (checkCanUpdate != null) {
+      return checkCanUpdate(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CheckCanUpdateEvent implements AppConfigEvent {
+  const factory CheckCanUpdateEvent(final AppKeys key, final String version) =
+      _$CheckCanUpdateEventImpl;
+
+  AppKeys get key;
+  String get version;
+
+  /// Create a copy of AppConfigEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CheckCanUpdateEventImplCopyWith<_$CheckCanUpdateEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateEventImplCopyWith<$Res> {
+  factory _$$UpdateEventImplCopyWith(
+          _$UpdateEventImpl value, $Res Function(_$UpdateEventImpl) then) =
+      __$$UpdateEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$UpdateEventImplCopyWithImpl<$Res>
+    extends _$AppConfigEventCopyWithImpl<$Res, _$UpdateEventImpl>
+    implements _$$UpdateEventImplCopyWith<$Res> {
+  __$$UpdateEventImplCopyWithImpl(
+      _$UpdateEventImpl _value, $Res Function(_$UpdateEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AppConfigEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$UpdateEventImpl implements UpdateEvent {
+  const _$UpdateEventImpl();
+
+  @override
+  String toString() {
+    return 'AppConfigEvent.moveUpdateStore()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$UpdateEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AppKeys key) initialize,
+    required TResult Function(AppKeys key, String version) checkCanUpdate,
+    required TResult Function() moveUpdateStore,
+  }) {
+    return moveUpdateStore();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AppKeys key)? initialize,
+    TResult? Function(AppKeys key, String version)? checkCanUpdate,
+    TResult? Function()? moveUpdateStore,
+  }) {
+    return moveUpdateStore?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AppKeys key)? initialize,
+    TResult Function(AppKeys key, String version)? checkCanUpdate,
+    TResult Function()? moveUpdateStore,
+    required TResult orElse(),
+  }) {
+    if (moveUpdateStore != null) {
+      return moveUpdateStore();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitializeEvent value) initialize,
+    required TResult Function(CheckCanUpdateEvent value) checkCanUpdate,
+    required TResult Function(UpdateEvent value) moveUpdateStore,
+  }) {
+    return moveUpdateStore(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitializeEvent value)? initialize,
+    TResult? Function(CheckCanUpdateEvent value)? checkCanUpdate,
+    TResult? Function(UpdateEvent value)? moveUpdateStore,
+  }) {
+    return moveUpdateStore?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitializeEvent value)? initialize,
+    TResult Function(CheckCanUpdateEvent value)? checkCanUpdate,
+    TResult Function(UpdateEvent value)? moveUpdateStore,
+    required TResult orElse(),
+  }) {
+    if (moveUpdateStore != null) {
+      return moveUpdateStore(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdateEvent implements AppConfigEvent {
+  const factory UpdateEvent() = _$UpdateEventImpl;
 }

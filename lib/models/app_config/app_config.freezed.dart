@@ -22,7 +22,10 @@ AppConfig _$AppConfigFromJson(Map<String, dynamic> json) {
 mixin _$AppConfig {
   String get key => throw _privateConstructorUsedError;
   String get version => throw _privateConstructorUsedError;
-  String? get description => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
+  bool get isUpdateAvailable => throw _privateConstructorUsedError;
+  String get appleId => throw _privateConstructorUsedError;
+  String get packageName => throw _privateConstructorUsedError;
 
   /// Serializes this AppConfig to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -39,7 +42,13 @@ abstract class $AppConfigCopyWith<$Res> {
   factory $AppConfigCopyWith(AppConfig value, $Res Function(AppConfig) then) =
       _$AppConfigCopyWithImpl<$Res, AppConfig>;
   @useResult
-  $Res call({String key, String version, String? description});
+  $Res call(
+      {String key,
+      String version,
+      String description,
+      bool isUpdateAvailable,
+      String appleId,
+      String packageName});
 }
 
 /// @nodoc
@@ -59,7 +68,10 @@ class _$AppConfigCopyWithImpl<$Res, $Val extends AppConfig>
   $Res call({
     Object? key = null,
     Object? version = null,
-    Object? description = freezed,
+    Object? description = null,
+    Object? isUpdateAvailable = null,
+    Object? appleId = null,
+    Object? packageName = null,
   }) {
     return _then(_value.copyWith(
       key: null == key
@@ -70,10 +82,22 @@ class _$AppConfigCopyWithImpl<$Res, $Val extends AppConfig>
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
               as String,
-      description: freezed == description
+      description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
+      isUpdateAvailable: null == isUpdateAvailable
+          ? _value.isUpdateAvailable
+          : isUpdateAvailable // ignore: cast_nullable_to_non_nullable
+              as bool,
+      appleId: null == appleId
+          ? _value.appleId
+          : appleId // ignore: cast_nullable_to_non_nullable
+              as String,
+      packageName: null == packageName
+          ? _value.packageName
+          : packageName // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -86,7 +110,13 @@ abstract class _$$AppConfigImplCopyWith<$Res>
       __$$AppConfigImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String key, String version, String? description});
+  $Res call(
+      {String key,
+      String version,
+      String description,
+      bool isUpdateAvailable,
+      String appleId,
+      String packageName});
 }
 
 /// @nodoc
@@ -104,7 +134,10 @@ class __$$AppConfigImplCopyWithImpl<$Res>
   $Res call({
     Object? key = null,
     Object? version = null,
-    Object? description = freezed,
+    Object? description = null,
+    Object? isUpdateAvailable = null,
+    Object? appleId = null,
+    Object? packageName = null,
   }) {
     return _then(_$AppConfigImpl(
       key: null == key
@@ -115,10 +148,22 @@ class __$$AppConfigImplCopyWithImpl<$Res>
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
               as String,
-      description: freezed == description
+      description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
+      isUpdateAvailable: null == isUpdateAvailable
+          ? _value.isUpdateAvailable
+          : isUpdateAvailable // ignore: cast_nullable_to_non_nullable
+              as bool,
+      appleId: null == appleId
+          ? _value.appleId
+          : appleId // ignore: cast_nullable_to_non_nullable
+              as String,
+      packageName: null == packageName
+          ? _value.packageName
+          : packageName // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -127,7 +172,12 @@ class __$$AppConfigImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$AppConfigImpl extends _AppConfig {
   const _$AppConfigImpl(
-      {required this.key, required this.version, this.description = null})
+      {required this.key,
+      required this.version,
+      this.description = "",
+      this.isUpdateAvailable = false,
+      this.appleId = "",
+      this.packageName = ""})
       : super._();
 
   factory _$AppConfigImpl.fromJson(Map<String, dynamic> json) =>
@@ -139,11 +189,20 @@ class _$AppConfigImpl extends _AppConfig {
   final String version;
   @override
   @JsonKey()
-  final String? description;
+  final String description;
+  @override
+  @JsonKey()
+  final bool isUpdateAvailable;
+  @override
+  @JsonKey()
+  final String appleId;
+  @override
+  @JsonKey()
+  final String packageName;
 
   @override
   String toString() {
-    return 'AppConfig(key: $key, version: $version, description: $description)';
+    return 'AppConfig(key: $key, version: $version, description: $description, isUpdateAvailable: $isUpdateAvailable, appleId: $appleId, packageName: $packageName)';
   }
 
   @override
@@ -154,12 +213,18 @@ class _$AppConfigImpl extends _AppConfig {
             (identical(other.key, key) || other.key == key) &&
             (identical(other.version, version) || other.version == version) &&
             (identical(other.description, description) ||
-                other.description == description));
+                other.description == description) &&
+            (identical(other.isUpdateAvailable, isUpdateAvailable) ||
+                other.isUpdateAvailable == isUpdateAvailable) &&
+            (identical(other.appleId, appleId) || other.appleId == appleId) &&
+            (identical(other.packageName, packageName) ||
+                other.packageName == packageName));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, key, version, description);
+  int get hashCode => Object.hash(runtimeType, key, version, description,
+      isUpdateAvailable, appleId, packageName);
 
   /// Create a copy of AppConfig
   /// with the given fields replaced by the non-null parameter values.
@@ -181,7 +246,10 @@ abstract class _AppConfig extends AppConfig {
   const factory _AppConfig(
       {required final String key,
       required final String version,
-      final String? description}) = _$AppConfigImpl;
+      final String description,
+      final bool isUpdateAvailable,
+      final String appleId,
+      final String packageName}) = _$AppConfigImpl;
   const _AppConfig._() : super._();
 
   factory _AppConfig.fromJson(Map<String, dynamic> json) =
@@ -192,7 +260,13 @@ abstract class _AppConfig extends AppConfig {
   @override
   String get version;
   @override
-  String? get description;
+  String get description;
+  @override
+  bool get isUpdateAvailable;
+  @override
+  String get appleId;
+  @override
+  String get packageName;
 
   /// Create a copy of AppConfig
   /// with the given fields replaced by the non-null parameter values.

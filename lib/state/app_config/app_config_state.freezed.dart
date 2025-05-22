@@ -19,6 +19,9 @@ mixin _$AppConfigState {
   String get key => throw _privateConstructorUsedError;
   String get version => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
+  bool get isUpdateAvailable => throw _privateConstructorUsedError;
+  String get appleId => throw _privateConstructorUsedError;
+  String get packageName => throw _privateConstructorUsedError;
 
   /// Create a copy of AppConfigState
   /// with the given fields replaced by the non-null parameter values.
@@ -33,7 +36,13 @@ abstract class $AppConfigStateCopyWith<$Res> {
           AppConfigState value, $Res Function(AppConfigState) then) =
       _$AppConfigStateCopyWithImpl<$Res, AppConfigState>;
   @useResult
-  $Res call({String key, String version, String description});
+  $Res call(
+      {String key,
+      String version,
+      String description,
+      bool isUpdateAvailable,
+      String appleId,
+      String packageName});
 }
 
 /// @nodoc
@@ -54,6 +63,9 @@ class _$AppConfigStateCopyWithImpl<$Res, $Val extends AppConfigState>
     Object? key = null,
     Object? version = null,
     Object? description = null,
+    Object? isUpdateAvailable = null,
+    Object? appleId = null,
+    Object? packageName = null,
   }) {
     return _then(_value.copyWith(
       key: null == key
@@ -68,6 +80,18 @@ class _$AppConfigStateCopyWithImpl<$Res, $Val extends AppConfigState>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
+      isUpdateAvailable: null == isUpdateAvailable
+          ? _value.isUpdateAvailable
+          : isUpdateAvailable // ignore: cast_nullable_to_non_nullable
+              as bool,
+      appleId: null == appleId
+          ? _value.appleId
+          : appleId // ignore: cast_nullable_to_non_nullable
+              as String,
+      packageName: null == packageName
+          ? _value.packageName
+          : packageName // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -80,7 +104,13 @@ abstract class _$$AppConfigStateImplCopyWith<$Res>
       __$$AppConfigStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String key, String version, String description});
+  $Res call(
+      {String key,
+      String version,
+      String description,
+      bool isUpdateAvailable,
+      String appleId,
+      String packageName});
 }
 
 /// @nodoc
@@ -99,6 +129,9 @@ class __$$AppConfigStateImplCopyWithImpl<$Res>
     Object? key = null,
     Object? version = null,
     Object? description = null,
+    Object? isUpdateAvailable = null,
+    Object? appleId = null,
+    Object? packageName = null,
   }) {
     return _then(_$AppConfigStateImpl(
       key: null == key
@@ -113,6 +146,18 @@ class __$$AppConfigStateImplCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
+      isUpdateAvailable: null == isUpdateAvailable
+          ? _value.isUpdateAvailable
+          : isUpdateAvailable // ignore: cast_nullable_to_non_nullable
+              as bool,
+      appleId: null == appleId
+          ? _value.appleId
+          : appleId // ignore: cast_nullable_to_non_nullable
+              as String,
+      packageName: null == packageName
+          ? _value.packageName
+          : packageName // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -121,7 +166,12 @@ class __$$AppConfigStateImplCopyWithImpl<$Res>
 
 class _$AppConfigStateImpl implements _AppConfigState {
   const _$AppConfigStateImpl(
-      {this.key = "", this.version = "0.0.0", this.description = ""});
+      {this.key = "",
+      this.version = "0.0.0",
+      this.description = "",
+      this.isUpdateAvailable = false,
+      this.appleId = "",
+      this.packageName = ""});
 
   @override
   @JsonKey()
@@ -132,10 +182,19 @@ class _$AppConfigStateImpl implements _AppConfigState {
   @override
   @JsonKey()
   final String description;
+  @override
+  @JsonKey()
+  final bool isUpdateAvailable;
+  @override
+  @JsonKey()
+  final String appleId;
+  @override
+  @JsonKey()
+  final String packageName;
 
   @override
   String toString() {
-    return 'AppConfigState(key: $key, version: $version, description: $description)';
+    return 'AppConfigState(key: $key, version: $version, description: $description, isUpdateAvailable: $isUpdateAvailable, appleId: $appleId, packageName: $packageName)';
   }
 
   @override
@@ -146,11 +205,17 @@ class _$AppConfigStateImpl implements _AppConfigState {
             (identical(other.key, key) || other.key == key) &&
             (identical(other.version, version) || other.version == version) &&
             (identical(other.description, description) ||
-                other.description == description));
+                other.description == description) &&
+            (identical(other.isUpdateAvailable, isUpdateAvailable) ||
+                other.isUpdateAvailable == isUpdateAvailable) &&
+            (identical(other.appleId, appleId) || other.appleId == appleId) &&
+            (identical(other.packageName, packageName) ||
+                other.packageName == packageName));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, key, version, description);
+  int get hashCode => Object.hash(runtimeType, key, version, description,
+      isUpdateAvailable, appleId, packageName);
 
   /// Create a copy of AppConfigState
   /// with the given fields replaced by the non-null parameter values.
@@ -166,7 +231,10 @@ abstract class _AppConfigState implements AppConfigState {
   const factory _AppConfigState(
       {final String key,
       final String version,
-      final String description}) = _$AppConfigStateImpl;
+      final String description,
+      final bool isUpdateAvailable,
+      final String appleId,
+      final String packageName}) = _$AppConfigStateImpl;
 
   @override
   String get key;
@@ -174,6 +242,12 @@ abstract class _AppConfigState implements AppConfigState {
   String get version;
   @override
   String get description;
+  @override
+  bool get isUpdateAvailable;
+  @override
+  String get appleId;
+  @override
+  String get packageName;
 
   /// Create a copy of AppConfigState
   /// with the given fields replaced by the non-null parameter values.
