@@ -5,6 +5,7 @@ import 'package:flutter_common/state/app_config/app_config_bloc.dart';
 import 'package:flutter_common/state/app_config/app_config_event.dart';
 import 'package:flutter_common/state/app_config/app_config_selector.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:version/version.dart';
 
 class SettingScreenLayout extends StatefulWidget {
   const SettingScreenLayout(
@@ -18,16 +19,24 @@ class SettingScreenLayout extends StatefulWidget {
 
 class _SettingScreenLayoutState extends State<SettingScreenLayout> {
   String _version = '';
+  bool _isUpdateAvailable = false;
 
   AppConfigBloc get appConfigBloc => widget.appConfigBloc;
   AppKeys get appKey => widget.appKey;
   String get appKeyString => JunyConstants.appKeys[appKey]!;
+
   Future<void> _getVersion() async {
     final packageInfo = await PackageInfo.fromPlatform();
     setState(() {
       _version = packageInfo.version;
+      if (appConfig != null) {
+        _isUpdateAvailable =
+            Version.parse(_version) < Version.parse(appConfig!.version);
+      }
     });
   }
+
+  AppConfig? appConfig;
 
   @override
   void initState() {
@@ -55,8 +64,11 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
             padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
             child: Column(
               children: [
-                RemoteAppConfigSelector(
-                    (appConfig) => _buildInfoSection(appConfig)),
+                RemoteAppConfigSelector((config) {
+                  appConfig = config;
+                  _getVersion();
+                  return _buildInfoSection(config);
+                }),
               ],
             ),
           ),
@@ -66,6 +78,7 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
   }
 
   Widget _buildInfoSection(AppConfig? appConfig) {
+    print("buildInfoSection $appConfig");
     final screenWidth = MediaQuery.of(context).size.width;
     final isTablet = screenWidth > 600;
 
