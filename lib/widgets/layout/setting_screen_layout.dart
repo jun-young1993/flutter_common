@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_common/constants/juny_constants.dart';
 
-class SettingScreen extends StatefulWidget {
-  const SettingScreen({Key? key, required this.currentVersion})
+class SettingScreenLayout extends StatefulWidget {
+  const SettingScreenLayout({Key? key, required this.currentVersion})
       : super(key: key);
   final String currentVersion;
   @override
-  State<SettingScreen> createState() => _SettingScreenState();
+  State<SettingScreenLayout> createState() => _SettingScreenLayoutState();
 }
 
-class _SettingScreenState extends State<SettingScreen> {
+class _SettingScreenLayoutState extends State<SettingScreenLayout> {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
