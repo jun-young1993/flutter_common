@@ -1,15 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_common/constants/juny_constants.dart';
+import 'package:flutter_common/models/app_config/app_config.dart';
+import 'package:flutter_common/state/app_config/app_config_bloc.dart';
+import 'package:flutter_common/state/app_config/app_config_event.dart';
+import 'package:flutter_common/state/app_config/app_config_selector.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 class SettingScreenLayout extends StatefulWidget {
-  const SettingScreenLayout({Key? key, required this.currentVersion})
+  const SettingScreenLayout(
+      {Key? key, required this.appConfigBloc, required this.appKey})
       : super(key: key);
-  final String currentVersion;
+  final AppConfigBloc appConfigBloc;
+  final AppKeys appKey;
   @override
   State<SettingScreenLayout> createState() => _SettingScreenLayoutState();
 }
 
 class _SettingScreenLayoutState extends State<SettingScreenLayout> {
+  String _version = '';
+
+  AppConfigBloc get appConfigBloc => widget.appConfigBloc;
+  AppKeys get appKey => widget.appKey;
+  String get appKeyString => JunyConstants.appKeys[appKey]!;
+  Future<void> _getVersion() async {
+    final packageInfo = await PackageInfo.fromPlatform();
+    setState(() {
+      _version = packageInfo.version;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    appConfigBloc.add(AppConfigEvent.initialize(appKeyString));
+    _getVersion();
+  }
+
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -28,7 +54,10 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
             child: Column(
-              children: [_buildInfoSection()],
+              children: [
+                RemoteAppConfigSelector(
+                    (appConfig) => _buildInfoSection(appConfig)),
+              ],
             ),
           ),
         ),
@@ -36,7 +65,7 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
     );
   }
 
-  Widget _buildInfoSection() {
+  Widget _buildInfoSection(AppConfig? appConfig) {
     final screenWidth = MediaQuery.of(context).size.width;
     final isTablet = screenWidth > 600;
 
@@ -88,7 +117,7 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
               ),
               const SizedBox(width: 8),
               Text(
-                widget.currentVersion,
+                _version,
                 style: TextStyle(
                   fontSize: isTablet ? 16 : 14,
                   color: Theme.of(context).primaryColor,
