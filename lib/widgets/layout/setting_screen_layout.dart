@@ -1,6 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_common/constants/juny_constants.dart';
-import 'package:flutter_common/models/app_config/app_config.dart';
 import 'package:flutter_common/state/app_config/app_config_bloc.dart';
 import 'package:flutter_common/state/app_config/app_config_event.dart';
 import 'package:flutter_common/state/app_config/app_config_selector.dart';
@@ -10,8 +11,14 @@ import 'package:package_info_plus/package_info_plus.dart';
 
 class SettingScreenLayout extends StatefulWidget {
   const SettingScreenLayout(
-      {Key? key, required this.appConfigBloc, required this.appKey})
+      {Key? key,
+      required this.appConfigBloc,
+      required this.appKey,
+      this.topChildren = const [],
+      this.bottomChildren = const []})
       : super(key: key);
+  final List<Widget> topChildren;
+  final List<Widget> bottomChildren;
   final AppConfigBloc appConfigBloc;
   final AppKeys appKey;
   @override
@@ -60,9 +67,11 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
             padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
             child: Column(
               children: [
+                ...widget.topChildren,
                 RemoteAppConfigSelector((config) {
                   return _buildInfoSection(config);
                 }),
+                ...widget.bottomChildren,
               ],
             ),
           ),

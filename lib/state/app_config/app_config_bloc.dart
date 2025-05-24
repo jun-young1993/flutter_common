@@ -30,14 +30,14 @@ class AppConfigBloc extends Bloc<AppConfigEvent, AppConfigState> {
               isUpdateAvailable: Version.parse(event.version) <
                   Version.parse(appConfig.version),
             ));
-            print("check isUpdateAvailable: ${state.isUpdateAvailable}");
           },
           moveUpdateStore: (event) async {
             Uri storeUri = Platform.isAndroid
                 ? Uri.parse(
                     "https://play.google.com/store/apps/details?id=${state.packageName}")
-                : Uri.parse("https://apps.apple.com/us/app/${state.appleId}");
+                : Uri.parse("https://apps.apple.com/kr/app/id${state.appleId}");
             if (await canLaunchUrl(storeUri)) {
+              print("launchUrl: $storeUri");
               await launchUrl(storeUri);
             } else {
               throw Exception("Failed to launch URL: $storeUri");
