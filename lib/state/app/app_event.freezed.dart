@@ -21,6 +21,7 @@ mixin _$AppEvent {
     required TResult Function() initilize,
     required TResult Function() clearError,
     required TResult Function(AppException error) setError,
+    required TResult Function(bool isLoading) setLoading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$AppEvent {
     TResult? Function()? initilize,
     TResult? Function()? clearError,
     TResult? Function(AppException error)? setError,
+    TResult? Function(bool isLoading)? setLoading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$AppEvent {
     TResult Function()? initilize,
     TResult Function()? clearError,
     TResult Function(AppException error)? setError,
+    TResult Function(bool isLoading)? setLoading,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$AppEvent {
     required TResult Function(_Initilize value) initilize,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_SetError value) setError,
+    required TResult Function(_SetLoading value) setLoading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$AppEvent {
     TResult? Function(_Initilize value)? initilize,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_SetError value)? setError,
+    TResult? Function(_SetLoading value)? setLoading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$AppEvent {
     TResult Function(_Initilize value)? initilize,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_SetError value)? setError,
+    TResult Function(_SetLoading value)? setLoading,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -126,6 +132,7 @@ class _$InitilizeImpl implements _Initilize {
     required TResult Function() initilize,
     required TResult Function() clearError,
     required TResult Function(AppException error) setError,
+    required TResult Function(bool isLoading) setLoading,
   }) {
     return initilize();
   }
@@ -136,6 +143,7 @@ class _$InitilizeImpl implements _Initilize {
     TResult? Function()? initilize,
     TResult? Function()? clearError,
     TResult? Function(AppException error)? setError,
+    TResult? Function(bool isLoading)? setLoading,
   }) {
     return initilize?.call();
   }
@@ -146,6 +154,7 @@ class _$InitilizeImpl implements _Initilize {
     TResult Function()? initilize,
     TResult Function()? clearError,
     TResult Function(AppException error)? setError,
+    TResult Function(bool isLoading)? setLoading,
     required TResult orElse(),
   }) {
     if (initilize != null) {
@@ -160,6 +169,7 @@ class _$InitilizeImpl implements _Initilize {
     required TResult Function(_Initilize value) initilize,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_SetError value) setError,
+    required TResult Function(_SetLoading value) setLoading,
   }) {
     return initilize(this);
   }
@@ -170,6 +180,7 @@ class _$InitilizeImpl implements _Initilize {
     TResult? Function(_Initilize value)? initilize,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_SetError value)? setError,
+    TResult? Function(_SetLoading value)? setLoading,
   }) {
     return initilize?.call(this);
   }
@@ -180,6 +191,7 @@ class _$InitilizeImpl implements _Initilize {
     TResult Function(_Initilize value)? initilize,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_SetError value)? setError,
+    TResult Function(_SetLoading value)? setLoading,
     required TResult orElse(),
   }) {
     if (initilize != null) {
@@ -237,6 +249,7 @@ class _$ClearErrorImpl implements _ClearError {
     required TResult Function() initilize,
     required TResult Function() clearError,
     required TResult Function(AppException error) setError,
+    required TResult Function(bool isLoading) setLoading,
   }) {
     return clearError();
   }
@@ -247,6 +260,7 @@ class _$ClearErrorImpl implements _ClearError {
     TResult? Function()? initilize,
     TResult? Function()? clearError,
     TResult? Function(AppException error)? setError,
+    TResult? Function(bool isLoading)? setLoading,
   }) {
     return clearError?.call();
   }
@@ -257,6 +271,7 @@ class _$ClearErrorImpl implements _ClearError {
     TResult Function()? initilize,
     TResult Function()? clearError,
     TResult Function(AppException error)? setError,
+    TResult Function(bool isLoading)? setLoading,
     required TResult orElse(),
   }) {
     if (clearError != null) {
@@ -271,6 +286,7 @@ class _$ClearErrorImpl implements _ClearError {
     required TResult Function(_Initilize value) initilize,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_SetError value) setError,
+    required TResult Function(_SetLoading value) setLoading,
   }) {
     return clearError(this);
   }
@@ -281,6 +297,7 @@ class _$ClearErrorImpl implements _ClearError {
     TResult? Function(_Initilize value)? initilize,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_SetError value)? setError,
+    TResult? Function(_SetLoading value)? setLoading,
   }) {
     return clearError?.call(this);
   }
@@ -291,6 +308,7 @@ class _$ClearErrorImpl implements _ClearError {
     TResult Function(_Initilize value)? initilize,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_SetError value)? setError,
+    TResult Function(_SetLoading value)? setLoading,
     required TResult orElse(),
   }) {
     if (clearError != null) {
@@ -387,6 +405,7 @@ class _$SetErrorImpl implements _SetError {
     required TResult Function() initilize,
     required TResult Function() clearError,
     required TResult Function(AppException error) setError,
+    required TResult Function(bool isLoading) setLoading,
   }) {
     return setError(error);
   }
@@ -397,6 +416,7 @@ class _$SetErrorImpl implements _SetError {
     TResult? Function()? initilize,
     TResult? Function()? clearError,
     TResult? Function(AppException error)? setError,
+    TResult? Function(bool isLoading)? setLoading,
   }) {
     return setError?.call(error);
   }
@@ -407,6 +427,7 @@ class _$SetErrorImpl implements _SetError {
     TResult Function()? initilize,
     TResult Function()? clearError,
     TResult Function(AppException error)? setError,
+    TResult Function(bool isLoading)? setLoading,
     required TResult orElse(),
   }) {
     if (setError != null) {
@@ -421,6 +442,7 @@ class _$SetErrorImpl implements _SetError {
     required TResult Function(_Initilize value) initilize,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_SetError value) setError,
+    required TResult Function(_SetLoading value) setLoading,
   }) {
     return setError(this);
   }
@@ -431,6 +453,7 @@ class _$SetErrorImpl implements _SetError {
     TResult? Function(_Initilize value)? initilize,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_SetError value)? setError,
+    TResult? Function(_SetLoading value)? setLoading,
   }) {
     return setError?.call(this);
   }
@@ -441,6 +464,7 @@ class _$SetErrorImpl implements _SetError {
     TResult Function(_Initilize value)? initilize,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_SetError value)? setError,
+    TResult Function(_SetLoading value)? setLoading,
     required TResult orElse(),
   }) {
     if (setError != null) {
@@ -459,5 +483,158 @@ abstract class _SetError implements AppEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SetErrorImplCopyWith<_$SetErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SetLoadingImplCopyWith<$Res> {
+  factory _$$SetLoadingImplCopyWith(
+          _$SetLoadingImpl value, $Res Function(_$SetLoadingImpl) then) =
+      __$$SetLoadingImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool isLoading});
+}
+
+/// @nodoc
+class __$$SetLoadingImplCopyWithImpl<$Res>
+    extends _$AppEventCopyWithImpl<$Res, _$SetLoadingImpl>
+    implements _$$SetLoadingImplCopyWith<$Res> {
+  __$$SetLoadingImplCopyWithImpl(
+      _$SetLoadingImpl _value, $Res Function(_$SetLoadingImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AppEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isLoading = null,
+  }) {
+    return _then(_$SetLoadingImpl(
+      null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SetLoadingImpl implements _SetLoading {
+  const _$SetLoadingImpl(this.isLoading);
+
+  @override
+  final bool isLoading;
+
+  @override
+  String toString() {
+    return 'AppEvent.setLoading(isLoading: $isLoading)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SetLoadingImpl &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, isLoading);
+
+  /// Create a copy of AppEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SetLoadingImplCopyWith<_$SetLoadingImpl> get copyWith =>
+      __$$SetLoadingImplCopyWithImpl<_$SetLoadingImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initilize,
+    required TResult Function() clearError,
+    required TResult Function(AppException error) setError,
+    required TResult Function(bool isLoading) setLoading,
+  }) {
+    return setLoading(isLoading);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initilize,
+    TResult? Function()? clearError,
+    TResult? Function(AppException error)? setError,
+    TResult? Function(bool isLoading)? setLoading,
+  }) {
+    return setLoading?.call(isLoading);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initilize,
+    TResult Function()? clearError,
+    TResult Function(AppException error)? setError,
+    TResult Function(bool isLoading)? setLoading,
+    required TResult orElse(),
+  }) {
+    if (setLoading != null) {
+      return setLoading(isLoading);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initilize value) initilize,
+    required TResult Function(_ClearError value) clearError,
+    required TResult Function(_SetError value) setError,
+    required TResult Function(_SetLoading value) setLoading,
+  }) {
+    return setLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initilize value)? initilize,
+    TResult? Function(_ClearError value)? clearError,
+    TResult? Function(_SetError value)? setError,
+    TResult? Function(_SetLoading value)? setLoading,
+  }) {
+    return setLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initilize value)? initilize,
+    TResult Function(_ClearError value)? clearError,
+    TResult Function(_SetError value)? setError,
+    TResult Function(_SetLoading value)? setLoading,
+    required TResult orElse(),
+  }) {
+    if (setLoading != null) {
+      return setLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SetLoading implements AppEvent {
+  const factory _SetLoading(final bool isLoading) = _$SetLoadingImpl;
+
+  bool get isLoading;
+
+  /// Create a copy of AppEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SetLoadingImplCopyWith<_$SetLoadingImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

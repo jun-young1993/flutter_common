@@ -22,6 +22,9 @@ class AppBloc extends Bloc<AppEvent, AppState> {
                   error: AppException.unknown(e.error.toString())));
             }
           },
+          setLoading: (e) async {
+            emit(state.copyWith(isLoading: e.isLoading));
+          },
         );
       },
     );

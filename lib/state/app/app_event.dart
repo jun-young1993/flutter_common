@@ -8,4 +8,5 @@ class AppEvent with _$AppEvent {
   const factory AppEvent.initilize() = _Initilize;
   const factory AppEvent.clearError() = _ClearError;
   const factory AppEvent.setError(AppException error) = _SetError;
+  const factory AppEvent.setLoading(bool isLoading) = _SetLoading;
 }
