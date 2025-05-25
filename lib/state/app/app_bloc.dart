@@ -14,6 +14,14 @@ class AppBloc extends Bloc<AppEvent, AppState> {
           clearError: (e) async {
             emit(state.copyWith(isLoading: false, error: null));
           },
+          setError: (e) async {
+            if (e is AppException) {
+              emit(state.copyWith(error: e.error));
+            } else {
+              emit(state.copyWith(
+                  error: AppException.unknown(e.error.toString())));
+            }
+          },
         );
       },
     );
