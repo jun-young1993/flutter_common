@@ -7,6 +7,7 @@ import 'dart:ui' as ui;
 import 'package:printing/printing.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
+import 'package:google_fonts/google_fonts.dart';
 
 class ShareAppRow extends StatelessWidget {
   final String appStoreUrl;
@@ -292,8 +293,9 @@ class ShareAppRow extends StatelessWidget {
     try {
       final pdf = pw.Document();
 
-      // Load the Korean font
-      final font = await rootBundle.load("assets/fonts/NotoSansKR-Regular.otf");
+      // Load the Korean font from Google Fonts
+      final fontData = await GoogleFonts.notoSansKr().fontFamily;
+      final font = await rootBundle.load(fontData!.fonts.first.url);
       final ttf = pw.Font.ttf(font);
 
       pdf.addPage(
