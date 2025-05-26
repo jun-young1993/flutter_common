@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_common/constants/common_constants.dart';
 import 'package:flutter_common/repositories/app_repository.dart';
 import 'package:flutter_common/state/app_config/app_config_event.dart';
 import 'package:flutter_common/state/app_config/app_config_state.dart';
@@ -32,10 +33,9 @@ class AppConfigBloc extends Bloc<AppConfigEvent, AppConfigState> {
             ));
           },
           moveUpdateStore: (event) async {
-            Uri storeUri = Platform.isAndroid
-                ? Uri.parse(
-                    "https://play.google.com/store/apps/details?id=${state.packageName}")
-                : Uri.parse("https://apps.apple.com/kr/app/id${state.appleId}");
+            Uri storeUri = Uri.parse(
+                CommonConstants.getStoreUrl(state.packageName, state.appleId));
+
             if (await canLaunchUrl(storeUri)) {
               print("launchUrl: $storeUri");
               await launchUrl(storeUri);

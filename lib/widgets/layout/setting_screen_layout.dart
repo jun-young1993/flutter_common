@@ -1,12 +1,12 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_common/constants/common_constants.dart';
 import 'package:flutter_common/constants/juny_constants.dart';
 import 'package:flutter_common/state/app_config/app_config_bloc.dart';
 import 'package:flutter_common/state/app_config/app_config_event.dart';
 import 'package:flutter_common/state/app_config/app_config_selector.dart';
 import 'package:flutter_common/state/app_config/app_config_state.dart';
 import 'package:flutter_common/widgets/layout/sections/can_update_row.dart';
+import 'package:flutter_common/widgets/layout/sections/share_app_row.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 class SettingScreenLayout extends StatefulWidget {
@@ -197,6 +197,22 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
               ],
             ),
           ),
+          SizedBox(height: isTablet ? 24 : 20),
+          RemoteAppConfigSelector((config) {
+            if (config == null) {
+              return const SizedBox.shrink();
+            }
+            final url =
+                CommonConstants.getStoreUrl(config.packageName, config.appleId);
+            return ShareAppRow(
+              appStoreUrl: url,
+              appName: config.description,
+              invitationMessage:
+                  '${config.description}에 초대합니다.\n아래 QR 코드를 통해 앱을 설치해주세요.',
+              androidPackageName: config.packageName,
+              appleId: config.appleId,
+            );
+          }),
           SizedBox(height: isTablet ? 24 : 20),
           Container(
             padding: EdgeInsets.all(isTablet ? 16 : 12),
