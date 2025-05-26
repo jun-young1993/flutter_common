@@ -7,7 +7,6 @@ import 'dart:ui' as ui;
 import 'package:printing/printing.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
-import 'package:google_fonts/google_fonts.dart';
 
 class ShareAppRow extends StatelessWidget {
   final String appStoreUrl;
@@ -293,10 +292,8 @@ class ShareAppRow extends StatelessWidget {
     try {
       final pdf = pw.Document();
 
-      // Load the Korean font from Google Fonts
-      final fontData = await GoogleFonts.notoSansKr().fontFamily;
-      final font = await rootBundle.load(fontData!.fonts.first.url);
-      final ttf = pw.Font.ttf(font);
+      // Use a built-in font that supports Korean
+      final font = pw.Font.helvetica();
 
       pdf.addPage(
         pw.Page(
@@ -309,7 +306,7 @@ class ShareAppRow extends StatelessWidget {
                 pw.Text(
                   appName,
                   style: pw.TextStyle(
-                    font: ttf,
+                    font: font,
                     fontSize: 24,
                     fontWeight: pw.FontWeight.bold,
                   ),
@@ -319,7 +316,7 @@ class ShareAppRow extends StatelessWidget {
                   invitationMessage,
                   textAlign: pw.TextAlign.center,
                   style: pw.TextStyle(
-                    font: ttf,
+                    font: font,
                     fontSize: 16,
                   ),
                 ),
@@ -328,7 +325,7 @@ class ShareAppRow extends StatelessWidget {
                   pw.Text(
                     'Android',
                     style: pw.TextStyle(
-                      font: ttf,
+                      font: font,
                       fontSize: 16,
                       fontWeight: pw.FontWeight.bold,
                     ),
@@ -348,7 +345,7 @@ class ShareAppRow extends StatelessWidget {
                   pw.Text(
                     'iOS',
                     style: pw.TextStyle(
-                      font: ttf,
+                      font: font,
                       fontSize: 16,
                       fontWeight: pw.FontWeight.bold,
                     ),
@@ -367,7 +364,7 @@ class ShareAppRow extends StatelessWidget {
                 pw.Text(
                   'QR 코드를 스캔하여 앱 설치하기',
                   style: pw.TextStyle(
-                    font: ttf,
+                    font: font,
                     fontSize: 14,
                     color: PdfColors.grey700,
                   ),
