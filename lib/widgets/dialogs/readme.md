@@ -30,3 +30,13 @@ message: '이 작업은 되돌릴 수 없습니다.',
 confirmText: '진행',
 cancelText: '취소',
 );
+
+# Report Dialog
+```dart
+ReportDialog.show(
+  context: context,
+  onReport: (reason, etcText) {
+    // Handle report
+  },
+);
+```
