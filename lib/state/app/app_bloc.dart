@@ -11,6 +11,9 @@ class AppBloc extends Bloc<AppEvent, AppState> {
           initilize: (e) async {
             await _handleEvent(emit, () async {});
           },
+          initialize: (e) async {
+            await _handleEvent(emit, () async {});
+          },
           clearError: (e) async {
             emit(state.copyWith(isLoading: false, error: null));
           },

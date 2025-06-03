@@ -24,29 +24,31 @@ class ErrorView<T extends Exception> extends StatelessWidget {
     }
 
     // 기본 에러 뷰
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            errorIcon?.call(error) ?? _buildDefaultIcon(),
-            const SizedBox(height: 16),
-            Text(
-              errorMessage?.call(error) ?? _getDefaultErrorMessage(),
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    color: Colors.grey[700],
-                  ),
-            ),
-            if (onRetry != null) ...[
-              const SizedBox(height: 24),
-              ElevatedButton(
-                onPressed: onRetry,
-                child: const Text('다시 시도'),
+    return SingleChildScrollView(
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              errorIcon?.call(error) ?? _buildDefaultIcon(),
+              const SizedBox(height: 16),
+              Text(
+                errorMessage?.call(error) ?? _getDefaultErrorMessage(),
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      color: Colors.grey[700],
+                    ),
               ),
+              if (onRetry != null) ...[
+                const SizedBox(height: 24),
+                ElevatedButton(
+                  onPressed: onRetry,
+                  child: const Text('다시 시도'),
+                ),
+              ],
             ],
-          ],
+          ),
         ),
       ),
     );

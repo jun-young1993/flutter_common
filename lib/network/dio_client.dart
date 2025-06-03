@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_common/constants/juny_constants.dart';
 import 'package:flutter_common/extensions/app_exception.dart';
 
 class DioClient {
@@ -37,7 +38,7 @@ class DioClient {
       return 'http://127.0.0.1:3000';
     }
     // TODO: 실제 운영 서버 URL로 변경
-    return 'https://juny.digital';
+    return JunyConstants.apiBaseUrl;
   }
 
   Future<Response<T>> get<T>(

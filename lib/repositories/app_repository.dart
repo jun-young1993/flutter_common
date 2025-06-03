@@ -8,7 +8,7 @@ abstract class AppRepository {
 }
 
 class AppDefaultRepository extends AppRepository {
-  final String baseUrl = 'https://juny.digital';
+  final String baseUrl = JunyConstants.apiBaseUrl;
   final http.Client _client;
 
   AppDefaultRepository({http.Client? client})
