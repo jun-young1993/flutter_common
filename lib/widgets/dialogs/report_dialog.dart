@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_common/widgets/dialogs/app_dialog.dart';
 
 enum ReportReason {
   wrongInfo('잘못된 정보'),
