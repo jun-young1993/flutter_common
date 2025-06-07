@@ -25,6 +25,7 @@ mixin _$GoalUser {
   String get userId => throw _privateConstructorUsedError;
   bool get isAdmin => throw _privateConstructorUsedError;
   User get user => throw _privateConstructorUsedError;
+  List<GoalProgress> get goalProgresses => throw _privateConstructorUsedError;
 
   /// Serializes this GoalUser to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -41,7 +42,13 @@ abstract class $GoalUserCopyWith<$Res> {
   factory $GoalUserCopyWith(GoalUser value, $Res Function(GoalUser) then) =
       _$GoalUserCopyWithImpl<$Res, GoalUser>;
   @useResult
-  $Res call({String id, String goalId, String userId, bool isAdmin, User user});
+  $Res call(
+      {String id,
+      String goalId,
+      String userId,
+      bool isAdmin,
+      User user,
+      List<GoalProgress> goalProgresses});
 
   $UserCopyWith<$Res> get user;
 }
@@ -66,6 +73,7 @@ class _$GoalUserCopyWithImpl<$Res, $Val extends GoalUser>
     Object? userId = null,
     Object? isAdmin = null,
     Object? user = null,
+    Object? goalProgresses = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -88,6 +96,10 @@ class _$GoalUserCopyWithImpl<$Res, $Val extends GoalUser>
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as User,
+      goalProgresses: null == goalProgresses
+          ? _value.goalProgresses
+          : goalProgresses // ignore: cast_nullable_to_non_nullable
+              as List<GoalProgress>,
     ) as $Val);
   }
 
@@ -110,7 +122,13 @@ abstract class _$$GoalUserImplCopyWith<$Res>
       __$$GoalUserImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String goalId, String userId, bool isAdmin, User user});
+  $Res call(
+      {String id,
+      String goalId,
+      String userId,
+      bool isAdmin,
+      User user,
+      List<GoalProgress> goalProgresses});
 
   @override
   $UserCopyWith<$Res> get user;
@@ -134,6 +152,7 @@ class __$$GoalUserImplCopyWithImpl<$Res>
     Object? userId = null,
     Object? isAdmin = null,
     Object? user = null,
+    Object? goalProgresses = null,
   }) {
     return _then(_$GoalUserImpl(
       id: null == id
@@ -156,6 +175,10 @@ class __$$GoalUserImplCopyWithImpl<$Res>
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as User,
+      goalProgresses: null == goalProgresses
+          ? _value._goalProgresses
+          : goalProgresses // ignore: cast_nullable_to_non_nullable
+              as List<GoalProgress>,
     ));
   }
 }
@@ -168,8 +191,10 @@ class _$GoalUserImpl extends _GoalUser {
       required this.goalId,
       required this.userId,
       required this.isAdmin,
-      required this.user})
-      : super._();
+      required this.user,
+      final List<GoalProgress> goalProgresses = const []})
+      : _goalProgresses = goalProgresses,
+        super._();
 
   factory _$GoalUserImpl.fromJson(Map<String, dynamic> json) =>
       _$$GoalUserImplFromJson(json);
@@ -184,10 +209,18 @@ class _$GoalUserImpl extends _GoalUser {
   final bool isAdmin;
   @override
   final User user;
+  final List<GoalProgress> _goalProgresses;
+  @override
+  @JsonKey()
+  List<GoalProgress> get goalProgresses {
+    if (_goalProgresses is EqualUnmodifiableListView) return _goalProgresses;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_goalProgresses);
+  }
 
   @override
   String toString() {
-    return 'GoalUser(id: $id, goalId: $goalId, userId: $userId, isAdmin: $isAdmin, user: $user)';
+    return 'GoalUser(id: $id, goalId: $goalId, userId: $userId, isAdmin: $isAdmin, user: $user, goalProgresses: $goalProgresses)';
   }
 
   @override
@@ -199,13 +232,15 @@ class _$GoalUserImpl extends _GoalUser {
             (identical(other.goalId, goalId) || other.goalId == goalId) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.isAdmin, isAdmin) || other.isAdmin == isAdmin) &&
-            (identical(other.user, user) || other.user == user));
+            (identical(other.user, user) || other.user == user) &&
+            const DeepCollectionEquality()
+                .equals(other._goalProgresses, _goalProgresses));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, goalId, userId, isAdmin, user);
+  int get hashCode => Object.hash(runtimeType, id, goalId, userId, isAdmin,
+      user, const DeepCollectionEquality().hash(_goalProgresses));
 
   /// Create a copy of GoalUser
   /// with the given fields replaced by the non-null parameter values.
@@ -229,7 +264,8 @@ abstract class _GoalUser extends GoalUser {
       required final String goalId,
       required final String userId,
       required final bool isAdmin,
-      required final User user}) = _$GoalUserImpl;
+      required final User user,
+      final List<GoalProgress> goalProgresses}) = _$GoalUserImpl;
   const _GoalUser._() : super._();
 
   factory _GoalUser.fromJson(Map<String, dynamic> json) =
@@ -245,6 +281,8 @@ abstract class _GoalUser extends GoalUser {
   bool get isAdmin;
   @override
   User get user;
+  @override
+  List<GoalProgress> get goalProgresses;
 
   /// Create a copy of GoalUser
   /// with the given fields replaced by the non-null parameter values.

@@ -1,13 +1,16 @@
+import 'package:flutter_common/models/goal/dto/create_goal_dto.dart';
+import 'package:flutter_common/models/goal/dto/create_goal_progress_dto.dart';
 import 'package:flutter_common/models/goal/goal.dart';
 import 'package:flutter_common/network/dio_client.dart';
 
 abstract class GoalRepository {
   Future<List<Goal>> getGoals();
-  Future<void> createGoal(Goal goal);
+  Future<Goal> createGoal(CreateGoalDto goal);
   Future<void> updateGoal(Goal goal);
   Future<void> deleteGoal(String goalId);
   Future<void> addGoalUser(String goalId, String userId);
   Future<void> removeGoalUser(String goalId, String userId);
+  Future<Goal> addGoalProgress(CreateGoalProgressDto progress);
 }
 
 class GoalDefaultRepository extends GoalRepository {
@@ -27,12 +30,17 @@ class GoalDefaultRepository extends GoalRepository {
   }
 
   @override
-  Future<void> createGoal(Goal goal) async {
+  Future<Goal> createGoal(CreateGoalDto goal) async {
     // TODO: implement createGoal
     final response = await _dioClient.post(
       '/goals',
       data: goal.toJson(),
     );
+
+    if (response.statusCode == 201) {
+      return Goal.fromJson(response.data);
+    }
+    throw Exception('Failed to create goal: ${response.statusCode}');
   }
 
   @override
@@ -53,5 +61,18 @@ class GoalDefaultRepository extends GoalRepository {
   @override
   Future<void> removeGoalUser(String goalId, String userId) async {
     // TODO: implement removeGoalUser
+  }
+
+  @override
+  Future<Goal> addGoalProgress(CreateGoalProgressDto progress) async {
+    final response = await _dioClient.post(
+      '/goals/${progress.goalId}/users/${progress.goalUserId}/progress',
+      data: progress.toJson(),
+    );
+
+    if (response.statusCode == 200) {
+      return Goal.fromJson(response.data);
+    }
+    throw Exception('Failed to add goal progress: ${response.statusCode}');
   }
 }

@@ -19,34 +19,37 @@ mixin _$GoalEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialize,
-    required TResult Function(Goal goal) createGoal,
+    required TResult Function(CreateGoalDto goal) createGoal,
     required TResult Function(Goal goal) updateGoal,
     required TResult Function(String goalId) deleteGoal,
     required TResult Function(String goalId, String userId) addGoalUser,
     required TResult Function(String goalId, String userId) removeGoalUser,
     required TResult Function() clearError,
+    required TResult Function(CreateGoalProgressDto progress) addGoalProgress,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialize,
-    TResult? Function(Goal goal)? createGoal,
+    TResult? Function(CreateGoalDto goal)? createGoal,
     TResult? Function(Goal goal)? updateGoal,
     TResult? Function(String goalId)? deleteGoal,
     TResult? Function(String goalId, String userId)? addGoalUser,
     TResult? Function(String goalId, String userId)? removeGoalUser,
     TResult? Function()? clearError,
+    TResult? Function(CreateGoalProgressDto progress)? addGoalProgress,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialize,
-    TResult Function(Goal goal)? createGoal,
+    TResult Function(CreateGoalDto goal)? createGoal,
     TResult Function(Goal goal)? updateGoal,
     TResult Function(String goalId)? deleteGoal,
     TResult Function(String goalId, String userId)? addGoalUser,
     TResult Function(String goalId, String userId)? removeGoalUser,
     TResult Function()? clearError,
+    TResult Function(CreateGoalProgressDto progress)? addGoalProgress,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -59,6 +62,7 @@ mixin _$GoalEvent {
     required TResult Function(_AddGoalUser value) addGoalUser,
     required TResult Function(_RemoveGoalUser value) removeGoalUser,
     required TResult Function(_ClearError value) clearError,
+    required TResult Function(_AddGoalProgress value) addGoalProgress,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -70,6 +74,7 @@ mixin _$GoalEvent {
     TResult? Function(_AddGoalUser value)? addGoalUser,
     TResult? Function(_RemoveGoalUser value)? removeGoalUser,
     TResult? Function(_ClearError value)? clearError,
+    TResult? Function(_AddGoalProgress value)? addGoalProgress,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -81,6 +86,7 @@ mixin _$GoalEvent {
     TResult Function(_AddGoalUser value)? addGoalUser,
     TResult Function(_RemoveGoalUser value)? removeGoalUser,
     TResult Function(_ClearError value)? clearError,
+    TResult Function(_AddGoalProgress value)? addGoalProgress,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -148,12 +154,13 @@ class _$InitializeImpl implements _Initialize {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialize,
-    required TResult Function(Goal goal) createGoal,
+    required TResult Function(CreateGoalDto goal) createGoal,
     required TResult Function(Goal goal) updateGoal,
     required TResult Function(String goalId) deleteGoal,
     required TResult Function(String goalId, String userId) addGoalUser,
     required TResult Function(String goalId, String userId) removeGoalUser,
     required TResult Function() clearError,
+    required TResult Function(CreateGoalProgressDto progress) addGoalProgress,
   }) {
     return initialize();
   }
@@ -162,12 +169,13 @@ class _$InitializeImpl implements _Initialize {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialize,
-    TResult? Function(Goal goal)? createGoal,
+    TResult? Function(CreateGoalDto goal)? createGoal,
     TResult? Function(Goal goal)? updateGoal,
     TResult? Function(String goalId)? deleteGoal,
     TResult? Function(String goalId, String userId)? addGoalUser,
     TResult? Function(String goalId, String userId)? removeGoalUser,
     TResult? Function()? clearError,
+    TResult? Function(CreateGoalProgressDto progress)? addGoalProgress,
   }) {
     return initialize?.call();
   }
@@ -176,12 +184,13 @@ class _$InitializeImpl implements _Initialize {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialize,
-    TResult Function(Goal goal)? createGoal,
+    TResult Function(CreateGoalDto goal)? createGoal,
     TResult Function(Goal goal)? updateGoal,
     TResult Function(String goalId)? deleteGoal,
     TResult Function(String goalId, String userId)? addGoalUser,
     TResult Function(String goalId, String userId)? removeGoalUser,
     TResult Function()? clearError,
+    TResult Function(CreateGoalProgressDto progress)? addGoalProgress,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -200,6 +209,7 @@ class _$InitializeImpl implements _Initialize {
     required TResult Function(_AddGoalUser value) addGoalUser,
     required TResult Function(_RemoveGoalUser value) removeGoalUser,
     required TResult Function(_ClearError value) clearError,
+    required TResult Function(_AddGoalProgress value) addGoalProgress,
   }) {
     return initialize(this);
   }
@@ -214,6 +224,7 @@ class _$InitializeImpl implements _Initialize {
     TResult? Function(_AddGoalUser value)? addGoalUser,
     TResult? Function(_RemoveGoalUser value)? removeGoalUser,
     TResult? Function(_ClearError value)? clearError,
+    TResult? Function(_AddGoalProgress value)? addGoalProgress,
   }) {
     return initialize?.call(this);
   }
@@ -228,6 +239,7 @@ class _$InitializeImpl implements _Initialize {
     TResult Function(_AddGoalUser value)? addGoalUser,
     TResult Function(_RemoveGoalUser value)? removeGoalUser,
     TResult Function(_ClearError value)? clearError,
+    TResult Function(_AddGoalProgress value)? addGoalProgress,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -247,9 +259,9 @@ abstract class _$$CreateGoalImplCopyWith<$Res> {
           _$CreateGoalImpl value, $Res Function(_$CreateGoalImpl) then) =
       __$$CreateGoalImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Goal goal});
+  $Res call({CreateGoalDto goal});
 
-  $GoalCopyWith<$Res> get goal;
+  $CreateGoalDtoCopyWith<$Res> get goal;
 }
 
 /// @nodoc
@@ -271,7 +283,7 @@ class __$$CreateGoalImplCopyWithImpl<$Res>
       null == goal
           ? _value.goal
           : goal // ignore: cast_nullable_to_non_nullable
-              as Goal,
+              as CreateGoalDto,
     ));
   }
 
@@ -279,8 +291,8 @@ class __$$CreateGoalImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $GoalCopyWith<$Res> get goal {
-    return $GoalCopyWith<$Res>(_value.goal, (value) {
+  $CreateGoalDtoCopyWith<$Res> get goal {
+    return $CreateGoalDtoCopyWith<$Res>(_value.goal, (value) {
       return _then(_value.copyWith(goal: value));
     });
   }
@@ -292,7 +304,7 @@ class _$CreateGoalImpl implements _CreateGoal {
   const _$CreateGoalImpl(this.goal);
 
   @override
-  final Goal goal;
+  final CreateGoalDto goal;
 
   @override
   String toString() {
@@ -322,12 +334,13 @@ class _$CreateGoalImpl implements _CreateGoal {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialize,
-    required TResult Function(Goal goal) createGoal,
+    required TResult Function(CreateGoalDto goal) createGoal,
     required TResult Function(Goal goal) updateGoal,
     required TResult Function(String goalId) deleteGoal,
     required TResult Function(String goalId, String userId) addGoalUser,
     required TResult Function(String goalId, String userId) removeGoalUser,
     required TResult Function() clearError,
+    required TResult Function(CreateGoalProgressDto progress) addGoalProgress,
   }) {
     return createGoal(goal);
   }
@@ -336,12 +349,13 @@ class _$CreateGoalImpl implements _CreateGoal {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialize,
-    TResult? Function(Goal goal)? createGoal,
+    TResult? Function(CreateGoalDto goal)? createGoal,
     TResult? Function(Goal goal)? updateGoal,
     TResult? Function(String goalId)? deleteGoal,
     TResult? Function(String goalId, String userId)? addGoalUser,
     TResult? Function(String goalId, String userId)? removeGoalUser,
     TResult? Function()? clearError,
+    TResult? Function(CreateGoalProgressDto progress)? addGoalProgress,
   }) {
     return createGoal?.call(goal);
   }
@@ -350,12 +364,13 @@ class _$CreateGoalImpl implements _CreateGoal {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialize,
-    TResult Function(Goal goal)? createGoal,
+    TResult Function(CreateGoalDto goal)? createGoal,
     TResult Function(Goal goal)? updateGoal,
     TResult Function(String goalId)? deleteGoal,
     TResult Function(String goalId, String userId)? addGoalUser,
     TResult Function(String goalId, String userId)? removeGoalUser,
     TResult Function()? clearError,
+    TResult Function(CreateGoalProgressDto progress)? addGoalProgress,
     required TResult orElse(),
   }) {
     if (createGoal != null) {
@@ -374,6 +389,7 @@ class _$CreateGoalImpl implements _CreateGoal {
     required TResult Function(_AddGoalUser value) addGoalUser,
     required TResult Function(_RemoveGoalUser value) removeGoalUser,
     required TResult Function(_ClearError value) clearError,
+    required TResult Function(_AddGoalProgress value) addGoalProgress,
   }) {
     return createGoal(this);
   }
@@ -388,6 +404,7 @@ class _$CreateGoalImpl implements _CreateGoal {
     TResult? Function(_AddGoalUser value)? addGoalUser,
     TResult? Function(_RemoveGoalUser value)? removeGoalUser,
     TResult? Function(_ClearError value)? clearError,
+    TResult? Function(_AddGoalProgress value)? addGoalProgress,
   }) {
     return createGoal?.call(this);
   }
@@ -402,6 +419,7 @@ class _$CreateGoalImpl implements _CreateGoal {
     TResult Function(_AddGoalUser value)? addGoalUser,
     TResult Function(_RemoveGoalUser value)? removeGoalUser,
     TResult Function(_ClearError value)? clearError,
+    TResult Function(_AddGoalProgress value)? addGoalProgress,
     required TResult orElse(),
   }) {
     if (createGoal != null) {
@@ -412,9 +430,9 @@ class _$CreateGoalImpl implements _CreateGoal {
 }
 
 abstract class _CreateGoal implements GoalEvent {
-  const factory _CreateGoal(final Goal goal) = _$CreateGoalImpl;
+  const factory _CreateGoal(final CreateGoalDto goal) = _$CreateGoalImpl;
 
-  Goal get goal;
+  CreateGoalDto get goal;
 
   /// Create a copy of GoalEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -504,12 +522,13 @@ class _$UpdateGoalImpl implements _UpdateGoal {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialize,
-    required TResult Function(Goal goal) createGoal,
+    required TResult Function(CreateGoalDto goal) createGoal,
     required TResult Function(Goal goal) updateGoal,
     required TResult Function(String goalId) deleteGoal,
     required TResult Function(String goalId, String userId) addGoalUser,
     required TResult Function(String goalId, String userId) removeGoalUser,
     required TResult Function() clearError,
+    required TResult Function(CreateGoalProgressDto progress) addGoalProgress,
   }) {
     return updateGoal(goal);
   }
@@ -518,12 +537,13 @@ class _$UpdateGoalImpl implements _UpdateGoal {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialize,
-    TResult? Function(Goal goal)? createGoal,
+    TResult? Function(CreateGoalDto goal)? createGoal,
     TResult? Function(Goal goal)? updateGoal,
     TResult? Function(String goalId)? deleteGoal,
     TResult? Function(String goalId, String userId)? addGoalUser,
     TResult? Function(String goalId, String userId)? removeGoalUser,
     TResult? Function()? clearError,
+    TResult? Function(CreateGoalProgressDto progress)? addGoalProgress,
   }) {
     return updateGoal?.call(goal);
   }
@@ -532,12 +552,13 @@ class _$UpdateGoalImpl implements _UpdateGoal {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialize,
-    TResult Function(Goal goal)? createGoal,
+    TResult Function(CreateGoalDto goal)? createGoal,
     TResult Function(Goal goal)? updateGoal,
     TResult Function(String goalId)? deleteGoal,
     TResult Function(String goalId, String userId)? addGoalUser,
     TResult Function(String goalId, String userId)? removeGoalUser,
     TResult Function()? clearError,
+    TResult Function(CreateGoalProgressDto progress)? addGoalProgress,
     required TResult orElse(),
   }) {
     if (updateGoal != null) {
@@ -556,6 +577,7 @@ class _$UpdateGoalImpl implements _UpdateGoal {
     required TResult Function(_AddGoalUser value) addGoalUser,
     required TResult Function(_RemoveGoalUser value) removeGoalUser,
     required TResult Function(_ClearError value) clearError,
+    required TResult Function(_AddGoalProgress value) addGoalProgress,
   }) {
     return updateGoal(this);
   }
@@ -570,6 +592,7 @@ class _$UpdateGoalImpl implements _UpdateGoal {
     TResult? Function(_AddGoalUser value)? addGoalUser,
     TResult? Function(_RemoveGoalUser value)? removeGoalUser,
     TResult? Function(_ClearError value)? clearError,
+    TResult? Function(_AddGoalProgress value)? addGoalProgress,
   }) {
     return updateGoal?.call(this);
   }
@@ -584,6 +607,7 @@ class _$UpdateGoalImpl implements _UpdateGoal {
     TResult Function(_AddGoalUser value)? addGoalUser,
     TResult Function(_RemoveGoalUser value)? removeGoalUser,
     TResult Function(_ClearError value)? clearError,
+    TResult Function(_AddGoalProgress value)? addGoalProgress,
     required TResult orElse(),
   }) {
     if (updateGoal != null) {
@@ -674,12 +698,13 @@ class _$DeleteGoalImpl implements _DeleteGoal {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialize,
-    required TResult Function(Goal goal) createGoal,
+    required TResult Function(CreateGoalDto goal) createGoal,
     required TResult Function(Goal goal) updateGoal,
     required TResult Function(String goalId) deleteGoal,
     required TResult Function(String goalId, String userId) addGoalUser,
     required TResult Function(String goalId, String userId) removeGoalUser,
     required TResult Function() clearError,
+    required TResult Function(CreateGoalProgressDto progress) addGoalProgress,
   }) {
     return deleteGoal(goalId);
   }
@@ -688,12 +713,13 @@ class _$DeleteGoalImpl implements _DeleteGoal {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialize,
-    TResult? Function(Goal goal)? createGoal,
+    TResult? Function(CreateGoalDto goal)? createGoal,
     TResult? Function(Goal goal)? updateGoal,
     TResult? Function(String goalId)? deleteGoal,
     TResult? Function(String goalId, String userId)? addGoalUser,
     TResult? Function(String goalId, String userId)? removeGoalUser,
     TResult? Function()? clearError,
+    TResult? Function(CreateGoalProgressDto progress)? addGoalProgress,
   }) {
     return deleteGoal?.call(goalId);
   }
@@ -702,12 +728,13 @@ class _$DeleteGoalImpl implements _DeleteGoal {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialize,
-    TResult Function(Goal goal)? createGoal,
+    TResult Function(CreateGoalDto goal)? createGoal,
     TResult Function(Goal goal)? updateGoal,
     TResult Function(String goalId)? deleteGoal,
     TResult Function(String goalId, String userId)? addGoalUser,
     TResult Function(String goalId, String userId)? removeGoalUser,
     TResult Function()? clearError,
+    TResult Function(CreateGoalProgressDto progress)? addGoalProgress,
     required TResult orElse(),
   }) {
     if (deleteGoal != null) {
@@ -726,6 +753,7 @@ class _$DeleteGoalImpl implements _DeleteGoal {
     required TResult Function(_AddGoalUser value) addGoalUser,
     required TResult Function(_RemoveGoalUser value) removeGoalUser,
     required TResult Function(_ClearError value) clearError,
+    required TResult Function(_AddGoalProgress value) addGoalProgress,
   }) {
     return deleteGoal(this);
   }
@@ -740,6 +768,7 @@ class _$DeleteGoalImpl implements _DeleteGoal {
     TResult? Function(_AddGoalUser value)? addGoalUser,
     TResult? Function(_RemoveGoalUser value)? removeGoalUser,
     TResult? Function(_ClearError value)? clearError,
+    TResult? Function(_AddGoalProgress value)? addGoalProgress,
   }) {
     return deleteGoal?.call(this);
   }
@@ -754,6 +783,7 @@ class _$DeleteGoalImpl implements _DeleteGoal {
     TResult Function(_AddGoalUser value)? addGoalUser,
     TResult Function(_RemoveGoalUser value)? removeGoalUser,
     TResult Function(_ClearError value)? clearError,
+    TResult Function(_AddGoalProgress value)? addGoalProgress,
     required TResult orElse(),
   }) {
     if (deleteGoal != null) {
@@ -852,12 +882,13 @@ class _$AddGoalUserImpl implements _AddGoalUser {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialize,
-    required TResult Function(Goal goal) createGoal,
+    required TResult Function(CreateGoalDto goal) createGoal,
     required TResult Function(Goal goal) updateGoal,
     required TResult Function(String goalId) deleteGoal,
     required TResult Function(String goalId, String userId) addGoalUser,
     required TResult Function(String goalId, String userId) removeGoalUser,
     required TResult Function() clearError,
+    required TResult Function(CreateGoalProgressDto progress) addGoalProgress,
   }) {
     return addGoalUser(goalId, userId);
   }
@@ -866,12 +897,13 @@ class _$AddGoalUserImpl implements _AddGoalUser {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialize,
-    TResult? Function(Goal goal)? createGoal,
+    TResult? Function(CreateGoalDto goal)? createGoal,
     TResult? Function(Goal goal)? updateGoal,
     TResult? Function(String goalId)? deleteGoal,
     TResult? Function(String goalId, String userId)? addGoalUser,
     TResult? Function(String goalId, String userId)? removeGoalUser,
     TResult? Function()? clearError,
+    TResult? Function(CreateGoalProgressDto progress)? addGoalProgress,
   }) {
     return addGoalUser?.call(goalId, userId);
   }
@@ -880,12 +912,13 @@ class _$AddGoalUserImpl implements _AddGoalUser {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialize,
-    TResult Function(Goal goal)? createGoal,
+    TResult Function(CreateGoalDto goal)? createGoal,
     TResult Function(Goal goal)? updateGoal,
     TResult Function(String goalId)? deleteGoal,
     TResult Function(String goalId, String userId)? addGoalUser,
     TResult Function(String goalId, String userId)? removeGoalUser,
     TResult Function()? clearError,
+    TResult Function(CreateGoalProgressDto progress)? addGoalProgress,
     required TResult orElse(),
   }) {
     if (addGoalUser != null) {
@@ -904,6 +937,7 @@ class _$AddGoalUserImpl implements _AddGoalUser {
     required TResult Function(_AddGoalUser value) addGoalUser,
     required TResult Function(_RemoveGoalUser value) removeGoalUser,
     required TResult Function(_ClearError value) clearError,
+    required TResult Function(_AddGoalProgress value) addGoalProgress,
   }) {
     return addGoalUser(this);
   }
@@ -918,6 +952,7 @@ class _$AddGoalUserImpl implements _AddGoalUser {
     TResult? Function(_AddGoalUser value)? addGoalUser,
     TResult? Function(_RemoveGoalUser value)? removeGoalUser,
     TResult? Function(_ClearError value)? clearError,
+    TResult? Function(_AddGoalProgress value)? addGoalProgress,
   }) {
     return addGoalUser?.call(this);
   }
@@ -932,6 +967,7 @@ class _$AddGoalUserImpl implements _AddGoalUser {
     TResult Function(_AddGoalUser value)? addGoalUser,
     TResult Function(_RemoveGoalUser value)? removeGoalUser,
     TResult Function(_ClearError value)? clearError,
+    TResult Function(_AddGoalProgress value)? addGoalProgress,
     required TResult orElse(),
   }) {
     if (addGoalUser != null) {
@@ -1033,12 +1069,13 @@ class _$RemoveGoalUserImpl implements _RemoveGoalUser {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialize,
-    required TResult Function(Goal goal) createGoal,
+    required TResult Function(CreateGoalDto goal) createGoal,
     required TResult Function(Goal goal) updateGoal,
     required TResult Function(String goalId) deleteGoal,
     required TResult Function(String goalId, String userId) addGoalUser,
     required TResult Function(String goalId, String userId) removeGoalUser,
     required TResult Function() clearError,
+    required TResult Function(CreateGoalProgressDto progress) addGoalProgress,
   }) {
     return removeGoalUser(goalId, userId);
   }
@@ -1047,12 +1084,13 @@ class _$RemoveGoalUserImpl implements _RemoveGoalUser {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialize,
-    TResult? Function(Goal goal)? createGoal,
+    TResult? Function(CreateGoalDto goal)? createGoal,
     TResult? Function(Goal goal)? updateGoal,
     TResult? Function(String goalId)? deleteGoal,
     TResult? Function(String goalId, String userId)? addGoalUser,
     TResult? Function(String goalId, String userId)? removeGoalUser,
     TResult? Function()? clearError,
+    TResult? Function(CreateGoalProgressDto progress)? addGoalProgress,
   }) {
     return removeGoalUser?.call(goalId, userId);
   }
@@ -1061,12 +1099,13 @@ class _$RemoveGoalUserImpl implements _RemoveGoalUser {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialize,
-    TResult Function(Goal goal)? createGoal,
+    TResult Function(CreateGoalDto goal)? createGoal,
     TResult Function(Goal goal)? updateGoal,
     TResult Function(String goalId)? deleteGoal,
     TResult Function(String goalId, String userId)? addGoalUser,
     TResult Function(String goalId, String userId)? removeGoalUser,
     TResult Function()? clearError,
+    TResult Function(CreateGoalProgressDto progress)? addGoalProgress,
     required TResult orElse(),
   }) {
     if (removeGoalUser != null) {
@@ -1085,6 +1124,7 @@ class _$RemoveGoalUserImpl implements _RemoveGoalUser {
     required TResult Function(_AddGoalUser value) addGoalUser,
     required TResult Function(_RemoveGoalUser value) removeGoalUser,
     required TResult Function(_ClearError value) clearError,
+    required TResult Function(_AddGoalProgress value) addGoalProgress,
   }) {
     return removeGoalUser(this);
   }
@@ -1099,6 +1139,7 @@ class _$RemoveGoalUserImpl implements _RemoveGoalUser {
     TResult? Function(_AddGoalUser value)? addGoalUser,
     TResult? Function(_RemoveGoalUser value)? removeGoalUser,
     TResult? Function(_ClearError value)? clearError,
+    TResult? Function(_AddGoalProgress value)? addGoalProgress,
   }) {
     return removeGoalUser?.call(this);
   }
@@ -1113,6 +1154,7 @@ class _$RemoveGoalUserImpl implements _RemoveGoalUser {
     TResult Function(_AddGoalUser value)? addGoalUser,
     TResult Function(_RemoveGoalUser value)? removeGoalUser,
     TResult Function(_ClearError value)? clearError,
+    TResult Function(_AddGoalProgress value)? addGoalProgress,
     required TResult orElse(),
   }) {
     if (removeGoalUser != null) {
@@ -1178,12 +1220,13 @@ class _$ClearErrorImpl implements _ClearError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialize,
-    required TResult Function(Goal goal) createGoal,
+    required TResult Function(CreateGoalDto goal) createGoal,
     required TResult Function(Goal goal) updateGoal,
     required TResult Function(String goalId) deleteGoal,
     required TResult Function(String goalId, String userId) addGoalUser,
     required TResult Function(String goalId, String userId) removeGoalUser,
     required TResult Function() clearError,
+    required TResult Function(CreateGoalProgressDto progress) addGoalProgress,
   }) {
     return clearError();
   }
@@ -1192,12 +1235,13 @@ class _$ClearErrorImpl implements _ClearError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialize,
-    TResult? Function(Goal goal)? createGoal,
+    TResult? Function(CreateGoalDto goal)? createGoal,
     TResult? Function(Goal goal)? updateGoal,
     TResult? Function(String goalId)? deleteGoal,
     TResult? Function(String goalId, String userId)? addGoalUser,
     TResult? Function(String goalId, String userId)? removeGoalUser,
     TResult? Function()? clearError,
+    TResult? Function(CreateGoalProgressDto progress)? addGoalProgress,
   }) {
     return clearError?.call();
   }
@@ -1206,12 +1250,13 @@ class _$ClearErrorImpl implements _ClearError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialize,
-    TResult Function(Goal goal)? createGoal,
+    TResult Function(CreateGoalDto goal)? createGoal,
     TResult Function(Goal goal)? updateGoal,
     TResult Function(String goalId)? deleteGoal,
     TResult Function(String goalId, String userId)? addGoalUser,
     TResult Function(String goalId, String userId)? removeGoalUser,
     TResult Function()? clearError,
+    TResult Function(CreateGoalProgressDto progress)? addGoalProgress,
     required TResult orElse(),
   }) {
     if (clearError != null) {
@@ -1230,6 +1275,7 @@ class _$ClearErrorImpl implements _ClearError {
     required TResult Function(_AddGoalUser value) addGoalUser,
     required TResult Function(_RemoveGoalUser value) removeGoalUser,
     required TResult Function(_ClearError value) clearError,
+    required TResult Function(_AddGoalProgress value) addGoalProgress,
   }) {
     return clearError(this);
   }
@@ -1244,6 +1290,7 @@ class _$ClearErrorImpl implements _ClearError {
     TResult? Function(_AddGoalUser value)? addGoalUser,
     TResult? Function(_RemoveGoalUser value)? removeGoalUser,
     TResult? Function(_ClearError value)? clearError,
+    TResult? Function(_AddGoalProgress value)? addGoalProgress,
   }) {
     return clearError?.call(this);
   }
@@ -1258,6 +1305,7 @@ class _$ClearErrorImpl implements _ClearError {
     TResult Function(_AddGoalUser value)? addGoalUser,
     TResult Function(_RemoveGoalUser value)? removeGoalUser,
     TResult Function(_ClearError value)? clearError,
+    TResult Function(_AddGoalProgress value)? addGoalProgress,
     required TResult orElse(),
   }) {
     if (clearError != null) {
@@ -1269,4 +1317,195 @@ class _$ClearErrorImpl implements _ClearError {
 
 abstract class _ClearError implements GoalEvent {
   const factory _ClearError() = _$ClearErrorImpl;
+}
+
+/// @nodoc
+abstract class _$$AddGoalProgressImplCopyWith<$Res> {
+  factory _$$AddGoalProgressImplCopyWith(_$AddGoalProgressImpl value,
+          $Res Function(_$AddGoalProgressImpl) then) =
+      __$$AddGoalProgressImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({CreateGoalProgressDto progress});
+
+  $CreateGoalProgressDtoCopyWith<$Res> get progress;
+}
+
+/// @nodoc
+class __$$AddGoalProgressImplCopyWithImpl<$Res>
+    extends _$GoalEventCopyWithImpl<$Res, _$AddGoalProgressImpl>
+    implements _$$AddGoalProgressImplCopyWith<$Res> {
+  __$$AddGoalProgressImplCopyWithImpl(
+      _$AddGoalProgressImpl _value, $Res Function(_$AddGoalProgressImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of GoalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? progress = null,
+  }) {
+    return _then(_$AddGoalProgressImpl(
+      null == progress
+          ? _value.progress
+          : progress // ignore: cast_nullable_to_non_nullable
+              as CreateGoalProgressDto,
+    ));
+  }
+
+  /// Create a copy of GoalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CreateGoalProgressDtoCopyWith<$Res> get progress {
+    return $CreateGoalProgressDtoCopyWith<$Res>(_value.progress, (value) {
+      return _then(_value.copyWith(progress: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$AddGoalProgressImpl implements _AddGoalProgress {
+  const _$AddGoalProgressImpl(this.progress);
+
+  @override
+  final CreateGoalProgressDto progress;
+
+  @override
+  String toString() {
+    return 'GoalEvent.addGoalProgress(progress: $progress)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddGoalProgressImpl &&
+            (identical(other.progress, progress) ||
+                other.progress == progress));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, progress);
+
+  /// Create a copy of GoalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddGoalProgressImplCopyWith<_$AddGoalProgressImpl> get copyWith =>
+      __$$AddGoalProgressImplCopyWithImpl<_$AddGoalProgressImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialize,
+    required TResult Function(CreateGoalDto goal) createGoal,
+    required TResult Function(Goal goal) updateGoal,
+    required TResult Function(String goalId) deleteGoal,
+    required TResult Function(String goalId, String userId) addGoalUser,
+    required TResult Function(String goalId, String userId) removeGoalUser,
+    required TResult Function() clearError,
+    required TResult Function(CreateGoalProgressDto progress) addGoalProgress,
+  }) {
+    return addGoalProgress(progress);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialize,
+    TResult? Function(CreateGoalDto goal)? createGoal,
+    TResult? Function(Goal goal)? updateGoal,
+    TResult? Function(String goalId)? deleteGoal,
+    TResult? Function(String goalId, String userId)? addGoalUser,
+    TResult? Function(String goalId, String userId)? removeGoalUser,
+    TResult? Function()? clearError,
+    TResult? Function(CreateGoalProgressDto progress)? addGoalProgress,
+  }) {
+    return addGoalProgress?.call(progress);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialize,
+    TResult Function(CreateGoalDto goal)? createGoal,
+    TResult Function(Goal goal)? updateGoal,
+    TResult Function(String goalId)? deleteGoal,
+    TResult Function(String goalId, String userId)? addGoalUser,
+    TResult Function(String goalId, String userId)? removeGoalUser,
+    TResult Function()? clearError,
+    TResult Function(CreateGoalProgressDto progress)? addGoalProgress,
+    required TResult orElse(),
+  }) {
+    if (addGoalProgress != null) {
+      return addGoalProgress(progress);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_CreateGoal value) createGoal,
+    required TResult Function(_UpdateGoal value) updateGoal,
+    required TResult Function(_DeleteGoal value) deleteGoal,
+    required TResult Function(_AddGoalUser value) addGoalUser,
+    required TResult Function(_RemoveGoalUser value) removeGoalUser,
+    required TResult Function(_ClearError value) clearError,
+    required TResult Function(_AddGoalProgress value) addGoalProgress,
+  }) {
+    return addGoalProgress(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialize value)? initialize,
+    TResult? Function(_CreateGoal value)? createGoal,
+    TResult? Function(_UpdateGoal value)? updateGoal,
+    TResult? Function(_DeleteGoal value)? deleteGoal,
+    TResult? Function(_AddGoalUser value)? addGoalUser,
+    TResult? Function(_RemoveGoalUser value)? removeGoalUser,
+    TResult? Function(_ClearError value)? clearError,
+    TResult? Function(_AddGoalProgress value)? addGoalProgress,
+  }) {
+    return addGoalProgress?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_CreateGoal value)? createGoal,
+    TResult Function(_UpdateGoal value)? updateGoal,
+    TResult Function(_DeleteGoal value)? deleteGoal,
+    TResult Function(_AddGoalUser value)? addGoalUser,
+    TResult Function(_RemoveGoalUser value)? removeGoalUser,
+    TResult Function(_ClearError value)? clearError,
+    TResult Function(_AddGoalProgress value)? addGoalProgress,
+    required TResult orElse(),
+  }) {
+    if (addGoalProgress != null) {
+      return addGoalProgress(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddGoalProgress implements GoalEvent {
+  const factory _AddGoalProgress(final CreateGoalProgressDto progress) =
+      _$AddGoalProgressImpl;
+
+  CreateGoalProgressDto get progress;
+
+  /// Create a copy of GoalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AddGoalProgressImplCopyWith<_$AddGoalProgressImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

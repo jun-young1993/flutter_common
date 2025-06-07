@@ -13,6 +13,10 @@ _$GoalUserImpl _$$GoalUserImplFromJson(Map<String, dynamic> json) =>
       userId: json['userId'] as String,
       isAdmin: json['isAdmin'] as bool,
       user: User.fromJson(json['user'] as Map<String, dynamic>),
+      goalProgresses: (json['goalProgresses'] as List<dynamic>?)
+              ?.map((e) => GoalProgress.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$GoalUserImplToJson(_$GoalUserImpl instance) =>
@@ -22,4 +26,5 @@ Map<String, dynamic> _$$GoalUserImplToJson(_$GoalUserImpl instance) =>
       'userId': instance.userId,
       'isAdmin': instance.isAdmin,
       'user': instance.user,
+      'goalProgresses': instance.goalProgresses,
     };

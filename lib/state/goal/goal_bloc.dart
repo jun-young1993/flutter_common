@@ -16,7 +16,11 @@ class GoalBloc extends Bloc<GoalEvent, GoalState> {
             emit(state.copyWith(goals: goals));
           },
           createGoal: (e) async {
-            await _handleEvent(emit, () async {});
+            final goal = await repository.createGoal(e.goal);
+
+            await _handleEvent(emit, () async {
+              emit(state.copyWith(goals: [goal, ...state.goals]));
+            });
           },
           updateGoal: (e) async {
             await _handleEvent(emit, () async {});
@@ -32,6 +36,15 @@ class GoalBloc extends Bloc<GoalEvent, GoalState> {
           },
           clearError: (e) async {
             emit(state.copyWith(isLoading: false, error: null));
+          },
+          addGoalProgress: (e) async {
+            final goal = await repository.addGoalProgress(e.progress);
+
+            await _handleEvent(emit, () async {
+              final updatedGoals =
+                  state.goals.map((g) => g.id == goal.id ? goal : g).toList();
+              emit(state.copyWith(goals: updatedGoals));
+            });
           },
         );
       },

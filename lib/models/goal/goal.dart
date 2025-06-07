@@ -19,4 +19,15 @@ class Goal with _$Goal {
 
   const Goal._();
   factory Goal.fromJson(Map<String, dynamic> json) => _$GoalFromJson(json);
+
+  int get userCount => goalUsers?.length ?? 0;
+
+  int get daysLeft {
+    final now = DateTime.now();
+    final difference = endDate.difference(now);
+    return difference.inDays;
+  }
+
+  String get daysLeftString =>
+      daysLeft > 0 ? 'D -$daysLeft' : 'D +${daysLeft * -1}';
 }

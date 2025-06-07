@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_common/models/app_config/index.dart';
 import 'package:flutter_common/state/app_config/app_config_bloc.dart';
 import 'package:flutter_common/state/app_config/app_config_state.dart';
 
