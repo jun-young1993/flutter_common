@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_common/constants/common_constants.dart';
 import 'package:flutter_common/constants/juny_constants.dart';
+import 'package:flutter_common/constants/size_constants.dart';
 import 'package:flutter_common/state/app_config/app_config_bloc.dart';
 import 'package:flutter_common/state/app_config/app_config_event.dart';
 import 'package:flutter_common/state/app_config/app_config_selector.dart';
 import 'package:flutter_common/state/app_config/app_config_state.dart';
 import 'package:flutter_common/widgets/layout/sections/can_update_row.dart';
 import 'package:flutter_common/widgets/layout/sections/share_app_row.dart';
+import 'package:flutter_common/widgets/lib/container/card_container.dart';
+import 'package:flutter_common/widgets/lib/container/card_container_item.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 class SettingScreenLayout extends StatefulWidget {
@@ -50,26 +53,26 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final isTablet = screenWidth > 600;
-    final horizontalPadding = isTablet ? 10.0 : 5.0;
-    final maxWidth = isTablet ? 600.0 : double.infinity;
-
     return SingleChildScrollView(
       child: Center(
         child: ConstrainedBox(
           constraints: BoxConstraints(
             minHeight: MediaQuery.of(context).size.height -
                 AppBar().preferredSize.height,
-            maxWidth: maxWidth,
+            maxWidth: SizeConstants.maxWidth(context),
           ),
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+            padding: const EdgeInsets.symmetric(horizontal: 0.5, vertical: 0.5),
             child: Column(
               children: [
                 ...widget.topChildren,
                 RemoteAppConfigSelector((config) {
-                  return _buildInfoSection(config);
+                  return Column(
+                    children: [
+                      _buildUserInfo(config),
+                      _buildInfoSection(config),
+                    ],
+                  );
                 }),
                 ...widget.bottomChildren,
               ],
@@ -80,215 +83,120 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
     );
   }
 
-  Widget _buildInfoSection(AppConfigState? appConfig) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final isTablet = screenWidth > 600;
+  Widget _buildUserInfo(AppConfigState? appConfig) {
+    if (appConfig == null) {
+      return const SizedBox.shrink();
+    }
+    return CardContainer(
+      title: '사용자 정보',
+      icon: Icons.person_outline,
+      children: [
+        CardContainerItem(
+          icon: Icons.email_sharp,
+          title: 'email 인증',
+          children: [
+            const Text('이메일 인증을 통해 사용자 정보를 확인할 수 있습니다.'),
+            SizedBox(height: SizeConstants.getColumnSpacing(context)),
+            const Text('이메일 인증을 통해 사용자 정보를 확인할 수 있습니다.'),
+          ],
+        ),
+      ],
+    );
+  }
 
-    return Container(
-      margin:
-          EdgeInsets.symmetric(horizontal: 20, vertical: isTablet ? 24 : 16),
-      padding: EdgeInsets.all(isTablet ? 24 : 20),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
+  Widget _buildInfoSection(AppConfigState? appConfig) {
+    return CardContainer(
+      title: '앱정보',
+      icon: Icons.info_outline,
+      children: [
+        CardContainerItem(
+            initiallyExpanded: false,
+            icon: Icons.new_releases_outlined,
+            title: 'v${_version ?? '0.0.0'}',
             children: [
-              Container(
-                padding: const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  color: Theme.of(context).primaryColor.withOpacity(0.1),
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Icon(
-                  Icons.info_outline,
-                  size: isTablet ? 24 : 20,
-                  color: Theme.of(context).primaryColor,
-                ),
-              ),
-              const SizedBox(width: 12),
-              Text(
-                '기타',
-                style: TextStyle(
-                  fontSize: isTablet ? 20 : 18,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.grey.shade800,
-                ),
-              ),
-            ],
-          ),
-          SizedBox(height: isTablet ? 24 : 20),
-          Container(
-            padding: EdgeInsets.all(isTablet ? 16 : 12),
-            decoration: BoxDecoration(
-              color: Colors.grey.shade50,
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: Colors.grey.shade200),
-            ),
-            child: Column(
-              children: [
-                Row(
+              SizedBox(height: SizeConstants.getColumnSpacing(context)),
+              RemoteAppConfigSelector((config) {
+                if (config != null) {
+                  return CanUpdateRow(
+                    canUpdate: config.isUpdateAvailable,
+                    version: config.version,
+                    onUpdate: () {
+                      appConfigBloc.add(const AppConfigEvent.moveUpdateStore());
+                    },
+                  );
+                } else {
+                  return const SizedBox.shrink();
+                }
+              }),
+            ]),
+        SizedBox(height: SizeConstants.getContainerVerticalMargin(context)),
+        CardContainerItem(
+            initiallyExpanded: false,
+            icon: Icons.share_outlined,
+            title: '앱 공유하기',
+            children: [
+              RemoteAppConfigSelector((config) {
+                if (config == null) {
+                  return const SizedBox.shrink();
+                }
+                final url = CommonConstants.getStoreUrl(
+                    config.packageName, config.appleId);
+                return ShareAppRow(
+                  appStoreUrl: url,
+                  appName: config.description,
+                  invitationMessage:
+                      '${config.description}에 초대합니다.\n아래 QR 코드를 통해 앱을 설치해주세요.',
+                  androidPackageName: config.packageName,
+                  appleId: config.appleId,
+                );
+              })
+            ]),
+        SizedBox(height: SizeConstants.getContainerVerticalMargin(context)),
+        CardContainerItem(
+            initiallyExpanded: false,
+            icon: Icons.email_outlined,
+            title: '문의',
+            children: [
+              Padding(
+                padding: EdgeInsets.only(
+                    left: SizeConstants.getContainerHorizontalMargin(context)),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      padding: const EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).primaryColor.withOpacity(0.1),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Icon(
-                        Icons.new_releases_outlined,
-                        size: isTablet ? 20 : 16,
-                        color: Theme.of(context).primaryColor,
-                      ),
-                    ),
-                    const SizedBox(width: 12),
                     Text(
-                      '버전 정보',
+                      '아래 이메일로 문의해주세요.',
                       style: TextStyle(
-                        fontSize: isTablet ? 16 : 14,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.grey.shade700,
+                        fontSize: SizeConstants.getTextSmallFontSize(context),
+                        color: Colors.grey.shade600,
                       ),
                     ),
-                    const SizedBox(width: 8),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 8, vertical: 4),
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).primaryColor.withOpacity(0.1),
-                        borderRadius: BorderRadius.circular(6),
-                      ),
-                      child: Text(
-                        _version ?? '0.0.0',
-                        style: TextStyle(
-                          fontSize: isTablet ? 14 : 12,
+                    SizedBox(height: SizeConstants.getColumnSpacing(context)),
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.email_outlined,
+                          size: SizeConstants.getMediumIconSize(context),
                           color: Theme.of(context).primaryColor,
-                          fontWeight: FontWeight.w600,
                         ),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: isTablet ? 16 : 12),
-                RemoteAppConfigSelector((config) {
-                  if (config != null) {
-                    return CanUpdateRow(
-                      canUpdate: config.isUpdateAvailable,
-                      version: config.version,
-                      onUpdate: () {
-                        appConfigBloc
-                            .add(const AppConfigEvent.moveUpdateStore());
-                      },
-                    );
-                  } else {
-                    return const SizedBox.shrink();
-                  }
-                }),
-              ],
-            ),
-          ),
-          SizedBox(height: isTablet ? 24 : 20),
-          RemoteAppConfigSelector((config) {
-            if (config == null) {
-              return const SizedBox.shrink();
-            }
-            final url =
-                CommonConstants.getStoreUrl(config.packageName, config.appleId);
-            return ShareAppRow(
-              appStoreUrl: url,
-              appName: config.description,
-              invitationMessage:
-                  '${config.description}에 초대합니다.\n아래 QR 코드를 통해 앱을 설치해주세요.',
-              androidPackageName: config.packageName,
-              appleId: config.appleId,
-            );
-          }),
-          SizedBox(height: isTablet ? 24 : 20),
-          Container(
-            padding: EdgeInsets.all(isTablet ? 16 : 12),
-            decoration: BoxDecoration(
-              color: Colors.grey.shade50,
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: Colors.grey.shade200),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).primaryColor.withOpacity(0.1),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Icon(
-                        Icons.help_outline,
-                        size: isTablet ? 20 : 16,
-                        color: Theme.of(context).primaryColor,
-                      ),
-                    ),
-                    const SizedBox(width: 12),
-                    Text(
-                      '문의',
-                      style: TextStyle(
-                        fontSize: isTablet ? 16 : 14,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.grey.shade700,
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: isTablet ? 16 : 12),
-                Padding(
-                  padding: EdgeInsets.only(left: isTablet ? 40 : 36),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        '아래 이메일로 문의해주세요.',
-                        style: TextStyle(
-                          fontSize: isTablet ? 15 : 13,
-                          color: Colors.grey.shade600,
-                        ),
-                      ),
-                      SizedBox(height: isTablet ? 8 : 6),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.email_outlined,
-                            size: isTablet ? 16 : 14,
+                        const SizedBox(width: 8),
+                        Text(
+                          JunyConstants.email,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontSize:
+                                SizeConstants.getTextSmallFontSize(context),
                             color: Theme.of(context).primaryColor,
+                            fontWeight: FontWeight.w500,
                           ),
-                          const SizedBox(width: 8),
-                          Text(
-                            JunyConstants.email,
-                            style: TextStyle(
-                              fontSize: isTablet ? 15 : 13,
-                              color: Theme.of(context).primaryColor,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
-              ],
-            ),
-          ),
-        ],
-      ),
+              )
+            ]),
+      ],
     );
   }
 }

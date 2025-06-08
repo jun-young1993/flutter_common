@@ -29,70 +29,32 @@ class ShareAppRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final isTablet = screenWidth > 600;
-
-    return Container(
-      padding: EdgeInsets.all(isTablet ? 16 : 12),
-      decoration: BoxDecoration(
-        color: Colors.grey.shade50,
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.grey.shade200),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Container(
-                padding: const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  color: Theme.of(context).primaryColor.withOpacity(0.1),
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Icon(
-                  Icons.share_outlined,
-                  size: isTablet ? 20 : 16,
-                  color: Theme.of(context).primaryColor,
-                ),
-              ),
-              const SizedBox(width: 12),
-              Text(
-                '앱 공유하기',
-                style: TextStyle(
-                  fontSize: isTablet ? 16 : 14,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.grey.shade700,
-                ),
-              ),
-            ],
-          ),
-          SizedBox(height: isTablet ? 16 : 12),
-          _buildShareOption(
-            context,
-            icon: Icons.qr_code,
-            title: 'QR 코드',
-            subtitle: 'QR 코드로 앱 공유하기',
-            onTap: () => _showQrCodeDialog(context),
-          ),
-          const SizedBox(height: 8),
-          _buildShareOption(
-            context,
-            icon: Icons.link,
-            title: '링크 공유',
-            subtitle: '앱 링크 복사하기',
-            onTap: () => _copyAppUrl(context),
-          ),
-          const SizedBox(height: 8),
-          _buildShareOption(
-            context,
-            icon: Icons.shopping_bag_outlined,
-            title: '스토어로 이동',
-            subtitle: '앱스토어/플레이스토어에서 보기',
-            onTap: () => _openStore(context),
-          ),
-        ],
-      ),
+    return Column(
+      children: [
+        _buildShareOption(
+          context,
+          icon: Icons.qr_code,
+          title: 'QR 코드',
+          subtitle: 'QR 코드로 앱 공유하기',
+          onTap: () => _showQrCodeDialog(context),
+        ),
+        const SizedBox(height: 8),
+        _buildShareOption(
+          context,
+          icon: Icons.link,
+          title: '링크 공유',
+          subtitle: '앱 링크 복사하기',
+          onTap: () => _copyAppUrl(context),
+        ),
+        const SizedBox(height: 8),
+        _buildShareOption(
+          context,
+          icon: Icons.shopping_bag_outlined,
+          title: '스토어로 이동',
+          subtitle: '앱스토어/플레이스토어에서 보기',
+          onTap: () => _openStore(context),
+        )
+      ],
     );
   }
 
