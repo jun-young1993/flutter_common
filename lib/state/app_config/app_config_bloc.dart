@@ -9,8 +9,9 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:version/version.dart';
 
 class AppConfigBloc extends Bloc<AppConfigEvent, AppConfigState> {
-  AppConfigBloc() : super(AppConfigState.initialize()) {
-    final appRepository = AppDefaultRepository();
+  final AppRepository appRepository;
+  AppConfigBloc({required this.appRepository})
+      : super(AppConfigState.initialize()) {
     on<AppConfigEvent>((event, emit) async {
       try {
         await event.map(
