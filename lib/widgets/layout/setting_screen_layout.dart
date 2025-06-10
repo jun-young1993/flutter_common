@@ -6,10 +6,14 @@ import 'package:flutter_common/state/app_config/app_config_bloc.dart';
 import 'package:flutter_common/state/app_config/app_config_event.dart';
 import 'package:flutter_common/state/app_config/app_config_selector.dart';
 import 'package:flutter_common/state/app_config/app_config_state.dart';
+import 'package:flutter_common/widgets/buttons/awesom_text_button.dart';
+import 'package:flutter_common/widgets/dialogs/input_dialog.dart';
+import 'package:flutter_common/widgets/dialogs/report_dialog.dart';
 import 'package:flutter_common/widgets/layout/sections/can_update_row.dart';
 import 'package:flutter_common/widgets/layout/sections/share_app_row.dart';
 import 'package:flutter_common/widgets/lib/container/card_container.dart';
 import 'package:flutter_common/widgets/lib/container/card_container_item.dart';
+import 'package:flutter_common/widgets/textes/awesome_description_text.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 class SettingScreenLayout extends StatefulWidget {
@@ -94,10 +98,37 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
         CardContainerItem(
           icon: Icons.email_sharp,
           title: 'email 인증',
+          initiallyExpanded: false,
           children: [
-            const Text('이메일 인증을 통해 사용자 정보를 확인할 수 있습니다.'),
-            SizedBox(height: SizeConstants.getColumnSpacing(context)),
-            const Text('이메일 인증을 통해 사용자 정보를 확인할 수 있습니다.'),
+            Column(
+              children: [
+                AwesomeTextButton(
+                  text: "email 인증하기",
+                  fontSize: SizeConstants.getSmallButtonFontSize(context),
+                  padding: SizeConstants.getSmallButtonPadding(context),
+                  icon: Icons.mark_email_read_outlined,
+                  onPressed: () {
+                    InputDialog.show(
+                      context: context,
+                      title: '이메일 인증',
+                      description: '이메일 인증을 통해 계정을 안전하게 유지하고 복구할 수 있습니다.',
+                      hintText: '이메일',
+                      maxLength: 20,
+                      validator: (value) =>
+                          value == null || value.isEmpty ? '이메일을 입력하세요.' : null,
+                      onConfirm: (value) {
+                        // 입력값 처리
+                      },
+                    );
+                  },
+                ),
+                const AwesomeDescriptionText(
+                  text: '이메일 인증을 통해 계정을 안전하게 유지하고 복구할 수 있습니다.',
+                  icon: Icons.mark_email_read_outlined,
+                  textAlign: TextAlign.center,
+                )
+              ],
+            )
           ],
         ),
       ],

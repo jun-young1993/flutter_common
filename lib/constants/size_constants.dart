@@ -54,4 +54,14 @@ class SizeConstants {
   static double getColumnSpacing(BuildContext context) {
     return isTablet(context) ? 10 : 8;
   }
+
+  static double getSmallButtonFontSize(BuildContext context) {
+    return isTablet(context) ? 15 : 13;
+  }
+
+  static EdgeInsets getSmallButtonPadding(BuildContext context) {
+    return isTablet(context)
+        ? const EdgeInsets.symmetric(horizontal: 20, vertical: 10)
+        : const EdgeInsets.symmetric(horizontal: 14, vertical: 8);
+  }
 }

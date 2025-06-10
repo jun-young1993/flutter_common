@@ -4,14 +4,14 @@ import 'package:flutter_common/constants/juny_constants.dart';
 import 'package:flutter_common/extensions/app_exception.dart';
 
 class DioClient {
-  static final DioClient _instance = DioClient._internal();
+  static final DioClient _instance = DioClient._internal(debugBaseUrl: null);
   late final Dio _dio;
-
-  factory DioClient() {
+  final String? debugBaseUrl;
+  factory DioClient({String? debugBaseUrl}) {
     return _instance;
   }
 
-  DioClient._internal() {
+  DioClient._internal({this.debugBaseUrl}) {
     _dio = Dio(
       BaseOptions(
         baseUrl: _getBaseUrl(),
@@ -32,6 +32,9 @@ class DioClient {
   }
 
   String _getBaseUrl() {
+    if (debugBaseUrl != null) {
+      return debugBaseUrl!;
+    }
     if (kDebugMode) {
       // return 'https://juny.digital';
 

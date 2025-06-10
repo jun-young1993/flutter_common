@@ -24,6 +24,7 @@ dependencies:
   printing: ^5.11.1
   pdf: ^3.10.7
   table_calendar: ^3.0.9
+  shared_preferences: ^2.2.2
 
 dev_dependencies:
   build_runner: ^2.4.7

@@ -53,3 +53,19 @@ ReportDialog.show(
   },
 );
 ```
+
+# Input Dialog
+
+```dart
+final result = await InputDialog.show(
+  context: context,
+  title: '닉네임 입력',
+  description: '사용하실 닉네임을 입력해주세요.',
+  hintText: '닉네임',
+  maxLength: 20,
+  validator: (value) => value == null || value.isEmpty ? '닉네임을 입력하세요.' : null,
+  onConfirm: (value) {
+    // 입력값 처리
+  },
+);
+```
