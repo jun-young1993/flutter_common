@@ -19,10 +19,7 @@ class UserDefaultRepository extends UserRepository {
 
   @override
   Future<User> getUserInfo() async {
-    final appKeyString = JunyConstants.appKeys[appKey];
-    if (appKeyString == null) {
-      throw Exception('Invalid app key: $appKey');
-    }
+    final appKeyString = JunyConstants.getAppKeyStringOrThrow(appKey);
     final userIdKey = '${appKeyString}-user-id';
     final userId = sharedPreferences.getString(userIdKey);
     if (userId == null) {

@@ -17,4 +17,11 @@ class JunyConstants {
     AppKeys.jaksimOneMonth: '작심삼일',
     AppKeys.caughtSmoking: '딱걸렸담',
   };
+  static String getAppKeyStringOrThrow(AppKeys key) {
+    final keyString = appKeys[key];
+    if (keyString == null) {
+      throw Exception('Invalid app key: $key');
+    }
+    return keyString;
+  }
 }
