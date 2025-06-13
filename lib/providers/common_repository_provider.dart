@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_common/constants/juny_constants.dart';
 import 'package:flutter_common/network/dio_client.dart';
 import 'package:flutter_common/repositories/app_repository.dart';
-import 'package:flutter_common/repositories/auth_repository.dart';
+import 'package:flutter_common/repositories/verification_repository.dart';
 import 'package:flutter_common/repositories/user_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -36,8 +36,8 @@ class CommonRepositoryProvider extends StatelessWidget {
             appKey: appKey,
           ),
         ),
-        RepositoryProvider<AuthRepository>(
-          create: (context) => AuthDefaultRepository(
+        RepositoryProvider<VerificationRepository>(
+          create: (context) => VerificationDefaultRepository(
             dioClient: dioClient,
             appKey: appKey,
           ),

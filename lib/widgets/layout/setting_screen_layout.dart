@@ -1,32 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_common/constants/common_constants.dart';
 import 'package:flutter_common/constants/juny_constants.dart';
 import 'package:flutter_common/constants/size_constants.dart';
+import 'package:flutter_common/extensions/app_exception.dart';
 import 'package:flutter_common/state/app_config/app_config_bloc.dart';
 import 'package:flutter_common/state/app_config/app_config_event.dart';
 import 'package:flutter_common/state/app_config/app_config_selector.dart';
 import 'package:flutter_common/state/app_config/app_config_state.dart';
+import 'package:flutter_common/state/verification/verification_bloc.dart';
+import 'package:flutter_common/state/verification/verification_event.dart';
+import 'package:flutter_common/state/verification/verification_selector.dart';
+import 'package:flutter_common/state/verification/verification_state.dart';
 import 'package:flutter_common/widgets/buttons/awesom_text_button.dart';
+import 'package:flutter_common/widgets/dialogs/app_dialog.dart';
 import 'package:flutter_common/widgets/dialogs/input_dialog.dart';
 import 'package:flutter_common/widgets/dialogs/report_dialog.dart';
 import 'package:flutter_common/widgets/layout/sections/can_update_row.dart';
 import 'package:flutter_common/widgets/layout/sections/share_app_row.dart';
 import 'package:flutter_common/widgets/lib/container/card_container.dart';
 import 'package:flutter_common/widgets/lib/container/card_container_item.dart';
+import 'package:flutter_common/widgets/loader/loading_overay.dart';
 import 'package:flutter_common/widgets/textes/awesome_description_text.dart';
+import 'package:flutter_common/widgets/toast/toast.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 class SettingScreenLayout extends StatefulWidget {
   const SettingScreenLayout(
       {Key? key,
-      required this.appConfigBloc,
       required this.appKey,
       this.topChildren = const [],
       this.bottomChildren = const []})
       : super(key: key);
   final List<Widget> topChildren;
   final List<Widget> bottomChildren;
-  final AppConfigBloc appConfigBloc;
+
   final AppKeys appKey;
   @override
   State<SettingScreenLayout> createState() => _SettingScreenLayoutState();
@@ -35,8 +43,9 @@ class SettingScreenLayout extends StatefulWidget {
 class _SettingScreenLayoutState extends State<SettingScreenLayout> {
   String? _version;
 
-  AppConfigBloc get appConfigBloc => widget.appConfigBloc;
   AppKeys get appKey => widget.appKey;
+  AppConfigBloc get appConfigBloc => context.read<AppConfigBloc>();
+  VerificationBloc get verificationBloc => context.read<VerificationBloc>();
 
   Future<void> _getVersion() async {
     final packageInfo = await PackageInfo.fromPlatform();
@@ -95,42 +104,85 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
       title: '사용자 정보',
       icon: Icons.person_outline,
       children: [
-        CardContainerItem(
-          icon: Icons.email_sharp,
-          title: 'email 인증',
-          initiallyExpanded: false,
-          children: [
-            Column(
-              children: [
-                AwesomeTextButton(
-                  text: "email 인증하기",
-                  fontSize: SizeConstants.getSmallButtonFontSize(context),
-                  padding: SizeConstants.getSmallButtonPadding(context),
-                  icon: Icons.mark_email_read_outlined,
-                  onPressed: () {
-                    InputDialog.show(
-                      context: context,
-                      title: '이메일 인증',
-                      description: '이메일 인증을 통해 계정을 안전하게 유지하고 복구할 수 있습니다.',
-                      hintText: '이메일',
-                      maxLength: 20,
-                      validator: (value) =>
-                          value == null || value.isEmpty ? '이메일을 입력하세요.' : null,
-                      onConfirm: (value) {
-                        // 입력값 처리
-                      },
-                    );
-                  },
-                ),
-                const AwesomeDescriptionText(
-                  text: '이메일 인증을 통해 계정을 안전하게 유지하고 복구할 수 있습니다.',
-                  icon: Icons.mark_email_read_outlined,
-                  textAlign: TextAlign.center,
-                )
-              ],
-            )
-          ],
-        ),
+        VerificationLoadingSelector((isLoading) {
+          return CardContainerItem(
+            isLoading: isLoading,
+            icon: Icons.email_sharp,
+            title: 'email 인증',
+            initiallyExpanded: false,
+            children: [
+              Column(
+                children: [
+                  VerificationEmailVerifyingSelector((isEmailVerifying) {
+                    return isEmailVerifying
+                        ? Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 12.0),
+                            child: Row(
+                              children: [
+                                // 인증번호 입력 필드
+                                Expanded(
+                                  child: TextField(
+                                    decoration: const InputDecoration(
+                                      labelText: '인증번호 입력',
+                                      border: OutlineInputBorder(),
+                                      isDense: true,
+                                    ),
+                                    keyboardType: TextInputType.number,
+                                    maxLength: 6,
+                                    onChanged: (value) {
+                                      // 인증번호 상태 저장 로직 필요 (예: setState, Provider, Bloc 등)
+                                    },
+                                  ),
+                                ),
+                                const SizedBox(width: 8),
+                                // 인증 버튼
+                                ElevatedButton(
+                                  onPressed: () {
+                                    // 인증번호 확인 로직 필요 (예: verificationBloc.add(...))
+                                  },
+                                  child: const Text('인증하기'),
+                                ),
+                              ],
+                            ),
+                          )
+                        : AwesomeTextButton(
+                            text: "email 인증하기",
+                            fontSize:
+                                SizeConstants.getSmallButtonFontSize(context),
+                            padding:
+                                SizeConstants.getSmallButtonPadding(context),
+                            icon: Icons.mark_email_read_outlined,
+                            onPressed: () {
+                              InputDialog.show(
+                                context: context,
+                                title: '이메일 인증',
+                                description:
+                                    '이메일 인증을 통해 계정을 안전하게 유지하고 복구할 수 있습니다.',
+                                hintText: '이메일',
+                                maxLength: 20,
+                                validator: (value) =>
+                                    value == null || value.isEmpty
+                                        ? '이메일을 입력하세요.'
+                                        : null,
+                                onConfirm: (value) {
+                                  // 입력값 처리
+                                  verificationBloc.add(
+                                      VerificationEvent.sendAuthEmail(value));
+                                },
+                              );
+                            },
+                          );
+                  }),
+                  const AwesomeDescriptionText(
+                    text: '이메일 인증을 통해 계정을 안전하게 유지하고 복구할 수 있습니다.',
+                    icon: Icons.mark_email_read_outlined,
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              )
+            ],
+          );
+        }),
       ],
     );
   }

@@ -10,6 +10,7 @@ class CardContainerItem extends StatelessWidget {
     this.titleWidget,
     required this.children,
     this.initiallyExpanded = true,
+    this.isLoading = false,
   });
 
   final IconData? icon;
@@ -17,6 +18,7 @@ class CardContainerItem extends StatelessWidget {
   final Widget? titleWidget;
   final List<Widget> children;
   final bool initiallyExpanded;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +43,13 @@ class CardContainerItem extends StatelessWidget {
             if (titleWidget != null) titleWidget!,
           ],
         ),
+        trailing: isLoading
+            ? SizedBox(
+                width: 24,
+                height: 24,
+                child: CircularProgressIndicator(strokeWidth: 2),
+              )
+            : null,
         children: [
           Padding(
             padding:
