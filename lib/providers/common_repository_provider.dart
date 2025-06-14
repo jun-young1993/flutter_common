@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_common/constants/juny_constants.dart';
 import 'package:flutter_common/network/dio_client.dart';
 import 'package:flutter_common/repositories/app_repository.dart';
+import 'package:flutter_common/repositories/notice_group_repository.dart';
+import 'package:flutter_common/repositories/notice_repository.dart';
 import 'package:flutter_common/repositories/verification_repository.dart';
 import 'package:flutter_common/repositories/user_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -13,7 +15,7 @@ class CommonRepositoryProvider extends StatelessWidget {
   final DioClient dioClient;
   final SharedPreferences sharedPreferences;
   final AppKeys appKey;
-  CommonRepositoryProvider({
+  const CommonRepositoryProvider({
     super.key,
     required this.child,
     this.providers,
@@ -41,6 +43,12 @@ class CommonRepositoryProvider extends StatelessWidget {
             dioClient: dioClient,
             appKey: appKey,
           ),
+        ),
+        RepositoryProvider<NoticeGroupRepository>(
+          create: (context) => NoticeGroupDefaultRepository(),
+        ),
+        RepositoryProvider<NoticeRepository>(
+          create: (context) => NoticeDefaultRepository(),
         ),
         ...(providers ?? []),
       ],
