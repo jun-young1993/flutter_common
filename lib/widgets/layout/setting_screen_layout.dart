@@ -8,6 +8,7 @@ import 'package:flutter_common/state/app_config/app_config_bloc.dart';
 import 'package:flutter_common/state/app_config/app_config_event.dart';
 import 'package:flutter_common/state/app_config/app_config_selector.dart';
 import 'package:flutter_common/state/app_config/app_config_state.dart';
+import 'package:flutter_common/state/user/user_selector.dart';
 import 'package:flutter_common/state/verification/verification_bloc.dart';
 import 'package:flutter_common/state/verification/verification_event.dart';
 import 'package:flutter_common/state/verification/verification_selector.dart';
@@ -22,7 +23,9 @@ import 'package:flutter_common/widgets/lib/container/card_container.dart';
 import 'package:flutter_common/widgets/lib/container/card_container_item.dart';
 import 'package:flutter_common/widgets/loader/loading_overay.dart';
 import 'package:flutter_common/widgets/textes/awesome_description_text.dart';
+import 'package:flutter_common/widgets/timer/countdown_display.dart';
 import 'package:flutter_common/widgets/toast/toast.dart';
+import 'package:flutter_common/widgets/verified/verified_banner.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 class SettingScreenLayout extends StatefulWidget {
@@ -104,84 +107,143 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
       title: '사용자 정보',
       icon: Icons.person_outline,
       children: [
-        VerificationLoadingSelector((isLoading) {
-          return CardContainerItem(
-            isLoading: isLoading,
-            icon: Icons.email_sharp,
-            title: 'email 인증',
-            initiallyExpanded: false,
-            children: [
-              Column(
-                children: [
-                  VerificationEmailVerifyingSelector((isEmailVerifying) {
-                    return isEmailVerifying
-                        ? Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 12.0),
-                            child: Row(
-                              children: [
-                                // 인증번호 입력 필드
-                                Expanded(
-                                  child: TextField(
-                                    decoration: const InputDecoration(
-                                      labelText: '인증번호 입력',
-                                      border: OutlineInputBorder(),
-                                      isDense: true,
+        UserInfoSelector((user) {
+          return VerificationLoadingSelector((isLoading) {
+            return CardContainerItem(
+              isLoading: isLoading,
+              icon: Icons.email_sharp,
+              title: 'email 인증',
+              initiallyExpanded: false,
+              children: [
+                if (user?.email != null)
+                  VerifiedBanner(
+                    label: '${user?.email}',
+                  ),
+                if (user?.email == null)
+                  Column(
+                    children: [
+                      VerificationEmailVerifyingSelector((isEmailVerifying) {
+                        return isEmailVerifying
+                            ? Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 12.0),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    VerificationRemainingTimeSelector(
+                                        (remainingTime) {
+                                      if (remainingTime == 0) {
+                                        return const SizedBox.shrink();
+                                      }
+                                      return CountdownDisplay(
+                                        seconds: remainingTime,
+                                        color: Colors.deepPurple,
+                                        backgroundColor: Colors.grey.shade300,
+                                        size: SizeConstants
+                                            .getCountdownDisplaySize(context),
+                                      );
+                                    }),
+                                    SizedBox(
+                                        height: SizeConstants.getColumnSpacing(
+                                            context)),
+                                    // 인증번호 입력 필드
+                                    TextField(
+                                      decoration: const InputDecoration(
+                                        labelText: '인증번호 입력',
+                                        border: OutlineInputBorder(),
+                                        isDense: true,
+                                      ),
+                                      keyboardType: TextInputType.number,
+                                      maxLength: 6,
+                                      onChanged: (value) {
+                                        if (value.length == 6) {
+                                          if (user?.id == null) {
+                                            AppDialog.showError(
+                                                context: context,
+                                                title: '오류',
+                                                message: '사용자 정보를 찾을 수 없습니다.');
+                                            return;
+                                          }
+                                          verificationBloc.add(
+                                              VerificationEvent.verifyAuthCode(
+                                                  user!.id, value));
+                                        }
+                                      },
                                     ),
-                                    keyboardType: TextInputType.number,
-                                    maxLength: 6,
-                                    onChanged: (value) {
-                                      // 인증번호 상태 저장 로직 필요 (예: setState, Provider, Bloc 등)
+                                    const SizedBox(height: 8),
+                                    // 버튼 레이아웃
+                                    Wrap(
+                                      spacing: SizeConstants
+                                          .getContainerHorizontalMargin(
+                                              context),
+                                      runSpacing: 8,
+                                      alignment: WrapAlignment.center,
+                                      children: [
+                                        VerificationEmailSelector((email) {
+                                          if (email == null) {
+                                            return const SizedBox.shrink();
+                                          }
+                                          return AwesomeTextButton(
+                                            fontSize: SizeConstants
+                                                    .getSmallButtonFontSize(
+                                                        context) -
+                                                2,
+                                            padding: SizeConstants
+                                                .getSmallButtonPadding(context),
+                                            icon: Icons.refresh_outlined,
+                                            text: '인증번호 재발송',
+                                            onPressed: () {
+                                              // 인증번호 재발송 로직
+                                              verificationBloc.add(
+                                                  VerificationEvent
+                                                      .sendAuthEmail(email));
+                                            },
+                                          );
+                                        }),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              )
+                            : AwesomeTextButton(
+                                text: "email 인증하기",
+                                fontSize: SizeConstants.getSmallButtonFontSize(
+                                    context),
+                                padding: SizeConstants.getSmallButtonPadding(
+                                    context),
+                                icon: Icons.mark_email_read_outlined,
+                                onPressed: () {
+                                  InputDialog.show(
+                                    context: context,
+                                    title: '이메일 인증',
+                                    description:
+                                        '이메일 인증을 통해 계정을 안전하게 유지하고 복구할 수 있습니다.',
+                                    hintText: '이메일',
+                                    maxLength: 20,
+                                    validator: (value) =>
+                                        value == null || value.isEmpty
+                                            ? '이메일을 입력하세요.'
+                                            : null,
+                                    onConfirm: (value) {
+                                      // 입력값 처리
+                                      verificationBloc.add(
+                                          VerificationEvent.sendAuthEmail(
+                                              value));
                                     },
-                                  ),
-                                ),
-                                const SizedBox(width: 8),
-                                // 인증 버튼
-                                ElevatedButton(
-                                  onPressed: () {
-                                    // 인증번호 확인 로직 필요 (예: verificationBloc.add(...))
-                                  },
-                                  child: const Text('인증하기'),
-                                ),
-                              ],
-                            ),
-                          )
-                        : AwesomeTextButton(
-                            text: "email 인증하기",
-                            fontSize:
-                                SizeConstants.getSmallButtonFontSize(context),
-                            padding:
-                                SizeConstants.getSmallButtonPadding(context),
-                            icon: Icons.mark_email_read_outlined,
-                            onPressed: () {
-                              InputDialog.show(
-                                context: context,
-                                title: '이메일 인증',
-                                description:
-                                    '이메일 인증을 통해 계정을 안전하게 유지하고 복구할 수 있습니다.',
-                                hintText: '이메일',
-                                maxLength: 20,
-                                validator: (value) =>
-                                    value == null || value.isEmpty
-                                        ? '이메일을 입력하세요.'
-                                        : null,
-                                onConfirm: (value) {
-                                  // 입력값 처리
-                                  verificationBloc.add(
-                                      VerificationEvent.sendAuthEmail(value));
+                                  );
                                 },
                               );
-                            },
-                          );
-                  }),
-                  const AwesomeDescriptionText(
-                    text: '이메일 인증을 통해 계정을 안전하게 유지하고 복구할 수 있습니다.',
-                    icon: Icons.mark_email_read_outlined,
-                    textAlign: TextAlign.center,
-                  ),
-                ],
-              )
-            ],
-          );
+                      }),
+                      const AwesomeDescriptionText(
+                        text: '이메일 인증을 통해 계정을 안전하게 유지하고 복구할 수 있습니다.',
+                        icon: Icons.mark_email_read_outlined,
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  )
+              ],
+            );
+          });
         }),
       ],
     );

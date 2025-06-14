@@ -20,7 +20,7 @@ class UserDefaultRepository extends UserRepository {
   @override
   Future<User> getUserInfo() async {
     final appKeyString = JunyConstants.getAppKeyStringOrThrow(appKey);
-    final userIdKey = '${appKeyString}-user-id';
+    final userIdKey = '$appKeyString-user-id';
     final userId = sharedPreferences.getString(userIdKey);
     if (userId == null) {
       final response = await dioClient.post('/user', data: {

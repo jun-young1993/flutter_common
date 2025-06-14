@@ -17,9 +17,13 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$VerificationState {
   bool get isLoading => throw _privateConstructorUsedError;
-  AppException? get error => throw _privateConstructorUsedError;
-  String? get successMessage => throw _privateConstructorUsedError;
   bool get isEmailVerifying => throw _privateConstructorUsedError;
+  String? get successMessage => throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
+  AppException? get error => throw _privateConstructorUsedError;
+  DateTime? get expiredAt => throw _privateConstructorUsedError;
+  int get remainingSeconds => throw _privateConstructorUsedError;
+  bool get isVerified => throw _privateConstructorUsedError;
 
   /// Create a copy of VerificationState
   /// with the given fields replaced by the non-null parameter values.
@@ -36,9 +40,13 @@ abstract class $VerificationStateCopyWith<$Res> {
   @useResult
   $Res call(
       {bool isLoading,
-      AppException? error,
+      bool isEmailVerifying,
       String? successMessage,
-      bool isEmailVerifying});
+      String? email,
+      AppException? error,
+      DateTime? expiredAt,
+      int remainingSeconds,
+      bool isVerified});
 
   $AppExceptionCopyWith<$Res>? get error;
 }
@@ -59,26 +67,46 @@ class _$VerificationStateCopyWithImpl<$Res, $Val extends VerificationState>
   @override
   $Res call({
     Object? isLoading = null,
-    Object? error = freezed,
-    Object? successMessage = freezed,
     Object? isEmailVerifying = null,
+    Object? successMessage = freezed,
+    Object? email = freezed,
+    Object? error = freezed,
+    Object? expiredAt = freezed,
+    Object? remainingSeconds = null,
+    Object? isVerified = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      error: freezed == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as AppException?,
+      isEmailVerifying: null == isEmailVerifying
+          ? _value.isEmailVerifying
+          : isEmailVerifying // ignore: cast_nullable_to_non_nullable
+              as bool,
       successMessage: freezed == successMessage
           ? _value.successMessage
           : successMessage // ignore: cast_nullable_to_non_nullable
               as String?,
-      isEmailVerifying: null == isEmailVerifying
-          ? _value.isEmailVerifying
-          : isEmailVerifying // ignore: cast_nullable_to_non_nullable
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+      error: freezed == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as AppException?,
+      expiredAt: freezed == expiredAt
+          ? _value.expiredAt
+          : expiredAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      remainingSeconds: null == remainingSeconds
+          ? _value.remainingSeconds
+          : remainingSeconds // ignore: cast_nullable_to_non_nullable
+              as int,
+      isVerified: null == isVerified
+          ? _value.isVerified
+          : isVerified // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -108,9 +136,13 @@ abstract class _$$VerificationStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {bool isLoading,
-      AppException? error,
+      bool isEmailVerifying,
       String? successMessage,
-      bool isEmailVerifying});
+      String? email,
+      AppException? error,
+      DateTime? expiredAt,
+      int remainingSeconds,
+      bool isVerified});
 
   @override
   $AppExceptionCopyWith<$Res>? get error;
@@ -130,26 +162,46 @@ class __$$VerificationStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = null,
-    Object? error = freezed,
-    Object? successMessage = freezed,
     Object? isEmailVerifying = null,
+    Object? successMessage = freezed,
+    Object? email = freezed,
+    Object? error = freezed,
+    Object? expiredAt = freezed,
+    Object? remainingSeconds = null,
+    Object? isVerified = null,
   }) {
     return _then(_$VerificationStateImpl(
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      error: freezed == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as AppException?,
+      isEmailVerifying: null == isEmailVerifying
+          ? _value.isEmailVerifying
+          : isEmailVerifying // ignore: cast_nullable_to_non_nullable
+              as bool,
       successMessage: freezed == successMessage
           ? _value.successMessage
           : successMessage // ignore: cast_nullable_to_non_nullable
               as String?,
-      isEmailVerifying: null == isEmailVerifying
-          ? _value.isEmailVerifying
-          : isEmailVerifying // ignore: cast_nullable_to_non_nullable
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+      error: freezed == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as AppException?,
+      expiredAt: freezed == expiredAt
+          ? _value.expiredAt
+          : expiredAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      remainingSeconds: null == remainingSeconds
+          ? _value.remainingSeconds
+          : remainingSeconds // ignore: cast_nullable_to_non_nullable
+              as int,
+      isVerified: null == isVerified
+          ? _value.isVerified
+          : isVerified // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -160,26 +212,39 @@ class __$$VerificationStateImplCopyWithImpl<$Res>
 class _$VerificationStateImpl implements _VerificationState {
   const _$VerificationStateImpl(
       {this.isLoading = false,
-      this.error = null,
-      this.successMessage = null,
-      this.isEmailVerifying = false});
+      this.isEmailVerifying = false,
+      this.successMessage,
+      this.email = null,
+      this.error,
+      this.expiredAt,
+      this.remainingSeconds = 0,
+      this.isVerified = false});
 
   @override
   @JsonKey()
   final bool isLoading;
   @override
   @JsonKey()
-  final AppException? error;
+  final bool isEmailVerifying;
   @override
-  @JsonKey()
   final String? successMessage;
   @override
   @JsonKey()
-  final bool isEmailVerifying;
+  final String? email;
+  @override
+  final AppException? error;
+  @override
+  final DateTime? expiredAt;
+  @override
+  @JsonKey()
+  final int remainingSeconds;
+  @override
+  @JsonKey()
+  final bool isVerified;
 
   @override
   String toString() {
-    return 'VerificationState(isLoading: $isLoading, error: $error, successMessage: $successMessage, isEmailVerifying: $isEmailVerifying)';
+    return 'VerificationState(isLoading: $isLoading, isEmailVerifying: $isEmailVerifying, successMessage: $successMessage, email: $email, error: $error, expiredAt: $expiredAt, remainingSeconds: $remainingSeconds, isVerified: $isVerified)';
   }
 
   @override
@@ -189,16 +254,23 @@ class _$VerificationStateImpl implements _VerificationState {
             other is _$VerificationStateImpl &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
-            (identical(other.error, error) || other.error == error) &&
+            (identical(other.isEmailVerifying, isEmailVerifying) ||
+                other.isEmailVerifying == isEmailVerifying) &&
             (identical(other.successMessage, successMessage) ||
                 other.successMessage == successMessage) &&
-            (identical(other.isEmailVerifying, isEmailVerifying) ||
-                other.isEmailVerifying == isEmailVerifying));
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.error, error) || other.error == error) &&
+            (identical(other.expiredAt, expiredAt) ||
+                other.expiredAt == expiredAt) &&
+            (identical(other.remainingSeconds, remainingSeconds) ||
+                other.remainingSeconds == remainingSeconds) &&
+            (identical(other.isVerified, isVerified) ||
+                other.isVerified == isVerified));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, isLoading, error, successMessage, isEmailVerifying);
+  int get hashCode => Object.hash(runtimeType, isLoading, isEmailVerifying,
+      successMessage, email, error, expiredAt, remainingSeconds, isVerified);
 
   /// Create a copy of VerificationState
   /// with the given fields replaced by the non-null parameter values.
@@ -213,18 +285,30 @@ class _$VerificationStateImpl implements _VerificationState {
 abstract class _VerificationState implements VerificationState {
   const factory _VerificationState(
       {final bool isLoading,
-      final AppException? error,
+      final bool isEmailVerifying,
       final String? successMessage,
-      final bool isEmailVerifying}) = _$VerificationStateImpl;
+      final String? email,
+      final AppException? error,
+      final DateTime? expiredAt,
+      final int remainingSeconds,
+      final bool isVerified}) = _$VerificationStateImpl;
 
   @override
   bool get isLoading;
   @override
-  AppException? get error;
+  bool get isEmailVerifying;
   @override
   String? get successMessage;
   @override
-  bool get isEmailVerifying;
+  String? get email;
+  @override
+  AppException? get error;
+  @override
+  DateTime? get expiredAt;
+  @override
+  int get remainingSeconds;
+  @override
+  bool get isVerified;
 
   /// Create a copy of VerificationState
   /// with the given fields replaced by the non-null parameter values.

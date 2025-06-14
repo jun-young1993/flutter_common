@@ -64,4 +64,8 @@ class SizeConstants {
         ? const EdgeInsets.symmetric(horizontal: 20, vertical: 10)
         : const EdgeInsets.symmetric(horizontal: 14, vertical: 8);
   }
+
+  static double getCountdownDisplaySize(BuildContext context) {
+    return isTablet(context) ? 38 : 32;
+  }
 }

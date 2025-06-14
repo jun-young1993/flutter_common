@@ -8,9 +8,13 @@ part 'verification_state.freezed.dart';
 class VerificationState with _$VerificationState {
   const factory VerificationState({
     @Default(false) bool isLoading,
-    @Default(null) AppException? error,
-    @Default(null) String? successMessage,
     @Default(false) bool isEmailVerifying,
+    String? successMessage,
+    @Default(null) String? email,
+    AppException? error,
+    DateTime? expiredAt,
+    @Default(0) int remainingSeconds,
+    @Default(false) bool isVerified,
   }) = _VerificationState;
 
   factory VerificationState.initialize() => const VerificationState();

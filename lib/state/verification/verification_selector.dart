@@ -48,3 +48,22 @@ class VerificationEmailVerifyingSelector extends VerificationSelector<bool> {
           builder: (context, isEmailVerifying) => builder(isEmailVerifying),
         );
 }
+
+class VerificationEmailSelector extends VerificationSelector<String?> {
+  VerificationEmailSelector(Widget Function(String? email) builder, {Key? key})
+      : super(
+          key: key,
+          selector: (state) => state.email,
+          builder: (context, email) => builder(email),
+        );
+}
+
+class VerificationRemainingTimeSelector extends VerificationSelector<int> {
+  VerificationRemainingTimeSelector(Widget Function(int remainingTime) builder,
+      {Key? key})
+      : super(
+          key: key,
+          selector: (state) => state.remainingSeconds,
+          builder: (context, remainingTime) => builder(remainingTime),
+        );
+}

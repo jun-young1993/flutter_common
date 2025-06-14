@@ -20,18 +20,27 @@ mixin _$VerificationEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String email) sendAuthEmail,
     required TResult Function() removeSuccessMessage,
+    required TResult Function(int remainingSeconds) updateRemainingTime,
+    required TResult Function(String userId, String code) verifyAuthCode,
+    required TResult Function() expired,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String email)? sendAuthEmail,
     TResult? Function()? removeSuccessMessage,
+    TResult? Function(int remainingSeconds)? updateRemainingTime,
+    TResult? Function(String userId, String code)? verifyAuthCode,
+    TResult? Function()? expired,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email)? sendAuthEmail,
     TResult Function()? removeSuccessMessage,
+    TResult Function(int remainingSeconds)? updateRemainingTime,
+    TResult Function(String userId, String code)? verifyAuthCode,
+    TResult Function()? expired,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +48,27 @@ mixin _$VerificationEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_SendAuthEmail value) sendAuthEmail,
     required TResult Function(_RemoveSuccessMessage value) removeSuccessMessage,
+    required TResult Function(_UpdateRemainingTime value) updateRemainingTime,
+    required TResult Function(_VerifyAuthCode value) verifyAuthCode,
+    required TResult Function(_Expired value) expired,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SendAuthEmail value)? sendAuthEmail,
     TResult? Function(_RemoveSuccessMessage value)? removeSuccessMessage,
+    TResult? Function(_UpdateRemainingTime value)? updateRemainingTime,
+    TResult? Function(_VerifyAuthCode value)? verifyAuthCode,
+    TResult? Function(_Expired value)? expired,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SendAuthEmail value)? sendAuthEmail,
     TResult Function(_RemoveSuccessMessage value)? removeSuccessMessage,
+    TResult Function(_UpdateRemainingTime value)? updateRemainingTime,
+    TResult Function(_VerifyAuthCode value)? verifyAuthCode,
+    TResult Function(_Expired value)? expired,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -147,6 +165,9 @@ class _$SendAuthEmailImpl implements _SendAuthEmail {
   TResult when<TResult extends Object?>({
     required TResult Function(String email) sendAuthEmail,
     required TResult Function() removeSuccessMessage,
+    required TResult Function(int remainingSeconds) updateRemainingTime,
+    required TResult Function(String userId, String code) verifyAuthCode,
+    required TResult Function() expired,
   }) {
     return sendAuthEmail(email);
   }
@@ -156,6 +177,9 @@ class _$SendAuthEmailImpl implements _SendAuthEmail {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String email)? sendAuthEmail,
     TResult? Function()? removeSuccessMessage,
+    TResult? Function(int remainingSeconds)? updateRemainingTime,
+    TResult? Function(String userId, String code)? verifyAuthCode,
+    TResult? Function()? expired,
   }) {
     return sendAuthEmail?.call(email);
   }
@@ -165,6 +189,9 @@ class _$SendAuthEmailImpl implements _SendAuthEmail {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email)? sendAuthEmail,
     TResult Function()? removeSuccessMessage,
+    TResult Function(int remainingSeconds)? updateRemainingTime,
+    TResult Function(String userId, String code)? verifyAuthCode,
+    TResult Function()? expired,
     required TResult orElse(),
   }) {
     if (sendAuthEmail != null) {
@@ -178,6 +205,9 @@ class _$SendAuthEmailImpl implements _SendAuthEmail {
   TResult map<TResult extends Object?>({
     required TResult Function(_SendAuthEmail value) sendAuthEmail,
     required TResult Function(_RemoveSuccessMessage value) removeSuccessMessage,
+    required TResult Function(_UpdateRemainingTime value) updateRemainingTime,
+    required TResult Function(_VerifyAuthCode value) verifyAuthCode,
+    required TResult Function(_Expired value) expired,
   }) {
     return sendAuthEmail(this);
   }
@@ -187,6 +217,9 @@ class _$SendAuthEmailImpl implements _SendAuthEmail {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SendAuthEmail value)? sendAuthEmail,
     TResult? Function(_RemoveSuccessMessage value)? removeSuccessMessage,
+    TResult? Function(_UpdateRemainingTime value)? updateRemainingTime,
+    TResult? Function(_VerifyAuthCode value)? verifyAuthCode,
+    TResult? Function(_Expired value)? expired,
   }) {
     return sendAuthEmail?.call(this);
   }
@@ -196,6 +229,9 @@ class _$SendAuthEmailImpl implements _SendAuthEmail {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SendAuthEmail value)? sendAuthEmail,
     TResult Function(_RemoveSuccessMessage value)? removeSuccessMessage,
+    TResult Function(_UpdateRemainingTime value)? updateRemainingTime,
+    TResult Function(_VerifyAuthCode value)? verifyAuthCode,
+    TResult Function(_Expired value)? expired,
     required TResult orElse(),
   }) {
     if (sendAuthEmail != null) {
@@ -261,6 +297,9 @@ class _$RemoveSuccessMessageImpl implements _RemoveSuccessMessage {
   TResult when<TResult extends Object?>({
     required TResult Function(String email) sendAuthEmail,
     required TResult Function() removeSuccessMessage,
+    required TResult Function(int remainingSeconds) updateRemainingTime,
+    required TResult Function(String userId, String code) verifyAuthCode,
+    required TResult Function() expired,
   }) {
     return removeSuccessMessage();
   }
@@ -270,6 +309,9 @@ class _$RemoveSuccessMessageImpl implements _RemoveSuccessMessage {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String email)? sendAuthEmail,
     TResult? Function()? removeSuccessMessage,
+    TResult? Function(int remainingSeconds)? updateRemainingTime,
+    TResult? Function(String userId, String code)? verifyAuthCode,
+    TResult? Function()? expired,
   }) {
     return removeSuccessMessage?.call();
   }
@@ -279,6 +321,9 @@ class _$RemoveSuccessMessageImpl implements _RemoveSuccessMessage {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email)? sendAuthEmail,
     TResult Function()? removeSuccessMessage,
+    TResult Function(int remainingSeconds)? updateRemainingTime,
+    TResult Function(String userId, String code)? verifyAuthCode,
+    TResult Function()? expired,
     required TResult orElse(),
   }) {
     if (removeSuccessMessage != null) {
@@ -292,6 +337,9 @@ class _$RemoveSuccessMessageImpl implements _RemoveSuccessMessage {
   TResult map<TResult extends Object?>({
     required TResult Function(_SendAuthEmail value) sendAuthEmail,
     required TResult Function(_RemoveSuccessMessage value) removeSuccessMessage,
+    required TResult Function(_UpdateRemainingTime value) updateRemainingTime,
+    required TResult Function(_VerifyAuthCode value) verifyAuthCode,
+    required TResult Function(_Expired value) expired,
   }) {
     return removeSuccessMessage(this);
   }
@@ -301,6 +349,9 @@ class _$RemoveSuccessMessageImpl implements _RemoveSuccessMessage {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SendAuthEmail value)? sendAuthEmail,
     TResult? Function(_RemoveSuccessMessage value)? removeSuccessMessage,
+    TResult? Function(_UpdateRemainingTime value)? updateRemainingTime,
+    TResult? Function(_VerifyAuthCode value)? verifyAuthCode,
+    TResult? Function(_Expired value)? expired,
   }) {
     return removeSuccessMessage?.call(this);
   }
@@ -310,6 +361,9 @@ class _$RemoveSuccessMessageImpl implements _RemoveSuccessMessage {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SendAuthEmail value)? sendAuthEmail,
     TResult Function(_RemoveSuccessMessage value)? removeSuccessMessage,
+    TResult Function(_UpdateRemainingTime value)? updateRemainingTime,
+    TResult Function(_VerifyAuthCode value)? verifyAuthCode,
+    TResult Function(_Expired value)? expired,
     required TResult orElse(),
   }) {
     if (removeSuccessMessage != null) {
@@ -321,4 +375,457 @@ class _$RemoveSuccessMessageImpl implements _RemoveSuccessMessage {
 
 abstract class _RemoveSuccessMessage implements VerificationEvent {
   const factory _RemoveSuccessMessage() = _$RemoveSuccessMessageImpl;
+}
+
+/// @nodoc
+abstract class _$$UpdateRemainingTimeImplCopyWith<$Res> {
+  factory _$$UpdateRemainingTimeImplCopyWith(_$UpdateRemainingTimeImpl value,
+          $Res Function(_$UpdateRemainingTimeImpl) then) =
+      __$$UpdateRemainingTimeImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int remainingSeconds});
+}
+
+/// @nodoc
+class __$$UpdateRemainingTimeImplCopyWithImpl<$Res>
+    extends _$VerificationEventCopyWithImpl<$Res, _$UpdateRemainingTimeImpl>
+    implements _$$UpdateRemainingTimeImplCopyWith<$Res> {
+  __$$UpdateRemainingTimeImplCopyWithImpl(_$UpdateRemainingTimeImpl _value,
+      $Res Function(_$UpdateRemainingTimeImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of VerificationEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? remainingSeconds = null,
+  }) {
+    return _then(_$UpdateRemainingTimeImpl(
+      null == remainingSeconds
+          ? _value.remainingSeconds
+          : remainingSeconds // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateRemainingTimeImpl implements _UpdateRemainingTime {
+  const _$UpdateRemainingTimeImpl(this.remainingSeconds);
+
+  @override
+  final int remainingSeconds;
+
+  @override
+  String toString() {
+    return 'VerificationEvent.updateRemainingTime(remainingSeconds: $remainingSeconds)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateRemainingTimeImpl &&
+            (identical(other.remainingSeconds, remainingSeconds) ||
+                other.remainingSeconds == remainingSeconds));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, remainingSeconds);
+
+  /// Create a copy of VerificationEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateRemainingTimeImplCopyWith<_$UpdateRemainingTimeImpl> get copyWith =>
+      __$$UpdateRemainingTimeImplCopyWithImpl<_$UpdateRemainingTimeImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String email) sendAuthEmail,
+    required TResult Function() removeSuccessMessage,
+    required TResult Function(int remainingSeconds) updateRemainingTime,
+    required TResult Function(String userId, String code) verifyAuthCode,
+    required TResult Function() expired,
+  }) {
+    return updateRemainingTime(remainingSeconds);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String email)? sendAuthEmail,
+    TResult? Function()? removeSuccessMessage,
+    TResult? Function(int remainingSeconds)? updateRemainingTime,
+    TResult? Function(String userId, String code)? verifyAuthCode,
+    TResult? Function()? expired,
+  }) {
+    return updateRemainingTime?.call(remainingSeconds);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email)? sendAuthEmail,
+    TResult Function()? removeSuccessMessage,
+    TResult Function(int remainingSeconds)? updateRemainingTime,
+    TResult Function(String userId, String code)? verifyAuthCode,
+    TResult Function()? expired,
+    required TResult orElse(),
+  }) {
+    if (updateRemainingTime != null) {
+      return updateRemainingTime(remainingSeconds);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SendAuthEmail value) sendAuthEmail,
+    required TResult Function(_RemoveSuccessMessage value) removeSuccessMessage,
+    required TResult Function(_UpdateRemainingTime value) updateRemainingTime,
+    required TResult Function(_VerifyAuthCode value) verifyAuthCode,
+    required TResult Function(_Expired value) expired,
+  }) {
+    return updateRemainingTime(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SendAuthEmail value)? sendAuthEmail,
+    TResult? Function(_RemoveSuccessMessage value)? removeSuccessMessage,
+    TResult? Function(_UpdateRemainingTime value)? updateRemainingTime,
+    TResult? Function(_VerifyAuthCode value)? verifyAuthCode,
+    TResult? Function(_Expired value)? expired,
+  }) {
+    return updateRemainingTime?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SendAuthEmail value)? sendAuthEmail,
+    TResult Function(_RemoveSuccessMessage value)? removeSuccessMessage,
+    TResult Function(_UpdateRemainingTime value)? updateRemainingTime,
+    TResult Function(_VerifyAuthCode value)? verifyAuthCode,
+    TResult Function(_Expired value)? expired,
+    required TResult orElse(),
+  }) {
+    if (updateRemainingTime != null) {
+      return updateRemainingTime(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateRemainingTime implements VerificationEvent {
+  const factory _UpdateRemainingTime(final int remainingSeconds) =
+      _$UpdateRemainingTimeImpl;
+
+  int get remainingSeconds;
+
+  /// Create a copy of VerificationEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UpdateRemainingTimeImplCopyWith<_$UpdateRemainingTimeImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$VerifyAuthCodeImplCopyWith<$Res> {
+  factory _$$VerifyAuthCodeImplCopyWith(_$VerifyAuthCodeImpl value,
+          $Res Function(_$VerifyAuthCodeImpl) then) =
+      __$$VerifyAuthCodeImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String userId, String code});
+}
+
+/// @nodoc
+class __$$VerifyAuthCodeImplCopyWithImpl<$Res>
+    extends _$VerificationEventCopyWithImpl<$Res, _$VerifyAuthCodeImpl>
+    implements _$$VerifyAuthCodeImplCopyWith<$Res> {
+  __$$VerifyAuthCodeImplCopyWithImpl(
+      _$VerifyAuthCodeImpl _value, $Res Function(_$VerifyAuthCodeImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of VerificationEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userId = null,
+    Object? code = null,
+  }) {
+    return _then(_$VerifyAuthCodeImpl(
+      null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$VerifyAuthCodeImpl implements _VerifyAuthCode {
+  const _$VerifyAuthCodeImpl(this.userId, this.code);
+
+  @override
+  final String userId;
+  @override
+  final String code;
+
+  @override
+  String toString() {
+    return 'VerificationEvent.verifyAuthCode(userId: $userId, code: $code)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$VerifyAuthCodeImpl &&
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.code, code) || other.code == code));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, userId, code);
+
+  /// Create a copy of VerificationEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$VerifyAuthCodeImplCopyWith<_$VerifyAuthCodeImpl> get copyWith =>
+      __$$VerifyAuthCodeImplCopyWithImpl<_$VerifyAuthCodeImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String email) sendAuthEmail,
+    required TResult Function() removeSuccessMessage,
+    required TResult Function(int remainingSeconds) updateRemainingTime,
+    required TResult Function(String userId, String code) verifyAuthCode,
+    required TResult Function() expired,
+  }) {
+    return verifyAuthCode(userId, code);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String email)? sendAuthEmail,
+    TResult? Function()? removeSuccessMessage,
+    TResult? Function(int remainingSeconds)? updateRemainingTime,
+    TResult? Function(String userId, String code)? verifyAuthCode,
+    TResult? Function()? expired,
+  }) {
+    return verifyAuthCode?.call(userId, code);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email)? sendAuthEmail,
+    TResult Function()? removeSuccessMessage,
+    TResult Function(int remainingSeconds)? updateRemainingTime,
+    TResult Function(String userId, String code)? verifyAuthCode,
+    TResult Function()? expired,
+    required TResult orElse(),
+  }) {
+    if (verifyAuthCode != null) {
+      return verifyAuthCode(userId, code);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SendAuthEmail value) sendAuthEmail,
+    required TResult Function(_RemoveSuccessMessage value) removeSuccessMessage,
+    required TResult Function(_UpdateRemainingTime value) updateRemainingTime,
+    required TResult Function(_VerifyAuthCode value) verifyAuthCode,
+    required TResult Function(_Expired value) expired,
+  }) {
+    return verifyAuthCode(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SendAuthEmail value)? sendAuthEmail,
+    TResult? Function(_RemoveSuccessMessage value)? removeSuccessMessage,
+    TResult? Function(_UpdateRemainingTime value)? updateRemainingTime,
+    TResult? Function(_VerifyAuthCode value)? verifyAuthCode,
+    TResult? Function(_Expired value)? expired,
+  }) {
+    return verifyAuthCode?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SendAuthEmail value)? sendAuthEmail,
+    TResult Function(_RemoveSuccessMessage value)? removeSuccessMessage,
+    TResult Function(_UpdateRemainingTime value)? updateRemainingTime,
+    TResult Function(_VerifyAuthCode value)? verifyAuthCode,
+    TResult Function(_Expired value)? expired,
+    required TResult orElse(),
+  }) {
+    if (verifyAuthCode != null) {
+      return verifyAuthCode(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _VerifyAuthCode implements VerificationEvent {
+  const factory _VerifyAuthCode(final String userId, final String code) =
+      _$VerifyAuthCodeImpl;
+
+  String get userId;
+  String get code;
+
+  /// Create a copy of VerificationEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$VerifyAuthCodeImplCopyWith<_$VerifyAuthCodeImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ExpiredImplCopyWith<$Res> {
+  factory _$$ExpiredImplCopyWith(
+          _$ExpiredImpl value, $Res Function(_$ExpiredImpl) then) =
+      __$$ExpiredImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ExpiredImplCopyWithImpl<$Res>
+    extends _$VerificationEventCopyWithImpl<$Res, _$ExpiredImpl>
+    implements _$$ExpiredImplCopyWith<$Res> {
+  __$$ExpiredImplCopyWithImpl(
+      _$ExpiredImpl _value, $Res Function(_$ExpiredImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of VerificationEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$ExpiredImpl implements _Expired {
+  const _$ExpiredImpl();
+
+  @override
+  String toString() {
+    return 'VerificationEvent.expired()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ExpiredImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String email) sendAuthEmail,
+    required TResult Function() removeSuccessMessage,
+    required TResult Function(int remainingSeconds) updateRemainingTime,
+    required TResult Function(String userId, String code) verifyAuthCode,
+    required TResult Function() expired,
+  }) {
+    return expired();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String email)? sendAuthEmail,
+    TResult? Function()? removeSuccessMessage,
+    TResult? Function(int remainingSeconds)? updateRemainingTime,
+    TResult? Function(String userId, String code)? verifyAuthCode,
+    TResult? Function()? expired,
+  }) {
+    return expired?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email)? sendAuthEmail,
+    TResult Function()? removeSuccessMessage,
+    TResult Function(int remainingSeconds)? updateRemainingTime,
+    TResult Function(String userId, String code)? verifyAuthCode,
+    TResult Function()? expired,
+    required TResult orElse(),
+  }) {
+    if (expired != null) {
+      return expired();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SendAuthEmail value) sendAuthEmail,
+    required TResult Function(_RemoveSuccessMessage value) removeSuccessMessage,
+    required TResult Function(_UpdateRemainingTime value) updateRemainingTime,
+    required TResult Function(_VerifyAuthCode value) verifyAuthCode,
+    required TResult Function(_Expired value) expired,
+  }) {
+    return expired(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SendAuthEmail value)? sendAuthEmail,
+    TResult? Function(_RemoveSuccessMessage value)? removeSuccessMessage,
+    TResult? Function(_UpdateRemainingTime value)? updateRemainingTime,
+    TResult? Function(_VerifyAuthCode value)? verifyAuthCode,
+    TResult? Function(_Expired value)? expired,
+  }) {
+    return expired?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SendAuthEmail value)? sendAuthEmail,
+    TResult Function(_RemoveSuccessMessage value)? removeSuccessMessage,
+    TResult Function(_UpdateRemainingTime value)? updateRemainingTime,
+    TResult Function(_VerifyAuthCode value)? verifyAuthCode,
+    TResult Function(_Expired value)? expired,
+    required TResult orElse(),
+  }) {
+    if (expired != null) {
+      return expired(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Expired implements VerificationEvent {
+  const factory _Expired() = _$ExpiredImpl;
 }
