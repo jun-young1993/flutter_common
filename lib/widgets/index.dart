@@ -3,3 +3,4 @@ export 'fade_route.dart';
 export 'dialogs/index.dart';
 export 'layout/index.dart';
 export 'ui/index.dart';
+export 'ad/index.dart';

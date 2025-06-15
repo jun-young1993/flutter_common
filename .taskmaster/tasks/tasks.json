@@ -1,0 +1,245 @@
+{
+  "master": {
+    "tasks": [
+      {
+        "id": 11,
+        "title": "Create Common BLoC Base Class",
+        "description": "Develop a reusable base class for all BLoC components to reduce code duplication and standardize BLoC implementation across the library.",
+        "details": "Create an abstract BaseBloc<Event, State> class that extends Bloc<Event, State>:\n1. Implement common error handling mechanisms\n2. Add lifecycle management methods\n3. Include logging capabilities for debugging\n4. Provide helper methods for common BLoC operations\n5. Ensure compatibility with existing flutter_bloc patterns\n\nExample implementation:\n```dart\nabstract class BaseBloc<E, S> extends Bloc<E, S> {\n  BaseBloc(S initialState) : super(initialState) {\n    on<E>(_eventHandler);\n  }\n  \n  Future<void> _eventHandler(E event, Emitter<S> emit) async {\n    try {\n      await mapEventToState(event, emit);\n    } catch (error, stackTrace) {\n      handleError(error, stackTrace);\n      emit(createErrorState(error, state));\n    }\n  }\n  \n  Future<void> mapEventToState(E event, Emitter<S> emit);\n  \n  void handleError(dynamic error, StackTrace stackTrace) {\n    // Default error handling logic\n    log('Error in ${runtimeType.toString()}: $error');\n    log(stackTrace.toString());\n  }\n  \n  S createErrorState(dynamic error, S currentState);\n}\n```",
+        "testStrategy": "1. Write unit tests for BaseBloc class using bloc_test package\n2. Test error handling functionality\n3. Test lifecycle methods\n4. Create mock implementations to verify correct behavior\n5. Verify compatibility with existing BLoC patterns",
+        "priority": "high",
+        "dependencies": [],
+        "status": "in-progress",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Implement _handleEvent method in BaseBloc",
+            "description": "Create a standardized _handleEvent method in the BaseBloc class to eliminate duplication across BLoCs",
+            "dependencies": [],
+            "details": "Implement a generic _handleEvent method that includes try-catch block, calls mapEventToState, and handles errors uniformly\n<info added on 2025-06-15T06:53:46.623Z>\nImplemented BaseBloc abstract class in `lib/state/base/base_bloc.dart` with standardized event handling:\n\n- Created `handleEvent` method that standardizes the previous _handleEvent pattern with try-catch blocks\n- Added `handleEventWithClearError` method that clears errors on success\n- Defined abstract methods: setLoadingState, setErrorState, clearErrorState, hasError\n- Implemented logging and lifecycle management features\n\nCreated documentation in `lib/state/base/README.md` with usage guidelines and migration instructions, comparing old vs new approaches with detailed examples.\n\nThis implementation solves issues with duplicated event handling code, ensures consistent AppException error handling, automates loading state management, and standardizes error logging.\n</info added on 2025-06-15T06:53:46.623Z>",
+            "status": "done",
+            "testStrategy": "Write unit tests to verify error handling and correct execution flow"
+          },
+          {
+            "id": 2,
+            "title": "Standardize copyWith pattern",
+            "description": "Create a mixin or interface to standardize the copyWith pattern across all state classes",
+            "dependencies": [],
+            "details": "Develop a Copyable interface or mixin that enforces a standard copyWith method implementation for all state classes\n<info added on 2025-06-15T07:00:09.258Z>\n현재 상황 분석:\n- BaseBloc과 BaseState가 이미 구현되어 있음\n- 기존 State 클래스들은 Freezed를 사용하여 copyWith 메서드가 자동 생성됨\n- 일부 State 클래스들이 BaseState 인터페이스를 구현하지 않음\n\n문제점:\n- NoticeState, UserState, AppState 등이 BaseState를 구현하지 않음\n- BaseStateMixin을 사용하지 않아 공통 유틸리티 메서드를 활용할 수 없음\n- 일부 State에서 initialize() 메서드명이 일관되지 않음 (AppState.initilize() 오타)\n\n구현 계획:\n1. 모든 State 클래스가 BaseState 인터페이스를 구현하도록 수정\n2. 공통 기능은 BaseStateMixin을 통해 제공하여 코드 중복 방지\n3. initialize() 메서드명 통일 및 오타 수정\n4. Freezed로 자동 생성되는 copyWith 메서드와 BaseState 인터페이스의 통합 방안 마련\n</info added on 2025-06-15T07:00:09.258Z>\n<info added on 2025-06-15T07:03:14.228Z>\n작업 완료 보고:\n\n모든 State 클래스에 대한 Copyable 인터페이스 구현이 완료되었습니다.\n\n✅ 완료된 작업:\n1. 모든 주요 State 클래스가 BaseStateMixin을 구현하도록 수정\n   - NoticeState, UserState, AppState, GoalState, NoticeGroupState, VerificationState 모두 적용 완료\n\n2. AppEvent에서 발견된 'initilize' 오타 수정\n   - 중복된 initilize/initialize 이벤트 정리\n   - AppBloc 내부 관련 메서드에서도 오타 수정\n\n3. Freezed 파일 재생성 완료\n   - build_runner로 모든 .freezed.dart 파일 업데이트하여 copyWith 메서드 일관성 확보\n\n📝 참고사항:\n- AppConfigState는 BaseState 구조와 맞지 않아 제외 (isLoading, error 필드가 없음)\n- 모든 State 클래스는 이제 BaseStateMixin의 공통 유틸리티 메서드 사용 가능\n- Freezed로 자동 생성되는 copyWith 메서드와 BaseState 인터페이스가 성공적으로 통합됨\n\n이로써 모든 State 클래스에서 일관된 copyWith 패턴을 사용할 수 있게 되었습니다.\n</info added on 2025-06-15T07:03:14.228Z>",
+            "status": "in-progress",
+            "testStrategy": "Create tests to ensure copyWith correctly creates new instances with updated fields"
+          },
+          {
+            "id": 3,
+            "title": "Implement standardized error handling with AppException",
+            "description": "Integrate AppException into the BaseBloc for consistent error handling across all BLoCs",
+            "dependencies": [
+              1
+            ],
+            "details": "Add methods to BaseBloc for creating and handling AppException, ensuring all derived BLoCs use this standardized approach",
+            "status": "pending",
+            "testStrategy": "Test various error scenarios to confirm proper AppException usage and propagation"
+          },
+          {
+            "id": 4,
+            "title": "Implement loading state management",
+            "description": "Add methods and properties to BaseBloc for standardized loading state management",
+            "dependencies": [],
+            "details": "Create setLoading and setLoaded methods in BaseBloc, along with a isLoading property to manage loading states consistently",
+            "status": "pending",
+            "testStrategy": "Write tests to verify correct transitions between loading and loaded states"
+          },
+          {
+            "id": 5,
+            "title": "Ensure compatibility with existing BLoCs",
+            "description": "Refactor the BaseBloc to maintain compatibility with existing BLoC implementations in the project",
+            "dependencies": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "details": "Review existing BLoCs and ensure BaseBloc's design allows for easy migration without breaking changes. Create migration guidelines for existing BLoCs",
+            "status": "pending",
+            "testStrategy": "Develop integration tests to verify that existing BLoCs can be refactored to use BaseBloc without altering functionality"
+          }
+        ]
+      },
+      {
+        "id": 12,
+        "title": "Implement Common State Mixin",
+        "description": "Create a mixin for standardizing state objects across all BLoCs with common properties like loading, error, and success states.",
+        "details": "Create a mixin or base class for state objects using freezed:\n1. Define common state properties (isLoading, error, isSuccess)\n2. Implement helper methods for state transitions\n3. Create factory constructors for common state types\n4. Ensure serialization/deserialization support\n\nExample implementation:\n```dart\n@freezed\nabstract class BaseState with _$BaseState {\n  const factory BaseState({\n    @Default(false) bool isLoading,\n    @Default(false) bool isSuccess,\n    Object? error,\n  }) = _BaseState;\n  \n  const BaseState._();\n  \n  bool get hasError => error != null;\n  \n  BaseState loading() => copyWith(isLoading: true, error: null, isSuccess: false);\n  BaseState success() => copyWith(isLoading: false, error: null, isSuccess: true);\n  BaseState failure(Object error) => copyWith(isLoading: false, error: error, isSuccess: false);\n}\n```\n\nCreate documentation and examples showing how to extend this for specific feature states.",
+        "testStrategy": "1. Write unit tests for all state transitions\n2. Test serialization/deserialization\n3. Create sample implementations extending the base state\n4. Verify immutability and correct behavior of copyWith\n5. Test integration with BaseBloc from Task #11",
+        "priority": "high",
+        "dependencies": [
+          11
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 13,
+        "title": "Define Common Event Pattern",
+        "description": "Create standardized event patterns and base classes to ensure consistency across all BLoC implementations.",
+        "details": "Design and implement a standard event pattern:\n1. Create a base event interface or abstract class\n2. Define common event categories (init, refresh, load, submit, etc.)\n3. Implement helper methods for event creation\n4. Use freezed for immutable event classes\n\nExample implementation:\n```dart\n@freezed\nabstract class BaseEvent with _$BaseEvent {\n  const factory BaseEvent.init() = InitEvent;\n  const factory BaseEvent.refresh() = RefreshEvent;\n  const factory BaseEvent.load({required String id}) = LoadEvent;\n  const factory BaseEvent.submit({required Map<String, dynamic> data}) = SubmitEvent;\n  const factory BaseEvent.error({required Object error}) = ErrorEvent;\n}\n```\n\nProvide documentation on extending these patterns for specific features and how to handle custom events.",
+        "testStrategy": "1. Write unit tests for all event types\n2. Test event equality and comparison\n3. Verify correct serialization/deserialization\n4. Create sample implementations extending the base events\n5. Test integration with BaseBloc from Task #11",
+        "priority": "high",
+        "dependencies": [
+          11
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 14,
+        "title": "Create Migration Guide for Existing BLoCs",
+        "description": "Develop comprehensive documentation and examples for migrating existing BLoC implementations to the new base classes.",
+        "details": "Create a migration guide with the following components:\n1. Step-by-step instructions for converting existing BLoCs\n2. Before/after code examples\n3. Common pitfalls and solutions\n4. Performance and code size benefits\n5. Testing strategies for migrated code\n\nExample migration steps:\n```markdown\n## Migration Steps\n1. Update your BLoC class to extend BaseBloc instead of Bloc\n2. Refactor your state classes to use BaseState mixin\n3. Convert your events to follow the BaseEvent pattern\n4. Update your mapEventToState method to handle the new event types\n5. Implement the createErrorState method\n6. Update your tests to use the new patterns\n```\n\nInclude a sample project demonstrating the migration process.",
+        "testStrategy": "1. Create a sample BLoC implementation using the old pattern\n2. Follow the migration guide to convert it to the new pattern\n3. Verify functionality remains identical\n4. Measure code reduction and maintenance improvements\n5. Have team members review and validate the guide",
+        "priority": "medium",
+        "dependencies": [
+          11,
+          12,
+          13
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 15,
+        "title": "Develop Button Widget Collection",
+        "description": "Create a comprehensive collection of customizable button widgets with various styles, states, and behaviors.",
+        "details": "Implement a button widget collection with the following components:\n1. Primary, secondary, and tertiary button styles\n2. Icon buttons with various positions (left, right, only icon)\n3. Loading state support\n4. Disabled state styling\n5. Size variants (small, medium, large)\n6. Theming support for easy customization\n\nExample implementation:\n```dart\nclass AppButton extends StatelessWidget {\n  final String? text;\n  final IconData? icon;\n  final IconPosition iconPosition;\n  final VoidCallback? onPressed;\n  final bool isLoading;\n  final ButtonSize size;\n  final ButtonType type;\n  \n  const AppButton({\n    Key? key,\n    this.text,\n    this.icon,\n    this.iconPosition = IconPosition.left,\n    this.onPressed,\n    this.isLoading = false,\n    this.size = ButtonSize.medium,\n    this.type = ButtonType.primary,\n  }) : super(key: key);\n  \n  @override\n  Widget build(BuildContext context) {\n    // Implementation with conditional rendering based on properties\n  }\n}\n\nenum ButtonSize { small, medium, large }\nenum ButtonType { primary, secondary, tertiary }\nenum IconPosition { left, right, iconOnly }\n```\n\nInclude a theme extension for customizing button styles.",
+        "testStrategy": "1. Write widget tests for all button variants\n2. Test loading and disabled states\n3. Verify correct theming and style application\n4. Test accessibility features (contrast, tap targets)\n5. Create visual regression tests for button styles",
+        "priority": "high",
+        "dependencies": [],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 16,
+        "title": "Implement Input Form Widget Collection",
+        "description": "Create a set of form input widgets including text fields, dropdowns, checkboxes, and radio buttons with validation support.",
+        "details": "Develop a comprehensive form input widget collection:\n1. Text input with various keyboard types\n2. Password input with visibility toggle\n3. Dropdown/select input\n4. Checkbox and radio button groups\n5. Date/time pickers\n6. Form validation support\n7. Error state handling and messaging\n\nExample implementation:\n```dart\nclass AppTextField extends StatelessWidget {\n  final String? label;\n  final String? hint;\n  final TextEditingController? controller;\n  final String? Function(String?)? validator;\n  final TextInputType keyboardType;\n  final bool obscureText;\n  final Widget? suffix;\n  final Widget? prefix;\n  final String? errorText;\n  final bool enabled;\n  \n  const AppTextField({\n    Key? key,\n    this.label,\n    this.hint,\n    this.controller,\n    this.validator,\n    this.keyboardType = TextInputType.text,\n    this.obscureText = false,\n    this.suffix,\n    this.prefix,\n    this.errorText,\n    this.enabled = true,\n  }) : super(key: key);\n  \n  @override\n  Widget build(BuildContext context) {\n    // Implementation with theming and state handling\n  }\n}\n```\n\nCreate a FormBuilder helper class to simplify form creation and validation.",
+        "testStrategy": "1. Write widget tests for all input types\n2. Test validation logic\n3. Verify error state display\n4. Test accessibility features\n5. Create integration tests with form submission\n6. Test keyboard interactions and focus handling",
+        "priority": "high",
+        "dependencies": [],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 17,
+        "title": "Create List and Grid Widget Components",
+        "description": "Develop reusable list and grid components with built-in loading, error states, pagination, and pull-to-refresh functionality.",
+        "details": "Implement list and grid widget components:\n1. Create a base list/grid widget with loading/error states\n2. Add pull-to-refresh functionality\n3. Implement infinite scrolling/pagination\n4. Add empty state handling\n5. Support for different item layouts\n6. Performance optimizations for large lists\n\nExample implementation:\n```dart\nclass AppListView<T> extends StatelessWidget {\n  final List<T> items;\n  final Widget Function(BuildContext, T, int) itemBuilder;\n  final bool isLoading;\n  final Object? error;\n  final VoidCallback? onRefresh;\n  final Function()? onLoadMore;\n  final Widget? emptyWidget;\n  final Widget? loadingWidget;\n  final Widget Function(Object)? errorWidget;\n  \n  const AppListView({\n    Key? key,\n    required this.items,\n    required this.itemBuilder,\n    this.isLoading = false,\n    this.error,\n    this.onRefresh,\n    this.onLoadMore,\n    this.emptyWidget,\n    this.loadingWidget,\n    this.errorWidget,\n  }) : super(key: key);\n  \n  @override\n  Widget build(BuildContext context) {\n    // Implementation with conditional rendering based on state\n  }\n}\n```\n\nCreate corresponding grid view implementation with similar features.",
+        "testStrategy": "1. Write widget tests for all states (loading, error, empty, data)\n2. Test pagination and infinite scrolling\n3. Test pull-to-refresh functionality\n4. Verify performance with large datasets\n5. Test scroll position preservation\n6. Create integration tests with real data loading",
+        "priority": "medium",
+        "dependencies": [],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 18,
+        "title": "Implement Dialog and Modal Widget System",
+        "description": "Create a flexible system for displaying dialogs, modals, and bottom sheets with standardized styling and behavior.",
+        "details": "Develop a comprehensive dialog and modal system:\n1. Create base dialog/modal/bottom sheet widgets\n2. Implement common variants (alert, confirm, input, selection)\n3. Add animation and transition options\n4. Support for custom content\n5. Standardize dialog actions and buttons\n6. Create helper methods for showing dialogs\n\nExample implementation:\n```dart\nclass AppDialog extends StatelessWidget {\n  final String? title;\n  final Widget? content;\n  final List<AppDialogAction> actions;\n  final bool dismissible;\n  \n  const AppDialog({\n    Key? key,\n    this.title,\n    this.content,\n    this.actions = const [],\n    this.dismissible = true,\n  }) : super(key: key);\n  \n  @override\n  Widget build(BuildContext context) {\n    // Implementation\n  }\n  \n  static Future<T?> show<T>({\n    required BuildContext context,\n    required String title,\n    required Widget content,\n    List<AppDialogAction> actions = const [],\n    bool dismissible = true,\n  }) {\n    return showDialog<T>(\n      context: context,\n      barrierDismissible: dismissible,\n      builder: (context) => AppDialog(\n        title: title,\n        content: content,\n        actions: actions,\n        dismissible: dismissible,\n      ),\n    );\n  }\n}\n\nclass AppDialogAction {\n  final String text;\n  final VoidCallback onPressed;\n  final ButtonType type;\n  \n  const AppDialogAction({\n    required this.text,\n    required this.onPressed,\n    this.type = ButtonType.primary,\n  });\n}\n```\n\nImplement similar classes for bottom sheets and modals.",
+        "testStrategy": "1. Write widget tests for all dialog/modal variants\n2. Test dismissal behavior\n3. Verify action button functionality\n4. Test animations and transitions\n5. Create integration tests with dialog flows\n6. Test accessibility features",
+        "priority": "medium",
+        "dependencies": [
+          15
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 19,
+        "title": "Develop Loading and Error State Widgets",
+        "description": "Create standardized widgets for displaying loading indicators and error states with retry functionality.",
+        "details": "Implement loading and error state widgets:\n1. Create various loading indicators (spinner, skeleton, progress bar)\n2. Develop error state displays with different severity levels\n3. Add retry functionality for error states\n4. Implement empty state displays\n5. Create overlay loading indicators\n\nExample implementation:\n```dart\nclass AppLoadingIndicator extends StatelessWidget {\n  final LoadingType type;\n  final String? message;\n  final double size;\n  \n  const AppLoadingIndicator({\n    Key? key,\n    this.type = LoadingType.circular,\n    this.message,\n    this.size = 48.0,\n  }) : super(key: key);\n  \n  @override\n  Widget build(BuildContext context) {\n    // Implementation based on type\n  }\n}\n\nclass AppErrorView extends StatelessWidget {\n  final String? message;\n  final Object? error;\n  final VoidCallback? onRetry;\n  final ErrorSeverity severity;\n  \n  const AppErrorView({\n    Key? key,\n    this.message,\n    this.error,\n    this.onRetry,\n    this.severity = ErrorSeverity.medium,\n  }) : super(key: key);\n  \n  @override\n  Widget build(BuildContext context) {\n    // Implementation with retry button\n  }\n}\n\nenum LoadingType { circular, linear, skeleton }\nenum ErrorSeverity { low, medium, high }\n```\n\nCreate a state wrapper widget that conditionally shows loading/error/content based on state.",
+        "testStrategy": "1. Write widget tests for all loading indicator types\n2. Test error view with different severity levels\n3. Verify retry functionality\n4. Test accessibility features\n5. Create integration tests with loading and error states\n6. Test animations and transitions",
+        "priority": "medium",
+        "dependencies": [
+          15
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 20,
+        "title": "Expand Date and Time Utilities",
+        "description": "Enhance the existing date formatter with comprehensive date and time manipulation, formatting, and validation utilities.",
+        "details": "Expand the date and time utilities:\n1. Create a DateTimeHelper class with common operations\n2. Implement various formatting options (relative, absolute, custom)\n3. Add timezone handling\n4. Create date comparison and manipulation methods\n5. Implement date validation functions\n6. Add localization support\n\nExample implementation:\n```dart\nclass DateTimeHelper {\n  static String format(DateTime date, {DateFormat? format, String? pattern, String? locale}) {\n    final formatter = format ?? (pattern != null ? DateFormat(pattern, locale) : DateFormat.yMMMd(locale));\n    return formatter.format(date);\n  }\n  \n  static String relativeTime(DateTime date, {String? locale}) {\n    final now = DateTime.now();\n    final difference = now.difference(date);\n    \n    // Implementation for relative time strings\n  }\n  \n  static DateTime? parse(String input, {DateFormat? format, String? pattern, String? locale}) {\n    try {\n      final formatter = format ?? (pattern != null ? DateFormat(pattern, locale) : DateFormat.yMMMd(locale));\n      return formatter.parse(input);\n    } catch (e) {\n      return null;\n    }\n  }\n  \n  static bool isValid(String input, {DateFormat? format, String? pattern, String? locale}) {\n    return parse(input, format: format, pattern: pattern, locale: locale) != null;\n  }\n  \n  // Additional utility methods\n}\n```\n\nCreate extension methods on DateTime for common operations.",
+        "testStrategy": "1. Write unit tests for all formatting functions\n2. Test parsing with various input formats\n3. Verify timezone handling\n4. Test date comparison and manipulation\n5. Test localization with different locales\n6. Create integration tests with real-world date scenarios",
+        "priority": "medium",
+        "dependencies": [],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 21,
+        "title": "Implement String Processing Utilities",
+        "description": "Create a comprehensive set of string manipulation, validation, and formatting utilities.",
+        "details": "Develop string processing utilities:\n1. Create a StringUtils class with common operations\n2. Implement string validation methods (email, phone, URL, etc.)\n3. Add string formatting functions (capitalize, truncate, etc.)\n4. Create string manipulation helpers (replace, extract, etc.)\n5. Implement text masking (credit card, phone, etc.)\n\nExample implementation:\n```dart\nclass StringUtils {\n  static bool isEmail(String input) {\n    final emailRegex = RegExp(r'^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$');\n    return emailRegex.hasMatch(input);\n  }\n  \n  static bool isPhoneNumber(String input, {String? countryCode}) {\n    // Implementation based on country code\n  }\n  \n  static bool isUrl(String input) {\n    final urlRegex = RegExp(r'^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?$');\n    return urlRegex.hasMatch(input);\n  }\n  \n  static String capitalize(String input) {\n    if (input.isEmpty) return input;\n    return input[0].toUpperCase() + input.substring(1);\n  }\n  \n  static String truncate(String input, int maxLength, {String suffix = '...'}) {\n    if (input.length <= maxLength) return input;\n    return input.substring(0, maxLength - suffix.length) + suffix;\n  }\n  \n  static String mask(String input, {int visibleChars = 4, String maskChar = '*'}) {\n    if (input.length <= visibleChars) return input;\n    final visible = input.substring(input.length - visibleChars);\n    final masked = maskChar * (input.length - visibleChars);\n    return masked + visible;\n  }\n  \n  // Additional utility methods\n}\n```\n\nCreate extension methods on String for common operations.",
+        "testStrategy": "1. Write unit tests for all validation functions\n2. Test formatting with various inputs\n3. Verify masking functionality\n4. Test edge cases (empty strings, null handling)\n5. Create integration tests with real-world string scenarios\n6. Test performance with large strings",
+        "priority": "medium",
+        "dependencies": [],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 22,
+        "title": "Create Validation Utilities",
+        "description": "Develop a flexible validation system for form inputs and data validation with predefined rules and custom validation support.",
+        "details": "Implement a validation system:\n1. Create a Validator class with common validation rules\n2. Implement form field validation helpers\n3. Add support for custom validation rules\n4. Create validation result objects with error messages\n5. Implement validation groups for related fields\n\nExample implementation:\n```dart\nclass Validator {\n  static ValidationResult required(String? value, {String? message}) {\n    if (value == null || value.isEmpty) {\n      return ValidationResult.error(message ?? 'This field is required');\n    }\n    return ValidationResult.success();\n  }\n  \n  static ValidationResult email(String? value, {String? message, bool required = true}) {\n    if (value == null || value.isEmpty) {\n      return required \n        ? ValidationResult.error(message ?? 'Email is required') \n        : ValidationResult.success();\n    }\n    if (!StringUtils.isEmail(value)) {\n      return ValidationResult.error(message ?? 'Invalid email format');\n    }\n    return ValidationResult.success();\n  }\n  \n  static ValidationResult minLength(String? value, int minLength, {String? message, bool required = true}) {\n    if (value == null || value.isEmpty) {\n      return required \n        ? ValidationResult.error(message ?? 'This field is required') \n        : ValidationResult.success();\n    }\n    if (value.length < minLength) {\n      return ValidationResult.error(message ?? 'Must be at least $minLength characters');\n    }\n    return ValidationResult.success();\n  }\n  \n  // Additional validation methods\n  \n  static ValidationResult custom(String? value, bool Function(String?) validator, {String? message}) {\n    if (validator(value)) {\n      return ValidationResult.success();\n    }\n    return ValidationResult.error(message ?? 'Invalid value');\n  }\n}\n\nclass ValidationResult {\n  final bool isValid;\n  final String? errorMessage;\n  \n  const ValidationResult({required this.isValid, this.errorMessage});\n  \n  factory ValidationResult.success() => ValidationResult(isValid: true);\n  factory ValidationResult.error(String message) => ValidationResult(isValid: false, errorMessage: message);\n}\n```\n\nCreate a FormValidator class for validating multiple fields together.",
+        "testStrategy": "1. Write unit tests for all validation rules\n2. Test validation with various inputs\n3. Verify custom validation functionality\n4. Test form validation with multiple fields\n5. Create integration tests with real-world form scenarios\n6. Test error message localization",
+        "priority": "medium",
+        "dependencies": [
+          21
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 23,
+        "title": "Develop API Client Base Class",
+        "description": "Create a standardized API client base class using dio with error handling, authentication, and request/response interceptors.",
+        "details": "Implement an API client base class:\n1. Create a configurable ApiClient class using dio\n2. Implement standard error handling and parsing\n3. Add authentication token management\n4. Create request/response interceptors\n5. Implement retry logic for failed requests\n6. Add logging and monitoring\n\nExample implementation:\n```dart\nclass ApiClient {\n  final Dio _dio;\n  final String baseUrl;\n  \n  ApiClient({\n    required this.baseUrl,\n    Dio? dio,\n    List<Interceptor>? interceptors,\n    bool enableLogging = false,\n  }) : _dio = dio ?? Dio() {\n    _dio.options.baseUrl = baseUrl;\n    _dio.options.connectTimeout = const Duration(seconds: 30);\n    _dio.options.receiveTimeout = const Duration(seconds: 30);\n    \n    if (enableLogging) {\n      _dio.interceptors.add(LogInterceptor(\n        requestBody: true,\n        responseBody: true,\n      ));\n    }\n    \n    if (interceptors != null) {\n      _dio.interceptors.addAll(interceptors);\n    }\n  }\n  \n  Future<T> get<T>(String path, {\n    Map<String, dynamic>? queryParameters,\n    Options? options,\n    CancelToken? cancelToken,\n    T Function(dynamic)? parser,\n  }) async {\n    try {\n      final response = await _dio.get(\n        path,\n        queryParameters: queryParameters,\n        options: options,\n        cancelToken: cancelToken,\n      );\n      \n      return _parseResponse(response, parser);\n    } on DioException catch (e) {\n      throw _handleError(e);\n    }\n  }\n  \n  // Implement post, put, delete, etc.\n  \n  T _parseResponse<T>(Response response, T Function(dynamic)? parser) {\n    if (parser != null) {\n      return parser(response.data);\n    }\n    return response.data as T;\n  }\n  \n  Exception _handleError(DioException error) {\n    // Error handling logic\n  }\n}\n```\n\nCreate specialized API client classes for different API types (REST, GraphQL, etc.).",
+        "testStrategy": "1. Write unit tests for all HTTP methods\n2. Test error handling with various error scenarios\n3. Verify authentication token management\n4. Test interceptors functionality\n5. Create mock server for integration testing\n6. Test retry logic and timeout handling",
+        "priority": "high",
+        "dependencies": [],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 24,
+        "title": "Implement Authentication Token Management",
+        "description": "Create a secure system for managing authentication tokens with refresh capabilities and secure storage.",
+        "details": "Develop an authentication token management system:\n1. Create a TokenManager class for storing and retrieving tokens\n2. Implement token refresh logic\n3. Add secure storage using flutter_secure_storage\n4. Create an authentication interceptor for dio\n5. Implement token expiration handling\n6. Add event callbacks for authentication state changes\n\nExample implementation:\n```dart\nclass TokenManager {\n  final FlutterSecureStorage _storage;\n  final String _accessTokenKey = 'access_token';\n  final String _refreshTokenKey = 'refresh_token';\n  final String _expirationKey = 'expiration';\n  \n  TokenManager({FlutterSecureStorage? storage}) : _storage = storage ?? FlutterSecureStorage();\n  \n  Future<void> saveTokens({\n    required String accessToken,\n    String? refreshToken,\n    DateTime? expiration,\n  }) async {\n    await _storage.write(key: _accessTokenKey, value: accessToken);\n    if (refreshToken != null) {\n      await _storage.write(key: _refreshTokenKey, value: refreshToken);\n    }\n    if (expiration != null) {\n      await _storage.write(key: _expirationKey, value: expiration.toIso8601String());\n    }\n  }\n  \n  Future<String?> getAccessToken() async {\n    return _storage.read(key: _accessTokenKey);\n  }\n  \n  Future<String?> getRefreshToken() async {\n    return _storage.read(key: _refreshTokenKey);\n  }\n  \n  Future<bool> isTokenExpired() async {\n    final expirationString = await _storage.read(key: _expirationKey);\n    if (expirationString == null) return true;\n    \n    final expiration = DateTime.parse(expirationString);\n    return DateTime.now().isAfter(expiration);\n  }\n  \n  Future<void> clearTokens() async {\n    await _storage.delete(key: _accessTokenKey);\n    await _storage.delete(key: _refreshTokenKey);\n    await _storage.delete(key: _expirationKey);\n  }\n}\n\nclass AuthInterceptor extends Interceptor {\n  final TokenManager _tokenManager;\n  final Future<String?> Function(String refreshToken)? refreshTokenCallback;\n  \n  AuthInterceptor({\n    required TokenManager tokenManager,\n    this.refreshTokenCallback,\n  }) : _tokenManager = tokenManager;\n  \n  @override\n  Future<void> onRequest(RequestOptions options, RequestInterceptorHandler handler) async {\n    final token = await _tokenManager.getAccessToken();\n    if (token != null) {\n      options.headers['Authorization'] = 'Bearer $token';\n    }\n    handler.next(options);\n  }\n  \n  @override\n  Future<void> onError(DioException err, ErrorInterceptorHandler handler) async {\n    if (err.response?.statusCode == 401) {\n      // Token refresh logic\n    }\n    handler.next(err);\n  }\n}\n```\n\nCreate documentation on integrating the token management with the API client.",
+        "testStrategy": "1. Write unit tests for token storage and retrieval\n2. Test token refresh logic\n3. Verify secure storage implementation\n4. Test authentication interceptor\n5. Create integration tests with mock authentication server\n6. Test token expiration handling",
+        "priority": "high",
+        "dependencies": [
+          23
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 25,
+        "title": "Create Local Storage Utilities",
+        "description": "Develop wrapper classes and utilities for local storage options including SharedPreferences and secure storage with type safety and encryption.",
+        "details": "Implement local storage utilities:\n1. Create a LocalStorage interface with common operations\n2. Implement SharedPreferencesStorage class\n3. Create SecureStorage class using flutter_secure_storage\n4. Add type-safe methods for different data types\n5. Implement encryption for sensitive data\n6. Create a caching layer with expiration\n\nExample implementation:\n```dart\nabstract class LocalStorage {\n  Future<void> setString(String key, String value);\n  Future<String?> getString(String key);\n  Future<void> setInt(String key, int value);\n  Future<int?> getInt(String key);\n  Future<void> setBool(String key, bool value);\n  Future<bool?> getBool(String key);\n  Future<void> setDouble(String key, double value);\n  Future<double?> getDouble(String key);\n  Future<void> setStringList(String key, List<String> value);\n  Future<List<String>?> getStringList(String key);\n  Future<void> remove(String key);\n  Future<void> clear();\n  Future<bool> containsKey(String key);\n}\n\nclass SharedPreferencesStorage implements LocalStorage {\n  final SharedPreferences _prefs;\n  \n  SharedPreferencesStorage(this._prefs);\n  \n  static Future<SharedPreferencesStorage> getInstance() async {\n    final prefs = await SharedPreferences.getInstance();\n    return SharedPreferencesStorage(prefs);\n  }\n  \n  @override\n  Future<void> setString(String key, String value) async {\n    await _prefs.setString(key, value);\n  }\n  \n  @override\n  Future<String?> getString(String key) async {\n    return _prefs.getString(key);\n  }\n  \n  // Implement other methods\n}\n\nclass SecureStorage implements LocalStorage {\n  final FlutterSecureStorage _storage;\n  \n  SecureStorage({FlutterSecureStorage? storage}) : _storage = storage ?? FlutterSecureStorage();\n  \n  @override\n  Future<void> setString(String key, String value) async {\n    await _storage.write(key: key, value: value);\n  }\n  \n  @override\n  Future<String?> getString(String key) async {\n    return _storage.read(key: key);\n  }\n  \n  // Implement other methods with serialization/deserialization\n}\n```\n\nCreate a CachedStorage class that adds expiration to stored values.",
+        "testStrategy": "1. Write unit tests for all storage operations\n2. Test type safety with various data types\n3. Verify encryption for secure storage\n4. Test caching and expiration\n5. Create integration tests with real device storage\n6. Test performance with large datasets",
+        "priority": "medium",
+        "dependencies": [],
+        "status": "pending",
+        "subtasks": []
+      }
+    ],
+    "metadata": {
+      "created": "2025-06-15T06:30:22.522Z",
+      "updated": "2025-06-15T06:55:12.119Z",
+      "description": "Tasks for master context"
+    }
+  }
+}

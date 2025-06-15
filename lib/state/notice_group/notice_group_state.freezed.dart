@@ -155,9 +155,10 @@ class __$$NoticeGroupStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$NoticeGroupStateImpl implements _NoticeGroupState {
+class _$NoticeGroupStateImpl extends _NoticeGroupState {
   const _$NoticeGroupStateImpl(
-      {this.isLoading = false, this.error = null, this.noticeGroup = null});
+      {this.isLoading = false, this.error = null, this.noticeGroup = null})
+      : super._();
 
   @override
   @JsonKey()
@@ -199,11 +200,12 @@ class _$NoticeGroupStateImpl implements _NoticeGroupState {
           this, _$identity);
 }
 
-abstract class _NoticeGroupState implements NoticeGroupState {
+abstract class _NoticeGroupState extends NoticeGroupState {
   const factory _NoticeGroupState(
       {final bool isLoading,
       final AppException? error,
       final NoticeGroup? noticeGroup}) = _$NoticeGroupStateImpl;
+  const _NoticeGroupState._() : super._();
 
   @override
   bool get isLoading;

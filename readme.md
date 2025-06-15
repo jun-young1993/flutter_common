@@ -10,6 +10,12 @@
 flutter pub run build_runner watch -d
 ```
 
+> runner 실행
+
+```shell
+dart run build_runner build --delete-conflicting-outputs
+```
+
 #### 안드로이드 빌드
 
 > apk build

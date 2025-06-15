@@ -3,13 +3,13 @@ import 'package:flutter_common/models/notice/notice.dart';
 import 'package:flutter_common/widgets/dialogs/report_dialog.dart';
 import 'package:intl/intl.dart';
 
-class NoticeDetailWrapper extends StatelessWidget {
+class NoticeDetailSection extends StatelessWidget {
   final Notice notice;
-  final dateFormatter = DateFormat('yyyy-MM-dd HH:mm');
+  final dateFormatter = DateFormat('yyyy.MM.dd HH:mm');
   final Function(String)? onSubmitReply;
   final Function(ReportReason, String?) onReport;
 
-  NoticeDetailWrapper({
+  NoticeDetailSection({
     super.key,
     required this.notice,
     required this.onReport,
@@ -25,32 +25,43 @@ class NoticeDetailWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          NoticeTitleSection(
-            notice: notice,
-            dateFormatter: dateFormatter,
-            onReport: () => _showReportDialog(context),
-          ),
-          const SizedBox(height: 24),
-          NoticeContentSection(content: notice.content),
-          const SizedBox(height: 32),
-        ],
+    return Scaffold(
+      backgroundColor: const Color(0xFFF7F8FA),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        title: Text(notice.title, style: const TextStyle(color: Colors.black)),
+        iconTheme: const IconThemeData(color: Colors.black),
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            _NoticeHeader(
+              notice: notice,
+              dateFormatter: dateFormatter,
+              onReport: () => _showReportDialog(context),
+            ),
+            const SizedBox(height: 16),
+            _NoticeContentCard(
+              title: notice.title,
+              content: notice.content,
+            ),
+            const SizedBox(height: 32),
+          ],
+        ),
       ),
     );
   }
 }
 
-class NoticeTitleSection extends StatelessWidget {
+class _NoticeHeader extends StatelessWidget {
   final Notice notice;
   final DateFormat dateFormatter;
   final VoidCallback onReport;
 
-  const NoticeTitleSection({
-    super.key,
+  const _NoticeHeader({
     required this.notice,
     required this.dateFormatter,
     required this.onReport,
@@ -59,14 +70,15 @@ class NoticeTitleSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.only(top: 16, left: 16, right: 16),
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(18),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 10,
+            color: Colors.black.withOpacity(0.04),
+            blurRadius: 12,
             offset: const Offset(0, 4),
           ),
         ],
@@ -81,24 +93,64 @@ class NoticeTitleSection extends StatelessWidget {
               Text(
                 dateFormatter.format(notice.createdAt),
                 style: TextStyle(
-                  color: Colors.grey.shade600,
+                  color: Colors.grey.shade500,
                   fontSize: 13,
                   fontWeight: FontWeight.w500,
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 18),
           Text(
             notice.title,
             style: const TextStyle(
-              fontSize: 20,
+              fontSize: 22,
               fontWeight: FontWeight.bold,
               height: 1.4,
+              color: Color(0xFF222222),
             ),
           ),
-          const SizedBox(height: 16),
-          _buildMetaInfo(),
+          const SizedBox(height: 5),
+          Container(
+            height: 1,
+            margin: const EdgeInsets.only(bottom: 5),
+            color: Colors.grey.shade200,
+          ),
+          Text(
+            notice.content,
+            style: const TextStyle(
+              fontSize: 16,
+              height: 1.7,
+              color: Color(0xFF222222),
+            ),
+          ),
+          const SizedBox(height: 8),
+          Row(
+            children: [
+              _buildMetaItem(
+                icon: Icons.person_outline,
+                text: notice.userName,
+              ),
+              const SizedBox(width: 18),
+              _buildMetaItem(
+                icon: Icons.remove_red_eye_outlined,
+                text: '${notice.viewCount}',
+              ),
+              const Spacer(),
+              IconButton(
+                onPressed: onReport,
+                icon: Icon(
+                  Icons.flag_outlined,
+                  size: 22,
+                  color: Colors.grey.shade500,
+                ),
+                style: IconButton.styleFrom(
+                  backgroundColor: Colors.grey.shade100,
+                  padding: const EdgeInsets.all(8),
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );
@@ -107,10 +159,7 @@ class NoticeTitleSection extends StatelessWidget {
   Widget _buildTypeBadge() {
     final isNotice = notice.type == 'NOTICE';
     return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 12,
-        vertical: 6,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
       decoration: BoxDecoration(
         color: isNotice ? Colors.red.shade50 : Colors.blue.shade50,
         borderRadius: BorderRadius.circular(8),
@@ -124,52 +173,16 @@ class NoticeTitleSection extends StatelessWidget {
         children: [
           Icon(
             isNotice ? Icons.campaign_outlined : Icons.article_outlined,
-            size: 14,
+            size: 15,
             color: isNotice ? Colors.red : Colors.blue,
           ),
-          const SizedBox(width: 4),
+          const SizedBox(width: 5),
           Text(
             isNotice ? '공지' : '일반',
             style: TextStyle(
               color: isNotice ? Colors.red : Colors.blue,
               fontSize: 13,
               fontWeight: FontWeight.w600,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildMetaInfo() {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-      decoration: BoxDecoration(
-        color: Colors.grey.shade50,
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Row(
-        children: [
-          _buildMetaItem(
-            icon: Icons.person_outline,
-            text: notice.userName,
-          ),
-          const SizedBox(width: 20),
-          _buildMetaItem(
-            icon: Icons.remove_red_eye_outlined,
-            text: '${notice.viewCount}',
-          ),
-          const Spacer(),
-          IconButton(
-            onPressed: onReport,
-            icon: Icon(
-              Icons.flag_outlined,
-              size: 20,
-              color: Colors.grey.shade600,
-            ),
-            style: IconButton.styleFrom(
-              backgroundColor: Colors.grey.shade100,
-              padding: const EdgeInsets.all(8),
             ),
           ),
         ],
@@ -187,13 +200,13 @@ class NoticeTitleSection extends StatelessWidget {
         Icon(
           icon,
           size: 16,
-          color: Colors.grey.shade600,
+          color: Colors.grey.shade500,
         ),
-        const SizedBox(width: 6),
+        const SizedBox(width: 5),
         Text(
           text,
           style: TextStyle(
-            color: Colors.grey.shade700,
+            color: Colors.grey.shade600,
             fontSize: 13,
             fontWeight: FontWeight.w500,
           ),
@@ -203,18 +216,15 @@ class NoticeTitleSection extends StatelessWidget {
   }
 }
 
-class NoticeContentSection extends StatelessWidget {
+class _NoticeContentCard extends StatelessWidget {
+  final String title;
   final String content;
-
-  const NoticeContentSection({
-    super.key,
-    required this.content,
-  });
+  const _NoticeContentCard({required this.title, required this.content});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
+      margin: const EdgeInsets.symmetric(horizontal: 16),
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -234,38 +244,21 @@ class NoticeContentSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              Container(
-                padding: const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade50,
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Icon(
-                  Icons.description_outlined,
-                  size: 20,
-                  color: Colors.grey.shade700,
-                ),
-              ),
-              const SizedBox(width: 12),
-              Text(
-                '내용',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.grey.shade800,
-                ),
-              ),
-            ],
+          Text(
+            title,
+            style: const TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF222222),
+            ),
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 18),
           Text(
             content,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 16,
               height: 1.7,
-              color: Colors.grey.shade800,
+              color: Color(0xFF222222),
             ),
           ),
         ],

@@ -209,7 +209,7 @@ class __$$VerificationStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$VerificationStateImpl implements _VerificationState {
+class _$VerificationStateImpl extends _VerificationState {
   const _$VerificationStateImpl(
       {this.isLoading = false,
       this.isEmailVerifying = false,
@@ -218,7 +218,8 @@ class _$VerificationStateImpl implements _VerificationState {
       this.error,
       this.expiredAt,
       this.remainingSeconds = 0,
-      this.isVerified = false});
+      this.isVerified = false})
+      : super._();
 
   @override
   @JsonKey()
@@ -282,7 +283,7 @@ class _$VerificationStateImpl implements _VerificationState {
           this, _$identity);
 }
 
-abstract class _VerificationState implements VerificationState {
+abstract class _VerificationState extends VerificationState {
   const factory _VerificationState(
       {final bool isLoading,
       final bool isEmailVerifying,
@@ -292,6 +293,7 @@ abstract class _VerificationState implements VerificationState {
       final DateTime? expiredAt,
       final int remainingSeconds,
       final bool isVerified}) = _$VerificationStateImpl;
+  const _VerificationState._() : super._();
 
   @override
   bool get isLoading;

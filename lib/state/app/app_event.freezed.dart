@@ -18,7 +18,6 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AppEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initilize,
     required TResult Function() initialize,
     required TResult Function() clearError,
     required TResult Function(AppException error) setError,
@@ -27,7 +26,6 @@ mixin _$AppEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initilize,
     TResult? Function()? initialize,
     TResult? Function()? clearError,
     TResult? Function(AppException error)? setError,
@@ -36,7 +34,6 @@ mixin _$AppEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initilize,
     TResult Function()? initialize,
     TResult Function()? clearError,
     TResult Function(AppException error)? setError,
@@ -46,7 +43,6 @@ mixin _$AppEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initilize value) initilize,
     required TResult Function(_Initialize value) initialize,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_SetError value) setError,
@@ -55,7 +51,6 @@ mixin _$AppEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initilize value)? initilize,
     TResult? Function(_Initialize value)? initialize,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_SetError value)? setError,
@@ -64,7 +59,6 @@ mixin _$AppEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initilize value)? initilize,
     TResult Function(_Initialize value)? initialize,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_SetError value)? setError,
@@ -92,129 +86,6 @@ class _$AppEventCopyWithImpl<$Res, $Val extends AppEvent>
 
   /// Create a copy of AppEvent
   /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-abstract class _$$InitilizeImplCopyWith<$Res> {
-  factory _$$InitilizeImplCopyWith(
-          _$InitilizeImpl value, $Res Function(_$InitilizeImpl) then) =
-      __$$InitilizeImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$InitilizeImplCopyWithImpl<$Res>
-    extends _$AppEventCopyWithImpl<$Res, _$InitilizeImpl>
-    implements _$$InitilizeImplCopyWith<$Res> {
-  __$$InitilizeImplCopyWithImpl(
-      _$InitilizeImpl _value, $Res Function(_$InitilizeImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AppEvent
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$InitilizeImpl implements _Initilize {
-  const _$InitilizeImpl();
-
-  @override
-  String toString() {
-    return 'AppEvent.initilize()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitilizeImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initilize,
-    required TResult Function() initialize,
-    required TResult Function() clearError,
-    required TResult Function(AppException error) setError,
-    required TResult Function(bool isLoading) setLoading,
-  }) {
-    return initilize();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initilize,
-    TResult? Function()? initialize,
-    TResult? Function()? clearError,
-    TResult? Function(AppException error)? setError,
-    TResult? Function(bool isLoading)? setLoading,
-  }) {
-    return initilize?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initilize,
-    TResult Function()? initialize,
-    TResult Function()? clearError,
-    TResult Function(AppException error)? setError,
-    TResult Function(bool isLoading)? setLoading,
-    required TResult orElse(),
-  }) {
-    if (initilize != null) {
-      return initilize();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initilize value) initilize,
-    required TResult Function(_Initialize value) initialize,
-    required TResult Function(_ClearError value) clearError,
-    required TResult Function(_SetError value) setError,
-    required TResult Function(_SetLoading value) setLoading,
-  }) {
-    return initilize(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initilize value)? initilize,
-    TResult? Function(_Initialize value)? initialize,
-    TResult? Function(_ClearError value)? clearError,
-    TResult? Function(_SetError value)? setError,
-    TResult? Function(_SetLoading value)? setLoading,
-  }) {
-    return initilize?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initilize value)? initilize,
-    TResult Function(_Initialize value)? initialize,
-    TResult Function(_ClearError value)? clearError,
-    TResult Function(_SetError value)? setError,
-    TResult Function(_SetLoading value)? setLoading,
-    required TResult orElse(),
-  }) {
-    if (initilize != null) {
-      return initilize(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Initilize implements AppEvent {
-  const factory _Initilize() = _$InitilizeImpl;
 }
 
 /// @nodoc
@@ -258,7 +129,6 @@ class _$InitializeImpl implements _Initialize {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initilize,
     required TResult Function() initialize,
     required TResult Function() clearError,
     required TResult Function(AppException error) setError,
@@ -270,7 +140,6 @@ class _$InitializeImpl implements _Initialize {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initilize,
     TResult? Function()? initialize,
     TResult? Function()? clearError,
     TResult? Function(AppException error)? setError,
@@ -282,7 +151,6 @@ class _$InitializeImpl implements _Initialize {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initilize,
     TResult Function()? initialize,
     TResult Function()? clearError,
     TResult Function(AppException error)? setError,
@@ -298,7 +166,6 @@ class _$InitializeImpl implements _Initialize {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initilize value) initilize,
     required TResult Function(_Initialize value) initialize,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_SetError value) setError,
@@ -310,7 +177,6 @@ class _$InitializeImpl implements _Initialize {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initilize value)? initilize,
     TResult? Function(_Initialize value)? initialize,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_SetError value)? setError,
@@ -322,7 +188,6 @@ class _$InitializeImpl implements _Initialize {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initilize value)? initilize,
     TResult Function(_Initialize value)? initialize,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_SetError value)? setError,
@@ -381,7 +246,6 @@ class _$ClearErrorImpl implements _ClearError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initilize,
     required TResult Function() initialize,
     required TResult Function() clearError,
     required TResult Function(AppException error) setError,
@@ -393,7 +257,6 @@ class _$ClearErrorImpl implements _ClearError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initilize,
     TResult? Function()? initialize,
     TResult? Function()? clearError,
     TResult? Function(AppException error)? setError,
@@ -405,7 +268,6 @@ class _$ClearErrorImpl implements _ClearError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initilize,
     TResult Function()? initialize,
     TResult Function()? clearError,
     TResult Function(AppException error)? setError,
@@ -421,7 +283,6 @@ class _$ClearErrorImpl implements _ClearError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initilize value) initilize,
     required TResult Function(_Initialize value) initialize,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_SetError value) setError,
@@ -433,7 +294,6 @@ class _$ClearErrorImpl implements _ClearError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initilize value)? initilize,
     TResult? Function(_Initialize value)? initialize,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_SetError value)? setError,
@@ -445,7 +305,6 @@ class _$ClearErrorImpl implements _ClearError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initilize value)? initilize,
     TResult Function(_Initialize value)? initialize,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_SetError value)? setError,
@@ -543,7 +402,6 @@ class _$SetErrorImpl implements _SetError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initilize,
     required TResult Function() initialize,
     required TResult Function() clearError,
     required TResult Function(AppException error) setError,
@@ -555,7 +413,6 @@ class _$SetErrorImpl implements _SetError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initilize,
     TResult? Function()? initialize,
     TResult? Function()? clearError,
     TResult? Function(AppException error)? setError,
@@ -567,7 +424,6 @@ class _$SetErrorImpl implements _SetError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initilize,
     TResult Function()? initialize,
     TResult Function()? clearError,
     TResult Function(AppException error)? setError,
@@ -583,7 +439,6 @@ class _$SetErrorImpl implements _SetError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initilize value) initilize,
     required TResult Function(_Initialize value) initialize,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_SetError value) setError,
@@ -595,7 +450,6 @@ class _$SetErrorImpl implements _SetError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initilize value)? initilize,
     TResult? Function(_Initialize value)? initialize,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_SetError value)? setError,
@@ -607,7 +461,6 @@ class _$SetErrorImpl implements _SetError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initilize value)? initilize,
     TResult Function(_Initialize value)? initialize,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_SetError value)? setError,
@@ -702,7 +555,6 @@ class _$SetLoadingImpl implements _SetLoading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initilize,
     required TResult Function() initialize,
     required TResult Function() clearError,
     required TResult Function(AppException error) setError,
@@ -714,7 +566,6 @@ class _$SetLoadingImpl implements _SetLoading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initilize,
     TResult? Function()? initialize,
     TResult? Function()? clearError,
     TResult? Function(AppException error)? setError,
@@ -726,7 +577,6 @@ class _$SetLoadingImpl implements _SetLoading {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initilize,
     TResult Function()? initialize,
     TResult Function()? clearError,
     TResult Function(AppException error)? setError,
@@ -742,7 +592,6 @@ class _$SetLoadingImpl implements _SetLoading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initilize value) initilize,
     required TResult Function(_Initialize value) initialize,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_SetError value) setError,
@@ -754,7 +603,6 @@ class _$SetLoadingImpl implements _SetLoading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initilize value)? initilize,
     TResult? Function(_Initialize value)? initialize,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_SetError value)? setError,
@@ -766,7 +614,6 @@ class _$SetLoadingImpl implements _SetLoading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initilize value)? initilize,
     TResult Function(_Initialize value)? initialize,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_SetError value)? setError,

@@ -4,13 +4,10 @@ import 'package:flutter_common/state/app/app_event.dart';
 import 'package:flutter_common/state/app/app_state.dart';
 
 class AppBloc extends Bloc<AppEvent, AppState> {
-  AppBloc() : super(AppState.initilize()) {
+  AppBloc() : super(AppState.initialize()) {
     on<AppEvent>(
       (event, emit) async {
         await event.map(
-          initilize: (e) async {
-            await _handleEvent(emit, () async {});
-          },
           initialize: (e) async {
             await _handleEvent(emit, () async {});
           },

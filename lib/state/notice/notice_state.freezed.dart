@@ -213,7 +213,7 @@ class __$$NoticeStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$NoticeStateImpl implements _NoticeState {
+class _$NoticeStateImpl extends _NoticeState {
   const _$NoticeStateImpl(
       {this.isLoading = false,
       this.error = null,
@@ -222,7 +222,8 @@ class _$NoticeStateImpl implements _NoticeState {
       this.skipCount = 0,
       this.take = 10,
       this.hasMore = false})
-      : _notices = notices;
+      : _notices = notices,
+        super._();
 
   @override
   @JsonKey()
@@ -288,7 +289,7 @@ class _$NoticeStateImpl implements _NoticeState {
       __$$NoticeStateImplCopyWithImpl<_$NoticeStateImpl>(this, _$identity);
 }
 
-abstract class _NoticeState implements NoticeState {
+abstract class _NoticeState extends NoticeState {
   const factory _NoticeState(
       {final bool isLoading,
       final AppException? error,
@@ -297,6 +298,7 @@ abstract class _NoticeState implements NoticeState {
       final int skipCount,
       final int take,
       final bool hasMore}) = _$NoticeStateImpl;
+  const _NoticeState._() : super._();
 
   @override
   bool get isLoading;

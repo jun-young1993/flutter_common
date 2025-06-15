@@ -137,12 +137,13 @@ class __$$GoalStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GoalStateImpl implements _GoalState {
+class _$GoalStateImpl extends _GoalState {
   const _$GoalStateImpl(
       {this.isLoading = false,
       this.error = null,
       final List<Goal> goals = const []})
-      : _goals = goals;
+      : _goals = goals,
+        super._();
 
   @override
   @JsonKey()
@@ -188,11 +189,12 @@ class _$GoalStateImpl implements _GoalState {
       __$$GoalStateImplCopyWithImpl<_$GoalStateImpl>(this, _$identity);
 }
 
-abstract class _GoalState implements GoalState {
+abstract class _GoalState extends GoalState {
   const factory _GoalState(
       {final bool isLoading,
       final AppException? error,
       final List<Goal> goals}) = _$GoalStateImpl;
+  const _GoalState._() : super._();
 
   @override
   bool get isLoading;

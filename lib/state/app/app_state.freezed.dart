@@ -154,9 +154,10 @@ class __$$AppStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AppStateImpl implements _AppState {
+class _$AppStateImpl extends _AppState {
   const _$AppStateImpl(
-      {this.isLoading = false, this.error = null, this.user = null});
+      {this.isLoading = false, this.error = null, this.user = null})
+      : super._();
 
   @override
   @JsonKey()
@@ -196,11 +197,12 @@ class _$AppStateImpl implements _AppState {
       __$$AppStateImplCopyWithImpl<_$AppStateImpl>(this, _$identity);
 }
 
-abstract class _AppState implements AppState {
+abstract class _AppState extends AppState {
   const factory _AppState(
       {final bool isLoading,
       final AppException? error,
       final User? user}) = _$AppStateImpl;
+  const _AppState._() : super._();
 
   @override
   bool get isLoading;

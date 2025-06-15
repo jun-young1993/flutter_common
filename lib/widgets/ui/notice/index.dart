@@ -1,1 +1,1 @@
-export 'notice_detail_wrapper.dart';
+export 'notice_list_item.dart';
