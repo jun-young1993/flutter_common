@@ -1,67 +1,17 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_common/constants/size_constants.dart';
 import 'package:flutter_common/models/notice/notice.dart';
-import 'package:flutter_common/widgets/dialogs/report_dialog.dart';
 import 'package:intl/intl.dart';
 
-class NoticeDetailSection extends StatelessWidget {
-  final Notice notice;
-  final dateFormatter = DateFormat('yyyy.MM.dd HH:mm');
-  final Function(String)? onSubmitReply;
-  final Function(ReportReason, String?) onReport;
-
-  NoticeDetailSection({
-    super.key,
-    required this.notice,
-    required this.onReport,
-    this.onSubmitReply,
-  });
-
-  void _showReportDialog(BuildContext context) {
-    ReportDialog.show(
-      context: context,
-      onReport: onReport,
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFFF7F8FA),
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        title: Text(notice.title, style: const TextStyle(color: Colors.black)),
-        iconTheme: const IconThemeData(color: Colors.black),
-      ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            _NoticeHeader(
-              notice: notice,
-              dateFormatter: dateFormatter,
-              onReport: () => _showReportDialog(context),
-            ),
-            const SizedBox(height: 16),
-            _NoticeContentCard(
-              title: notice.title,
-              content: notice.content,
-            ),
-            const SizedBox(height: 32),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _NoticeHeader extends StatelessWidget {
+class NoticeDetailMainSection extends StatelessWidget {
   final Notice notice;
   final DateFormat dateFormatter;
   final VoidCallback onReport;
 
-  const _NoticeHeader({
+  const NoticeDetailMainSection({
+    super.key,
     required this.notice,
     required this.dateFormatter,
     required this.onReport,
@@ -100,7 +50,7 @@ class _NoticeHeader extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 18),
+          SizedBox(height: SizeConstants.getContainerVerticalMargin(context)),
           Text(
             notice.title,
             style: const TextStyle(
@@ -124,7 +74,7 @@ class _NoticeHeader extends StatelessWidget {
               color: Color(0xFF222222),
             ),
           ),
-          const SizedBox(height: 8),
+          SizedBox(height: SizeConstants.getContainerVerticalMargin(context)),
           Row(
             children: [
               _buildMetaItem(
@@ -212,57 +162,6 @@ class _NoticeHeader extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-class _NoticeContentCard extends StatelessWidget {
-  final String title;
-  final String content;
-  const _NoticeContentCard({required this.title, required this.content});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 16),
-      padding: const EdgeInsets.all(24),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color: Colors.grey.shade100,
-          width: 1,
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.03),
-            blurRadius: 8,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            title,
-            style: const TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: Color(0xFF222222),
-            ),
-          ),
-          const SizedBox(height: 18),
-          Text(
-            content,
-            style: const TextStyle(
-              fontSize: 16,
-              height: 1.7,
-              color: Color(0xFF222222),
-            ),
-          ),
-        ],
-      ),
     );
   }
 }

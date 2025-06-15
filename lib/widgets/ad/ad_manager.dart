@@ -8,68 +8,61 @@ class AdManager {
   AdManager._internal();
 
   bool _isInitialized = false;
-  final bool _isTestMode = kDebugMode; // 테스트 모드 기본값
+  final bool _isTestMode = kDebugMode;
 
-  // 플랫폼별 테스트 광고 ID
+  // 테스트 광고 ID
   static const Map<String, Map<String, String>> _testAdUnitIds = {
     'android': {
-      'banner': 'ca-app-pub-3940256099942544/6300978111', // 고정 크기 배너
+      'banner': 'ca-app-pub-3940256099942544/6300978111',
     },
     'ios': {
       'banner': 'ca-app-pub-3940256099942544/2934735716',
     },
   };
 
-  // 실제 광고 ID
+  // 실제 광고 ID (필요시 채워넣으세요)
   static const Map<String, Map<String, String>> _realAdUnitIds = {
     'android': {
-      'banner': '',
+      'banner': '', // 실제 광고 ID 입력
     },
     'ios': {
-      'banner': '',
+      'banner': '', // 실제 광고 ID 입력
     },
   };
 
-  // 현재 플랫폼의 광고 ID 가져오기
   String _getAdUnitId(String adType) {
     final platform = Platform.isAndroid ? 'android' : 'ios';
     final adUnitIds = _isTestMode ? _testAdUnitIds : _realAdUnitIds;
     final adUnitId = adUnitIds[platform]?[adType];
-
-    if (adUnitId == null || adUnitId == '') {
+    if (adUnitId == null || adUnitId.isEmpty) {
       throw Exception('광고 ID가 존재하지 않습니다.');
     }
-
-    print('AdManager: _getAdUnitId: $adUnitId');
     return adUnitId;
   }
 
-  Future<void> initialize(
-      Map<String, Map<String, String>> realAdUnitIds) async {
+  Future<void> initialize() async {
     if (_isInitialized) return;
-    // _realAdUnitIds is final and can't be reassigned
+
     try {
       await MobileAds.instance.initialize();
       await MobileAds.instance.updateRequestConfiguration(
         RequestConfiguration(
-          testDeviceIds: ['TEST_DEVICE_ID'], // 테스트 기기 ID 추가
+          testDeviceIds: ['TEST_DEVICE_ID'], // 실제 테스트 기기 ID로 교체
         ),
       );
       _isInitialized = true;
-      print('AdManager: 초기화 성공');
+      debugPrint('AdManager: 초기화 성공');
     } catch (e) {
-      print('AdManager: 초기화 실패: $e');
+      debugPrint('AdManager: 초기화 실패: $e');
       rethrow;
     }
   }
 
-  // 배너 광고 생성
-  BannerAd createBannerAd() {
+  BannerAd createBannerAd(
+      {void Function()? onLoaded, void Function(LoadAdError)? onFailed}) {
     if (!_isInitialized) {
       throw Exception('AdManager가 초기화되지 않았습니다.');
     }
-
-    print('AdManager: createBannerAd ${_getAdUnitId('banner')}');
     return BannerAd(
       adUnitId: _getAdUnitId('banner'),
       size: AdSize.banner,
@@ -77,11 +70,13 @@ class AdManager {
       listener: BannerAdListener(
         onAdLoaded: (ad) {
           debugPrint('배너 광고가 로드되었습니다.');
+          onLoaded?.call();
         },
         onAdFailedToLoad: (ad, error) {
-          print('AdManager: onAdFailedToLoad: $error');
           debugPrint('배너 광고 로드 실패: ${error.message}');
+          debugPrint('배너 광고 로드 실패: $error');
           ad.dispose();
+          onFailed?.call(error);
         },
       ),
     );

@@ -1,5 +1,4 @@
 import 'package:flutter_common/extensions/app_exception.dart';
-import 'package:flutter_common/state/lib/handle_event.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter_common/state/base/base_state.dart';
 

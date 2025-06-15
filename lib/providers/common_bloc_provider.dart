@@ -3,11 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_common/flutter_common.dart';
 import 'package:flutter_common/repositories/app_repository.dart';
 import 'package:flutter_common/repositories/notice_group_repository.dart';
+import 'package:flutter_common/repositories/notice_reply_repository.dart';
 import 'package:flutter_common/repositories/notice_repository.dart';
 import 'package:flutter_common/repositories/user_repository.dart';
 import 'package:flutter_common/repositories/verification_repository.dart';
 import 'package:flutter_common/state/notice/notice_bloc.dart';
 import 'package:flutter_common/state/notice_group/notice_group_bloc.dart';
+import 'package:flutter_common/state/notice_reply/notice_reply_bloc.dart';
 import 'package:flutter_common/state/user/user_bloc.dart';
 import 'package:flutter_common/state/verification/verification_bloc.dart';
 import 'package:flutter_common/state/verification/verification_listener.dart';
@@ -47,6 +49,11 @@ class CommonBlocProvider extends StatelessWidget {
           BlocProvider(
             create: (context) => NoticeBloc(
               noticeRepository: context.read<NoticeRepository>(),
+            ),
+          ),
+          BlocProvider(
+            create: (context) => NoticeReplyBloc(
+              noticeReplyRepository: context.read<NoticeReplyRepository>(),
             ),
           ),
           ...(providers ?? []),

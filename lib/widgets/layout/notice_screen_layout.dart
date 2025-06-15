@@ -7,7 +7,7 @@ import 'package:flutter_common/state/notice_group/notice_group_bloc.dart';
 import 'package:flutter_common/state/notice_group/notice_group_event.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_common/state/notice_group/notice_group_selector.dart';
-import 'package:flutter_common/widgets/layout/sections/notice/notice_detail_section.dart';
+import 'package:flutter_common/widgets/layout/notice_detail_screen.dart';
 import 'package:flutter_common/widgets/lib/container/card_container.dart';
 import 'package:flutter_common/widgets/ui/notice/notice_list_item.dart';
 

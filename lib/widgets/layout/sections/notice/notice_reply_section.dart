@@ -1,0 +1,192 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_common/constants/size_constants.dart';
+import 'package:flutter_common/models/notice/notice_reply.dart';
+import 'package:intl/intl.dart';
+
+class NoticeReplySection extends StatefulWidget {
+  final List<NoticeReply> replies;
+  final Function(String) onSubmitReply;
+
+  const NoticeReplySection({
+    super.key,
+    required this.replies,
+    required this.onSubmitReply,
+  });
+
+  @override
+  State<NoticeReplySection> createState() => _NoticeReplySectionState();
+}
+
+class _NoticeReplySectionState extends State<NoticeReplySection> {
+  final _replyController = TextEditingController();
+
+  @override
+  void dispose() {
+    _replyController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding:
+          EdgeInsets.all(SizeConstants.getContainerVerticalMargin(context)),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _buildReplyCount(context),
+          const SizedBox(height: 16),
+          _buildReplyInputField(context),
+          const SizedBox(height: 16),
+          widget.replies.isEmpty
+              ? _buildEmptyNoticeReply()
+              : _buildReplyWrapSection(context),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildReplyCount(BuildContext context) {
+    return Text(
+      '댓글 ${widget.replies.length}개',
+      style: const TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.bold,
+      ),
+    );
+  }
+
+  Widget _buildReplyInputField(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      decoration: BoxDecoration(
+        color: Colors.grey.shade50,
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: Colors.grey.shade200),
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: TextField(
+              controller: _replyController,
+              decoration: const InputDecoration(
+                hintText: '댓글을 입력하세요',
+                border: InputBorder.none,
+              ),
+              maxLines: 1,
+            ),
+          ),
+          TextButton(
+            onPressed: () {
+              if (_replyController.text.trim().isNotEmpty) {
+                widget.onSubmitReply(_replyController.text);
+                _replyController.clear();
+              }
+            },
+            child: const Text('등록'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildReplyWrapSection(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // 댓글 목록
+        ListView.separated(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: widget.replies.length,
+          separatorBuilder: (context, index) => const Divider(height: 24),
+          itemBuilder: (context, index) {
+            final reply = widget.replies[index];
+            return NoticeReplyItem(reply: reply);
+          },
+        ),
+      ],
+    );
+  }
+
+  Widget _buildEmptyNoticeReply() {
+    return Center(
+      child: Column(
+        children: [
+          const SizedBox(height: 16),
+          Icon(
+            Icons.chat_bubble_outline,
+            size: 48,
+            color: Colors.grey.shade300,
+          ),
+          const SizedBox(height: 8),
+          Text(
+            '아직 댓글이 없습니다',
+            style: TextStyle(
+              color: Colors.grey.shade600,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class NoticeReplyItem extends StatelessWidget {
+  final NoticeReply reply;
+  final dateFormatter = DateFormat('yyyy-MM-dd HH:mm');
+
+  NoticeReplyItem({
+    super.key,
+    required this.reply,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: Colors.grey.shade50,
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // 댓글 작성자 정보
+          Row(
+            children: [
+              const Icon(
+                Icons.person_outline,
+                size: 16,
+                color: Colors.grey,
+              ),
+              const SizedBox(width: 4),
+              Text(
+                reply.userName,
+                style: const TextStyle(
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              const SizedBox(width: 8),
+              Text(
+                dateFormatter.format(reply.createdAt),
+                style: TextStyle(
+                  color: Colors.grey.shade600,
+                  fontSize: 12,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+          // 댓글 내용
+          Text(
+            reply.content,
+            style: const TextStyle(
+              height: 1.5,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

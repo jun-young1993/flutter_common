@@ -28,7 +28,7 @@ class _AppScreenState extends State<AppScreen> {
   AppBloc get appBloc => widget.bloc;
 
   @override
-  Future<void> initState() async {
+  void initState() {
     super.initState();
     _screens = widget.screens;
   }

@@ -4,6 +4,7 @@ import 'package:flutter_common/constants/juny_constants.dart';
 import 'package:flutter_common/network/dio_client.dart';
 import 'package:flutter_common/repositories/app_repository.dart';
 import 'package:flutter_common/repositories/notice_group_repository.dart';
+import 'package:flutter_common/repositories/notice_reply_repository.dart';
 import 'package:flutter_common/repositories/notice_repository.dart';
 import 'package:flutter_common/repositories/verification_repository.dart';
 import 'package:flutter_common/repositories/user_repository.dart';
@@ -49,6 +50,9 @@ class CommonRepositoryProvider extends StatelessWidget {
         ),
         RepositoryProvider<NoticeRepository>(
           create: (context) => NoticeDefaultRepository(),
+        ),
+        RepositoryProvider<NoticeReplyRepository>(
+          create: (context) => NoticeReplyDefaultRepository(),
         ),
         ...(providers ?? []),
       ],

@@ -9,7 +9,7 @@ import 'package:flutter_common/state/base/base_state.dart';
 /// - 로딩 상태 관리
 /// - 로깅 및 디버깅
 /// - State의 copyWith 패턴 지원
-abstract class BaseBloc<Event, State extends BaseState>
+abstract class BaseBloc<Event, State extends BaseStateMixin>
     extends Bloc<Event, State> {
   BaseBloc(State initialState) : super(initialState);
 

@@ -1,7 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_common/extensions/app_exception.dart';
 import 'package:flutter_common/repositories/verification_repository.dart';
-import 'package:flutter_common/state/lib/handle_event.dart';
 import 'package:flutter_common/state/verification/verification_event.dart';
 import 'package:flutter_common/state/verification/verification_state.dart';
 import 'dart:async';

@@ -3,7 +3,7 @@ import 'package:flutter_common/widgets/ad/ad_manager.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class BannerAdWidget extends StatefulWidget {
-  const BannerAdWidget({Key? key}) : super(key: key);
+  const BannerAdWidget({super.key});
 
   @override
   State<BannerAdWidget> createState() => _BannerAdWidgetState();
@@ -16,22 +16,17 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
   @override
   void initState() {
     super.initState();
-    _loadBannerAd();
+    _loadAd();
   }
 
-  void _loadBannerAd() {
-    print('BannerAdWidget: _loadBannerAd');
-    _bannerAd = AdManager().createBannerAd()
-      ..load().then((value) {
-        if (mounted) {
-          setState(() {
-            print('BannerAdWidget: _isAdLoaded: $_isAdLoaded');
-            _isAdLoaded = true;
-          });
-        }
-      }).catchError((error) {
-        print('BannerAdWidget: _loadBannerAd: $error');
-      });
+  Future<void> _loadAd() async {
+    await AdManager().initialize();
+    final bannerAd = AdManager().createBannerAd(
+      onLoaded: () => setState(() => _isAdLoaded = true),
+      onFailed: (error) => setState(() => _isAdLoaded = false),
+    );
+    await bannerAd.load();
+    setState(() => _bannerAd = bannerAd);
   }
 
   @override
@@ -42,15 +37,7 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (!_isAdLoaded) {
-      return const SizedBox(
-        height: 50,
-        child: Center(
-          child: CircularProgressIndicator(),
-        ),
-      );
-    }
-
+    if (!_isAdLoaded || _bannerAd == null) return const SizedBox.shrink();
     return SizedBox(
       width: _bannerAd!.size.width.toDouble(),
       height: _bannerAd!.size.height.toDouble(),
