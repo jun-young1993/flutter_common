@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_common/models/chat/chat_message.dart';
 import 'package:flutter_common/models/chat/enum/chat_message_sender_type.enum.dart';
 import 'package:flutter_common/widgets/ui/chat/chat_input_field.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key, required this.onSendMessage, this.messages});
@@ -139,7 +140,7 @@ class _ChatScreenState extends State<ChatScreen> {
           ],
         ),
         actions: [
-          if (widget.messages != null)
+          if (widget.messages?.isNotEmpty ?? false)
             IconButton(
               icon: const Icon(Icons.delete_sweep),
               tooltip: 'Clear Chat History',
@@ -159,15 +160,13 @@ class _ChatScreenState extends State<ChatScreen> {
             child: ListView.builder(
               controller: _scrollController,
               padding: const EdgeInsets.all(8.0),
-              // itemCount: messages.length,
+              itemCount: widget.messages?.length ?? 0,
               itemBuilder: (context, index) {
-                return null;
-
-                // final message = messages[index];
-                // return MessageBubble(
-                //   message: message,
-                //   serverConfigs: serverConfigs,
-                // );
+                final message = widget.messages?[index];
+                return MessageBubble(
+                  message: message,
+                  // serverConfigs: serverConfigs,
+                );
               },
             ),
           ),
@@ -185,6 +184,91 @@ class _ChatScreenState extends State<ChatScreen> {
             onSend: _sendMessage,
           ),
         ],
+      ),
+    );
+  }
+}
+
+class MessageBubble extends StatelessWidget {
+  final ChatMessage message;
+  // final List<McpServerConfig> serverConfigs;
+
+  const MessageBubble({
+    super.key,
+    required this.message,
+    // required this.serverConfigs,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isUser = message.isUser;
+
+    Widget messageContent;
+    List<Widget> children = [];
+
+    // Render text or markdown
+    if (isUser) {
+      messageContent = SelectableText(message.text);
+    } else {
+      // Handle potential Markdown rendering errors gracefully
+      try {
+        messageContent = MarkdownBody(data: message.text, selectable: true);
+      } catch (e) {
+        debugPrint("Markdown rendering error: $e");
+        messageContent = SelectableText(
+          "Error rendering message content.\n\n${message.text}",
+        );
+      }
+    }
+    children.add(messageContent);
+
+    // Add tool call information if present
+    if (!isUser && message.toolName != null) {
+      children.add(const Divider(height: 10, thickness: 0.5));
+
+      // // Try to use pre-fetched name, otherwise look up from configs
+      // String serverDisplayName = message.sourceServerName ??
+      //     serverConfigs
+      //         .firstWhereOrNull((s) => s.id == message.sourceServerId)
+      //         ?.name ??
+      //     (message.sourceServerId != null
+      //         ? 'Server ${message.sourceServerId!.substring(0, 6)}...'
+      //         : 'Unknown Server');
+
+      // String toolSourceInfo =
+      //     "Tool Called: ${message.toolName} (on $serverDisplayName)";
+
+      // children.add(
+      //   Padding(
+      //     padding: const EdgeInsets.only(top: 4.0),
+      //     child: Text(
+      //       toolSourceInfo,
+      //       style: TextStyle(
+      //         fontSize: 11,
+      //         fontStyle: FontStyle.italic,
+      //         color: theme.colorScheme.onSecondaryContainer.withAlpha(204),
+      //       ),
+      //     ),
+      //   ),
+      // );
+    }
+
+    return Align(
+      alignment: isUser ? Alignment.centerRight : Alignment.centerLeft,
+      child: Container(
+        margin: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
+        padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 14.0),
+        decoration: BoxDecoration(
+          color: isUser
+              ? theme.colorScheme.primaryContainer
+              : theme.colorScheme.secondaryContainer,
+          borderRadius: BorderRadius.circular(16.0),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: children,
+        ),
       ),
     );
   }

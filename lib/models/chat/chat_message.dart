@@ -15,4 +15,6 @@ class ChatMessage with _$ChatMessage {
   const ChatMessage._();
   factory ChatMessage.fromJson(Map<String, dynamic> json) =>
       _$ChatMessageFromJson(json);
+
+  bool get isUser => senderType == ChatMessageSenderType.user;
 }

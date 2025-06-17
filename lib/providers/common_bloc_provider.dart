@@ -56,6 +56,7 @@ class CommonBlocProvider extends StatelessWidget {
               noticeReplyRepository: context.read<NoticeReplyRepository>(),
             ),
           ),
+          BlocProvider(create: (context) => ChatBloc()),
           ...(providers ?? []),
         ],
         child: MultiBlocListener(
