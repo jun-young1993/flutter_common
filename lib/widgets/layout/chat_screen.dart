@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_common/models/chat/chat_message.dart';
+import 'package:flutter_common/models/chat/enum/chat_message_sender_type.enum.dart';
 import 'package:flutter_common/widgets/ui/chat/chat_input_field.dart';
 
 class ChatScreen extends StatefulWidget {
-  const ChatScreen({super.key});
+  const ChatScreen({super.key, required this.onSendMessage, this.messages});
+  final List<ChatMessage>? messages;
+  final Function(ChatMessage) onSendMessage;
 
   @override
   State<ChatScreen> createState() => _ChatScreenState();
@@ -26,6 +30,13 @@ class _ChatScreenState extends State<ChatScreen> {
     if (text.trim().isNotEmpty) {
       final messageToSend = text.trim();
       _textController.clear();
+      final message = ChatMessage(
+        text: messageToSend,
+        senderType: ChatMessageSenderType.user,
+        toolCalls: null,
+        createdAt: DateTime.now(),
+      );
+      widget.onSendMessage(message);
       // Call the notifier method to send the message
       // ref.read(chatProvider.notifier).sendMessage(messageToSend);
     }
@@ -128,12 +139,12 @@ class _ChatScreenState extends State<ChatScreen> {
           ],
         ),
         actions: [
-          // if (messages.isNotEmpty)
-          //   IconButton(
-          //     icon: const Icon(Icons.delete_sweep),
-          //     tooltip: 'Clear Chat History',
-          //     onPressed: _clearChat,
-          //   ),
+          if (widget.messages != null)
+            IconButton(
+              icon: const Icon(Icons.delete_sweep),
+              tooltip: 'Clear Chat History',
+              onPressed: _clearChat,
+            ),
           IconButton(
             icon: const Icon(Icons.settings),
             tooltip: 'Settings',
