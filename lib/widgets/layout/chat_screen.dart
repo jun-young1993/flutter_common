@@ -164,7 +164,7 @@ class _ChatScreenState extends State<ChatScreen> {
               itemBuilder: (context, index) {
                 final message = widget.messages?[index];
                 return MessageBubble(
-                  message: message,
+                  message: message!,
                   // serverConfigs: serverConfigs,
                 );
               },
@@ -224,35 +224,35 @@ class MessageBubble extends StatelessWidget {
     children.add(messageContent);
 
     // Add tool call information if present
-    if (!isUser && message.toolName != null) {
-      children.add(const Divider(height: 10, thickness: 0.5));
+    // if (!isUser && message.toolName != null) {
+    // children.add(const Divider(height: 10, thickness: 0.5));
 
-      // // Try to use pre-fetched name, otherwise look up from configs
-      // String serverDisplayName = message.sourceServerName ??
-      //     serverConfigs
-      //         .firstWhereOrNull((s) => s.id == message.sourceServerId)
-      //         ?.name ??
-      //     (message.sourceServerId != null
-      //         ? 'Server ${message.sourceServerId!.substring(0, 6)}...'
-      //         : 'Unknown Server');
+    // // Try to use pre-fetched name, otherwise look up from configs
+    // String serverDisplayName = message.sourceServerName ??
+    //     serverConfigs
+    //         .firstWhereOrNull((s) => s.id == message.sourceServerId)
+    //         ?.name ??
+    //     (message.sourceServerId != null
+    //         ? 'Server ${message.sourceServerId!.substring(0, 6)}...'
+    //         : 'Unknown Server');
 
-      // String toolSourceInfo =
-      //     "Tool Called: ${message.toolName} (on $serverDisplayName)";
+    // String toolSourceInfo =
+    //     "Tool Called: ${message.toolName} (on $serverDisplayName)";
 
-      // children.add(
-      //   Padding(
-      //     padding: const EdgeInsets.only(top: 4.0),
-      //     child: Text(
-      //       toolSourceInfo,
-      //       style: TextStyle(
-      //         fontSize: 11,
-      //         fontStyle: FontStyle.italic,
-      //         color: theme.colorScheme.onSecondaryContainer.withAlpha(204),
-      //       ),
-      //     ),
-      //   ),
-      // );
-    }
+    // children.add(
+    //   Padding(
+    //     padding: const EdgeInsets.only(top: 4.0),
+    //     child: Text(
+    //       toolSourceInfo,
+    //       style: TextStyle(
+    //         fontSize: 11,
+    //         fontStyle: FontStyle.italic,
+    //         color: theme.colorScheme.onSecondaryContainer.withAlpha(204),
+    //       ),
+    //     ),
+    //   ),
+    // );
+    // }
 
     return Align(
       alignment: isUser ? Alignment.centerRight : Alignment.centerLeft,
