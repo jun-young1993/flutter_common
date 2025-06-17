@@ -16,44 +16,43 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ChatEvent {
-  ChatMessage get message => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ChatMessage message) sendMessage,
+    required TResult Function() initialize,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ChatMessage message)? sendMessage,
+    TResult? Function()? initialize,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ChatMessage message)? sendMessage,
+    TResult Function()? initialize,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(SendMessage value) sendMessage,
+    required TResult Function(Initialize value) initialize,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(SendMessage value)? sendMessage,
+    TResult? Function(Initialize value)? initialize,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SendMessage value)? sendMessage,
+    TResult Function(Initialize value)? initialize,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  /// Create a copy of ChatEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $ChatEventCopyWith<ChatEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -61,10 +60,6 @@ mixin _$ChatEvent {
 abstract class $ChatEventCopyWith<$Res> {
   factory $ChatEventCopyWith(ChatEvent value, $Res Function(ChatEvent) then) =
       _$ChatEventCopyWithImpl<$Res, ChatEvent>;
-  @useResult
-  $Res call({ChatMessage message});
-
-  $ChatMessageCopyWith<$Res> get message;
 }
 
 /// @nodoc
@@ -79,41 +74,16 @@ class _$ChatEventCopyWithImpl<$Res, $Val extends ChatEvent>
 
   /// Create a copy of ChatEvent
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? message = null,
-  }) {
-    return _then(_value.copyWith(
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as ChatMessage,
-    ) as $Val);
-  }
-
-  /// Create a copy of ChatEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ChatMessageCopyWith<$Res> get message {
-    return $ChatMessageCopyWith<$Res>(_value.message, (value) {
-      return _then(_value.copyWith(message: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$$SendMessageImplCopyWith<$Res>
-    implements $ChatEventCopyWith<$Res> {
+abstract class _$$SendMessageImplCopyWith<$Res> {
   factory _$$SendMessageImplCopyWith(
           _$SendMessageImpl value, $Res Function(_$SendMessageImpl) then) =
       __$$SendMessageImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({ChatMessage message});
 
-  @override
   $ChatMessageCopyWith<$Res> get message;
 }
 
@@ -138,6 +108,16 @@ class __$$SendMessageImplCopyWithImpl<$Res>
           : message // ignore: cast_nullable_to_non_nullable
               as ChatMessage,
     ));
+  }
+
+  /// Create a copy of ChatEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ChatMessageCopyWith<$Res> get message {
+    return $ChatMessageCopyWith<$Res>(_value.message, (value) {
+      return _then(_value.copyWith(message: value));
+    });
   }
 }
 
@@ -177,6 +157,7 @@ class _$SendMessageImpl implements SendMessage {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ChatMessage message) sendMessage,
+    required TResult Function() initialize,
   }) {
     return sendMessage(message);
   }
@@ -185,6 +166,7 @@ class _$SendMessageImpl implements SendMessage {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ChatMessage message)? sendMessage,
+    TResult? Function()? initialize,
   }) {
     return sendMessage?.call(message);
   }
@@ -193,6 +175,7 @@ class _$SendMessageImpl implements SendMessage {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ChatMessage message)? sendMessage,
+    TResult Function()? initialize,
     required TResult orElse(),
   }) {
     if (sendMessage != null) {
@@ -205,6 +188,7 @@ class _$SendMessageImpl implements SendMessage {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(SendMessage value) sendMessage,
+    required TResult Function(Initialize value) initialize,
   }) {
     return sendMessage(this);
   }
@@ -213,6 +197,7 @@ class _$SendMessageImpl implements SendMessage {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(SendMessage value)? sendMessage,
+    TResult? Function(Initialize value)? initialize,
   }) {
     return sendMessage?.call(this);
   }
@@ -221,6 +206,7 @@ class _$SendMessageImpl implements SendMessage {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SendMessage value)? sendMessage,
+    TResult Function(Initialize value)? initialize,
     required TResult orElse(),
   }) {
     if (sendMessage != null) {
@@ -233,13 +219,116 @@ class _$SendMessageImpl implements SendMessage {
 abstract class SendMessage implements ChatEvent {
   const factory SendMessage(final ChatMessage message) = _$SendMessageImpl;
 
-  @override
   ChatMessage get message;
 
   /// Create a copy of ChatEvent
   /// with the given fields replaced by the non-null parameter values.
-  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SendMessageImplCopyWith<_$SendMessageImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$InitializeImplCopyWith<$Res> {
+  factory _$$InitializeImplCopyWith(
+          _$InitializeImpl value, $Res Function(_$InitializeImpl) then) =
+      __$$InitializeImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$InitializeImplCopyWithImpl<$Res>
+    extends _$ChatEventCopyWithImpl<$Res, _$InitializeImpl>
+    implements _$$InitializeImplCopyWith<$Res> {
+  __$$InitializeImplCopyWithImpl(
+      _$InitializeImpl _value, $Res Function(_$InitializeImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ChatEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$InitializeImpl implements Initialize {
+  const _$InitializeImpl();
+
+  @override
+  String toString() {
+    return 'ChatEvent.initialize()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$InitializeImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ChatMessage message) sendMessage,
+    required TResult Function() initialize,
+  }) {
+    return initialize();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(ChatMessage message)? sendMessage,
+    TResult? Function()? initialize,
+  }) {
+    return initialize?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ChatMessage message)? sendMessage,
+    TResult Function()? initialize,
+    required TResult orElse(),
+  }) {
+    if (initialize != null) {
+      return initialize();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(SendMessage value) sendMessage,
+    required TResult Function(Initialize value) initialize,
+  }) {
+    return initialize(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(SendMessage value)? sendMessage,
+    TResult? Function(Initialize value)? initialize,
+  }) {
+    return initialize?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SendMessage value)? sendMessage,
+    TResult Function(Initialize value)? initialize,
+    required TResult orElse(),
+  }) {
+    if (initialize != null) {
+      return initialize(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Initialize implements ChatEvent {
+  const factory Initialize() = _$InitializeImpl;
 }

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_common/models/chat/chat_message.dart';
 import 'package:flutter_common/models/chat/enum/chat_message_sender_type.enum.dart';
+import 'package:flutter_common/state/chat/chat_bloc.dart';
+import 'package:flutter_common/state/chat/chat_event.dart';
 import 'package:flutter_common/widgets/ui/chat/chat_input_field.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 
@@ -17,6 +20,12 @@ class _ChatScreenState extends State<ChatScreen> {
   final TextEditingController _textController = TextEditingController();
   final ScrollController _scrollController = ScrollController();
   final FocusNode _inputFocusNode = FocusNode();
+  ChatBloc get chatBloc => context.read<ChatBloc>();
+  @override
+  void initState() {
+    super.initState();
+    chatBloc.add(const ChatEvent.initialize());
+  }
 
   @override
   void dispose() {

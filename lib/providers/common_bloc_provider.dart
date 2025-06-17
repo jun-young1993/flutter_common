@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_common/flutter_common.dart';
-import 'package:flutter_common/repositories/app_repository.dart';
-import 'package:flutter_common/repositories/notice_group_repository.dart';
-import 'package:flutter_common/repositories/notice_reply_repository.dart';
-import 'package:flutter_common/repositories/notice_repository.dart';
-import 'package:flutter_common/repositories/user_repository.dart';
-import 'package:flutter_common/repositories/verification_repository.dart';
 import 'package:flutter_common/state/notice/notice_bloc.dart';
 import 'package:flutter_common/state/notice_group/notice_group_bloc.dart';
 import 'package:flutter_common/state/notice_reply/notice_reply_bloc.dart';
@@ -17,7 +11,11 @@ import 'package:flutter_common/state/verification/verification_state.dart';
 import 'package:flutter_common/widgets/toast/toast.dart';
 
 class CommonBlocProvider extends StatelessWidget {
-  const CommonBlocProvider({super.key, required this.child, this.providers});
+  const CommonBlocProvider({
+    super.key,
+    required this.child,
+    this.providers,
+  });
   final Widget child;
   final List<BlocProvider>? providers;
 
@@ -56,7 +54,9 @@ class CommonBlocProvider extends StatelessWidget {
               noticeReplyRepository: context.read<NoticeReplyRepository>(),
             ),
           ),
-          BlocProvider(create: (context) => ChatBloc()),
+          BlocProvider(
+            create: (context) => ChatBloc(context.read<LlmClientRepository>()),
+          ),
           ...(providers ?? []),
         ],
         child: MultiBlocListener(
