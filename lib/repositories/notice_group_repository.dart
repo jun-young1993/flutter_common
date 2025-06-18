@@ -6,13 +6,13 @@ abstract class NoticeGroupRepository {
 }
 
 class NoticeGroupDefaultRepository extends NoticeGroupRepository {
-  final DioClient _dioClient;
+  final DioClient dioClient;
 
-  NoticeGroupDefaultRepository() : _dioClient = DioClient();
+  NoticeGroupDefaultRepository({required this.dioClient});
 
   @override
   Future<NoticeGroup> findOneByName(String name) async {
-    final response = await _dioClient.get('/notice-group/name/$name');
+    final response = await dioClient.get('/notice-group/name/$name');
     return NoticeGroup.fromJson(response.data);
   }
 }

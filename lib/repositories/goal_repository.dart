@@ -14,13 +14,13 @@ abstract class GoalRepository {
 }
 
 class GoalDefaultRepository extends GoalRepository {
-  final DioClient _dioClient;
+  final DioClient dioClient;
 
-  GoalDefaultRepository() : _dioClient = DioClient();
+  GoalDefaultRepository({required this.dioClient});
 
   @override
   Future<List<Goal>> getGoals() async {
-    final response = await _dioClient.get<dynamic>('/goals');
+    final response = await dioClient.get<dynamic>('/goals');
 
     if (response.statusCode == 200) {
       final List<dynamic> data = response.data as List<dynamic>;
@@ -32,7 +32,7 @@ class GoalDefaultRepository extends GoalRepository {
   @override
   Future<Goal> createGoal(CreateGoalDto goal) async {
     // TODO: implement createGoal
-    final response = await _dioClient.post(
+    final response = await dioClient.post(
       '/goals',
       data: goal.toJson(),
     );
@@ -65,7 +65,7 @@ class GoalDefaultRepository extends GoalRepository {
 
   @override
   Future<Goal> addGoalProgress(CreateGoalProgressDto progress) async {
-    final response = await _dioClient.post(
+    final response = await dioClient.post(
       '/goals/${progress.goalId}/users/${progress.goalUserId}/progress',
       data: progress.toJson(),
     );

@@ -19,7 +19,6 @@ class NoticeBloc extends Bloc<NoticeEvent, NoticeState> {
               () async {
                 final notices = await _noticeRepository.findAll(
                     e.name, state.skipCount * state.take, state.take);
-                print('🔥 [DEBUG] notices: $notices');
                 emit(state.copyWith(
                     notices: [...(state.notices ?? []), ...(notices ?? [])],
                     hasMore: notices?.isNotEmpty ?? false));

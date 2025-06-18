@@ -47,13 +47,15 @@ class CommonRepositoryProvider extends StatelessWidget {
           ),
         ),
         RepositoryProvider<NoticeGroupRepository>(
-          create: (context) => NoticeGroupDefaultRepository(),
+          create: (context) =>
+              NoticeGroupDefaultRepository(dioClient: dioClient),
         ),
         RepositoryProvider<NoticeRepository>(
-          create: (context) => NoticeDefaultRepository(),
+          create: (context) => NoticeDefaultRepository(dioClient: dioClient),
         ),
         RepositoryProvider<NoticeReplyRepository>(
-          create: (context) => NoticeReplyDefaultRepository(),
+          create: (context) =>
+              NoticeReplyDefaultRepository(dioClient: dioClient),
         ),
         RepositoryProvider<LlmClientRepository>(
           create: (context) => LlmClientDefaultRepository(),

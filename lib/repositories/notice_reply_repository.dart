@@ -7,13 +7,13 @@ abstract class NoticeReplyRepository {
 }
 
 class NoticeReplyDefaultRepository extends NoticeReplyRepository {
-  final DioClient _dioClient;
+  final DioClient dioClient;
 
-  NoticeReplyDefaultRepository() : _dioClient = DioClient();
+  NoticeReplyDefaultRepository({required this.dioClient});
 
   @override
   Future<List<NoticeReply>> findAll(String noticeId) async {
-    final response = await _dioClient.get('/notice-reply/notice/$noticeId');
+    final response = await dioClient.get('/notice-reply/notice/$noticeId');
     return (response.data as List<dynamic>)
         .map((e) => NoticeReply.fromJson(e as Map<String, dynamic>))
         .toList();
@@ -23,7 +23,7 @@ class NoticeReplyDefaultRepository extends NoticeReplyRepository {
   Future<NoticeReply> add(
       String noticeId, String content, String userId) async {
     final response =
-        await _dioClient.post('/notice-reply/notice/$noticeId', data: {
+        await dioClient.post('/notice-reply/notice/$noticeId', data: {
       'content': content,
       'userId': userId,
     });

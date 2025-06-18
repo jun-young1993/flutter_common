@@ -6,13 +6,13 @@ abstract class NoticeRepository {
 }
 
 class NoticeDefaultRepository extends NoticeRepository {
-  final DioClient _dioClient;
+  final DioClient dioClient;
 
-  NoticeDefaultRepository() : _dioClient = DioClient();
+  NoticeDefaultRepository({required this.dioClient});
 
   @override
   Future<List<Notice>?> findAll(String name, int skip, int take) async {
-    final response = await _dioClient
+    final response = await dioClient
         .get('/notice/notice-group/name/$name/?skip=$skip&take=$take');
     if (response.data == null) {
       throw Exception('Response data is null');

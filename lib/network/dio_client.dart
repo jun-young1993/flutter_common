@@ -4,14 +4,30 @@ import 'package:flutter_common/constants/juny_constants.dart';
 import 'package:flutter_common/extensions/app_exception.dart';
 
 class DioClient {
-  static final DioClient _instance = DioClient._internal(debugBaseUrl: null);
+  static DioClient? _instance;
   late final Dio _dio;
   final String? debugBaseUrl;
-  factory DioClient({String? debugBaseUrl}) {
-    return _instance;
+  final String? baseUrl;
+  final bool? useLogInterceptor;
+
+  factory DioClient({
+    String? debugBaseUrl,
+    String? baseUrl,
+    bool? useLogInterceptor,
+  }) {
+    _instance = DioClient._internal(
+      debugBaseUrl: debugBaseUrl,
+      baseUrl: baseUrl,
+      useLogInterceptor: useLogInterceptor,
+    );
+    return _instance!;
   }
 
-  DioClient._internal({this.debugBaseUrl}) {
+  DioClient._internal({
+    this.debugBaseUrl,
+    this.baseUrl,
+    this.useLogInterceptor,
+  }) {
     _dio = Dio(
       BaseOptions(
         baseUrl: _getBaseUrl(),
@@ -23,7 +39,7 @@ class DioClient {
       ),
     );
 
-    if (kDebugMode) {
+    if (kDebugMode && useLogInterceptor == true) {
       _dio.interceptors.add(LogInterceptor(
         requestBody: true,
         responseBody: true,
@@ -32,16 +48,16 @@ class DioClient {
   }
 
   String _getBaseUrl() {
-    if (debugBaseUrl != null) {
-      return debugBaseUrl!;
-    }
     if (kDebugMode) {
-      // return 'https://juny.digital';
-
+      if (debugBaseUrl != null) {
+        return debugBaseUrl!;
+      }
       return 'http://127.0.0.1:3000';
     }
-    // TODO: 실제 운영 서버 URL로 변경
-    return JunyConstants.apiBaseUrl;
+    if (baseUrl == null) {
+      throw Exception('baseUrl is not set');
+    }
+    return baseUrl!;
   }
 
   Future<Response<T>> get<T>(
