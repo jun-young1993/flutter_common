@@ -7,6 +7,7 @@ import 'package:flutter_common/state/chat/chat_event.dart';
 import 'package:flutter_common/state/chat/chat_selector.dart';
 import 'package:flutter_common/widgets/ui/chat/chat_input_field.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:uuid/uuid.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key, required this.onSendMessage, this.messages});
@@ -42,6 +43,7 @@ class _ChatScreenState extends State<ChatScreen> {
       final messageToSend = text.trim();
       _textController.clear();
       final message = ChatMessage(
+        id: const Uuid().v4(),
         text: messageToSend,
         senderType: ChatMessageSenderType.user,
         toolCalls: null,
@@ -262,6 +264,14 @@ class MessageBubble extends StatelessWidget {
     //   ),
     // );
     // }
+    if (message.isLoading == true) {
+      children.add(const Center(
+          child: Padding(
+              padding: EdgeInsets.only(top: 4.0),
+              child: Row(
+                children: [Text('Thinking...'), CircularProgressIndicator()],
+              ))));
+    }
 
     return Align(
       alignment: isUser ? Alignment.centerRight : Alignment.centerLeft,

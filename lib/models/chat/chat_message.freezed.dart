@@ -14,20 +14,14 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-ChatMessage _$ChatMessageFromJson(Map<String, dynamic> json) {
-  return _ChatMessage.fromJson(json);
-}
-
 /// @nodoc
 mixin _$ChatMessage {
   String get text => throw _privateConstructorUsedError;
   ChatMessageSenderType get senderType => throw _privateConstructorUsedError;
-  List<Map<String, dynamic>>? get toolCalls =>
-      throw _privateConstructorUsedError;
+  List<LlmToolCall>? get toolCalls => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
-
-  /// Serializes this ChatMessage to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
 
   /// Create a copy of ChatMessage
   /// with the given fields replaced by the non-null parameter values.
@@ -45,8 +39,10 @@ abstract class $ChatMessageCopyWith<$Res> {
   $Res call(
       {String text,
       ChatMessageSenderType senderType,
-      List<Map<String, dynamic>>? toolCalls,
-      DateTime createdAt});
+      List<LlmToolCall>? toolCalls,
+      DateTime createdAt,
+      String id,
+      bool isLoading});
 }
 
 /// @nodoc
@@ -68,6 +64,8 @@ class _$ChatMessageCopyWithImpl<$Res, $Val extends ChatMessage>
     Object? senderType = null,
     Object? toolCalls = freezed,
     Object? createdAt = null,
+    Object? id = null,
+    Object? isLoading = null,
   }) {
     return _then(_value.copyWith(
       text: null == text
@@ -81,11 +79,19 @@ class _$ChatMessageCopyWithImpl<$Res, $Val extends ChatMessage>
       toolCalls: freezed == toolCalls
           ? _value.toolCalls
           : toolCalls // ignore: cast_nullable_to_non_nullable
-              as List<Map<String, dynamic>>?,
+              as List<LlmToolCall>?,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -101,8 +107,10 @@ abstract class _$$ChatMessageImplCopyWith<$Res>
   $Res call(
       {String text,
       ChatMessageSenderType senderType,
-      List<Map<String, dynamic>>? toolCalls,
-      DateTime createdAt});
+      List<LlmToolCall>? toolCalls,
+      DateTime createdAt,
+      String id,
+      bool isLoading});
 }
 
 /// @nodoc
@@ -122,6 +130,8 @@ class __$$ChatMessageImplCopyWithImpl<$Res>
     Object? senderType = null,
     Object? toolCalls = freezed,
     Object? createdAt = null,
+    Object? id = null,
+    Object? isLoading = null,
   }) {
     return _then(_$ChatMessageImpl(
       text: null == text
@@ -135,36 +145,44 @@ class __$$ChatMessageImplCopyWithImpl<$Res>
       toolCalls: freezed == toolCalls
           ? _value._toolCalls
           : toolCalls // ignore: cast_nullable_to_non_nullable
-              as List<Map<String, dynamic>>?,
+              as List<LlmToolCall>?,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _$ChatMessageImpl extends _ChatMessage {
   const _$ChatMessageImpl(
       {required this.text,
       required this.senderType,
-      required final List<Map<String, dynamic>>? toolCalls,
-      required this.createdAt})
+      final List<LlmToolCall>? toolCalls = null,
+      required this.createdAt,
+      required this.id,
+      this.isLoading = false})
       : _toolCalls = toolCalls,
         super._();
-
-  factory _$ChatMessageImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ChatMessageImplFromJson(json);
 
   @override
   final String text;
   @override
   final ChatMessageSenderType senderType;
-  final List<Map<String, dynamic>>? _toolCalls;
+  final List<LlmToolCall>? _toolCalls;
   @override
-  List<Map<String, dynamic>>? get toolCalls {
+  @JsonKey()
+  List<LlmToolCall>? get toolCalls {
     final value = _toolCalls;
     if (value == null) return null;
     if (_toolCalls is EqualUnmodifiableListView) return _toolCalls;
@@ -174,10 +192,15 @@ class _$ChatMessageImpl extends _ChatMessage {
 
   @override
   final DateTime createdAt;
+  @override
+  final String id;
+  @override
+  @JsonKey()
+  final bool isLoading;
 
   @override
   String toString() {
-    return 'ChatMessage(text: $text, senderType: $senderType, toolCalls: $toolCalls, createdAt: $createdAt)';
+    return 'ChatMessage(text: $text, senderType: $senderType, toolCalls: $toolCalls, createdAt: $createdAt, id: $id, isLoading: $isLoading)';
   }
 
   @override
@@ -191,13 +214,21 @@ class _$ChatMessageImpl extends _ChatMessage {
             const DeepCollectionEquality()
                 .equals(other._toolCalls, _toolCalls) &&
             (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt));
+                other.createdAt == createdAt) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, text, senderType,
-      const DeepCollectionEquality().hash(_toolCalls), createdAt);
+  int get hashCode => Object.hash(
+      runtimeType,
+      text,
+      senderType,
+      const DeepCollectionEquality().hash(_toolCalls),
+      createdAt,
+      id,
+      isLoading);
 
   /// Create a copy of ChatMessage
   /// with the given fields replaced by the non-null parameter values.
@@ -206,34 +237,30 @@ class _$ChatMessageImpl extends _ChatMessage {
   @pragma('vm:prefer-inline')
   _$$ChatMessageImplCopyWith<_$ChatMessageImpl> get copyWith =>
       __$$ChatMessageImplCopyWithImpl<_$ChatMessageImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ChatMessageImplToJson(
-      this,
-    );
-  }
 }
 
 abstract class _ChatMessage extends ChatMessage {
   const factory _ChatMessage(
       {required final String text,
       required final ChatMessageSenderType senderType,
-      required final List<Map<String, dynamic>>? toolCalls,
-      required final DateTime createdAt}) = _$ChatMessageImpl;
+      final List<LlmToolCall>? toolCalls,
+      required final DateTime createdAt,
+      required final String id,
+      final bool isLoading}) = _$ChatMessageImpl;
   const _ChatMessage._() : super._();
-
-  factory _ChatMessage.fromJson(Map<String, dynamic> json) =
-      _$ChatMessageImpl.fromJson;
 
   @override
   String get text;
   @override
   ChatMessageSenderType get senderType;
   @override
-  List<Map<String, dynamic>>? get toolCalls;
+  List<LlmToolCall>? get toolCalls;
   @override
   DateTime get createdAt;
+  @override
+  String get id;
+  @override
+  bool get isLoading;
 
   /// Create a copy of ChatMessage
   /// with the given fields replaced by the non-null parameter values.

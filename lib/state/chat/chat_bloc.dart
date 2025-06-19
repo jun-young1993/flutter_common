@@ -1,9 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_common/extensions/app_exception.dart';
+import 'package:flutter_common/models/chat/chat_message.dart';
+import 'package:flutter_common/models/chat/enum/chat_message_sender_type.enum.dart';
 import 'package:flutter_common/repositories/llm_client_repository.dart';
 import 'package:flutter_common/state/base/base_bloc.dart';
 import 'package:flutter_common/state/chat/chat_event.dart';
 import 'package:flutter_common/state/chat/chat_state.dart';
+import 'package:uuid/uuid.dart';
 
 class ChatBloc extends BaseBloc<ChatEvent, ChatState> {
   final LlmClientRepository llmClientRepository;
@@ -12,12 +15,50 @@ class ChatBloc extends BaseBloc<ChatEvent, ChatState> {
       await event.map(
         sendMessage: (e) async {
           await handleEvent(emit, () async {
-            emit(state
-                .copyWith(messages: [...(state.messages ?? []), e.message]));
-            await llmClientRepository.createMessage();
-            debugPrint('ChatBloc on<ChatEvent.sendMessage> ${e.message}');
+            final llmMessage = ChatMessage(
+              id: const Uuid().v4(),
+              text: '',
+              senderType: ChatMessageSenderType.assistant,
+              createdAt: DateTime.now(),
+              isLoading: true,
+            );
+
+            emit(state.copyWith(messages: [
+              ...(state.messages ?? []),
+              ...[e.message, llmMessage]
+            ]));
+            final response =
+                await llmClientRepository.chatWithToolsUse(e.message.text);
+            final newMessages = state.messages
+                .map((e) => e.id == llmMessage.id
+                    ? e.copyWith(
+                        text:
+                            "${response.text}\n\n 사용한 도구들: ${response.toolCalls?.map((e) => e.toString()).join('\n')}",
+                        toolCalls: response.toolCalls,
+                        isLoading: false)
+                    : e)
+                .toList();
+            emit(state.copyWith(messages: newMessages));
+            return;
+
+            llmClientRepository.streamChatWithToolUse(e.message.text,
+                onData: (data) {
+              final newMessages = state.messages
+                  .map((e) => e.id == llmMessage.id ? e.addText(data) : e)
+                  .toList();
+              emit(state.copyWith(messages: newMessages));
+              debugPrint(DateTime.now().toString());
+              debugPrint('ChatBloc on<ChatEvent.sendMessage><response> $data');
+            }, onDone: () {
+              final newMessages = state.messages
+                  .map((e) =>
+                      e.id == llmMessage.id ? e.copyWith(isLoading: false) : e)
+                  .toList();
+              emit(state.copyWith(messages: newMessages));
+              debugPrint(DateTime.now().toString());
+              debugPrint('ChatBloc on<ChatEvent.sendMessage><onDone>');
+            });
           });
-          debugPrint('ChatBloc on<ChatEvent.sendMessage> ${e.message}');
         },
         initialize: (e) async {
           await handleEvent(emit, () async {

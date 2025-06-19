@@ -30,6 +30,7 @@ dependencies:
   mcp_llm: ^1.0.0
   mcp_client: ^1.0.0
   flutter_dotenv: ^5.2.1
+  uuid: ^4.3.3
 
 dev_dependencies:
   build_runner: ^2.4.7

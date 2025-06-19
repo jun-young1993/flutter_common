@@ -25,7 +25,11 @@ abstract class LlmClientRepository {
   Future<void> initialize(LlmClientRepositoryIntitializeConfig config);
   Future<void> dispose();
   Future<void> getTools();
-  Future<void> createMessage();
+  Future<LlmResponse> chatWithToolsUse(String message);
+  Future<void> streamChatWithToolUse(String message,
+      {bool enableTools = true,
+      required Function(String data) onData,
+      required Function() onDone});
   bool get isConnected;
 }
 
@@ -64,48 +68,18 @@ class LlmClientDefaultRepository extends LlmClientRepository {
   }
 
   @override
-  Future<void> createMessage() async {
-//     final request = CreateMessageRequest(
-//       messages: [
-//         Message(
-//           role: 'user',
-//           content: TextContent(text: 'What is the Model Context Protocol?'),
-//         ),
-//       ],
-//       modelPreferences: ModelPreferences(
-//         hints: [
-//           ModelHint(name: 'claude-3-sonnet'),
-//           ModelHint(name: 'claude-3-opus'),
-//         ],
-//         intelligencePriority: 0.8,
-//         speedPriority: 0.4,
-//       ),
-//       maxTokens: 1000,
-//       temperature: 0.7,
-//     );
-//     // Request sampling
-//     final result = await _mcpClient!.createMessage(request);
-
-// // Process the result
-//     debugPrint('Model used: ${result.model}');
-//     debugPrint('Response: ${(result.content as TextContent).text}');
-
-// // Register for sampling responses
-//     _mcpClient!.onSamplingResponse((requestId, result) {
-//       debugPrint('Sampling response for request $requestId:');
-//       debugPrint('Model: ${result.model}');
-//       debugPrint('Content: ${(result.content as TextContent).text}');
-//     });
-
-    await _llmClient!.chat(
-      '인사말을 반환하고 진행 상황 업데이트로 긴 작업을 시뮬레이션합니다.',
+  Future<LlmResponse> chatWithToolsUse(String message) async {
+    final response = await _llmClient!.chat(
+      message,
       enableTools: true,
     );
+    return response;
+    // debugPrint('Response: $response');
 
-    debugPrint('Messages: ${_llmClient!.chatSession.messages}');
-    _llmClient!.chatSession.messages.forEach((element) {
-      debugPrint('Message: ${element.role} ${element.content}');
-    });
+    // debugPrint('Messages: ${_llmClient!.chatSession.messages}');
+    // for (var element in _llmClient!.chatSession.messages) {
+    //   debugPrint('Message: ${element.role} ${element.content}');
+    // }
   }
 
   @override
@@ -149,14 +123,8 @@ class LlmClientDefaultRepository extends LlmClientRepository {
       transportConfig: transportConfig,
     );
 
-    _mcpClient = clientResult.get();
-
-    debugPrint('MCP client config: $config');
-    debugPrint('MCP client clientResult: $clientResult');
-    debugPrint('MCP client: $_mcpClient');
-
     // Create MCP client
-    // _mcpClient = McpClient.createClient(clientResult);
+    _mcpClient = clientResult.get();
 
     // Set up event handling for connection state changes
     bool isConnectedState = false;
@@ -180,19 +148,26 @@ class LlmClientDefaultRepository extends LlmClientRepository {
     final apiKey = config.apiKey;
     // Create LLM client
     _llmClient = await _mcpLlm.createClient(
-      providerName: 'claude',
-      config: LlmConfiguration(
-        apiKey: apiKey,
-        model: 'claude-3-haiku-20240307',
-        options: {
-          'temperature': 0.7,
-          'max_tokens': 1500,
-        },
-      ),
-      mcpClient: _mcpClient,
-      systemPrompt:
-          'You are a helpful assistant with access to various tools and resources. Provide concise and accurate responses.',
-    );
+        providerName: 'claude',
+        config: LlmConfiguration(
+          apiKey: apiKey,
+          model: 'claude-3-haiku-20240307',
+          options: {
+            'temperature': 0.7,
+            'max_tokens': 1500,
+          },
+        ),
+        mcpClient: _mcpClient,
+        systemPrompt: '''
+            You are a helpful assistant with access to various tools and resources. Provide concise and accurate responses.
+            You're an agent that can call external tools to help solve user questions. 
+            ALWAYS follow this process: 
+            1) Think about what tools could help answer this question, 
+            2) Call appropriate tools to gather information, 
+            3) If you need more information, call additional tools, 
+            4) Once you have all needed information, respond directly to the user's question without mentioning your thought process. 
+            5) Only call tools that are necessary and relevant to the user's question.
+          ''');
   }
 
   // Get available tools
@@ -217,15 +192,26 @@ class LlmClientDefaultRepository extends LlmClientRepository {
   }
 
   // Stream chat responses
-  Stream<dynamic> streamChat(String message, {bool enableTools = true}) {
-    if (_llmClient == null) {
-      throw Exception('LLM client not initialized');
-    }
-
-    return _llmClient!.streamChat(
+  @override
+  Future<void> streamChatWithToolUse(String message,
+      {bool enableTools = true,
+      required Function(String data) onData,
+      required Function() onDone}) async {
+    final responseStream = _llmClient!.streamChat(
       message,
       enableTools: enableTools,
     );
+
+    final StringBuffer currentResponse = StringBuffer();
+    await for (final chunk in responseStream) {
+      if (chunk.textChunk.isNotEmpty) {
+        onData(chunk.textChunk);
+        currentResponse.write(chunk.textChunk);
+      }
+      if (chunk.isDone) {
+        onDone();
+      }
+    }
   }
 
   // Execute tool directly
