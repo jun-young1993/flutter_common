@@ -11,6 +11,7 @@ class ChatState with _$ChatState, BaseStateMixin {
     @Default(false) bool isLoading,
     @Default(null) AppException? error,
     @Default([]) List<ChatMessage> messages,
+    @Default(false) bool isConnected,
   }) = _ChatState;
 
   const ChatState._();

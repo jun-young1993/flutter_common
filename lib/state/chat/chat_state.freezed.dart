@@ -19,6 +19,7 @@ mixin _$ChatState {
   bool get isLoading => throw _privateConstructorUsedError;
   AppException? get error => throw _privateConstructorUsedError;
   List<ChatMessage> get messages => throw _privateConstructorUsedError;
+  bool get isConnected => throw _privateConstructorUsedError;
 
   /// Create a copy of ChatState
   /// with the given fields replaced by the non-null parameter values.
@@ -32,7 +33,11 @@ abstract class $ChatStateCopyWith<$Res> {
   factory $ChatStateCopyWith(ChatState value, $Res Function(ChatState) then) =
       _$ChatStateCopyWithImpl<$Res, ChatState>;
   @useResult
-  $Res call({bool isLoading, AppException? error, List<ChatMessage> messages});
+  $Res call(
+      {bool isLoading,
+      AppException? error,
+      List<ChatMessage> messages,
+      bool isConnected});
 
   $AppExceptionCopyWith<$Res>? get error;
 }
@@ -55,6 +60,7 @@ class _$ChatStateCopyWithImpl<$Res, $Val extends ChatState>
     Object? isLoading = null,
     Object? error = freezed,
     Object? messages = null,
+    Object? isConnected = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -69,6 +75,10 @@ class _$ChatStateCopyWithImpl<$Res, $Val extends ChatState>
           ? _value.messages
           : messages // ignore: cast_nullable_to_non_nullable
               as List<ChatMessage>,
+      isConnected: null == isConnected
+          ? _value.isConnected
+          : isConnected // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -95,7 +105,11 @@ abstract class _$$ChatStateImplCopyWith<$Res>
       __$$ChatStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isLoading, AppException? error, List<ChatMessage> messages});
+  $Res call(
+      {bool isLoading,
+      AppException? error,
+      List<ChatMessage> messages,
+      bool isConnected});
 
   @override
   $AppExceptionCopyWith<$Res>? get error;
@@ -117,6 +131,7 @@ class __$$ChatStateImplCopyWithImpl<$Res>
     Object? isLoading = null,
     Object? error = freezed,
     Object? messages = null,
+    Object? isConnected = null,
   }) {
     return _then(_$ChatStateImpl(
       isLoading: null == isLoading
@@ -131,6 +146,10 @@ class __$$ChatStateImplCopyWithImpl<$Res>
           ? _value._messages
           : messages // ignore: cast_nullable_to_non_nullable
               as List<ChatMessage>,
+      isConnected: null == isConnected
+          ? _value.isConnected
+          : isConnected // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -141,7 +160,8 @@ class _$ChatStateImpl extends _ChatState {
   const _$ChatStateImpl(
       {this.isLoading = false,
       this.error = null,
-      final List<ChatMessage> messages = const []})
+      final List<ChatMessage> messages = const [],
+      this.isConnected = false})
       : _messages = messages,
         super._();
 
@@ -161,8 +181,12 @@ class _$ChatStateImpl extends _ChatState {
   }
 
   @override
+  @JsonKey()
+  final bool isConnected;
+
+  @override
   String toString() {
-    return 'ChatState(isLoading: $isLoading, error: $error, messages: $messages)';
+    return 'ChatState(isLoading: $isLoading, error: $error, messages: $messages, isConnected: $isConnected)';
   }
 
   @override
@@ -173,12 +197,14 @@ class _$ChatStateImpl extends _ChatState {
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             (identical(other.error, error) || other.error == error) &&
-            const DeepCollectionEquality().equals(other._messages, _messages));
+            const DeepCollectionEquality().equals(other._messages, _messages) &&
+            (identical(other.isConnected, isConnected) ||
+                other.isConnected == isConnected));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, isLoading, error,
-      const DeepCollectionEquality().hash(_messages));
+      const DeepCollectionEquality().hash(_messages), isConnected);
 
   /// Create a copy of ChatState
   /// with the given fields replaced by the non-null parameter values.
@@ -193,7 +219,8 @@ abstract class _ChatState extends ChatState {
   const factory _ChatState(
       {final bool isLoading,
       final AppException? error,
-      final List<ChatMessage> messages}) = _$ChatStateImpl;
+      final List<ChatMessage> messages,
+      final bool isConnected}) = _$ChatStateImpl;
   const _ChatState._() : super._();
 
   @override
@@ -202,6 +229,8 @@ abstract class _ChatState extends ChatState {
   AppException? get error;
   @override
   List<ChatMessage> get messages;
+  @override
+  bool get isConnected;
 
   /// Create a copy of ChatState
   /// with the given fields replaced by the non-null parameter values.

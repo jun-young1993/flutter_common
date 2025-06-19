@@ -4,6 +4,7 @@ import 'package:flutter_common/models/chat/chat_message.dart';
 import 'package:flutter_common/models/chat/enum/chat_message_sender_type.enum.dart';
 import 'package:flutter_common/state/chat/chat_bloc.dart';
 import 'package:flutter_common/state/chat/chat_event.dart';
+import 'package:flutter_common/state/chat/chat_selector.dart';
 import 'package:flutter_common/widgets/ui/chat/chat_input_field.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 
@@ -179,19 +180,18 @@ class _ChatScreenState extends State<ChatScreen> {
               },
             ),
           ),
-
+          ChatIsConnectedSelector((isConnected) => ChatInputField(
+                controller: _textController,
+                focusNode: _inputFocusNode,
+                enabled: isConnected,
+                isConnected: isConnected,
+                // isLoading: isLoading,
+                // isApiKeySet: isApiKeySet,
+                isLoading: false,
+                isApiKeySet: true,
+                onSend: _sendMessage,
+              )),
           // Chat input field at bottom
-          ChatInputField(
-            controller: _textController,
-            focusNode: _inputFocusNode,
-            // enabled: isApiKeySet && !isLoading,
-            // isLoading: isLoading,
-            // isApiKeySet: isApiKeySet,
-            enabled: true,
-            isLoading: false,
-            isApiKeySet: true,
-            onSend: _sendMessage,
-          ),
         ],
       ),
     );

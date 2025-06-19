@@ -14,15 +14,21 @@ class ChatBloc extends BaseBloc<ChatEvent, ChatState> {
           await handleEvent(emit, () async {
             emit(state
                 .copyWith(messages: [...(state.messages ?? []), e.message]));
-
+            await llmClientRepository.createMessage();
             debugPrint('ChatBloc on<ChatEvent.sendMessage> ${e.message}');
           });
           debugPrint('ChatBloc on<ChatEvent.sendMessage> ${e.message}');
         },
         initialize: (e) async {
           await handleEvent(emit, () async {
-            await llmClientRepository.initialize();
+            await llmClientRepository
+                .initialize(LlmClientRepositoryIntitializeConfig(
+              llmConfig: LlmClientRepositoryIntitializeLlmConfig(apiKey: ""),
+            ));
             bool isConnected = llmClientRepository.isConnected;
+            emit(state.copyWith(isConnected: isConnected));
+
+            llmClientRepository.getTools();
             print('ChatBloc on<ChatEvent.initialize> $isConnected');
           });
         },
@@ -51,11 +57,5 @@ class ChatBloc extends BaseBloc<ChatEvent, ChatState> {
   ChatState setLoadingState(ChatState currentState, bool isLoading) {
     // TODO: implement setLoadingState
     return currentState.copyWith(isLoading: isLoading);
-  }
-
-  static Future<ChatBloc> create(
-      LlmClientRepository llmClientRepository) async {
-    await llmClientRepository.initialize();
-    return ChatBloc(llmClientRepository);
   }
 }

@@ -6,6 +6,7 @@ class ChatInputField extends StatelessWidget {
   final bool enabled;
   final bool isLoading;
   final bool isApiKeySet;
+  final bool isConnected;
   final VoidCallback onSend;
 
   const ChatInputField({
@@ -15,6 +16,7 @@ class ChatInputField extends StatelessWidget {
     required this.enabled,
     required this.isLoading,
     required this.isApiKeySet,
+    required this.isConnected,
     required this.onSend,
   });
 
@@ -37,11 +39,13 @@ class ChatInputField extends StatelessWidget {
                   controller: controller,
                   enabled: enabled,
                   decoration: InputDecoration(
-                    hintText: isApiKeySet
-                        ? (isLoading
-                            ? 'Waiting for response...'
-                            : 'Enter your message...')
-                        : 'Set API Key in Settings...',
+                    hintText: !isConnected
+                        ? 'AI is connecting...'
+                        : isApiKeySet
+                            ? (isLoading
+                                ? 'Waiting for response...'
+                                : 'Enter your message...')
+                            : 'Set API Key in Settings...',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20.0),
                     ),

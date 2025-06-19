@@ -20,3 +20,12 @@ class ChatMessagesSelector extends ChatSelector<List<ChatMessage>?> {
           builder: (context, messages) => builder(messages),
         );
 }
+
+class ChatIsConnectedSelector extends ChatSelector<bool> {
+  ChatIsConnectedSelector(Widget Function(bool) builder, {Key? key})
+      : super(
+          key: key,
+          selector: (state) => state.isConnected,
+          builder: (context, isConnected) => builder(isConnected),
+        );
+}
