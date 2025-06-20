@@ -81,7 +81,7 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
             padding: const EdgeInsets.symmetric(horizontal: 0.5, vertical: 0.5),
             child: Column(
               children: [
-                ...widget.topChildren,
+                Column(children: widget.topChildren),
                 RemoteAppConfigSelector((config) {
                   return Column(
                     children: [
@@ -90,7 +90,7 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
                     ],
                   );
                 }),
-                ...widget.bottomChildren,
+                Column(children: widget.bottomChildren),
               ],
             ),
           ),
