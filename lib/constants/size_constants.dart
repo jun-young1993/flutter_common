@@ -68,4 +68,8 @@ class SizeConstants {
   static double getCountdownDisplaySize(BuildContext context) {
     return isTablet(context) ? 38 : 32;
   }
+
+  static double getTextFieldHintFontSize(BuildContext context) {
+    return isTablet(context) ? 14 : 12;
+  }
 }

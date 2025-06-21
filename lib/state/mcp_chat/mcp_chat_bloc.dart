@@ -1,17 +1,18 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter_common/constants/juny_constants.dart';
 import 'package:flutter_common/extensions/app_exception.dart';
 import 'package:flutter_common/models/chat/chat_message.dart';
 import 'package:flutter_common/models/chat/enum/chat_message_sender_type.enum.dart';
 import 'package:flutter_common/repositories/llm_client_repository.dart';
 import 'package:flutter_common/state/base/base_bloc.dart';
-import 'package:flutter_common/state/chat/chat_event.dart';
-import 'package:flutter_common/state/chat/chat_state.dart';
+import 'package:flutter_common/state/mcp_chat/mcp_chat_event.dart';
+import 'package:flutter_common/state/mcp_chat/mcp_chat_state.dart';
 import 'package:uuid/uuid.dart';
 
-class ChatBloc extends BaseBloc<ChatEvent, ChatState> {
+class McpChatBloc extends BaseBloc<McpChatEvent, McpChatState> {
   final LlmClientRepository llmClientRepository;
-  ChatBloc(this.llmClientRepository) : super(ChatState.initialize()) {
-    on<ChatEvent>((event, emit) async {
+  McpChatBloc(this.llmClientRepository) : super(McpChatState.initialize()) {
+    on<McpChatEvent>((event, emit) async {
       await event.map(
         sendMessage: (e) async {
           await handleEvent(emit, () async {
@@ -39,7 +40,22 @@ class ChatBloc extends BaseBloc<ChatEvent, ChatState> {
                     : e)
                 .toList();
             emit(state.copyWith(messages: newMessages));
-            return;
+          });
+        },
+        streamMessage: (e) async {
+          await handleEvent(emit, () async {
+            final llmMessage = ChatMessage(
+              id: const Uuid().v4(),
+              text: '',
+              senderType: ChatMessageSenderType.assistant,
+              createdAt: DateTime.now(),
+              isLoading: true,
+            );
+
+            emit(state.copyWith(messages: [
+              ...(state.messages ?? []),
+              ...[e.message, llmMessage]
+            ]));
 
             llmClientRepository.streamChatWithToolUse(e.message.text,
                 onData: (data) {
@@ -62,13 +78,17 @@ class ChatBloc extends BaseBloc<ChatEvent, ChatState> {
         },
         initialize: (e) async {
           await handleEvent(emit, () async {
+            print('ChatBloc on<ChatEvent.initialize> ${e.apiKey}');
             await llmClientRepository
                 .initialize(LlmClientRepositoryIntitializeConfig(
-              llmConfig: LlmClientRepositoryIntitializeLlmConfig(apiKey: ""),
+              llmConfig: LlmClientRepositoryIntitializeLlmConfig(
+                  apiKey: e.apiKey,
+                  mcpServerUrl: JunyConstants.mcpServerUrl,
+                  mcpAuthToken: 'asdf'),
             ));
             bool isConnected = llmClientRepository.isConnected;
             emit(state.copyWith(isConnected: isConnected));
-
+            print('ChatBloc on<ChatEvent.initialize> $isConnected');
             llmClientRepository.getTools();
             print('ChatBloc on<ChatEvent.initialize> $isConnected');
           });
@@ -78,24 +98,24 @@ class ChatBloc extends BaseBloc<ChatEvent, ChatState> {
   }
 
   @override
-  ChatState clearErrorState(ChatState currentState) {
+  McpChatState clearErrorState(McpChatState currentState) {
     return currentState.copyWith(error: null, isLoading: false);
   }
 
   @override
-  bool hasError(ChatState currentState) {
+  bool hasError(McpChatState currentState) {
     // TODO: implement hasError
     return currentState.error != null;
   }
 
   @override
-  ChatState setErrorState(ChatState currentState, AppException error) {
+  McpChatState setErrorState(McpChatState currentState, AppException error) {
     // TODO: implement setErrorState
     return currentState.copyWith(error: error);
   }
 
   @override
-  ChatState setLoadingState(ChatState currentState, bool isLoading) {
+  McpChatState setLoadingState(McpChatState currentState, bool isLoading) {
     // TODO: implement setLoadingState
     return currentState.copyWith(isLoading: isLoading);
   }

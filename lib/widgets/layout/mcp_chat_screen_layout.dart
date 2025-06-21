@@ -1,32 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_common/flutter_common.dart';
 import 'package:flutter_common/models/chat/chat_message.dart';
 import 'package:flutter_common/models/chat/enum/chat_message_sender_type.enum.dart';
-import 'package:flutter_common/state/chat/chat_bloc.dart';
-import 'package:flutter_common/state/chat/chat_event.dart';
-import 'package:flutter_common/state/chat/chat_selector.dart';
+import 'package:flutter_common/state/mcp_chat/mcp_chat_bloc.dart';
+import 'package:flutter_common/state/mcp_chat/mcp_chat_event.dart';
+import 'package:flutter_common/state/mcp_chat/mcp_chat_selector.dart';
+import 'package:flutter_common/state/mcp_config/mcp_config_bloc.dart';
+import 'package:flutter_common/state/mcp_config/mcp_config_event.dart';
+import 'package:flutter_common/state/mcp_config/mcp_config_selector.dart';
+import 'package:flutter_common/state/mcp_config/mcp_config_state.dart';
 import 'package:flutter_common/widgets/ui/chat/chat_input_field.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:uuid/uuid.dart';
 
-class ChatScreen extends StatefulWidget {
-  const ChatScreen({super.key, required this.onSendMessage, this.messages});
+class McpChatScreenLayout extends StatefulWidget {
+  const McpChatScreenLayout(
+      {super.key,
+      required this.onSendMessage,
+      this.messages,
+      this.onSettingsPressed,
+      this.settingIcon});
   final List<ChatMessage>? messages;
   final Function(ChatMessage) onSendMessage;
+  final Function()? onSettingsPressed;
+  final IconData? settingIcon;
 
   @override
-  State<ChatScreen> createState() => _ChatScreenState();
+  State<McpChatScreenLayout> createState() => _McpChatScreenLayoutState();
 }
 
-class _ChatScreenState extends State<ChatScreen> {
+class _McpChatScreenLayoutState extends State<McpChatScreenLayout> {
   final TextEditingController _textController = TextEditingController();
   final ScrollController _scrollController = ScrollController();
   final FocusNode _inputFocusNode = FocusNode();
-  ChatBloc get chatBloc => context.read<ChatBloc>();
+  McpChatBloc get chatBloc => context.read<McpChatBloc>();
+  McpConfigBloc get mcpConfigBloc => context.read<McpConfigBloc>();
   @override
   void initState() {
     super.initState();
-    chatBloc.add(const ChatEvent.initialize());
+
+    mcpConfigBloc.add(const McpConfigEvent.initialize());
   }
 
   @override
@@ -143,12 +157,28 @@ class _ChatScreenState extends State<ChatScreen> {
     // --- Build UI ---
     return Scaffold(
       appBar: AppBar(
-        title: const Row(
+        title: Row(
           children: [
-            Text('Gemini Chat'),
-            Spacer(),
-            // McpConnectionCounter(connectedCount: connectedServerCount),
-            SizedBox(width: 8),
+            McpConfigSelectedApiKeySelector(
+              (selectedApiKey) {
+                return DropdownButton<McpApiKeys>(
+                  value: selectedApiKey,
+                  onChanged: (McpApiKeys? newValue) {
+                    if (newValue != null) {
+                      mcpConfigBloc.add(McpConfigEvent.selectApiKey(newValue));
+                    }
+                  },
+                  items: McpApiKeys.values
+                      .map<DropdownMenuItem<McpApiKeys>>((McpApiKeys value) {
+                    return DropdownMenuItem<McpApiKeys>(
+                      value: value,
+                      child: Text(value.name),
+                    );
+                  }).toList(),
+                );
+              },
+            ),
+            const SizedBox(width: 8),
           ],
         ),
         actions: [
@@ -159,9 +189,9 @@ class _ChatScreenState extends State<ChatScreen> {
               onPressed: _clearChat,
             ),
           IconButton(
-            icon: const Icon(Icons.settings),
+            icon: Icon(widget.settingIcon ?? Icons.settings),
             tooltip: 'Settings',
-            onPressed: () => Navigator.pushNamed(context, '/settings'),
+            onPressed: widget.onSettingsPressed,
           ),
         ],
       ),
@@ -182,17 +212,29 @@ class _ChatScreenState extends State<ChatScreen> {
               },
             ),
           ),
-          ChatIsConnectedSelector((isConnected) => ChatInputField(
+          McpChatIsConnectedSelector(
+            (isConnected) => McpConfigSelectedApiKeySelector((apiKey) {
+              if (apiKey == null) {
+                return CommonButton(
+                    text: 'Go to API Key Settings',
+                    onPressed: () {
+                      widget.onSettingsPressed?.call();
+                    });
+              }
+              return ChatInputField(
                 controller: _textController,
                 focusNode: _inputFocusNode,
                 enabled: isConnected,
                 isConnected: isConnected,
+                apiKey: apiKey,
                 // isLoading: isLoading,
                 // isApiKeySet: isApiKeySet,
                 isLoading: false,
                 isApiKeySet: true,
                 onSend: _sendMessage,
-              )),
+              );
+            }),
+          ),
           // Chat input field at bottom
         ],
       ),

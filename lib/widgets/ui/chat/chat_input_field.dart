@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_common/constants/size_constants.dart';
+import 'package:flutter_common/state/mcp_config/mcp_config_state.dart';
 
 class ChatInputField extends StatelessWidget {
   final TextEditingController controller;
@@ -8,6 +10,7 @@ class ChatInputField extends StatelessWidget {
   final bool isApiKeySet;
   final bool isConnected;
   final VoidCallback onSend;
+  final McpApiKeys apiKey;
 
   const ChatInputField({
     super.key,
@@ -18,6 +21,7 @@ class ChatInputField extends StatelessWidget {
     required this.isApiKeySet,
     required this.isConnected,
     required this.onSend,
+    required this.apiKey,
   });
 
   @override
@@ -40,7 +44,7 @@ class ChatInputField extends StatelessWidget {
                   enabled: enabled,
                   decoration: InputDecoration(
                     hintText: !isConnected
-                        ? 'AI is connecting...'
+                        ? 'AI(${apiKey.name}) is connecting...'
                         : isApiKeySet
                             ? (isLoading
                                 ? 'Waiting for response...'
@@ -52,6 +56,9 @@ class ChatInputField extends StatelessWidget {
                     contentPadding: const EdgeInsets.symmetric(
                       horizontal: 16.0,
                       vertical: 12.0,
+                    ),
+                    hintStyle: TextStyle(
+                      fontSize: SizeConstants.getTextFieldHintFontSize(context),
                     ),
                   ),
                   textInputAction: TextInputAction.send,

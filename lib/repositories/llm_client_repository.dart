@@ -7,9 +7,13 @@ import 'package:flutter/foundation.dart';
 
 class LlmClientRepositoryIntitializeLlmConfig {
   final String apiKey;
+  final String mcpServerUrl;
+  final String mcpAuthToken;
 
   LlmClientRepositoryIntitializeLlmConfig({
     required this.apiKey,
+    required this.mcpServerUrl,
+    required this.mcpAuthToken,
   });
 }
 
@@ -53,7 +57,8 @@ class LlmClientDefaultRepository extends LlmClientRepository {
       _mcpLlm.registerProvider('claude', ClaudeProviderFactory());
 
       // Set up MCP client
-      await _setupMcpClient();
+      await _setupMcpClient(
+          config.llmConfig.mcpServerUrl, config.llmConfig.mcpAuthToken);
 
       // Set up LLM client
       await _setupLlmClient(config.llmConfig);
@@ -92,10 +97,7 @@ class LlmClientDefaultRepository extends LlmClientRepository {
         'Available tools: ${tools.map((t) => '${t.name} ${t.description}').join(', ')}  ');
   }
 
-  Future<void> _setupMcpClient() async {
-    final serverUrl = dotenv.env['MCP_SERVER_URL'] ?? '';
-    final authToken = dotenv.env['MCP_AUTH_TOKEN'] ?? '';
-
+  Future<void> _setupMcpClient(String serverUrl, String authToken) async {
     if (serverUrl.isEmpty || authToken.isEmpty) {
       throw Exception('Please set MCP server URL and auth token');
     }

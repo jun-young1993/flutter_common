@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_common/flutter_common.dart';
+import 'package:flutter_common/repositories/mcp_config_repository.dart';
+import 'package:flutter_common/state/mcp_config/mcp_config_bloc.dart';
+import 'package:flutter_common/state/mcp_config/mcp_config_listener.dart';
 import 'package:flutter_common/state/notice/notice_bloc.dart';
 import 'package:flutter_common/state/notice_group/notice_group_bloc.dart';
 import 'package:flutter_common/state/notice_reply/notice_reply_bloc.dart';
@@ -55,11 +58,18 @@ class CommonBlocProvider extends StatelessWidget {
             ),
           ),
           BlocProvider(
-            create: (context) => ChatBloc(context.read<LlmClientRepository>()),
+            create: (context) =>
+                McpChatBloc(context.read<LlmClientRepository>()),
+          ),
+          BlocProvider(
+            create: (context) => McpConfigBloc(
+              mcpConfigRepository: context.read<McpConfigRepository>(),
+            ),
           ),
           ...(providers ?? []),
         ],
         child: MultiBlocListener(
-            listeners: [VerificationListener()], child: child));
+            listeners: [VerificationListener(), McpConfigListener()],
+            child: child));
   }
 }
