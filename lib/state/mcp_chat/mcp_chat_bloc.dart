@@ -60,22 +60,36 @@ class McpChatBloc extends BaseBloc<McpChatEvent, McpChatState> {
               ...[e.message, llmMessage]
             ]));
 
-            llmClientRepository.streamChatWithToolUse(e.message.text,
-                onData: (data) {
+            await llmClientRepository.streamChatWithToolUse(e.message.text,
+                onData: (data, textChunk) async {
               final newMessages = state.messages
-                  .map((e) => e.id == llmMessage.id ? e.addText(data) : e)
+                  .map(
+                      (e) => e.id == llmMessage.id ? e.copyWith(text: data) : e)
                   .toList();
               emit(state.copyWith(messages: newMessages));
-              debugPrint(DateTime.now().toString());
-              debugPrint('ChatBloc on<ChatEvent.sendMessage><response> $data');
-            }, onDone: () {
+            }, onToolCalls: (toolCalls) async {
+              for (final toolCall in toolCalls) {
+                final useIngToolMessage = ChatMessage(
+                  id: const Uuid().v4(),
+                  text: toolCall.name,
+                  senderType: ChatMessageSenderType.assistant,
+                  createdAt: DateTime.now(),
+                  isLoading: false,
+                );
+                emit(state.copyWith(messages: [
+                  ...(state.messages ?? []),
+                  ...[useIngToolMessage]
+                ]));
+              }
+
+              debugPrint(
+                  'ChatBloc on<ChatEvent.sendMessage><toolCalls> $toolCalls');
+            }, onDone: () async {
               final newMessages = state.messages
                   .map((e) =>
                       e.id == llmMessage.id ? e.copyWith(isLoading: false) : e)
                   .toList();
               emit(state.copyWith(messages: newMessages));
-              debugPrint(DateTime.now().toString());
-              debugPrint('ChatBloc on<ChatEvent.sendMessage><onDone>');
             });
           });
         },

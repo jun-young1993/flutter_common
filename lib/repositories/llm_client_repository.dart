@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter_common/providers/fixed_claude_provider.dart';
 import 'package:mcp_llm/mcp_llm.dart';
 import 'package:mcp_client/mcp_client.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -31,8 +32,8 @@ abstract class LlmClientRepository {
   Future<List<Tool>> getTools();
   Future<LlmResponse> chatWithToolsUse(String message);
   Future<void> streamChatWithToolUse(String message,
-      {bool enableTools = true,
-      required Function(String data) onData,
+      {required Function(String data, String textChunk) onData,
+      required Function(List<LlmToolCall> toolCalls) onToolCalls,
       required Function() onDone});
   bool get isConnected;
   Future<LlmClient> getLlmClient();
@@ -55,7 +56,8 @@ class LlmClientDefaultRepository extends LlmClientRepository {
     try {
       // Create McpLlm instance
       _mcpLlm = McpLlm();
-      _mcpLlm.registerProvider('claude', ClaudeProviderFactory());
+      // _mcpLlm.registerProvider('claude', ClaudeProviderFactory());
+      _mcpLlm.registerProvider('claude', FixedClaudeProviderFactory());
 
       // Set up MCP client
       await _setupMcpClient(
@@ -110,6 +112,7 @@ class LlmClientDefaultRepository extends LlmClientRepository {
       name: 'flutter_app',
       version: '1.0.0',
       capabilities: capabilities,
+      enableDebugLogging: true,
     );
 
     // Create transport
@@ -153,6 +156,7 @@ class LlmClientDefaultRepository extends LlmClientRepository {
         config: LlmConfiguration(
           apiKey: apiKey,
           model: 'claude-3-haiku-20240307',
+          // model: 'claude-3-7-sonnet-20250219',
           options: {
             'temperature': 0.7,
             'max_tokens': 1500,
@@ -203,19 +207,22 @@ class LlmClientDefaultRepository extends LlmClientRepository {
   // Stream chat responses
   @override
   Future<void> streamChatWithToolUse(String message,
-      {bool enableTools = true,
-      required Function(String data) onData,
+      {required Function(String data, String textChunk) onData,
+      required Function(List<LlmToolCall> toolCalls) onToolCalls,
       required Function() onDone}) async {
     final responseStream = _llmClient!.streamChat(
       message,
-      enableTools: enableTools,
+      enableTools: true,
     );
 
     final StringBuffer currentResponse = StringBuffer();
     await for (final chunk in responseStream) {
       if (chunk.textChunk.isNotEmpty) {
-        onData(chunk.textChunk);
         currentResponse.write(chunk.textChunk);
+        onData(currentResponse.toString(), chunk.textChunk);
+        if (chunk.toolCalls != null) {
+          onToolCalls(chunk.toolCalls!);
+        }
       }
       if (chunk.isDone) {
         onDone();
