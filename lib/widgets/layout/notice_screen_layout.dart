@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_common/common_il8n.dart';
 import 'package:flutter_common/repositories/notice_group_repository.dart';
 import 'package:flutter_common/state/notice/notice_bloc.dart';
 import 'package:flutter_common/state/notice/notice_event.dart';
@@ -68,7 +70,7 @@ class _NoticeScreenLayoutState extends State<NoticeScreenLayout> {
   Widget build(BuildContext context) {
     return NoticeFindAllSelector((notices) {
       if (notices == null || notices.isEmpty) {
-        return const Center(child: Text('공지사항이 없습니다.'));
+        return Center(child: Text(Tr.message.notFoundNotice.tr()));
       }
 
       return SingleChildScrollView(
@@ -103,9 +105,10 @@ class _NoticeScreenLayoutState extends State<NoticeScreenLayout> {
                 child: CircularProgressIndicator(),
               ),
             if (!context.read<NoticeBloc>().state.hasMore)
-              const Padding(
-                padding: EdgeInsets.all(16),
-                child: Text('마지막 공지입니다.', style: TextStyle(color: Colors.grey)),
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Text(Tr.message.lastNotice.tr(),
+                    style: const TextStyle(color: Colors.grey)),
               ),
           ],
         ),

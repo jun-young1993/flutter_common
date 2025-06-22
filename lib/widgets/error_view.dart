@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_common/common_il8n.dart';
 
 class ErrorView<T extends Exception> extends StatelessWidget {
   final T error;
@@ -44,7 +46,7 @@ class ErrorView<T extends Exception> extends StatelessWidget {
                 const SizedBox(height: 24),
                 ElevatedButton(
                   onPressed: onRetry,
-                  child: const Text('다시 시도'),
+                  child: Text(Tr.app.retry.tr()),
                 ),
               ],
             ],
@@ -66,6 +68,6 @@ class ErrorView<T extends Exception> extends StatelessWidget {
   }
 
   String _getDefaultErrorMessage() {
-    return (error as dynamic)?.message ?? '알 수 없는 오류';
+    return (error as dynamic)?.message ?? Tr.error.unknownError.tr();
   }
 }

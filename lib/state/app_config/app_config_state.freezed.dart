@@ -22,6 +22,7 @@ mixin _$AppConfigState {
   bool get isUpdateAvailable => throw _privateConstructorUsedError;
   String get appleId => throw _privateConstructorUsedError;
   String get packageName => throw _privateConstructorUsedError;
+  AppLanguage get language => throw _privateConstructorUsedError;
 
   /// Create a copy of AppConfigState
   /// with the given fields replaced by the non-null parameter values.
@@ -42,7 +43,8 @@ abstract class $AppConfigStateCopyWith<$Res> {
       String description,
       bool isUpdateAvailable,
       String appleId,
-      String packageName});
+      String packageName,
+      AppLanguage language});
 }
 
 /// @nodoc
@@ -66,6 +68,7 @@ class _$AppConfigStateCopyWithImpl<$Res, $Val extends AppConfigState>
     Object? isUpdateAvailable = null,
     Object? appleId = null,
     Object? packageName = null,
+    Object? language = null,
   }) {
     return _then(_value.copyWith(
       key: null == key
@@ -92,6 +95,10 @@ class _$AppConfigStateCopyWithImpl<$Res, $Val extends AppConfigState>
           ? _value.packageName
           : packageName // ignore: cast_nullable_to_non_nullable
               as String,
+      language: null == language
+          ? _value.language
+          : language // ignore: cast_nullable_to_non_nullable
+              as AppLanguage,
     ) as $Val);
   }
 }
@@ -110,7 +117,8 @@ abstract class _$$AppConfigStateImplCopyWith<$Res>
       String description,
       bool isUpdateAvailable,
       String appleId,
-      String packageName});
+      String packageName,
+      AppLanguage language});
 }
 
 /// @nodoc
@@ -132,6 +140,7 @@ class __$$AppConfigStateImplCopyWithImpl<$Res>
     Object? isUpdateAvailable = null,
     Object? appleId = null,
     Object? packageName = null,
+    Object? language = null,
   }) {
     return _then(_$AppConfigStateImpl(
       key: null == key
@@ -158,6 +167,10 @@ class __$$AppConfigStateImplCopyWithImpl<$Res>
           ? _value.packageName
           : packageName // ignore: cast_nullable_to_non_nullable
               as String,
+      language: null == language
+          ? _value.language
+          : language // ignore: cast_nullable_to_non_nullable
+              as AppLanguage,
     ));
   }
 }
@@ -171,7 +184,8 @@ class _$AppConfigStateImpl implements _AppConfigState {
       this.description = "",
       this.isUpdateAvailable = false,
       this.appleId = "",
-      this.packageName = ""});
+      this.packageName = "",
+      this.language = AppLanguage.en});
 
   @override
   @JsonKey()
@@ -191,10 +205,13 @@ class _$AppConfigStateImpl implements _AppConfigState {
   @override
   @JsonKey()
   final String packageName;
+  @override
+  @JsonKey()
+  final AppLanguage language;
 
   @override
   String toString() {
-    return 'AppConfigState(key: $key, version: $version, description: $description, isUpdateAvailable: $isUpdateAvailable, appleId: $appleId, packageName: $packageName)';
+    return 'AppConfigState(key: $key, version: $version, description: $description, isUpdateAvailable: $isUpdateAvailable, appleId: $appleId, packageName: $packageName, language: $language)';
   }
 
   @override
@@ -210,12 +227,14 @@ class _$AppConfigStateImpl implements _AppConfigState {
                 other.isUpdateAvailable == isUpdateAvailable) &&
             (identical(other.appleId, appleId) || other.appleId == appleId) &&
             (identical(other.packageName, packageName) ||
-                other.packageName == packageName));
+                other.packageName == packageName) &&
+            (identical(other.language, language) ||
+                other.language == language));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, key, version, description,
-      isUpdateAvailable, appleId, packageName);
+      isUpdateAvailable, appleId, packageName, language);
 
   /// Create a copy of AppConfigState
   /// with the given fields replaced by the non-null parameter values.
@@ -234,7 +253,8 @@ abstract class _AppConfigState implements AppConfigState {
       final String description,
       final bool isUpdateAvailable,
       final String appleId,
-      final String packageName}) = _$AppConfigStateImpl;
+      final String packageName,
+      final AppLanguage language}) = _$AppConfigStateImpl;
 
   @override
   String get key;
@@ -248,6 +268,8 @@ abstract class _AppConfigState implements AppConfigState {
   String get appleId;
   @override
   String get packageName;
+  @override
+  AppLanguage get language;
 
   /// Create a copy of AppConfigState
   /// with the given fields replaced by the non-null parameter values.

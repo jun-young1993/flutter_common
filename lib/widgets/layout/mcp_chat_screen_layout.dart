@@ -10,6 +10,7 @@ import 'package:flutter_common/state/mcp_config/mcp_config_bloc.dart';
 import 'package:flutter_common/state/mcp_config/mcp_config_event.dart';
 import 'package:flutter_common/state/mcp_config/mcp_config_selector.dart';
 import 'package:flutter_common/state/mcp_config/mcp_config_state.dart';
+import 'package:flutter_common/widgets/loader/thinking_animation.dart';
 import 'package:flutter_common/widgets/ui/chat/chat_input_field.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:uuid/uuid.dart';
@@ -212,7 +213,7 @@ class _McpChatScreenLayoutState extends State<McpChatScreenLayout> {
               },
             ),
           ),
-          McpChatIsConnectedSelector(
+          McpConfigIsConnectedSelector(
             (isConnected) => McpConfigSelectedApiKeySelector((apiKey) {
               if (apiKey == null) {
                 return CommonButton(
@@ -244,11 +245,13 @@ class _McpChatScreenLayoutState extends State<McpChatScreenLayout> {
 
 class MessageBubble extends StatelessWidget {
   final ChatMessage message;
+  final bool fitContent;
   // final List<McpServerConfig> serverConfigs;
 
   const MessageBubble({
     super.key,
     required this.message,
+    this.fitContent = false,
     // required this.serverConfigs,
   });
 
@@ -306,31 +309,42 @@ class MessageBubble extends StatelessWidget {
     //   ),
     // );
     // }
-    if (message.isLoading == true) {
-      children.add(const Center(
-          child: Padding(
-              padding: EdgeInsets.only(top: 4.0),
-              child: Row(
-                children: [Text('Thinking...'), CircularProgressIndicator()],
-              ))));
-    }
 
-    return Align(
-      alignment: isUser ? Alignment.centerRight : Alignment.centerLeft,
-      child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
-        padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 14.0),
-        decoration: BoxDecoration(
-          color: isUser
-              ? theme.colorScheme.primaryContainer
-              : theme.colorScheme.secondaryContainer,
-          borderRadius: BorderRadius.circular(16.0),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: children,
-        ),
+    final bubble = Container(
+      constraints:
+          BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.90),
+      margin: const EdgeInsets.symmetric(vertical: 4.0),
+      padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 14.0),
+      decoration: BoxDecoration(
+        color: message.isLoading == true
+            ? null
+            : isUser
+                ? theme.colorScheme.primary.withOpacity(0.4)
+                : theme.colorScheme.secondary.withOpacity(0.05),
+        borderRadius: BorderRadius.circular(16.0),
       ),
+      child: Column(
+        mainAxisSize: fitContent ? MainAxisSize.min : MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ...children,
+          if (message.isLoading == true)
+            const Padding(
+              padding: EdgeInsets.only(top: 4.0),
+              child: ThinkingAnimation(),
+            ),
+        ],
+      ),
+    );
+
+    return Row(
+      mainAxisAlignment:
+          isUser ? MainAxisAlignment.end : MainAxisAlignment.start,
+      children: [
+        Flexible(
+          child: bubble,
+        ),
+      ],
     );
   }
 }

@@ -1,0 +1,74 @@
+{
+    "mcp": {
+        "title": "MCP",
+        "setting": "MCP Settings",
+        "apiKey": {
+            "title": "API Key",
+            "hint": "Enter your API key",
+            "save": "Save",
+            "clear": "Clear"
+        },
+        "availableTools": "Available Tools",
+        "availableToolsDesc": "Tools available from all connected MCP servers.",
+        "noToolsAvailable": "No tools available.",
+        "toolListItem": "Tool Info"
+    },
+    "app": {
+        "enable": "Enable",
+        "disable": "Disable",
+        "retry": "Retry",
+        "cancel": "Cancel",
+        "close": "Close",
+        "print": "Print",
+        "saveKey": "Save Key",
+        "clearKey": "Clear Key",
+        "register": "Register",
+        "detailView": "Detail View",
+        "selectLanguage": "Select Language",
+        "settings": "Settings",
+        "appInfo": "App Info",
+        "shareApp": "Share App",
+        "contact": "Contact Us",
+        "emailVerification": "Email Verification",
+        "email": "Email",
+        "resendAuthNumber": "Resend Auth Number",
+        "error": "Error",
+        "inputAuthNumber": "Please enter the authentication number.",
+        "authEmail": "Authenticate Email",
+        "community": "Community"
+    },
+    "error": {
+        "unknownError": "An unknown error has occurred.",
+        "adNotLoaded": "Ad not loaded.",
+        "userNotFound": "User not found."
+    },
+    "message": {
+        "etcReasonRequired": "Please enter a reason for 'Other'.",
+        "notFoundNotice": "No notices found.",
+        "lastNotice": "This is the last notice.",
+        "printError": "An error occurred while printing.",
+        "printSuccess": "Print successful.",
+        "completeLinkCopy": "App link copied.",
+        "storeOpenError": "Could not open the store.",
+        "enterReply": "Enter a reply.",
+        "currentLanguage": "Current language: {language}",
+        "inviteMessage": "You are invited to {appName}. \nPlease install the app using the QR code below.",
+        "contact": "Please contact us at the email below.",
+        "emailVerification": "You can keep your account secure and recover it through email verification.",
+        "inputEmail": "Please enter your email."
+    },
+    "chat": {
+        "clearChat": "Clear Chat",
+        "clearChatConfirmation": "Are you sure you want to clear the entire chat history? This cannot be undone.",
+        "thinking": "Thinking",
+        "enterMessage": "Enter a message...",
+        "noApiKey": "API key is not set. Please register your API key in the settings screen.",
+        "goToSetting": "Go to Settings",
+        "clearChatTitle": "Clear Chat?",
+        "clearChatHistoryTooltip": "Clear Chat History",
+        "goToApiKeySettings": "Go to API Key Settings",
+        "sendMessageTooltip": "Send Message",
+        "apiKeyInstruction": "Please set your {apiKeyName} API Key in the Settings menu (⚙️) to start chatting.",
+        "title": "Chat"
+    }
+} 

@@ -32,7 +32,9 @@ class CommonRepositoryProvider extends StatelessWidget {
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider<AppRepository>(
-          create: (context) => AppDefaultRepository(),
+          create: (context) => AppDefaultRepository(
+            sharedPreferences: sharedPreferences,
+          ),
         ),
         RepositoryProvider<McpConfigRepository>(
           create: (context) => McpConfigDefaultRepository(

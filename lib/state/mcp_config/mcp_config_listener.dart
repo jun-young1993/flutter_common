@@ -6,13 +6,5 @@ import 'package:flutter_common/state/mcp_config/mcp_config_state.dart';
 import 'package:flutter_common/widgets/toast/toast.dart';
 
 class McpConfigListener extends BlocListener<McpConfigBloc, McpConfigState> {
-  McpConfigListener({super.key})
-      : super(listener: (context, state) {
-          if (state.selectedApiKey != null) {
-            final apiKey = state.apiKeys[state.selectedApiKey];
-            if (apiKey != null) {
-              context.read<McpChatBloc>().add(McpChatEvent.initialize(apiKey));
-            }
-          }
-        });
+  McpConfigListener({super.key}) : super(listener: (context, state) {});
 }

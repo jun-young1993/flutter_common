@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_common/common_il8n.dart';
 
 enum ReportReason {
   wrongInfo('잘못된 정보'),
@@ -95,9 +97,9 @@ class _ReportDialogContentState extends State<_ReportDialogContent>
     if (selectedReason == ReportReason.etc &&
         _etcController.text.trim().isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('기타 사유를 입력해주세요.'),
-          duration: Duration(seconds: 2),
+        SnackBar(
+          content: Text(Tr.message.etcReasonRequired.tr()),
+          duration: const Duration(seconds: 2),
         ),
       );
       return;

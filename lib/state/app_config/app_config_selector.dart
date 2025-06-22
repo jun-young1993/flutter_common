@@ -25,3 +25,13 @@ class RemoteAppConfigSelector extends AppConfigSelector<AppConfigState?> {
           builder: (context, appConfig) => builder(appConfig),
         );
 }
+
+class AppConfigLanguageSelector extends AppConfigSelector<AppLanguage> {
+  AppConfigLanguageSelector(Widget Function(AppLanguage appConfig) builder,
+      {Key? key})
+      : super(
+          key: key,
+          selector: (state) => state.language,
+          builder: (context, appConfig) => builder(appConfig),
+        );
+}

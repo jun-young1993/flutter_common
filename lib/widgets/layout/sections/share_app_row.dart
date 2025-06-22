@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_common/common_il8n.dart';
 import 'package:flutter_common/constants/common_constants.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -228,13 +230,13 @@ class ShareAppRow extends StatelessWidget {
                   children: [
                     TextButton(
                       onPressed: () => Navigator.pop(context),
-                      child: const Text('닫기'),
+                      child: Text(Tr.app.close.tr()),
                     ),
                     const SizedBox(width: 16),
                     ElevatedButton.icon(
                       onPressed: () => _printQrCode(context),
                       icon: const Icon(Icons.print),
-                      label: const Text('프린트하기'),
+                      label: Text(Tr.app.print.tr()),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Theme.of(context).primaryColor,
                         foregroundColor: Colors.white,
@@ -345,7 +347,8 @@ class ShareAppRow extends StatelessWidget {
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('프린트 중 오류가 발생했습니다: $e'),
+            content:
+                Text(Tr.message.printError.tr(namedArgs: {'e': e.toString()})),
             duration: const Duration(seconds: 2),
           ),
         );
@@ -357,9 +360,9 @@ class ShareAppRow extends StatelessWidget {
     await Clipboard.setData(ClipboardData(text: appStoreUrl));
     if (context.mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('앱 링크가 복사되었습니다'),
-          duration: Duration(seconds: 2),
+        SnackBar(
+          content: Text(Tr.message.completeLinkCopy.tr()),
+          duration: const Duration(seconds: 2),
         ),
       );
     }
@@ -373,9 +376,9 @@ class ShareAppRow extends StatelessWidget {
     } else {
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('스토어를 열 수 없습니다'),
-            duration: Duration(seconds: 2),
+          SnackBar(
+            content: Text(Tr.message.storeOpenError.tr()),
+            duration: const Duration(seconds: 2),
           ),
         );
       }

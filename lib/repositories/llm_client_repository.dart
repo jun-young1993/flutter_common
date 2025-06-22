@@ -28,13 +28,14 @@ class LlmClientRepositoryIntitializeConfig {
 abstract class LlmClientRepository {
   Future<void> initialize(LlmClientRepositoryIntitializeConfig config);
   Future<void> dispose();
-  Future<void> getTools();
+  Future<List<Tool>> getTools();
   Future<LlmResponse> chatWithToolsUse(String message);
   Future<void> streamChatWithToolUse(String message,
       {bool enableTools = true,
       required Function(String data) onData,
       required Function() onDone});
   bool get isConnected;
+  Future<LlmClient> getLlmClient();
 }
 
 class LlmClientDefaultRepository extends LlmClientRepository {
@@ -88,13 +89,11 @@ class LlmClientDefaultRepository extends LlmClientRepository {
   }
 
   @override
-  Future<void> getTools() async {
+  Future<List<Tool>> getTools() async {
     if (_mcpClient == null) {
       throw Exception('MCP client is not connected');
     }
-    final tools = await _mcpClient!.listTools();
-    print(
-        'Available tools: ${tools.map((t) => '${t.name} ${t.description}').join(', ')}  ');
+    return await _mcpClient!.listTools();
   }
 
   Future<void> _setupMcpClient(String serverUrl, String authToken) async {
@@ -170,6 +169,14 @@ class LlmClientDefaultRepository extends LlmClientRepository {
             4) Once you have all needed information, respond directly to the user's question without mentioning your thought process. 
             5) Only call tools that are necessary and relevant to the user's question.
           ''');
+  }
+
+  @override
+  Future<LlmClient> getLlmClient() async {
+    if (_llmClient == null) {
+      throw Exception('LLM client not initialized');
+    }
+    return _llmClient!;
   }
 
   // Get available tools

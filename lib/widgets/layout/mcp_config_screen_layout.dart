@@ -1,10 +1,14 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_common/common_il8n.dart';
 import 'package:flutter_common/state/mcp_config/mcp_config_bloc.dart';
 import 'package:flutter_common/state/mcp_config/mcp_config_event.dart';
 import 'package:flutter_common/state/mcp_config/mcp_config_selector.dart';
 import 'package:flutter_common/state/mcp_config/mcp_config_state.dart';
 import 'package:flutter_common/widgets/layout/sections/mcp_config/mcp_api_key_section.dart';
+import 'package:flutter_common/widgets/ui/mcp/tool_list_item.dart';
+import 'package:mcp_client/mcp_client.dart';
 
 class McpConfigScreenLayout extends StatefulWidget {
   const McpConfigScreenLayout({super.key});
@@ -136,7 +140,7 @@ class _McpConfigScreenLayoutState extends State<McpConfigScreenLayout> {
     // final connectedCount = mcpState.connectedServerCount;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('MCP Config')),
+      appBar: AppBar(title: Text(Tr.mcp.setting.tr())),
       body: ListView(
         padding: const EdgeInsets.all(16.0),
         children: [
@@ -146,46 +150,51 @@ class _McpConfigScreenLayoutState extends State<McpConfigScreenLayout> {
                     (apiKeys) {
                       final apiKey = apiKeys[e];
                       final controller = TextEditingController(text: apiKey);
-                      return McpApiKeySection(
-                        controller: controller,
-                        currentApiKey: apiKey,
-                        apiKey: e,
-                        onSave: () {
-                          mcpConfigBloc.add(
-                              McpConfigEvent.setApiKey(e, controller.text));
-                        },
-                        onClear: () {
-                          mcpConfigBloc.add(McpConfigEvent.clearApiKey(e));
-                        },
+                      return Column(
+                        children: [
+                          Text('${e.name} API Key'),
+                          McpApiKeySection(
+                            controller: controller,
+                            currentApiKey: apiKey,
+                            apiKey: e,
+                            onSave: () {
+                              mcpConfigBloc.add(
+                                  McpConfigEvent.setApiKey(e, controller.text));
+                            },
+                            onClear: () {
+                              mcpConfigBloc.add(McpConfigEvent.clearApiKey(e));
+                            },
+                          )
+                        ],
                       );
                     },
                   ))
               .toList(),
 
-          const Divider(height: 24.0),
+          // const Divider(height: 24.0),
 
-          // --- MCP Server Section ---
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const Text(
-                'MCP Servers',
-                style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
-              ),
-              IconButton(
-                icon: const Icon(Icons.add_circle_outline),
-                tooltip: 'Add New MCP Server',
-                onPressed: () => _openServerDialog(),
-              ),
-            ],
-          ),
-          const SizedBox(height: 4.0),
-          const Text(
-            'connectedCount server(s) connected. Changes are applied automatically.',
-            style: TextStyle(fontSize: 12.0, color: Colors.grey),
-          ),
-          const SizedBox(height: 12.0),
+          // // --- MCP Server Section ---
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //   crossAxisAlignment: CrossAxisAlignment.center,
+          //   children: [
+          //     const Text(
+          //       'MCP Servers',
+          //       style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+          //     ),
+          //     IconButton(
+          //       icon: const Icon(Icons.add_circle_outline),
+          //       tooltip: 'Add New MCP Server',
+          //       onPressed: () => _openServerDialog(),
+          //     ),
+          //   ],
+          // ),
+          // const SizedBox(height: 4.0),
+          // const Text(
+          //   'connectedCount server(s) connected. Changes are applied automatically.',
+          //   style: TextStyle(fontSize: 12.0, color: Colors.grey),
+          // ),
+          // const SizedBox(height: 12.0),
 
           // Server List Display
           // serverList.isEmpty
@@ -221,6 +230,61 @@ class _McpConfigScreenLayoutState extends State<McpConfigScreenLayout> {
           //       },
           //     ),
           const SizedBox(height: 12.0),
+
+          const Divider(height: 24.0),
+
+          // --- Tools Section ---
+          Text(
+            Tr.mcp.availableTools.tr(),
+            style: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 4.0),
+          Text(
+            Tr.mcp.availableToolsDesc.tr(),
+            style: const TextStyle(fontSize: 12.0, color: Colors.grey),
+          ),
+          const SizedBox(height: 12.0),
+          McpConfigToolsSelector((tools) {
+            if (tools.isEmpty) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(vertical: 24.0),
+                child: Center(
+                  child: Text(
+                    Tr.mcp.noToolsAvailable.tr(),
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(color: Colors.grey),
+                  ),
+                ),
+              );
+            }
+            return ListView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: tools.length,
+              itemBuilder: (context, index) {
+                // TODO: Replace with actual state from McpConfigBloc
+
+                return ToolListItem(
+                  tool: tools[index],
+                  isEnabled: tools[index].metadata!['enabled'] as bool,
+                  onToggle: (newValue) {
+                    // TODO: Replace with McpConfigBloc event
+
+                    mcpConfigBloc.add(
+                        McpConfigEvent.toggleTool(tools[index].name, newValue));
+                    final action =
+                        newValue ? Tr.app.enable.tr() : Tr.app.disable.tr();
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('${tools[index].name} $action'),
+                        duration: const Duration(seconds: 1),
+                      ),
+                    );
+                  },
+                );
+              },
+            );
+          }),
         ],
       ),
     );

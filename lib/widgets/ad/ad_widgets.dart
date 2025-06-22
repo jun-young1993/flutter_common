@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_common/common_il8n.dart';
 import 'package:flutter_common/widgets/ad/ad_manager.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
@@ -37,7 +39,7 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (!_isAdLoaded || _bannerAd == null) return const SizedBox.shrink();
+    if (!_isAdLoaded || _bannerAd == null) return Text(Tr.error.adNotLoaded.tr());
     return SizedBox(
       width: _bannerAd!.size.width.toDouble(),
       height: _bannerAd!.size.height.toDouble(),

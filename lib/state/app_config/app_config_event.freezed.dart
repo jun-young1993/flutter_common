@@ -21,6 +21,7 @@ mixin _$AppConfigEvent {
     required TResult Function(AppKeys key) initialize,
     required TResult Function(AppKeys key, String version) checkCanUpdate,
     required TResult Function() moveUpdateStore,
+    required TResult Function(AppLanguage language) setLanguage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$AppConfigEvent {
     TResult? Function(AppKeys key)? initialize,
     TResult? Function(AppKeys key, String version)? checkCanUpdate,
     TResult? Function()? moveUpdateStore,
+    TResult? Function(AppLanguage language)? setLanguage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$AppConfigEvent {
     TResult Function(AppKeys key)? initialize,
     TResult Function(AppKeys key, String version)? checkCanUpdate,
     TResult Function()? moveUpdateStore,
+    TResult Function(AppLanguage language)? setLanguage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$AppConfigEvent {
     required TResult Function(InitializeEvent value) initialize,
     required TResult Function(CheckCanUpdateEvent value) checkCanUpdate,
     required TResult Function(UpdateEvent value) moveUpdateStore,
+    required TResult Function(SetLanguageEvent value) setLanguage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$AppConfigEvent {
     TResult? Function(InitializeEvent value)? initialize,
     TResult? Function(CheckCanUpdateEvent value)? checkCanUpdate,
     TResult? Function(UpdateEvent value)? moveUpdateStore,
+    TResult? Function(SetLanguageEvent value)? setLanguage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$AppConfigEvent {
     TResult Function(InitializeEvent value)? initialize,
     TResult Function(CheckCanUpdateEvent value)? checkCanUpdate,
     TResult Function(UpdateEvent value)? moveUpdateStore,
+    TResult Function(SetLanguageEvent value)? setLanguage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -155,6 +161,7 @@ class _$InitializeEventImpl implements InitializeEvent {
     required TResult Function(AppKeys key) initialize,
     required TResult Function(AppKeys key, String version) checkCanUpdate,
     required TResult Function() moveUpdateStore,
+    required TResult Function(AppLanguage language) setLanguage,
   }) {
     return initialize(key);
   }
@@ -165,6 +172,7 @@ class _$InitializeEventImpl implements InitializeEvent {
     TResult? Function(AppKeys key)? initialize,
     TResult? Function(AppKeys key, String version)? checkCanUpdate,
     TResult? Function()? moveUpdateStore,
+    TResult? Function(AppLanguage language)? setLanguage,
   }) {
     return initialize?.call(key);
   }
@@ -175,6 +183,7 @@ class _$InitializeEventImpl implements InitializeEvent {
     TResult Function(AppKeys key)? initialize,
     TResult Function(AppKeys key, String version)? checkCanUpdate,
     TResult Function()? moveUpdateStore,
+    TResult Function(AppLanguage language)? setLanguage,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -189,6 +198,7 @@ class _$InitializeEventImpl implements InitializeEvent {
     required TResult Function(InitializeEvent value) initialize,
     required TResult Function(CheckCanUpdateEvent value) checkCanUpdate,
     required TResult Function(UpdateEvent value) moveUpdateStore,
+    required TResult Function(SetLanguageEvent value) setLanguage,
   }) {
     return initialize(this);
   }
@@ -199,6 +209,7 @@ class _$InitializeEventImpl implements InitializeEvent {
     TResult? Function(InitializeEvent value)? initialize,
     TResult? Function(CheckCanUpdateEvent value)? checkCanUpdate,
     TResult? Function(UpdateEvent value)? moveUpdateStore,
+    TResult? Function(SetLanguageEvent value)? setLanguage,
   }) {
     return initialize?.call(this);
   }
@@ -209,6 +220,7 @@ class _$InitializeEventImpl implements InitializeEvent {
     TResult Function(InitializeEvent value)? initialize,
     TResult Function(CheckCanUpdateEvent value)? checkCanUpdate,
     TResult Function(UpdateEvent value)? moveUpdateStore,
+    TResult Function(SetLanguageEvent value)? setLanguage,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -310,6 +322,7 @@ class _$CheckCanUpdateEventImpl implements CheckCanUpdateEvent {
     required TResult Function(AppKeys key) initialize,
     required TResult Function(AppKeys key, String version) checkCanUpdate,
     required TResult Function() moveUpdateStore,
+    required TResult Function(AppLanguage language) setLanguage,
   }) {
     return checkCanUpdate(key, version);
   }
@@ -320,6 +333,7 @@ class _$CheckCanUpdateEventImpl implements CheckCanUpdateEvent {
     TResult? Function(AppKeys key)? initialize,
     TResult? Function(AppKeys key, String version)? checkCanUpdate,
     TResult? Function()? moveUpdateStore,
+    TResult? Function(AppLanguage language)? setLanguage,
   }) {
     return checkCanUpdate?.call(key, version);
   }
@@ -330,6 +344,7 @@ class _$CheckCanUpdateEventImpl implements CheckCanUpdateEvent {
     TResult Function(AppKeys key)? initialize,
     TResult Function(AppKeys key, String version)? checkCanUpdate,
     TResult Function()? moveUpdateStore,
+    TResult Function(AppLanguage language)? setLanguage,
     required TResult orElse(),
   }) {
     if (checkCanUpdate != null) {
@@ -344,6 +359,7 @@ class _$CheckCanUpdateEventImpl implements CheckCanUpdateEvent {
     required TResult Function(InitializeEvent value) initialize,
     required TResult Function(CheckCanUpdateEvent value) checkCanUpdate,
     required TResult Function(UpdateEvent value) moveUpdateStore,
+    required TResult Function(SetLanguageEvent value) setLanguage,
   }) {
     return checkCanUpdate(this);
   }
@@ -354,6 +370,7 @@ class _$CheckCanUpdateEventImpl implements CheckCanUpdateEvent {
     TResult? Function(InitializeEvent value)? initialize,
     TResult? Function(CheckCanUpdateEvent value)? checkCanUpdate,
     TResult? Function(UpdateEvent value)? moveUpdateStore,
+    TResult? Function(SetLanguageEvent value)? setLanguage,
   }) {
     return checkCanUpdate?.call(this);
   }
@@ -364,6 +381,7 @@ class _$CheckCanUpdateEventImpl implements CheckCanUpdateEvent {
     TResult Function(InitializeEvent value)? initialize,
     TResult Function(CheckCanUpdateEvent value)? checkCanUpdate,
     TResult Function(UpdateEvent value)? moveUpdateStore,
+    TResult Function(SetLanguageEvent value)? setLanguage,
     required TResult orElse(),
   }) {
     if (checkCanUpdate != null) {
@@ -431,6 +449,7 @@ class _$UpdateEventImpl implements UpdateEvent {
     required TResult Function(AppKeys key) initialize,
     required TResult Function(AppKeys key, String version) checkCanUpdate,
     required TResult Function() moveUpdateStore,
+    required TResult Function(AppLanguage language) setLanguage,
   }) {
     return moveUpdateStore();
   }
@@ -441,6 +460,7 @@ class _$UpdateEventImpl implements UpdateEvent {
     TResult? Function(AppKeys key)? initialize,
     TResult? Function(AppKeys key, String version)? checkCanUpdate,
     TResult? Function()? moveUpdateStore,
+    TResult? Function(AppLanguage language)? setLanguage,
   }) {
     return moveUpdateStore?.call();
   }
@@ -451,6 +471,7 @@ class _$UpdateEventImpl implements UpdateEvent {
     TResult Function(AppKeys key)? initialize,
     TResult Function(AppKeys key, String version)? checkCanUpdate,
     TResult Function()? moveUpdateStore,
+    TResult Function(AppLanguage language)? setLanguage,
     required TResult orElse(),
   }) {
     if (moveUpdateStore != null) {
@@ -465,6 +486,7 @@ class _$UpdateEventImpl implements UpdateEvent {
     required TResult Function(InitializeEvent value) initialize,
     required TResult Function(CheckCanUpdateEvent value) checkCanUpdate,
     required TResult Function(UpdateEvent value) moveUpdateStore,
+    required TResult Function(SetLanguageEvent value) setLanguage,
   }) {
     return moveUpdateStore(this);
   }
@@ -475,6 +497,7 @@ class _$UpdateEventImpl implements UpdateEvent {
     TResult? Function(InitializeEvent value)? initialize,
     TResult? Function(CheckCanUpdateEvent value)? checkCanUpdate,
     TResult? Function(UpdateEvent value)? moveUpdateStore,
+    TResult? Function(SetLanguageEvent value)? setLanguage,
   }) {
     return moveUpdateStore?.call(this);
   }
@@ -485,6 +508,7 @@ class _$UpdateEventImpl implements UpdateEvent {
     TResult Function(InitializeEvent value)? initialize,
     TResult Function(CheckCanUpdateEvent value)? checkCanUpdate,
     TResult Function(UpdateEvent value)? moveUpdateStore,
+    TResult Function(SetLanguageEvent value)? setLanguage,
     required TResult orElse(),
   }) {
     if (moveUpdateStore != null) {
@@ -496,4 +520,159 @@ class _$UpdateEventImpl implements UpdateEvent {
 
 abstract class UpdateEvent implements AppConfigEvent {
   const factory UpdateEvent() = _$UpdateEventImpl;
+}
+
+/// @nodoc
+abstract class _$$SetLanguageEventImplCopyWith<$Res> {
+  factory _$$SetLanguageEventImplCopyWith(_$SetLanguageEventImpl value,
+          $Res Function(_$SetLanguageEventImpl) then) =
+      __$$SetLanguageEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({AppLanguage language});
+}
+
+/// @nodoc
+class __$$SetLanguageEventImplCopyWithImpl<$Res>
+    extends _$AppConfigEventCopyWithImpl<$Res, _$SetLanguageEventImpl>
+    implements _$$SetLanguageEventImplCopyWith<$Res> {
+  __$$SetLanguageEventImplCopyWithImpl(_$SetLanguageEventImpl _value,
+      $Res Function(_$SetLanguageEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AppConfigEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? language = null,
+  }) {
+    return _then(_$SetLanguageEventImpl(
+      null == language
+          ? _value.language
+          : language // ignore: cast_nullable_to_non_nullable
+              as AppLanguage,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SetLanguageEventImpl implements SetLanguageEvent {
+  const _$SetLanguageEventImpl(this.language);
+
+  @override
+  final AppLanguage language;
+
+  @override
+  String toString() {
+    return 'AppConfigEvent.setLanguage(language: $language)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SetLanguageEventImpl &&
+            (identical(other.language, language) ||
+                other.language == language));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, language);
+
+  /// Create a copy of AppConfigEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SetLanguageEventImplCopyWith<_$SetLanguageEventImpl> get copyWith =>
+      __$$SetLanguageEventImplCopyWithImpl<_$SetLanguageEventImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AppKeys key) initialize,
+    required TResult Function(AppKeys key, String version) checkCanUpdate,
+    required TResult Function() moveUpdateStore,
+    required TResult Function(AppLanguage language) setLanguage,
+  }) {
+    return setLanguage(language);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AppKeys key)? initialize,
+    TResult? Function(AppKeys key, String version)? checkCanUpdate,
+    TResult? Function()? moveUpdateStore,
+    TResult? Function(AppLanguage language)? setLanguage,
+  }) {
+    return setLanguage?.call(language);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AppKeys key)? initialize,
+    TResult Function(AppKeys key, String version)? checkCanUpdate,
+    TResult Function()? moveUpdateStore,
+    TResult Function(AppLanguage language)? setLanguage,
+    required TResult orElse(),
+  }) {
+    if (setLanguage != null) {
+      return setLanguage(language);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitializeEvent value) initialize,
+    required TResult Function(CheckCanUpdateEvent value) checkCanUpdate,
+    required TResult Function(UpdateEvent value) moveUpdateStore,
+    required TResult Function(SetLanguageEvent value) setLanguage,
+  }) {
+    return setLanguage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitializeEvent value)? initialize,
+    TResult? Function(CheckCanUpdateEvent value)? checkCanUpdate,
+    TResult? Function(UpdateEvent value)? moveUpdateStore,
+    TResult? Function(SetLanguageEvent value)? setLanguage,
+  }) {
+    return setLanguage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitializeEvent value)? initialize,
+    TResult Function(CheckCanUpdateEvent value)? checkCanUpdate,
+    TResult Function(UpdateEvent value)? moveUpdateStore,
+    TResult Function(SetLanguageEvent value)? setLanguage,
+    required TResult orElse(),
+  }) {
+    if (setLanguage != null) {
+      return setLanguage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SetLanguageEvent implements AppConfigEvent {
+  const factory SetLanguageEvent(final AppLanguage language) =
+      _$SetLanguageEventImpl;
+
+  AppLanguage get language;
+
+  /// Create a copy of AppConfigEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SetLanguageEventImplCopyWith<_$SetLanguageEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

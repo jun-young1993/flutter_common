@@ -22,6 +22,7 @@ mixin _$McpConfigEvent {
     required TResult Function(McpApiKeys key, String value) setApiKey,
     required TResult Function(McpApiKeys key) clearApiKey,
     required TResult Function(McpApiKeys key) selectApiKey,
+    required TResult Function(String toolName, bool isEnabled) toggleTool,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +31,7 @@ mixin _$McpConfigEvent {
     TResult? Function(McpApiKeys key, String value)? setApiKey,
     TResult? Function(McpApiKeys key)? clearApiKey,
     TResult? Function(McpApiKeys key)? selectApiKey,
+    TResult? Function(String toolName, bool isEnabled)? toggleTool,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,7 @@ mixin _$McpConfigEvent {
     TResult Function(McpApiKeys key, String value)? setApiKey,
     TResult Function(McpApiKeys key)? clearApiKey,
     TResult Function(McpApiKeys key)? selectApiKey,
+    TResult Function(String toolName, bool isEnabled)? toggleTool,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +50,7 @@ mixin _$McpConfigEvent {
     required TResult Function(SetApiKey value) setApiKey,
     required TResult Function(ClearApiKey value) clearApiKey,
     required TResult Function(SelectApiKey value) selectApiKey,
+    required TResult Function(ToggleTool value) toggleTool,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +59,7 @@ mixin _$McpConfigEvent {
     TResult? Function(SetApiKey value)? setApiKey,
     TResult? Function(ClearApiKey value)? clearApiKey,
     TResult? Function(SelectApiKey value)? selectApiKey,
+    TResult? Function(ToggleTool value)? toggleTool,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +68,7 @@ mixin _$McpConfigEvent {
     TResult Function(SetApiKey value)? setApiKey,
     TResult Function(ClearApiKey value)? clearApiKey,
     TResult Function(SelectApiKey value)? selectApiKey,
+    TResult Function(ToggleTool value)? toggleTool,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -134,6 +140,7 @@ class _$InitializeImpl implements Initialize {
     required TResult Function(McpApiKeys key, String value) setApiKey,
     required TResult Function(McpApiKeys key) clearApiKey,
     required TResult Function(McpApiKeys key) selectApiKey,
+    required TResult Function(String toolName, bool isEnabled) toggleTool,
   }) {
     return initialize();
   }
@@ -145,6 +152,7 @@ class _$InitializeImpl implements Initialize {
     TResult? Function(McpApiKeys key, String value)? setApiKey,
     TResult? Function(McpApiKeys key)? clearApiKey,
     TResult? Function(McpApiKeys key)? selectApiKey,
+    TResult? Function(String toolName, bool isEnabled)? toggleTool,
   }) {
     return initialize?.call();
   }
@@ -156,6 +164,7 @@ class _$InitializeImpl implements Initialize {
     TResult Function(McpApiKeys key, String value)? setApiKey,
     TResult Function(McpApiKeys key)? clearApiKey,
     TResult Function(McpApiKeys key)? selectApiKey,
+    TResult Function(String toolName, bool isEnabled)? toggleTool,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -171,6 +180,7 @@ class _$InitializeImpl implements Initialize {
     required TResult Function(SetApiKey value) setApiKey,
     required TResult Function(ClearApiKey value) clearApiKey,
     required TResult Function(SelectApiKey value) selectApiKey,
+    required TResult Function(ToggleTool value) toggleTool,
   }) {
     return initialize(this);
   }
@@ -182,6 +192,7 @@ class _$InitializeImpl implements Initialize {
     TResult? Function(SetApiKey value)? setApiKey,
     TResult? Function(ClearApiKey value)? clearApiKey,
     TResult? Function(SelectApiKey value)? selectApiKey,
+    TResult? Function(ToggleTool value)? toggleTool,
   }) {
     return initialize?.call(this);
   }
@@ -193,6 +204,7 @@ class _$InitializeImpl implements Initialize {
     TResult Function(SetApiKey value)? setApiKey,
     TResult Function(ClearApiKey value)? clearApiKey,
     TResult Function(SelectApiKey value)? selectApiKey,
+    TResult Function(ToggleTool value)? toggleTool,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -286,6 +298,7 @@ class _$SetApiKeyImpl implements SetApiKey {
     required TResult Function(McpApiKeys key, String value) setApiKey,
     required TResult Function(McpApiKeys key) clearApiKey,
     required TResult Function(McpApiKeys key) selectApiKey,
+    required TResult Function(String toolName, bool isEnabled) toggleTool,
   }) {
     return setApiKey(key, value);
   }
@@ -297,6 +310,7 @@ class _$SetApiKeyImpl implements SetApiKey {
     TResult? Function(McpApiKeys key, String value)? setApiKey,
     TResult? Function(McpApiKeys key)? clearApiKey,
     TResult? Function(McpApiKeys key)? selectApiKey,
+    TResult? Function(String toolName, bool isEnabled)? toggleTool,
   }) {
     return setApiKey?.call(key, value);
   }
@@ -308,6 +322,7 @@ class _$SetApiKeyImpl implements SetApiKey {
     TResult Function(McpApiKeys key, String value)? setApiKey,
     TResult Function(McpApiKeys key)? clearApiKey,
     TResult Function(McpApiKeys key)? selectApiKey,
+    TResult Function(String toolName, bool isEnabled)? toggleTool,
     required TResult orElse(),
   }) {
     if (setApiKey != null) {
@@ -323,6 +338,7 @@ class _$SetApiKeyImpl implements SetApiKey {
     required TResult Function(SetApiKey value) setApiKey,
     required TResult Function(ClearApiKey value) clearApiKey,
     required TResult Function(SelectApiKey value) selectApiKey,
+    required TResult Function(ToggleTool value) toggleTool,
   }) {
     return setApiKey(this);
   }
@@ -334,6 +350,7 @@ class _$SetApiKeyImpl implements SetApiKey {
     TResult? Function(SetApiKey value)? setApiKey,
     TResult? Function(ClearApiKey value)? clearApiKey,
     TResult? Function(SelectApiKey value)? selectApiKey,
+    TResult? Function(ToggleTool value)? toggleTool,
   }) {
     return setApiKey?.call(this);
   }
@@ -345,6 +362,7 @@ class _$SetApiKeyImpl implements SetApiKey {
     TResult Function(SetApiKey value)? setApiKey,
     TResult Function(ClearApiKey value)? clearApiKey,
     TResult Function(SelectApiKey value)? selectApiKey,
+    TResult Function(ToggleTool value)? toggleTool,
     required TResult orElse(),
   }) {
     if (setApiKey != null) {
@@ -440,6 +458,7 @@ class _$ClearApiKeyImpl implements ClearApiKey {
     required TResult Function(McpApiKeys key, String value) setApiKey,
     required TResult Function(McpApiKeys key) clearApiKey,
     required TResult Function(McpApiKeys key) selectApiKey,
+    required TResult Function(String toolName, bool isEnabled) toggleTool,
   }) {
     return clearApiKey(key);
   }
@@ -451,6 +470,7 @@ class _$ClearApiKeyImpl implements ClearApiKey {
     TResult? Function(McpApiKeys key, String value)? setApiKey,
     TResult? Function(McpApiKeys key)? clearApiKey,
     TResult? Function(McpApiKeys key)? selectApiKey,
+    TResult? Function(String toolName, bool isEnabled)? toggleTool,
   }) {
     return clearApiKey?.call(key);
   }
@@ -462,6 +482,7 @@ class _$ClearApiKeyImpl implements ClearApiKey {
     TResult Function(McpApiKeys key, String value)? setApiKey,
     TResult Function(McpApiKeys key)? clearApiKey,
     TResult Function(McpApiKeys key)? selectApiKey,
+    TResult Function(String toolName, bool isEnabled)? toggleTool,
     required TResult orElse(),
   }) {
     if (clearApiKey != null) {
@@ -477,6 +498,7 @@ class _$ClearApiKeyImpl implements ClearApiKey {
     required TResult Function(SetApiKey value) setApiKey,
     required TResult Function(ClearApiKey value) clearApiKey,
     required TResult Function(SelectApiKey value) selectApiKey,
+    required TResult Function(ToggleTool value) toggleTool,
   }) {
     return clearApiKey(this);
   }
@@ -488,6 +510,7 @@ class _$ClearApiKeyImpl implements ClearApiKey {
     TResult? Function(SetApiKey value)? setApiKey,
     TResult? Function(ClearApiKey value)? clearApiKey,
     TResult? Function(SelectApiKey value)? selectApiKey,
+    TResult? Function(ToggleTool value)? toggleTool,
   }) {
     return clearApiKey?.call(this);
   }
@@ -499,6 +522,7 @@ class _$ClearApiKeyImpl implements ClearApiKey {
     TResult Function(SetApiKey value)? setApiKey,
     TResult Function(ClearApiKey value)? clearApiKey,
     TResult Function(SelectApiKey value)? selectApiKey,
+    TResult Function(ToggleTool value)? toggleTool,
     required TResult orElse(),
   }) {
     if (clearApiKey != null) {
@@ -592,6 +616,7 @@ class _$SelectApiKeyImpl implements SelectApiKey {
     required TResult Function(McpApiKeys key, String value) setApiKey,
     required TResult Function(McpApiKeys key) clearApiKey,
     required TResult Function(McpApiKeys key) selectApiKey,
+    required TResult Function(String toolName, bool isEnabled) toggleTool,
   }) {
     return selectApiKey(key);
   }
@@ -603,6 +628,7 @@ class _$SelectApiKeyImpl implements SelectApiKey {
     TResult? Function(McpApiKeys key, String value)? setApiKey,
     TResult? Function(McpApiKeys key)? clearApiKey,
     TResult? Function(McpApiKeys key)? selectApiKey,
+    TResult? Function(String toolName, bool isEnabled)? toggleTool,
   }) {
     return selectApiKey?.call(key);
   }
@@ -614,6 +640,7 @@ class _$SelectApiKeyImpl implements SelectApiKey {
     TResult Function(McpApiKeys key, String value)? setApiKey,
     TResult Function(McpApiKeys key)? clearApiKey,
     TResult Function(McpApiKeys key)? selectApiKey,
+    TResult Function(String toolName, bool isEnabled)? toggleTool,
     required TResult orElse(),
   }) {
     if (selectApiKey != null) {
@@ -629,6 +656,7 @@ class _$SelectApiKeyImpl implements SelectApiKey {
     required TResult Function(SetApiKey value) setApiKey,
     required TResult Function(ClearApiKey value) clearApiKey,
     required TResult Function(SelectApiKey value) selectApiKey,
+    required TResult Function(ToggleTool value) toggleTool,
   }) {
     return selectApiKey(this);
   }
@@ -640,6 +668,7 @@ class _$SelectApiKeyImpl implements SelectApiKey {
     TResult? Function(SetApiKey value)? setApiKey,
     TResult? Function(ClearApiKey value)? clearApiKey,
     TResult? Function(SelectApiKey value)? selectApiKey,
+    TResult? Function(ToggleTool value)? toggleTool,
   }) {
     return selectApiKey?.call(this);
   }
@@ -651,6 +680,7 @@ class _$SelectApiKeyImpl implements SelectApiKey {
     TResult Function(SetApiKey value)? setApiKey,
     TResult Function(ClearApiKey value)? clearApiKey,
     TResult Function(SelectApiKey value)? selectApiKey,
+    TResult Function(ToggleTool value)? toggleTool,
     required TResult orElse(),
   }) {
     if (selectApiKey != null) {
@@ -669,5 +699,175 @@ abstract class SelectApiKey implements McpConfigEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SelectApiKeyImplCopyWith<_$SelectApiKeyImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ToggleToolImplCopyWith<$Res> {
+  factory _$$ToggleToolImplCopyWith(
+          _$ToggleToolImpl value, $Res Function(_$ToggleToolImpl) then) =
+      __$$ToggleToolImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String toolName, bool isEnabled});
+}
+
+/// @nodoc
+class __$$ToggleToolImplCopyWithImpl<$Res>
+    extends _$McpConfigEventCopyWithImpl<$Res, _$ToggleToolImpl>
+    implements _$$ToggleToolImplCopyWith<$Res> {
+  __$$ToggleToolImplCopyWithImpl(
+      _$ToggleToolImpl _value, $Res Function(_$ToggleToolImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of McpConfigEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? toolName = null,
+    Object? isEnabled = null,
+  }) {
+    return _then(_$ToggleToolImpl(
+      null == toolName
+          ? _value.toolName
+          : toolName // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == isEnabled
+          ? _value.isEnabled
+          : isEnabled // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ToggleToolImpl implements ToggleTool {
+  const _$ToggleToolImpl(this.toolName, this.isEnabled);
+
+  @override
+  final String toolName;
+  @override
+  final bool isEnabled;
+
+  @override
+  String toString() {
+    return 'McpConfigEvent.toggleTool(toolName: $toolName, isEnabled: $isEnabled)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ToggleToolImpl &&
+            (identical(other.toolName, toolName) ||
+                other.toolName == toolName) &&
+            (identical(other.isEnabled, isEnabled) ||
+                other.isEnabled == isEnabled));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, toolName, isEnabled);
+
+  /// Create a copy of McpConfigEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ToggleToolImplCopyWith<_$ToggleToolImpl> get copyWith =>
+      __$$ToggleToolImplCopyWithImpl<_$ToggleToolImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialize,
+    required TResult Function(McpApiKeys key, String value) setApiKey,
+    required TResult Function(McpApiKeys key) clearApiKey,
+    required TResult Function(McpApiKeys key) selectApiKey,
+    required TResult Function(String toolName, bool isEnabled) toggleTool,
+  }) {
+    return toggleTool(toolName, isEnabled);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialize,
+    TResult? Function(McpApiKeys key, String value)? setApiKey,
+    TResult? Function(McpApiKeys key)? clearApiKey,
+    TResult? Function(McpApiKeys key)? selectApiKey,
+    TResult? Function(String toolName, bool isEnabled)? toggleTool,
+  }) {
+    return toggleTool?.call(toolName, isEnabled);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialize,
+    TResult Function(McpApiKeys key, String value)? setApiKey,
+    TResult Function(McpApiKeys key)? clearApiKey,
+    TResult Function(McpApiKeys key)? selectApiKey,
+    TResult Function(String toolName, bool isEnabled)? toggleTool,
+    required TResult orElse(),
+  }) {
+    if (toggleTool != null) {
+      return toggleTool(toolName, isEnabled);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initialize value) initialize,
+    required TResult Function(SetApiKey value) setApiKey,
+    required TResult Function(ClearApiKey value) clearApiKey,
+    required TResult Function(SelectApiKey value) selectApiKey,
+    required TResult Function(ToggleTool value) toggleTool,
+  }) {
+    return toggleTool(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initialize value)? initialize,
+    TResult? Function(SetApiKey value)? setApiKey,
+    TResult? Function(ClearApiKey value)? clearApiKey,
+    TResult? Function(SelectApiKey value)? selectApiKey,
+    TResult? Function(ToggleTool value)? toggleTool,
+  }) {
+    return toggleTool?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initialize value)? initialize,
+    TResult Function(SetApiKey value)? setApiKey,
+    TResult Function(ClearApiKey value)? clearApiKey,
+    TResult Function(SelectApiKey value)? selectApiKey,
+    TResult Function(ToggleTool value)? toggleTool,
+    required TResult orElse(),
+  }) {
+    if (toggleTool != null) {
+      return toggleTool(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ToggleTool implements McpConfigEvent {
+  const factory ToggleTool(final String toolName, final bool isEnabled) =
+      _$ToggleToolImpl;
+
+  String get toolName;
+  bool get isEnabled;
+
+  /// Create a copy of McpConfigEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ToggleToolImplCopyWith<_$ToggleToolImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

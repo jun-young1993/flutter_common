@@ -1,6 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_common/common_il8n.dart';
 import 'package:flutter_common/constants/size_constants.dart';
 import 'package:flutter_common/state/mcp_config/mcp_config_state.dart';
+import 'package:mcp_client/mcp_client.dart';
 
 class McpApiKeySection extends StatefulWidget {
   final TextEditingController controller;
@@ -33,47 +36,46 @@ class _McpApiKeySectionState extends State<McpApiKeySection> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SizedBox(height: 8.0),
-        TextField(
+        TextFormField(
           controller: widget.controller,
           obscureText: _isObscured,
           decoration: InputDecoration(
-            hintText: 'Enter your "${widget.apiKey.name}" API Key',
+            labelText: '${widget.apiKey.name} ${Tr.mcp.apiKey.title.tr()}',
+            hintText: Tr.mcp.apiKey.hint.tr(),
             hintStyle: TextStyle(
               fontSize: SizeConstants.getTextFieldHintFontSize(context),
             ),
             border: const OutlineInputBorder(),
-            suffixIcon: IconButton(
-              icon: Icon(
-                _isObscured ? Icons.visibility : Icons.visibility_off,
-              ),
-              onPressed: () {
-                setState(() {
-                  _isObscured = !_isObscured;
-                });
-              },
+            suffixIcon: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                IconButton(
+                  icon: Icon(
+                    _isObscured ? Icons.visibility : Icons.visibility_off,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _isObscured = !_isObscured;
+                    });
+                  },
+                ),
+              ],
             ),
           ),
-          onSubmitted: (_) => widget.onSave(),
         ),
-        const SizedBox(height: 8.0),
+        const SizedBox(height: 16),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            ElevatedButton.icon(
-              icon: const Icon(Icons.save),
-              label: const Text('Save Key'),
-              onPressed: widget.onSave,
+            TextButton(
+              onPressed: widget.onClear,
+              child: Text(Tr.mcp.apiKey.clear.tr()),
             ),
-            if (widget.currentApiKey != null &&
-                widget.currentApiKey!.isNotEmpty)
-              TextButton.icon(
-                icon: const Icon(Icons.clear),
-                label: const Text('Clear Key'),
-                onPressed: widget.onClear,
-                style: TextButton.styleFrom(
-                  foregroundColor: theme.colorScheme.error,
-                ),
-              ),
+            const SizedBox(width: 8),
+            ElevatedButton(
+              onPressed: widget.onSave,
+              child: Text(Tr.mcp.apiKey.save.tr()),
+            ),
           ],
         ),
         const SizedBox(height: 4.0),

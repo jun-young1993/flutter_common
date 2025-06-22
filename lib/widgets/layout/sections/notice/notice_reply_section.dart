@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_common/common_il8n.dart';
 import 'package:flutter_common/constants/size_constants.dart';
 import 'package:flutter_common/models/notice/notice_reply.dart';
 import 'package:intl/intl.dart';
@@ -69,8 +71,8 @@ class _NoticeReplySectionState extends State<NoticeReplySection> {
           Expanded(
             child: TextField(
               controller: _replyController,
-              decoration: const InputDecoration(
-                hintText: '댓글을 입력하세요',
+              decoration: InputDecoration(
+                hintText: Tr.message.enterReply.tr(),
                 border: InputBorder.none,
               ),
               maxLines: 1,
@@ -83,7 +85,7 @@ class _NoticeReplySectionState extends State<NoticeReplySection> {
                 _replyController.clear();
               }
             },
-            child: const Text('등록'),
+            child: Text(Tr.app.register.tr()),
           ),
         ],
       ),

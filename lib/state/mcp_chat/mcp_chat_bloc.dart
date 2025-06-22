@@ -7,6 +7,7 @@ import 'package:flutter_common/repositories/llm_client_repository.dart';
 import 'package:flutter_common/state/base/base_bloc.dart';
 import 'package:flutter_common/state/mcp_chat/mcp_chat_event.dart';
 import 'package:flutter_common/state/mcp_chat/mcp_chat_state.dart';
+import 'package:mcp_client/mcp_client.dart';
 import 'package:uuid/uuid.dart';
 
 class McpChatBloc extends BaseBloc<McpChatEvent, McpChatState> {
@@ -30,11 +31,13 @@ class McpChatBloc extends BaseBloc<McpChatEvent, McpChatState> {
             ]));
             final response =
                 await llmClientRepository.chatWithToolsUse(e.message.text);
+            debugPrint('response: ${response.toolCalls}');
+            debugPrint('response: ${response.text}');
             final newMessages = state.messages
                 .map((e) => e.id == llmMessage.id
                     ? e.copyWith(
                         text:
-                            "${response.text}\n\n 사용한 도구들: ${response.toolCalls?.map((e) => e.toString()).join('\n')}",
+                            "${response.text}\n\n 사용한 도구들: ${response.toolCalls?.map((e) => e.name).join('\n')}",
                         toolCalls: response.toolCalls,
                         isLoading: false)
                     : e)
@@ -76,23 +79,7 @@ class McpChatBloc extends BaseBloc<McpChatEvent, McpChatState> {
             });
           });
         },
-        initialize: (e) async {
-          await handleEvent(emit, () async {
-            print('ChatBloc on<ChatEvent.initialize> ${e.apiKey}');
-            await llmClientRepository
-                .initialize(LlmClientRepositoryIntitializeConfig(
-              llmConfig: LlmClientRepositoryIntitializeLlmConfig(
-                  apiKey: e.apiKey,
-                  mcpServerUrl: JunyConstants.mcpServerUrl,
-                  mcpAuthToken: 'asdf'),
-            ));
-            bool isConnected = llmClientRepository.isConnected;
-            emit(state.copyWith(isConnected: isConnected));
-            print('ChatBloc on<ChatEvent.initialize> $isConnected');
-            llmClientRepository.getTools();
-            print('ChatBloc on<ChatEvent.initialize> $isConnected');
-          });
-        },
+        initialize: (e) async {},
       );
     });
   }

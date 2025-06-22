@@ -19,7 +19,9 @@ mixin _$McpChatState {
   bool get isLoading => throw _privateConstructorUsedError;
   AppException? get error => throw _privateConstructorUsedError;
   List<ChatMessage> get messages => throw _privateConstructorUsedError;
-  bool get isConnected => throw _privateConstructorUsedError;
+  McpApiKeys get selectedApiKey => throw _privateConstructorUsedError;
+  bool get isApiKeySet => throw _privateConstructorUsedError;
+  bool get isConnectionHealthy => throw _privateConstructorUsedError;
 
   /// Create a copy of McpChatState
   /// with the given fields replaced by the non-null parameter values.
@@ -38,7 +40,9 @@ abstract class $McpChatStateCopyWith<$Res> {
       {bool isLoading,
       AppException? error,
       List<ChatMessage> messages,
-      bool isConnected});
+      McpApiKeys selectedApiKey,
+      bool isApiKeySet,
+      bool isConnectionHealthy});
 
   $AppExceptionCopyWith<$Res>? get error;
 }
@@ -61,7 +65,9 @@ class _$McpChatStateCopyWithImpl<$Res, $Val extends McpChatState>
     Object? isLoading = null,
     Object? error = freezed,
     Object? messages = null,
-    Object? isConnected = null,
+    Object? selectedApiKey = null,
+    Object? isApiKeySet = null,
+    Object? isConnectionHealthy = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -76,9 +82,17 @@ class _$McpChatStateCopyWithImpl<$Res, $Val extends McpChatState>
           ? _value.messages
           : messages // ignore: cast_nullable_to_non_nullable
               as List<ChatMessage>,
-      isConnected: null == isConnected
-          ? _value.isConnected
-          : isConnected // ignore: cast_nullable_to_non_nullable
+      selectedApiKey: null == selectedApiKey
+          ? _value.selectedApiKey
+          : selectedApiKey // ignore: cast_nullable_to_non_nullable
+              as McpApiKeys,
+      isApiKeySet: null == isApiKeySet
+          ? _value.isApiKeySet
+          : isApiKeySet // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isConnectionHealthy: null == isConnectionHealthy
+          ? _value.isConnectionHealthy
+          : isConnectionHealthy // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -110,7 +124,9 @@ abstract class _$$McpChatStateImplCopyWith<$Res>
       {bool isLoading,
       AppException? error,
       List<ChatMessage> messages,
-      bool isConnected});
+      McpApiKeys selectedApiKey,
+      bool isApiKeySet,
+      bool isConnectionHealthy});
 
   @override
   $AppExceptionCopyWith<$Res>? get error;
@@ -132,7 +148,9 @@ class __$$McpChatStateImplCopyWithImpl<$Res>
     Object? isLoading = null,
     Object? error = freezed,
     Object? messages = null,
-    Object? isConnected = null,
+    Object? selectedApiKey = null,
+    Object? isApiKeySet = null,
+    Object? isConnectionHealthy = null,
   }) {
     return _then(_$McpChatStateImpl(
       isLoading: null == isLoading
@@ -147,9 +165,17 @@ class __$$McpChatStateImplCopyWithImpl<$Res>
           ? _value._messages
           : messages // ignore: cast_nullable_to_non_nullable
               as List<ChatMessage>,
-      isConnected: null == isConnected
-          ? _value.isConnected
-          : isConnected // ignore: cast_nullable_to_non_nullable
+      selectedApiKey: null == selectedApiKey
+          ? _value.selectedApiKey
+          : selectedApiKey // ignore: cast_nullable_to_non_nullable
+              as McpApiKeys,
+      isApiKeySet: null == isApiKeySet
+          ? _value.isApiKeySet
+          : isApiKeySet // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isConnectionHealthy: null == isConnectionHealthy
+          ? _value.isConnectionHealthy
+          : isConnectionHealthy // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -162,7 +188,9 @@ class _$McpChatStateImpl extends _McpChatState {
       {this.isLoading = false,
       this.error = null,
       final List<ChatMessage> messages = const [],
-      this.isConnected = false})
+      this.selectedApiKey = McpApiKeys.anthropic,
+      this.isApiKeySet = false,
+      this.isConnectionHealthy = false})
       : _messages = messages,
         super._();
 
@@ -183,11 +211,17 @@ class _$McpChatStateImpl extends _McpChatState {
 
   @override
   @JsonKey()
-  final bool isConnected;
+  final McpApiKeys selectedApiKey;
+  @override
+  @JsonKey()
+  final bool isApiKeySet;
+  @override
+  @JsonKey()
+  final bool isConnectionHealthy;
 
   @override
   String toString() {
-    return 'McpChatState(isLoading: $isLoading, error: $error, messages: $messages, isConnected: $isConnected)';
+    return 'McpChatState(isLoading: $isLoading, error: $error, messages: $messages, selectedApiKey: $selectedApiKey, isApiKeySet: $isApiKeySet, isConnectionHealthy: $isConnectionHealthy)';
   }
 
   @override
@@ -199,13 +233,23 @@ class _$McpChatStateImpl extends _McpChatState {
                 other.isLoading == isLoading) &&
             (identical(other.error, error) || other.error == error) &&
             const DeepCollectionEquality().equals(other._messages, _messages) &&
-            (identical(other.isConnected, isConnected) ||
-                other.isConnected == isConnected));
+            (identical(other.selectedApiKey, selectedApiKey) ||
+                other.selectedApiKey == selectedApiKey) &&
+            (identical(other.isApiKeySet, isApiKeySet) ||
+                other.isApiKeySet == isApiKeySet) &&
+            (identical(other.isConnectionHealthy, isConnectionHealthy) ||
+                other.isConnectionHealthy == isConnectionHealthy));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, error,
-      const DeepCollectionEquality().hash(_messages), isConnected);
+  int get hashCode => Object.hash(
+      runtimeType,
+      isLoading,
+      error,
+      const DeepCollectionEquality().hash(_messages),
+      selectedApiKey,
+      isApiKeySet,
+      isConnectionHealthy);
 
   /// Create a copy of McpChatState
   /// with the given fields replaced by the non-null parameter values.
@@ -221,7 +265,9 @@ abstract class _McpChatState extends McpChatState {
       {final bool isLoading,
       final AppException? error,
       final List<ChatMessage> messages,
-      final bool isConnected}) = _$McpChatStateImpl;
+      final McpApiKeys selectedApiKey,
+      final bool isApiKeySet,
+      final bool isConnectionHealthy}) = _$McpChatStateImpl;
   const _McpChatState._() : super._();
 
   @override
@@ -231,7 +277,11 @@ abstract class _McpChatState extends McpChatState {
   @override
   List<ChatMessage> get messages;
   @override
-  bool get isConnected;
+  McpApiKeys get selectedApiKey;
+  @override
+  bool get isApiKeySet;
+  @override
+  bool get isConnectionHealthy;
 
   /// Create a copy of McpChatState
   /// with the given fields replaced by the non-null parameter values.

@@ -18,6 +18,9 @@ class AppException with _$AppException implements Exception {
   const factory AppException.notFound() = _NotFound;
   const factory AppException.server(String message) = _Server;
   const factory AppException.cancelled() = _Cancelled;
+
+  // MCP API 키 찾을 수 없음
+  const factory AppException.notFoundMcpApiKey() = _NotFoundMcpApiKey;
 }
 
 extension AppExceptionMessage on AppException {
@@ -31,5 +34,6 @@ extension AppExceptionMessage on AppException {
         notFound: () => '요청한 리소스를 찾을 수 없습니다.',
         server: (message) => message,
         cancelled: () => '요청이 취소되었습니다.',
+        notFoundMcpApiKey: () => 'not found mcp api key',
       );
 }

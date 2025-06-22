@@ -10,8 +10,16 @@ class AdManager {
   bool _isInitialized = false;
   final bool _isTestMode = kDebugMode;
 
+  static setTestIds(Map<String, Map<String, String>> testAdUnitIds) {
+    _testAdUnitIds = testAdUnitIds;
+  }
+
+  static setRealAdUnitIds(Map<String, Map<String, String>> realAdUnitIds) {
+    _realAdUnitIds = realAdUnitIds;
+  }
+
   // 테스트 광고 ID
-  static const Map<String, Map<String, String>> _testAdUnitIds = {
+  static Map<String, Map<String, String>> _testAdUnitIds = {
     'android': {
       'banner': 'ca-app-pub-3940256099942544/6300978111',
     },
@@ -21,7 +29,7 @@ class AdManager {
   };
 
   // 실제 광고 ID (필요시 채워넣으세요)
-  static const Map<String, Map<String, String>> _realAdUnitIds = {
+  static Map<String, Map<String, String>> _realAdUnitIds = {
     'android': {
       'banner': '', // 실제 광고 ID 입력
     },
@@ -42,6 +50,12 @@ class AdManager {
 
   Future<void> initialize() async {
     if (_isInitialized) return;
+
+    // 웹, 데스크톱 등 지원하지 않는 플랫폼에서는 초기화하지 않음
+    if (!kIsWeb && !(Platform.isAndroid || Platform.isIOS)) {
+      debugPrint('AdManager: 지원하지 않는 플랫폼이므로 초기화하지 않습니다.');
+      return;
+    }
 
     try {
       await MobileAds.instance.initialize();

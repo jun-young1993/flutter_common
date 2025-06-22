@@ -10,4 +10,6 @@ class McpConfigEvent with _$McpConfigEvent {
       SetApiKey;
   const factory McpConfigEvent.clearApiKey(McpApiKeys key) = ClearApiKey;
   const factory McpConfigEvent.selectApiKey(McpApiKeys key) = SelectApiKey;
+  const factory McpConfigEvent.toggleTool(String toolName, bool isEnabled) =
+      ToggleTool;
 }

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_common/flutter_common.dart';
@@ -64,12 +65,22 @@ class CommonBlocProvider extends StatelessWidget {
           BlocProvider(
             create: (context) => McpConfigBloc(
               mcpConfigRepository: context.read<McpConfigRepository>(),
+              llmClientRepository: context.read<LlmClientRepository>(),
             ),
           ),
           ...(providers ?? []),
         ],
         child: MultiBlocListener(
-            listeners: [VerificationListener(), McpConfigListener()],
-            child: child));
+            listeners: [VerificationListener()],
+            child: Builder(builder: (context) {
+              return EasyLocalization(
+                startLocale:
+                    context.read<AppConfigBloc>().state.language.toLocale(),
+                supportedLocales: const [Locale('en'), Locale('ko')],
+                path: 'packages/flutter_common/assets/translations',
+                fallbackLocale: const Locale('en'),
+                child: child,
+              );
+            })));
   }
 }

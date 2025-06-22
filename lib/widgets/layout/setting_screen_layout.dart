@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_common/common_il8n.dart';
 import 'package:flutter_common/constants/common_constants.dart';
 import 'package:flutter_common/constants/juny_constants.dart';
 import 'package:flutter_common/constants/size_constants.dart';
@@ -18,6 +20,7 @@ import 'package:flutter_common/widgets/dialogs/app_dialog.dart';
 import 'package:flutter_common/widgets/dialogs/input_dialog.dart';
 import 'package:flutter_common/widgets/dialogs/report_dialog.dart';
 import 'package:flutter_common/widgets/layout/sections/can_update_row.dart';
+import 'package:flutter_common/widgets/layout/sections/setting/locale.dart';
 import 'package:flutter_common/widgets/layout/sections/share_app_row.dart';
 import 'package:flutter_common/widgets/lib/container/card_container.dart';
 import 'package:flutter_common/widgets/lib/container/card_container_item.dart';
@@ -112,7 +115,7 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
             return CardContainerItem(
               isLoading: isLoading,
               icon: Icons.email_sharp,
-              title: 'email 인증',
+              title: Tr.app.authEmail.tr(),
               initiallyExpanded: false,
               children: [
                 if (user?.email != null)
@@ -148,9 +151,9 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
                                             context)),
                                     // 인증번호 입력 필드
                                     TextField(
-                                      decoration: const InputDecoration(
-                                        labelText: '인증번호 입력',
-                                        border: OutlineInputBorder(),
+                                      decoration: InputDecoration(
+                                        labelText: Tr.app.inputAuthNumber.tr(),
+                                        border: const OutlineInputBorder(),
                                         isDense: true,
                                       ),
                                       keyboardType: TextInputType.number,
@@ -160,8 +163,9 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
                                           if (user?.id == null) {
                                             AppDialog.showError(
                                                 context: context,
-                                                title: '오류',
-                                                message: '사용자 정보를 찾을 수 없습니다.');
+                                                title: Tr.app.error.tr(),
+                                                message:
+                                                    Tr.error.userNotFound.tr());
                                             return;
                                           }
                                           verificationBloc.add(
@@ -191,7 +195,7 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
                                             padding: SizeConstants
                                                 .getSmallButtonPadding(context),
                                             icon: Icons.refresh_outlined,
-                                            text: '인증번호 재발송',
+                                            text: Tr.app.resendAuthNumber.tr(),
                                             onPressed: () {
                                               // 인증번호 재발송 로직
                                               verificationBloc.add(
@@ -215,14 +219,14 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
                                 onPressed: () {
                                   InputDialog.show(
                                     context: context,
-                                    title: '이메일 인증',
+                                    title: Tr.app.emailVerification.tr(),
                                     description:
-                                        '이메일 인증을 통해 계정을 안전하게 유지하고 복구할 수 있습니다.',
-                                    hintText: '이메일',
+                                        Tr.message.emailVerification.tr(),
+                                    hintText: Tr.app.email.tr(),
                                     maxLength: 20,
                                     validator: (value) =>
                                         value == null || value.isEmpty
-                                            ? '이메일을 입력하세요.'
+                                            ? Tr.message.inputEmail.tr()
                                             : null,
                                     onConfirm: (value) {
                                       // 입력값 처리
@@ -234,8 +238,8 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
                                 },
                               );
                       }),
-                      const AwesomeDescriptionText(
-                        text: '이메일 인증을 통해 계정을 안전하게 유지하고 복구할 수 있습니다.',
+                      AwesomeDescriptionText(
+                        text: Tr.message.emailVerification.tr(),
                         icon: Icons.mark_email_read_outlined,
                         textAlign: TextAlign.center,
                       ),
@@ -251,7 +255,7 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
 
   Widget _buildInfoSection(AppConfigState? appConfig) {
     return CardContainer(
-      title: '앱정보',
+      title: Tr.app.appInfo.tr(),
       icon: Icons.info_outline,
       children: [
         CardContainerItem(
@@ -278,7 +282,7 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
         CardContainerItem(
             initiallyExpanded: false,
             icon: Icons.share_outlined,
-            title: '앱 공유하기',
+            title: Tr.app.shareApp.tr(),
             children: [
               RemoteAppConfigSelector((config) {
                 if (config == null) {
@@ -289,18 +293,36 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
                 return ShareAppRow(
                   appStoreUrl: url,
                   appName: config.description,
-                  invitationMessage:
-                      '${config.description}에 초대합니다.\n아래 QR 코드를 통해 앱을 설치해주세요.',
+                  invitationMessage: Tr.message.inviteMessage
+                      .tr(namedArgs: {'appName': config.description}),
                   androidPackageName: config.packageName,
                   appleId: config.appleId,
                 );
               })
             ]),
         SizedBox(height: SizeConstants.getContainerVerticalMargin(context)),
+        AppConfigLanguageSelector((language) {
+          return CardContainerItem(
+            initiallyExpanded: false,
+            title: Tr.message.currentLanguage.tr(
+              namedArgs: {'language': language.name},
+            ),
+            icon: Icons.language_outlined,
+            children: [
+              LocaleSettingSection(
+                language: language,
+                onLanguageChanged: (language) {
+                  appConfigBloc.add(AppConfigEvent.setLanguage(language));
+                },
+              )
+            ],
+          );
+        }),
+        SizedBox(height: SizeConstants.getContainerVerticalMargin(context)),
         CardContainerItem(
             initiallyExpanded: false,
             icon: Icons.email_outlined,
-            title: '문의',
+            title: Tr.app.contact.tr(),
             children: [
               Padding(
                 padding: EdgeInsets.only(
@@ -309,7 +331,7 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '아래 이메일로 문의해주세요.',
+                      Tr.message.contact.tr(),
                       style: TextStyle(
                         fontSize: SizeConstants.getTextSmallFontSize(context),
                         color: Colors.grey.shade600,

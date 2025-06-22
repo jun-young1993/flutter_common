@@ -1,6 +1,7 @@
 import 'package:flutter_common/extensions/app_exception.dart';
 import 'package:flutter_common/state/base/base_state.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:mcp_client/mcp_client.dart';
 
 part 'mcp_config_state.freezed.dart';
 
@@ -18,6 +19,8 @@ class McpConfigState with _$McpConfigState, BaseStateMixin {
     @Default(null) AppException? error,
     @Default({}) Map<McpApiKeys, String> apiKeys,
     @Default(null) McpApiKeys? selectedApiKey,
+    @Default([]) List<Tool> tools,
+    @Default(false) bool isConnected,
   }) = _McpConfigState;
 
   const McpConfigState._();
@@ -29,5 +32,14 @@ class McpConfigState with _$McpConfigState, BaseStateMixin {
     final newApiKeys = Map<McpApiKeys, String>.from(apiKeys);
     newApiKeys[key] = value;
     return copyWith(apiKeys: newApiKeys);
+  }
+
+  String getApiKey() {
+    final apiKey = apiKeys[selectedApiKey!];
+    if (apiKey == null || apiKey.isEmpty) {
+      throw const AppException.notFoundMcpApiKey();
+    }
+
+    return apiKey;
   }
 }

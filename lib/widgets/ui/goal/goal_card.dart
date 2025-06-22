@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_common/common_il8n.dart';
 import 'package:flutter_common/models/goal/goal.dart';
 
 class GoalCard extends StatelessWidget {
@@ -81,7 +83,7 @@ class GoalCard extends StatelessWidget {
                     ),
                     TextButton(
                       onPressed: onDetail,
-                      child: const Text('상세보기'),
+                      child: Text(Tr.app.detailView.tr()),
                     ),
                   ],
                 ),

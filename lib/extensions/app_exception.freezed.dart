@@ -27,6 +27,7 @@ mixin _$AppException {
     required TResult Function() notFound,
     required TResult Function(String message) server,
     required TResult Function() cancelled,
+    required TResult Function() notFoundMcpApiKey,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -40,6 +41,7 @@ mixin _$AppException {
     TResult? Function()? notFound,
     TResult? Function(String message)? server,
     TResult? Function()? cancelled,
+    TResult? Function()? notFoundMcpApiKey,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -53,6 +55,7 @@ mixin _$AppException {
     TResult Function()? notFound,
     TResult Function(String message)? server,
     TResult Function()? cancelled,
+    TResult Function()? notFoundMcpApiKey,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -67,6 +70,7 @@ mixin _$AppException {
     required TResult Function(_NotFound value) notFound,
     required TResult Function(_Server value) server,
     required TResult Function(_Cancelled value) cancelled,
+    required TResult Function(_NotFoundMcpApiKey value) notFoundMcpApiKey,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -80,6 +84,7 @@ mixin _$AppException {
     TResult? Function(_NotFound value)? notFound,
     TResult? Function(_Server value)? server,
     TResult? Function(_Cancelled value)? cancelled,
+    TResult? Function(_NotFoundMcpApiKey value)? notFoundMcpApiKey,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -93,6 +98,7 @@ mixin _$AppException {
     TResult Function(_NotFound value)? notFound,
     TResult Function(_Server value)? server,
     TResult Function(_Cancelled value)? cancelled,
+    TResult Function(_NotFoundMcpApiKey value)? notFoundMcpApiKey,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -169,6 +175,7 @@ class _$TimeoutImpl implements _Timeout {
     required TResult Function() notFound,
     required TResult Function(String message) server,
     required TResult Function() cancelled,
+    required TResult Function() notFoundMcpApiKey,
   }) {
     return timeout();
   }
@@ -185,6 +192,7 @@ class _$TimeoutImpl implements _Timeout {
     TResult? Function()? notFound,
     TResult? Function(String message)? server,
     TResult? Function()? cancelled,
+    TResult? Function()? notFoundMcpApiKey,
   }) {
     return timeout?.call();
   }
@@ -201,6 +209,7 @@ class _$TimeoutImpl implements _Timeout {
     TResult Function()? notFound,
     TResult Function(String message)? server,
     TResult Function()? cancelled,
+    TResult Function()? notFoundMcpApiKey,
     required TResult orElse(),
   }) {
     if (timeout != null) {
@@ -221,6 +230,7 @@ class _$TimeoutImpl implements _Timeout {
     required TResult Function(_NotFound value) notFound,
     required TResult Function(_Server value) server,
     required TResult Function(_Cancelled value) cancelled,
+    required TResult Function(_NotFoundMcpApiKey value) notFoundMcpApiKey,
   }) {
     return timeout(this);
   }
@@ -237,6 +247,7 @@ class _$TimeoutImpl implements _Timeout {
     TResult? Function(_NotFound value)? notFound,
     TResult? Function(_Server value)? server,
     TResult? Function(_Cancelled value)? cancelled,
+    TResult? Function(_NotFoundMcpApiKey value)? notFoundMcpApiKey,
   }) {
     return timeout?.call(this);
   }
@@ -253,6 +264,7 @@ class _$TimeoutImpl implements _Timeout {
     TResult Function(_NotFound value)? notFound,
     TResult Function(_Server value)? server,
     TResult Function(_Cancelled value)? cancelled,
+    TResult Function(_NotFoundMcpApiKey value)? notFoundMcpApiKey,
     required TResult orElse(),
   }) {
     if (timeout != null) {
@@ -343,6 +355,7 @@ class _$NetworkImpl implements _Network {
     required TResult Function() notFound,
     required TResult Function(String message) server,
     required TResult Function() cancelled,
+    required TResult Function() notFoundMcpApiKey,
   }) {
     return network(message);
   }
@@ -359,6 +372,7 @@ class _$NetworkImpl implements _Network {
     TResult? Function()? notFound,
     TResult? Function(String message)? server,
     TResult? Function()? cancelled,
+    TResult? Function()? notFoundMcpApiKey,
   }) {
     return network?.call(message);
   }
@@ -375,6 +389,7 @@ class _$NetworkImpl implements _Network {
     TResult Function()? notFound,
     TResult Function(String message)? server,
     TResult Function()? cancelled,
+    TResult Function()? notFoundMcpApiKey,
     required TResult orElse(),
   }) {
     if (network != null) {
@@ -395,6 +410,7 @@ class _$NetworkImpl implements _Network {
     required TResult Function(_NotFound value) notFound,
     required TResult Function(_Server value) server,
     required TResult Function(_Cancelled value) cancelled,
+    required TResult Function(_NotFoundMcpApiKey value) notFoundMcpApiKey,
   }) {
     return network(this);
   }
@@ -411,6 +427,7 @@ class _$NetworkImpl implements _Network {
     TResult? Function(_NotFound value)? notFound,
     TResult? Function(_Server value)? server,
     TResult? Function(_Cancelled value)? cancelled,
+    TResult? Function(_NotFoundMcpApiKey value)? notFoundMcpApiKey,
   }) {
     return network?.call(this);
   }
@@ -427,6 +444,7 @@ class _$NetworkImpl implements _Network {
     TResult Function(_NotFound value)? notFound,
     TResult Function(_Server value)? server,
     TResult Function(_Cancelled value)? cancelled,
+    TResult Function(_NotFoundMcpApiKey value)? notFoundMcpApiKey,
     required TResult orElse(),
   }) {
     if (network != null) {
@@ -525,6 +543,7 @@ class _$UnknownImpl implements _Unknown {
     required TResult Function() notFound,
     required TResult Function(String message) server,
     required TResult Function() cancelled,
+    required TResult Function() notFoundMcpApiKey,
   }) {
     return unknown(message);
   }
@@ -541,6 +560,7 @@ class _$UnknownImpl implements _Unknown {
     TResult? Function()? notFound,
     TResult? Function(String message)? server,
     TResult? Function()? cancelled,
+    TResult? Function()? notFoundMcpApiKey,
   }) {
     return unknown?.call(message);
   }
@@ -557,6 +577,7 @@ class _$UnknownImpl implements _Unknown {
     TResult Function()? notFound,
     TResult Function(String message)? server,
     TResult Function()? cancelled,
+    TResult Function()? notFoundMcpApiKey,
     required TResult orElse(),
   }) {
     if (unknown != null) {
@@ -577,6 +598,7 @@ class _$UnknownImpl implements _Unknown {
     required TResult Function(_NotFound value) notFound,
     required TResult Function(_Server value) server,
     required TResult Function(_Cancelled value) cancelled,
+    required TResult Function(_NotFoundMcpApiKey value) notFoundMcpApiKey,
   }) {
     return unknown(this);
   }
@@ -593,6 +615,7 @@ class _$UnknownImpl implements _Unknown {
     TResult? Function(_NotFound value)? notFound,
     TResult? Function(_Server value)? server,
     TResult? Function(_Cancelled value)? cancelled,
+    TResult? Function(_NotFoundMcpApiKey value)? notFoundMcpApiKey,
   }) {
     return unknown?.call(this);
   }
@@ -609,6 +632,7 @@ class _$UnknownImpl implements _Unknown {
     TResult Function(_NotFound value)? notFound,
     TResult Function(_Server value)? server,
     TResult Function(_Cancelled value)? cancelled,
+    TResult Function(_NotFoundMcpApiKey value)? notFoundMcpApiKey,
     required TResult orElse(),
   }) {
     if (unknown != null) {
@@ -707,6 +731,7 @@ class _$BadRequestImpl implements _BadRequest {
     required TResult Function() notFound,
     required TResult Function(String message) server,
     required TResult Function() cancelled,
+    required TResult Function() notFoundMcpApiKey,
   }) {
     return badRequest(message);
   }
@@ -723,6 +748,7 @@ class _$BadRequestImpl implements _BadRequest {
     TResult? Function()? notFound,
     TResult? Function(String message)? server,
     TResult? Function()? cancelled,
+    TResult? Function()? notFoundMcpApiKey,
   }) {
     return badRequest?.call(message);
   }
@@ -739,6 +765,7 @@ class _$BadRequestImpl implements _BadRequest {
     TResult Function()? notFound,
     TResult Function(String message)? server,
     TResult Function()? cancelled,
+    TResult Function()? notFoundMcpApiKey,
     required TResult orElse(),
   }) {
     if (badRequest != null) {
@@ -759,6 +786,7 @@ class _$BadRequestImpl implements _BadRequest {
     required TResult Function(_NotFound value) notFound,
     required TResult Function(_Server value) server,
     required TResult Function(_Cancelled value) cancelled,
+    required TResult Function(_NotFoundMcpApiKey value) notFoundMcpApiKey,
   }) {
     return badRequest(this);
   }
@@ -775,6 +803,7 @@ class _$BadRequestImpl implements _BadRequest {
     TResult? Function(_NotFound value)? notFound,
     TResult? Function(_Server value)? server,
     TResult? Function(_Cancelled value)? cancelled,
+    TResult? Function(_NotFoundMcpApiKey value)? notFoundMcpApiKey,
   }) {
     return badRequest?.call(this);
   }
@@ -791,6 +820,7 @@ class _$BadRequestImpl implements _BadRequest {
     TResult Function(_NotFound value)? notFound,
     TResult Function(_Server value)? server,
     TResult Function(_Cancelled value)? cancelled,
+    TResult Function(_NotFoundMcpApiKey value)? notFoundMcpApiKey,
     required TResult orElse(),
   }) {
     if (badRequest != null) {
@@ -862,6 +892,7 @@ class _$UnauthorizedImpl implements _Unauthorized {
     required TResult Function() notFound,
     required TResult Function(String message) server,
     required TResult Function() cancelled,
+    required TResult Function() notFoundMcpApiKey,
   }) {
     return unauthorized();
   }
@@ -878,6 +909,7 @@ class _$UnauthorizedImpl implements _Unauthorized {
     TResult? Function()? notFound,
     TResult? Function(String message)? server,
     TResult? Function()? cancelled,
+    TResult? Function()? notFoundMcpApiKey,
   }) {
     return unauthorized?.call();
   }
@@ -894,6 +926,7 @@ class _$UnauthorizedImpl implements _Unauthorized {
     TResult Function()? notFound,
     TResult Function(String message)? server,
     TResult Function()? cancelled,
+    TResult Function()? notFoundMcpApiKey,
     required TResult orElse(),
   }) {
     if (unauthorized != null) {
@@ -914,6 +947,7 @@ class _$UnauthorizedImpl implements _Unauthorized {
     required TResult Function(_NotFound value) notFound,
     required TResult Function(_Server value) server,
     required TResult Function(_Cancelled value) cancelled,
+    required TResult Function(_NotFoundMcpApiKey value) notFoundMcpApiKey,
   }) {
     return unauthorized(this);
   }
@@ -930,6 +964,7 @@ class _$UnauthorizedImpl implements _Unauthorized {
     TResult? Function(_NotFound value)? notFound,
     TResult? Function(_Server value)? server,
     TResult? Function(_Cancelled value)? cancelled,
+    TResult? Function(_NotFoundMcpApiKey value)? notFoundMcpApiKey,
   }) {
     return unauthorized?.call(this);
   }
@@ -946,6 +981,7 @@ class _$UnauthorizedImpl implements _Unauthorized {
     TResult Function(_NotFound value)? notFound,
     TResult Function(_Server value)? server,
     TResult Function(_Cancelled value)? cancelled,
+    TResult Function(_NotFoundMcpApiKey value)? notFoundMcpApiKey,
     required TResult orElse(),
   }) {
     if (unauthorized != null) {
@@ -1009,6 +1045,7 @@ class _$ForbiddenImpl implements _Forbidden {
     required TResult Function() notFound,
     required TResult Function(String message) server,
     required TResult Function() cancelled,
+    required TResult Function() notFoundMcpApiKey,
   }) {
     return forbidden();
   }
@@ -1025,6 +1062,7 @@ class _$ForbiddenImpl implements _Forbidden {
     TResult? Function()? notFound,
     TResult? Function(String message)? server,
     TResult? Function()? cancelled,
+    TResult? Function()? notFoundMcpApiKey,
   }) {
     return forbidden?.call();
   }
@@ -1041,6 +1079,7 @@ class _$ForbiddenImpl implements _Forbidden {
     TResult Function()? notFound,
     TResult Function(String message)? server,
     TResult Function()? cancelled,
+    TResult Function()? notFoundMcpApiKey,
     required TResult orElse(),
   }) {
     if (forbidden != null) {
@@ -1061,6 +1100,7 @@ class _$ForbiddenImpl implements _Forbidden {
     required TResult Function(_NotFound value) notFound,
     required TResult Function(_Server value) server,
     required TResult Function(_Cancelled value) cancelled,
+    required TResult Function(_NotFoundMcpApiKey value) notFoundMcpApiKey,
   }) {
     return forbidden(this);
   }
@@ -1077,6 +1117,7 @@ class _$ForbiddenImpl implements _Forbidden {
     TResult? Function(_NotFound value)? notFound,
     TResult? Function(_Server value)? server,
     TResult? Function(_Cancelled value)? cancelled,
+    TResult? Function(_NotFoundMcpApiKey value)? notFoundMcpApiKey,
   }) {
     return forbidden?.call(this);
   }
@@ -1093,6 +1134,7 @@ class _$ForbiddenImpl implements _Forbidden {
     TResult Function(_NotFound value)? notFound,
     TResult Function(_Server value)? server,
     TResult Function(_Cancelled value)? cancelled,
+    TResult Function(_NotFoundMcpApiKey value)? notFoundMcpApiKey,
     required TResult orElse(),
   }) {
     if (forbidden != null) {
@@ -1156,6 +1198,7 @@ class _$NotFoundImpl implements _NotFound {
     required TResult Function() notFound,
     required TResult Function(String message) server,
     required TResult Function() cancelled,
+    required TResult Function() notFoundMcpApiKey,
   }) {
     return notFound();
   }
@@ -1172,6 +1215,7 @@ class _$NotFoundImpl implements _NotFound {
     TResult? Function()? notFound,
     TResult? Function(String message)? server,
     TResult? Function()? cancelled,
+    TResult? Function()? notFoundMcpApiKey,
   }) {
     return notFound?.call();
   }
@@ -1188,6 +1232,7 @@ class _$NotFoundImpl implements _NotFound {
     TResult Function()? notFound,
     TResult Function(String message)? server,
     TResult Function()? cancelled,
+    TResult Function()? notFoundMcpApiKey,
     required TResult orElse(),
   }) {
     if (notFound != null) {
@@ -1208,6 +1253,7 @@ class _$NotFoundImpl implements _NotFound {
     required TResult Function(_NotFound value) notFound,
     required TResult Function(_Server value) server,
     required TResult Function(_Cancelled value) cancelled,
+    required TResult Function(_NotFoundMcpApiKey value) notFoundMcpApiKey,
   }) {
     return notFound(this);
   }
@@ -1224,6 +1270,7 @@ class _$NotFoundImpl implements _NotFound {
     TResult? Function(_NotFound value)? notFound,
     TResult? Function(_Server value)? server,
     TResult? Function(_Cancelled value)? cancelled,
+    TResult? Function(_NotFoundMcpApiKey value)? notFoundMcpApiKey,
   }) {
     return notFound?.call(this);
   }
@@ -1240,6 +1287,7 @@ class _$NotFoundImpl implements _NotFound {
     TResult Function(_NotFound value)? notFound,
     TResult Function(_Server value)? server,
     TResult Function(_Cancelled value)? cancelled,
+    TResult Function(_NotFoundMcpApiKey value)? notFoundMcpApiKey,
     required TResult orElse(),
   }) {
     if (notFound != null) {
@@ -1330,6 +1378,7 @@ class _$ServerImpl implements _Server {
     required TResult Function() notFound,
     required TResult Function(String message) server,
     required TResult Function() cancelled,
+    required TResult Function() notFoundMcpApiKey,
   }) {
     return server(message);
   }
@@ -1346,6 +1395,7 @@ class _$ServerImpl implements _Server {
     TResult? Function()? notFound,
     TResult? Function(String message)? server,
     TResult? Function()? cancelled,
+    TResult? Function()? notFoundMcpApiKey,
   }) {
     return server?.call(message);
   }
@@ -1362,6 +1412,7 @@ class _$ServerImpl implements _Server {
     TResult Function()? notFound,
     TResult Function(String message)? server,
     TResult Function()? cancelled,
+    TResult Function()? notFoundMcpApiKey,
     required TResult orElse(),
   }) {
     if (server != null) {
@@ -1382,6 +1433,7 @@ class _$ServerImpl implements _Server {
     required TResult Function(_NotFound value) notFound,
     required TResult Function(_Server value) server,
     required TResult Function(_Cancelled value) cancelled,
+    required TResult Function(_NotFoundMcpApiKey value) notFoundMcpApiKey,
   }) {
     return server(this);
   }
@@ -1398,6 +1450,7 @@ class _$ServerImpl implements _Server {
     TResult? Function(_NotFound value)? notFound,
     TResult? Function(_Server value)? server,
     TResult? Function(_Cancelled value)? cancelled,
+    TResult? Function(_NotFoundMcpApiKey value)? notFoundMcpApiKey,
   }) {
     return server?.call(this);
   }
@@ -1414,6 +1467,7 @@ class _$ServerImpl implements _Server {
     TResult Function(_NotFound value)? notFound,
     TResult Function(_Server value)? server,
     TResult Function(_Cancelled value)? cancelled,
+    TResult Function(_NotFoundMcpApiKey value)? notFoundMcpApiKey,
     required TResult orElse(),
   }) {
     if (server != null) {
@@ -1485,6 +1539,7 @@ class _$CancelledImpl implements _Cancelled {
     required TResult Function() notFound,
     required TResult Function(String message) server,
     required TResult Function() cancelled,
+    required TResult Function() notFoundMcpApiKey,
   }) {
     return cancelled();
   }
@@ -1501,6 +1556,7 @@ class _$CancelledImpl implements _Cancelled {
     TResult? Function()? notFound,
     TResult? Function(String message)? server,
     TResult? Function()? cancelled,
+    TResult? Function()? notFoundMcpApiKey,
   }) {
     return cancelled?.call();
   }
@@ -1517,6 +1573,7 @@ class _$CancelledImpl implements _Cancelled {
     TResult Function()? notFound,
     TResult Function(String message)? server,
     TResult Function()? cancelled,
+    TResult Function()? notFoundMcpApiKey,
     required TResult orElse(),
   }) {
     if (cancelled != null) {
@@ -1537,6 +1594,7 @@ class _$CancelledImpl implements _Cancelled {
     required TResult Function(_NotFound value) notFound,
     required TResult Function(_Server value) server,
     required TResult Function(_Cancelled value) cancelled,
+    required TResult Function(_NotFoundMcpApiKey value) notFoundMcpApiKey,
   }) {
     return cancelled(this);
   }
@@ -1553,6 +1611,7 @@ class _$CancelledImpl implements _Cancelled {
     TResult? Function(_NotFound value)? notFound,
     TResult? Function(_Server value)? server,
     TResult? Function(_Cancelled value)? cancelled,
+    TResult? Function(_NotFoundMcpApiKey value)? notFoundMcpApiKey,
   }) {
     return cancelled?.call(this);
   }
@@ -1569,6 +1628,7 @@ class _$CancelledImpl implements _Cancelled {
     TResult Function(_NotFound value)? notFound,
     TResult Function(_Server value)? server,
     TResult Function(_Cancelled value)? cancelled,
+    TResult Function(_NotFoundMcpApiKey value)? notFoundMcpApiKey,
     required TResult orElse(),
   }) {
     if (cancelled != null) {
@@ -1580,4 +1640,157 @@ class _$CancelledImpl implements _Cancelled {
 
 abstract class _Cancelled implements AppException {
   const factory _Cancelled() = _$CancelledImpl;
+}
+
+/// @nodoc
+abstract class _$$NotFoundMcpApiKeyImplCopyWith<$Res> {
+  factory _$$NotFoundMcpApiKeyImplCopyWith(_$NotFoundMcpApiKeyImpl value,
+          $Res Function(_$NotFoundMcpApiKeyImpl) then) =
+      __$$NotFoundMcpApiKeyImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$NotFoundMcpApiKeyImplCopyWithImpl<$Res>
+    extends _$AppExceptionCopyWithImpl<$Res, _$NotFoundMcpApiKeyImpl>
+    implements _$$NotFoundMcpApiKeyImplCopyWith<$Res> {
+  __$$NotFoundMcpApiKeyImplCopyWithImpl(_$NotFoundMcpApiKeyImpl _value,
+      $Res Function(_$NotFoundMcpApiKeyImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AppException
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$NotFoundMcpApiKeyImpl implements _NotFoundMcpApiKey {
+  const _$NotFoundMcpApiKeyImpl();
+
+  @override
+  String toString() {
+    return 'AppException.notFoundMcpApiKey()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$NotFoundMcpApiKeyImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() timeout,
+    required TResult Function(String message) network,
+    required TResult Function(String message) unknown,
+    required TResult Function(String message) badRequest,
+    required TResult Function() unauthorized,
+    required TResult Function() forbidden,
+    required TResult Function() notFound,
+    required TResult Function(String message) server,
+    required TResult Function() cancelled,
+    required TResult Function() notFoundMcpApiKey,
+  }) {
+    return notFoundMcpApiKey();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? timeout,
+    TResult? Function(String message)? network,
+    TResult? Function(String message)? unknown,
+    TResult? Function(String message)? badRequest,
+    TResult? Function()? unauthorized,
+    TResult? Function()? forbidden,
+    TResult? Function()? notFound,
+    TResult? Function(String message)? server,
+    TResult? Function()? cancelled,
+    TResult? Function()? notFoundMcpApiKey,
+  }) {
+    return notFoundMcpApiKey?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? timeout,
+    TResult Function(String message)? network,
+    TResult Function(String message)? unknown,
+    TResult Function(String message)? badRequest,
+    TResult Function()? unauthorized,
+    TResult Function()? forbidden,
+    TResult Function()? notFound,
+    TResult Function(String message)? server,
+    TResult Function()? cancelled,
+    TResult Function()? notFoundMcpApiKey,
+    required TResult orElse(),
+  }) {
+    if (notFoundMcpApiKey != null) {
+      return notFoundMcpApiKey();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Timeout value) timeout,
+    required TResult Function(_Network value) network,
+    required TResult Function(_Unknown value) unknown,
+    required TResult Function(_BadRequest value) badRequest,
+    required TResult Function(_Unauthorized value) unauthorized,
+    required TResult Function(_Forbidden value) forbidden,
+    required TResult Function(_NotFound value) notFound,
+    required TResult Function(_Server value) server,
+    required TResult Function(_Cancelled value) cancelled,
+    required TResult Function(_NotFoundMcpApiKey value) notFoundMcpApiKey,
+  }) {
+    return notFoundMcpApiKey(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Timeout value)? timeout,
+    TResult? Function(_Network value)? network,
+    TResult? Function(_Unknown value)? unknown,
+    TResult? Function(_BadRequest value)? badRequest,
+    TResult? Function(_Unauthorized value)? unauthorized,
+    TResult? Function(_Forbidden value)? forbidden,
+    TResult? Function(_NotFound value)? notFound,
+    TResult? Function(_Server value)? server,
+    TResult? Function(_Cancelled value)? cancelled,
+    TResult? Function(_NotFoundMcpApiKey value)? notFoundMcpApiKey,
+  }) {
+    return notFoundMcpApiKey?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Timeout value)? timeout,
+    TResult Function(_Network value)? network,
+    TResult Function(_Unknown value)? unknown,
+    TResult Function(_BadRequest value)? badRequest,
+    TResult Function(_Unauthorized value)? unauthorized,
+    TResult Function(_Forbidden value)? forbidden,
+    TResult Function(_NotFound value)? notFound,
+    TResult Function(_Server value)? server,
+    TResult Function(_Cancelled value)? cancelled,
+    TResult Function(_NotFoundMcpApiKey value)? notFoundMcpApiKey,
+    required TResult orElse(),
+  }) {
+    if (notFoundMcpApiKey != null) {
+      return notFoundMcpApiKey(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NotFoundMcpApiKey implements AppException {
+  const factory _NotFoundMcpApiKey() = _$NotFoundMcpApiKeyImpl;
 }

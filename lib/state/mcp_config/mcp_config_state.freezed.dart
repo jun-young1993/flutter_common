@@ -20,6 +20,8 @@ mixin _$McpConfigState {
   AppException? get error => throw _privateConstructorUsedError;
   Map<McpApiKeys, String> get apiKeys => throw _privateConstructorUsedError;
   McpApiKeys? get selectedApiKey => throw _privateConstructorUsedError;
+  List<Tool> get tools => throw _privateConstructorUsedError;
+  bool get isConnected => throw _privateConstructorUsedError;
 
   /// Create a copy of McpConfigState
   /// with the given fields replaced by the non-null parameter values.
@@ -38,7 +40,9 @@ abstract class $McpConfigStateCopyWith<$Res> {
       {bool isLoading,
       AppException? error,
       Map<McpApiKeys, String> apiKeys,
-      McpApiKeys? selectedApiKey});
+      McpApiKeys? selectedApiKey,
+      List<Tool> tools,
+      bool isConnected});
 
   $AppExceptionCopyWith<$Res>? get error;
 }
@@ -62,6 +66,8 @@ class _$McpConfigStateCopyWithImpl<$Res, $Val extends McpConfigState>
     Object? error = freezed,
     Object? apiKeys = null,
     Object? selectedApiKey = freezed,
+    Object? tools = null,
+    Object? isConnected = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -80,6 +86,14 @@ class _$McpConfigStateCopyWithImpl<$Res, $Val extends McpConfigState>
           ? _value.selectedApiKey
           : selectedApiKey // ignore: cast_nullable_to_non_nullable
               as McpApiKeys?,
+      tools: null == tools
+          ? _value.tools
+          : tools // ignore: cast_nullable_to_non_nullable
+              as List<Tool>,
+      isConnected: null == isConnected
+          ? _value.isConnected
+          : isConnected // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -110,7 +124,9 @@ abstract class _$$McpConfigStateImplCopyWith<$Res>
       {bool isLoading,
       AppException? error,
       Map<McpApiKeys, String> apiKeys,
-      McpApiKeys? selectedApiKey});
+      McpApiKeys? selectedApiKey,
+      List<Tool> tools,
+      bool isConnected});
 
   @override
   $AppExceptionCopyWith<$Res>? get error;
@@ -133,6 +149,8 @@ class __$$McpConfigStateImplCopyWithImpl<$Res>
     Object? error = freezed,
     Object? apiKeys = null,
     Object? selectedApiKey = freezed,
+    Object? tools = null,
+    Object? isConnected = null,
   }) {
     return _then(_$McpConfigStateImpl(
       isLoading: null == isLoading
@@ -151,6 +169,14 @@ class __$$McpConfigStateImplCopyWithImpl<$Res>
           ? _value.selectedApiKey
           : selectedApiKey // ignore: cast_nullable_to_non_nullable
               as McpApiKeys?,
+      tools: null == tools
+          ? _value._tools
+          : tools // ignore: cast_nullable_to_non_nullable
+              as List<Tool>,
+      isConnected: null == isConnected
+          ? _value.isConnected
+          : isConnected // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -162,8 +188,11 @@ class _$McpConfigStateImpl extends _McpConfigState {
       {this.isLoading = false,
       this.error = null,
       final Map<McpApiKeys, String> apiKeys = const {},
-      this.selectedApiKey = null})
+      this.selectedApiKey = null,
+      final List<Tool> tools = const [],
+      this.isConnected = false})
       : _apiKeys = apiKeys,
+        _tools = tools,
         super._();
 
   @override
@@ -184,10 +213,22 @@ class _$McpConfigStateImpl extends _McpConfigState {
   @override
   @JsonKey()
   final McpApiKeys? selectedApiKey;
+  final List<Tool> _tools;
+  @override
+  @JsonKey()
+  List<Tool> get tools {
+    if (_tools is EqualUnmodifiableListView) return _tools;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_tools);
+  }
+
+  @override
+  @JsonKey()
+  final bool isConnected;
 
   @override
   String toString() {
-    return 'McpConfigState(isLoading: $isLoading, error: $error, apiKeys: $apiKeys, selectedApiKey: $selectedApiKey)';
+    return 'McpConfigState(isLoading: $isLoading, error: $error, apiKeys: $apiKeys, selectedApiKey: $selectedApiKey, tools: $tools, isConnected: $isConnected)';
   }
 
   @override
@@ -200,12 +241,21 @@ class _$McpConfigStateImpl extends _McpConfigState {
             (identical(other.error, error) || other.error == error) &&
             const DeepCollectionEquality().equals(other._apiKeys, _apiKeys) &&
             (identical(other.selectedApiKey, selectedApiKey) ||
-                other.selectedApiKey == selectedApiKey));
+                other.selectedApiKey == selectedApiKey) &&
+            const DeepCollectionEquality().equals(other._tools, _tools) &&
+            (identical(other.isConnected, isConnected) ||
+                other.isConnected == isConnected));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, error,
-      const DeepCollectionEquality().hash(_apiKeys), selectedApiKey);
+  int get hashCode => Object.hash(
+      runtimeType,
+      isLoading,
+      error,
+      const DeepCollectionEquality().hash(_apiKeys),
+      selectedApiKey,
+      const DeepCollectionEquality().hash(_tools),
+      isConnected);
 
   /// Create a copy of McpConfigState
   /// with the given fields replaced by the non-null parameter values.
@@ -222,7 +272,9 @@ abstract class _McpConfigState extends McpConfigState {
       {final bool isLoading,
       final AppException? error,
       final Map<McpApiKeys, String> apiKeys,
-      final McpApiKeys? selectedApiKey}) = _$McpConfigStateImpl;
+      final McpApiKeys? selectedApiKey,
+      final List<Tool> tools,
+      final bool isConnected}) = _$McpConfigStateImpl;
   const _McpConfigState._() : super._();
 
   @override
@@ -233,6 +285,10 @@ abstract class _McpConfigState extends McpConfigState {
   Map<McpApiKeys, String> get apiKeys;
   @override
   McpApiKeys? get selectedApiKey;
+  @override
+  List<Tool> get tools;
+  @override
+  bool get isConnected;
 
   /// Create a copy of McpConfigState
   /// with the given fields replaced by the non-null parameter values.
