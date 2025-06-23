@@ -11,6 +11,7 @@ class ChatMessage with _$ChatMessage {
     required String text,
     required ChatMessageSenderType senderType,
     @Default(null) List<LlmToolCall>? toolCalls,
+    @Default(null) LlmToolCall? toolCall,
     required DateTime createdAt,
     required String id,
     @Default(false) bool isLoading,
@@ -19,6 +20,10 @@ class ChatMessage with _$ChatMessage {
   const ChatMessage._();
 
   bool get isUser => senderType == ChatMessageSenderType.user;
+
+  bool get isTool => senderType == ChatMessageSenderType.tool;
+
+  bool get isAssistant => senderType == ChatMessageSenderType.assistant;
 
   ChatMessage addText(String text) => copyWith(text: this.text + text);
 }

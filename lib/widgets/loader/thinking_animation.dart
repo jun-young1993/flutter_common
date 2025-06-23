@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_common/common_il8n.dart';
 
 class ThinkingAnimation extends StatefulWidget {
-  const ThinkingAnimation({super.key});
+  final String text;
+  const ThinkingAnimation({super.key, required this.text});
 
   @override
   State<ThinkingAnimation> createState() => _ThinkingAnimationState();
@@ -49,7 +50,7 @@ class _ThinkingAnimationState extends State<ThinkingAnimation> {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Text(
-          '${Tr.chat.thinking.tr()}${'.' * _dotCount}',
+          '${widget.text}${'.' * _dotCount}',
           style: theme.textTheme.bodyMedium?.copyWith(
             color: theme.textTheme.bodyMedium?.color?.withOpacity(0.6),
             fontStyle: FontStyle.italic,

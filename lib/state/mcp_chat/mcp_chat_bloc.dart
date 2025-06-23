@@ -71,19 +71,20 @@ class McpChatBloc extends BaseBloc<McpChatEvent, McpChatState> {
               for (final toolCall in toolCalls) {
                 final useIngToolMessage = ChatMessage(
                   id: const Uuid().v4(),
-                  text: toolCall.name,
-                  senderType: ChatMessageSenderType.assistant,
+                  text: '${toolCall.name} Using tool',
+                  senderType: ChatMessageSenderType.tool,
                   createdAt: DateTime.now(),
-                  isLoading: false,
+                  toolCall: toolCall,
+                  isLoading: true,
                 );
-                emit(state.copyWith(messages: [
-                  ...(state.messages ?? []),
-                  ...[useIngToolMessage]
-                ]));
+                final isToolCall = state.messages.any((message) {
+                  return !(message.toolCall?.id == toolCall.id);
+                });
+                if (!isToolCall) {
+                  emit(state.copyWith(
+                      messages: [...(state.messages), useIngToolMessage]));
+                }
               }
-
-              debugPrint(
-                  'ChatBloc on<ChatEvent.sendMessage><toolCalls> $toolCalls');
             }, onDone: () async {
               final newMessages = state.messages
                   .map((e) =>

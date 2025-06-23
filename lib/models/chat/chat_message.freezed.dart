@@ -19,6 +19,7 @@ mixin _$ChatMessage {
   String get text => throw _privateConstructorUsedError;
   ChatMessageSenderType get senderType => throw _privateConstructorUsedError;
   List<LlmToolCall>? get toolCalls => throw _privateConstructorUsedError;
+  LlmToolCall? get toolCall => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
@@ -40,6 +41,7 @@ abstract class $ChatMessageCopyWith<$Res> {
       {String text,
       ChatMessageSenderType senderType,
       List<LlmToolCall>? toolCalls,
+      LlmToolCall? toolCall,
       DateTime createdAt,
       String id,
       bool isLoading});
@@ -63,6 +65,7 @@ class _$ChatMessageCopyWithImpl<$Res, $Val extends ChatMessage>
     Object? text = null,
     Object? senderType = null,
     Object? toolCalls = freezed,
+    Object? toolCall = freezed,
     Object? createdAt = null,
     Object? id = null,
     Object? isLoading = null,
@@ -80,6 +83,10 @@ class _$ChatMessageCopyWithImpl<$Res, $Val extends ChatMessage>
           ? _value.toolCalls
           : toolCalls // ignore: cast_nullable_to_non_nullable
               as List<LlmToolCall>?,
+      toolCall: freezed == toolCall
+          ? _value.toolCall
+          : toolCall // ignore: cast_nullable_to_non_nullable
+              as LlmToolCall?,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -108,6 +115,7 @@ abstract class _$$ChatMessageImplCopyWith<$Res>
       {String text,
       ChatMessageSenderType senderType,
       List<LlmToolCall>? toolCalls,
+      LlmToolCall? toolCall,
       DateTime createdAt,
       String id,
       bool isLoading});
@@ -129,6 +137,7 @@ class __$$ChatMessageImplCopyWithImpl<$Res>
     Object? text = null,
     Object? senderType = null,
     Object? toolCalls = freezed,
+    Object? toolCall = freezed,
     Object? createdAt = null,
     Object? id = null,
     Object? isLoading = null,
@@ -146,6 +155,10 @@ class __$$ChatMessageImplCopyWithImpl<$Res>
           ? _value._toolCalls
           : toolCalls // ignore: cast_nullable_to_non_nullable
               as List<LlmToolCall>?,
+      toolCall: freezed == toolCall
+          ? _value.toolCall
+          : toolCall // ignore: cast_nullable_to_non_nullable
+              as LlmToolCall?,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -169,6 +182,7 @@ class _$ChatMessageImpl extends _ChatMessage {
       {required this.text,
       required this.senderType,
       final List<LlmToolCall>? toolCalls = null,
+      this.toolCall = null,
       required this.createdAt,
       required this.id,
       this.isLoading = false})
@@ -191,6 +205,9 @@ class _$ChatMessageImpl extends _ChatMessage {
   }
 
   @override
+  @JsonKey()
+  final LlmToolCall? toolCall;
+  @override
   final DateTime createdAt;
   @override
   final String id;
@@ -200,7 +217,7 @@ class _$ChatMessageImpl extends _ChatMessage {
 
   @override
   String toString() {
-    return 'ChatMessage(text: $text, senderType: $senderType, toolCalls: $toolCalls, createdAt: $createdAt, id: $id, isLoading: $isLoading)';
+    return 'ChatMessage(text: $text, senderType: $senderType, toolCalls: $toolCalls, toolCall: $toolCall, createdAt: $createdAt, id: $id, isLoading: $isLoading)';
   }
 
   @override
@@ -213,6 +230,8 @@ class _$ChatMessageImpl extends _ChatMessage {
                 other.senderType == senderType) &&
             const DeepCollectionEquality()
                 .equals(other._toolCalls, _toolCalls) &&
+            (identical(other.toolCall, toolCall) ||
+                other.toolCall == toolCall) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.id, id) || other.id == id) &&
@@ -226,6 +245,7 @@ class _$ChatMessageImpl extends _ChatMessage {
       text,
       senderType,
       const DeepCollectionEquality().hash(_toolCalls),
+      toolCall,
       createdAt,
       id,
       isLoading);
@@ -244,6 +264,7 @@ abstract class _ChatMessage extends ChatMessage {
       {required final String text,
       required final ChatMessageSenderType senderType,
       final List<LlmToolCall>? toolCalls,
+      final LlmToolCall? toolCall,
       required final DateTime createdAt,
       required final String id,
       final bool isLoading}) = _$ChatMessageImpl;
@@ -255,6 +276,8 @@ abstract class _ChatMessage extends ChatMessage {
   ChatMessageSenderType get senderType;
   @override
   List<LlmToolCall>? get toolCalls;
+  @override
+  LlmToolCall? get toolCall;
   @override
   DateTime get createdAt;
   @override

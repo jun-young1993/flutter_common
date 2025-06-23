@@ -61,6 +61,7 @@
         "clearChat": "Clear Chat",
         "clearChatConfirmation": "Are you sure you want to clear the entire chat history? This cannot be undone.",
         "thinking": "Thinking",
+        "usingTool": "Using Tool",
         "enterMessage": "Enter a message...",
         "noApiKey": "API key is not set. Please register your API key in the settings screen.",
         "goToSetting": "Go to Settings",

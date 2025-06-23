@@ -1,4 +1,1 @@
-enum ChatMessageSenderType {
-  user,
-  assistant,
-}
+enum ChatMessageSenderType { user, assistant, tool }

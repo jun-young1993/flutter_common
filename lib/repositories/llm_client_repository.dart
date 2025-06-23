@@ -226,9 +226,9 @@ class LlmClientDefaultRepository extends LlmClientRepository {
       if (chunk.textChunk.isNotEmpty) {
         currentResponse.write(chunk.textChunk);
         onData(currentResponse.toString(), chunk.textChunk);
-        if (chunk.toolCalls != null) {
-          onToolCalls(chunk.toolCalls!);
-        }
+      }
+      if (chunk.toolCalls != null && chunk.toolCalls!.isNotEmpty) {
+        onToolCalls(chunk.toolCalls!);
       }
       if (chunk.isDone) {
         onDone();

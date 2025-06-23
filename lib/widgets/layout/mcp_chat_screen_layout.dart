@@ -312,12 +312,15 @@ class MessageBubble extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final isUser = message.isUser;
-
+    final isTool = message.isTool;
     Widget messageContent;
     List<Widget> children = [];
 
     // Render text or markdown
     if (isUser) {
+      messageContent = SelectableText(message.text);
+    } else if (isTool) {
+      children.add(const Divider(height: 10, thickness: 0.5));
       messageContent = SelectableText(message.text);
     } else {
       // Handle potential Markdown rendering errors gracefully
@@ -331,7 +334,6 @@ class MessageBubble extends StatelessWidget {
       }
     }
     children.add(messageContent);
-
     // Add tool call information if present
     // if (!isUser && message.toolName != null) {
     // children.add(const Divider(height: 10, thickness: 0.5));
@@ -382,9 +384,11 @@ class MessageBubble extends StatelessWidget {
         children: [
           ...children,
           if (message.isLoading == true)
-            const Padding(
+            Padding(
               padding: EdgeInsets.only(top: 4.0),
-              child: ThinkingAnimation(),
+              child: ThinkingAnimation(
+                text: isTool ? Tr.chat.usingTool.tr() : Tr.chat.thinking.tr(),
+              ),
             ),
         ],
       ),

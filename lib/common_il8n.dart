@@ -66,6 +66,7 @@ class _Chat {
   final clearChatConfirmation = 'chat.clearChatConfirmation';
 
   final thinking = 'chat.thinking'; // 생각중...
+  final usingTool = 'chat.usingTool'; // 도구 사용중...
   final enterMessage = 'chat.enterMessage'; // 메시지 입력
   final noApiKey = 'chat.noApiKey'; // API 키가 설정되지 않았습니다.
   final goToSetting = 'chat.goToSetting'; // 설정으로 이동
