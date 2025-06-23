@@ -1,7 +1,12 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_common/widgets/fade_route.dart';
+import 'package:flutter_common/utils/logger.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
+  setupLogging();
   runApp(const MyApp());
 }
 

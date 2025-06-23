@@ -56,7 +56,7 @@ class SizeConstants {
   }
 
   static double getSmallButtonFontSize(BuildContext context) {
-    return isTablet(context) ? 15 : 13;
+    return isTablet(context) ? 13 : 11;
   }
 
   static EdgeInsets getSmallButtonPadding(BuildContext context) {

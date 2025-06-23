@@ -1,6 +1,7 @@
 import 'dart:async';
+import 'dart:convert';
 
-import 'package:flutter_common/providers/fixed_claude_provider.dart';
+import 'package:flutter_common/providers/model_provider/fixed_claude_provider.dart';
 import 'package:mcp_llm/mcp_llm.dart';
 import 'package:mcp_client/mcp_client.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -217,6 +218,11 @@ class LlmClientDefaultRepository extends LlmClientRepository {
 
     final StringBuffer currentResponse = StringBuffer();
     await for (final chunk in responseStream) {
+      debugPrint('Chunk: $chunk');
+      debugPrint('Chunk Metadta: ${chunk.metadata}');
+      debugPrint('Chunk Text: ${chunk.textChunk}');
+      debugPrint('Chunk Tool Calls: ${jsonEncode(chunk.toolCalls)}');
+      debugPrint('Chunk isDone: ${chunk.isDone}');
       if (chunk.textChunk.isNotEmpty) {
         currentResponse.write(chunk.textChunk);
         onData(currentResponse.toString(), chunk.textChunk);

@@ -2,6 +2,7 @@ enum AppKeys {
   myHomeParking,
   jaksimOneMonth,
   caughtSmoking,
+  mcpClient,
 }
 
 class JunyConstants {
@@ -13,6 +14,7 @@ class JunyConstants {
     AppKeys.myHomeParking: 'my-home-parking',
     AppKeys.jaksimOneMonth: 'jaksim-one-month',
     AppKeys.caughtSmoking: 'caught-smoking',
+    AppKeys.mcpClient: 'mcp-client'
   };
   static const Map<AppKeys, String> appNames = {
     AppKeys.myHomeParking: '우리집주차장',

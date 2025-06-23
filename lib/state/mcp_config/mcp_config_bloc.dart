@@ -36,7 +36,6 @@ class McpConfigBloc extends BaseBloc<McpConfigEvent, McpConfigState> {
             bool isConnected = llmClientRepository.isConnected;
             List<Tool> tools = await llmClientRepository.getTools();
             final List<Tool> newTools = [];
-            final List<Tool> disabledTools = [];
             for (var tool in tools) {
               final bool isEnabled =
                   await mcpConfigRepository.getDisabledTools(tool.name) == null
@@ -51,24 +50,9 @@ class McpConfigBloc extends BaseBloc<McpConfigEvent, McpConfigState> {
                   'enabled': isEnabled,
                 };
               }
-              if (!isEnabled) {
-                disabledTools.add(tool);
-              }
+
               final newTool = Tool.fromJson(toolJson);
               newTools.add(newTool);
-            }
-            if (disabledTools.isNotEmpty) {
-              final llmClient = await llmClientRepository.getLlmClient();
-              final systemMessage = llmClient.chatSession.messages
-                  .where((msg) => msg.role == 'system')
-                  .toList()
-                  .first;
-              final systemMessageContent = """
-            ${systemMessage.content}
-            6) Disabled tools:
-            ${disabledTools.map((tool) => tool.name).join('\n')}
-            """;
-              llmClient.setSystemPrompt(systemMessageContent);
             }
 
             emit(state.copyWith(isConnected: isConnected, tools: newTools));

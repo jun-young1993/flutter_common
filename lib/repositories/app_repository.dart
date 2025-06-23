@@ -50,8 +50,11 @@ class AppDefaultRepository extends AppRepository {
 
   @override
   Future<AppLanguage> getAppLanguage() async {
-    return AppLanguage.values
-        .firstWhere((e) => e.name == _sharedPreferences.getString('language'));
+    final language = _sharedPreferences.getString('language');
+    if (language == null) {
+      return AppLanguage.en;
+    }
+    return AppLanguage.values.firstWhere((e) => e.name == language);
   }
 
   @override

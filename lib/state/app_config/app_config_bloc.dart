@@ -19,6 +19,9 @@ class AppConfigBloc extends Bloc<AppConfigEvent, AppConfigState> {
         await event.map(
           initialize: (event) async {
             final appConfig = await appRepository.getAppConfig(event.key);
+            if (appConfig == null) {
+              throw Exception('Could not find AppConfig for key: ${event.key}');
+            }
             final language = await appRepository.getAppLanguage();
             emit(state.copyWith(
               version: appConfig.version,
@@ -31,6 +34,9 @@ class AppConfigBloc extends Bloc<AppConfigEvent, AppConfigState> {
           },
           checkCanUpdate: (event) async {
             final appConfig = await appRepository.getAppConfig(event.key);
+            if (appConfig == null) {
+              throw Exception('Could not find AppConfig for key: ${event.key}');
+            }
 
             emit(state.copyWith(
               isUpdateAvailable: Version.parse(event.version) <
@@ -53,8 +59,9 @@ class AppConfigBloc extends Bloc<AppConfigEvent, AppConfigState> {
             emit(state.copyWith(language: event.language));
           },
         );
-      } catch (e) {
-        print("app config error: $e");
+      } catch (e, s) {
+        debugPrint("app config error: $e");
+        debugPrint("app config error stack trace: $s");
         emit(state.copyWith(key: ""));
       }
     });

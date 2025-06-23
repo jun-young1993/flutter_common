@@ -1,5 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_common/common_il8n.dart';
+import 'package:flutter_common/extensions/app_exception.dart';
 import 'package:flutter_common/flutter_common.dart';
 import 'package:flutter_common/models/chat/chat_message.dart';
 import 'package:flutter_common/models/chat/enum/chat_message_sender_type.enum.dart';
@@ -198,6 +201,59 @@ class _McpChatScreenLayoutState extends State<McpChatScreenLayout> {
       ),
       body: Column(
         children: [
+          McpConfigErrorSelector((error) {
+            final theme = Theme.of(context);
+            if (error == const AppException.notFoundMcpApiKey()) {
+              return Container(
+                margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                padding: const EdgeInsets.all(24),
+                decoration: BoxDecoration(
+                  color: theme.colorScheme.surfaceVariant.withOpacity(0.5),
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(
+                      color: theme.colorScheme.outline.withOpacity(0.3)),
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(
+                      Icons.key_off_outlined,
+                      size: 48,
+                      color: theme.colorScheme.primary,
+                    ),
+                    const SizedBox(height: 16),
+                    McpConfigSelectedApiKeySelector((apiKey) {
+                      if (apiKey == null) {
+                        return const SizedBox.shrink();
+                      }
+                      return Text(
+                        Tr.chat.apiKeyInstruction
+                            .tr(namedArgs: {'apiKeyName': apiKey.name}),
+                        textAlign: TextAlign.center,
+                        style: theme.textTheme.titleMedium?.copyWith(
+                          color: theme.colorScheme.onSurfaceVariant,
+                        ),
+                      );
+                    }),
+                    const SizedBox(height: 24),
+                    ElevatedButton.icon(
+                      icon: const Icon(Icons.settings_outlined),
+                      label: Text(Tr.chat.goToApiKeySettings.tr()),
+                      onPressed: widget.onSettingsPressed,
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 24,
+                          vertical: 12,
+                        ),
+                        textStyle: theme.textTheme.labelLarge,
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            }
+            return const SizedBox.shrink();
+          }),
           // Messages list
           Expanded(
             child: ListView.builder(
@@ -214,28 +270,25 @@ class _McpChatScreenLayoutState extends State<McpChatScreenLayout> {
             ),
           ),
           McpConfigIsConnectedSelector(
-            (isConnected) => McpConfigSelectedApiKeySelector((apiKey) {
-              if (apiKey == null) {
-                return CommonButton(
-                    text: 'Go to API Key Settings',
-                    onPressed: () {
-                      widget.onSettingsPressed?.call();
-                    });
-              }
-              return ChatInputField(
-                controller: _textController,
-                focusNode: _inputFocusNode,
-                enabled: isConnected,
-                isConnected: isConnected,
-                apiKey: apiKey,
-                // isLoading: isLoading,
-                // isApiKeySet: isApiKeySet,
-                isLoading: false,
-                isApiKeySet: true,
-                onSend: _sendMessage,
-              );
-            }),
-          ),
+              (isConnected) => McpConfigSelectedApiKeySelector((apiKey) {
+                    if (apiKey == null) {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                    return ChatInputField(
+                      controller: _textController,
+                      focusNode: _inputFocusNode,
+                      enabled: isConnected,
+                      isConnected: isConnected,
+                      apiKey: apiKey,
+                      // isLoading: isLoading,
+                      // isApiKeySet: isApiKeySet,
+                      isLoading: false,
+                      isApiKeySet: true,
+                      onSend: _sendMessage,
+                    );
+                  })),
           // Chat input field at bottom
         ],
       ),
