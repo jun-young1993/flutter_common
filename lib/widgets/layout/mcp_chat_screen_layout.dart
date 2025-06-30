@@ -13,9 +13,11 @@ import 'package:flutter_common/state/mcp_config/mcp_config_bloc.dart';
 import 'package:flutter_common/state/mcp_config/mcp_config_event.dart';
 import 'package:flutter_common/state/mcp_config/mcp_config_selector.dart';
 import 'package:flutter_common/state/mcp_config/mcp_config_state.dart';
+import 'package:flutter_common/widgets/dialogs/index.dart';
 import 'package:flutter_common/widgets/loader/thinking_animation.dart';
 import 'package:flutter_common/widgets/ui/chat/chat_input_field.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:mcp_llm/mcp_llm.dart';
 import 'package:uuid/uuid.dart';
 
 class McpChatScreenLayout extends StatefulWidget {
@@ -208,7 +210,8 @@ class _McpChatScreenLayoutState extends State<McpChatScreenLayout> {
                 margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 padding: const EdgeInsets.all(24),
                 decoration: BoxDecoration(
-                  color: theme.colorScheme.surfaceVariant.withOpacity(0.5),
+                  color: theme.colorScheme.surfaceContainerHighest
+                      .withOpacity(0.5),
                   borderRadius: BorderRadius.circular(16),
                   border: Border.all(
                       color: theme.colorScheme.outline.withOpacity(0.3)),
@@ -312,15 +315,12 @@ class MessageBubble extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final isUser = message.isUser;
-    final isTool = message.isTool;
+
     Widget messageContent;
     List<Widget> children = [];
 
     // Render text or markdown
     if (isUser) {
-      messageContent = SelectableText(message.text);
-    } else if (isTool) {
-      children.add(const Divider(height: 10, thickness: 0.5));
       messageContent = SelectableText(message.text);
     } else {
       // Handle potential Markdown rendering errors gracefully
@@ -333,7 +333,17 @@ class MessageBubble extends StatelessWidget {
         );
       }
     }
+    debugPrint('message:123 ${message.toolCalls?.map((e) => e.toJson())}');
     children.add(messageContent);
+
+    // Add tool calls information if present and not loading
+    if (!isUser &&
+        message.toolCalls != null &&
+        message.toolCalls!.isNotEmpty &&
+        message.isLoading == false) {
+      children.add(const SizedBox(height: 12));
+      children.add(_buildToolCallsSection(context, message.toolCalls!));
+    }
     // Add tool call information if present
     // if (!isUser && message.toolName != null) {
     // children.add(const Divider(height: 10, thickness: 0.5));
@@ -385,9 +395,11 @@ class MessageBubble extends StatelessWidget {
           ...children,
           if (message.isLoading == true)
             Padding(
-              padding: EdgeInsets.only(top: 4.0),
+              padding: const EdgeInsets.only(top: 4.0),
               child: ThinkingAnimation(
-                text: isTool ? Tr.chat.usingTool.tr() : Tr.chat.thinking.tr(),
+                text: message.toolCalls != null
+                    ? Tr.chat.usingTool.tr()
+                    : Tr.chat.thinking.tr(),
               ),
             ),
         ],
@@ -402,6 +414,87 @@ class MessageBubble extends StatelessWidget {
           child: bubble,
         ),
       ],
+    );
+  }
+
+  /// 툴 호출 정보를 표시하는 위젯을 빌드합니다
+  Widget _buildToolCallsSection(
+      BuildContext context, List<LlmToolCall> toolCalls) {
+    final theme = Theme.of(context);
+
+    return Container(
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surfaceContainerHigh.withOpacity(0.5),
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(
+          color: theme.colorScheme.outline.withOpacity(0.3),
+        ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Icon(
+                Icons.build_outlined,
+                size: 16,
+                color: theme.colorScheme.primary,
+              ),
+              const SizedBox(width: 4),
+              Text(
+                '사용된 도구 (${toolCalls.length}개)',
+                style: theme.textTheme.bodySmall?.copyWith(
+                  fontWeight: FontWeight.w600,
+                  color: theme.colorScheme.primary,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+          Wrap(
+            spacing: 8,
+            runSpacing: 6,
+            children: toolCalls.map((toolCall) {
+              return InkWell(
+                onTap: () => ToolArgumentsDialog.show(context, toolCall),
+                borderRadius: BorderRadius.circular(16),
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 6,
+                  ),
+                  decoration: BoxDecoration(
+                    color: theme.colorScheme.primaryContainer.withOpacity(0.7),
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(
+                      color: theme.colorScheme.primary.withOpacity(0.3),
+                    ),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        Icons.touch_app_outlined,
+                        size: 14,
+                        color: theme.colorScheme.onPrimaryContainer,
+                      ),
+                      const SizedBox(width: 4),
+                      Text(
+                        toolCall.name,
+                        style: theme.textTheme.bodySmall?.copyWith(
+                          color: theme.colorScheme.onPrimaryContainer,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            }).toList(),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -35,7 +35,7 @@ abstract class LlmClientRepository {
   Future<void> streamChatWithToolUse(String message,
       {required Function(String data, String textChunk) onData,
       required Function(List<LlmToolCall> toolCalls) onToolCalls,
-      required Function() onDone});
+      required Function(List<LlmToolCall>? toolCalls) onDone});
   bool get isConnected;
   Future<LlmClient> getLlmClient();
 }
@@ -210,7 +210,7 @@ class LlmClientDefaultRepository extends LlmClientRepository {
   Future<void> streamChatWithToolUse(String message,
       {required Function(String data, String textChunk) onData,
       required Function(List<LlmToolCall> toolCalls) onToolCalls,
-      required Function() onDone}) async {
+      required Function(List<LlmToolCall>? toolCalls) onDone}) async {
     final responseStream = _llmClient!.streamChat(
       message,
       enableTools: true,
@@ -218,7 +218,7 @@ class LlmClientDefaultRepository extends LlmClientRepository {
 
     final StringBuffer currentResponse = StringBuffer();
     await for (final chunk in responseStream) {
-      debugPrint('Chunk: $chunk');
+      debugPrint('Chunk: ${chunk.toJson()}');
       debugPrint('Chunk Metadta: ${chunk.metadata}');
       debugPrint('Chunk Text: ${chunk.textChunk}');
       debugPrint('Chunk Tool Calls: ${jsonEncode(chunk.toolCalls)}');
@@ -228,10 +228,11 @@ class LlmClientDefaultRepository extends LlmClientRepository {
         onData(currentResponse.toString(), chunk.textChunk);
       }
       if (chunk.toolCalls != null && chunk.toolCalls!.isNotEmpty) {
+        debugPrint('Tool Calls Return: ${jsonEncode(chunk.toolCalls)}');
         onToolCalls(chunk.toolCalls!);
       }
       if (chunk.isDone) {
-        onDone();
+        onDone(chunk.toolCalls);
       }
     }
   }

@@ -25,5 +25,12 @@ class ChatMessage with _$ChatMessage {
 
   bool get isAssistant => senderType == ChatMessageSenderType.assistant;
 
+  bool equalToolCall(LlmToolCall toolCall) {
+    if (this.toolCall == null) return false;
+    return this.toolCall!.id == toolCall.id;
+  }
+
   ChatMessage addText(String text) => copyWith(text: this.text + text);
+
+  
 }

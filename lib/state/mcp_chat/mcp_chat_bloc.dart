@@ -8,6 +8,7 @@ import 'package:flutter_common/state/base/base_bloc.dart';
 import 'package:flutter_common/state/mcp_chat/mcp_chat_event.dart';
 import 'package:flutter_common/state/mcp_chat/mcp_chat_state.dart';
 import 'package:mcp_client/mcp_client.dart';
+import 'package:mcp_llm/mcp_llm.dart';
 import 'package:uuid/uuid.dart';
 
 class McpChatBloc extends BaseBloc<McpChatEvent, McpChatState> {
@@ -31,8 +32,7 @@ class McpChatBloc extends BaseBloc<McpChatEvent, McpChatState> {
             ]));
             final response =
                 await llmClientRepository.chatWithToolsUse(e.message.text);
-            debugPrint('response: ${response.toolCalls}');
-            debugPrint('response: ${response.text}');
+
             final newMessages = state.messages
                 .map((e) => e.id == llmMessage.id
                     ? e.copyWith(
@@ -68,28 +68,32 @@ class McpChatBloc extends BaseBloc<McpChatEvent, McpChatState> {
                   .toList();
               emit(state.copyWith(messages: newMessages));
             }, onToolCalls: (toolCalls) async {
-              for (final toolCall in toolCalls) {
-                final useIngToolMessage = ChatMessage(
-                  id: const Uuid().v4(),
-                  text: '${toolCall.name} Using tool',
-                  senderType: ChatMessageSenderType.tool,
-                  createdAt: DateTime.now(),
-                  toolCall: toolCall,
-                  isLoading: true,
-                );
-                final isToolCall = state.messages.any((message) {
-                  return !(message.toolCall?.id == toolCall.id);
-                });
-                if (!isToolCall) {
-                  emit(state.copyWith(
-                      messages: [...(state.messages), useIngToolMessage]));
+              debugPrint(' onToolCalls toolCalls: $toolCalls');
+              final newMessages = state.messages.map((message) {
+                if (message.id == llmMessage.id) {
+                  debugPrint(' set message toolCalls: $toolCalls');
+                  return message.copyWith(
+                      isLoading: true, toolCalls: toolCalls);
+                } else {
+                  return message;
                 }
-              }
-            }, onDone: () async {
-              final newMessages = state.messages
-                  .map((e) =>
-                      e.id == llmMessage.id ? e.copyWith(isLoading: false) : e)
-                  .toList();
+              }).toList();
+              emit(state.copyWith(messages: newMessages));
+            }, onDone: (toolCalls) async {
+              final newMessages = state.messages.map((message) {
+                if (message.id == llmMessage.id) {
+                  debugPrint(' set message on done toolCalls: $toolCalls');
+                  if (toolCalls != null) {
+                    return message.copyWith(
+                        isLoading: false, toolCalls: toolCalls);
+                  } else {
+                    return message.copyWith(isLoading: false);
+                  }
+                } else {
+                  return message;
+                }
+              }).toList();
+
               emit(state.copyWith(messages: newMessages));
             });
           });
