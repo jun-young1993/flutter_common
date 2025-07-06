@@ -107,7 +107,7 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
       return const SizedBox.shrink();
     }
     return CardContainer(
-      title: '사용자 정보',
+      title: Tr.app.userInfo.tr(),
       icon: Icons.person_outline,
       children: [
         UserInfoSelector((user) {

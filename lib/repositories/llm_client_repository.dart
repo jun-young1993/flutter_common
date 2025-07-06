@@ -2,10 +2,13 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter_common/providers/model_provider/fixed_claude_provider.dart';
+import 'package:flutter_common/repositories/mcp_server_repository.dart';
+import 'package:flutter_common/repositories/run_mcp_server.dart';
 import 'package:mcp_llm/mcp_llm.dart';
 import 'package:mcp_client/mcp_client.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter/foundation.dart';
+import 'package:mcp_server/mcp_server.dart' as mcp_server;
 
 class LlmClientRepositoryIntitializeLlmConfig {
   final String apiKey;
@@ -44,6 +47,9 @@ class LlmClientDefaultRepository extends LlmClientRepository {
   late McpLlm _mcpLlm;
   LlmClient? _llmClient;
   Client? _mcpClient;
+  Client? _localMcpClient;
+  McpServerRepository mcpServerRepository =
+      McpServerDefaultRepository(port: 5490);
   final _connectionStateController = StreamController<bool>.broadcast();
 
   Stream<bool> get connectionState => _connectionStateController.stream;
@@ -97,6 +103,53 @@ class LlmClientDefaultRepository extends LlmClientRepository {
       throw Exception('MCP client is not connected');
     }
     return await _mcpClient!.listTools();
+  }
+
+  Future<void> _setLocalMcpClient(
+      {required Function(String) onConnect,
+      required Function(String) onDisconnect}) async {
+    debugPrint(' 🚀 Setting up local MCP client');
+    final runMcpServer = RunMcpServer();
+    runMcpServer.runCompleteMcpServer(onConnect: (message) async {
+      print('MCP Local connection state: $message');
+      const capabilities = ClientCapabilities(
+        roots: true,
+        rootsListChanged: true,
+        sampling: true,
+      );
+      const config = McpClientConfig(
+        name: 'flutter_local_app',
+        version: '1.0.0',
+        capabilities: capabilities,
+        enableDebugLogging: true,
+      );
+      const transportConfig = TransportConfig.sse(
+        serverUrl: 'http://0.0.0.0:8443/sse',
+        // heartbeatInterval: const Duration(seconds: 30),
+        // maxMissedHeartbeats: 3,
+      );
+
+      final clientResult = await McpClient.createAndConnect(
+        config: config,
+        transportConfig: transportConfig,
+      );
+
+      // Create MCP client
+      _localMcpClient = clientResult.get();
+      debugPrint('MCP Local client: ${_localMcpClient!.name}');
+      _localMcpClient!.onNotification('connection_state_changed', (params) {
+        final state = params['state'] as String;
+
+        print('MCP Local connection state: $state');
+      });
+      onConnect('MCP Local client connected');
+    }, onDisconnect: (message) {
+      print('MCP Local connection state: $message');
+      onDisconnect('MCP Local client disconnected');
+    });
+
+    debugPrint(' 🚀 Local MCP client setup complete');
+    // await mcpServerRepository.initialize();
   }
 
   Future<void> _setupMcpClient(String serverUrl, String authToken) async {
@@ -174,6 +227,16 @@ class LlmClientDefaultRepository extends LlmClientRepository {
             4) Once you have all needed information, respond directly to the user's question without mentioning your thought process. 
             5) Only call tools that are necessary and relevant to the user's question.
           ''');
+
+    _setLocalMcpClient(onConnect: (message) {
+      print('MCP Local connection state: $message');
+      if (_localMcpClient != null) {
+        _llmClient!.addMcpClient(_localMcpClient!.name, _localMcpClient!);
+        debugPrint('MCP Local client added: ${_localMcpClient!.name}');
+      }
+    }, onDisconnect: (message) {
+      print('MCP Local connection state: $message');
+    });
   }
 
   @override

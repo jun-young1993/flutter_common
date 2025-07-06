@@ -35,7 +35,8 @@
         "error": "오류",
         "inputAuthNumber": "인증번호를 입력해주세요.",
         "authEmail": "이메일 인증",
-        "community": "커뮤니티"
+        "community": "커뮤니티",
+        "userInfo": "사용자 정보"
     },
     "error": {
         "unknownError": "알 수 없는 오류가 발생했습니다.",

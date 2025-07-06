@@ -33,6 +33,7 @@ class _App {
   final inputAuthNumber = 'app.inputAuthNumber';
   final authEmail = 'app.authEmail';
   final community = 'app.community';
+  final userInfo = 'app.userInfo';
 }
 
 class _Error {

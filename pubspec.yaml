@@ -29,6 +29,7 @@ dependencies:
   google_mobile_ads: ^6.0.0
   mcp_llm: ^1.0.0
   mcp_client: ^1.0.0
+  mcp_server: ^1.0.2
   flutter_dotenv: ^5.2.1
   uuid: ^4.3.3
   easy_localization: ^3.0.7+1

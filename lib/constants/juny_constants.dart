@@ -8,6 +8,8 @@ enum AppKeys {
 class JunyConstants {
   static const String apiBaseUrl = 'https://juny-api.kr';
   static const String mcpServerUrl = 'http://localhost:3000/sse';
+  // static const String mcpServerUrl =
+  //     'https://public-mcp-demo-oai.agent-ready.ai';
 
   static const String email = 'juny3738@gmail.com';
   static const Map<AppKeys, String> appKeys = {
