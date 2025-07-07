@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_common/constants/juny_constants.dart';
 import 'package:flutter_common/extensions/app_exception.dart';
 import 'package:flutter_common/repositories/llm_client_repository.dart';
@@ -34,7 +35,9 @@ class McpConfigBloc extends BaseBloc<McpConfigEvent, McpConfigState> {
             ));
 
             bool isConnected = llmClientRepository.isConnected;
+            debugPrint('🔥 [isConnected] $isConnected');
             List<Tool> tools = await llmClientRepository.getTools();
+            debugPrint('🔥 [tools] $tools');
             final List<Tool> newTools = [];
             for (var tool in tools) {
               final bool isEnabled =

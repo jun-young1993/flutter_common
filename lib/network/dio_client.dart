@@ -119,7 +119,8 @@ class DioClient {
   }
 
   Exception _handleError(DioException error) {
-    print('🔥 [ERROR] $error');
+    debugPrint('🔥 [ERROR] $error');
+    debugPrint('🔥 [ERROR Stack Trace] ${StackTrace.current}');
     switch (error.type) {
       case DioExceptionType.connectionTimeout:
       case DioExceptionType.sendTimeout:
