@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_common/flutter_common.dart';
 import 'package:flutter_common/repositories/mcp_config_repository.dart';
+import 'package:flutter_common/repositories/mcp_llm_client_repository.dart';
 import 'package:flutter_common/state/mcp_config/mcp_config_bloc.dart';
 import 'package:flutter_common/state/mcp_config/mcp_config_listener.dart';
 import 'package:flutter_common/state/notice/notice_bloc.dart';
@@ -66,6 +67,7 @@ class CommonBlocProvider extends StatelessWidget {
             create: (context) => McpConfigBloc(
               mcpConfigRepository: context.read<McpConfigRepository>(),
               llmClientRepository: context.read<LlmClientRepository>(),
+              mcpLlmClientRepository: context.read<McpLlmClientRepository>(),
             ),
           ),
           ...(providers ?? []),

@@ -3,6 +3,7 @@ import 'package:flutter_common/constants/juny_constants.dart';
 import 'package:flutter_common/extensions/app_exception.dart';
 import 'package:flutter_common/repositories/llm_client_repository.dart';
 import 'package:flutter_common/repositories/mcp_config_repository.dart';
+import 'package:flutter_common/repositories/mcp_llm_client_repository.dart';
 import 'package:flutter_common/state/base/base_bloc.dart';
 import 'package:flutter_common/state/mcp_config/mcp_config_event.dart';
 import 'package:flutter_common/state/mcp_config/mcp_config_state.dart';
@@ -11,9 +12,11 @@ import 'package:mcp_client/mcp_client.dart';
 class McpConfigBloc extends BaseBloc<McpConfigEvent, McpConfigState> {
   final McpConfigRepository mcpConfigRepository;
   final LlmClientRepository llmClientRepository;
+  final McpLlmClientRepository mcpLlmClientRepository;
   McpConfigBloc({
     required this.mcpConfigRepository,
     required this.llmClientRepository,
+    required this.mcpLlmClientRepository,
   }) : super(McpConfigState.initialize()) {
     on<McpConfigEvent>((event, emit) async {
       await event.map(
@@ -25,40 +28,44 @@ class McpConfigBloc extends BaseBloc<McpConfigEvent, McpConfigState> {
               emit(state.copyWith(selectedApiKey: McpApiKeys.values.first));
             }
 
-            await llmClientRepository
-                .initialize(LlmClientRepositoryIntitializeConfig(
-              llmConfig: LlmClientRepositoryIntitializeLlmConfig(
-                apiKey: state.getApiKey(),
-                mcpServerUrl: JunyConstants.mcpServerUrl,
-                mcpAuthToken: 'asdf',
-              ),
-            ));
+            final llmClient = await mcpLlmClientRepository.initialize(
+              LlmClientSetupConfig(apiKey: state.getApiKey()),
+            );
 
-            bool isConnected = llmClientRepository.isConnected;
-            debugPrint('🔥 [isConnected] $isConnected');
-            List<Tool> tools = await llmClientRepository.getTools();
-            debugPrint('🔥 [tools] $tools');
-            final List<Tool> newTools = [];
-            for (var tool in tools) {
-              final bool isEnabled =
-                  await mcpConfigRepository.getDisabledTools(tool.name) == null
-                      ? true
-                      : false;
-              final toolJson = tool.toJson();
-              if (toolJson['metadata'] == null) {
-                toolJson['metadata'] = {'enabled': isEnabled};
-              } else {
-                toolJson['metadata'] = {
-                  ...toolJson['metadata'],
-                  'enabled': isEnabled,
-                };
-              }
+            // await llmClientRepository
+            //     .initialize(LlmClientRepositoryIntitializeConfig(
+            //   llmConfig: LlmClientRepositoryIntitializeLlmConfig(
+            //     apiKey: state.getApiKey(),
+            //     mcpServerUrl: JunyConstants.mcpServerUrl,
+            //     mcpAuthToken: 'asdf',
+            //   ),
+            // ));
 
-              final newTool = Tool.fromJson(toolJson);
-              newTools.add(newTool);
-            }
+            // bool isConnected = llmClientRepository.isConnected;
+            // debugPrint('🔥 [isConnected] $isConnected');
+            // List<Tool> tools = await llmClientRepository.getTools();
+            // debugPrint('🔥 [tools] $tools');
+            // final List<Tool> newTools = [];
+            // for (var tool in tools) {
+            //   final bool isEnabled =
+            //       await mcpConfigRepository.getDisabledTools(tool.name) == null
+            //           ? true
+            //           : false;
+            //   final toolJson = tool.toJson();
+            //   if (toolJson['metadata'] == null) {
+            //     toolJson['metadata'] = {'enabled': isEnabled};
+            //   } else {
+            //     toolJson['metadata'] = {
+            //       ...toolJson['metadata'],
+            //       'enabled': isEnabled,
+            //     };
+            //   }
 
-            emit(state.copyWith(isConnected: isConnected, tools: newTools));
+            //   final newTool = Tool.fromJson(toolJson);
+            //   newTools.add(newTool);
+            // }
+
+            // emit(state.copyWith(isConnected: isConnected, tools: newTools));
           });
         },
         setApiKey: (e) async {

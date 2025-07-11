@@ -103,6 +103,7 @@ class LlmClientDefaultRepository extends LlmClientRepository {
       throw Exception('MCP client is not connected');
     }
     return await _mcpClient!.listTools();
+    // return await _localMcpClient!.listTools();
   }
 
   Future<void> _setLocalMcpClient(
@@ -136,6 +137,7 @@ class LlmClientDefaultRepository extends LlmClientRepository {
 
       // Create MCP client
       _localMcpClient = clientResult.get();
+      debugPrint('MCP Local tools: ${await _localMcpClient!.listTools()}');
       debugPrint('MCP Local client: ${_localMcpClient!.name}');
       _localMcpClient!.onNotification('connection_state_changed', (params) {
         final state = params['state'] as String;
@@ -216,7 +218,7 @@ class LlmClientDefaultRepository extends LlmClientRepository {
             'max_tokens': 1500,
           },
         ),
-        mcpClient: _mcpClient,
+        // mcpClient: _mcpClient,
         systemPrompt: '''
             You are a helpful assistant with access to various tools and resources. Provide concise and accurate responses.
             You're an agent that can call external tools to help solve user questions. 
@@ -227,7 +229,7 @@ class LlmClientDefaultRepository extends LlmClientRepository {
             4) Once you have all needed information, respond directly to the user's question without mentioning your thought process. 
             5) Only call tools that are necessary and relevant to the user's question.
           ''');
-
+    _llmClient!.addMcpClient(_mcpClient!.name, _mcpClient!);
     _setLocalMcpClient(onConnect: (message) {
       print('MCP Local connection state: $message');
       if (_localMcpClient != null) {

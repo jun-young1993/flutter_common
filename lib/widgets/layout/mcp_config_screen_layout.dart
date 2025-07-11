@@ -53,6 +53,7 @@ class _McpConfigScreenLayoutState extends State<McpConfigScreenLayout> {
     //   _showSnackbar('API Key cannot be empty.');
     // }
     FocusScope.of(context).unfocus();
+    mcpConfigBloc.add(const McpConfigEvent.initialize());
   }
 
   void _clearApiKey() {
@@ -67,6 +68,7 @@ class _McpConfigScreenLayoutState extends State<McpConfigScreenLayout> {
     //       _showSnackbar('Error clearing API Key: $e');
     //     });
     FocusScope.of(context).unfocus();
+    mcpConfigBloc.add(const McpConfigEvent.initialize());
   }
 
   void _toggleServerActive(String serverId, bool isActive) {
