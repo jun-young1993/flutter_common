@@ -174,6 +174,7 @@ class LlmClientDefaultRepository extends LlmClientRepository {
     // Create transport
     final transportConfig = TransportConfig.sse(
       serverUrl: serverUrl,
+      headers: const {'User-Agent': 'MCP-Client/1.0'},
       // heartbeatInterval: const Duration(seconds: 30),
       // maxMissedHeartbeats: 3,
     );
