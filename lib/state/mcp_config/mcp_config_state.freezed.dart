@@ -20,7 +20,7 @@ mixin _$McpConfigState {
   AppException? get error => throw _privateConstructorUsedError;
   Map<McpApiKeys, String> get apiKeys => throw _privateConstructorUsedError;
   McpApiKeys? get selectedApiKey => throw _privateConstructorUsedError;
-  List<Tool> get tools => throw _privateConstructorUsedError;
+  Map<String, McpTool> get tools => throw _privateConstructorUsedError;
   bool get isConnected => throw _privateConstructorUsedError;
 
   /// Create a copy of McpConfigState
@@ -41,7 +41,7 @@ abstract class $McpConfigStateCopyWith<$Res> {
       AppException? error,
       Map<McpApiKeys, String> apiKeys,
       McpApiKeys? selectedApiKey,
-      List<Tool> tools,
+      Map<String, McpTool> tools,
       bool isConnected});
 
   $AppExceptionCopyWith<$Res>? get error;
@@ -89,7 +89,7 @@ class _$McpConfigStateCopyWithImpl<$Res, $Val extends McpConfigState>
       tools: null == tools
           ? _value.tools
           : tools // ignore: cast_nullable_to_non_nullable
-              as List<Tool>,
+              as Map<String, McpTool>,
       isConnected: null == isConnected
           ? _value.isConnected
           : isConnected // ignore: cast_nullable_to_non_nullable
@@ -125,7 +125,7 @@ abstract class _$$McpConfigStateImplCopyWith<$Res>
       AppException? error,
       Map<McpApiKeys, String> apiKeys,
       McpApiKeys? selectedApiKey,
-      List<Tool> tools,
+      Map<String, McpTool> tools,
       bool isConnected});
 
   @override
@@ -172,7 +172,7 @@ class __$$McpConfigStateImplCopyWithImpl<$Res>
       tools: null == tools
           ? _value._tools
           : tools // ignore: cast_nullable_to_non_nullable
-              as List<Tool>,
+              as Map<String, McpTool>,
       isConnected: null == isConnected
           ? _value.isConnected
           : isConnected // ignore: cast_nullable_to_non_nullable
@@ -189,7 +189,7 @@ class _$McpConfigStateImpl extends _McpConfigState {
       this.error = null,
       final Map<McpApiKeys, String> apiKeys = const {},
       this.selectedApiKey = null,
-      final List<Tool> tools = const [],
+      final Map<String, McpTool> tools = const {},
       this.isConnected = false})
       : _apiKeys = apiKeys,
         _tools = tools,
@@ -213,13 +213,13 @@ class _$McpConfigStateImpl extends _McpConfigState {
   @override
   @JsonKey()
   final McpApiKeys? selectedApiKey;
-  final List<Tool> _tools;
+  final Map<String, McpTool> _tools;
   @override
   @JsonKey()
-  List<Tool> get tools {
-    if (_tools is EqualUnmodifiableListView) return _tools;
+  Map<String, McpTool> get tools {
+    if (_tools is EqualUnmodifiableMapView) return _tools;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_tools);
+    return EqualUnmodifiableMapView(_tools);
   }
 
   @override
@@ -273,7 +273,7 @@ abstract class _McpConfigState extends McpConfigState {
       final AppException? error,
       final Map<McpApiKeys, String> apiKeys,
       final McpApiKeys? selectedApiKey,
-      final List<Tool> tools,
+      final Map<String, McpTool> tools,
       final bool isConnected}) = _$McpConfigStateImpl;
   const _McpConfigState._() : super._();
 
@@ -286,7 +286,7 @@ abstract class _McpConfigState extends McpConfigState {
   @override
   McpApiKeys? get selectedApiKey;
   @override
-  List<Tool> get tools;
+  Map<String, McpTool> get tools;
   @override
   bool get isConnected;
 

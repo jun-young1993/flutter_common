@@ -1,4 +1,5 @@
 import 'package:flutter_common/extensions/app_exception.dart';
+import 'package:flutter_common/repositories/mcp_client_repository.dart';
 import 'package:flutter_common/state/base/base_state.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:mcp_client/mcp_client.dart';
@@ -12,6 +13,15 @@ enum McpApiKeys {
   // azure,
 }
 
+class McpTool {
+  final List<Tool> tools;
+  final McpClientSetupConfig config;
+  final bool isConnected;
+
+  McpTool(
+      {required this.tools, required this.config, required this.isConnected});
+}
+
 @freezed
 class McpConfigState with _$McpConfigState, BaseStateMixin {
   const factory McpConfigState({
@@ -19,7 +29,7 @@ class McpConfigState with _$McpConfigState, BaseStateMixin {
     @Default(null) AppException? error,
     @Default({}) Map<McpApiKeys, String> apiKeys,
     @Default(null) McpApiKeys? selectedApiKey,
-    @Default([]) List<Tool> tools,
+    @Default({}) Map<String, McpTool> tools,
     @Default(false) bool isConnected,
   }) = _McpConfigState;
 

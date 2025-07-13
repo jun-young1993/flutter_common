@@ -36,7 +36,8 @@
         "inputAuthNumber": "Please enter the authentication number.",
         "authEmail": "Authenticate Email",
         "community": "Community",
-        "userInfo": "User Info"
+        "userInfo": "User Info",
+        "contacts": "Contacts"
     },
     "error": {
         "unknownError": "An unknown error has occurred.",

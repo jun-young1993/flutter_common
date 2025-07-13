@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_common/extensions/app_exception.dart';
 import 'package:flutter_common/state/base/base_state.dart';
@@ -36,12 +37,12 @@ abstract class BaseBloc<Event, State extends BaseStateMixin>
       await action();
     } on AppException catch (e) {
       // AppException 처리
-      logError('AppException', e);
+      logError('AppException', e, StackTrace.current);
       emit(setErrorState(state, e));
     } catch (e) {
       // 일반 예외 처리
       final appException = defaultError ?? AppException.unknown(e.toString());
-      logError('Unknown error', e);
+      logError('Unknown error', e, StackTrace.current);
       emit(setErrorState(state, appException));
     } finally {
       // 로딩 상태 해제 (에러가 발생한 경우에는 이미 setErrorState에서 처리됨)
@@ -97,8 +98,11 @@ abstract class BaseBloc<Event, State extends BaseStateMixin>
   ///
   /// 개발 환경에서 디버깅을 위해 에러를 콘솔에 출력합니다.
   /// 프로덕션 환경에서는 로깅 서비스로 전송하도록 확장할 수 있습니다.
-  void logError(String type, dynamic error) {
-    print('🔥 [ERROR] $type in ${runtimeType.toString()}: $error');
+  void logError(String type, dynamic error, [StackTrace? stackTrace]) {
+    debugPrint('🔥 [ERROR] $type in ${runtimeType.toString()}: $error');
+    if (stackTrace != null) {
+      debugPrint('StackTrace: \n$stackTrace');
+    }
   }
 
   /// BLoC 생명주기 관리를 위한 메서드

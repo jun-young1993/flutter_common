@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_common/constants/juny_constants.dart';
 import 'package:flutter_common/extensions/app_exception.dart';
 import 'package:flutter_common/repositories/llm_client_repository.dart';
+import 'package:flutter_common/repositories/mcp_client_repository.dart';
 import 'package:flutter_common/repositories/mcp_config_repository.dart';
 import 'package:flutter_common/repositories/mcp_llm_client_repository.dart';
+import 'package:flutter_common/repositories/mcp_local_server_repository.dart';
 import 'package:flutter_common/state/base/base_bloc.dart';
 import 'package:flutter_common/state/mcp_config/mcp_config_event.dart';
 import 'package:flutter_common/state/mcp_config/mcp_config_state.dart';
@@ -13,11 +15,15 @@ class McpConfigBloc extends BaseBloc<McpConfigEvent, McpConfigState> {
   final McpConfigRepository mcpConfigRepository;
   final LlmClientRepository llmClientRepository;
   final McpLlmClientRepository mcpLlmClientRepository;
-  McpConfigBloc({
-    required this.mcpConfigRepository,
-    required this.llmClientRepository,
-    required this.mcpLlmClientRepository,
-  }) : super(McpConfigState.initialize()) {
+  final McpClientRepository mcpClientRepository;
+  final McpLocalServerRepository mcpLocalServerRepository;
+  McpConfigBloc(
+      {required this.mcpConfigRepository,
+      required this.llmClientRepository,
+      required this.mcpLlmClientRepository,
+      required this.mcpClientRepository,
+      required this.mcpLocalServerRepository})
+      : super(McpConfigState.initialize()) {
     on<McpConfigEvent>((event, emit) async {
       await event.map(
         initialize: (e) async {
@@ -27,10 +33,55 @@ class McpConfigBloc extends BaseBloc<McpConfigEvent, McpConfigState> {
             if (state.selectedApiKey == null) {
               emit(state.copyWith(selectedApiKey: McpApiKeys.values.first));
             }
-
-            final llmClient = await mcpLlmClientRepository.initialize(
+            final mcpClientConfigs = [
+              {
+                'name': 'mcp_local_server',
+                'version': '1.0.0',
+                'url': 'http://0.0.0.0:9999/sse',
+              },
+              {
+                'name': 'mcp_default_server',
+                'version': '1.0.0',
+                'url': JunyConstants.mcpServerUrl,
+              },
+            ];
+            mcpLocalServerRepository.initialize(
+              port: 9999,
+              onConnect: (clientId) {
+                print('🔥 [onConnect] $clientId');
+              },
+              onDisconnect: (clientId) {
+                print('🔥 [onDisconnect] $clientId');
+              },
+            );
+            await mcpLlmClientRepository.initialize(
               LlmClientSetupConfig(apiKey: state.getApiKey()),
             );
+            final mcpClients = await Future.wait(
+              mcpClientConfigs
+                  .map(
+                    (mcpClientConfig) => mcpClientRepository.initialize(
+                      McpClientSetupConfig(
+                        name: mcpClientConfig['name']!,
+                        version: mcpClientConfig['version']!,
+                        url: mcpClientConfig['url']!,
+                      ),
+                      (isConnected, tools, config) {
+                        emit(state.copyWith(
+                          tools: {
+                            ...state.tools,
+                            config.name: McpTool(
+                                tools: tools,
+                                config: config,
+                                isConnected: isConnected)
+                          },
+                        ));
+                      },
+                    ),
+                  )
+                  .toList(),
+            );
+            await mcpLlmClientRepository.addMcpClients(mcpClients);
 
             // await llmClientRepository
             //     .initialize(LlmClientRepositoryIntitializeConfig(
@@ -65,7 +116,7 @@ class McpConfigBloc extends BaseBloc<McpConfigEvent, McpConfigState> {
             //   newTools.add(newTool);
             // }
 
-            // emit(state.copyWith(isConnected: isConnected, tools: newTools));
+            emit(state.copyWith(isConnected: true));
           });
         },
         setApiKey: (e) async {

@@ -34,6 +34,7 @@ class _App {
   final authEmail = 'app.authEmail';
   final community = 'app.community';
   final userInfo = 'app.userInfo';
+  final contacts = 'app.contacts';
 }
 
 class _Error {

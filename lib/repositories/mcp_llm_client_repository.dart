@@ -1,4 +1,8 @@
+import 'dart:convert';
+
+import 'package:flutter/material.dart';
 import 'package:flutter_common/providers/model_provider/fixed_claude_provider.dart';
+import 'package:mcp_client/mcp_client.dart';
 import 'package:mcp_llm/mcp_llm.dart';
 
 class LlmClientSetupConfig {
@@ -8,20 +12,42 @@ class LlmClientSetupConfig {
 
 abstract class McpLlmClientRepository {
   Future<LlmClient> initialize(LlmClientSetupConfig config);
+  Future<LlmClient> findLlmClient();
+  Future<void> addMcpClient(Client client);
+  Future<void> addMcpClients(List<Client> clients);
+  Future<void> dispose();
+  Future<LlmResponse> chatWithToolsUse(String message);
+  Future<void> streamChatWithToolUse(String message,
+      {required Function(String data, String textChunk) onData,
+      required Function(List<LlmToolCall> toolCalls) onToolCalls,
+      required Function(List<LlmToolCall>? toolCalls) onDone});
 }
 
 class McpLlmClientDefaultRepository extends McpLlmClientRepository {
   final McpLlm _mcpLlm = McpLlm();
+  LlmClient? _llmClient;
+
   @override
   Future<LlmClient> initialize(LlmClientSetupConfig config) async {
-    return _setupMcpLlmClient(config);
+    if (_llmClient != null) {
+      return _llmClient!;
+    }
+    return await _setupMcpLlmClient(config);
+  }
+
+  @override
+  Future<LlmClient> findLlmClient() async {
+    if (_llmClient == null) {
+      throw Exception('LlmClient is not initialized');
+    }
+    return _llmClient!;
   }
 
   Future<LlmClient> _setupMcpLlmClient(LlmClientSetupConfig config) async {
     const providerName = 'claude';
     const model = 'claude-3-haiku-20240307';
     _mcpLlm.registerProvider(providerName, FixedClaudeProviderFactory());
-    final llmClient = await _mcpLlm.createClient(
+    _llmClient = await _mcpLlm.createClient(
       providerName: providerName,
       config: LlmConfiguration(
         apiKey: config.apiKey,
@@ -42,6 +68,78 @@ class McpLlmClientDefaultRepository extends McpLlmClientRepository {
             5) Only call tools that are necessary and relevant to the user's question.
           ''',
     );
-    return llmClient;
+
+    return _llmClient!;
+  }
+
+  @override
+  Future<void> addMcpClient(Client client) async {
+    final llmClient = await findLlmClient();
+    llmClient.addMcpClient(client.name, client);
+  }
+
+  @override
+  Future<void> addMcpClients(List<Client> clients) async {
+    for (var client in clients) {
+      addMcpClient(client);
+    }
+  }
+
+  @override
+  Future<LlmResponse> chatWithToolsUse(String message) async {
+    final response = await _llmClient!.chat(
+      message,
+      enableTools: true,
+    );
+    return response;
+  }
+
+  Future<LlmResponse> chat(String message, {bool enableTools = true}) async {
+    if (_llmClient == null) {
+      throw Exception('LLM client not initialized');
+    }
+
+    return await _llmClient!.chat(
+      message,
+      enableTools: enableTools,
+    );
+  }
+
+  // Stream chat responses
+  @override
+  Future<void> streamChatWithToolUse(String message,
+      {required Function(String data, String textChunk) onData,
+      required Function(List<LlmToolCall> toolCalls) onToolCalls,
+      required Function(List<LlmToolCall>? toolCalls) onDone}) async {
+    final responseStream = _llmClient!.streamChat(
+      message,
+      enableTools: true,
+    );
+
+    final StringBuffer currentResponse = StringBuffer();
+    await for (final chunk in responseStream) {
+      debugPrint('Chunk: ${chunk.toJson()}');
+      debugPrint('Chunk Metadta: ${chunk.metadata}');
+      debugPrint('Chunk Text: ${chunk.textChunk}');
+      debugPrint('Chunk Tool Calls: ${jsonEncode(chunk.toolCalls)}');
+      debugPrint('Chunk isDone: ${chunk.isDone}');
+      if (chunk.textChunk.isNotEmpty) {
+        currentResponse.write(chunk.textChunk);
+        onData(currentResponse.toString(), chunk.textChunk);
+      }
+      if (chunk.toolCalls != null && chunk.toolCalls!.isNotEmpty) {
+        debugPrint('Tool Calls Return: ${jsonEncode(chunk.toolCalls)}');
+        onToolCalls(chunk.toolCalls!);
+      }
+      if (chunk.isDone) {
+        onDone(chunk.toolCalls);
+      }
+    }
+  }
+
+  // Cleanup
+  @override
+  Future<void> dispose() async {
+    await _mcpLlm.shutdown();
   }
 }

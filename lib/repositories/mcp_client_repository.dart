@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:mcp_client/mcp_client.dart';
 
 class McpClientSetupConfig {
@@ -13,24 +14,57 @@ class McpClientSetupConfig {
 }
 
 abstract class McpClientRepository {
-  Future<McpClient> initialize(McpClientSetupConfig config);
+  Future<Client> initialize(McpClientSetupConfig config,
+      Function(bool, List<Tool>, McpClientSetupConfig) onConnection);
 }
 
 class McpClientDefaultRepository extends McpClientRepository {
+  Client? _mcpClient;
   @override
-  Future<McpClient> initialize(McpClientSetupConfig config) async {
-    return _setupMcpClient(config);
+  Future<Client> initialize(McpClientSetupConfig config,
+      Function(bool, List<Tool>, McpClientSetupConfig) onConnection) async {
+    if (_mcpClient != null) {
+      return _mcpClient!;
+    }
+    await _setupMcpClient(config);
+    onConnection(
+        _mcpClient!.isConnected, await _mcpClient!.listTools(), config);
+    // _mcpClient!.onNotification('connection_state_changed', (params) async {
+    //   final state = params['state'] as String;
+    //   final tools = await _mcpClient!.listTools();
+    //   debugPrint('MCP connection state: $state');
+
+    // });
+
+    return _mcpClient!;
   }
 
-  Future<McpClient> _setupMcpClient(McpClientSetupConfig config) async {
-    final mcpClient = McpClient(
+  Future<Client> _setupMcpClient(McpClientSetupConfig config) async {
+    const capabilities = ClientCapabilities(
+      roots: true,
+      rootsListChanged: true,
+      sampling: true,
+    );
+
+    final mcpClientConfig = McpClientConfig(
       name: config.name,
       version: config.version,
-      capabilities: const ClientCapabilities(
-        roots: true,
-        rootsListChanged: true,
-        sampling: true,
-      ),
+      capabilities: capabilities,
+      enableDebugLogging: false,
     );
+
+    final transportConfig = TransportConfig.sse(
+      serverUrl: config.url,
+      headers: const {'User-Agent': 'MCP-Client/1.0'},
+    );
+
+    final clientResult = await McpClient.createAndConnect(
+      config: mcpClientConfig,
+      transportConfig: transportConfig,
+    );
+
+    _mcpClient = clientResult.get();
+
+    return _mcpClient!;
   }
 }

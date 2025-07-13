@@ -41,8 +41,9 @@ class McpConfigSelectedApiKeySelector extends McpConfigSelector<McpApiKeys?> {
         );
 }
 
-class McpConfigToolsSelector extends McpConfigSelector<List<Tool>> {
-  McpConfigToolsSelector(Widget Function(List<Tool>) builder, {super.key})
+class McpConfigToolsSelector extends McpConfigSelector<Map<String, McpTool>> {
+  McpConfigToolsSelector(Widget Function(Map<String, McpTool>) builder,
+      {super.key})
       : super(
           selector: (state) => state.tools,
           builder: (context, tools) => builder(tools),

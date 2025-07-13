@@ -259,32 +259,77 @@ class _McpConfigScreenLayoutState extends State<McpConfigScreenLayout> {
                 ),
               );
             }
-            return ListView.builder(
+            return ListView(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              itemCount: tools.length,
-              itemBuilder: (context, index) {
-                // TODO: Replace with actual state from McpConfigBloc
-
-                return ToolListItem(
-                  tool: tools[index],
-                  isEnabled: tools[index].metadata!['enabled'] as bool,
-                  onToggle: (newValue) {
-                    // TODO: Replace with McpConfigBloc event
-
-                    mcpConfigBloc.add(
-                        McpConfigEvent.toggleTool(tools[index].name, newValue));
-                    final action =
-                        newValue ? Tr.app.enable.tr() : Tr.app.disable.tr();
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text('${tools[index].name} $action'),
-                        duration: const Duration(seconds: 1),
+              children: tools.entries.map((entry) {
+                final toolGroupName = entry.key; // String key
+                final mcptool = entry.value; // McpTool 객체
+                final tools = mcptool.tools;
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // 타이틀 스타일 Card
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 12.0, horizontal: 8.0),
+                      child: Card(
+                        color: Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withOpacity(0.08),
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 12.0, horizontal: 16.0),
+                          child: Row(
+                            children: [
+                              Icon(Icons.extension,
+                                  color: Theme.of(context).colorScheme.primary,
+                                  size: 22),
+                              const SizedBox(width: 8),
+                              Text(
+                                toolGroupName,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleLarge
+                                    ?.copyWith(
+                                      fontWeight: FontWeight.bold,
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
-                    );
-                  },
+                    ),
+                    // 해당 그룹의 ToolListItem들
+                    ...tools.map((tool) => ToolListItem(
+                          tool: tool,
+                          isEnabled: tool.metadata?['enabled'] as bool? ?? true,
+                          onToggle: (newValue) {
+                            mcpConfigBloc.add(
+                              McpConfigEvent.toggleTool(tool.name, newValue),
+                            );
+                            final action = newValue
+                                ? Tr.app.enable.tr()
+                                : Tr.app.disable.tr();
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(' ${tool.name} $action'),
+                                duration: const Duration(seconds: 1),
+                              ),
+                            );
+                          },
+                        )),
+                    const Divider(),
+                  ],
                 );
-              },
+              }).toList(),
             );
           }),
         ],

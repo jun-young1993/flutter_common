@@ -4,6 +4,7 @@ import 'package:flutter_common/extensions/app_exception.dart';
 import 'package:flutter_common/models/chat/chat_message.dart';
 import 'package:flutter_common/models/chat/enum/chat_message_sender_type.enum.dart';
 import 'package:flutter_common/repositories/llm_client_repository.dart';
+import 'package:flutter_common/repositories/mcp_llm_client_repository.dart';
 import 'package:flutter_common/state/base/base_bloc.dart';
 import 'package:flutter_common/state/mcp_chat/mcp_chat_event.dart';
 import 'package:flutter_common/state/mcp_chat/mcp_chat_state.dart';
@@ -12,8 +13,8 @@ import 'package:mcp_llm/mcp_llm.dart';
 import 'package:uuid/uuid.dart';
 
 class McpChatBloc extends BaseBloc<McpChatEvent, McpChatState> {
-  final LlmClientRepository llmClientRepository;
-  McpChatBloc(this.llmClientRepository) : super(McpChatState.initialize()) {
+  final McpLlmClientRepository mcpLlmClientRepository;
+  McpChatBloc(this.mcpLlmClientRepository) : super(McpChatState.initialize()) {
     on<McpChatEvent>((event, emit) async {
       await event.map(
         sendMessage: (e) async {
@@ -31,7 +32,7 @@ class McpChatBloc extends BaseBloc<McpChatEvent, McpChatState> {
               ...[e.message, llmMessage]
             ]));
             final response =
-                await llmClientRepository.chatWithToolsUse(e.message.text);
+                await mcpLlmClientRepository.chatWithToolsUse(e.message.text);
 
             final newMessages = state.messages
                 .map((e) => e.id == llmMessage.id
@@ -60,7 +61,7 @@ class McpChatBloc extends BaseBloc<McpChatEvent, McpChatState> {
               ...[e.message, llmMessage]
             ]));
 
-            await llmClientRepository.streamChatWithToolUse(e.message.text,
+            await mcpLlmClientRepository.streamChatWithToolUse(e.message.text,
                 onData: (data, textChunk) async {
               final newMessages = state.messages
                   .map(
