@@ -16,6 +16,7 @@ class McpClientSetupConfig {
 abstract class McpClientRepository {
   Future<Client> initialize(McpClientSetupConfig config,
       Function(bool, List<Tool>, McpClientSetupConfig) onConnection);
+  Future<void> disconnect();
 }
 
 class McpClientDefaultRepository extends McpClientRepository {
@@ -66,5 +67,10 @@ class McpClientDefaultRepository extends McpClientRepository {
     _mcpClient = clientResult.get();
 
     return _mcpClient!;
+  }
+
+  @override
+  Future<void> disconnect() async {
+    _mcpClient?.dispose();
   }
 }

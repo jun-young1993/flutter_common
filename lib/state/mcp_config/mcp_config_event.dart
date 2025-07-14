@@ -12,4 +12,6 @@ class McpConfigEvent with _$McpConfigEvent {
   const factory McpConfigEvent.selectApiKey(McpApiKeys key) = SelectApiKey;
   const factory McpConfigEvent.toggleTool(String toolName, bool isEnabled) =
       ToggleTool;
+  const factory McpConfigEvent.disconnectMcpServer(String name) =
+      DisconnectMcpServer;
 }

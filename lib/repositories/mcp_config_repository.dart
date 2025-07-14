@@ -11,6 +11,7 @@ abstract class McpConfigRepository {
 
   Future<String?> getDisabledTools(String toolName);
   Future<void> setToolEnabled(String toolName, bool isEnabled);
+  Future<bool> disconnectMcpServer(String name);
 }
 
 class McpConfigDefaultRepository extends McpConfigRepository {
@@ -19,6 +20,7 @@ class McpConfigDefaultRepository extends McpConfigRepository {
   McpConfigDefaultRepository({required this.sharedPreferences});
 
   static const _enabledToolsKey = 'mcp_enabled_tools';
+  static const _mcpServerKey = 'mcp_server';
 
   @override
   Future<Map<McpApiKeys, String>> initialize() async {
@@ -64,5 +66,37 @@ class McpConfigDefaultRepository extends McpConfigRepository {
 
     await sharedPreferences.setString(
         '${_enabledToolsKey}_$toolName', isEnabled.toString());
+  }
+
+  Future<Map<String, dynamic>?> createOrFindMcpServer(String key) async {
+    final mcpServer = sharedPreferences.getString('${_mcpServerKey}_$key');
+    if (mcpServer == null) {
+      final defaultMcpServer = {
+        'name': key,
+        'version': '1.0.0',
+        'url': null,
+        'isConnected': false,
+      };
+      await updateMcpServer(key, defaultMcpServer);
+      return defaultMcpServer;
+    }
+    return jsonDecode(mcpServer);
+  }
+
+  Future<bool> updateMcpServer(
+      String name, Map<String, dynamic> mcpServer) async {
+    await sharedPreferences.setString(
+        '${_mcpServerKey}_$name', jsonEncode(mcpServer));
+    return true;
+  }
+
+  @override
+  Future<bool> disconnectMcpServer(String name) async {
+    final mcpServer = await createOrFindMcpServer(name);
+    if (mcpServer != null) {
+      mcpServer['isConnected'] = false;
+      return await updateMcpServer(name, mcpServer);
+    }
+    return false;
   }
 }

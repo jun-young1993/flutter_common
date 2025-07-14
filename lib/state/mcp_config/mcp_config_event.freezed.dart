@@ -23,6 +23,7 @@ mixin _$McpConfigEvent {
     required TResult Function(McpApiKeys key) clearApiKey,
     required TResult Function(McpApiKeys key) selectApiKey,
     required TResult Function(String toolName, bool isEnabled) toggleTool,
+    required TResult Function(String name) disconnectMcpServer,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +33,7 @@ mixin _$McpConfigEvent {
     TResult? Function(McpApiKeys key)? clearApiKey,
     TResult? Function(McpApiKeys key)? selectApiKey,
     TResult? Function(String toolName, bool isEnabled)? toggleTool,
+    TResult? Function(String name)? disconnectMcpServer,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +43,7 @@ mixin _$McpConfigEvent {
     TResult Function(McpApiKeys key)? clearApiKey,
     TResult Function(McpApiKeys key)? selectApiKey,
     TResult Function(String toolName, bool isEnabled)? toggleTool,
+    TResult Function(String name)? disconnectMcpServer,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -51,6 +54,7 @@ mixin _$McpConfigEvent {
     required TResult Function(ClearApiKey value) clearApiKey,
     required TResult Function(SelectApiKey value) selectApiKey,
     required TResult Function(ToggleTool value) toggleTool,
+    required TResult Function(DisconnectMcpServer value) disconnectMcpServer,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +64,7 @@ mixin _$McpConfigEvent {
     TResult? Function(ClearApiKey value)? clearApiKey,
     TResult? Function(SelectApiKey value)? selectApiKey,
     TResult? Function(ToggleTool value)? toggleTool,
+    TResult? Function(DisconnectMcpServer value)? disconnectMcpServer,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +74,7 @@ mixin _$McpConfigEvent {
     TResult Function(ClearApiKey value)? clearApiKey,
     TResult Function(SelectApiKey value)? selectApiKey,
     TResult Function(ToggleTool value)? toggleTool,
+    TResult Function(DisconnectMcpServer value)? disconnectMcpServer,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -141,6 +147,7 @@ class _$InitializeImpl implements Initialize {
     required TResult Function(McpApiKeys key) clearApiKey,
     required TResult Function(McpApiKeys key) selectApiKey,
     required TResult Function(String toolName, bool isEnabled) toggleTool,
+    required TResult Function(String name) disconnectMcpServer,
   }) {
     return initialize();
   }
@@ -153,6 +160,7 @@ class _$InitializeImpl implements Initialize {
     TResult? Function(McpApiKeys key)? clearApiKey,
     TResult? Function(McpApiKeys key)? selectApiKey,
     TResult? Function(String toolName, bool isEnabled)? toggleTool,
+    TResult? Function(String name)? disconnectMcpServer,
   }) {
     return initialize?.call();
   }
@@ -165,6 +173,7 @@ class _$InitializeImpl implements Initialize {
     TResult Function(McpApiKeys key)? clearApiKey,
     TResult Function(McpApiKeys key)? selectApiKey,
     TResult Function(String toolName, bool isEnabled)? toggleTool,
+    TResult Function(String name)? disconnectMcpServer,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -181,6 +190,7 @@ class _$InitializeImpl implements Initialize {
     required TResult Function(ClearApiKey value) clearApiKey,
     required TResult Function(SelectApiKey value) selectApiKey,
     required TResult Function(ToggleTool value) toggleTool,
+    required TResult Function(DisconnectMcpServer value) disconnectMcpServer,
   }) {
     return initialize(this);
   }
@@ -193,6 +203,7 @@ class _$InitializeImpl implements Initialize {
     TResult? Function(ClearApiKey value)? clearApiKey,
     TResult? Function(SelectApiKey value)? selectApiKey,
     TResult? Function(ToggleTool value)? toggleTool,
+    TResult? Function(DisconnectMcpServer value)? disconnectMcpServer,
   }) {
     return initialize?.call(this);
   }
@@ -205,6 +216,7 @@ class _$InitializeImpl implements Initialize {
     TResult Function(ClearApiKey value)? clearApiKey,
     TResult Function(SelectApiKey value)? selectApiKey,
     TResult Function(ToggleTool value)? toggleTool,
+    TResult Function(DisconnectMcpServer value)? disconnectMcpServer,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -299,6 +311,7 @@ class _$SetApiKeyImpl implements SetApiKey {
     required TResult Function(McpApiKeys key) clearApiKey,
     required TResult Function(McpApiKeys key) selectApiKey,
     required TResult Function(String toolName, bool isEnabled) toggleTool,
+    required TResult Function(String name) disconnectMcpServer,
   }) {
     return setApiKey(key, value);
   }
@@ -311,6 +324,7 @@ class _$SetApiKeyImpl implements SetApiKey {
     TResult? Function(McpApiKeys key)? clearApiKey,
     TResult? Function(McpApiKeys key)? selectApiKey,
     TResult? Function(String toolName, bool isEnabled)? toggleTool,
+    TResult? Function(String name)? disconnectMcpServer,
   }) {
     return setApiKey?.call(key, value);
   }
@@ -323,6 +337,7 @@ class _$SetApiKeyImpl implements SetApiKey {
     TResult Function(McpApiKeys key)? clearApiKey,
     TResult Function(McpApiKeys key)? selectApiKey,
     TResult Function(String toolName, bool isEnabled)? toggleTool,
+    TResult Function(String name)? disconnectMcpServer,
     required TResult orElse(),
   }) {
     if (setApiKey != null) {
@@ -339,6 +354,7 @@ class _$SetApiKeyImpl implements SetApiKey {
     required TResult Function(ClearApiKey value) clearApiKey,
     required TResult Function(SelectApiKey value) selectApiKey,
     required TResult Function(ToggleTool value) toggleTool,
+    required TResult Function(DisconnectMcpServer value) disconnectMcpServer,
   }) {
     return setApiKey(this);
   }
@@ -351,6 +367,7 @@ class _$SetApiKeyImpl implements SetApiKey {
     TResult? Function(ClearApiKey value)? clearApiKey,
     TResult? Function(SelectApiKey value)? selectApiKey,
     TResult? Function(ToggleTool value)? toggleTool,
+    TResult? Function(DisconnectMcpServer value)? disconnectMcpServer,
   }) {
     return setApiKey?.call(this);
   }
@@ -363,6 +380,7 @@ class _$SetApiKeyImpl implements SetApiKey {
     TResult Function(ClearApiKey value)? clearApiKey,
     TResult Function(SelectApiKey value)? selectApiKey,
     TResult Function(ToggleTool value)? toggleTool,
+    TResult Function(DisconnectMcpServer value)? disconnectMcpServer,
     required TResult orElse(),
   }) {
     if (setApiKey != null) {
@@ -459,6 +477,7 @@ class _$ClearApiKeyImpl implements ClearApiKey {
     required TResult Function(McpApiKeys key) clearApiKey,
     required TResult Function(McpApiKeys key) selectApiKey,
     required TResult Function(String toolName, bool isEnabled) toggleTool,
+    required TResult Function(String name) disconnectMcpServer,
   }) {
     return clearApiKey(key);
   }
@@ -471,6 +490,7 @@ class _$ClearApiKeyImpl implements ClearApiKey {
     TResult? Function(McpApiKeys key)? clearApiKey,
     TResult? Function(McpApiKeys key)? selectApiKey,
     TResult? Function(String toolName, bool isEnabled)? toggleTool,
+    TResult? Function(String name)? disconnectMcpServer,
   }) {
     return clearApiKey?.call(key);
   }
@@ -483,6 +503,7 @@ class _$ClearApiKeyImpl implements ClearApiKey {
     TResult Function(McpApiKeys key)? clearApiKey,
     TResult Function(McpApiKeys key)? selectApiKey,
     TResult Function(String toolName, bool isEnabled)? toggleTool,
+    TResult Function(String name)? disconnectMcpServer,
     required TResult orElse(),
   }) {
     if (clearApiKey != null) {
@@ -499,6 +520,7 @@ class _$ClearApiKeyImpl implements ClearApiKey {
     required TResult Function(ClearApiKey value) clearApiKey,
     required TResult Function(SelectApiKey value) selectApiKey,
     required TResult Function(ToggleTool value) toggleTool,
+    required TResult Function(DisconnectMcpServer value) disconnectMcpServer,
   }) {
     return clearApiKey(this);
   }
@@ -511,6 +533,7 @@ class _$ClearApiKeyImpl implements ClearApiKey {
     TResult? Function(ClearApiKey value)? clearApiKey,
     TResult? Function(SelectApiKey value)? selectApiKey,
     TResult? Function(ToggleTool value)? toggleTool,
+    TResult? Function(DisconnectMcpServer value)? disconnectMcpServer,
   }) {
     return clearApiKey?.call(this);
   }
@@ -523,6 +546,7 @@ class _$ClearApiKeyImpl implements ClearApiKey {
     TResult Function(ClearApiKey value)? clearApiKey,
     TResult Function(SelectApiKey value)? selectApiKey,
     TResult Function(ToggleTool value)? toggleTool,
+    TResult Function(DisconnectMcpServer value)? disconnectMcpServer,
     required TResult orElse(),
   }) {
     if (clearApiKey != null) {
@@ -617,6 +641,7 @@ class _$SelectApiKeyImpl implements SelectApiKey {
     required TResult Function(McpApiKeys key) clearApiKey,
     required TResult Function(McpApiKeys key) selectApiKey,
     required TResult Function(String toolName, bool isEnabled) toggleTool,
+    required TResult Function(String name) disconnectMcpServer,
   }) {
     return selectApiKey(key);
   }
@@ -629,6 +654,7 @@ class _$SelectApiKeyImpl implements SelectApiKey {
     TResult? Function(McpApiKeys key)? clearApiKey,
     TResult? Function(McpApiKeys key)? selectApiKey,
     TResult? Function(String toolName, bool isEnabled)? toggleTool,
+    TResult? Function(String name)? disconnectMcpServer,
   }) {
     return selectApiKey?.call(key);
   }
@@ -641,6 +667,7 @@ class _$SelectApiKeyImpl implements SelectApiKey {
     TResult Function(McpApiKeys key)? clearApiKey,
     TResult Function(McpApiKeys key)? selectApiKey,
     TResult Function(String toolName, bool isEnabled)? toggleTool,
+    TResult Function(String name)? disconnectMcpServer,
     required TResult orElse(),
   }) {
     if (selectApiKey != null) {
@@ -657,6 +684,7 @@ class _$SelectApiKeyImpl implements SelectApiKey {
     required TResult Function(ClearApiKey value) clearApiKey,
     required TResult Function(SelectApiKey value) selectApiKey,
     required TResult Function(ToggleTool value) toggleTool,
+    required TResult Function(DisconnectMcpServer value) disconnectMcpServer,
   }) {
     return selectApiKey(this);
   }
@@ -669,6 +697,7 @@ class _$SelectApiKeyImpl implements SelectApiKey {
     TResult? Function(ClearApiKey value)? clearApiKey,
     TResult? Function(SelectApiKey value)? selectApiKey,
     TResult? Function(ToggleTool value)? toggleTool,
+    TResult? Function(DisconnectMcpServer value)? disconnectMcpServer,
   }) {
     return selectApiKey?.call(this);
   }
@@ -681,6 +710,7 @@ class _$SelectApiKeyImpl implements SelectApiKey {
     TResult Function(ClearApiKey value)? clearApiKey,
     TResult Function(SelectApiKey value)? selectApiKey,
     TResult Function(ToggleTool value)? toggleTool,
+    TResult Function(DisconnectMcpServer value)? disconnectMcpServer,
     required TResult orElse(),
   }) {
     if (selectApiKey != null) {
@@ -785,6 +815,7 @@ class _$ToggleToolImpl implements ToggleTool {
     required TResult Function(McpApiKeys key) clearApiKey,
     required TResult Function(McpApiKeys key) selectApiKey,
     required TResult Function(String toolName, bool isEnabled) toggleTool,
+    required TResult Function(String name) disconnectMcpServer,
   }) {
     return toggleTool(toolName, isEnabled);
   }
@@ -797,6 +828,7 @@ class _$ToggleToolImpl implements ToggleTool {
     TResult? Function(McpApiKeys key)? clearApiKey,
     TResult? Function(McpApiKeys key)? selectApiKey,
     TResult? Function(String toolName, bool isEnabled)? toggleTool,
+    TResult? Function(String name)? disconnectMcpServer,
   }) {
     return toggleTool?.call(toolName, isEnabled);
   }
@@ -809,6 +841,7 @@ class _$ToggleToolImpl implements ToggleTool {
     TResult Function(McpApiKeys key)? clearApiKey,
     TResult Function(McpApiKeys key)? selectApiKey,
     TResult Function(String toolName, bool isEnabled)? toggleTool,
+    TResult Function(String name)? disconnectMcpServer,
     required TResult orElse(),
   }) {
     if (toggleTool != null) {
@@ -825,6 +858,7 @@ class _$ToggleToolImpl implements ToggleTool {
     required TResult Function(ClearApiKey value) clearApiKey,
     required TResult Function(SelectApiKey value) selectApiKey,
     required TResult Function(ToggleTool value) toggleTool,
+    required TResult Function(DisconnectMcpServer value) disconnectMcpServer,
   }) {
     return toggleTool(this);
   }
@@ -837,6 +871,7 @@ class _$ToggleToolImpl implements ToggleTool {
     TResult? Function(ClearApiKey value)? clearApiKey,
     TResult? Function(SelectApiKey value)? selectApiKey,
     TResult? Function(ToggleTool value)? toggleTool,
+    TResult? Function(DisconnectMcpServer value)? disconnectMcpServer,
   }) {
     return toggleTool?.call(this);
   }
@@ -849,6 +884,7 @@ class _$ToggleToolImpl implements ToggleTool {
     TResult Function(ClearApiKey value)? clearApiKey,
     TResult Function(SelectApiKey value)? selectApiKey,
     TResult Function(ToggleTool value)? toggleTool,
+    TResult Function(DisconnectMcpServer value)? disconnectMcpServer,
     required TResult orElse(),
   }) {
     if (toggleTool != null) {
@@ -869,5 +905,171 @@ abstract class ToggleTool implements McpConfigEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ToggleToolImplCopyWith<_$ToggleToolImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DisconnectMcpServerImplCopyWith<$Res> {
+  factory _$$DisconnectMcpServerImplCopyWith(_$DisconnectMcpServerImpl value,
+          $Res Function(_$DisconnectMcpServerImpl) then) =
+      __$$DisconnectMcpServerImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String name});
+}
+
+/// @nodoc
+class __$$DisconnectMcpServerImplCopyWithImpl<$Res>
+    extends _$McpConfigEventCopyWithImpl<$Res, _$DisconnectMcpServerImpl>
+    implements _$$DisconnectMcpServerImplCopyWith<$Res> {
+  __$$DisconnectMcpServerImplCopyWithImpl(_$DisconnectMcpServerImpl _value,
+      $Res Function(_$DisconnectMcpServerImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of McpConfigEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+  }) {
+    return _then(_$DisconnectMcpServerImpl(
+      null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DisconnectMcpServerImpl implements DisconnectMcpServer {
+  const _$DisconnectMcpServerImpl(this.name);
+
+  @override
+  final String name;
+
+  @override
+  String toString() {
+    return 'McpConfigEvent.disconnectMcpServer(name: $name)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DisconnectMcpServerImpl &&
+            (identical(other.name, name) || other.name == name));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, name);
+
+  /// Create a copy of McpConfigEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DisconnectMcpServerImplCopyWith<_$DisconnectMcpServerImpl> get copyWith =>
+      __$$DisconnectMcpServerImplCopyWithImpl<_$DisconnectMcpServerImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialize,
+    required TResult Function(McpApiKeys key, String value) setApiKey,
+    required TResult Function(McpApiKeys key) clearApiKey,
+    required TResult Function(McpApiKeys key) selectApiKey,
+    required TResult Function(String toolName, bool isEnabled) toggleTool,
+    required TResult Function(String name) disconnectMcpServer,
+  }) {
+    return disconnectMcpServer(name);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialize,
+    TResult? Function(McpApiKeys key, String value)? setApiKey,
+    TResult? Function(McpApiKeys key)? clearApiKey,
+    TResult? Function(McpApiKeys key)? selectApiKey,
+    TResult? Function(String toolName, bool isEnabled)? toggleTool,
+    TResult? Function(String name)? disconnectMcpServer,
+  }) {
+    return disconnectMcpServer?.call(name);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialize,
+    TResult Function(McpApiKeys key, String value)? setApiKey,
+    TResult Function(McpApiKeys key)? clearApiKey,
+    TResult Function(McpApiKeys key)? selectApiKey,
+    TResult Function(String toolName, bool isEnabled)? toggleTool,
+    TResult Function(String name)? disconnectMcpServer,
+    required TResult orElse(),
+  }) {
+    if (disconnectMcpServer != null) {
+      return disconnectMcpServer(name);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initialize value) initialize,
+    required TResult Function(SetApiKey value) setApiKey,
+    required TResult Function(ClearApiKey value) clearApiKey,
+    required TResult Function(SelectApiKey value) selectApiKey,
+    required TResult Function(ToggleTool value) toggleTool,
+    required TResult Function(DisconnectMcpServer value) disconnectMcpServer,
+  }) {
+    return disconnectMcpServer(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initialize value)? initialize,
+    TResult? Function(SetApiKey value)? setApiKey,
+    TResult? Function(ClearApiKey value)? clearApiKey,
+    TResult? Function(SelectApiKey value)? selectApiKey,
+    TResult? Function(ToggleTool value)? toggleTool,
+    TResult? Function(DisconnectMcpServer value)? disconnectMcpServer,
+  }) {
+    return disconnectMcpServer?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initialize value)? initialize,
+    TResult Function(SetApiKey value)? setApiKey,
+    TResult Function(ClearApiKey value)? clearApiKey,
+    TResult Function(SelectApiKey value)? selectApiKey,
+    TResult Function(ToggleTool value)? toggleTool,
+    TResult Function(DisconnectMcpServer value)? disconnectMcpServer,
+    required TResult orElse(),
+  }) {
+    if (disconnectMcpServer != null) {
+      return disconnectMcpServer(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DisconnectMcpServer implements McpConfigEvent {
+  const factory DisconnectMcpServer(final String name) =
+      _$DisconnectMcpServerImpl;
+
+  String get name;
+
+  /// Create a copy of McpConfigEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$DisconnectMcpServerImplCopyWith<_$DisconnectMcpServerImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
