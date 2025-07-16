@@ -26,6 +26,7 @@ mixin _$McpConfigEvent {
     required TResult Function(String name) disconnectMcpServer,
     required TResult Function(String name) connectMcpServer,
     required TResult Function(McpServerInfo mcpServerInfo) editMcpServer,
+    required TResult Function(McpServerInfo mcpServerInfo) addMcpServer,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +39,7 @@ mixin _$McpConfigEvent {
     TResult? Function(String name)? disconnectMcpServer,
     TResult? Function(String name)? connectMcpServer,
     TResult? Function(McpServerInfo mcpServerInfo)? editMcpServer,
+    TResult? Function(McpServerInfo mcpServerInfo)? addMcpServer,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +52,7 @@ mixin _$McpConfigEvent {
     TResult Function(String name)? disconnectMcpServer,
     TResult Function(String name)? connectMcpServer,
     TResult Function(McpServerInfo mcpServerInfo)? editMcpServer,
+    TResult Function(McpServerInfo mcpServerInfo)? addMcpServer,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -63,6 +66,7 @@ mixin _$McpConfigEvent {
     required TResult Function(DisconnectMcpServer value) disconnectMcpServer,
     required TResult Function(ConnectMcpServer value) connectMcpServer,
     required TResult Function(EditMcpServer value) editMcpServer,
+    required TResult Function(AddMcpServer value) addMcpServer,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -75,6 +79,7 @@ mixin _$McpConfigEvent {
     TResult? Function(DisconnectMcpServer value)? disconnectMcpServer,
     TResult? Function(ConnectMcpServer value)? connectMcpServer,
     TResult? Function(EditMcpServer value)? editMcpServer,
+    TResult? Function(AddMcpServer value)? addMcpServer,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -87,6 +92,7 @@ mixin _$McpConfigEvent {
     TResult Function(DisconnectMcpServer value)? disconnectMcpServer,
     TResult Function(ConnectMcpServer value)? connectMcpServer,
     TResult Function(EditMcpServer value)? editMcpServer,
+    TResult Function(AddMcpServer value)? addMcpServer,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -162,6 +168,7 @@ class _$InitializeImpl implements Initialize {
     required TResult Function(String name) disconnectMcpServer,
     required TResult Function(String name) connectMcpServer,
     required TResult Function(McpServerInfo mcpServerInfo) editMcpServer,
+    required TResult Function(McpServerInfo mcpServerInfo) addMcpServer,
   }) {
     return initialize();
   }
@@ -177,6 +184,7 @@ class _$InitializeImpl implements Initialize {
     TResult? Function(String name)? disconnectMcpServer,
     TResult? Function(String name)? connectMcpServer,
     TResult? Function(McpServerInfo mcpServerInfo)? editMcpServer,
+    TResult? Function(McpServerInfo mcpServerInfo)? addMcpServer,
   }) {
     return initialize?.call();
   }
@@ -192,6 +200,7 @@ class _$InitializeImpl implements Initialize {
     TResult Function(String name)? disconnectMcpServer,
     TResult Function(String name)? connectMcpServer,
     TResult Function(McpServerInfo mcpServerInfo)? editMcpServer,
+    TResult Function(McpServerInfo mcpServerInfo)? addMcpServer,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -211,6 +220,7 @@ class _$InitializeImpl implements Initialize {
     required TResult Function(DisconnectMcpServer value) disconnectMcpServer,
     required TResult Function(ConnectMcpServer value) connectMcpServer,
     required TResult Function(EditMcpServer value) editMcpServer,
+    required TResult Function(AddMcpServer value) addMcpServer,
   }) {
     return initialize(this);
   }
@@ -226,6 +236,7 @@ class _$InitializeImpl implements Initialize {
     TResult? Function(DisconnectMcpServer value)? disconnectMcpServer,
     TResult? Function(ConnectMcpServer value)? connectMcpServer,
     TResult? Function(EditMcpServer value)? editMcpServer,
+    TResult? Function(AddMcpServer value)? addMcpServer,
   }) {
     return initialize?.call(this);
   }
@@ -241,6 +252,7 @@ class _$InitializeImpl implements Initialize {
     TResult Function(DisconnectMcpServer value)? disconnectMcpServer,
     TResult Function(ConnectMcpServer value)? connectMcpServer,
     TResult Function(EditMcpServer value)? editMcpServer,
+    TResult Function(AddMcpServer value)? addMcpServer,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -338,6 +350,7 @@ class _$SetApiKeyImpl implements SetApiKey {
     required TResult Function(String name) disconnectMcpServer,
     required TResult Function(String name) connectMcpServer,
     required TResult Function(McpServerInfo mcpServerInfo) editMcpServer,
+    required TResult Function(McpServerInfo mcpServerInfo) addMcpServer,
   }) {
     return setApiKey(key, value);
   }
@@ -353,6 +366,7 @@ class _$SetApiKeyImpl implements SetApiKey {
     TResult? Function(String name)? disconnectMcpServer,
     TResult? Function(String name)? connectMcpServer,
     TResult? Function(McpServerInfo mcpServerInfo)? editMcpServer,
+    TResult? Function(McpServerInfo mcpServerInfo)? addMcpServer,
   }) {
     return setApiKey?.call(key, value);
   }
@@ -368,6 +382,7 @@ class _$SetApiKeyImpl implements SetApiKey {
     TResult Function(String name)? disconnectMcpServer,
     TResult Function(String name)? connectMcpServer,
     TResult Function(McpServerInfo mcpServerInfo)? editMcpServer,
+    TResult Function(McpServerInfo mcpServerInfo)? addMcpServer,
     required TResult orElse(),
   }) {
     if (setApiKey != null) {
@@ -387,6 +402,7 @@ class _$SetApiKeyImpl implements SetApiKey {
     required TResult Function(DisconnectMcpServer value) disconnectMcpServer,
     required TResult Function(ConnectMcpServer value) connectMcpServer,
     required TResult Function(EditMcpServer value) editMcpServer,
+    required TResult Function(AddMcpServer value) addMcpServer,
   }) {
     return setApiKey(this);
   }
@@ -402,6 +418,7 @@ class _$SetApiKeyImpl implements SetApiKey {
     TResult? Function(DisconnectMcpServer value)? disconnectMcpServer,
     TResult? Function(ConnectMcpServer value)? connectMcpServer,
     TResult? Function(EditMcpServer value)? editMcpServer,
+    TResult? Function(AddMcpServer value)? addMcpServer,
   }) {
     return setApiKey?.call(this);
   }
@@ -417,6 +434,7 @@ class _$SetApiKeyImpl implements SetApiKey {
     TResult Function(DisconnectMcpServer value)? disconnectMcpServer,
     TResult Function(ConnectMcpServer value)? connectMcpServer,
     TResult Function(EditMcpServer value)? editMcpServer,
+    TResult Function(AddMcpServer value)? addMcpServer,
     required TResult orElse(),
   }) {
     if (setApiKey != null) {
@@ -516,6 +534,7 @@ class _$ClearApiKeyImpl implements ClearApiKey {
     required TResult Function(String name) disconnectMcpServer,
     required TResult Function(String name) connectMcpServer,
     required TResult Function(McpServerInfo mcpServerInfo) editMcpServer,
+    required TResult Function(McpServerInfo mcpServerInfo) addMcpServer,
   }) {
     return clearApiKey(key);
   }
@@ -531,6 +550,7 @@ class _$ClearApiKeyImpl implements ClearApiKey {
     TResult? Function(String name)? disconnectMcpServer,
     TResult? Function(String name)? connectMcpServer,
     TResult? Function(McpServerInfo mcpServerInfo)? editMcpServer,
+    TResult? Function(McpServerInfo mcpServerInfo)? addMcpServer,
   }) {
     return clearApiKey?.call(key);
   }
@@ -546,6 +566,7 @@ class _$ClearApiKeyImpl implements ClearApiKey {
     TResult Function(String name)? disconnectMcpServer,
     TResult Function(String name)? connectMcpServer,
     TResult Function(McpServerInfo mcpServerInfo)? editMcpServer,
+    TResult Function(McpServerInfo mcpServerInfo)? addMcpServer,
     required TResult orElse(),
   }) {
     if (clearApiKey != null) {
@@ -565,6 +586,7 @@ class _$ClearApiKeyImpl implements ClearApiKey {
     required TResult Function(DisconnectMcpServer value) disconnectMcpServer,
     required TResult Function(ConnectMcpServer value) connectMcpServer,
     required TResult Function(EditMcpServer value) editMcpServer,
+    required TResult Function(AddMcpServer value) addMcpServer,
   }) {
     return clearApiKey(this);
   }
@@ -580,6 +602,7 @@ class _$ClearApiKeyImpl implements ClearApiKey {
     TResult? Function(DisconnectMcpServer value)? disconnectMcpServer,
     TResult? Function(ConnectMcpServer value)? connectMcpServer,
     TResult? Function(EditMcpServer value)? editMcpServer,
+    TResult? Function(AddMcpServer value)? addMcpServer,
   }) {
     return clearApiKey?.call(this);
   }
@@ -595,6 +618,7 @@ class _$ClearApiKeyImpl implements ClearApiKey {
     TResult Function(DisconnectMcpServer value)? disconnectMcpServer,
     TResult Function(ConnectMcpServer value)? connectMcpServer,
     TResult Function(EditMcpServer value)? editMcpServer,
+    TResult Function(AddMcpServer value)? addMcpServer,
     required TResult orElse(),
   }) {
     if (clearApiKey != null) {
@@ -692,6 +716,7 @@ class _$SelectApiKeyImpl implements SelectApiKey {
     required TResult Function(String name) disconnectMcpServer,
     required TResult Function(String name) connectMcpServer,
     required TResult Function(McpServerInfo mcpServerInfo) editMcpServer,
+    required TResult Function(McpServerInfo mcpServerInfo) addMcpServer,
   }) {
     return selectApiKey(key);
   }
@@ -707,6 +732,7 @@ class _$SelectApiKeyImpl implements SelectApiKey {
     TResult? Function(String name)? disconnectMcpServer,
     TResult? Function(String name)? connectMcpServer,
     TResult? Function(McpServerInfo mcpServerInfo)? editMcpServer,
+    TResult? Function(McpServerInfo mcpServerInfo)? addMcpServer,
   }) {
     return selectApiKey?.call(key);
   }
@@ -722,6 +748,7 @@ class _$SelectApiKeyImpl implements SelectApiKey {
     TResult Function(String name)? disconnectMcpServer,
     TResult Function(String name)? connectMcpServer,
     TResult Function(McpServerInfo mcpServerInfo)? editMcpServer,
+    TResult Function(McpServerInfo mcpServerInfo)? addMcpServer,
     required TResult orElse(),
   }) {
     if (selectApiKey != null) {
@@ -741,6 +768,7 @@ class _$SelectApiKeyImpl implements SelectApiKey {
     required TResult Function(DisconnectMcpServer value) disconnectMcpServer,
     required TResult Function(ConnectMcpServer value) connectMcpServer,
     required TResult Function(EditMcpServer value) editMcpServer,
+    required TResult Function(AddMcpServer value) addMcpServer,
   }) {
     return selectApiKey(this);
   }
@@ -756,6 +784,7 @@ class _$SelectApiKeyImpl implements SelectApiKey {
     TResult? Function(DisconnectMcpServer value)? disconnectMcpServer,
     TResult? Function(ConnectMcpServer value)? connectMcpServer,
     TResult? Function(EditMcpServer value)? editMcpServer,
+    TResult? Function(AddMcpServer value)? addMcpServer,
   }) {
     return selectApiKey?.call(this);
   }
@@ -771,6 +800,7 @@ class _$SelectApiKeyImpl implements SelectApiKey {
     TResult Function(DisconnectMcpServer value)? disconnectMcpServer,
     TResult Function(ConnectMcpServer value)? connectMcpServer,
     TResult Function(EditMcpServer value)? editMcpServer,
+    TResult Function(AddMcpServer value)? addMcpServer,
     required TResult orElse(),
   }) {
     if (selectApiKey != null) {
@@ -878,6 +908,7 @@ class _$ToggleToolImpl implements ToggleTool {
     required TResult Function(String name) disconnectMcpServer,
     required TResult Function(String name) connectMcpServer,
     required TResult Function(McpServerInfo mcpServerInfo) editMcpServer,
+    required TResult Function(McpServerInfo mcpServerInfo) addMcpServer,
   }) {
     return toggleTool(toolName, isEnabled);
   }
@@ -893,6 +924,7 @@ class _$ToggleToolImpl implements ToggleTool {
     TResult? Function(String name)? disconnectMcpServer,
     TResult? Function(String name)? connectMcpServer,
     TResult? Function(McpServerInfo mcpServerInfo)? editMcpServer,
+    TResult? Function(McpServerInfo mcpServerInfo)? addMcpServer,
   }) {
     return toggleTool?.call(toolName, isEnabled);
   }
@@ -908,6 +940,7 @@ class _$ToggleToolImpl implements ToggleTool {
     TResult Function(String name)? disconnectMcpServer,
     TResult Function(String name)? connectMcpServer,
     TResult Function(McpServerInfo mcpServerInfo)? editMcpServer,
+    TResult Function(McpServerInfo mcpServerInfo)? addMcpServer,
     required TResult orElse(),
   }) {
     if (toggleTool != null) {
@@ -927,6 +960,7 @@ class _$ToggleToolImpl implements ToggleTool {
     required TResult Function(DisconnectMcpServer value) disconnectMcpServer,
     required TResult Function(ConnectMcpServer value) connectMcpServer,
     required TResult Function(EditMcpServer value) editMcpServer,
+    required TResult Function(AddMcpServer value) addMcpServer,
   }) {
     return toggleTool(this);
   }
@@ -942,6 +976,7 @@ class _$ToggleToolImpl implements ToggleTool {
     TResult? Function(DisconnectMcpServer value)? disconnectMcpServer,
     TResult? Function(ConnectMcpServer value)? connectMcpServer,
     TResult? Function(EditMcpServer value)? editMcpServer,
+    TResult? Function(AddMcpServer value)? addMcpServer,
   }) {
     return toggleTool?.call(this);
   }
@@ -957,6 +992,7 @@ class _$ToggleToolImpl implements ToggleTool {
     TResult Function(DisconnectMcpServer value)? disconnectMcpServer,
     TResult Function(ConnectMcpServer value)? connectMcpServer,
     TResult Function(EditMcpServer value)? editMcpServer,
+    TResult Function(AddMcpServer value)? addMcpServer,
     required TResult orElse(),
   }) {
     if (toggleTool != null) {
@@ -1057,6 +1093,7 @@ class _$DisconnectMcpServerImpl implements DisconnectMcpServer {
     required TResult Function(String name) disconnectMcpServer,
     required TResult Function(String name) connectMcpServer,
     required TResult Function(McpServerInfo mcpServerInfo) editMcpServer,
+    required TResult Function(McpServerInfo mcpServerInfo) addMcpServer,
   }) {
     return disconnectMcpServer(name);
   }
@@ -1072,6 +1109,7 @@ class _$DisconnectMcpServerImpl implements DisconnectMcpServer {
     TResult? Function(String name)? disconnectMcpServer,
     TResult? Function(String name)? connectMcpServer,
     TResult? Function(McpServerInfo mcpServerInfo)? editMcpServer,
+    TResult? Function(McpServerInfo mcpServerInfo)? addMcpServer,
   }) {
     return disconnectMcpServer?.call(name);
   }
@@ -1087,6 +1125,7 @@ class _$DisconnectMcpServerImpl implements DisconnectMcpServer {
     TResult Function(String name)? disconnectMcpServer,
     TResult Function(String name)? connectMcpServer,
     TResult Function(McpServerInfo mcpServerInfo)? editMcpServer,
+    TResult Function(McpServerInfo mcpServerInfo)? addMcpServer,
     required TResult orElse(),
   }) {
     if (disconnectMcpServer != null) {
@@ -1106,6 +1145,7 @@ class _$DisconnectMcpServerImpl implements DisconnectMcpServer {
     required TResult Function(DisconnectMcpServer value) disconnectMcpServer,
     required TResult Function(ConnectMcpServer value) connectMcpServer,
     required TResult Function(EditMcpServer value) editMcpServer,
+    required TResult Function(AddMcpServer value) addMcpServer,
   }) {
     return disconnectMcpServer(this);
   }
@@ -1121,6 +1161,7 @@ class _$DisconnectMcpServerImpl implements DisconnectMcpServer {
     TResult? Function(DisconnectMcpServer value)? disconnectMcpServer,
     TResult? Function(ConnectMcpServer value)? connectMcpServer,
     TResult? Function(EditMcpServer value)? editMcpServer,
+    TResult? Function(AddMcpServer value)? addMcpServer,
   }) {
     return disconnectMcpServer?.call(this);
   }
@@ -1136,6 +1177,7 @@ class _$DisconnectMcpServerImpl implements DisconnectMcpServer {
     TResult Function(DisconnectMcpServer value)? disconnectMcpServer,
     TResult Function(ConnectMcpServer value)? connectMcpServer,
     TResult Function(EditMcpServer value)? editMcpServer,
+    TResult Function(AddMcpServer value)? addMcpServer,
     required TResult orElse(),
   }) {
     if (disconnectMcpServer != null) {
@@ -1235,6 +1277,7 @@ class _$ConnectMcpServerImpl implements ConnectMcpServer {
     required TResult Function(String name) disconnectMcpServer,
     required TResult Function(String name) connectMcpServer,
     required TResult Function(McpServerInfo mcpServerInfo) editMcpServer,
+    required TResult Function(McpServerInfo mcpServerInfo) addMcpServer,
   }) {
     return connectMcpServer(name);
   }
@@ -1250,6 +1293,7 @@ class _$ConnectMcpServerImpl implements ConnectMcpServer {
     TResult? Function(String name)? disconnectMcpServer,
     TResult? Function(String name)? connectMcpServer,
     TResult? Function(McpServerInfo mcpServerInfo)? editMcpServer,
+    TResult? Function(McpServerInfo mcpServerInfo)? addMcpServer,
   }) {
     return connectMcpServer?.call(name);
   }
@@ -1265,6 +1309,7 @@ class _$ConnectMcpServerImpl implements ConnectMcpServer {
     TResult Function(String name)? disconnectMcpServer,
     TResult Function(String name)? connectMcpServer,
     TResult Function(McpServerInfo mcpServerInfo)? editMcpServer,
+    TResult Function(McpServerInfo mcpServerInfo)? addMcpServer,
     required TResult orElse(),
   }) {
     if (connectMcpServer != null) {
@@ -1284,6 +1329,7 @@ class _$ConnectMcpServerImpl implements ConnectMcpServer {
     required TResult Function(DisconnectMcpServer value) disconnectMcpServer,
     required TResult Function(ConnectMcpServer value) connectMcpServer,
     required TResult Function(EditMcpServer value) editMcpServer,
+    required TResult Function(AddMcpServer value) addMcpServer,
   }) {
     return connectMcpServer(this);
   }
@@ -1299,6 +1345,7 @@ class _$ConnectMcpServerImpl implements ConnectMcpServer {
     TResult? Function(DisconnectMcpServer value)? disconnectMcpServer,
     TResult? Function(ConnectMcpServer value)? connectMcpServer,
     TResult? Function(EditMcpServer value)? editMcpServer,
+    TResult? Function(AddMcpServer value)? addMcpServer,
   }) {
     return connectMcpServer?.call(this);
   }
@@ -1314,6 +1361,7 @@ class _$ConnectMcpServerImpl implements ConnectMcpServer {
     TResult Function(DisconnectMcpServer value)? disconnectMcpServer,
     TResult Function(ConnectMcpServer value)? connectMcpServer,
     TResult Function(EditMcpServer value)? editMcpServer,
+    TResult Function(AddMcpServer value)? addMcpServer,
     required TResult orElse(),
   }) {
     if (connectMcpServer != null) {
@@ -1412,6 +1460,7 @@ class _$EditMcpServerImpl implements EditMcpServer {
     required TResult Function(String name) disconnectMcpServer,
     required TResult Function(String name) connectMcpServer,
     required TResult Function(McpServerInfo mcpServerInfo) editMcpServer,
+    required TResult Function(McpServerInfo mcpServerInfo) addMcpServer,
   }) {
     return editMcpServer(mcpServerInfo);
   }
@@ -1427,6 +1476,7 @@ class _$EditMcpServerImpl implements EditMcpServer {
     TResult? Function(String name)? disconnectMcpServer,
     TResult? Function(String name)? connectMcpServer,
     TResult? Function(McpServerInfo mcpServerInfo)? editMcpServer,
+    TResult? Function(McpServerInfo mcpServerInfo)? addMcpServer,
   }) {
     return editMcpServer?.call(mcpServerInfo);
   }
@@ -1442,6 +1492,7 @@ class _$EditMcpServerImpl implements EditMcpServer {
     TResult Function(String name)? disconnectMcpServer,
     TResult Function(String name)? connectMcpServer,
     TResult Function(McpServerInfo mcpServerInfo)? editMcpServer,
+    TResult Function(McpServerInfo mcpServerInfo)? addMcpServer,
     required TResult orElse(),
   }) {
     if (editMcpServer != null) {
@@ -1461,6 +1512,7 @@ class _$EditMcpServerImpl implements EditMcpServer {
     required TResult Function(DisconnectMcpServer value) disconnectMcpServer,
     required TResult Function(ConnectMcpServer value) connectMcpServer,
     required TResult Function(EditMcpServer value) editMcpServer,
+    required TResult Function(AddMcpServer value) addMcpServer,
   }) {
     return editMcpServer(this);
   }
@@ -1476,6 +1528,7 @@ class _$EditMcpServerImpl implements EditMcpServer {
     TResult? Function(DisconnectMcpServer value)? disconnectMcpServer,
     TResult? Function(ConnectMcpServer value)? connectMcpServer,
     TResult? Function(EditMcpServer value)? editMcpServer,
+    TResult? Function(AddMcpServer value)? addMcpServer,
   }) {
     return editMcpServer?.call(this);
   }
@@ -1491,6 +1544,7 @@ class _$EditMcpServerImpl implements EditMcpServer {
     TResult Function(DisconnectMcpServer value)? disconnectMcpServer,
     TResult Function(ConnectMcpServer value)? connectMcpServer,
     TResult Function(EditMcpServer value)? editMcpServer,
+    TResult Function(AddMcpServer value)? addMcpServer,
     required TResult orElse(),
   }) {
     if (editMcpServer != null) {
@@ -1510,5 +1564,189 @@ abstract class EditMcpServer implements McpConfigEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EditMcpServerImplCopyWith<_$EditMcpServerImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AddMcpServerImplCopyWith<$Res> {
+  factory _$$AddMcpServerImplCopyWith(
+          _$AddMcpServerImpl value, $Res Function(_$AddMcpServerImpl) then) =
+      __$$AddMcpServerImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({McpServerInfo mcpServerInfo});
+}
+
+/// @nodoc
+class __$$AddMcpServerImplCopyWithImpl<$Res>
+    extends _$McpConfigEventCopyWithImpl<$Res, _$AddMcpServerImpl>
+    implements _$$AddMcpServerImplCopyWith<$Res> {
+  __$$AddMcpServerImplCopyWithImpl(
+      _$AddMcpServerImpl _value, $Res Function(_$AddMcpServerImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of McpConfigEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? mcpServerInfo = null,
+  }) {
+    return _then(_$AddMcpServerImpl(
+      null == mcpServerInfo
+          ? _value.mcpServerInfo
+          : mcpServerInfo // ignore: cast_nullable_to_non_nullable
+              as McpServerInfo,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AddMcpServerImpl implements AddMcpServer {
+  const _$AddMcpServerImpl(this.mcpServerInfo);
+
+  @override
+  final McpServerInfo mcpServerInfo;
+
+  @override
+  String toString() {
+    return 'McpConfigEvent.addMcpServer(mcpServerInfo: $mcpServerInfo)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddMcpServerImpl &&
+            (identical(other.mcpServerInfo, mcpServerInfo) ||
+                other.mcpServerInfo == mcpServerInfo));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, mcpServerInfo);
+
+  /// Create a copy of McpConfigEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddMcpServerImplCopyWith<_$AddMcpServerImpl> get copyWith =>
+      __$$AddMcpServerImplCopyWithImpl<_$AddMcpServerImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialize,
+    required TResult Function(McpApiKeys key, String value) setApiKey,
+    required TResult Function(McpApiKeys key) clearApiKey,
+    required TResult Function(McpApiKeys key) selectApiKey,
+    required TResult Function(String toolName, bool isEnabled) toggleTool,
+    required TResult Function(String name) disconnectMcpServer,
+    required TResult Function(String name) connectMcpServer,
+    required TResult Function(McpServerInfo mcpServerInfo) editMcpServer,
+    required TResult Function(McpServerInfo mcpServerInfo) addMcpServer,
+  }) {
+    return addMcpServer(mcpServerInfo);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialize,
+    TResult? Function(McpApiKeys key, String value)? setApiKey,
+    TResult? Function(McpApiKeys key)? clearApiKey,
+    TResult? Function(McpApiKeys key)? selectApiKey,
+    TResult? Function(String toolName, bool isEnabled)? toggleTool,
+    TResult? Function(String name)? disconnectMcpServer,
+    TResult? Function(String name)? connectMcpServer,
+    TResult? Function(McpServerInfo mcpServerInfo)? editMcpServer,
+    TResult? Function(McpServerInfo mcpServerInfo)? addMcpServer,
+  }) {
+    return addMcpServer?.call(mcpServerInfo);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialize,
+    TResult Function(McpApiKeys key, String value)? setApiKey,
+    TResult Function(McpApiKeys key)? clearApiKey,
+    TResult Function(McpApiKeys key)? selectApiKey,
+    TResult Function(String toolName, bool isEnabled)? toggleTool,
+    TResult Function(String name)? disconnectMcpServer,
+    TResult Function(String name)? connectMcpServer,
+    TResult Function(McpServerInfo mcpServerInfo)? editMcpServer,
+    TResult Function(McpServerInfo mcpServerInfo)? addMcpServer,
+    required TResult orElse(),
+  }) {
+    if (addMcpServer != null) {
+      return addMcpServer(mcpServerInfo);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initialize value) initialize,
+    required TResult Function(SetApiKey value) setApiKey,
+    required TResult Function(ClearApiKey value) clearApiKey,
+    required TResult Function(SelectApiKey value) selectApiKey,
+    required TResult Function(ToggleTool value) toggleTool,
+    required TResult Function(DisconnectMcpServer value) disconnectMcpServer,
+    required TResult Function(ConnectMcpServer value) connectMcpServer,
+    required TResult Function(EditMcpServer value) editMcpServer,
+    required TResult Function(AddMcpServer value) addMcpServer,
+  }) {
+    return addMcpServer(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initialize value)? initialize,
+    TResult? Function(SetApiKey value)? setApiKey,
+    TResult? Function(ClearApiKey value)? clearApiKey,
+    TResult? Function(SelectApiKey value)? selectApiKey,
+    TResult? Function(ToggleTool value)? toggleTool,
+    TResult? Function(DisconnectMcpServer value)? disconnectMcpServer,
+    TResult? Function(ConnectMcpServer value)? connectMcpServer,
+    TResult? Function(EditMcpServer value)? editMcpServer,
+    TResult? Function(AddMcpServer value)? addMcpServer,
+  }) {
+    return addMcpServer?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initialize value)? initialize,
+    TResult Function(SetApiKey value)? setApiKey,
+    TResult Function(ClearApiKey value)? clearApiKey,
+    TResult Function(SelectApiKey value)? selectApiKey,
+    TResult Function(ToggleTool value)? toggleTool,
+    TResult Function(DisconnectMcpServer value)? disconnectMcpServer,
+    TResult Function(ConnectMcpServer value)? connectMcpServer,
+    TResult Function(EditMcpServer value)? editMcpServer,
+    TResult Function(AddMcpServer value)? addMcpServer,
+    required TResult orElse(),
+  }) {
+    if (addMcpServer != null) {
+      return addMcpServer(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AddMcpServer implements McpConfigEvent {
+  const factory AddMcpServer(final McpServerInfo mcpServerInfo) =
+      _$AddMcpServerImpl;
+
+  McpServerInfo get mcpServerInfo;
+
+  /// Create a copy of McpConfigEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AddMcpServerImplCopyWith<_$AddMcpServerImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

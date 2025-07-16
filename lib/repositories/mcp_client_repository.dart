@@ -78,5 +78,6 @@ class McpClientDefaultRepository extends McpClientRepository {
   @override
   Future<void> disconnect(String name) async {
     _mcpClients[name]?.dispose();
+    _mcpClients[name] = null;
   }
 }

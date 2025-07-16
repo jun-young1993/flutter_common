@@ -60,6 +60,9 @@ abstract class McpConfigRepository {
   Future<McpServerInfo?> getMcpServerInfo(String name);
   Future<bool> connectMcpServer(String name);
   Future<bool> updateMcpServer(McpServerInfo mcpServerInfo);
+  Future<McpServerInfo> createOrFindMcpServer(String key, String? url);
+  Future<void> addMcpServer(String name);
+  Future<List<String>> allMcpServer();
 }
 
 class McpConfigDefaultRepository extends McpConfigRepository {
@@ -116,13 +119,14 @@ class McpConfigDefaultRepository extends McpConfigRepository {
         '${_enabledToolsKey}_$toolName', isEnabled.toString());
   }
 
-  Future<McpServerInfo> createOrFindMcpServer(String key) async {
+  @override
+  Future<McpServerInfo> createOrFindMcpServer(String key, String? url) async {
     final mcpServer = sharedPreferences.getString('${_mcpServerKey}_$key');
     if (mcpServer == null) {
       final defaultMcpServer = McpServerInfo(
         name: key,
         version: '1.0.0',
-        url: null,
+        url: url ?? '',
         isConnected: true,
       );
       await updateMcpServer(defaultMcpServer);
@@ -150,16 +154,47 @@ class McpConfigDefaultRepository extends McpConfigRepository {
 
   @override
   Future<bool> disconnectMcpServer(String name, String? url) async {
-    final mcpServer = await createOrFindMcpServer(name);
+    final mcpServer = await createOrFindMcpServer(name, null);
     final newMcpServer = mcpServer.copyWith(isConnected: false, url: url);
     return await updateMcpServer(newMcpServer);
   }
 
   @override
   Future<bool> connectMcpServer(String name) async {
-    final mcpServer = await createOrFindMcpServer(name);
+    final mcpServer = await createOrFindMcpServer(name, null);
     final newMcpServer =
         mcpServer.copyWith(isConnected: true, url: mcpServer.url);
     return await updateMcpServer(newMcpServer);
+  }
+
+  @override
+  Future<void> addMcpServer(String name) async {
+    final mcpServers = sharedPreferences.getString(_mcpServerKey);
+    if (mcpServers == null) {
+      await sharedPreferences.setString(_mcpServerKey, jsonEncode([name]));
+      return;
+    }
+    final mcpServersList = jsonDecode(mcpServers);
+    if (mcpServersList.contains(name)) {
+      return;
+    }
+    mcpServersList.add(name);
+    await sharedPreferences.setString(
+        _mcpServerKey, jsonEncode(mcpServersList));
+  }
+
+  @override
+  Future<List<String>> allMcpServer() async {
+    final mcpServers = sharedPreferences.getString(_mcpServerKey);
+
+    if (mcpServers == null) {
+      return [];
+    }
+    final mcpServersList = jsonDecode(mcpServers);
+
+    if (mcpServersList is! List) {
+      return [];
+    }
+    return mcpServersList.map((e) => e as String).toList();
   }
 }

@@ -279,7 +279,12 @@ class _McpConfigScreenLayoutState extends State<McpConfigScreenLayout> {
                           ElevatedButton(
                             onPressed: () {
                               // TODO: 실제 추가 로직 연결
-                              print('Add Tool Group: name= $name, url= $url');
+                              mcpConfigBloc.add(McpConfigEvent.addMcpServer(
+                                  McpServerInfo(
+                                      name: name!,
+                                      url: url!,
+                                      version: '1.0.0',
+                                      isConnected: true)));
                               Navigator.of(context).pop();
                             },
                             child: const Text('Add'),

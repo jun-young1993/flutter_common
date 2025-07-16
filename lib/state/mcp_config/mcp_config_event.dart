@@ -18,4 +18,6 @@ class McpConfigEvent with _$McpConfigEvent {
   const factory McpConfigEvent.connectMcpServer(String name) = ConnectMcpServer;
   const factory McpConfigEvent.editMcpServer(McpServerInfo mcpServerInfo) =
       EditMcpServer;
+  const factory McpConfigEvent.addMcpServer(McpServerInfo mcpServerInfo) =
+      AddMcpServer;
 }
