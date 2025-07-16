@@ -146,6 +146,16 @@ class McpConfigBloc extends BaseBloc<McpConfigEvent, McpConfigState> {
             add(const McpConfigEvent.initialize());
           });
         },
+        disconnectMcpServer: (e) async {
+          await handleEvent(emit, () async {
+            // await mcpConfigRepository.disconnectMcpServer(e.name);
+            // await mcpClientRepository.disconnect();
+
+            // add(const McpConfigEvent.initialize());
+            final mcpLlmClient = await mcpLlmClientRepository.findLlmClient();
+            debugPrint('🔥 [mcpLlmClient] ${mcpLlmClient.mcpClients}');
+          });
+        },
       );
     });
   }

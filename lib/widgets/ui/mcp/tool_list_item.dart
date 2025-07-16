@@ -24,11 +24,11 @@ class ToolListItem extends StatelessWidget {
       elevation: 2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: ExpansionTile(
-        leading: Switch(
-          value: isEnabled,
-          onChanged: onToggle,
-          activeColor: theme.colorScheme.primary,
-        ),
+        // leading: Switch(
+        //   value: isEnabled,
+        //   onChanged: onToggle,
+        //   activeColor: theme.colorScheme.primary,
+        // ),
         title: Row(
           children: [
             Expanded(

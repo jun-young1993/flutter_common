@@ -269,64 +269,69 @@ class _McpConfigScreenLayoutState extends State<McpConfigScreenLayout> {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // 타이틀 스타일 Card
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 12.0, horizontal: 8.0),
-                      child: Card(
-                        color: Theme.of(context)
-                            .colorScheme
-                            .primary
-                            .withOpacity(0.08),
-                        elevation: 0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 12.0, horizontal: 16.0),
-                          child: Row(
+                    // 타이틀 스타일 Card + ExpansionTile
+                    Card(
+                      color: Theme.of(context)
+                          .colorScheme
+                          .primary
+                          .withOpacity(0.08),
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 0.0, horizontal: 0.0),
+                        child: ExpansionTile(
+                          initiallyExpanded: true,
+                          leading: Switch(
+                            value: mcptool.isConnected,
+                            onChanged: (value) {
+                              mcpConfigBloc.add(
+                                  McpConfigEvent.disconnectMcpServer(
+                                      toolGroupName));
+                              // mcpConfigBloc.add(McpConfigEvent.toggleTool(toolGroupName, value));
+                            },
+                          ),
+                          title: Row(
                             children: [
-                              Icon(Icons.extension,
-                                  color: Theme.of(context).colorScheme.primary,
-                                  size: 22),
-                              const SizedBox(width: 8),
-                              Text(
-                                toolGroupName,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleLarge
-                                    ?.copyWith(
-                                      fontWeight: FontWeight.bold,
-                                      color:
-                                          Theme.of(context).colorScheme.primary,
-                                    ),
-                              ),
+                              Expanded(child: Text(toolGroupName)),
                             ],
                           ),
+                          children: [
+                            ...tools.map(
+                              (tool) => Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 2.0, horizontal: 8.0),
+                                  child: ToolListItem(
+                                    tool: tool,
+                                    isEnabled:
+                                        tool.metadata?['enabled'] as bool? ??
+                                            true,
+                                    onToggle: (newValue) {
+                                      mcpConfigBloc.add(
+                                        McpConfigEvent.toggleTool(
+                                            tool.name, newValue),
+                                      );
+                                      final action = newValue
+                                          ? Tr.app.enable.tr()
+                                          : Tr.app.disable.tr();
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content:
+                                              Text(' ${tool.name} $action'),
+                                          duration: const Duration(seconds: 1),
+                                        ),
+                                      );
+                                    },
+                                  )),
+                            ),
+                            const Divider(),
+                          ],
                         ),
                       ),
                     ),
-                    // 해당 그룹의 ToolListItem들
-                    ...tools.map((tool) => ToolListItem(
-                          tool: tool,
-                          isEnabled: tool.metadata?['enabled'] as bool? ?? true,
-                          onToggle: (newValue) {
-                            mcpConfigBloc.add(
-                              McpConfigEvent.toggleTool(tool.name, newValue),
-                            );
-                            final action = newValue
-                                ? Tr.app.enable.tr()
-                                : Tr.app.disable.tr();
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(' ${tool.name} $action'),
-                                duration: const Duration(seconds: 1),
-                              ),
-                            );
-                          },
-                        )),
-                    const Divider(),
                   ],
                 );
               }).toList(),
