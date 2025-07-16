@@ -1,5 +1,6 @@
-import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_contacts/contact.dart';
+import 'package:flutter_contacts/flutter_contacts.dart';
 import 'package:mcp_server/mcp_server.dart';
 import 'dart:async';
 import 'dart:io';
@@ -109,17 +110,12 @@ class McpLocalServerDefaultRepository extends McpLocalServerRepository {
           'nameFilter': {
             'type': 'string',
             'description': 'Filter contacts by name (optional)',
-            'default': "-"
+            'default': null
           },
           'phoneFilter': {
             'type': 'string',
             'description': 'Filter contacts by phone number (optional)',
-            'default': "-"
-          },
-          'companyFilter': {
-            'type': 'string',
-            'description': 'Filter contacts by company (optional)',
-            'default': "-"
+            'default': null
           },
         },
       },
@@ -130,46 +126,29 @@ class McpLocalServerDefaultRepository extends McpLocalServerRepository {
         if (await Permission.contacts.status.isDenied) {
           await Permission.contacts.request();
         }
-        final contacts =
-            await ContactsService.getContacts(withThumbnails: false);
-        String? nameFilter = (args['nameFilter'] as String?)?.trim();
-        String? phoneFilter = (args['phoneFilter'] as String?)?.trim();
-        String? companyFilter = (args['companyFilter'] as String?)?.trim();
-        nameFilter = nameFilter == "-" ? null : nameFilter;
-        phoneFilter = phoneFilter == "-" ? null : phoneFilter;
-        companyFilter = companyFilter == "-" ? null : companyFilter;
+        List<Contact> contacts = await FlutterContacts.getContacts();
+
+        final nameFilter = (args['nameFilter'] as String?)?.trim();
+        final phoneFilter = (args['phoneFilter'] as String?)?.trim();
 
         final filteredContacts = contacts.where((c) {
-          final name = c.displayName ?? '';
-          final phones =
-              (c.phones?.map((p) => p.value).whereType<String>().toList() ??
-                  []);
-          final phoneJoined = phones.join(', ');
-          final company = c.company ?? '';
-          final nameMatch = nameFilter == null ||
-              name.toLowerCase().contains(nameFilter.toLowerCase());
-          final phoneMatch = phoneFilter == null ||
-              phoneJoined.toLowerCase().contains(phoneFilter.toLowerCase());
-          final companyMatch = companyFilter == null ||
-              company.toLowerCase().contains(companyFilter.toLowerCase());
-          return nameMatch && phoneMatch && companyMatch;
+          final name = c.displayName;
+          if (nameFilter != null && !name.contains(nameFilter)) {
+            return false;
+          }
+          final phones = c.phones.map((p) => p.toString()).join(', ');
+          if (phoneFilter != null && !phones.contains(phoneFilter)) {
+            return false;
+          }
+          return true;
         }).toList();
 
         final contactStrings = filteredContacts.map((c) {
-          final name = c.displayName ?? '(No name)';
-          final familyName = c.familyName ?? '';
-          final givenName = c.givenName ?? '';
-          final middleName = c.middleName ?? '';
-          final prefix = c.prefix ?? '';
-          final suffix = c.suffix ?? '';
-          final company = c.company ?? '';
-          final jobTitle = c.jobTitle ?? '';
-          final phones =
-              (c.phones?.map((p) => p.value).whereType<String>().toList() ??
-                  []);
-          final phoneStr =
-              phones.isNotEmpty ? phones.join(', ') : '(No phone number)';
-          return '$name $familyName $givenName $middleName $prefix $suffix $company $jobTitle: $phoneStr';
+          final name = c.displayName;
+
+          final phones = c.phones.map((p) => p.toString()).join(', ');
+
+          return '$name($phones)';
         }).toList();
         debugPrint('🔥 [contactStrings] $contactStrings');
         return CallToolResult(
