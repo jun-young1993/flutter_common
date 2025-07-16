@@ -17,6 +17,7 @@ class McpConfigBloc extends BaseBloc<McpConfigEvent, McpConfigState> {
   final McpLlmClientRepository mcpLlmClientRepository;
   final McpClientRepository mcpClientRepository;
   final McpLocalServerRepository mcpLocalServerRepository;
+
   McpConfigBloc(
       {required this.mcpConfigRepository,
       required this.llmClientRepository,
@@ -34,16 +35,18 @@ class McpConfigBloc extends BaseBloc<McpConfigEvent, McpConfigState> {
               emit(state.copyWith(selectedApiKey: McpApiKeys.values.first));
             }
             final mcpClientConfigs = [
-              {
-                'name': 'mcp_local_server',
-                'version': '1.0.0',
-                'url': 'http://0.0.0.0:9999/sse',
-              },
-              {
-                'name': 'mcp_default_server',
-                'version': '1.0.0',
-                'url': JunyConstants.mcpServerUrl,
-              },
+              McpServerInfo(
+                name: 'mcp_local_server',
+                version: '1.0.0',
+                url: 'http://0.0.0.0:9999/sse',
+                isConnected: true,
+              ),
+              McpServerInfo(
+                name: 'mcp_default_server',
+                version: '1.0.0',
+                url: JunyConstants.mcpServerUrl,
+                isConnected: true,
+              ),
             ];
             mcpLocalServerRepository.initialize(
               port: 9999,
@@ -57,14 +60,38 @@ class McpConfigBloc extends BaseBloc<McpConfigEvent, McpConfigState> {
             await mcpLlmClientRepository.initialize(
               LlmClientSetupConfig(apiKey: state.getApiKey()),
             );
+            final filteredClientConfigs = [];
+            for (final mcpClientConfig in mcpClientConfigs) {
+              final mcpServerInfo = await mcpConfigRepository
+                  .getMcpServerInfo(mcpClientConfig.name);
+              if (mcpServerInfo != null) {
+                if (mcpServerInfo.isConnected == true) {
+                  filteredClientConfigs.add(mcpClientConfig);
+                }
+              }
+
+              emit(state.copyWith(
+                tools: {
+                  ...state.tools,
+                  mcpClientConfig.name: McpTool(
+                      tools: [],
+                      config: McpClientSetupConfig(
+                        name: mcpClientConfig.name,
+                        version: mcpClientConfig.version,
+                        url: mcpClientConfig.url ?? '',
+                      ),
+                      isConnected: false)
+                },
+              ));
+            }
             final mcpClients = await Future.wait(
-              mcpClientConfigs
+              filteredClientConfigs
                   .map(
                     (mcpClientConfig) => mcpClientRepository.initialize(
                       McpClientSetupConfig(
-                        name: mcpClientConfig['name']!,
-                        version: mcpClientConfig['version']!,
-                        url: mcpClientConfig['url']!,
+                        name: mcpClientConfig.name,
+                        version: mcpClientConfig.version,
+                        url: mcpClientConfig.url!,
                       ),
                       (isConnected, tools, config) {
                         emit(state.copyWith(
@@ -82,39 +109,6 @@ class McpConfigBloc extends BaseBloc<McpConfigEvent, McpConfigState> {
                   .toList(),
             );
             await mcpLlmClientRepository.addMcpClients(mcpClients);
-
-            // await llmClientRepository
-            //     .initialize(LlmClientRepositoryIntitializeConfig(
-            //   llmConfig: LlmClientRepositoryIntitializeLlmConfig(
-            //     apiKey: state.getApiKey(),
-            //     mcpServerUrl: JunyConstants.mcpServerUrl,
-            //     mcpAuthToken: 'asdf',
-            //   ),
-            // ));
-
-            // bool isConnected = llmClientRepository.isConnected;
-            // debugPrint('🔥 [isConnected] $isConnected');
-            // List<Tool> tools = await llmClientRepository.getTools();
-            // debugPrint('🔥 [tools] $tools');
-            // final List<Tool> newTools = [];
-            // for (var tool in tools) {
-            //   final bool isEnabled =
-            //       await mcpConfigRepository.getDisabledTools(tool.name) == null
-            //           ? true
-            //           : false;
-            //   final toolJson = tool.toJson();
-            //   if (toolJson['metadata'] == null) {
-            //     toolJson['metadata'] = {'enabled': isEnabled};
-            //   } else {
-            //     toolJson['metadata'] = {
-            //       ...toolJson['metadata'],
-            //       'enabled': isEnabled,
-            //     };
-            //   }
-
-            //   final newTool = Tool.fromJson(toolJson);
-            //   newTools.add(newTool);
-            // }
 
             emit(state.copyWith(isConnected: true));
           });
@@ -148,12 +142,59 @@ class McpConfigBloc extends BaseBloc<McpConfigEvent, McpConfigState> {
         },
         disconnectMcpServer: (e) async {
           await handleEvent(emit, () async {
-            // await mcpConfigRepository.disconnectMcpServer(e.name);
-            // await mcpClientRepository.disconnect();
+            final mcpTool = state.tools[e.name];
+            if (mcpTool != null) {
+              await mcpConfigRepository.disconnectMcpServer(
+                  e.name, mcpTool.config.url);
+              await mcpClientRepository.disconnect(e.name);
+              mcpLlmClientRepository.removeMcpClient(e.name);
 
-            // add(const McpConfigEvent.initialize());
-            final mcpLlmClient = await mcpLlmClientRepository.findLlmClient();
-            debugPrint('🔥 [mcpLlmClient] ${mcpLlmClient.mcpClients}');
+              emit(state.copyWith(
+                tools: {
+                  ...state.tools,
+                  e.name: McpTool(
+                      tools: [], config: mcpTool.config, isConnected: false)
+                },
+              ));
+            }
+          });
+        },
+        connectMcpServer: (e) async {
+          await handleEvent(emit, () async {
+            final mcpServerInfo =
+                await mcpConfigRepository.getMcpServerInfo(e.name);
+            debugPrint('🔥 [connectMcpServer] ${mcpServerInfo?.toJson()}');
+            if (mcpServerInfo != null) {
+              await mcpConfigRepository.connectMcpServer(mcpServerInfo.name);
+              debugPrint('🔥 [connectMcpServer2] ${mcpServerInfo.toJson()}');
+              final mcpClient = await mcpClientRepository.initialize(
+                McpClientSetupConfig(
+                  name: mcpServerInfo.name,
+                  version: mcpServerInfo.version,
+                  url: mcpServerInfo.url!,
+                ),
+                (isConnected, tools, config) {
+                  emit(state.copyWith(
+                    tools: {
+                      ...state.tools,
+                      config.name: McpTool(
+                          tools: tools,
+                          config: config,
+                          isConnected: isConnected)
+                    },
+                  ));
+                },
+              );
+
+              await mcpLlmClientRepository.addMcpClient(mcpClient);
+            }
+          });
+        },
+        editMcpServer: (e) async {
+          await handleEvent(emit, () async {
+            await mcpConfigRepository.updateMcpServer(e.mcpServerInfo);
+            add(McpConfigEvent.disconnectMcpServer(e.mcpServerInfo.name));
+            add(McpConfigEvent.connectMcpServer(e.mcpServerInfo.name));
           });
         },
       );

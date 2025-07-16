@@ -24,6 +24,8 @@ mixin _$McpConfigEvent {
     required TResult Function(McpApiKeys key) selectApiKey,
     required TResult Function(String toolName, bool isEnabled) toggleTool,
     required TResult Function(String name) disconnectMcpServer,
+    required TResult Function(String name) connectMcpServer,
+    required TResult Function(McpServerInfo mcpServerInfo) editMcpServer,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -34,6 +36,8 @@ mixin _$McpConfigEvent {
     TResult? Function(McpApiKeys key)? selectApiKey,
     TResult? Function(String toolName, bool isEnabled)? toggleTool,
     TResult? Function(String name)? disconnectMcpServer,
+    TResult? Function(String name)? connectMcpServer,
+    TResult? Function(McpServerInfo mcpServerInfo)? editMcpServer,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -44,6 +48,8 @@ mixin _$McpConfigEvent {
     TResult Function(McpApiKeys key)? selectApiKey,
     TResult Function(String toolName, bool isEnabled)? toggleTool,
     TResult Function(String name)? disconnectMcpServer,
+    TResult Function(String name)? connectMcpServer,
+    TResult Function(McpServerInfo mcpServerInfo)? editMcpServer,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -55,6 +61,8 @@ mixin _$McpConfigEvent {
     required TResult Function(SelectApiKey value) selectApiKey,
     required TResult Function(ToggleTool value) toggleTool,
     required TResult Function(DisconnectMcpServer value) disconnectMcpServer,
+    required TResult Function(ConnectMcpServer value) connectMcpServer,
+    required TResult Function(EditMcpServer value) editMcpServer,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,6 +73,8 @@ mixin _$McpConfigEvent {
     TResult? Function(SelectApiKey value)? selectApiKey,
     TResult? Function(ToggleTool value)? toggleTool,
     TResult? Function(DisconnectMcpServer value)? disconnectMcpServer,
+    TResult? Function(ConnectMcpServer value)? connectMcpServer,
+    TResult? Function(EditMcpServer value)? editMcpServer,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -75,6 +85,8 @@ mixin _$McpConfigEvent {
     TResult Function(SelectApiKey value)? selectApiKey,
     TResult Function(ToggleTool value)? toggleTool,
     TResult Function(DisconnectMcpServer value)? disconnectMcpServer,
+    TResult Function(ConnectMcpServer value)? connectMcpServer,
+    TResult Function(EditMcpServer value)? editMcpServer,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -148,6 +160,8 @@ class _$InitializeImpl implements Initialize {
     required TResult Function(McpApiKeys key) selectApiKey,
     required TResult Function(String toolName, bool isEnabled) toggleTool,
     required TResult Function(String name) disconnectMcpServer,
+    required TResult Function(String name) connectMcpServer,
+    required TResult Function(McpServerInfo mcpServerInfo) editMcpServer,
   }) {
     return initialize();
   }
@@ -161,6 +175,8 @@ class _$InitializeImpl implements Initialize {
     TResult? Function(McpApiKeys key)? selectApiKey,
     TResult? Function(String toolName, bool isEnabled)? toggleTool,
     TResult? Function(String name)? disconnectMcpServer,
+    TResult? Function(String name)? connectMcpServer,
+    TResult? Function(McpServerInfo mcpServerInfo)? editMcpServer,
   }) {
     return initialize?.call();
   }
@@ -174,6 +190,8 @@ class _$InitializeImpl implements Initialize {
     TResult Function(McpApiKeys key)? selectApiKey,
     TResult Function(String toolName, bool isEnabled)? toggleTool,
     TResult Function(String name)? disconnectMcpServer,
+    TResult Function(String name)? connectMcpServer,
+    TResult Function(McpServerInfo mcpServerInfo)? editMcpServer,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -191,6 +209,8 @@ class _$InitializeImpl implements Initialize {
     required TResult Function(SelectApiKey value) selectApiKey,
     required TResult Function(ToggleTool value) toggleTool,
     required TResult Function(DisconnectMcpServer value) disconnectMcpServer,
+    required TResult Function(ConnectMcpServer value) connectMcpServer,
+    required TResult Function(EditMcpServer value) editMcpServer,
   }) {
     return initialize(this);
   }
@@ -204,6 +224,8 @@ class _$InitializeImpl implements Initialize {
     TResult? Function(SelectApiKey value)? selectApiKey,
     TResult? Function(ToggleTool value)? toggleTool,
     TResult? Function(DisconnectMcpServer value)? disconnectMcpServer,
+    TResult? Function(ConnectMcpServer value)? connectMcpServer,
+    TResult? Function(EditMcpServer value)? editMcpServer,
   }) {
     return initialize?.call(this);
   }
@@ -217,6 +239,8 @@ class _$InitializeImpl implements Initialize {
     TResult Function(SelectApiKey value)? selectApiKey,
     TResult Function(ToggleTool value)? toggleTool,
     TResult Function(DisconnectMcpServer value)? disconnectMcpServer,
+    TResult Function(ConnectMcpServer value)? connectMcpServer,
+    TResult Function(EditMcpServer value)? editMcpServer,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -312,6 +336,8 @@ class _$SetApiKeyImpl implements SetApiKey {
     required TResult Function(McpApiKeys key) selectApiKey,
     required TResult Function(String toolName, bool isEnabled) toggleTool,
     required TResult Function(String name) disconnectMcpServer,
+    required TResult Function(String name) connectMcpServer,
+    required TResult Function(McpServerInfo mcpServerInfo) editMcpServer,
   }) {
     return setApiKey(key, value);
   }
@@ -325,6 +351,8 @@ class _$SetApiKeyImpl implements SetApiKey {
     TResult? Function(McpApiKeys key)? selectApiKey,
     TResult? Function(String toolName, bool isEnabled)? toggleTool,
     TResult? Function(String name)? disconnectMcpServer,
+    TResult? Function(String name)? connectMcpServer,
+    TResult? Function(McpServerInfo mcpServerInfo)? editMcpServer,
   }) {
     return setApiKey?.call(key, value);
   }
@@ -338,6 +366,8 @@ class _$SetApiKeyImpl implements SetApiKey {
     TResult Function(McpApiKeys key)? selectApiKey,
     TResult Function(String toolName, bool isEnabled)? toggleTool,
     TResult Function(String name)? disconnectMcpServer,
+    TResult Function(String name)? connectMcpServer,
+    TResult Function(McpServerInfo mcpServerInfo)? editMcpServer,
     required TResult orElse(),
   }) {
     if (setApiKey != null) {
@@ -355,6 +385,8 @@ class _$SetApiKeyImpl implements SetApiKey {
     required TResult Function(SelectApiKey value) selectApiKey,
     required TResult Function(ToggleTool value) toggleTool,
     required TResult Function(DisconnectMcpServer value) disconnectMcpServer,
+    required TResult Function(ConnectMcpServer value) connectMcpServer,
+    required TResult Function(EditMcpServer value) editMcpServer,
   }) {
     return setApiKey(this);
   }
@@ -368,6 +400,8 @@ class _$SetApiKeyImpl implements SetApiKey {
     TResult? Function(SelectApiKey value)? selectApiKey,
     TResult? Function(ToggleTool value)? toggleTool,
     TResult? Function(DisconnectMcpServer value)? disconnectMcpServer,
+    TResult? Function(ConnectMcpServer value)? connectMcpServer,
+    TResult? Function(EditMcpServer value)? editMcpServer,
   }) {
     return setApiKey?.call(this);
   }
@@ -381,6 +415,8 @@ class _$SetApiKeyImpl implements SetApiKey {
     TResult Function(SelectApiKey value)? selectApiKey,
     TResult Function(ToggleTool value)? toggleTool,
     TResult Function(DisconnectMcpServer value)? disconnectMcpServer,
+    TResult Function(ConnectMcpServer value)? connectMcpServer,
+    TResult Function(EditMcpServer value)? editMcpServer,
     required TResult orElse(),
   }) {
     if (setApiKey != null) {
@@ -478,6 +514,8 @@ class _$ClearApiKeyImpl implements ClearApiKey {
     required TResult Function(McpApiKeys key) selectApiKey,
     required TResult Function(String toolName, bool isEnabled) toggleTool,
     required TResult Function(String name) disconnectMcpServer,
+    required TResult Function(String name) connectMcpServer,
+    required TResult Function(McpServerInfo mcpServerInfo) editMcpServer,
   }) {
     return clearApiKey(key);
   }
@@ -491,6 +529,8 @@ class _$ClearApiKeyImpl implements ClearApiKey {
     TResult? Function(McpApiKeys key)? selectApiKey,
     TResult? Function(String toolName, bool isEnabled)? toggleTool,
     TResult? Function(String name)? disconnectMcpServer,
+    TResult? Function(String name)? connectMcpServer,
+    TResult? Function(McpServerInfo mcpServerInfo)? editMcpServer,
   }) {
     return clearApiKey?.call(key);
   }
@@ -504,6 +544,8 @@ class _$ClearApiKeyImpl implements ClearApiKey {
     TResult Function(McpApiKeys key)? selectApiKey,
     TResult Function(String toolName, bool isEnabled)? toggleTool,
     TResult Function(String name)? disconnectMcpServer,
+    TResult Function(String name)? connectMcpServer,
+    TResult Function(McpServerInfo mcpServerInfo)? editMcpServer,
     required TResult orElse(),
   }) {
     if (clearApiKey != null) {
@@ -521,6 +563,8 @@ class _$ClearApiKeyImpl implements ClearApiKey {
     required TResult Function(SelectApiKey value) selectApiKey,
     required TResult Function(ToggleTool value) toggleTool,
     required TResult Function(DisconnectMcpServer value) disconnectMcpServer,
+    required TResult Function(ConnectMcpServer value) connectMcpServer,
+    required TResult Function(EditMcpServer value) editMcpServer,
   }) {
     return clearApiKey(this);
   }
@@ -534,6 +578,8 @@ class _$ClearApiKeyImpl implements ClearApiKey {
     TResult? Function(SelectApiKey value)? selectApiKey,
     TResult? Function(ToggleTool value)? toggleTool,
     TResult? Function(DisconnectMcpServer value)? disconnectMcpServer,
+    TResult? Function(ConnectMcpServer value)? connectMcpServer,
+    TResult? Function(EditMcpServer value)? editMcpServer,
   }) {
     return clearApiKey?.call(this);
   }
@@ -547,6 +593,8 @@ class _$ClearApiKeyImpl implements ClearApiKey {
     TResult Function(SelectApiKey value)? selectApiKey,
     TResult Function(ToggleTool value)? toggleTool,
     TResult Function(DisconnectMcpServer value)? disconnectMcpServer,
+    TResult Function(ConnectMcpServer value)? connectMcpServer,
+    TResult Function(EditMcpServer value)? editMcpServer,
     required TResult orElse(),
   }) {
     if (clearApiKey != null) {
@@ -642,6 +690,8 @@ class _$SelectApiKeyImpl implements SelectApiKey {
     required TResult Function(McpApiKeys key) selectApiKey,
     required TResult Function(String toolName, bool isEnabled) toggleTool,
     required TResult Function(String name) disconnectMcpServer,
+    required TResult Function(String name) connectMcpServer,
+    required TResult Function(McpServerInfo mcpServerInfo) editMcpServer,
   }) {
     return selectApiKey(key);
   }
@@ -655,6 +705,8 @@ class _$SelectApiKeyImpl implements SelectApiKey {
     TResult? Function(McpApiKeys key)? selectApiKey,
     TResult? Function(String toolName, bool isEnabled)? toggleTool,
     TResult? Function(String name)? disconnectMcpServer,
+    TResult? Function(String name)? connectMcpServer,
+    TResult? Function(McpServerInfo mcpServerInfo)? editMcpServer,
   }) {
     return selectApiKey?.call(key);
   }
@@ -668,6 +720,8 @@ class _$SelectApiKeyImpl implements SelectApiKey {
     TResult Function(McpApiKeys key)? selectApiKey,
     TResult Function(String toolName, bool isEnabled)? toggleTool,
     TResult Function(String name)? disconnectMcpServer,
+    TResult Function(String name)? connectMcpServer,
+    TResult Function(McpServerInfo mcpServerInfo)? editMcpServer,
     required TResult orElse(),
   }) {
     if (selectApiKey != null) {
@@ -685,6 +739,8 @@ class _$SelectApiKeyImpl implements SelectApiKey {
     required TResult Function(SelectApiKey value) selectApiKey,
     required TResult Function(ToggleTool value) toggleTool,
     required TResult Function(DisconnectMcpServer value) disconnectMcpServer,
+    required TResult Function(ConnectMcpServer value) connectMcpServer,
+    required TResult Function(EditMcpServer value) editMcpServer,
   }) {
     return selectApiKey(this);
   }
@@ -698,6 +754,8 @@ class _$SelectApiKeyImpl implements SelectApiKey {
     TResult? Function(SelectApiKey value)? selectApiKey,
     TResult? Function(ToggleTool value)? toggleTool,
     TResult? Function(DisconnectMcpServer value)? disconnectMcpServer,
+    TResult? Function(ConnectMcpServer value)? connectMcpServer,
+    TResult? Function(EditMcpServer value)? editMcpServer,
   }) {
     return selectApiKey?.call(this);
   }
@@ -711,6 +769,8 @@ class _$SelectApiKeyImpl implements SelectApiKey {
     TResult Function(SelectApiKey value)? selectApiKey,
     TResult Function(ToggleTool value)? toggleTool,
     TResult Function(DisconnectMcpServer value)? disconnectMcpServer,
+    TResult Function(ConnectMcpServer value)? connectMcpServer,
+    TResult Function(EditMcpServer value)? editMcpServer,
     required TResult orElse(),
   }) {
     if (selectApiKey != null) {
@@ -816,6 +876,8 @@ class _$ToggleToolImpl implements ToggleTool {
     required TResult Function(McpApiKeys key) selectApiKey,
     required TResult Function(String toolName, bool isEnabled) toggleTool,
     required TResult Function(String name) disconnectMcpServer,
+    required TResult Function(String name) connectMcpServer,
+    required TResult Function(McpServerInfo mcpServerInfo) editMcpServer,
   }) {
     return toggleTool(toolName, isEnabled);
   }
@@ -829,6 +891,8 @@ class _$ToggleToolImpl implements ToggleTool {
     TResult? Function(McpApiKeys key)? selectApiKey,
     TResult? Function(String toolName, bool isEnabled)? toggleTool,
     TResult? Function(String name)? disconnectMcpServer,
+    TResult? Function(String name)? connectMcpServer,
+    TResult? Function(McpServerInfo mcpServerInfo)? editMcpServer,
   }) {
     return toggleTool?.call(toolName, isEnabled);
   }
@@ -842,6 +906,8 @@ class _$ToggleToolImpl implements ToggleTool {
     TResult Function(McpApiKeys key)? selectApiKey,
     TResult Function(String toolName, bool isEnabled)? toggleTool,
     TResult Function(String name)? disconnectMcpServer,
+    TResult Function(String name)? connectMcpServer,
+    TResult Function(McpServerInfo mcpServerInfo)? editMcpServer,
     required TResult orElse(),
   }) {
     if (toggleTool != null) {
@@ -859,6 +925,8 @@ class _$ToggleToolImpl implements ToggleTool {
     required TResult Function(SelectApiKey value) selectApiKey,
     required TResult Function(ToggleTool value) toggleTool,
     required TResult Function(DisconnectMcpServer value) disconnectMcpServer,
+    required TResult Function(ConnectMcpServer value) connectMcpServer,
+    required TResult Function(EditMcpServer value) editMcpServer,
   }) {
     return toggleTool(this);
   }
@@ -872,6 +940,8 @@ class _$ToggleToolImpl implements ToggleTool {
     TResult? Function(SelectApiKey value)? selectApiKey,
     TResult? Function(ToggleTool value)? toggleTool,
     TResult? Function(DisconnectMcpServer value)? disconnectMcpServer,
+    TResult? Function(ConnectMcpServer value)? connectMcpServer,
+    TResult? Function(EditMcpServer value)? editMcpServer,
   }) {
     return toggleTool?.call(this);
   }
@@ -885,6 +955,8 @@ class _$ToggleToolImpl implements ToggleTool {
     TResult Function(SelectApiKey value)? selectApiKey,
     TResult Function(ToggleTool value)? toggleTool,
     TResult Function(DisconnectMcpServer value)? disconnectMcpServer,
+    TResult Function(ConnectMcpServer value)? connectMcpServer,
+    TResult Function(EditMcpServer value)? editMcpServer,
     required TResult orElse(),
   }) {
     if (toggleTool != null) {
@@ -983,6 +1055,8 @@ class _$DisconnectMcpServerImpl implements DisconnectMcpServer {
     required TResult Function(McpApiKeys key) selectApiKey,
     required TResult Function(String toolName, bool isEnabled) toggleTool,
     required TResult Function(String name) disconnectMcpServer,
+    required TResult Function(String name) connectMcpServer,
+    required TResult Function(McpServerInfo mcpServerInfo) editMcpServer,
   }) {
     return disconnectMcpServer(name);
   }
@@ -996,6 +1070,8 @@ class _$DisconnectMcpServerImpl implements DisconnectMcpServer {
     TResult? Function(McpApiKeys key)? selectApiKey,
     TResult? Function(String toolName, bool isEnabled)? toggleTool,
     TResult? Function(String name)? disconnectMcpServer,
+    TResult? Function(String name)? connectMcpServer,
+    TResult? Function(McpServerInfo mcpServerInfo)? editMcpServer,
   }) {
     return disconnectMcpServer?.call(name);
   }
@@ -1009,6 +1085,8 @@ class _$DisconnectMcpServerImpl implements DisconnectMcpServer {
     TResult Function(McpApiKeys key)? selectApiKey,
     TResult Function(String toolName, bool isEnabled)? toggleTool,
     TResult Function(String name)? disconnectMcpServer,
+    TResult Function(String name)? connectMcpServer,
+    TResult Function(McpServerInfo mcpServerInfo)? editMcpServer,
     required TResult orElse(),
   }) {
     if (disconnectMcpServer != null) {
@@ -1026,6 +1104,8 @@ class _$DisconnectMcpServerImpl implements DisconnectMcpServer {
     required TResult Function(SelectApiKey value) selectApiKey,
     required TResult Function(ToggleTool value) toggleTool,
     required TResult Function(DisconnectMcpServer value) disconnectMcpServer,
+    required TResult Function(ConnectMcpServer value) connectMcpServer,
+    required TResult Function(EditMcpServer value) editMcpServer,
   }) {
     return disconnectMcpServer(this);
   }
@@ -1039,6 +1119,8 @@ class _$DisconnectMcpServerImpl implements DisconnectMcpServer {
     TResult? Function(SelectApiKey value)? selectApiKey,
     TResult? Function(ToggleTool value)? toggleTool,
     TResult? Function(DisconnectMcpServer value)? disconnectMcpServer,
+    TResult? Function(ConnectMcpServer value)? connectMcpServer,
+    TResult? Function(EditMcpServer value)? editMcpServer,
   }) {
     return disconnectMcpServer?.call(this);
   }
@@ -1052,6 +1134,8 @@ class _$DisconnectMcpServerImpl implements DisconnectMcpServer {
     TResult Function(SelectApiKey value)? selectApiKey,
     TResult Function(ToggleTool value)? toggleTool,
     TResult Function(DisconnectMcpServer value)? disconnectMcpServer,
+    TResult Function(ConnectMcpServer value)? connectMcpServer,
+    TResult Function(EditMcpServer value)? editMcpServer,
     required TResult orElse(),
   }) {
     if (disconnectMcpServer != null) {
@@ -1071,5 +1155,360 @@ abstract class DisconnectMcpServer implements McpConfigEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DisconnectMcpServerImplCopyWith<_$DisconnectMcpServerImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ConnectMcpServerImplCopyWith<$Res> {
+  factory _$$ConnectMcpServerImplCopyWith(_$ConnectMcpServerImpl value,
+          $Res Function(_$ConnectMcpServerImpl) then) =
+      __$$ConnectMcpServerImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String name});
+}
+
+/// @nodoc
+class __$$ConnectMcpServerImplCopyWithImpl<$Res>
+    extends _$McpConfigEventCopyWithImpl<$Res, _$ConnectMcpServerImpl>
+    implements _$$ConnectMcpServerImplCopyWith<$Res> {
+  __$$ConnectMcpServerImplCopyWithImpl(_$ConnectMcpServerImpl _value,
+      $Res Function(_$ConnectMcpServerImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of McpConfigEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+  }) {
+    return _then(_$ConnectMcpServerImpl(
+      null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ConnectMcpServerImpl implements ConnectMcpServer {
+  const _$ConnectMcpServerImpl(this.name);
+
+  @override
+  final String name;
+
+  @override
+  String toString() {
+    return 'McpConfigEvent.connectMcpServer(name: $name)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ConnectMcpServerImpl &&
+            (identical(other.name, name) || other.name == name));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, name);
+
+  /// Create a copy of McpConfigEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ConnectMcpServerImplCopyWith<_$ConnectMcpServerImpl> get copyWith =>
+      __$$ConnectMcpServerImplCopyWithImpl<_$ConnectMcpServerImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialize,
+    required TResult Function(McpApiKeys key, String value) setApiKey,
+    required TResult Function(McpApiKeys key) clearApiKey,
+    required TResult Function(McpApiKeys key) selectApiKey,
+    required TResult Function(String toolName, bool isEnabled) toggleTool,
+    required TResult Function(String name) disconnectMcpServer,
+    required TResult Function(String name) connectMcpServer,
+    required TResult Function(McpServerInfo mcpServerInfo) editMcpServer,
+  }) {
+    return connectMcpServer(name);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialize,
+    TResult? Function(McpApiKeys key, String value)? setApiKey,
+    TResult? Function(McpApiKeys key)? clearApiKey,
+    TResult? Function(McpApiKeys key)? selectApiKey,
+    TResult? Function(String toolName, bool isEnabled)? toggleTool,
+    TResult? Function(String name)? disconnectMcpServer,
+    TResult? Function(String name)? connectMcpServer,
+    TResult? Function(McpServerInfo mcpServerInfo)? editMcpServer,
+  }) {
+    return connectMcpServer?.call(name);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialize,
+    TResult Function(McpApiKeys key, String value)? setApiKey,
+    TResult Function(McpApiKeys key)? clearApiKey,
+    TResult Function(McpApiKeys key)? selectApiKey,
+    TResult Function(String toolName, bool isEnabled)? toggleTool,
+    TResult Function(String name)? disconnectMcpServer,
+    TResult Function(String name)? connectMcpServer,
+    TResult Function(McpServerInfo mcpServerInfo)? editMcpServer,
+    required TResult orElse(),
+  }) {
+    if (connectMcpServer != null) {
+      return connectMcpServer(name);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initialize value) initialize,
+    required TResult Function(SetApiKey value) setApiKey,
+    required TResult Function(ClearApiKey value) clearApiKey,
+    required TResult Function(SelectApiKey value) selectApiKey,
+    required TResult Function(ToggleTool value) toggleTool,
+    required TResult Function(DisconnectMcpServer value) disconnectMcpServer,
+    required TResult Function(ConnectMcpServer value) connectMcpServer,
+    required TResult Function(EditMcpServer value) editMcpServer,
+  }) {
+    return connectMcpServer(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initialize value)? initialize,
+    TResult? Function(SetApiKey value)? setApiKey,
+    TResult? Function(ClearApiKey value)? clearApiKey,
+    TResult? Function(SelectApiKey value)? selectApiKey,
+    TResult? Function(ToggleTool value)? toggleTool,
+    TResult? Function(DisconnectMcpServer value)? disconnectMcpServer,
+    TResult? Function(ConnectMcpServer value)? connectMcpServer,
+    TResult? Function(EditMcpServer value)? editMcpServer,
+  }) {
+    return connectMcpServer?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initialize value)? initialize,
+    TResult Function(SetApiKey value)? setApiKey,
+    TResult Function(ClearApiKey value)? clearApiKey,
+    TResult Function(SelectApiKey value)? selectApiKey,
+    TResult Function(ToggleTool value)? toggleTool,
+    TResult Function(DisconnectMcpServer value)? disconnectMcpServer,
+    TResult Function(ConnectMcpServer value)? connectMcpServer,
+    TResult Function(EditMcpServer value)? editMcpServer,
+    required TResult orElse(),
+  }) {
+    if (connectMcpServer != null) {
+      return connectMcpServer(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ConnectMcpServer implements McpConfigEvent {
+  const factory ConnectMcpServer(final String name) = _$ConnectMcpServerImpl;
+
+  String get name;
+
+  /// Create a copy of McpConfigEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ConnectMcpServerImplCopyWith<_$ConnectMcpServerImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$EditMcpServerImplCopyWith<$Res> {
+  factory _$$EditMcpServerImplCopyWith(
+          _$EditMcpServerImpl value, $Res Function(_$EditMcpServerImpl) then) =
+      __$$EditMcpServerImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({McpServerInfo mcpServerInfo});
+}
+
+/// @nodoc
+class __$$EditMcpServerImplCopyWithImpl<$Res>
+    extends _$McpConfigEventCopyWithImpl<$Res, _$EditMcpServerImpl>
+    implements _$$EditMcpServerImplCopyWith<$Res> {
+  __$$EditMcpServerImplCopyWithImpl(
+      _$EditMcpServerImpl _value, $Res Function(_$EditMcpServerImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of McpConfigEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? mcpServerInfo = null,
+  }) {
+    return _then(_$EditMcpServerImpl(
+      null == mcpServerInfo
+          ? _value.mcpServerInfo
+          : mcpServerInfo // ignore: cast_nullable_to_non_nullable
+              as McpServerInfo,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$EditMcpServerImpl implements EditMcpServer {
+  const _$EditMcpServerImpl(this.mcpServerInfo);
+
+  @override
+  final McpServerInfo mcpServerInfo;
+
+  @override
+  String toString() {
+    return 'McpConfigEvent.editMcpServer(mcpServerInfo: $mcpServerInfo)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EditMcpServerImpl &&
+            (identical(other.mcpServerInfo, mcpServerInfo) ||
+                other.mcpServerInfo == mcpServerInfo));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, mcpServerInfo);
+
+  /// Create a copy of McpConfigEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EditMcpServerImplCopyWith<_$EditMcpServerImpl> get copyWith =>
+      __$$EditMcpServerImplCopyWithImpl<_$EditMcpServerImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialize,
+    required TResult Function(McpApiKeys key, String value) setApiKey,
+    required TResult Function(McpApiKeys key) clearApiKey,
+    required TResult Function(McpApiKeys key) selectApiKey,
+    required TResult Function(String toolName, bool isEnabled) toggleTool,
+    required TResult Function(String name) disconnectMcpServer,
+    required TResult Function(String name) connectMcpServer,
+    required TResult Function(McpServerInfo mcpServerInfo) editMcpServer,
+  }) {
+    return editMcpServer(mcpServerInfo);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialize,
+    TResult? Function(McpApiKeys key, String value)? setApiKey,
+    TResult? Function(McpApiKeys key)? clearApiKey,
+    TResult? Function(McpApiKeys key)? selectApiKey,
+    TResult? Function(String toolName, bool isEnabled)? toggleTool,
+    TResult? Function(String name)? disconnectMcpServer,
+    TResult? Function(String name)? connectMcpServer,
+    TResult? Function(McpServerInfo mcpServerInfo)? editMcpServer,
+  }) {
+    return editMcpServer?.call(mcpServerInfo);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialize,
+    TResult Function(McpApiKeys key, String value)? setApiKey,
+    TResult Function(McpApiKeys key)? clearApiKey,
+    TResult Function(McpApiKeys key)? selectApiKey,
+    TResult Function(String toolName, bool isEnabled)? toggleTool,
+    TResult Function(String name)? disconnectMcpServer,
+    TResult Function(String name)? connectMcpServer,
+    TResult Function(McpServerInfo mcpServerInfo)? editMcpServer,
+    required TResult orElse(),
+  }) {
+    if (editMcpServer != null) {
+      return editMcpServer(mcpServerInfo);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initialize value) initialize,
+    required TResult Function(SetApiKey value) setApiKey,
+    required TResult Function(ClearApiKey value) clearApiKey,
+    required TResult Function(SelectApiKey value) selectApiKey,
+    required TResult Function(ToggleTool value) toggleTool,
+    required TResult Function(DisconnectMcpServer value) disconnectMcpServer,
+    required TResult Function(ConnectMcpServer value) connectMcpServer,
+    required TResult Function(EditMcpServer value) editMcpServer,
+  }) {
+    return editMcpServer(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initialize value)? initialize,
+    TResult? Function(SetApiKey value)? setApiKey,
+    TResult? Function(ClearApiKey value)? clearApiKey,
+    TResult? Function(SelectApiKey value)? selectApiKey,
+    TResult? Function(ToggleTool value)? toggleTool,
+    TResult? Function(DisconnectMcpServer value)? disconnectMcpServer,
+    TResult? Function(ConnectMcpServer value)? connectMcpServer,
+    TResult? Function(EditMcpServer value)? editMcpServer,
+  }) {
+    return editMcpServer?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initialize value)? initialize,
+    TResult Function(SetApiKey value)? setApiKey,
+    TResult Function(ClearApiKey value)? clearApiKey,
+    TResult Function(SelectApiKey value)? selectApiKey,
+    TResult Function(ToggleTool value)? toggleTool,
+    TResult Function(DisconnectMcpServer value)? disconnectMcpServer,
+    TResult Function(ConnectMcpServer value)? connectMcpServer,
+    TResult Function(EditMcpServer value)? editMcpServer,
+    required TResult orElse(),
+  }) {
+    if (editMcpServer != null) {
+      return editMcpServer(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EditMcpServer implements McpConfigEvent {
+  const factory EditMcpServer(final McpServerInfo mcpServerInfo) =
+      _$EditMcpServerImpl;
+
+  McpServerInfo get mcpServerInfo;
+
+  /// Create a copy of McpConfigEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$EditMcpServerImplCopyWith<_$EditMcpServerImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

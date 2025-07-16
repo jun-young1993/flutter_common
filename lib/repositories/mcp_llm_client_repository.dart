@@ -21,6 +21,7 @@ abstract class McpLlmClientRepository {
       {required Function(String data, String textChunk) onData,
       required Function(List<LlmToolCall> toolCalls) onToolCalls,
       required Function(List<LlmToolCall>? toolCalls) onDone});
+  Future<void> removeMcpClient(String name);
 }
 
 class McpLlmClientDefaultRepository extends McpLlmClientRepository {
@@ -141,5 +142,10 @@ class McpLlmClientDefaultRepository extends McpLlmClientRepository {
   @override
   Future<void> dispose() async {
     await _mcpLlm.shutdown();
+  }
+
+  @override
+  Future<void> removeMcpClient(String name) async {
+    _llmClient?.removeMcpClient(name);
   }
 }

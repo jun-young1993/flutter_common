@@ -1,3 +1,4 @@
+import 'package:flutter_common/repositories/mcp_config_repository.dart';
 import 'package:flutter_common/state/mcp_config/mcp_config_state.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -14,4 +15,7 @@ class McpConfigEvent with _$McpConfigEvent {
       ToggleTool;
   const factory McpConfigEvent.disconnectMcpServer(String name) =
       DisconnectMcpServer;
+  const factory McpConfigEvent.connectMcpServer(String name) = ConnectMcpServer;
+  const factory McpConfigEvent.editMcpServer(McpServerInfo mcpServerInfo) =
+      EditMcpServer;
 }
