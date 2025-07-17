@@ -279,6 +279,7 @@ class _McpChatScreenLayoutState extends State<McpChatScreenLayout> {
                         child: CircularProgressIndicator(),
                       );
                     }
+
                     return ChatInputField(
                       controller: _textController,
                       focusNode: _inputFocusNode,

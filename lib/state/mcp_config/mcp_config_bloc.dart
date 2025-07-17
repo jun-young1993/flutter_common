@@ -47,6 +47,13 @@ class McpConfigBloc extends BaseBloc<McpConfigEvent, McpConfigState> {
               isConnected: true,
             ),
           ];
+          for (final mcpClientConfig in mcpClientConfigs) {
+            final mcpServerInfo = await mcpConfigRepository
+                .getMcpServerInfo(mcpClientConfig.name);
+            if (mcpServerInfo == null) {
+              await mcpConfigRepository.updateMcpServer(mcpClientConfig);
+            }
+          }
 
           mcpLocalServerRepository.initialize(
             port: 9999,
@@ -59,11 +66,10 @@ class McpConfigBloc extends BaseBloc<McpConfigEvent, McpConfigState> {
           );
 
           final mcpServerList = await mcpConfigRepository.allMcpServer();
-          debugPrint('🔥 [mcpServerList2] $mcpServerList');
+
           for (final mcpServer in mcpServerList) {
             final mcpServerInfo =
                 await mcpConfigRepository.getMcpServerInfo(mcpServer);
-            debugPrint('🔥 [mcpServerInfo] ${mcpServerInfo?.toJson()}');
 
             if (mcpServerInfo != null) {
               mcpClientConfigs.add(mcpServerInfo);
@@ -73,10 +79,33 @@ class McpConfigBloc extends BaseBloc<McpConfigEvent, McpConfigState> {
           await mcpLlmClientRepository.initialize(
             LlmClientSetupConfig(apiKey: state.getApiKey()),
           );
+          emit(state.copyWith(isConnected: true));
           final filteredClientConfigs = [];
           for (final mcpClientConfig in mcpClientConfigs) {
             final mcpServerInfo = await mcpConfigRepository
                 .getMcpServerInfo(mcpClientConfig.name);
+
+            final mcpClient =
+                await mcpClientRepository.getMcpClient(mcpClientConfig.name);
+            bool isConnected = false;
+            List<Tool> tools = [];
+            if (mcpClient != null) {
+              isConnected = mcpClient.isConnected;
+              tools = await mcpClient.listTools();
+            }
+            emit(state.copyWith(
+              tools: {
+                ...state.tools,
+                mcpClientConfig.name: McpTool(
+                    tools: tools,
+                    config: McpClientSetupConfig(
+                      name: mcpClientConfig.name,
+                      version: mcpClientConfig.version,
+                      url: mcpClientConfig.url ?? '',
+                    ),
+                    isConnected: isConnected)
+              },
+            ));
             if (mcpServerInfo == null) {
               filteredClientConfigs.add(mcpClientConfig);
               continue;
@@ -85,20 +114,6 @@ class McpConfigBloc extends BaseBloc<McpConfigEvent, McpConfigState> {
               filteredClientConfigs.add(mcpClientConfig);
               continue;
             }
-
-            emit(state.copyWith(
-              tools: {
-                ...state.tools,
-                mcpClientConfig.name: McpTool(
-                    tools: [],
-                    config: McpClientSetupConfig(
-                      name: mcpClientConfig.name,
-                      version: mcpClientConfig.version,
-                      url: mcpClientConfig.url ?? '',
-                    ),
-                    isConnected: false)
-              },
-            ));
           }
 
           final mcpClients = await Future.wait(
@@ -125,9 +140,8 @@ class McpConfigBloc extends BaseBloc<McpConfigEvent, McpConfigState> {
                 )
                 .toList(),
           );
-          await mcpLlmClientRepository.addMcpClients(mcpClients);
 
-          emit(state.copyWith(isConnected: true));
+          await mcpLlmClientRepository.addMcpClients(mcpClients);
         });
       }, setApiKey: (e) async {
         handleEvent(emit, () async {
@@ -174,7 +188,7 @@ class McpConfigBloc extends BaseBloc<McpConfigEvent, McpConfigState> {
         await handleEvent(emit, () async {
           final mcpServerInfo =
               await mcpConfigRepository.getMcpServerInfo(e.name);
-          debugPrint('🔥 [connectMcpServer] ${mcpServerInfo?.toJson()}');
+
           if (mcpServerInfo != null) {
             final mcpClientCheck =
                 await mcpClientRepository.getMcpClient(mcpServerInfo.name);
@@ -202,7 +216,10 @@ class McpConfigBloc extends BaseBloc<McpConfigEvent, McpConfigState> {
         });
       }, editMcpServer: (e) async {
         await handleEvent(emit, () async {
+          e.mcpServerInfo.copyWith(isConnected: true);
+
           await mcpConfigRepository.updateMcpServer(e.mcpServerInfo);
+
           add(McpConfigEvent.disconnectMcpServer(e.mcpServerInfo.name));
           add(McpConfigEvent.connectMcpServer(e.mcpServerInfo.name));
         });
