@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_common/common_il8n.dart';
+import 'package:flutter_common/repositories/mcp_config_repository.dart';
 import 'package:flutter_common/state/mcp_config/mcp_config_bloc.dart';
 import 'package:flutter_common/state/mcp_config/mcp_config_event.dart';
 import 'package:flutter_common/state/mcp_config/mcp_config_selector.dart';
@@ -236,9 +237,65 @@ class _McpConfigScreenLayoutState extends State<McpConfigScreenLayout> {
           const Divider(height: 24.0),
 
           // --- Tools Section ---
-          Text(
-            Tr.mcp.availableTools.tr(),
-            style: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                Tr.mcp.availableTools.tr(),
+                style: const TextStyle(
+                    fontSize: 18.0, fontWeight: FontWeight.bold),
+              ),
+              IconButton(
+                icon: const Icon(Icons.add),
+                tooltip: 'Add Tool Group',
+                onPressed: () async {
+                  String? name;
+                  String? url;
+                  await showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        title: const Text('Add Tool Group'),
+                        content: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            TextField(
+                              decoration:
+                                  const InputDecoration(labelText: 'Name'),
+                              onChanged: (value) => name = value,
+                            ),
+                            TextField(
+                              decoration:
+                                  const InputDecoration(labelText: 'URL'),
+                              onChanged: (value) => url = value,
+                            ),
+                          ],
+                        ),
+                        actions: [
+                          TextButton(
+                            onPressed: () => Navigator.of(context).pop(),
+                            child: const Text('Cancel'),
+                          ),
+                          ElevatedButton(
+                            onPressed: () {
+                              // TODO: 실제 추가 로직 연결
+                              mcpConfigBloc.add(McpConfigEvent.addMcpServer(
+                                  McpServerInfo(
+                                      name: name!,
+                                      url: url!,
+                                      version: '1.0.0',
+                                      isConnected: true)));
+                              Navigator.of(context).pop();
+                            },
+                            child: const Text('Add'),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
+              ),
+            ],
           ),
           const SizedBox(height: 4.0),
           Text(
@@ -287,15 +344,85 @@ class _McpConfigScreenLayoutState extends State<McpConfigScreenLayout> {
                           leading: Switch(
                             value: mcptool.isConnected,
                             onChanged: (value) {
-                              mcpConfigBloc.add(
-                                  McpConfigEvent.disconnectMcpServer(
-                                      toolGroupName));
-                              // mcpConfigBloc.add(McpConfigEvent.toggleTool(toolGroupName, value));
+                              if (value) {
+                                mcpConfigBloc.add(
+                                    McpConfigEvent.connectMcpServer(
+                                        toolGroupName));
+                              } else {
+                                mcpConfigBloc.add(
+                                    McpConfigEvent.disconnectMcpServer(
+                                        toolGroupName));
+                              }
                             },
                           ),
                           title: Row(
                             children: [
-                              Expanded(child: Text(toolGroupName)),
+                              Expanded(
+                                  child: Text(
+                                toolGroupName,
+                                style: const TextStyle(fontSize: 15),
+                              )),
+                              IconButton(
+                                icon: const Icon(Icons.edit, size: 20),
+                                tooltip: 'Edit Tool Group',
+                                onPressed: () async {
+                                  String? name = toolGroupName;
+                                  String? url = mcptool.config.url;
+                                  await showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return AlertDialog(
+                                        title: const Text('Edit Tool Group'),
+                                        content: Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            TextField(
+                                              enabled: false,
+                                              decoration: const InputDecoration(
+                                                  labelText: 'Name'),
+                                              controller: TextEditingController(
+                                                  text: name),
+                                              onChanged: (value) =>
+                                                  name = value,
+                                            ),
+                                            TextField(
+                                              decoration: const InputDecoration(
+                                                  labelText: 'URL'),
+                                              controller: TextEditingController(
+                                                  text: url),
+                                              onChanged: (value) => url = value,
+                                            ),
+                                          ],
+                                        ),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () =>
+                                                Navigator.of(context).pop(),
+                                            child: const Text('Cancel'),
+                                          ),
+                                          ElevatedButton(
+                                            onPressed: () {
+                                              // TODO: 실제 수정 로직 연결
+
+                                              Navigator.of(context).pop();
+                                              mcpConfigBloc.add(
+                                                  McpConfigEvent.editMcpServer(
+                                                      McpServerInfo(
+                                                          name: name!,
+                                                          url: url,
+                                                          version: mcptool
+                                                              .config.version,
+                                                          isConnected: mcptool
+                                                              .isConnected)));
+                                            },
+                                            child: const Text('Save'),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
+                                },
+                              ),
                             ],
                           ),
                           children: [

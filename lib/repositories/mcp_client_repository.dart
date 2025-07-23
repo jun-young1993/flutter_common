@@ -16,28 +16,33 @@ class McpClientSetupConfig {
 abstract class McpClientRepository {
   Future<Client> initialize(McpClientSetupConfig config,
       Function(bool, List<Tool>, McpClientSetupConfig) onConnection);
-  Future<void> disconnect();
+  Future<void> disconnect(String name);
+  Future<Client?> getMcpClient(String name);
 }
 
 class McpClientDefaultRepository extends McpClientRepository {
-  Client? _mcpClient;
+  final Map<String, Client?> _mcpClients = {};
   @override
   Future<Client> initialize(McpClientSetupConfig config,
       Function(bool, List<Tool>, McpClientSetupConfig) onConnection) async {
-    if (_mcpClient != null) {
-      return _mcpClient!;
+    if (_mcpClients[config.name] != null) {
+      return _mcpClients[config.name]!;
     }
     await _setupMcpClient(config);
-    onConnection(
-        _mcpClient!.isConnected, await _mcpClient!.listTools(), config);
+    onConnection(_mcpClients[config.name]!.isConnected,
+        await _mcpClients[config.name]!.listTools(), config);
     // _mcpClient!.onNotification('connection_state_changed', (params) async {
     //   final state = params['state'] as String;
     //   final tools = await _mcpClient!.listTools();
     //   debugPrint('MCP connection state: $state');
 
     // });
+    return _mcpClients[config.name]!;
+  }
 
-    return _mcpClient!;
+  @override
+  Future<Client?> getMcpClient(String name) async {
+    return _mcpClients[name];
   }
 
   Future<Client> _setupMcpClient(McpClientSetupConfig config) async {
@@ -64,13 +69,15 @@ class McpClientDefaultRepository extends McpClientRepository {
       transportConfig: transportConfig,
     );
 
-    _mcpClient = clientResult.get();
+    final mcpClient = clientResult.get();
+    _mcpClients[config.name] = mcpClient;
 
-    return _mcpClient!;
+    return mcpClient;
   }
 
   @override
-  Future<void> disconnect() async {
-    _mcpClient?.dispose();
+  Future<void> disconnect(String name) async {
+    _mcpClients[name]?.dispose();
+    _mcpClients[name] = null;
   }
 }

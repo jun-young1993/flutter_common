@@ -6,7 +6,6 @@ import 'package:flutter_common/repositories/mcp_server_repository.dart';
 import 'package:flutter_common/repositories/run_mcp_server.dart';
 import 'package:mcp_llm/mcp_llm.dart';
 import 'package:mcp_client/mcp_client.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter/foundation.dart';
 import 'package:mcp_server/mcp_server.dart' as mcp_server;
 
