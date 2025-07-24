@@ -8,6 +8,7 @@ abstract class Tr {
   static final error = _Error();
   static final message = _Message();
   static final chat = _Chat();
+  static final notice = _Notice();
 }
 
 class _App {
@@ -35,6 +36,7 @@ class _App {
   final community = 'app.community';
   final userInfo = 'app.userInfo';
   final contacts = 'app.contacts';
+  final noUser = 'app.noUser';
 }
 
 class _Error {
@@ -95,4 +97,10 @@ class _ApiKey {
   final hint = 'mcp.apiKey.hint';
   final save = 'mcp.apiKey.save';
   final clear = 'mcp.apiKey.clear';
+}
+
+class _Notice {
+  final replyCount = 'notice.replyCount'; // 댓글 {count}개
+  final report = 'notice.report'; // 신고
+  final noReply = 'notice.noReply'; // 아직 댓글이 없습니다.
 }

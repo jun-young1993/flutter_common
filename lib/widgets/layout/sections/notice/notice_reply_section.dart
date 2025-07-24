@@ -3,16 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_common/common_il8n.dart';
 import 'package:flutter_common/constants/size_constants.dart';
 import 'package:flutter_common/models/notice/notice_reply.dart';
+import 'package:flutter_common/models/user/user.dart';
 import 'package:intl/intl.dart';
 
 class NoticeReplySection extends StatefulWidget {
   final List<NoticeReply> replies;
+  final User? user;
   final Function(String) onSubmitReply;
 
   const NoticeReplySection({
     super.key,
     required this.replies,
     required this.onSubmitReply,
+    this.user,
   });
 
   @override
@@ -50,7 +53,9 @@ class _NoticeReplySectionState extends State<NoticeReplySection> {
 
   Widget _buildReplyCount(BuildContext context) {
     return Text(
-      '댓글 ${widget.replies.length}개',
+      Tr.notice.replyCount.tr(namedArgs: {
+        'count': widget.replies.isEmpty ? '0' : widget.replies.length.toString()
+      }),
       style: const TextStyle(
         fontSize: 16,
         fontWeight: FontWeight.bold,
@@ -80,12 +85,15 @@ class _NoticeReplySectionState extends State<NoticeReplySection> {
           ),
           TextButton(
             onPressed: () {
-              if (_replyController.text.trim().isNotEmpty) {
+              if (_replyController.text.trim().isNotEmpty &&
+                  widget.user != null) {
                 widget.onSubmitReply(_replyController.text);
                 _replyController.clear();
               }
             },
-            child: Text(Tr.app.register.tr()),
+            child: Text(widget.user == null
+                ? Tr.app.noUser.tr()
+                : Tr.app.register.tr()),
           ),
         ],
       ),
@@ -123,7 +131,7 @@ class _NoticeReplySectionState extends State<NoticeReplySection> {
           ),
           const SizedBox(height: 8),
           Text(
-            '아직 댓글이 없습니다',
+            Tr.notice.noReply.tr(),
             style: TextStyle(
               color: Colors.grey.shade600,
             ),

@@ -22,11 +22,12 @@ class NoticeReplyDefaultRepository extends NoticeReplyRepository {
   @override
   Future<NoticeReply> add(
       String noticeId, String content, String userId) async {
-    final response =
-        await dioClient.post('/notice-reply/notice/$noticeId', data: {
+    final response = await dioClient.post('/notice-reply/notice', data: {
+      'noticeId': noticeId,
       'content': content,
       'userId': userId,
     });
+
     return NoticeReply.fromJson(response.data);
   }
 }

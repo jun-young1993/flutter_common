@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_common/common_il8n.dart';
+import 'package:flutter_common/models/user/user.dart';
 import 'package:flutter_common/repositories/notice_group_repository.dart';
 import 'package:flutter_common/state/notice/notice_bloc.dart';
 import 'package:flutter_common/state/notice/notice_event.dart';
@@ -9,13 +10,16 @@ import 'package:flutter_common/state/notice_group/notice_group_bloc.dart';
 import 'package:flutter_common/state/notice_group/notice_group_event.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_common/state/notice_group/notice_group_selector.dart';
+import 'package:flutter_common/state/notice_reply/notice_reply_bloc.dart';
+import 'package:flutter_common/state/notice_reply/notice_reply_event.dart';
 import 'package:flutter_common/widgets/layout/notice_detail_screen.dart';
 import 'package:flutter_common/widgets/lib/container/card_container.dart';
 import 'package:flutter_common/widgets/ui/notice/notice_list_item.dart';
 
 class NoticeScreenLayout extends StatefulWidget {
   final String groupName;
-  const NoticeScreenLayout({super.key, required this.groupName});
+  final User? user;
+  const NoticeScreenLayout({super.key, required this.groupName, this.user});
 
   @override
   State<NoticeScreenLayout> createState() => _NoticeScreenLayoutState();
@@ -26,6 +30,7 @@ class _NoticeScreenLayoutState extends State<NoticeScreenLayout> {
   bool _isFetching = false;
   NoticeGroupBloc get noticeGroupBloc => context.read<NoticeGroupBloc>();
   NoticeBloc get noticeBloc => context.read<NoticeBloc>();
+  NoticeReplyBloc get noticeReplyBloc => context.read<NoticeReplyBloc>();
 
   @override
   void initState() {
@@ -91,8 +96,16 @@ class _NoticeScreenLayoutState extends State<NoticeScreenLayout> {
                       MaterialPageRoute(
                         builder: (_) => NoticeDetailSection(
                           notice: notice,
+                          user: widget.user,
                           onReport: (reason, comment) {
                             // TODO: 신고 처리 로직
+                          },
+                          onSubmitReply: (reply) {
+                            if (widget.user == null) {
+                              return;
+                            }
+                            noticeReplyBloc.add(NoticeReplyEvent.add(
+                                notice.id, reply, widget.user!.id));
                           },
                         ),
                       ),

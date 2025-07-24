@@ -37,7 +37,8 @@
         "authEmail": "Authenticate Email",
         "community": "Community",
         "userInfo": "User Info",
-        "contacts": "Contacts"
+        "contacts": "Contacts",
+        "noUser": "Please login to use."
     },
     "error": {
         "unknownError": "An unknown error has occurred.",
@@ -73,5 +74,10 @@
         "sendMessageTooltip": "Send Message",
         "apiKeyInstruction": "Please set your {apiKeyName} API Key in the Settings menu (⚙️) to start chatting.",
         "title": "Chat"
+    },
+    "notice": {
+        "replyCount": "Reply {count} items",
+        "report": "Report",
+        "noReply": "No replies yet."
     }
 } 

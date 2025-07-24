@@ -22,6 +22,7 @@ class NoticeReplyBloc extends BaseBloc<NoticeReplyEvent, NoticeReplyState> {
           add: (e) async {
             await handleEvent(emit, () async {
               await noticeReplyRepository.add(e.noticeId, e.content, e.userId);
+              add(NoticeReplyEvent.findAll(e.noticeId));
             });
           },
         );

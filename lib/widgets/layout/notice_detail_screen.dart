@@ -10,18 +10,21 @@ import 'package:flutter_common/widgets/layout/sections/notice/notice_detail_main
 import 'package:flutter_common/widgets/layout/sections/notice/notice_reply_section.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_common/models/user/user.dart';
 
 class NoticeDetailSection extends StatefulWidget {
   final Notice notice;
   final DateFormat dateFormatter = DateFormat('yyyy.MM.dd HH:mm');
   final Function(String)? onSubmitReply;
   final Function(ReportReason, String?) onReport;
+  final User? user;
 
   NoticeDetailSection({
     super.key,
     required this.notice,
     required this.onReport,
     this.onSubmitReply,
+    this.user,
   });
 
   @override
@@ -72,6 +75,7 @@ class _NoticeDetailSectionState extends State<NoticeDetailSection> {
             SizedBox(height: SizeConstants.getContainerVerticalMargin(context)),
             NoticeReplyFindAllSelector(
               (replies) => NoticeReplySection(
+                user: widget.user,
                 replies: replies ?? [],
                 onSubmitReply: widget.onSubmitReply ?? (reply) {},
               ),
