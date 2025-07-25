@@ -95,5 +95,17 @@
         "normal": "Normal",
         "register": "Register",
         "createNotice": "Notice created successfully"
+    },
+    "report": {
+        "title": "Please select a reason for reporting.",
+        "description": "If the report does not match the reason,\nthe report will not be processed.\nUsers with 3 or more cumulative reports cannot create posts.",
+        "wrongInfo": "Wrong Information",
+        "commercialAd": "Commercial Advertisement",
+        "adultContent": "Adult Content",
+        "violence": "Violence",
+        "etc": "Other",
+        "etcHint": "Please enter other reasons",
+        "cancel": "Cancel",
+        "submit": "Report"
     }
 } 

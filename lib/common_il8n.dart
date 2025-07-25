@@ -9,6 +9,7 @@ abstract class Tr {
   static final message = _Message();
   static final chat = _Chat();
   static final notice = _Notice();
+  static final report = _Report();
 }
 
 class _App {
@@ -120,4 +121,16 @@ class _Notice {
   final normal = 'notice.normal'; // 일반
   final register = 'notice.register'; // 등록하기
   final createNotice = 'notice.createNotice'; // 공지사항 작성 완료
+}
+
+class _Report {
+  final title = 'report.title'; // 신고
+  final reason = 'report.reason'; // 신고 사유
+  final comment = 'report.comment'; // 신고 내용
+  final submit = 'report.submit'; // 제출
+  final wrongInfo = 'report.wrongInfo'; // 잘못된 정보
+  final commercialAd = 'report.commercialAd'; // 상업적 광고
+  final adultContent = 'report.adultContent'; // 음란물
+  final violence = 'report.violence'; // 폭력성
+  final etc = 'report.etc'; // 기타
 }

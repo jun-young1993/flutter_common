@@ -95,5 +95,17 @@
         "normal": "일반",
         "register": "등록하기",
         "createNotice": "공지사항 작성 완료"
+    },
+    "report": {
+        "title": "신고사유를 선택해주십시오.",
+        "description": "신고 사유에 맞지 않는 신고일 경우,\n해당 신고는 처리되지 않습니다.\n누적 신고횟수가 3회 이상인 유저는 게시글 작성을 할 수 없게 됩니다.",
+        "wrongInfo": "잘못된 정보",
+        "commercialAd": "상업적 광고",
+        "adultContent": "성인 콘텐츠",
+        "violence": "폭력성",
+        "etc": "기타",
+        "etcHint": "기타 사유를 입력해주세요",
+        "cancel": "취소",
+        "submit": "신고하기"
     }
 } 

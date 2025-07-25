@@ -3,15 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_common/common_il8n.dart';
 
 enum ReportReason {
-  wrongInfo('잘못된 정보'),
-  commercialAd('상업적 광고'),
-  adultContent('음란물'),
-  violence('폭력성'),
-  etc('기타');
+  wrongInfo('report.wrongInfo'),
+  commercialAd('report.commercialAd'),
+  adultContent('report.adultContent'),
+  violence('report.violence'),
+  etc('report.etc');
 
-  final String label;
-  const ReportReason(this.label);
+  final String translationKey;
+  const ReportReason(this.translationKey);
 
+  String get label => tr(translationKey);
   String get value => name;
 
   IconData get icon {
@@ -154,7 +155,7 @@ class _ReportDialogContentState extends State<_ReportDialogContent>
                   ),
                   const SizedBox(height: 20),
                   Text(
-                    '신고사유를 선택해주십시오.',
+                    'report.title'.tr(),
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
                           fontWeight: FontWeight.bold,
                           color: Colors.grey.shade800,
@@ -163,7 +164,7 @@ class _ReportDialogContentState extends State<_ReportDialogContent>
                   ),
                   const SizedBox(height: 12),
                   Text(
-                    '신고 사유에 맞지 않는 신고일 경우,\n해당 신고는 처리되지 않습니다.\n누적 신고횟수가 3회 이상인 유저는 게시글 작성을 할 수 없게 됩니다.',
+                    'report.description'.tr(),
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                           color: Colors.grey.shade600,
                           height: 1.5,
@@ -248,7 +249,7 @@ class _ReportDialogContentState extends State<_ReportDialogContent>
                     TextField(
                       controller: _etcController,
                       decoration: InputDecoration(
-                        hintText: '기타 사유를 입력해주세요',
+                        hintText: 'report.etcHint'.tr(),
                         hintStyle: TextStyle(color: Colors.grey.shade400),
                         filled: true,
                         fillColor: Colors.grey.shade50,
@@ -290,7 +291,7 @@ class _ReportDialogContentState extends State<_ReportDialogContent>
                             ),
                           ),
                           child: Text(
-                            '취소',
+                            'report.cancel'.tr(),
                             style: TextStyle(
                               fontSize: 16,
                               color: Colors.grey.shade700,
@@ -312,9 +313,9 @@ class _ReportDialogContentState extends State<_ReportDialogContent>
                               borderRadius: BorderRadius.circular(12),
                             ),
                           ),
-                          child: const Text(
-                            '신고하기',
-                            style: TextStyle(
+                          child: Text(
+                            'report.submit'.tr(),
+                            style: const TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w600,
                             ),
