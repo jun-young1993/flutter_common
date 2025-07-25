@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_common/common_il8n.dart';
+import 'package:flutter_common/extensions/app_exception.dart';
 import 'package:flutter_common/models/user/user.dart';
 import 'package:flutter_common/repositories/notice_group_repository.dart';
 import 'package:flutter_common/state/notice/notice_bloc.dart';
@@ -12,14 +13,21 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_common/state/notice_group/notice_group_selector.dart';
 import 'package:flutter_common/state/notice_reply/notice_reply_bloc.dart';
 import 'package:flutter_common/state/notice_reply/notice_reply_event.dart';
+import 'package:flutter_common/widgets/layout/notice_create_screen.dart';
 import 'package:flutter_common/widgets/layout/notice_detail_screen.dart';
 import 'package:flutter_common/widgets/lib/container/card_container.dart';
+import 'package:flutter_common/widgets/toast/toast.dart';
 import 'package:flutter_common/widgets/ui/notice/notice_list_item.dart';
 
 class NoticeScreenLayout extends StatefulWidget {
   final String groupName;
-  final User? user;
-  const NoticeScreenLayout({super.key, required this.groupName, this.user});
+  final User user;
+
+  const NoticeScreenLayout({
+    super.key,
+    required this.groupName,
+    required this.user,
+  });
 
   @override
   State<NoticeScreenLayout> createState() => _NoticeScreenLayoutState();
@@ -35,6 +43,7 @@ class _NoticeScreenLayoutState extends State<NoticeScreenLayout> {
   @override
   void initState() {
     super.initState();
+    noticeGroupBloc.add(NoticeGroupEvent.findNoticeGroup(widget.groupName));
     noticeBloc.add(NoticeEvent.findAll(widget.groupName));
     _scrollController.addListener(_onScroll);
   }
@@ -73,11 +82,30 @@ class _NoticeScreenLayoutState extends State<NoticeScreenLayout> {
 
   @override
   Widget build(BuildContext context) {
-    return NoticeFindAllSelector((notices) {
+    return Scaffold(
+        floatingActionButton: NoticeGroupFindSelector((noticeGroup) {
+      if (noticeGroup == null) {
+        return const SizedBox.shrink();
+      }
+      return FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+                builder: (_) => NoticeCreateScreen(
+                      onSubmit: (title, content, type) {
+                        noticeBloc.add(NoticeEvent.create(title, content, type,
+                            noticeGroup.id, widget.user.username ?? 'unknown'));
+                        Navigator.of(context).pop();
+                      },
+                    )),
+          );
+        },
+        child: const Icon(Icons.add),
+      );
+    }), body: NoticeFindAllSelector((notices) {
       if (notices == null || notices.isEmpty) {
         return Center(child: Text(Tr.message.notFoundNotice.tr()));
       }
-
       return SingleChildScrollView(
         controller: _scrollController,
         padding: const EdgeInsets.all(16),
@@ -98,14 +126,12 @@ class _NoticeScreenLayoutState extends State<NoticeScreenLayout> {
                           notice: notice,
                           user: widget.user,
                           onReport: (reason, comment) {
-                            // TODO: 신고 처리 로직
+                            noticeBloc.add(NoticeEvent.report(notice.id,
+                                widget.user.id, reason.value, comment));
                           },
                           onSubmitReply: (reply) {
-                            if (widget.user == null) {
-                              return;
-                            }
                             noticeReplyBloc.add(NoticeReplyEvent.add(
-                                notice.id, reply, widget.user!.id));
+                                notice.id, reply, widget.user.id));
                           },
                         ),
                       ),
@@ -126,6 +152,6 @@ class _NoticeScreenLayoutState extends State<NoticeScreenLayout> {
           ],
         ),
       );
-    });
+    }));
   }
 }

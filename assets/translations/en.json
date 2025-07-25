@@ -58,7 +58,9 @@
         "inviteMessage": "You are invited to {appName}. \nPlease install the app using the QR code below.",
         "contact": "Please contact us at the email below.",
         "emailVerification": "You can keep your account secure and recover it through email verification.",
-        "inputEmail": "Please enter your email."
+        "inputEmail": "Please enter your email.",
+        "createNotice": "Notice created successfully",
+        "reportNotice": "Report created successfully"
     },
     "chat": {
         "clearChat": "Clear Chat",
@@ -78,6 +80,20 @@
     "notice": {
         "replyCount": "Reply {count} items",
         "report": "Report",
-        "noReply": "No replies yet."
+        "noReply": "No replies yet.",
+        "description": "Description",
+        "title": "Title",
+        "contentDescription": "Inappropriate or offensive content may be subject to moderation",
+        "content": "Content",
+        "type": "Type",
+        "submit": "Submit",
+        "noticeCreate": "Notice Create",
+        "noticeCreateTitle": "Title",
+        "noticeCreateContent": "Content",
+        "noticeCreateType": "Type",
+        "notice": "Notice",
+        "normal": "Normal",
+        "register": "Register",
+        "createNotice": "Notice created successfully"
     }
 } 

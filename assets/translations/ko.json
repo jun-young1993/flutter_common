@@ -36,7 +36,7 @@
         "inputAuthNumber": "인증번호를 입력해주세요.",
         "authEmail": "이메일 인증",
         "community": "커뮤니티",
-        "userInfo": "사용자 정보",
+        "userInfo": "사용자 정보",  
         "contacts": "연락처",
         "noUser": "로그인 후 이용해주세요."
     },
@@ -58,7 +58,9 @@
         "inviteMessage": "{appName}에 초대합니다. \n아래 QR 코드를 통해 앱을 설치해주세요.",
         "contact": "아래 이메일로 문의해주세요.",
         "emailVerification": "이메일 인증을 통해 계정을 안전하게 유지하고 복구할 수 있습니다.",
-        "inputEmail": "이메일을 입력해주세요."
+        "inputEmail": "이메일을 입력해주세요.",
+        "createNotice": "공지사항 작성 완료",
+        "reportNotice": "신고 완료"
     },
     "chat": {
         "clearChat": "채팅 지우기",
@@ -78,6 +80,20 @@
     "notice": {
         "replyCount": "댓글 {count}개",
         "report": "신고",
-        "noReply": "아직 댓글이 없습니다."
+        "noReply": "아직 댓글이 없습니다.",
+        "description": "내용",
+        "title": "제목",
+        "contentDescription": "부적절하거나 불쾌감을 줄 수 있는 컨텐츠는 제재를 받을 수 있습니다",
+        "content": "내용",
+        "type": "유형",
+        "submit": "제출",
+        "noticeCreate": "공지사항 작성",
+        "noticeCreateTitle": "제목",
+        "noticeCreateContent": "내용",
+        "noticeCreateType": "유형",
+        "notice": "공지",
+        "normal": "일반",
+        "register": "등록하기",
+        "createNotice": "공지사항 작성 완료"
     }
 } 

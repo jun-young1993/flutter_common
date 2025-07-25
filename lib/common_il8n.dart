@@ -61,6 +61,8 @@ class _Message {
   final emailVerification =
       'message.emailVerification'; // 이메일 인증을 통해 계정을 안전하게 유지하고 복구할 수 있습니다.
   final inputEmail = 'message.inputEmail'; // 이메일
+  final createNotice = 'message.createNotice'; // 공지사항 작성 완료
+  final reportNotice = 'message.reportNotice'; // 신고 완료
 }
 
 class _Chat {
@@ -103,4 +105,19 @@ class _Notice {
   final replyCount = 'notice.replyCount'; // 댓글 {count}개
   final report = 'notice.report'; // 신고
   final noReply = 'notice.noReply'; // 아직 댓글이 없습니다.
+  final description = 'notice.description'; // 내용
+  final title = 'notice.title'; // 제목
+  final contentDescription =
+      'notice.contentDescription'; // 부적절하거나 불쾌감을 줄 수 있는 컨텐츠는 제재를 받을 수 있습니다
+  final content = 'notice.content'; // 내용
+  final type = 'notice.type'; // 유형
+  final submit = 'notice.submit'; // 제출
+  final noticeCreate = 'notice.noticeCreate'; // 공지사항 작성
+  final noticeCreateTitle = 'notice.noticeCreateTitle'; // 제목
+  final noticeCreateContent = 'notice.noticeCreateContent'; // 내용
+  final noticeCreateType = 'notice.noticeCreateType'; // 유형
+  final notice = 'notice.notice'; // 공지
+  final normal = 'notice.normal'; // 일반
+  final register = 'notice.register'; // 등록하기
+  final createNotice = 'notice.createNotice'; // 공지사항 작성 완료
 }

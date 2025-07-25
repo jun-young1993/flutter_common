@@ -3,6 +3,10 @@ import 'package:flutter_common/network/dio_client.dart';
 
 abstract class NoticeRepository {
   Future<List<Notice>?> findAll(String name, int skip, int take);
+  Future<Notice> create(String title, String content, String type,
+      String noticeGroupId, String userName);
+  Future<void> report(
+      String noticeId, String reporterId, String type, String? content);
 }
 
 class NoticeDefaultRepository extends NoticeRepository {
@@ -25,5 +29,40 @@ class NoticeDefaultRepository extends NoticeRepository {
 
     throw Exception(
         '[${response.statusCode}] Failed to fetch notices: ${response.statusMessage ?? 'Unknown error'}');
+  }
+
+  @override
+  Future<Notice> create(String title, String content, String type,
+      String noticeGroupId, String userName) async {
+    final response = await dioClient.post('/notice', data: {
+      'title': title,
+      'content': content,
+      'type': type,
+      'noticeGroupId': noticeGroupId,
+      'userName': userName,
+    });
+
+    if (response.statusCode == 201) {
+      return Notice.fromJson(response.data as Map<String, dynamic>);
+    }
+
+    throw Exception(
+        '[${response.statusCode}] Failed to create notice: ${response.statusMessage ?? 'Unknown error'}');
+  }
+
+  @override
+  Future<void> report(
+      String noticeId, String reporterId, String type, String? content) async {
+    final response = await dioClient.post('/notice-reports', data: {
+      'noticeId': noticeId,
+      'reporterId': reporterId,
+      'type': type,
+      'content': content ?? 'no content',
+    });
+
+    if (response.statusCode != 201) {
+      throw Exception(
+          '[${response.statusCode}] Failed to report notice: ${response.statusMessage ?? 'Unknown error'}');
+    }
   }
 }

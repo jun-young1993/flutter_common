@@ -10,6 +10,7 @@ class NoticeState with _$NoticeState, BaseStateMixin {
   const factory NoticeState({
     @Default(false) bool isLoading,
     @Default(null) AppException? error,
+    @Default(null) String? successMessage,
     @Default(null) Notice? notice,
     @Default([]) List<Notice>? notices,
     @Default(0) int skipCount,

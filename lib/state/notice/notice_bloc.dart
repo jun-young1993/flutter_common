@@ -1,3 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter_common/common_il8n.dart';
 import 'package:flutter_common/extensions/app_exception.dart';
 import 'package:flutter_common/repositories/notice_repository.dart';
 import 'package:flutter_common/state/notice/notice_event.dart';
@@ -36,6 +38,35 @@ class NoticeBloc extends Bloc<NoticeEvent, NoticeState> {
               },
             );
           },
+          create: (e) async {
+            await _handleEvent(
+              emit,
+              () async {
+                final notice = await _noticeRepository.create(
+                    e.title, e.content, e.type, e.noticeGroupId, e.userName);
+
+                emit(state.copyWith(
+                  notices: [notice, ...(state.notices ?? [])],
+                  successMessage: Tr.message.createNotice.tr(),
+                ));
+              },
+            );
+          },
+          report: (e) async {
+            await _handleEvent(
+              emit,
+              () async {
+                await _noticeRepository.report(
+                    e.noticeId, e.reporterId, e.type, e.comment);
+                emit(state.copyWith(
+                  successMessage: Tr.message.reportNotice.tr(),
+                ));
+              },
+            );
+          },
+          removeSuccessMessage: (e) {
+            emit(state.copyWith(successMessage: null));
+          },
         );
       },
     );
@@ -56,7 +87,7 @@ class NoticeBloc extends Bloc<NoticeEvent, NoticeState> {
       emit(state.copyWith(
           error: defaultError ?? AppException.unknown(e.toString())));
     } finally {
-      emit(state.copyWith(isLoading: false));
+      emit(state.copyWith(isLoading: false, error: null, successMessage: null));
     }
   }
 }
