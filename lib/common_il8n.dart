@@ -10,6 +10,7 @@ abstract class Tr {
   static final chat = _Chat();
   static final notice = _Notice();
   static final report = _Report();
+  static final ad = _Ad();
 }
 
 class _App {
@@ -133,4 +134,12 @@ class _Report {
   final adultContent = 'report.adultContent'; // 음란물
   final violence = 'report.violence'; // 폭력성
   final etc = 'report.etc'; // 기타
+}
+
+class _Ad {
+  final title = 'ad.title'; // 광고
+  final loadFailed = 'ad.loadFailed'; // 광고 로드 실패
+  final loadSuccess = 'ad.loadSuccess'; // 광고 로드 성공
+  final load = 'ad.load'; // 광고 로드
+  final loading = 'ad.loading'; // 광고 로딩중...
 }

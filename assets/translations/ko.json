@@ -107,5 +107,12 @@
         "etcHint": "기타 사유를 입력해주세요",
         "cancel": "취소",
         "submit": "신고하기"
+    },
+    "ad": {
+        "title": "광고",
+        "loadFailed": "광고 로드 실패",
+        "loadSuccess": "광고 로드 성공",
+        "load": "광고 로드",
+        "loading": "광고 로딩중..."
     }
 } 

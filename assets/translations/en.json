@@ -107,5 +107,12 @@
         "etcHint": "Please enter other reasons",
         "cancel": "Cancel",
         "submit": "Report"
+    },
+    "ad": {
+        "title": "Ad",
+        "loadFailed": "Ad load failed",
+        "loadSuccess": "Ad load success",
+        "load": "Ad load",
+        "loading": "Ad loading..."
     }
 } 
