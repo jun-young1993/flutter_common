@@ -42,6 +42,7 @@ class AdManager {
     final platform = Platform.isAndroid ? 'android' : 'ios';
     final adUnitIds = _isTestMode ? _testAdUnitIds : _realAdUnitIds;
     final adUnitId = adUnitIds[platform]?[adType];
+
     if (adUnitId == null || adUnitId.isEmpty) {
       throw Exception('광고 ID가 존재하지 않습니다.');
     }
