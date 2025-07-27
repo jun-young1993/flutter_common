@@ -6,4 +6,5 @@ part 'app_reward_event.freezed.dart';
 class AppRewardEvent with _$AppRewardEvent {
   const factory AppRewardEvent.initialize() = _Initialize;
   const factory AppRewardEvent.clearError() = _ClearError;
+  const factory AppRewardEvent.getPointTransactions() = _GetPointTransactions;
 }

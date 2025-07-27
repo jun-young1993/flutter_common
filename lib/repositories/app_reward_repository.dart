@@ -1,8 +1,10 @@
+import 'package:flutter_common/models/app-reward/point_transaction.dart';
 import 'package:flutter_common/models/app-reward/user_point_balance.dart';
 import 'package:flutter_common/network/dio_client.dart';
 
 abstract class AppRewardRepository {
   Future<UserPointBalance> getUserPointBalance(String userId);
+  Future<List<PointTransaction>> getPointTransactions(String userId);
 }
 
 class AppRewardDefaultRepository extends AppRewardRepository {
@@ -14,5 +16,13 @@ class AppRewardDefaultRepository extends AppRewardRepository {
   Future<UserPointBalance> getUserPointBalance(String userId) async {
     final response = await dioClient.get('/app-reward/points/$userId');
     return UserPointBalance.fromJson(response.data);
+  }
+
+  @override
+  Future<List<PointTransaction>> getPointTransactions(String userId) async {
+    final response = await dioClient.get('/app-reward/transactions/$userId');
+    return (response.data as List)
+        .map((e) => PointTransaction.fromJson(e))
+        .toList();
   }
 }

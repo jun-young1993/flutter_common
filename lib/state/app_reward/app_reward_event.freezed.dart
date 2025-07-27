@@ -20,18 +20,21 @@ mixin _$AppRewardEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() initialize,
     required TResult Function() clearError,
+    required TResult Function() getPointTransactions,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialize,
     TResult? Function()? clearError,
+    TResult? Function()? getPointTransactions,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialize,
     TResult Function()? clearError,
+    TResult Function()? getPointTransactions,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$AppRewardEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialize value) initialize,
     required TResult Function(_ClearError value) clearError,
+    required TResult Function(_GetPointTransactions value) getPointTransactions,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialize value)? initialize,
     TResult? Function(_ClearError value)? clearError,
+    TResult? Function(_GetPointTransactions value)? getPointTransactions,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialize value)? initialize,
     TResult Function(_ClearError value)? clearError,
+    TResult Function(_GetPointTransactions value)? getPointTransactions,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -120,6 +126,7 @@ class _$InitializeImpl implements _Initialize {
   TResult when<TResult extends Object?>({
     required TResult Function() initialize,
     required TResult Function() clearError,
+    required TResult Function() getPointTransactions,
   }) {
     return initialize();
   }
@@ -129,6 +136,7 @@ class _$InitializeImpl implements _Initialize {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialize,
     TResult? Function()? clearError,
+    TResult? Function()? getPointTransactions,
   }) {
     return initialize?.call();
   }
@@ -138,6 +146,7 @@ class _$InitializeImpl implements _Initialize {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialize,
     TResult Function()? clearError,
+    TResult Function()? getPointTransactions,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -151,6 +160,7 @@ class _$InitializeImpl implements _Initialize {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialize value) initialize,
     required TResult Function(_ClearError value) clearError,
+    required TResult Function(_GetPointTransactions value) getPointTransactions,
   }) {
     return initialize(this);
   }
@@ -160,6 +170,7 @@ class _$InitializeImpl implements _Initialize {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialize value)? initialize,
     TResult? Function(_ClearError value)? clearError,
+    TResult? Function(_GetPointTransactions value)? getPointTransactions,
   }) {
     return initialize?.call(this);
   }
@@ -169,6 +180,7 @@ class _$InitializeImpl implements _Initialize {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialize value)? initialize,
     TResult Function(_ClearError value)? clearError,
+    TResult Function(_GetPointTransactions value)? getPointTransactions,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -225,6 +237,7 @@ class _$ClearErrorImpl implements _ClearError {
   TResult when<TResult extends Object?>({
     required TResult Function() initialize,
     required TResult Function() clearError,
+    required TResult Function() getPointTransactions,
   }) {
     return clearError();
   }
@@ -234,6 +247,7 @@ class _$ClearErrorImpl implements _ClearError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialize,
     TResult? Function()? clearError,
+    TResult? Function()? getPointTransactions,
   }) {
     return clearError?.call();
   }
@@ -243,6 +257,7 @@ class _$ClearErrorImpl implements _ClearError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialize,
     TResult Function()? clearError,
+    TResult Function()? getPointTransactions,
     required TResult orElse(),
   }) {
     if (clearError != null) {
@@ -256,6 +271,7 @@ class _$ClearErrorImpl implements _ClearError {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialize value) initialize,
     required TResult Function(_ClearError value) clearError,
+    required TResult Function(_GetPointTransactions value) getPointTransactions,
   }) {
     return clearError(this);
   }
@@ -265,6 +281,7 @@ class _$ClearErrorImpl implements _ClearError {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialize value)? initialize,
     TResult? Function(_ClearError value)? clearError,
+    TResult? Function(_GetPointTransactions value)? getPointTransactions,
   }) {
     return clearError?.call(this);
   }
@@ -274,6 +291,7 @@ class _$ClearErrorImpl implements _ClearError {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialize value)? initialize,
     TResult Function(_ClearError value)? clearError,
+    TResult Function(_GetPointTransactions value)? getPointTransactions,
     required TResult orElse(),
   }) {
     if (clearError != null) {
@@ -285,4 +303,116 @@ class _$ClearErrorImpl implements _ClearError {
 
 abstract class _ClearError implements AppRewardEvent {
   const factory _ClearError() = _$ClearErrorImpl;
+}
+
+/// @nodoc
+abstract class _$$GetPointTransactionsImplCopyWith<$Res> {
+  factory _$$GetPointTransactionsImplCopyWith(_$GetPointTransactionsImpl value,
+          $Res Function(_$GetPointTransactionsImpl) then) =
+      __$$GetPointTransactionsImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetPointTransactionsImplCopyWithImpl<$Res>
+    extends _$AppRewardEventCopyWithImpl<$Res, _$GetPointTransactionsImpl>
+    implements _$$GetPointTransactionsImplCopyWith<$Res> {
+  __$$GetPointTransactionsImplCopyWithImpl(_$GetPointTransactionsImpl _value,
+      $Res Function(_$GetPointTransactionsImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AppRewardEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$GetPointTransactionsImpl implements _GetPointTransactions {
+  const _$GetPointTransactionsImpl();
+
+  @override
+  String toString() {
+    return 'AppRewardEvent.getPointTransactions()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetPointTransactionsImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialize,
+    required TResult Function() clearError,
+    required TResult Function() getPointTransactions,
+  }) {
+    return getPointTransactions();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialize,
+    TResult? Function()? clearError,
+    TResult? Function()? getPointTransactions,
+  }) {
+    return getPointTransactions?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialize,
+    TResult Function()? clearError,
+    TResult Function()? getPointTransactions,
+    required TResult orElse(),
+  }) {
+    if (getPointTransactions != null) {
+      return getPointTransactions();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_ClearError value) clearError,
+    required TResult Function(_GetPointTransactions value) getPointTransactions,
+  }) {
+    return getPointTransactions(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialize value)? initialize,
+    TResult? Function(_ClearError value)? clearError,
+    TResult? Function(_GetPointTransactions value)? getPointTransactions,
+  }) {
+    return getPointTransactions?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_ClearError value)? clearError,
+    TResult Function(_GetPointTransactions value)? getPointTransactions,
+    required TResult orElse(),
+  }) {
+    if (getPointTransactions != null) {
+      return getPointTransactions(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetPointTransactions implements AppRewardEvent {
+  const factory _GetPointTransactions() = _$GetPointTransactionsImpl;
 }

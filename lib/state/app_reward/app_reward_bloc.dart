@@ -1,18 +1,46 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_common/extensions/app_exception.dart';
+import 'package:flutter_common/repositories/app_reward_repository.dart';
+import 'package:flutter_common/repositories/user_repository.dart';
 import 'package:flutter_common/state/app_reward/app_reward_event.dart';
 import 'package:flutter_common/state/app_reward/app_reward_state.dart';
 
 class AppRewardBloc extends Bloc<AppRewardEvent, AppRewardState> {
-  AppRewardBloc() : super(AppRewardState.initialize()) {
+  final AppRewardRepository appRewardRepository;
+  final UserRepository userRepository;
+
+  AppRewardBloc({
+    required this.appRewardRepository,
+    required this.userRepository,
+  }) : super(AppRewardState.initialize()) {
     on<AppRewardEvent>(
       (event, emit) async {
         await event.map(
           initialize: (e) async {
-            await _handleEvent(emit, () async {});
+            final user = await userRepository.getUserInfo();
+
+            await _handleEvent(emit, () async {
+              final userPointBalance =
+                  await appRewardRepository.getUserPointBalance(
+                user.id,
+              );
+
+              emit(state.copyWith(userPointBalance: userPointBalance));
+            });
           },
           clearError: (e) async {
             emit(state.copyWith(isLoading: false, error: null));
+          },
+          getPointTransactions: (e) async {
+            await _handleEvent(emit, () async {
+              final user = await userRepository.getUserInfo();
+              final pointTransactions =
+                  await appRewardRepository.getPointTransactions(
+                user.id,
+              );
+
+              emit(state.copyWith(pointTransactions: pointTransactions));
+            });
           },
         );
       },

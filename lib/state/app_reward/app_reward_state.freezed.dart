@@ -19,6 +19,8 @@ mixin _$AppRewardState {
   bool get isLoading => throw _privateConstructorUsedError;
   AppException? get error => throw _privateConstructorUsedError;
   UserPointBalance? get userPointBalance => throw _privateConstructorUsedError;
+  List<PointTransaction>? get pointTransactions =>
+      throw _privateConstructorUsedError;
 
   /// Create a copy of AppRewardState
   /// with the given fields replaced by the non-null parameter values.
@@ -36,7 +38,8 @@ abstract class $AppRewardStateCopyWith<$Res> {
   $Res call(
       {bool isLoading,
       AppException? error,
-      UserPointBalance? userPointBalance});
+      UserPointBalance? userPointBalance,
+      List<PointTransaction>? pointTransactions});
 
   $AppExceptionCopyWith<$Res>? get error;
   $UserPointBalanceCopyWith<$Res>? get userPointBalance;
@@ -60,6 +63,7 @@ class _$AppRewardStateCopyWithImpl<$Res, $Val extends AppRewardState>
     Object? isLoading = null,
     Object? error = freezed,
     Object? userPointBalance = freezed,
+    Object? pointTransactions = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -74,6 +78,10 @@ class _$AppRewardStateCopyWithImpl<$Res, $Val extends AppRewardState>
           ? _value.userPointBalance
           : userPointBalance // ignore: cast_nullable_to_non_nullable
               as UserPointBalance?,
+      pointTransactions: freezed == pointTransactions
+          ? _value.pointTransactions
+          : pointTransactions // ignore: cast_nullable_to_non_nullable
+              as List<PointTransaction>?,
     ) as $Val);
   }
 
@@ -117,7 +125,8 @@ abstract class _$$AppRewardStateImplCopyWith<$Res>
   $Res call(
       {bool isLoading,
       AppException? error,
-      UserPointBalance? userPointBalance});
+      UserPointBalance? userPointBalance,
+      List<PointTransaction>? pointTransactions});
 
   @override
   $AppExceptionCopyWith<$Res>? get error;
@@ -141,6 +150,7 @@ class __$$AppRewardStateImplCopyWithImpl<$Res>
     Object? isLoading = null,
     Object? error = freezed,
     Object? userPointBalance = freezed,
+    Object? pointTransactions = freezed,
   }) {
     return _then(_$AppRewardStateImpl(
       isLoading: null == isLoading
@@ -155,6 +165,10 @@ class __$$AppRewardStateImplCopyWithImpl<$Res>
           ? _value.userPointBalance
           : userPointBalance // ignore: cast_nullable_to_non_nullable
               as UserPointBalance?,
+      pointTransactions: freezed == pointTransactions
+          ? _value._pointTransactions
+          : pointTransactions // ignore: cast_nullable_to_non_nullable
+              as List<PointTransaction>?,
     ));
   }
 }
@@ -163,8 +177,12 @@ class __$$AppRewardStateImplCopyWithImpl<$Res>
 
 class _$AppRewardStateImpl extends _AppRewardState {
   const _$AppRewardStateImpl(
-      {this.isLoading = false, this.error = null, this.userPointBalance = null})
-      : super._();
+      {this.isLoading = false,
+      this.error = null,
+      this.userPointBalance = null,
+      final List<PointTransaction>? pointTransactions = null})
+      : _pointTransactions = pointTransactions,
+        super._();
 
   @override
   @JsonKey()
@@ -175,10 +193,21 @@ class _$AppRewardStateImpl extends _AppRewardState {
   @override
   @JsonKey()
   final UserPointBalance? userPointBalance;
+  final List<PointTransaction>? _pointTransactions;
+  @override
+  @JsonKey()
+  List<PointTransaction>? get pointTransactions {
+    final value = _pointTransactions;
+    if (value == null) return null;
+    if (_pointTransactions is EqualUnmodifiableListView)
+      return _pointTransactions;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'AppRewardState(isLoading: $isLoading, error: $error, userPointBalance: $userPointBalance)';
+    return 'AppRewardState(isLoading: $isLoading, error: $error, userPointBalance: $userPointBalance, pointTransactions: $pointTransactions)';
   }
 
   @override
@@ -190,12 +219,18 @@ class _$AppRewardStateImpl extends _AppRewardState {
                 other.isLoading == isLoading) &&
             (identical(other.error, error) || other.error == error) &&
             (identical(other.userPointBalance, userPointBalance) ||
-                other.userPointBalance == userPointBalance));
+                other.userPointBalance == userPointBalance) &&
+            const DeepCollectionEquality()
+                .equals(other._pointTransactions, _pointTransactions));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, isLoading, error, userPointBalance);
+  int get hashCode => Object.hash(
+      runtimeType,
+      isLoading,
+      error,
+      userPointBalance,
+      const DeepCollectionEquality().hash(_pointTransactions));
 
   /// Create a copy of AppRewardState
   /// with the given fields replaced by the non-null parameter values.
@@ -211,7 +246,8 @@ abstract class _AppRewardState extends AppRewardState {
   const factory _AppRewardState(
       {final bool isLoading,
       final AppException? error,
-      final UserPointBalance? userPointBalance}) = _$AppRewardStateImpl;
+      final UserPointBalance? userPointBalance,
+      final List<PointTransaction>? pointTransactions}) = _$AppRewardStateImpl;
   const _AppRewardState._() : super._();
 
   @override
@@ -220,6 +256,8 @@ abstract class _AppRewardState extends AppRewardState {
   AppException? get error;
   @override
   UserPointBalance? get userPointBalance;
+  @override
+  List<PointTransaction>? get pointTransactions;
 
   /// Create a copy of AppRewardState
   /// with the given fields replaced by the non-null parameter values.

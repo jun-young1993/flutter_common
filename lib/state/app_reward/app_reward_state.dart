@@ -1,4 +1,5 @@
 import 'package:flutter_common/extensions/app_exception.dart';
+import 'package:flutter_common/models/app-reward/point_transaction.dart';
 import 'package:flutter_common/models/app-reward/user_point_balance.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -10,6 +11,7 @@ class AppRewardState with _$AppRewardState {
     @Default(false) bool isLoading,
     @Default(null) AppException? error,
     @Default(null) UserPointBalance? userPointBalance,
+    @Default(null) List<PointTransaction>? pointTransactions,
   }) = _AppRewardState;
 
   const AppRewardState._();
