@@ -124,3 +124,17 @@ class PointTransaction with _$PointTransaction {
   factory PointTransaction.fromJson(Map<String, dynamic> json) =>
       _$PointTransactionFromJson(json);
 }
+
+@freezed
+class UserReward with _$UserReward {
+  const factory UserReward(
+      {required String id,
+      required String userId,
+      required PointTransactionSource rewardType,
+      required int usageCount,
+      required int totalPoitEarned}) = _UserReward;
+
+  const UserReward._();
+  factory UserReward.fromJson(Map<String, dynamic> json) =>
+      _$UserRewardFromJson(json);
+}

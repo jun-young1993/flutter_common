@@ -44,14 +44,13 @@ class AppRewardPointTransactionsSelector
         );
 }
 
-class AppRewardDailyPointTransactionsSelector
-    extends AppRewardSelector<List<PointTransaction>?> {
-  AppRewardDailyPointTransactionsSelector(
-      Widget Function(List<PointTransaction>? dailyPointTransactions) builder,
+class AppRewardDailyUserRewardSelector
+    extends AppRewardSelector<List<UserReward>?> {
+  AppRewardDailyUserRewardSelector(
+      Widget Function(List<UserReward>? dailyUserReward) builder,
       {super.key})
       : super(
-          selector: (state) => state.dailyPointTransactions,
-          builder: (context, dailyPointTransactions) =>
-              builder(dailyPointTransactions),
+          selector: (state) => state.dailyUserReward,
+          builder: (context, dailyUserReward) => builder(dailyUserReward),
         );
 }

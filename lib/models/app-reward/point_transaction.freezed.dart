@@ -316,3 +316,242 @@ abstract class _PointTransaction extends PointTransaction {
   _$$PointTransactionImplCopyWith<_$PointTransactionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+UserReward _$UserRewardFromJson(Map<String, dynamic> json) {
+  return _UserReward.fromJson(json);
+}
+
+/// @nodoc
+mixin _$UserReward {
+  String get id => throw _privateConstructorUsedError;
+  String get userId => throw _privateConstructorUsedError;
+  PointTransactionSource get rewardType => throw _privateConstructorUsedError;
+  int get usageCount => throw _privateConstructorUsedError;
+  int get totalPoitEarned => throw _privateConstructorUsedError;
+
+  /// Serializes this UserReward to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of UserReward
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $UserRewardCopyWith<UserReward> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $UserRewardCopyWith<$Res> {
+  factory $UserRewardCopyWith(
+          UserReward value, $Res Function(UserReward) then) =
+      _$UserRewardCopyWithImpl<$Res, UserReward>;
+  @useResult
+  $Res call(
+      {String id,
+      String userId,
+      PointTransactionSource rewardType,
+      int usageCount,
+      int totalPoitEarned});
+}
+
+/// @nodoc
+class _$UserRewardCopyWithImpl<$Res, $Val extends UserReward>
+    implements $UserRewardCopyWith<$Res> {
+  _$UserRewardCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of UserReward
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? userId = null,
+    Object? rewardType = null,
+    Object? usageCount = null,
+    Object? totalPoitEarned = null,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      rewardType: null == rewardType
+          ? _value.rewardType
+          : rewardType // ignore: cast_nullable_to_non_nullable
+              as PointTransactionSource,
+      usageCount: null == usageCount
+          ? _value.usageCount
+          : usageCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalPoitEarned: null == totalPoitEarned
+          ? _value.totalPoitEarned
+          : totalPoitEarned // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$UserRewardImplCopyWith<$Res>
+    implements $UserRewardCopyWith<$Res> {
+  factory _$$UserRewardImplCopyWith(
+          _$UserRewardImpl value, $Res Function(_$UserRewardImpl) then) =
+      __$$UserRewardImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String id,
+      String userId,
+      PointTransactionSource rewardType,
+      int usageCount,
+      int totalPoitEarned});
+}
+
+/// @nodoc
+class __$$UserRewardImplCopyWithImpl<$Res>
+    extends _$UserRewardCopyWithImpl<$Res, _$UserRewardImpl>
+    implements _$$UserRewardImplCopyWith<$Res> {
+  __$$UserRewardImplCopyWithImpl(
+      _$UserRewardImpl _value, $Res Function(_$UserRewardImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of UserReward
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? userId = null,
+    Object? rewardType = null,
+    Object? usageCount = null,
+    Object? totalPoitEarned = null,
+  }) {
+    return _then(_$UserRewardImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      rewardType: null == rewardType
+          ? _value.rewardType
+          : rewardType // ignore: cast_nullable_to_non_nullable
+              as PointTransactionSource,
+      usageCount: null == usageCount
+          ? _value.usageCount
+          : usageCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalPoitEarned: null == totalPoitEarned
+          ? _value.totalPoitEarned
+          : totalPoitEarned // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$UserRewardImpl extends _UserReward {
+  const _$UserRewardImpl(
+      {required this.id,
+      required this.userId,
+      required this.rewardType,
+      required this.usageCount,
+      required this.totalPoitEarned})
+      : super._();
+
+  factory _$UserRewardImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UserRewardImplFromJson(json);
+
+  @override
+  final String id;
+  @override
+  final String userId;
+  @override
+  final PointTransactionSource rewardType;
+  @override
+  final int usageCount;
+  @override
+  final int totalPoitEarned;
+
+  @override
+  String toString() {
+    return 'UserReward(id: $id, userId: $userId, rewardType: $rewardType, usageCount: $usageCount, totalPoitEarned: $totalPoitEarned)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UserRewardImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.rewardType, rewardType) ||
+                other.rewardType == rewardType) &&
+            (identical(other.usageCount, usageCount) ||
+                other.usageCount == usageCount) &&
+            (identical(other.totalPoitEarned, totalPoitEarned) ||
+                other.totalPoitEarned == totalPoitEarned));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, id, userId, rewardType, usageCount, totalPoitEarned);
+
+  /// Create a copy of UserReward
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UserRewardImplCopyWith<_$UserRewardImpl> get copyWith =>
+      __$$UserRewardImplCopyWithImpl<_$UserRewardImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$UserRewardImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _UserReward extends UserReward {
+  const factory _UserReward(
+      {required final String id,
+      required final String userId,
+      required final PointTransactionSource rewardType,
+      required final int usageCount,
+      required final int totalPoitEarned}) = _$UserRewardImpl;
+  const _UserReward._() : super._();
+
+  factory _UserReward.fromJson(Map<String, dynamic> json) =
+      _$UserRewardImpl.fromJson;
+
+  @override
+  String get id;
+  @override
+  String get userId;
+  @override
+  PointTransactionSource get rewardType;
+  @override
+  int get usageCount;
+  @override
+  int get totalPoitEarned;
+
+  /// Create a copy of UserReward
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UserRewardImplCopyWith<_$UserRewardImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

@@ -42,16 +42,16 @@ class AppRewardBloc extends Bloc<AppRewardEvent, AppRewardState> {
               emit(state.copyWith(pointTransactions: pointTransactions));
             });
           },
-          getDailyPointTransactions: (e) async {
+          getDailyUserReward: (e) async {
             await _handleEvent(emit, () async {
               final user = await userRepository.getUserInfo();
-              final pointTransactions =
-                  await appRewardRepository.getDailyPointTransactions(
+              final dailyUserReward =
+                  await appRewardRepository.getDailyUserReward(
                 user.id,
                 type: e.type,
               );
 
-              emit(state.copyWith(dailyPointTransactions: pointTransactions));
+              emit(state.copyWith(dailyUserReward: dailyUserReward));
             });
           },
         );
@@ -73,8 +73,9 @@ class AppRewardBloc extends Bloc<AppRewardEvent, AppRewardState> {
       print('🔥 [ERROR] AppException: $e');
 
       emit(state.copyWith(isLoading: false, error: e));
-    } catch (e) {
+    } catch (e, stackTrace) {
       print('🔥 [ERROR] Unknown error: $e');
+      print('🔥 [ERROR] Stack trace: $stackTrace');
 
       emit(state.copyWith(
           isLoading: false,

@@ -51,3 +51,22 @@ const _$PointTransactionSourceEnumMap = {
   PointTransactionSource.withdrawal: 'withdrawal',
   PointTransactionSource.refund: 'refund',
 };
+
+_$UserRewardImpl _$$UserRewardImplFromJson(Map<String, dynamic> json) =>
+    _$UserRewardImpl(
+      id: json['id'] as String,
+      userId: json['userId'] as String,
+      rewardType:
+          $enumDecode(_$PointTransactionSourceEnumMap, json['rewardType']),
+      usageCount: (json['usageCount'] as num).toInt(),
+      totalPoitEarned: (json['totalPoitEarned'] as num).toInt(),
+    );
+
+Map<String, dynamic> _$$UserRewardImplToJson(_$UserRewardImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'userId': instance.userId,
+      'rewardType': _$PointTransactionSourceEnumMap[instance.rewardType]!,
+      'usageCount': instance.usageCount,
+      'totalPoitEarned': instance.totalPoitEarned,
+    };

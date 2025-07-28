@@ -12,7 +12,7 @@ class AppRewardState with _$AppRewardState {
     @Default(null) AppException? error,
     @Default(null) UserPointBalance? userPointBalance,
     @Default([]) List<PointTransaction>? pointTransactions,
-    @Default([]) List<PointTransaction>? dailyPointTransactions,
+    @Default([]) List<UserReward>? dailyUserReward,
   }) = _AppRewardState;
 
   const AppRewardState._();
