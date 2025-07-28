@@ -11,7 +11,7 @@ abstract class AppRewardRepository {
   });
   Future<List<PointTransaction>> getDailyPointTransactions(
     String userId, {
-    PointTransactionType? type,
+    PointTransactionSource? type,
   });
 }
 
@@ -42,10 +42,10 @@ class AppRewardDefaultRepository extends AppRewardRepository {
   @override
   Future<List<PointTransaction>> getDailyPointTransactions(
     String userId, {
-    PointTransactionType? type,
+    PointTransactionSource? type,
   }) async {
     final response = await dioClient.get(
-      '/app-reward/transactions/$userId',
+      '/app-reward/daily-usage/$userId',
       queryParameters: {
         'type': type?.name,
       },

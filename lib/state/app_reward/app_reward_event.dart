@@ -9,6 +9,6 @@ class AppRewardEvent with _$AppRewardEvent {
   const factory AppRewardEvent.clearError() = _ClearError;
   const factory AppRewardEvent.getPointTransactions() = _GetPointTransactions;
   const factory AppRewardEvent.getDailyPointTransactions(
-    PointTransactionType? type,
+    PointTransactionSource? type,
   ) = _GetDailyPointTransactions;
 }
