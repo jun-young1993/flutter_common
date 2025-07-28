@@ -12,4 +12,6 @@ class NoticeEvent with _$NoticeEvent {
           String noticeId, String reporterId, String type, String? comment) =
       Report;
   const factory NoticeEvent.removeSuccessMessage() = RemoveSuccessMessage;
+  const factory NoticeEvent.findOneById(String id, String? userId) =
+      FindOneById;
 }

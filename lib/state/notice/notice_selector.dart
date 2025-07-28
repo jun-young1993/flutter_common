@@ -22,6 +22,15 @@ class NoticeFindAllSelector extends NoticeSelector<List<Notice>?> {
         );
 }
 
+class NoticeFindOneSelector extends NoticeSelector<Notice?> {
+  NoticeFindOneSelector(Widget Function(Notice?) builder, {Key? key})
+      : super(
+          key: key,
+          selector: (state) => state.notice,
+          builder: (context, notice) => builder(notice),
+        );
+}
+
 class NoticeSuccessMessageSelector extends NoticeSelector<String?> {
   NoticeSuccessMessageSelector(Widget Function(String?) builder, {Key? key})
       : super(

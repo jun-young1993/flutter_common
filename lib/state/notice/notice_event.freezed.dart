@@ -27,6 +27,7 @@ mixin _$NoticeEvent {
             String noticeId, String reporterId, String type, String? comment)
         report,
     required TResult Function() removeSuccessMessage,
+    required TResult Function(String id, String? userId) findOneById,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -40,6 +41,7 @@ mixin _$NoticeEvent {
             String noticeId, String reporterId, String type, String? comment)?
         report,
     TResult? Function()? removeSuccessMessage,
+    TResult? Function(String id, String? userId)? findOneById,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -53,6 +55,7 @@ mixin _$NoticeEvent {
             String noticeId, String reporterId, String type, String? comment)?
         report,
     TResult Function()? removeSuccessMessage,
+    TResult Function(String id, String? userId)? findOneById,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -63,6 +66,7 @@ mixin _$NoticeEvent {
     required TResult Function(Create value) create,
     required TResult Function(Report value) report,
     required TResult Function(RemoveSuccessMessage value) removeSuccessMessage,
+    required TResult Function(FindOneById value) findOneById,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -72,6 +76,7 @@ mixin _$NoticeEvent {
     TResult? Function(Create value)? create,
     TResult? Function(Report value)? report,
     TResult? Function(RemoveSuccessMessage value)? removeSuccessMessage,
+    TResult? Function(FindOneById value)? findOneById,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -81,6 +86,7 @@ mixin _$NoticeEvent {
     TResult Function(Create value)? create,
     TResult Function(Report value)? report,
     TResult Function(RemoveSuccessMessage value)? removeSuccessMessage,
+    TResult Function(FindOneById value)? findOneById,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -184,6 +190,7 @@ class _$FindAllImpl implements FindAll {
             String noticeId, String reporterId, String type, String? comment)
         report,
     required TResult Function() removeSuccessMessage,
+    required TResult Function(String id, String? userId) findOneById,
   }) {
     return findAll(name);
   }
@@ -200,6 +207,7 @@ class _$FindAllImpl implements FindAll {
             String noticeId, String reporterId, String type, String? comment)?
         report,
     TResult? Function()? removeSuccessMessage,
+    TResult? Function(String id, String? userId)? findOneById,
   }) {
     return findAll?.call(name);
   }
@@ -216,6 +224,7 @@ class _$FindAllImpl implements FindAll {
             String noticeId, String reporterId, String type, String? comment)?
         report,
     TResult Function()? removeSuccessMessage,
+    TResult Function(String id, String? userId)? findOneById,
     required TResult orElse(),
   }) {
     if (findAll != null) {
@@ -232,6 +241,7 @@ class _$FindAllImpl implements FindAll {
     required TResult Function(Create value) create,
     required TResult Function(Report value) report,
     required TResult Function(RemoveSuccessMessage value) removeSuccessMessage,
+    required TResult Function(FindOneById value) findOneById,
   }) {
     return findAll(this);
   }
@@ -244,6 +254,7 @@ class _$FindAllImpl implements FindAll {
     TResult? Function(Create value)? create,
     TResult? Function(Report value)? report,
     TResult? Function(RemoveSuccessMessage value)? removeSuccessMessage,
+    TResult? Function(FindOneById value)? findOneById,
   }) {
     return findAll?.call(this);
   }
@@ -256,6 +267,7 @@ class _$FindAllImpl implements FindAll {
     TResult Function(Create value)? create,
     TResult Function(Report value)? report,
     TResult Function(RemoveSuccessMessage value)? removeSuccessMessage,
+    TResult Function(FindOneById value)? findOneById,
     required TResult orElse(),
   }) {
     if (findAll != null) {
@@ -354,6 +366,7 @@ class _$AddSkipImpl implements AddSkip {
             String noticeId, String reporterId, String type, String? comment)
         report,
     required TResult Function() removeSuccessMessage,
+    required TResult Function(String id, String? userId) findOneById,
   }) {
     return addSkip(name);
   }
@@ -370,6 +383,7 @@ class _$AddSkipImpl implements AddSkip {
             String noticeId, String reporterId, String type, String? comment)?
         report,
     TResult? Function()? removeSuccessMessage,
+    TResult? Function(String id, String? userId)? findOneById,
   }) {
     return addSkip?.call(name);
   }
@@ -386,6 +400,7 @@ class _$AddSkipImpl implements AddSkip {
             String noticeId, String reporterId, String type, String? comment)?
         report,
     TResult Function()? removeSuccessMessage,
+    TResult Function(String id, String? userId)? findOneById,
     required TResult orElse(),
   }) {
     if (addSkip != null) {
@@ -402,6 +417,7 @@ class _$AddSkipImpl implements AddSkip {
     required TResult Function(Create value) create,
     required TResult Function(Report value) report,
     required TResult Function(RemoveSuccessMessage value) removeSuccessMessage,
+    required TResult Function(FindOneById value) findOneById,
   }) {
     return addSkip(this);
   }
@@ -414,6 +430,7 @@ class _$AddSkipImpl implements AddSkip {
     TResult? Function(Create value)? create,
     TResult? Function(Report value)? report,
     TResult? Function(RemoveSuccessMessage value)? removeSuccessMessage,
+    TResult? Function(FindOneById value)? findOneById,
   }) {
     return addSkip?.call(this);
   }
@@ -426,6 +443,7 @@ class _$AddSkipImpl implements AddSkip {
     TResult Function(Create value)? create,
     TResult Function(Report value)? report,
     TResult Function(RemoveSuccessMessage value)? removeSuccessMessage,
+    TResult Function(FindOneById value)? findOneById,
     required TResult orElse(),
   }) {
     if (addSkip != null) {
@@ -565,6 +583,7 @@ class _$CreateImpl implements Create {
             String noticeId, String reporterId, String type, String? comment)
         report,
     required TResult Function() removeSuccessMessage,
+    required TResult Function(String id, String? userId) findOneById,
   }) {
     return create(title, content, type, noticeGroupId, userName);
   }
@@ -581,6 +600,7 @@ class _$CreateImpl implements Create {
             String noticeId, String reporterId, String type, String? comment)?
         report,
     TResult? Function()? removeSuccessMessage,
+    TResult? Function(String id, String? userId)? findOneById,
   }) {
     return create?.call(title, content, type, noticeGroupId, userName);
   }
@@ -597,6 +617,7 @@ class _$CreateImpl implements Create {
             String noticeId, String reporterId, String type, String? comment)?
         report,
     TResult Function()? removeSuccessMessage,
+    TResult Function(String id, String? userId)? findOneById,
     required TResult orElse(),
   }) {
     if (create != null) {
@@ -613,6 +634,7 @@ class _$CreateImpl implements Create {
     required TResult Function(Create value) create,
     required TResult Function(Report value) report,
     required TResult Function(RemoveSuccessMessage value) removeSuccessMessage,
+    required TResult Function(FindOneById value) findOneById,
   }) {
     return create(this);
   }
@@ -625,6 +647,7 @@ class _$CreateImpl implements Create {
     TResult? Function(Create value)? create,
     TResult? Function(Report value)? report,
     TResult? Function(RemoveSuccessMessage value)? removeSuccessMessage,
+    TResult? Function(FindOneById value)? findOneById,
   }) {
     return create?.call(this);
   }
@@ -637,6 +660,7 @@ class _$CreateImpl implements Create {
     TResult Function(Create value)? create,
     TResult Function(Report value)? report,
     TResult Function(RemoveSuccessMessage value)? removeSuccessMessage,
+    TResult Function(FindOneById value)? findOneById,
     required TResult orElse(),
   }) {
     if (create != null) {
@@ -771,6 +795,7 @@ class _$ReportImpl implements Report {
             String noticeId, String reporterId, String type, String? comment)
         report,
     required TResult Function() removeSuccessMessage,
+    required TResult Function(String id, String? userId) findOneById,
   }) {
     return report(noticeId, reporterId, type, comment);
   }
@@ -787,6 +812,7 @@ class _$ReportImpl implements Report {
             String noticeId, String reporterId, String type, String? comment)?
         report,
     TResult? Function()? removeSuccessMessage,
+    TResult? Function(String id, String? userId)? findOneById,
   }) {
     return report?.call(noticeId, reporterId, type, comment);
   }
@@ -803,6 +829,7 @@ class _$ReportImpl implements Report {
             String noticeId, String reporterId, String type, String? comment)?
         report,
     TResult Function()? removeSuccessMessage,
+    TResult Function(String id, String? userId)? findOneById,
     required TResult orElse(),
   }) {
     if (report != null) {
@@ -819,6 +846,7 @@ class _$ReportImpl implements Report {
     required TResult Function(Create value) create,
     required TResult Function(Report value) report,
     required TResult Function(RemoveSuccessMessage value) removeSuccessMessage,
+    required TResult Function(FindOneById value) findOneById,
   }) {
     return report(this);
   }
@@ -831,6 +859,7 @@ class _$ReportImpl implements Report {
     TResult? Function(Create value)? create,
     TResult? Function(Report value)? report,
     TResult? Function(RemoveSuccessMessage value)? removeSuccessMessage,
+    TResult? Function(FindOneById value)? findOneById,
   }) {
     return report?.call(this);
   }
@@ -843,6 +872,7 @@ class _$ReportImpl implements Report {
     TResult Function(Create value)? create,
     TResult Function(Report value)? report,
     TResult Function(RemoveSuccessMessage value)? removeSuccessMessage,
+    TResult Function(FindOneById value)? findOneById,
     required TResult orElse(),
   }) {
     if (report != null) {
@@ -919,6 +949,7 @@ class _$RemoveSuccessMessageImpl implements RemoveSuccessMessage {
             String noticeId, String reporterId, String type, String? comment)
         report,
     required TResult Function() removeSuccessMessage,
+    required TResult Function(String id, String? userId) findOneById,
   }) {
     return removeSuccessMessage();
   }
@@ -935,6 +966,7 @@ class _$RemoveSuccessMessageImpl implements RemoveSuccessMessage {
             String noticeId, String reporterId, String type, String? comment)?
         report,
     TResult? Function()? removeSuccessMessage,
+    TResult? Function(String id, String? userId)? findOneById,
   }) {
     return removeSuccessMessage?.call();
   }
@@ -951,6 +983,7 @@ class _$RemoveSuccessMessageImpl implements RemoveSuccessMessage {
             String noticeId, String reporterId, String type, String? comment)?
         report,
     TResult Function()? removeSuccessMessage,
+    TResult Function(String id, String? userId)? findOneById,
     required TResult orElse(),
   }) {
     if (removeSuccessMessage != null) {
@@ -967,6 +1000,7 @@ class _$RemoveSuccessMessageImpl implements RemoveSuccessMessage {
     required TResult Function(Create value) create,
     required TResult Function(Report value) report,
     required TResult Function(RemoveSuccessMessage value) removeSuccessMessage,
+    required TResult Function(FindOneById value) findOneById,
   }) {
     return removeSuccessMessage(this);
   }
@@ -979,6 +1013,7 @@ class _$RemoveSuccessMessageImpl implements RemoveSuccessMessage {
     TResult? Function(Create value)? create,
     TResult? Function(Report value)? report,
     TResult? Function(RemoveSuccessMessage value)? removeSuccessMessage,
+    TResult? Function(FindOneById value)? findOneById,
   }) {
     return removeSuccessMessage?.call(this);
   }
@@ -991,6 +1026,7 @@ class _$RemoveSuccessMessageImpl implements RemoveSuccessMessage {
     TResult Function(Create value)? create,
     TResult Function(Report value)? report,
     TResult Function(RemoveSuccessMessage value)? removeSuccessMessage,
+    TResult Function(FindOneById value)? findOneById,
     required TResult orElse(),
   }) {
     if (removeSuccessMessage != null) {
@@ -1002,4 +1038,190 @@ class _$RemoveSuccessMessageImpl implements RemoveSuccessMessage {
 
 abstract class RemoveSuccessMessage implements NoticeEvent {
   const factory RemoveSuccessMessage() = _$RemoveSuccessMessageImpl;
+}
+
+/// @nodoc
+abstract class _$$FindOneByIdImplCopyWith<$Res> {
+  factory _$$FindOneByIdImplCopyWith(
+          _$FindOneByIdImpl value, $Res Function(_$FindOneByIdImpl) then) =
+      __$$FindOneByIdImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id, String? userId});
+}
+
+/// @nodoc
+class __$$FindOneByIdImplCopyWithImpl<$Res>
+    extends _$NoticeEventCopyWithImpl<$Res, _$FindOneByIdImpl>
+    implements _$$FindOneByIdImplCopyWith<$Res> {
+  __$$FindOneByIdImplCopyWithImpl(
+      _$FindOneByIdImpl _value, $Res Function(_$FindOneByIdImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of NoticeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? userId = freezed,
+  }) {
+    return _then(_$FindOneByIdImpl(
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      freezed == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FindOneByIdImpl implements FindOneById {
+  const _$FindOneByIdImpl(this.id, this.userId);
+
+  @override
+  final String id;
+  @override
+  final String? userId;
+
+  @override
+  String toString() {
+    return 'NoticeEvent.findOneById(id: $id, userId: $userId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FindOneByIdImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.userId, userId) || other.userId == userId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id, userId);
+
+  /// Create a copy of NoticeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FindOneByIdImplCopyWith<_$FindOneByIdImpl> get copyWith =>
+      __$$FindOneByIdImplCopyWithImpl<_$FindOneByIdImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String name) findAll,
+    required TResult Function(String name) addSkip,
+    required TResult Function(String title, String content, String type,
+            String noticeGroupId, String userName)
+        create,
+    required TResult Function(
+            String noticeId, String reporterId, String type, String? comment)
+        report,
+    required TResult Function() removeSuccessMessage,
+    required TResult Function(String id, String? userId) findOneById,
+  }) {
+    return findOneById(id, userId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String name)? findAll,
+    TResult? Function(String name)? addSkip,
+    TResult? Function(String title, String content, String type,
+            String noticeGroupId, String userName)?
+        create,
+    TResult? Function(
+            String noticeId, String reporterId, String type, String? comment)?
+        report,
+    TResult? Function()? removeSuccessMessage,
+    TResult? Function(String id, String? userId)? findOneById,
+  }) {
+    return findOneById?.call(id, userId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String name)? findAll,
+    TResult Function(String name)? addSkip,
+    TResult Function(String title, String content, String type,
+            String noticeGroupId, String userName)?
+        create,
+    TResult Function(
+            String noticeId, String reporterId, String type, String? comment)?
+        report,
+    TResult Function()? removeSuccessMessage,
+    TResult Function(String id, String? userId)? findOneById,
+    required TResult orElse(),
+  }) {
+    if (findOneById != null) {
+      return findOneById(id, userId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FindAll value) findAll,
+    required TResult Function(AddSkip value) addSkip,
+    required TResult Function(Create value) create,
+    required TResult Function(Report value) report,
+    required TResult Function(RemoveSuccessMessage value) removeSuccessMessage,
+    required TResult Function(FindOneById value) findOneById,
+  }) {
+    return findOneById(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(FindAll value)? findAll,
+    TResult? Function(AddSkip value)? addSkip,
+    TResult? Function(Create value)? create,
+    TResult? Function(Report value)? report,
+    TResult? Function(RemoveSuccessMessage value)? removeSuccessMessage,
+    TResult? Function(FindOneById value)? findOneById,
+  }) {
+    return findOneById?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FindAll value)? findAll,
+    TResult Function(AddSkip value)? addSkip,
+    TResult Function(Create value)? create,
+    TResult Function(Report value)? report,
+    TResult Function(RemoveSuccessMessage value)? removeSuccessMessage,
+    TResult Function(FindOneById value)? findOneById,
+    required TResult orElse(),
+  }) {
+    if (findOneById != null) {
+      return findOneById(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FindOneById implements NoticeEvent {
+  const factory FindOneById(final String id, final String? userId) =
+      _$FindOneByIdImpl;
+
+  String get id;
+  String? get userId;
+
+  /// Create a copy of NoticeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$FindOneByIdImplCopyWith<_$FindOneByIdImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

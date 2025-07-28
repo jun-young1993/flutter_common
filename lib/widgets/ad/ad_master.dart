@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -130,19 +131,15 @@ class DefaultAdCallback implements AdCallback {
   }
 }
 
-/// 광고 설정을 담는 클래스
+/// 광고 설정 클래스
 class AdConfig {
   final bool isTestMode;
   final List<String> testDeviceIds;
-  final Duration loadTimeout;
-  final int maxRetryAttempts;
   final Map<String, Map<String, String>> testAdUnitIds;
 
   const AdConfig({
-    this.isTestMode = kDebugMode,
+    this.isTestMode = true,
     this.testDeviceIds = const [],
-    this.loadTimeout = const Duration(seconds: 30),
-    this.maxRetryAttempts = 3,
     this.testAdUnitIds = const {
       'android': {
         'banner': 'ca-app-pub-3940256099942544/6300978111',
@@ -155,39 +152,22 @@ class AdConfig {
         'banner': 'ca-app-pub-3940256099942544/2934735716',
         'interstitial': 'ca-app-pub-3940256099942544/4411468910',
         'rewarded': 'ca-app-pub-3940256099942544/1712485313',
-        'native': 'ca-app-pub-3940256099942544/3985214517',
-        'appOpen': 'ca-app-pub-3940256099942544/5662855259',
+        'native': 'ca-app-pub-3940256099942544/3985214052',
+        'appOpen': 'ca-app-pub-3940256099942544/5663605779',
       },
     },
   });
-
-  AdConfig copyWith({
-    bool? isTestMode,
-    List<String>? testDeviceIds,
-    Duration? loadTimeout,
-    int? maxRetryAttempts,
-    Map<String, Map<String, String>>? testAdUnitIds,
-    Map<String, Map<String, String>>? realAdUnitIds,
-  }) {
-    return AdConfig(
-      isTestMode: isTestMode ?? this.isTestMode,
-      testDeviceIds: testDeviceIds ?? this.testDeviceIds,
-      loadTimeout: loadTimeout ?? this.loadTimeout,
-      maxRetryAttempts: maxRetryAttempts ?? this.maxRetryAttempts,
-      testAdUnitIds: testAdUnitIds ?? this.testAdUnitIds,
-    );
-  }
 }
 
 /// 광고 관리자 인터페이스
 abstract class IAdManager {
-  Future<void> initialize(AdConfig config);
-  Future<void> dispose();
   bool get isInitialized;
   AdConfig get config;
   String getAdUnitId(AdType adType, {required String adMobUnitId});
+  Future<void> initialize(AdConfig config);
+  Future<void> dispose();
   Future<BannerAd> createBannerAd({
-    AdSize size = AdSize.banner,
+    AdSize size,
     AdCallback? callback,
     required String adUnitId,
     bool? forceTestMode,
@@ -418,7 +398,7 @@ class AdMaster implements IAdManager {
       );
       _updateAdState(adId, AdState(status: AdStatus.failed, error: adError));
       callback?.onAdFailedToLoad(adError);
-      return null;
+      rethrow;
     }
   }
 
@@ -447,7 +427,6 @@ class AdMaster implements IAdManager {
             rewardedAd = ad;
             _loadedAds[adId] = ad;
             _updateAdState(adId, const AdState(status: AdStatus.loaded));
-            callback?.onAdLoaded();
             callback?.onRewardedAdLoaded(ad);
           },
           onAdFailedToLoad: (error) {
@@ -472,7 +451,7 @@ class AdMaster implements IAdManager {
       );
       _updateAdState(adId, AdState(status: AdStatus.failed, error: adError));
       callback?.onAdFailedToLoad(adError);
-      return null;
+      rethrow;
     }
   }
 
@@ -525,7 +504,7 @@ class AdMaster implements IAdManager {
       );
       _updateAdState(adId, AdState(status: AdStatus.failed, error: adError));
       callback?.onAdFailedToLoad(adError);
-      return null;
+      rethrow;
     }
   }
 
@@ -578,25 +557,18 @@ class AdMaster implements IAdManager {
       );
       _updateAdState(adId, AdState(status: AdStatus.failed, error: adError));
       callback?.onAdFailedToLoad(adError);
-      return null;
+      rethrow;
     }
   }
 
-  /// 초기화 상태 확인
+  /// 초기화 확인
   void _ensureInitialized() {
     if (!_isInitialized) {
-      throw const AdError(
+      throw AdError(
         type: AdErrorType.notInitialized,
-        message: 'AdMaster가 초기화되지 않았습니다.',
+        message: '광고가 초기화되지 않았습니다.',
       );
     }
-  }
-
-  /// 특정 광고 제거
-  void removeAd(String adId) {
-    final ad = _loadedAds.remove(adId);
-    ad?.dispose();
-    _adStates.remove(adId);
   }
 
   /// 모든 광고 제거
@@ -624,6 +596,7 @@ class AdMasterWidget extends StatefulWidget {
   final Widget? loadingWidget;
   final Widget? errorWidget;
   final String adUnitId;
+  final String androidAdUnitId;
   final bool? forceTestMode;
 
   const AdMasterWidget({
@@ -635,6 +608,7 @@ class AdMasterWidget extends StatefulWidget {
     this.loadingWidget,
     this.errorWidget,
     required this.adUnitId,
+    required this.androidAdUnitId,
     this.forceTestMode,
   });
 
@@ -671,35 +645,40 @@ class _AdMasterWidgetState extends State<AdMasterWidget> {
           _ad = await adMaster.createBannerAd(
             size: widget.adSize ?? AdSize.banner,
             callback: widget.callback,
-            adUnitId: widget.adUnitId,
+            adUnitId:
+                Platform.isAndroid ? widget.androidAdUnitId : widget.adUnitId,
             forceTestMode: widget.forceTestMode,
           );
           break;
         case AdType.interstitial:
           _ad = await adMaster.createInterstitialAd(
             callback: widget.callback,
-            adUnitId: widget.adUnitId,
+            adUnitId:
+                Platform.isAndroid ? widget.androidAdUnitId : widget.adUnitId,
             forceTestMode: widget.forceTestMode,
           );
           break;
         case AdType.rewarded:
           _ad = await adMaster.createRewardedAd(
             callback: widget.callback,
-            adUnitId: widget.adUnitId,
+            adUnitId:
+                Platform.isAndroid ? widget.androidAdUnitId : widget.adUnitId,
             forceTestMode: widget.forceTestMode,
           );
           break;
         case AdType.native:
           _ad = await adMaster.createNativeAd(
             callback: widget.callback,
-            adUnitId: widget.adUnitId,
+            adUnitId:
+                Platform.isAndroid ? widget.androidAdUnitId : widget.adUnitId,
             forceTestMode: widget.forceTestMode,
           );
           break;
         case AdType.appOpen:
           _ad = await adMaster.createAppOpenAd(
             callback: widget.callback,
-            adUnitId: widget.adUnitId,
+            adUnitId:
+                Platform.isAndroid ? widget.androidAdUnitId : widget.adUnitId,
             forceTestMode: widget.forceTestMode,
           );
           break;
@@ -729,11 +708,43 @@ class _AdMasterWidgetState extends State<AdMasterWidget> {
   @override
   Widget build(BuildContext context) {
     if (_adState.isLoading) {
-      return widget.loadingWidget ?? const CircularProgressIndicator();
+      return widget.loadingWidget ??
+          Container(
+            height: 50,
+            decoration: BoxDecoration(
+              color: Colors.grey.shade200,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Center(
+              child: Text(
+                'ad.loading'.tr(),
+                style: const TextStyle(
+                  color: Colors.grey,
+                  fontSize: 12,
+                ),
+              ),
+            ),
+          );
     }
 
     if (_adState.isFailed) {
-      return widget.errorWidget ?? Text('광고 로드 실패: ${_adState.error?.message}');
+      return widget.errorWidget ??
+          Container(
+            height: 50,
+            decoration: BoxDecoration(
+              color: Colors.grey.shade200,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Center(
+              child: Text(
+                'ad.loadFailed'.tr(),
+                style: const TextStyle(
+                  color: Colors.grey,
+                  fontSize: 12,
+                ),
+              ),
+            ),
+          );
     }
 
     return widget.builder(_adState, _ad as AdWithView);

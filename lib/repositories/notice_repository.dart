@@ -7,12 +7,23 @@ abstract class NoticeRepository {
       String noticeGroupId, String userName);
   Future<void> report(
       String noticeId, String reporterId, String type, String? content);
+  Future<Notice> findOneById(String id);
 }
 
 class NoticeDefaultRepository extends NoticeRepository {
   final DioClient dioClient;
 
   NoticeDefaultRepository({required this.dioClient});
+
+  @override
+  Future<Notice> findOneById(String id) async {
+    final response = await dioClient.get('/notice/$id');
+    if (response.statusCode == 200) {
+      return Notice.fromJson(response.data as Map<String, dynamic>);
+    }
+    throw Exception(
+        '[${response.statusCode}] Failed to fetch notice: ${response.statusMessage ?? 'Unknown error'}');
+  }
 
   @override
   Future<List<Notice>?> findAll(String name, int skip, int take) async {

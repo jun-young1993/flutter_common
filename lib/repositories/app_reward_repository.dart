@@ -4,7 +4,11 @@ import 'package:flutter_common/network/dio_client.dart';
 
 abstract class AppRewardRepository {
   Future<UserPointBalance> getUserPointBalance(String userId);
-  Future<List<PointTransaction>> getPointTransactions(String userId);
+  Future<List<PointTransaction>> getPointTransactions(
+    String userId, {
+    int offset = 0,
+    int limit = 10,
+  });
 }
 
 class AppRewardDefaultRepository extends AppRewardRepository {
@@ -19,8 +23,13 @@ class AppRewardDefaultRepository extends AppRewardRepository {
   }
 
   @override
-  Future<List<PointTransaction>> getPointTransactions(String userId) async {
-    final response = await dioClient.get('/app-reward/transactions/$userId');
+  Future<List<PointTransaction>> getPointTransactions(
+    String userId, {
+    int offset = 0,
+    int limit = 10,
+  }) async {
+    final response = await dioClient
+        .get('/app-reward/transactions/$userId?offset=$offset&limit=$limit');
     return (response.data as List)
         .map((e) => PointTransaction.fromJson(e))
         .toList();

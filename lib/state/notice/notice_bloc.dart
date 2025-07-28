@@ -15,6 +15,18 @@ class NoticeBloc extends Bloc<NoticeEvent, NoticeState> {
     on<NoticeEvent>(
       (event, emit) async {
         await event.map(
+          findOneById: (e) async {
+            await _handleEvent(
+              emit,
+              () async {
+                final notice = await _noticeRepository.findOneById(e.id);
+                emit(state.copyWith(
+                    notices: state.notices
+                        ?.map((prev) => prev.id == notice.id ? notice : prev)
+                        .toList()));
+              },
+            );
+          },
           findAll: (e) async {
             await _handleEvent(
               emit,
