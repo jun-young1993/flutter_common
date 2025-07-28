@@ -132,9 +132,9 @@ class UserReward with _$UserReward {
     required String userId,
     required PointTransactionSource rewardType,
     required DateTime date,
-    int usageCount,
-    int totalPointsEarned,
-    bool isActive,
+    required int usageCount,
+    required int totalPointsEarned,
+    required bool isActive,
     required DateTime createdAt,
     required DateTime updatedAt,
   }) = _UserReward;
