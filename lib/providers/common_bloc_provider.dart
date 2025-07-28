@@ -62,6 +62,11 @@ class CommonBlocProvider extends StatelessWidget {
             ),
           ),
           BlocProvider(
+            create: (context) => NoticeReplyBloc(
+              noticeReplyRepository: context.read<NoticeReplyRepository>(),
+            ),
+          ),
+          BlocProvider(
             create: (context) =>
                 McpChatBloc(context.read<McpLlmClientRepository>()),
           ),
