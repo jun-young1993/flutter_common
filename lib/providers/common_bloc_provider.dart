@@ -9,6 +9,7 @@ import 'package:flutter_common/repositories/mcp_local_server_repository.dart';
 import 'package:flutter_common/state/mcp_config/mcp_config_bloc.dart';
 import 'package:flutter_common/state/mcp_config/mcp_config_listener.dart';
 import 'package:flutter_common/state/notice/notice_bloc.dart';
+import 'package:flutter_common/state/notice/notice_page_bloc.dart';
 import 'package:flutter_common/state/notice_group/notice_group_bloc.dart';
 import 'package:flutter_common/state/notice_reply/notice_reply_bloc.dart';
 import 'package:flutter_common/state/user/user_bloc.dart';
@@ -57,8 +58,8 @@ class CommonBlocProvider extends StatelessWidget {
             ),
           ),
           BlocProvider(
-            create: (context) => NoticeReplyBloc(
-              noticeReplyRepository: context.read<NoticeReplyRepository>(),
+            create: (context) => NoticePageBloc(
+              noticeRepository: context.read<NoticeRepository>(),
             ),
           ),
           BlocProvider(
