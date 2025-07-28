@@ -11,7 +11,8 @@ class AppRewardState with _$AppRewardState {
     @Default(false) bool isLoading,
     @Default(null) AppException? error,
     @Default(null) UserPointBalance? userPointBalance,
-    @Default(null) List<PointTransaction>? pointTransactions,
+    @Default([]) List<PointTransaction>? pointTransactions,
+    @Default([]) List<PointTransaction>? dailyPointTransactions,
   }) = _AppRewardState;
 
   const AppRewardState._();

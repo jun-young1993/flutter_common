@@ -42,6 +42,18 @@ class AppRewardBloc extends Bloc<AppRewardEvent, AppRewardState> {
               emit(state.copyWith(pointTransactions: pointTransactions));
             });
           },
+          getDailyPointTransactions: (e) async {
+            await _handleEvent(emit, () async {
+              final user = await userRepository.getUserInfo();
+              final pointTransactions =
+                  await appRewardRepository.getDailyPointTransactions(
+                user.id,
+                type: e.type,
+              );
+
+              emit(state.copyWith(dailyPointTransactions: pointTransactions));
+            });
+          },
         );
       },
     );

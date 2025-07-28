@@ -21,6 +21,8 @@ mixin _$AppRewardEvent {
     required TResult Function() initialize,
     required TResult Function() clearError,
     required TResult Function() getPointTransactions,
+    required TResult Function(PointTransactionType? type)
+        getDailyPointTransactions,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +30,7 @@ mixin _$AppRewardEvent {
     TResult? Function()? initialize,
     TResult? Function()? clearError,
     TResult? Function()? getPointTransactions,
+    TResult? Function(PointTransactionType? type)? getDailyPointTransactions,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +38,7 @@ mixin _$AppRewardEvent {
     TResult Function()? initialize,
     TResult Function()? clearError,
     TResult Function()? getPointTransactions,
+    TResult Function(PointTransactionType? type)? getDailyPointTransactions,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +47,8 @@ mixin _$AppRewardEvent {
     required TResult Function(_Initialize value) initialize,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_GetPointTransactions value) getPointTransactions,
+    required TResult Function(_GetDailyPointTransactions value)
+        getDailyPointTransactions,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +56,8 @@ mixin _$AppRewardEvent {
     TResult? Function(_Initialize value)? initialize,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_GetPointTransactions value)? getPointTransactions,
+    TResult? Function(_GetDailyPointTransactions value)?
+        getDailyPointTransactions,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +65,8 @@ mixin _$AppRewardEvent {
     TResult Function(_Initialize value)? initialize,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_GetPointTransactions value)? getPointTransactions,
+    TResult Function(_GetDailyPointTransactions value)?
+        getDailyPointTransactions,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -127,6 +137,8 @@ class _$InitializeImpl implements _Initialize {
     required TResult Function() initialize,
     required TResult Function() clearError,
     required TResult Function() getPointTransactions,
+    required TResult Function(PointTransactionType? type)
+        getDailyPointTransactions,
   }) {
     return initialize();
   }
@@ -137,6 +149,7 @@ class _$InitializeImpl implements _Initialize {
     TResult? Function()? initialize,
     TResult? Function()? clearError,
     TResult? Function()? getPointTransactions,
+    TResult? Function(PointTransactionType? type)? getDailyPointTransactions,
   }) {
     return initialize?.call();
   }
@@ -147,6 +160,7 @@ class _$InitializeImpl implements _Initialize {
     TResult Function()? initialize,
     TResult Function()? clearError,
     TResult Function()? getPointTransactions,
+    TResult Function(PointTransactionType? type)? getDailyPointTransactions,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -161,6 +175,8 @@ class _$InitializeImpl implements _Initialize {
     required TResult Function(_Initialize value) initialize,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_GetPointTransactions value) getPointTransactions,
+    required TResult Function(_GetDailyPointTransactions value)
+        getDailyPointTransactions,
   }) {
     return initialize(this);
   }
@@ -171,6 +187,8 @@ class _$InitializeImpl implements _Initialize {
     TResult? Function(_Initialize value)? initialize,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_GetPointTransactions value)? getPointTransactions,
+    TResult? Function(_GetDailyPointTransactions value)?
+        getDailyPointTransactions,
   }) {
     return initialize?.call(this);
   }
@@ -181,6 +199,8 @@ class _$InitializeImpl implements _Initialize {
     TResult Function(_Initialize value)? initialize,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_GetPointTransactions value)? getPointTransactions,
+    TResult Function(_GetDailyPointTransactions value)?
+        getDailyPointTransactions,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -238,6 +258,8 @@ class _$ClearErrorImpl implements _ClearError {
     required TResult Function() initialize,
     required TResult Function() clearError,
     required TResult Function() getPointTransactions,
+    required TResult Function(PointTransactionType? type)
+        getDailyPointTransactions,
   }) {
     return clearError();
   }
@@ -248,6 +270,7 @@ class _$ClearErrorImpl implements _ClearError {
     TResult? Function()? initialize,
     TResult? Function()? clearError,
     TResult? Function()? getPointTransactions,
+    TResult? Function(PointTransactionType? type)? getDailyPointTransactions,
   }) {
     return clearError?.call();
   }
@@ -258,6 +281,7 @@ class _$ClearErrorImpl implements _ClearError {
     TResult Function()? initialize,
     TResult Function()? clearError,
     TResult Function()? getPointTransactions,
+    TResult Function(PointTransactionType? type)? getDailyPointTransactions,
     required TResult orElse(),
   }) {
     if (clearError != null) {
@@ -272,6 +296,8 @@ class _$ClearErrorImpl implements _ClearError {
     required TResult Function(_Initialize value) initialize,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_GetPointTransactions value) getPointTransactions,
+    required TResult Function(_GetDailyPointTransactions value)
+        getDailyPointTransactions,
   }) {
     return clearError(this);
   }
@@ -282,6 +308,8 @@ class _$ClearErrorImpl implements _ClearError {
     TResult? Function(_Initialize value)? initialize,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_GetPointTransactions value)? getPointTransactions,
+    TResult? Function(_GetDailyPointTransactions value)?
+        getDailyPointTransactions,
   }) {
     return clearError?.call(this);
   }
@@ -292,6 +320,8 @@ class _$ClearErrorImpl implements _ClearError {
     TResult Function(_Initialize value)? initialize,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_GetPointTransactions value)? getPointTransactions,
+    TResult Function(_GetDailyPointTransactions value)?
+        getDailyPointTransactions,
     required TResult orElse(),
   }) {
     if (clearError != null) {
@@ -350,6 +380,8 @@ class _$GetPointTransactionsImpl implements _GetPointTransactions {
     required TResult Function() initialize,
     required TResult Function() clearError,
     required TResult Function() getPointTransactions,
+    required TResult Function(PointTransactionType? type)
+        getDailyPointTransactions,
   }) {
     return getPointTransactions();
   }
@@ -360,6 +392,7 @@ class _$GetPointTransactionsImpl implements _GetPointTransactions {
     TResult? Function()? initialize,
     TResult? Function()? clearError,
     TResult? Function()? getPointTransactions,
+    TResult? Function(PointTransactionType? type)? getDailyPointTransactions,
   }) {
     return getPointTransactions?.call();
   }
@@ -370,6 +403,7 @@ class _$GetPointTransactionsImpl implements _GetPointTransactions {
     TResult Function()? initialize,
     TResult Function()? clearError,
     TResult Function()? getPointTransactions,
+    TResult Function(PointTransactionType? type)? getDailyPointTransactions,
     required TResult orElse(),
   }) {
     if (getPointTransactions != null) {
@@ -384,6 +418,8 @@ class _$GetPointTransactionsImpl implements _GetPointTransactions {
     required TResult Function(_Initialize value) initialize,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_GetPointTransactions value) getPointTransactions,
+    required TResult Function(_GetDailyPointTransactions value)
+        getDailyPointTransactions,
   }) {
     return getPointTransactions(this);
   }
@@ -394,6 +430,8 @@ class _$GetPointTransactionsImpl implements _GetPointTransactions {
     TResult? Function(_Initialize value)? initialize,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_GetPointTransactions value)? getPointTransactions,
+    TResult? Function(_GetDailyPointTransactions value)?
+        getDailyPointTransactions,
   }) {
     return getPointTransactions?.call(this);
   }
@@ -404,6 +442,8 @@ class _$GetPointTransactionsImpl implements _GetPointTransactions {
     TResult Function(_Initialize value)? initialize,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_GetPointTransactions value)? getPointTransactions,
+    TResult Function(_GetDailyPointTransactions value)?
+        getDailyPointTransactions,
     required TResult orElse(),
   }) {
     if (getPointTransactions != null) {
@@ -415,4 +455,164 @@ class _$GetPointTransactionsImpl implements _GetPointTransactions {
 
 abstract class _GetPointTransactions implements AppRewardEvent {
   const factory _GetPointTransactions() = _$GetPointTransactionsImpl;
+}
+
+/// @nodoc
+abstract class _$$GetDailyPointTransactionsImplCopyWith<$Res> {
+  factory _$$GetDailyPointTransactionsImplCopyWith(
+          _$GetDailyPointTransactionsImpl value,
+          $Res Function(_$GetDailyPointTransactionsImpl) then) =
+      __$$GetDailyPointTransactionsImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({PointTransactionType? type});
+}
+
+/// @nodoc
+class __$$GetDailyPointTransactionsImplCopyWithImpl<$Res>
+    extends _$AppRewardEventCopyWithImpl<$Res, _$GetDailyPointTransactionsImpl>
+    implements _$$GetDailyPointTransactionsImplCopyWith<$Res> {
+  __$$GetDailyPointTransactionsImplCopyWithImpl(
+      _$GetDailyPointTransactionsImpl _value,
+      $Res Function(_$GetDailyPointTransactionsImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AppRewardEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? type = freezed,
+  }) {
+    return _then(_$GetDailyPointTransactionsImpl(
+      freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as PointTransactionType?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetDailyPointTransactionsImpl implements _GetDailyPointTransactions {
+  const _$GetDailyPointTransactionsImpl(this.type);
+
+  @override
+  final PointTransactionType? type;
+
+  @override
+  String toString() {
+    return 'AppRewardEvent.getDailyPointTransactions(type: $type)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetDailyPointTransactionsImpl &&
+            (identical(other.type, type) || other.type == type));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, type);
+
+  /// Create a copy of AppRewardEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetDailyPointTransactionsImplCopyWith<_$GetDailyPointTransactionsImpl>
+      get copyWith => __$$GetDailyPointTransactionsImplCopyWithImpl<
+          _$GetDailyPointTransactionsImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialize,
+    required TResult Function() clearError,
+    required TResult Function() getPointTransactions,
+    required TResult Function(PointTransactionType? type)
+        getDailyPointTransactions,
+  }) {
+    return getDailyPointTransactions(type);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialize,
+    TResult? Function()? clearError,
+    TResult? Function()? getPointTransactions,
+    TResult? Function(PointTransactionType? type)? getDailyPointTransactions,
+  }) {
+    return getDailyPointTransactions?.call(type);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialize,
+    TResult Function()? clearError,
+    TResult Function()? getPointTransactions,
+    TResult Function(PointTransactionType? type)? getDailyPointTransactions,
+    required TResult orElse(),
+  }) {
+    if (getDailyPointTransactions != null) {
+      return getDailyPointTransactions(type);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_ClearError value) clearError,
+    required TResult Function(_GetPointTransactions value) getPointTransactions,
+    required TResult Function(_GetDailyPointTransactions value)
+        getDailyPointTransactions,
+  }) {
+    return getDailyPointTransactions(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialize value)? initialize,
+    TResult? Function(_ClearError value)? clearError,
+    TResult? Function(_GetPointTransactions value)? getPointTransactions,
+    TResult? Function(_GetDailyPointTransactions value)?
+        getDailyPointTransactions,
+  }) {
+    return getDailyPointTransactions?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_ClearError value)? clearError,
+    TResult Function(_GetPointTransactions value)? getPointTransactions,
+    TResult Function(_GetDailyPointTransactions value)?
+        getDailyPointTransactions,
+    required TResult orElse(),
+  }) {
+    if (getDailyPointTransactions != null) {
+      return getDailyPointTransactions(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetDailyPointTransactions implements AppRewardEvent {
+  const factory _GetDailyPointTransactions(final PointTransactionType? type) =
+      _$GetDailyPointTransactionsImpl;
+
+  PointTransactionType? get type;
+
+  /// Create a copy of AppRewardEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$GetDailyPointTransactionsImplCopyWith<_$GetDailyPointTransactionsImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

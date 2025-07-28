@@ -1,3 +1,4 @@
+import 'package:flutter_common/models/app-reward/point_transaction.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'app_reward_event.freezed.dart';
@@ -7,4 +8,7 @@ class AppRewardEvent with _$AppRewardEvent {
   const factory AppRewardEvent.initialize() = _Initialize;
   const factory AppRewardEvent.clearError() = _ClearError;
   const factory AppRewardEvent.getPointTransactions() = _GetPointTransactions;
+  const factory AppRewardEvent.getDailyPointTransactions(
+    PointTransactionType? type,
+  ) = _GetDailyPointTransactions;
 }

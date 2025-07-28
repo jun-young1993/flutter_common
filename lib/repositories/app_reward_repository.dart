@@ -9,6 +9,10 @@ abstract class AppRewardRepository {
     int offset = 0,
     int limit = 10,
   });
+  Future<List<PointTransaction>> getDailyPointTransactions(
+    String userId, {
+    PointTransactionType? type,
+  });
 }
 
 class AppRewardDefaultRepository extends AppRewardRepository {
@@ -30,6 +34,22 @@ class AppRewardDefaultRepository extends AppRewardRepository {
   }) async {
     final response = await dioClient
         .get('/app-reward/transactions/$userId?offset=$offset&limit=$limit');
+    return (response.data as List)
+        .map((e) => PointTransaction.fromJson(e))
+        .toList();
+  }
+
+  @override
+  Future<List<PointTransaction>> getDailyPointTransactions(
+    String userId, {
+    PointTransactionType? type,
+  }) async {
+    final response = await dioClient.get(
+      '/app-reward/transactions/$userId',
+      queryParameters: {
+        'type': type?.name,
+      },
+    );
     return (response.data as List)
         .map((e) => PointTransaction.fromJson(e))
         .toList();
