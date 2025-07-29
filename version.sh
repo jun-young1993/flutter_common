@@ -10,12 +10,13 @@ if [ -z "$1" ]; then
 fi
 
 VERSION=$1
+MESSAGE=$2
 
 # 변경사항 스테이징
 git add .
 
 # 커밋
-git commit -m "v$VERSION"
+git commit -m "v$VERSION $MESSAGE"
 
 # 태그 생성
 git tag v$VERSION
