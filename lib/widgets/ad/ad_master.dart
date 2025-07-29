@@ -138,7 +138,7 @@ class AdConfig {
   final Map<String, Map<String, String>> testAdUnitIds;
 
   const AdConfig({
-    this.isTestMode = true,
+    this.isTestMode = kDebugMode,
     this.testDeviceIds = const [],
     this.testAdUnitIds = const {
       'android': {
@@ -170,27 +170,22 @@ abstract class IAdManager {
     AdSize size,
     AdCallback? callback,
     required String adUnitId,
-    bool? forceTestMode,
   });
   Future<InterstitialAd?> createInterstitialAd({
     AdCallback? callback,
     required String adUnitId,
-    bool? forceTestMode,
   });
   Future<RewardedAd?> createRewardedAd({
     AdCallback? callback,
     required String adUnitId,
-    bool? forceTestMode,
   });
   Future<NativeAd?> createNativeAd({
     AdCallback? callback,
     required String adUnitId,
-    bool? forceTestMode,
   });
   Future<AppOpenAd?> createAppOpenAd({
     AdCallback? callback,
     required String adUnitId,
-    bool? forceTestMode,
   });
 }
 
@@ -217,10 +212,9 @@ class AdMaster implements IAdManager {
   }
 
   /// 특정 광고 타입의 광고 ID를 가져오는 메서드
-  String getAdUnitIdForType(AdType adType,
-      {bool? forceTestMode, required String adMobUnitId}) {
+  String getAdUnitIdForType(AdType adType, {required String adMobUnitId}) {
     final platform = Platform.isAndroid ? 'android' : 'ios';
-    final isTest = forceTestMode ?? _config.isTestMode;
+    final isTest = _config.isTestMode;
 
     var adUnitId = _config.testAdUnitIds[platform]?[adType.name];
 
@@ -300,13 +294,12 @@ class AdMaster implements IAdManager {
     AdSize size = AdSize.banner,
     AdCallback? callback,
     required String adUnitId,
-    bool? forceTestMode,
   }) async {
     _ensureInitialized();
 
     final adId = 'banner_${DateTime.now().millisecondsSinceEpoch}';
-    final finalAdUnitId = getAdUnitIdForType(AdType.banner,
-        forceTestMode: forceTestMode, adMobUnitId: adUnitId);
+    final finalAdUnitId =
+        getAdUnitIdForType(AdType.banner, adMobUnitId: adUnitId);
 
     _updateAdState(adId, const AdState(status: AdStatus.loading));
 
@@ -353,13 +346,12 @@ class AdMaster implements IAdManager {
   Future<InterstitialAd?> createInterstitialAd({
     AdCallback? callback,
     required String adUnitId,
-    bool? forceTestMode,
   }) async {
     _ensureInitialized();
 
     final adId = 'interstitial_${DateTime.now().millisecondsSinceEpoch}';
-    final finalAdUnitId = getAdUnitIdForType(AdType.interstitial,
-        forceTestMode: forceTestMode, adMobUnitId: adUnitId);
+    final finalAdUnitId =
+        getAdUnitIdForType(AdType.interstitial, adMobUnitId: adUnitId);
 
     _updateAdState(adId, const AdState(status: AdStatus.loading));
 
@@ -406,13 +398,12 @@ class AdMaster implements IAdManager {
   Future<RewardedAd?> createRewardedAd({
     AdCallback? callback,
     required String adUnitId,
-    bool? forceTestMode,
   }) async {
     _ensureInitialized();
 
     final adId = 'rewarded_${DateTime.now().millisecondsSinceEpoch}';
-    final finalAdUnitId = getAdUnitIdForType(AdType.rewarded,
-        forceTestMode: forceTestMode, adMobUnitId: adUnitId);
+    final finalAdUnitId =
+        getAdUnitIdForType(AdType.rewarded, adMobUnitId: adUnitId);
 
     _updateAdState(adId, const AdState(status: AdStatus.loading));
 
@@ -459,13 +450,12 @@ class AdMaster implements IAdManager {
   Future<NativeAd?> createNativeAd({
     AdCallback? callback,
     required String adUnitId,
-    bool? forceTestMode,
   }) async {
     _ensureInitialized();
 
     final adId = 'native_${DateTime.now().millisecondsSinceEpoch}';
-    final finalAdUnitId = getAdUnitIdForType(AdType.native,
-        forceTestMode: forceTestMode, adMobUnitId: adUnitId);
+    final finalAdUnitId =
+        getAdUnitIdForType(AdType.native, adMobUnitId: adUnitId);
 
     _updateAdState(adId, const AdState(status: AdStatus.loading));
 
@@ -512,13 +502,12 @@ class AdMaster implements IAdManager {
   Future<AppOpenAd?> createAppOpenAd({
     AdCallback? callback,
     required String adUnitId,
-    bool? forceTestMode,
   }) async {
     _ensureInitialized();
 
     final adId = 'appOpen_${DateTime.now().millisecondsSinceEpoch}';
-    final finalAdUnitId = getAdUnitIdForType(AdType.appOpen,
-        forceTestMode: forceTestMode, adMobUnitId: adUnitId);
+    final finalAdUnitId =
+        getAdUnitIdForType(AdType.appOpen, adMobUnitId: adUnitId);
 
     _updateAdState(adId, const AdState(status: AdStatus.loading));
 
@@ -647,7 +636,6 @@ class _AdMasterWidgetState extends State<AdMasterWidget> {
             callback: widget.callback,
             adUnitId:
                 Platform.isAndroid ? widget.androidAdUnitId : widget.adUnitId,
-            forceTestMode: widget.forceTestMode,
           );
           break;
         case AdType.interstitial:
@@ -655,7 +643,6 @@ class _AdMasterWidgetState extends State<AdMasterWidget> {
             callback: widget.callback,
             adUnitId:
                 Platform.isAndroid ? widget.androidAdUnitId : widget.adUnitId,
-            forceTestMode: widget.forceTestMode,
           );
           break;
         case AdType.rewarded:
@@ -663,7 +650,6 @@ class _AdMasterWidgetState extends State<AdMasterWidget> {
             callback: widget.callback,
             adUnitId:
                 Platform.isAndroid ? widget.androidAdUnitId : widget.adUnitId,
-            forceTestMode: widget.forceTestMode,
           );
           break;
         case AdType.native:
@@ -671,7 +657,6 @@ class _AdMasterWidgetState extends State<AdMasterWidget> {
             callback: widget.callback,
             adUnitId:
                 Platform.isAndroid ? widget.androidAdUnitId : widget.adUnitId,
-            forceTestMode: widget.forceTestMode,
           );
           break;
         case AdType.appOpen:
@@ -679,7 +664,6 @@ class _AdMasterWidgetState extends State<AdMasterWidget> {
             callback: widget.callback,
             adUnitId:
                 Platform.isAndroid ? widget.androidAdUnitId : widget.adUnitId,
-            forceTestMode: widget.forceTestMode,
           );
           break;
       }
