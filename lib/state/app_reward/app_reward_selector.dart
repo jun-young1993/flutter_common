@@ -45,9 +45,10 @@ class AppRewardPointTransactionsSelector
 }
 
 class AppRewardDailyUserRewardSelector
-    extends AppRewardSelector<List<UserReward>?> {
+    extends AppRewardSelector<Map<PointTransactionSource, UserReward?>> {
   AppRewardDailyUserRewardSelector(
-      Widget Function(List<UserReward>? dailyUserReward) builder,
+      Widget Function(Map<PointTransactionSource, UserReward?> dailyUserReward)
+          builder,
       {super.key})
       : super(
           selector: (state) => state.dailyUserReward,

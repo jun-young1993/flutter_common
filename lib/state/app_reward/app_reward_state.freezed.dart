@@ -21,7 +21,8 @@ mixin _$AppRewardState {
   UserPointBalance? get userPointBalance => throw _privateConstructorUsedError;
   List<PointTransaction>? get pointTransactions =>
       throw _privateConstructorUsedError;
-  List<UserReward>? get dailyUserReward => throw _privateConstructorUsedError;
+  Map<PointTransactionSource, UserReward?> get dailyUserReward =>
+      throw _privateConstructorUsedError;
 
   /// Create a copy of AppRewardState
   /// with the given fields replaced by the non-null parameter values.
@@ -41,7 +42,7 @@ abstract class $AppRewardStateCopyWith<$Res> {
       AppException? error,
       UserPointBalance? userPointBalance,
       List<PointTransaction>? pointTransactions,
-      List<UserReward>? dailyUserReward});
+      Map<PointTransactionSource, UserReward?> dailyUserReward});
 
   $AppExceptionCopyWith<$Res>? get error;
   $UserPointBalanceCopyWith<$Res>? get userPointBalance;
@@ -66,7 +67,7 @@ class _$AppRewardStateCopyWithImpl<$Res, $Val extends AppRewardState>
     Object? error = freezed,
     Object? userPointBalance = freezed,
     Object? pointTransactions = freezed,
-    Object? dailyUserReward = freezed,
+    Object? dailyUserReward = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -85,10 +86,10 @@ class _$AppRewardStateCopyWithImpl<$Res, $Val extends AppRewardState>
           ? _value.pointTransactions
           : pointTransactions // ignore: cast_nullable_to_non_nullable
               as List<PointTransaction>?,
-      dailyUserReward: freezed == dailyUserReward
+      dailyUserReward: null == dailyUserReward
           ? _value.dailyUserReward
           : dailyUserReward // ignore: cast_nullable_to_non_nullable
-              as List<UserReward>?,
+              as Map<PointTransactionSource, UserReward?>,
     ) as $Val);
   }
 
@@ -134,7 +135,7 @@ abstract class _$$AppRewardStateImplCopyWith<$Res>
       AppException? error,
       UserPointBalance? userPointBalance,
       List<PointTransaction>? pointTransactions,
-      List<UserReward>? dailyUserReward});
+      Map<PointTransactionSource, UserReward?> dailyUserReward});
 
   @override
   $AppExceptionCopyWith<$Res>? get error;
@@ -159,7 +160,7 @@ class __$$AppRewardStateImplCopyWithImpl<$Res>
     Object? error = freezed,
     Object? userPointBalance = freezed,
     Object? pointTransactions = freezed,
-    Object? dailyUserReward = freezed,
+    Object? dailyUserReward = null,
   }) {
     return _then(_$AppRewardStateImpl(
       isLoading: null == isLoading
@@ -178,10 +179,10 @@ class __$$AppRewardStateImplCopyWithImpl<$Res>
           ? _value._pointTransactions
           : pointTransactions // ignore: cast_nullable_to_non_nullable
               as List<PointTransaction>?,
-      dailyUserReward: freezed == dailyUserReward
+      dailyUserReward: null == dailyUserReward
           ? _value._dailyUserReward
           : dailyUserReward // ignore: cast_nullable_to_non_nullable
-              as List<UserReward>?,
+              as Map<PointTransactionSource, UserReward?>,
     ));
   }
 }
@@ -194,7 +195,8 @@ class _$AppRewardStateImpl extends _AppRewardState {
       this.error = null,
       this.userPointBalance = null,
       final List<PointTransaction>? pointTransactions = const [],
-      final List<UserReward>? dailyUserReward = const []})
+      final Map<PointTransactionSource, UserReward?> dailyUserReward =
+          const {}})
       : _pointTransactions = pointTransactions,
         _dailyUserReward = dailyUserReward,
         super._();
@@ -220,15 +222,13 @@ class _$AppRewardStateImpl extends _AppRewardState {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<UserReward>? _dailyUserReward;
+  final Map<PointTransactionSource, UserReward?> _dailyUserReward;
   @override
   @JsonKey()
-  List<UserReward>? get dailyUserReward {
-    final value = _dailyUserReward;
-    if (value == null) return null;
-    if (_dailyUserReward is EqualUnmodifiableListView) return _dailyUserReward;
+  Map<PointTransactionSource, UserReward?> get dailyUserReward {
+    if (_dailyUserReward is EqualUnmodifiableMapView) return _dailyUserReward;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableMapView(_dailyUserReward);
   }
 
   @override
@@ -273,11 +273,12 @@ class _$AppRewardStateImpl extends _AppRewardState {
 
 abstract class _AppRewardState extends AppRewardState {
   const factory _AppRewardState(
-      {final bool isLoading,
-      final AppException? error,
-      final UserPointBalance? userPointBalance,
-      final List<PointTransaction>? pointTransactions,
-      final List<UserReward>? dailyUserReward}) = _$AppRewardStateImpl;
+          {final bool isLoading,
+          final AppException? error,
+          final UserPointBalance? userPointBalance,
+          final List<PointTransaction>? pointTransactions,
+          final Map<PointTransactionSource, UserReward?> dailyUserReward}) =
+      _$AppRewardStateImpl;
   const _AppRewardState._() : super._();
 
   @override
@@ -289,7 +290,7 @@ abstract class _AppRewardState extends AppRewardState {
   @override
   List<PointTransaction>? get pointTransactions;
   @override
-  List<UserReward>? get dailyUserReward;
+  Map<PointTransactionSource, UserReward?> get dailyUserReward;
 
   /// Create a copy of AppRewardState
   /// with the given fields replaced by the non-null parameter values.

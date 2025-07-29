@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_common/extensions/app_exception.dart';
+import 'package:flutter_common/models/app-reward/point_transaction.dart';
 import 'package:flutter_common/repositories/app_reward_repository.dart';
 import 'package:flutter_common/repositories/user_repository.dart';
 import 'package:flutter_common/state/app_reward/app_reward_event.dart';
@@ -50,8 +51,20 @@ class AppRewardBloc extends Bloc<AppRewardEvent, AppRewardState> {
                 user.id,
                 type: e.type,
               );
+              final userRewardByType = dailyUserReward
+                  ?.where((userReward) => userReward.rewardType == e.type)
+                  .toList()
+                  .firstOrNull;
+              if (userRewardByType != null && e.type != null) {
+                // 기존 상태를 유지하면서 새로운 항목만 추가/수정
+                final updatedDailyUserReward =
+                    Map<PointTransactionSource, UserReward?>.from(
+                  state.dailyUserReward,
+                );
+                updatedDailyUserReward[e.type!] = userRewardByType;
 
-              emit(state.copyWith(dailyUserReward: dailyUserReward));
+                emit(state.copyWith(dailyUserReward: updatedDailyUserReward));
+              }
             });
           },
         );
