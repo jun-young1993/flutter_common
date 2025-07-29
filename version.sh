@@ -27,4 +27,6 @@ git push origin v$VERSION
 # 변경사항 푸시
 git push origin main
 
+
+echo "v$VERSION $MESSAGE"
 echo "버전 v$VERSION 태그 생성 및 푸시 완료!"
