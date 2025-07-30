@@ -82,12 +82,8 @@ class _NoticeScreenLayoutState extends State<NoticeScreenLayout> {
                 MaterialPageRoute(
                     builder: (_) => NoticeCreateScreen(
                           onSubmit: (title, content, type) {
-                            noticeBloc.add(NoticeEvent.create(
-                                title,
-                                content,
-                                type,
-                                noticeGroup.id,
-                                widget.user.username ?? 'unknown'));
+                            noticeBloc.add(NoticeEvent.create(title, content,
+                                type, noticeGroup.id, widget.user.id));
                             Navigator.of(context).pop();
                           },
                         )),

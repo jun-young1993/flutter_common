@@ -19,7 +19,8 @@ class NoticeBloc extends Bloc<NoticeEvent, NoticeState> {
             await _handleEvent(
               emit,
               () async {
-                final notice = await _noticeRepository.findOneById(e.id);
+                final notice =
+                    await _noticeRepository.findOneById(e.id, e.userId);
                 emit(state.copyWith(
                     notices: state.notices
                         ?.map((prev) => prev.id == notice.id ? notice : prev)
@@ -55,7 +56,7 @@ class NoticeBloc extends Bloc<NoticeEvent, NoticeState> {
               emit,
               () async {
                 final notice = await _noticeRepository.create(
-                    e.title, e.content, e.type, e.noticeGroupId, e.userName);
+                    e.title, e.content, e.type, e.noticeGroupId, e.userId);
 
                 emit(state.copyWith(
                   notices: [notice, ...(state.notices ?? [])],

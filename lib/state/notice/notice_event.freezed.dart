@@ -21,7 +21,7 @@ mixin _$NoticeEvent {
     required TResult Function(String name) findAll,
     required TResult Function(String name) addSkip,
     required TResult Function(String title, String content, String type,
-            String noticeGroupId, String userName)
+            String noticeGroupId, String userId)
         create,
     required TResult Function(
             String noticeId, String reporterId, String type, String? comment)
@@ -35,7 +35,7 @@ mixin _$NoticeEvent {
     TResult? Function(String name)? findAll,
     TResult? Function(String name)? addSkip,
     TResult? Function(String title, String content, String type,
-            String noticeGroupId, String userName)?
+            String noticeGroupId, String userId)?
         create,
     TResult? Function(
             String noticeId, String reporterId, String type, String? comment)?
@@ -49,7 +49,7 @@ mixin _$NoticeEvent {
     TResult Function(String name)? findAll,
     TResult Function(String name)? addSkip,
     TResult Function(String title, String content, String type,
-            String noticeGroupId, String userName)?
+            String noticeGroupId, String userId)?
         create,
     TResult Function(
             String noticeId, String reporterId, String type, String? comment)?
@@ -184,7 +184,7 @@ class _$FindAllImpl implements FindAll {
     required TResult Function(String name) findAll,
     required TResult Function(String name) addSkip,
     required TResult Function(String title, String content, String type,
-            String noticeGroupId, String userName)
+            String noticeGroupId, String userId)
         create,
     required TResult Function(
             String noticeId, String reporterId, String type, String? comment)
@@ -201,7 +201,7 @@ class _$FindAllImpl implements FindAll {
     TResult? Function(String name)? findAll,
     TResult? Function(String name)? addSkip,
     TResult? Function(String title, String content, String type,
-            String noticeGroupId, String userName)?
+            String noticeGroupId, String userId)?
         create,
     TResult? Function(
             String noticeId, String reporterId, String type, String? comment)?
@@ -218,7 +218,7 @@ class _$FindAllImpl implements FindAll {
     TResult Function(String name)? findAll,
     TResult Function(String name)? addSkip,
     TResult Function(String title, String content, String type,
-            String noticeGroupId, String userName)?
+            String noticeGroupId, String userId)?
         create,
     TResult Function(
             String noticeId, String reporterId, String type, String? comment)?
@@ -360,7 +360,7 @@ class _$AddSkipImpl implements AddSkip {
     required TResult Function(String name) findAll,
     required TResult Function(String name) addSkip,
     required TResult Function(String title, String content, String type,
-            String noticeGroupId, String userName)
+            String noticeGroupId, String userId)
         create,
     required TResult Function(
             String noticeId, String reporterId, String type, String? comment)
@@ -377,7 +377,7 @@ class _$AddSkipImpl implements AddSkip {
     TResult? Function(String name)? findAll,
     TResult? Function(String name)? addSkip,
     TResult? Function(String title, String content, String type,
-            String noticeGroupId, String userName)?
+            String noticeGroupId, String userId)?
         create,
     TResult? Function(
             String noticeId, String reporterId, String type, String? comment)?
@@ -394,7 +394,7 @@ class _$AddSkipImpl implements AddSkip {
     TResult Function(String name)? findAll,
     TResult Function(String name)? addSkip,
     TResult Function(String title, String content, String type,
-            String noticeGroupId, String userName)?
+            String noticeGroupId, String userId)?
         create,
     TResult Function(
             String noticeId, String reporterId, String type, String? comment)?
@@ -476,7 +476,7 @@ abstract class _$$CreateImplCopyWith<$Res> {
       String content,
       String type,
       String noticeGroupId,
-      String userName});
+      String userId});
 }
 
 /// @nodoc
@@ -496,7 +496,7 @@ class __$$CreateImplCopyWithImpl<$Res>
     Object? content = null,
     Object? type = null,
     Object? noticeGroupId = null,
-    Object? userName = null,
+    Object? userId = null,
   }) {
     return _then(_$CreateImpl(
       null == title
@@ -515,9 +515,9 @@ class __$$CreateImplCopyWithImpl<$Res>
           ? _value.noticeGroupId
           : noticeGroupId // ignore: cast_nullable_to_non_nullable
               as String,
-      null == userName
-          ? _value.userName
-          : userName // ignore: cast_nullable_to_non_nullable
+      null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -527,7 +527,7 @@ class __$$CreateImplCopyWithImpl<$Res>
 
 class _$CreateImpl implements Create {
   const _$CreateImpl(
-      this.title, this.content, this.type, this.noticeGroupId, this.userName);
+      this.title, this.content, this.type, this.noticeGroupId, this.userId);
 
   @override
   final String title;
@@ -538,11 +538,11 @@ class _$CreateImpl implements Create {
   @override
   final String noticeGroupId;
   @override
-  final String userName;
+  final String userId;
 
   @override
   String toString() {
-    return 'NoticeEvent.create(title: $title, content: $content, type: $type, noticeGroupId: $noticeGroupId, userName: $userName)';
+    return 'NoticeEvent.create(title: $title, content: $content, type: $type, noticeGroupId: $noticeGroupId, userId: $userId)';
   }
 
   @override
@@ -555,13 +555,12 @@ class _$CreateImpl implements Create {
             (identical(other.type, type) || other.type == type) &&
             (identical(other.noticeGroupId, noticeGroupId) ||
                 other.noticeGroupId == noticeGroupId) &&
-            (identical(other.userName, userName) ||
-                other.userName == userName));
+            (identical(other.userId, userId) || other.userId == userId));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, title, content, type, noticeGroupId, userName);
+      Object.hash(runtimeType, title, content, type, noticeGroupId, userId);
 
   /// Create a copy of NoticeEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -577,7 +576,7 @@ class _$CreateImpl implements Create {
     required TResult Function(String name) findAll,
     required TResult Function(String name) addSkip,
     required TResult Function(String title, String content, String type,
-            String noticeGroupId, String userName)
+            String noticeGroupId, String userId)
         create,
     required TResult Function(
             String noticeId, String reporterId, String type, String? comment)
@@ -585,7 +584,7 @@ class _$CreateImpl implements Create {
     required TResult Function() removeSuccessMessage,
     required TResult Function(String id, String? userId) findOneById,
   }) {
-    return create(title, content, type, noticeGroupId, userName);
+    return create(title, content, type, noticeGroupId, userId);
   }
 
   @override
@@ -594,7 +593,7 @@ class _$CreateImpl implements Create {
     TResult? Function(String name)? findAll,
     TResult? Function(String name)? addSkip,
     TResult? Function(String title, String content, String type,
-            String noticeGroupId, String userName)?
+            String noticeGroupId, String userId)?
         create,
     TResult? Function(
             String noticeId, String reporterId, String type, String? comment)?
@@ -602,7 +601,7 @@ class _$CreateImpl implements Create {
     TResult? Function()? removeSuccessMessage,
     TResult? Function(String id, String? userId)? findOneById,
   }) {
-    return create?.call(title, content, type, noticeGroupId, userName);
+    return create?.call(title, content, type, noticeGroupId, userId);
   }
 
   @override
@@ -611,7 +610,7 @@ class _$CreateImpl implements Create {
     TResult Function(String name)? findAll,
     TResult Function(String name)? addSkip,
     TResult Function(String title, String content, String type,
-            String noticeGroupId, String userName)?
+            String noticeGroupId, String userId)?
         create,
     TResult Function(
             String noticeId, String reporterId, String type, String? comment)?
@@ -621,7 +620,7 @@ class _$CreateImpl implements Create {
     required TResult orElse(),
   }) {
     if (create != null) {
-      return create(title, content, type, noticeGroupId, userName);
+      return create(title, content, type, noticeGroupId, userId);
     }
     return orElse();
   }
@@ -676,13 +675,13 @@ abstract class Create implements NoticeEvent {
       final String content,
       final String type,
       final String noticeGroupId,
-      final String userName) = _$CreateImpl;
+      final String userId) = _$CreateImpl;
 
   String get title;
   String get content;
   String get type;
   String get noticeGroupId;
-  String get userName;
+  String get userId;
 
   /// Create a copy of NoticeEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -789,7 +788,7 @@ class _$ReportImpl implements Report {
     required TResult Function(String name) findAll,
     required TResult Function(String name) addSkip,
     required TResult Function(String title, String content, String type,
-            String noticeGroupId, String userName)
+            String noticeGroupId, String userId)
         create,
     required TResult Function(
             String noticeId, String reporterId, String type, String? comment)
@@ -806,7 +805,7 @@ class _$ReportImpl implements Report {
     TResult? Function(String name)? findAll,
     TResult? Function(String name)? addSkip,
     TResult? Function(String title, String content, String type,
-            String noticeGroupId, String userName)?
+            String noticeGroupId, String userId)?
         create,
     TResult? Function(
             String noticeId, String reporterId, String type, String? comment)?
@@ -823,7 +822,7 @@ class _$ReportImpl implements Report {
     TResult Function(String name)? findAll,
     TResult Function(String name)? addSkip,
     TResult Function(String title, String content, String type,
-            String noticeGroupId, String userName)?
+            String noticeGroupId, String userId)?
         create,
     TResult Function(
             String noticeId, String reporterId, String type, String? comment)?
@@ -943,7 +942,7 @@ class _$RemoveSuccessMessageImpl implements RemoveSuccessMessage {
     required TResult Function(String name) findAll,
     required TResult Function(String name) addSkip,
     required TResult Function(String title, String content, String type,
-            String noticeGroupId, String userName)
+            String noticeGroupId, String userId)
         create,
     required TResult Function(
             String noticeId, String reporterId, String type, String? comment)
@@ -960,7 +959,7 @@ class _$RemoveSuccessMessageImpl implements RemoveSuccessMessage {
     TResult? Function(String name)? findAll,
     TResult? Function(String name)? addSkip,
     TResult? Function(String title, String content, String type,
-            String noticeGroupId, String userName)?
+            String noticeGroupId, String userId)?
         create,
     TResult? Function(
             String noticeId, String reporterId, String type, String? comment)?
@@ -977,7 +976,7 @@ class _$RemoveSuccessMessageImpl implements RemoveSuccessMessage {
     TResult Function(String name)? findAll,
     TResult Function(String name)? addSkip,
     TResult Function(String title, String content, String type,
-            String noticeGroupId, String userName)?
+            String noticeGroupId, String userId)?
         create,
     TResult Function(
             String noticeId, String reporterId, String type, String? comment)?
@@ -1119,7 +1118,7 @@ class _$FindOneByIdImpl implements FindOneById {
     required TResult Function(String name) findAll,
     required TResult Function(String name) addSkip,
     required TResult Function(String title, String content, String type,
-            String noticeGroupId, String userName)
+            String noticeGroupId, String userId)
         create,
     required TResult Function(
             String noticeId, String reporterId, String type, String? comment)
@@ -1136,7 +1135,7 @@ class _$FindOneByIdImpl implements FindOneById {
     TResult? Function(String name)? findAll,
     TResult? Function(String name)? addSkip,
     TResult? Function(String title, String content, String type,
-            String noticeGroupId, String userName)?
+            String noticeGroupId, String userId)?
         create,
     TResult? Function(
             String noticeId, String reporterId, String type, String? comment)?
@@ -1153,7 +1152,7 @@ class _$FindOneByIdImpl implements FindOneById {
     TResult Function(String name)? findAll,
     TResult Function(String name)? addSkip,
     TResult Function(String title, String content, String type,
-            String noticeGroupId, String userName)?
+            String noticeGroupId, String userId)?
         create,
     TResult Function(
             String noticeId, String reporterId, String type, String? comment)?

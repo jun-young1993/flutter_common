@@ -7,7 +7,7 @@ abstract class NoticeRepository {
       String noticeGroupId, String userName);
   Future<void> report(
       String noticeId, String reporterId, String type, String? content);
-  Future<Notice> findOneById(String id);
+  Future<Notice> findOneById(String id, String? userId);
 }
 
 class NoticeDefaultRepository extends NoticeRepository {
@@ -16,8 +16,10 @@ class NoticeDefaultRepository extends NoticeRepository {
   NoticeDefaultRepository({required this.dioClient});
 
   @override
-  Future<Notice> findOneById(String id) async {
-    final response = await dioClient.get('/notice/$id');
+  Future<Notice> findOneById(String id, String? userId) async {
+    final response = await dioClient.get('/notice/$id', queryParameters: {
+      'userId': userId,
+    });
     if (response.statusCode == 200) {
       return Notice.fromJson(response.data as Map<String, dynamic>);
     }
