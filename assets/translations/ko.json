@@ -87,14 +87,14 @@
         "content": "내용",
         "type": "유형",
         "submit": "제출",
-        "noticeCreate": "공지사항 작성",
+        "noticeCreate": "게시글 작성",
         "noticeCreateTitle": "제목",
         "noticeCreateContent": "내용",
         "noticeCreateType": "유형",
         "notice": "공지",
         "normal": "일반",
         "register": "등록하기",
-        "createNotice": "공지사항 작성 완료"
+        "createNotice": "게시글 작성 완료"
     },
     "report": {
         "title": "신고사유를 선택해주십시오.",

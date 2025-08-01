@@ -2,7 +2,12 @@ import 'package:flutter_common/models/notice/notice.dart';
 import 'package:flutter_common/network/dio_client.dart';
 
 abstract class NoticeRepository {
-  Future<List<Notice>?> findAll(String name, int skip, int take);
+  Future<List<Notice>?> findAll(
+    String name,
+    int skip,
+    int take, {
+    String? title,
+  });
   Future<Notice> create(String title, String content, String type,
       String noticeGroupId, String userName);
   Future<void> report(
@@ -28,9 +33,13 @@ class NoticeDefaultRepository extends NoticeRepository {
   }
 
   @override
-  Future<List<Notice>?> findAll(String name, int skip, int take) async {
-    final response = await dioClient
-        .get('/notice/notice-group/name/$name/?skip=$skip&take=$take');
+  Future<List<Notice>?> findAll(String name, int skip, int take,
+      {String? title}) async {
+    final response = await dioClient.get(
+        '/notice/notice-group/name/$name/?skip=$skip&take=$take',
+        queryParameters: {
+          'title': title,
+        });
     if (response.data == null) {
       throw Exception('Response data is null');
     }

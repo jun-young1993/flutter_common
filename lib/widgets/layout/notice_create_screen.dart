@@ -15,7 +15,9 @@ class _NoticeCreateScreenState extends State<NoticeCreateScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('공지사항 작성'),
+          title: Text(Tr.notice.noticeCreate.tr(),
+              style: const TextStyle(color: Colors.black)),
+          iconTheme: const IconThemeData(color: Colors.black),
         ),
         body: NoticeCreateSection(
           onSubmit: widget.onSubmit,

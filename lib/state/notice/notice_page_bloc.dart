@@ -6,13 +6,19 @@ sealed class NoticePageEvent {}
 
 final class FetchNextNotice extends NoticePageEvent {
   final String groupName;
-  FetchNextNotice(this.groupName);
+  final String? title;
+  FetchNextNotice(this.groupName, {this.title});
 }
+
+final class ClearNotice extends NoticePageEvent {}
 
 class NoticePageBloc extends Bloc<NoticePageEvent, PagingState<int, Notice>> {
   final NoticeRepository noticeRepository;
 
   NoticePageBloc({required this.noticeRepository}) : super(PagingState()) {
+    on<ClearNotice>((event, emit) {
+      emit(PagingState());
+    });
     on<FetchNextNotice>((event, emit) async {
       if (state.isLoading) return;
       emit(state.copyWith(isLoading: true, error: null));
@@ -25,6 +31,7 @@ class NoticePageBloc extends Bloc<NoticePageEvent, PagingState<int, Notice>> {
           event.groupName,
           (newKey - 1) * limit,
           limit,
+          title: event.title,
         );
         final isLastPage = newItems?.isEmpty ?? true;
 
