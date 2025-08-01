@@ -20,6 +20,7 @@ UserPointBalance _$UserPointBalanceFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserPointBalance {
+  String get id => throw _privateConstructorUsedError;
   int get currentPoints => throw _privateConstructorUsedError; // 현재 포인트
   int get totalEarnedPoints => throw _privateConstructorUsedError; // 총 획득 포인트
   int get totalSpentPoints => throw _privateConstructorUsedError; // 총 사용 포인트
@@ -42,7 +43,8 @@ abstract class $UserPointBalanceCopyWith<$Res> {
       _$UserPointBalanceCopyWithImpl<$Res, UserPointBalance>;
   @useResult
   $Res call(
-      {int currentPoints,
+      {String id,
+      int currentPoints,
       int totalEarnedPoints,
       int totalSpentPoints,
       int totalWithdrawnPoints});
@@ -63,12 +65,17 @@ class _$UserPointBalanceCopyWithImpl<$Res, $Val extends UserPointBalance>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? currentPoints = null,
     Object? totalEarnedPoints = null,
     Object? totalSpentPoints = null,
     Object? totalWithdrawnPoints = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       currentPoints: null == currentPoints
           ? _value.currentPoints
           : currentPoints // ignore: cast_nullable_to_non_nullable
@@ -98,7 +105,8 @@ abstract class _$$UserPointBalanceImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int currentPoints,
+      {String id,
+      int currentPoints,
       int totalEarnedPoints,
       int totalSpentPoints,
       int totalWithdrawnPoints});
@@ -117,12 +125,17 @@ class __$$UserPointBalanceImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? currentPoints = null,
     Object? totalEarnedPoints = null,
     Object? totalSpentPoints = null,
     Object? totalWithdrawnPoints = null,
   }) {
     return _then(_$UserPointBalanceImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       currentPoints: null == currentPoints
           ? _value.currentPoints
           : currentPoints // ignore: cast_nullable_to_non_nullable
@@ -147,7 +160,8 @@ class __$$UserPointBalanceImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$UserPointBalanceImpl extends _UserPointBalance {
   const _$UserPointBalanceImpl(
-      {required this.currentPoints,
+      {required this.id,
+      required this.currentPoints,
       required this.totalEarnedPoints,
       required this.totalSpentPoints,
       required this.totalWithdrawnPoints})
@@ -156,6 +170,8 @@ class _$UserPointBalanceImpl extends _UserPointBalance {
   factory _$UserPointBalanceImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserPointBalanceImplFromJson(json);
 
+  @override
+  final String id;
   @override
   final int currentPoints;
 // 현재 포인트
@@ -170,7 +186,7 @@ class _$UserPointBalanceImpl extends _UserPointBalance {
 
   @override
   String toString() {
-    return 'UserPointBalance(currentPoints: $currentPoints, totalEarnedPoints: $totalEarnedPoints, totalSpentPoints: $totalSpentPoints, totalWithdrawnPoints: $totalWithdrawnPoints)';
+    return 'UserPointBalance(id: $id, currentPoints: $currentPoints, totalEarnedPoints: $totalEarnedPoints, totalSpentPoints: $totalSpentPoints, totalWithdrawnPoints: $totalWithdrawnPoints)';
   }
 
   @override
@@ -178,6 +194,7 @@ class _$UserPointBalanceImpl extends _UserPointBalance {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UserPointBalanceImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.currentPoints, currentPoints) ||
                 other.currentPoints == currentPoints) &&
             (identical(other.totalEarnedPoints, totalEarnedPoints) ||
@@ -190,8 +207,8 @@ class _$UserPointBalanceImpl extends _UserPointBalance {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, currentPoints, totalEarnedPoints,
-      totalSpentPoints, totalWithdrawnPoints);
+  int get hashCode => Object.hash(runtimeType, id, currentPoints,
+      totalEarnedPoints, totalSpentPoints, totalWithdrawnPoints);
 
   /// Create a copy of UserPointBalance
   /// with the given fields replaced by the non-null parameter values.
@@ -212,7 +229,8 @@ class _$UserPointBalanceImpl extends _UserPointBalance {
 
 abstract class _UserPointBalance extends UserPointBalance {
   const factory _UserPointBalance(
-      {required final int currentPoints,
+      {required final String id,
+      required final int currentPoints,
       required final int totalEarnedPoints,
       required final int totalSpentPoints,
       required final int totalWithdrawnPoints}) = _$UserPointBalanceImpl;
@@ -221,6 +239,8 @@ abstract class _UserPointBalance extends UserPointBalance {
   factory _UserPointBalance.fromJson(Map<String, dynamic> json) =
       _$UserPointBalanceImpl.fromJson;
 
+  @override
+  String get id;
   @override
   int get currentPoints; // 현재 포인트
   @override

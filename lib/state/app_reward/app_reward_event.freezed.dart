@@ -22,6 +22,9 @@ mixin _$AppRewardEvent {
     required TResult Function() clearError,
     required TResult Function() getPointTransactions,
     required TResult Function(PointTransactionSource? type) getDailyUserReward,
+    required TResult Function(String bankName, String accountNumber,
+            String accountHolder, int withdrawalAmount)
+        createWithdrawal,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +33,9 @@ mixin _$AppRewardEvent {
     TResult? Function()? clearError,
     TResult? Function()? getPointTransactions,
     TResult? Function(PointTransactionSource? type)? getDailyUserReward,
+    TResult? Function(String bankName, String accountNumber,
+            String accountHolder, int withdrawalAmount)?
+        createWithdrawal,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +44,9 @@ mixin _$AppRewardEvent {
     TResult Function()? clearError,
     TResult Function()? getPointTransactions,
     TResult Function(PointTransactionSource? type)? getDailyUserReward,
+    TResult Function(String bankName, String accountNumber,
+            String accountHolder, int withdrawalAmount)?
+        createWithdrawal,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +56,7 @@ mixin _$AppRewardEvent {
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_GetPointTransactions value) getPointTransactions,
     required TResult Function(_GetDailyUserReward value) getDailyUserReward,
+    required TResult Function(_CreateWithdrawal value) createWithdrawal,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +65,7 @@ mixin _$AppRewardEvent {
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_GetPointTransactions value)? getPointTransactions,
     TResult? Function(_GetDailyUserReward value)? getDailyUserReward,
+    TResult? Function(_CreateWithdrawal value)? createWithdrawal,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +74,7 @@ mixin _$AppRewardEvent {
     TResult Function(_ClearError value)? clearError,
     TResult Function(_GetPointTransactions value)? getPointTransactions,
     TResult Function(_GetDailyUserReward value)? getDailyUserReward,
+    TResult Function(_CreateWithdrawal value)? createWithdrawal,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -134,6 +146,9 @@ class _$InitializeImpl implements _Initialize {
     required TResult Function() clearError,
     required TResult Function() getPointTransactions,
     required TResult Function(PointTransactionSource? type) getDailyUserReward,
+    required TResult Function(String bankName, String accountNumber,
+            String accountHolder, int withdrawalAmount)
+        createWithdrawal,
   }) {
     return initialize();
   }
@@ -145,6 +160,9 @@ class _$InitializeImpl implements _Initialize {
     TResult? Function()? clearError,
     TResult? Function()? getPointTransactions,
     TResult? Function(PointTransactionSource? type)? getDailyUserReward,
+    TResult? Function(String bankName, String accountNumber,
+            String accountHolder, int withdrawalAmount)?
+        createWithdrawal,
   }) {
     return initialize?.call();
   }
@@ -156,6 +174,9 @@ class _$InitializeImpl implements _Initialize {
     TResult Function()? clearError,
     TResult Function()? getPointTransactions,
     TResult Function(PointTransactionSource? type)? getDailyUserReward,
+    TResult Function(String bankName, String accountNumber,
+            String accountHolder, int withdrawalAmount)?
+        createWithdrawal,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -171,6 +192,7 @@ class _$InitializeImpl implements _Initialize {
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_GetPointTransactions value) getPointTransactions,
     required TResult Function(_GetDailyUserReward value) getDailyUserReward,
+    required TResult Function(_CreateWithdrawal value) createWithdrawal,
   }) {
     return initialize(this);
   }
@@ -182,6 +204,7 @@ class _$InitializeImpl implements _Initialize {
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_GetPointTransactions value)? getPointTransactions,
     TResult? Function(_GetDailyUserReward value)? getDailyUserReward,
+    TResult? Function(_CreateWithdrawal value)? createWithdrawal,
   }) {
     return initialize?.call(this);
   }
@@ -193,6 +216,7 @@ class _$InitializeImpl implements _Initialize {
     TResult Function(_ClearError value)? clearError,
     TResult Function(_GetPointTransactions value)? getPointTransactions,
     TResult Function(_GetDailyUserReward value)? getDailyUserReward,
+    TResult Function(_CreateWithdrawal value)? createWithdrawal,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -251,6 +275,9 @@ class _$ClearErrorImpl implements _ClearError {
     required TResult Function() clearError,
     required TResult Function() getPointTransactions,
     required TResult Function(PointTransactionSource? type) getDailyUserReward,
+    required TResult Function(String bankName, String accountNumber,
+            String accountHolder, int withdrawalAmount)
+        createWithdrawal,
   }) {
     return clearError();
   }
@@ -262,6 +289,9 @@ class _$ClearErrorImpl implements _ClearError {
     TResult? Function()? clearError,
     TResult? Function()? getPointTransactions,
     TResult? Function(PointTransactionSource? type)? getDailyUserReward,
+    TResult? Function(String bankName, String accountNumber,
+            String accountHolder, int withdrawalAmount)?
+        createWithdrawal,
   }) {
     return clearError?.call();
   }
@@ -273,6 +303,9 @@ class _$ClearErrorImpl implements _ClearError {
     TResult Function()? clearError,
     TResult Function()? getPointTransactions,
     TResult Function(PointTransactionSource? type)? getDailyUserReward,
+    TResult Function(String bankName, String accountNumber,
+            String accountHolder, int withdrawalAmount)?
+        createWithdrawal,
     required TResult orElse(),
   }) {
     if (clearError != null) {
@@ -288,6 +321,7 @@ class _$ClearErrorImpl implements _ClearError {
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_GetPointTransactions value) getPointTransactions,
     required TResult Function(_GetDailyUserReward value) getDailyUserReward,
+    required TResult Function(_CreateWithdrawal value) createWithdrawal,
   }) {
     return clearError(this);
   }
@@ -299,6 +333,7 @@ class _$ClearErrorImpl implements _ClearError {
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_GetPointTransactions value)? getPointTransactions,
     TResult? Function(_GetDailyUserReward value)? getDailyUserReward,
+    TResult? Function(_CreateWithdrawal value)? createWithdrawal,
   }) {
     return clearError?.call(this);
   }
@@ -310,6 +345,7 @@ class _$ClearErrorImpl implements _ClearError {
     TResult Function(_ClearError value)? clearError,
     TResult Function(_GetPointTransactions value)? getPointTransactions,
     TResult Function(_GetDailyUserReward value)? getDailyUserReward,
+    TResult Function(_CreateWithdrawal value)? createWithdrawal,
     required TResult orElse(),
   }) {
     if (clearError != null) {
@@ -369,6 +405,9 @@ class _$GetPointTransactionsImpl implements _GetPointTransactions {
     required TResult Function() clearError,
     required TResult Function() getPointTransactions,
     required TResult Function(PointTransactionSource? type) getDailyUserReward,
+    required TResult Function(String bankName, String accountNumber,
+            String accountHolder, int withdrawalAmount)
+        createWithdrawal,
   }) {
     return getPointTransactions();
   }
@@ -380,6 +419,9 @@ class _$GetPointTransactionsImpl implements _GetPointTransactions {
     TResult? Function()? clearError,
     TResult? Function()? getPointTransactions,
     TResult? Function(PointTransactionSource? type)? getDailyUserReward,
+    TResult? Function(String bankName, String accountNumber,
+            String accountHolder, int withdrawalAmount)?
+        createWithdrawal,
   }) {
     return getPointTransactions?.call();
   }
@@ -391,6 +433,9 @@ class _$GetPointTransactionsImpl implements _GetPointTransactions {
     TResult Function()? clearError,
     TResult Function()? getPointTransactions,
     TResult Function(PointTransactionSource? type)? getDailyUserReward,
+    TResult Function(String bankName, String accountNumber,
+            String accountHolder, int withdrawalAmount)?
+        createWithdrawal,
     required TResult orElse(),
   }) {
     if (getPointTransactions != null) {
@@ -406,6 +451,7 @@ class _$GetPointTransactionsImpl implements _GetPointTransactions {
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_GetPointTransactions value) getPointTransactions,
     required TResult Function(_GetDailyUserReward value) getDailyUserReward,
+    required TResult Function(_CreateWithdrawal value) createWithdrawal,
   }) {
     return getPointTransactions(this);
   }
@@ -417,6 +463,7 @@ class _$GetPointTransactionsImpl implements _GetPointTransactions {
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_GetPointTransactions value)? getPointTransactions,
     TResult? Function(_GetDailyUserReward value)? getDailyUserReward,
+    TResult? Function(_CreateWithdrawal value)? createWithdrawal,
   }) {
     return getPointTransactions?.call(this);
   }
@@ -428,6 +475,7 @@ class _$GetPointTransactionsImpl implements _GetPointTransactions {
     TResult Function(_ClearError value)? clearError,
     TResult Function(_GetPointTransactions value)? getPointTransactions,
     TResult Function(_GetDailyUserReward value)? getDailyUserReward,
+    TResult Function(_CreateWithdrawal value)? createWithdrawal,
     required TResult orElse(),
   }) {
     if (getPointTransactions != null) {
@@ -514,6 +562,9 @@ class _$GetDailyUserRewardImpl implements _GetDailyUserReward {
     required TResult Function() clearError,
     required TResult Function() getPointTransactions,
     required TResult Function(PointTransactionSource? type) getDailyUserReward,
+    required TResult Function(String bankName, String accountNumber,
+            String accountHolder, int withdrawalAmount)
+        createWithdrawal,
   }) {
     return getDailyUserReward(type);
   }
@@ -525,6 +576,9 @@ class _$GetDailyUserRewardImpl implements _GetDailyUserReward {
     TResult? Function()? clearError,
     TResult? Function()? getPointTransactions,
     TResult? Function(PointTransactionSource? type)? getDailyUserReward,
+    TResult? Function(String bankName, String accountNumber,
+            String accountHolder, int withdrawalAmount)?
+        createWithdrawal,
   }) {
     return getDailyUserReward?.call(type);
   }
@@ -536,6 +590,9 @@ class _$GetDailyUserRewardImpl implements _GetDailyUserReward {
     TResult Function()? clearError,
     TResult Function()? getPointTransactions,
     TResult Function(PointTransactionSource? type)? getDailyUserReward,
+    TResult Function(String bankName, String accountNumber,
+            String accountHolder, int withdrawalAmount)?
+        createWithdrawal,
     required TResult orElse(),
   }) {
     if (getDailyUserReward != null) {
@@ -551,6 +608,7 @@ class _$GetDailyUserRewardImpl implements _GetDailyUserReward {
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_GetPointTransactions value) getPointTransactions,
     required TResult Function(_GetDailyUserReward value) getDailyUserReward,
+    required TResult Function(_CreateWithdrawal value) createWithdrawal,
   }) {
     return getDailyUserReward(this);
   }
@@ -562,6 +620,7 @@ class _$GetDailyUserRewardImpl implements _GetDailyUserReward {
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_GetPointTransactions value)? getPointTransactions,
     TResult? Function(_GetDailyUserReward value)? getDailyUserReward,
+    TResult? Function(_CreateWithdrawal value)? createWithdrawal,
   }) {
     return getDailyUserReward?.call(this);
   }
@@ -573,6 +632,7 @@ class _$GetDailyUserRewardImpl implements _GetDailyUserReward {
     TResult Function(_ClearError value)? clearError,
     TResult Function(_GetPointTransactions value)? getPointTransactions,
     TResult Function(_GetDailyUserReward value)? getDailyUserReward,
+    TResult Function(_CreateWithdrawal value)? createWithdrawal,
     required TResult orElse(),
   }) {
     if (getDailyUserReward != null) {
@@ -592,5 +652,214 @@ abstract class _GetDailyUserReward implements AppRewardEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetDailyUserRewardImplCopyWith<_$GetDailyUserRewardImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CreateWithdrawalImplCopyWith<$Res> {
+  factory _$$CreateWithdrawalImplCopyWith(_$CreateWithdrawalImpl value,
+          $Res Function(_$CreateWithdrawalImpl) then) =
+      __$$CreateWithdrawalImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {String bankName,
+      String accountNumber,
+      String accountHolder,
+      int withdrawalAmount});
+}
+
+/// @nodoc
+class __$$CreateWithdrawalImplCopyWithImpl<$Res>
+    extends _$AppRewardEventCopyWithImpl<$Res, _$CreateWithdrawalImpl>
+    implements _$$CreateWithdrawalImplCopyWith<$Res> {
+  __$$CreateWithdrawalImplCopyWithImpl(_$CreateWithdrawalImpl _value,
+      $Res Function(_$CreateWithdrawalImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AppRewardEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? bankName = null,
+    Object? accountNumber = null,
+    Object? accountHolder = null,
+    Object? withdrawalAmount = null,
+  }) {
+    return _then(_$CreateWithdrawalImpl(
+      null == bankName
+          ? _value.bankName
+          : bankName // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == accountNumber
+          ? _value.accountNumber
+          : accountNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == accountHolder
+          ? _value.accountHolder
+          : accountHolder // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == withdrawalAmount
+          ? _value.withdrawalAmount
+          : withdrawalAmount // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CreateWithdrawalImpl implements _CreateWithdrawal {
+  const _$CreateWithdrawalImpl(this.bankName, this.accountNumber,
+      this.accountHolder, this.withdrawalAmount);
+
+  @override
+  final String bankName;
+  @override
+  final String accountNumber;
+  @override
+  final String accountHolder;
+  @override
+  final int withdrawalAmount;
+
+  @override
+  String toString() {
+    return 'AppRewardEvent.createWithdrawal(bankName: $bankName, accountNumber: $accountNumber, accountHolder: $accountHolder, withdrawalAmount: $withdrawalAmount)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CreateWithdrawalImpl &&
+            (identical(other.bankName, bankName) ||
+                other.bankName == bankName) &&
+            (identical(other.accountNumber, accountNumber) ||
+                other.accountNumber == accountNumber) &&
+            (identical(other.accountHolder, accountHolder) ||
+                other.accountHolder == accountHolder) &&
+            (identical(other.withdrawalAmount, withdrawalAmount) ||
+                other.withdrawalAmount == withdrawalAmount));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, bankName, accountNumber, accountHolder, withdrawalAmount);
+
+  /// Create a copy of AppRewardEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CreateWithdrawalImplCopyWith<_$CreateWithdrawalImpl> get copyWith =>
+      __$$CreateWithdrawalImplCopyWithImpl<_$CreateWithdrawalImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialize,
+    required TResult Function() clearError,
+    required TResult Function() getPointTransactions,
+    required TResult Function(PointTransactionSource? type) getDailyUserReward,
+    required TResult Function(String bankName, String accountNumber,
+            String accountHolder, int withdrawalAmount)
+        createWithdrawal,
+  }) {
+    return createWithdrawal(
+        bankName, accountNumber, accountHolder, withdrawalAmount);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialize,
+    TResult? Function()? clearError,
+    TResult? Function()? getPointTransactions,
+    TResult? Function(PointTransactionSource? type)? getDailyUserReward,
+    TResult? Function(String bankName, String accountNumber,
+            String accountHolder, int withdrawalAmount)?
+        createWithdrawal,
+  }) {
+    return createWithdrawal?.call(
+        bankName, accountNumber, accountHolder, withdrawalAmount);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialize,
+    TResult Function()? clearError,
+    TResult Function()? getPointTransactions,
+    TResult Function(PointTransactionSource? type)? getDailyUserReward,
+    TResult Function(String bankName, String accountNumber,
+            String accountHolder, int withdrawalAmount)?
+        createWithdrawal,
+    required TResult orElse(),
+  }) {
+    if (createWithdrawal != null) {
+      return createWithdrawal(
+          bankName, accountNumber, accountHolder, withdrawalAmount);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_ClearError value) clearError,
+    required TResult Function(_GetPointTransactions value) getPointTransactions,
+    required TResult Function(_GetDailyUserReward value) getDailyUserReward,
+    required TResult Function(_CreateWithdrawal value) createWithdrawal,
+  }) {
+    return createWithdrawal(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialize value)? initialize,
+    TResult? Function(_ClearError value)? clearError,
+    TResult? Function(_GetPointTransactions value)? getPointTransactions,
+    TResult? Function(_GetDailyUserReward value)? getDailyUserReward,
+    TResult? Function(_CreateWithdrawal value)? createWithdrawal,
+  }) {
+    return createWithdrawal?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_ClearError value)? clearError,
+    TResult Function(_GetPointTransactions value)? getPointTransactions,
+    TResult Function(_GetDailyUserReward value)? getDailyUserReward,
+    TResult Function(_CreateWithdrawal value)? createWithdrawal,
+    required TResult orElse(),
+  }) {
+    if (createWithdrawal != null) {
+      return createWithdrawal(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CreateWithdrawal implements AppRewardEvent {
+  const factory _CreateWithdrawal(
+      final String bankName,
+      final String accountNumber,
+      final String accountHolder,
+      final int withdrawalAmount) = _$CreateWithdrawalImpl;
+
+  String get bankName;
+  String get accountNumber;
+  String get accountHolder;
+  int get withdrawalAmount;
+
+  /// Create a copy of AppRewardEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CreateWithdrawalImplCopyWith<_$CreateWithdrawalImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

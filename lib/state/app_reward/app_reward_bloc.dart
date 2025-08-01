@@ -67,6 +67,29 @@ class AppRewardBloc extends Bloc<AppRewardEvent, AppRewardState> {
               }
             });
           },
+          createWithdrawal: (e) async {
+            await _handleEvent(emit, () async {
+              final user = await userRepository.getUserInfo();
+              final userPointBalance = state.userPointBalance;
+              if (userPointBalance == null) {
+                throw const AppException.unknown(
+                    'User point balance not found');
+              }
+              final isSuccess = await appRewardRepository.createWithdrawal(
+                userPointBalance,
+                user,
+                e.bankName,
+                e.accountNumber,
+                e.accountHolder,
+                e.withdrawalAmount,
+              );
+              if (isSuccess) {
+                add(const AppRewardEvent.initialize());
+              } else {
+                throw const AppException.unknown('Failed to create withdrawal');
+              }
+            });
+          },
         );
       },
     );

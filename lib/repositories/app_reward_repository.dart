@@ -1,5 +1,6 @@
 import 'package:flutter_common/models/app-reward/point_transaction.dart';
 import 'package:flutter_common/models/app-reward/user_point_balance.dart';
+import 'package:flutter_common/models/user/user.dart';
 import 'package:flutter_common/network/dio_client.dart';
 
 abstract class AppRewardRepository {
@@ -13,6 +14,15 @@ abstract class AppRewardRepository {
     String userId, {
     PointTransactionSource? type,
   });
+
+  Future<bool> createWithdrawal(
+    UserPointBalance userPointBalance,
+    User user,
+    String bankName,
+    String accountNumber,
+    String accountHolder,
+    int withdrawalAmount,
+  );
 }
 
 class AppRewardDefaultRepository extends AppRewardRepository {
@@ -51,5 +61,28 @@ class AppRewardDefaultRepository extends AppRewardRepository {
       },
     );
     return (response.data as List).map((e) => UserReward.fromJson(e)).toList();
+  }
+
+  @override
+  Future<bool> createWithdrawal(
+    UserPointBalance userPointBalance,
+    User user,
+    String bankName,
+    String accountNumber,
+    String accountHolder,
+    int withdrawalAmount,
+  ) async {
+    final response = await dioClient.post('/app-reward/withdrawal', data: {
+      'userId': user.id,
+      'userPointBalanceId': userPointBalance.id,
+      'bankName': bankName,
+      'accountNumber': accountNumber,
+      'accountHolder': accountHolder,
+      'withdrawalAmount': withdrawalAmount,
+    });
+    if (response.statusCode == 201) {
+      return true;
+    }
+    throw Exception('Failed to create withdrawal');
   }
 }

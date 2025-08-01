@@ -9,6 +9,7 @@ part of 'user_point_balance.dart';
 _$UserPointBalanceImpl _$$UserPointBalanceImplFromJson(
         Map<String, dynamic> json) =>
     _$UserPointBalanceImpl(
+      id: json['id'] as String,
       currentPoints: (json['currentPoints'] as num).toInt(),
       totalEarnedPoints: (json['totalEarnedPoints'] as num).toInt(),
       totalSpentPoints: (json['totalSpentPoints'] as num).toInt(),
@@ -18,6 +19,7 @@ _$UserPointBalanceImpl _$$UserPointBalanceImplFromJson(
 Map<String, dynamic> _$$UserPointBalanceImplToJson(
         _$UserPointBalanceImpl instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'currentPoints': instance.currentPoints,
       'totalEarnedPoints': instance.totalEarnedPoints,
       'totalSpentPoints': instance.totalSpentPoints,
