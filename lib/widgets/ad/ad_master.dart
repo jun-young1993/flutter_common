@@ -146,14 +146,14 @@ class AdConfig {
         'interstitial': 'ca-app-pub-3940256099942544/1033173712',
         'rewarded': 'ca-app-pub-3940256099942544/5224354917',
         'native': 'ca-app-pub-3940256099942544/2247696110',
-        'appOpen': 'ca-app-pub-3940256099942544/3419835294',
+        'appOpen': 'ca-app-pub-3940256099942544/9257395921',
       },
       'ios': {
         'banner': 'ca-app-pub-3940256099942544/2934735716',
         'interstitial': 'ca-app-pub-3940256099942544/4411468910',
         'rewarded': 'ca-app-pub-3940256099942544/1712485313',
         'native': 'ca-app-pub-3940256099942544/3985214052',
-        'appOpen': 'ca-app-pub-3940256099942544/5663605779',
+        'appOpen': 'ca-app-pub-3940256099942544/5575463023',
       },
     },
   });
@@ -199,6 +199,8 @@ class AdMaster implements IAdManager {
   AdConfig _config = const AdConfig();
   final Map<String, AdState> _adStates = {};
   final Map<String, Ad> _loadedAds = {};
+  final Duration maxCacheDuration = const Duration(hours: 4);
+  DateTime? _appOpenLoadTime;
 
   @override
   bool get isInitialized => _isInitialized;
@@ -498,6 +500,19 @@ class AdMaster implements IAdManager {
     }
   }
 
+  Future<void> showAppOpenAdIfAvailable({
+    required String adUnitId,
+    AdCallback? callback,
+  }) async {
+    const adId = 'appOpen';
+
+    if (_adStates[adId] == null ||
+        DateTime.now().subtract(maxCacheDuration).isAfter(_appOpenLoadTime!)) {
+      await createAppOpenAd(adUnitId: adUnitId, callback: callback);
+      return;
+    }
+  }
+
   @override
   Future<AppOpenAd?> createAppOpenAd({
     AdCallback? callback,
@@ -505,7 +520,7 @@ class AdMaster implements IAdManager {
   }) async {
     _ensureInitialized();
 
-    final adId = 'appOpen_${DateTime.now().millisecondsSinceEpoch}';
+    const adId = 'appOpen';
     final finalAdUnitId =
         getAdUnitIdForType(AdType.appOpen, adMobUnitId: adUnitId);
 
@@ -522,9 +537,13 @@ class AdMaster implements IAdManager {
             appOpenAd = ad;
             _loadedAds[adId] = ad;
             _updateAdState(adId, const AdState(status: AdStatus.loaded));
+            _appOpenLoadTime = DateTime.now();
+
+            ad.show();
             callback?.onAdLoaded();
           },
           onAdFailedToLoad: (error) {
+            print('error: $error');
             final adError = AdError(
               type: AdErrorType.loadFailed,
               message: error.message,
@@ -539,6 +558,7 @@ class AdMaster implements IAdManager {
 
       return appOpenAd;
     } catch (e) {
+      print('error: $e');
       final adError = AdError(
         type: AdErrorType.unknown,
         message: '앱 오픈 광고 생성 실패: $e',
@@ -553,7 +573,7 @@ class AdMaster implements IAdManager {
   /// 초기화 확인
   void _ensureInitialized() {
     if (!_isInitialized) {
-      throw AdError(
+      throw const AdError(
         type: AdErrorType.notInitialized,
         message: '광고가 초기화되지 않았습니다.',
       );
