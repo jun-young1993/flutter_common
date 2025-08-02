@@ -130,17 +130,22 @@ class _NoticeScreenLayoutState extends State<NoticeScreenLayout> {
             child: const Icon(Icons.add),
           );
         }),
-        body: Column(
-          children: [
-            _buildNoticeSearch(),
-            Expanded(child: _buildNoticeList()),
-          ],
+        body: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
+            child: Column(
+              children: [
+                _buildNoticeSearch(),
+                Expanded(child: _buildNoticeList()),
+              ],
+            ),
+          ),
         ));
   }
 
   Widget _buildNoticeSearch() {
     return Container(
-      margin: const EdgeInsets.all(16.0),
+      margin: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
       decoration: BoxDecoration(
         color: Colors.grey[50],
         borderRadius: BorderRadius.circular(16.0),
@@ -205,6 +210,7 @@ class _NoticeScreenLayoutState extends State<NoticeScreenLayout> {
       bloc: noticePageBloc,
       builder: (context, state) => PagedListView<int, Notice>(
         state: state,
+        padding: const EdgeInsets.all(0),
         builderDelegate: PagedChildBuilderDelegate<Notice>(
             itemBuilder: (context, item, index) => _buildNoticeItem(item),
             firstPageProgressIndicatorBuilder: (_) => const Padding(
