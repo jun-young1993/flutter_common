@@ -215,14 +215,14 @@ class AdMaster implements IAdManager {
 
   /// 특정 광고 타입의 광고 ID를 가져오는 메서드
   String getAdUnitIdForType(AdType adType, {required String adMobUnitId}) {
+    if (!kDebugMode || !_config.isTestMode) {
+      return adMobUnitId;
+    }
+
     final platform = Platform.isAndroid ? 'android' : 'ios';
     final isTest = _config.isTestMode;
 
     var adUnitId = _config.testAdUnitIds[platform]?[adType.name];
-
-    if (!isTest) {
-      adUnitId = adMobUnitId;
-    }
 
     if (adUnitId == null || adUnitId.isEmpty) {
       throw AdError(
