@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_common/common_il8n.dart';
@@ -277,6 +278,14 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
                   return const SizedBox.shrink();
                 }
               }),
+              SizedBox(height: SizeConstants.getColumnSpacing(context)),
+              Text(
+                kDebugMode ? 'Debug' : 'Release',
+                style: TextStyle(
+                  fontSize: SizeConstants.getTextSmallFontSize(context),
+                  color: Colors.grey.shade600,
+                ),
+              ),
             ]),
         SizedBox(height: SizeConstants.getContainerVerticalMargin(context)),
         CardContainerItem(
