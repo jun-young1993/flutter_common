@@ -279,13 +279,29 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
                 }
               }),
               SizedBox(height: SizeConstants.getColumnSpacing(context)),
-              Text(
-                kDebugMode ? 'Debug' : 'Release',
-                style: TextStyle(
-                  fontSize: SizeConstants.getTextSmallFontSize(context),
-                  color: Colors.grey.shade600,
-                ),
-              ),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(
+                    kDebugMode ? Icons.bug_report : Icons.check_circle,
+                    size: 16,
+                    color: kDebugMode
+                        ? Colors.orange.shade700
+                        : Colors.green.shade700,
+                  ),
+                  const SizedBox(width: 6),
+                  Text(
+                    kDebugMode ? 'Debug' : 'Release',
+                    style: TextStyle(
+                      fontSize: SizeConstants.getTextSmallFontSize(context),
+                      fontWeight: FontWeight.w600,
+                      color: kDebugMode
+                          ? Colors.orange.shade700
+                          : Colors.green.shade700,
+                    ),
+                  ),
+                ],
+              )
             ]),
         SizedBox(height: SizeConstants.getContainerVerticalMargin(context)),
         CardContainerItem(
