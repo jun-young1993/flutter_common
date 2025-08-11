@@ -264,21 +264,6 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
             icon: Icons.new_releases_outlined,
             title: 'v${_version ?? '0.0.0'}',
             children: [
-              SizedBox(height: SizeConstants.getColumnSpacing(context)),
-              RemoteAppConfigSelector((config) {
-                if (config != null) {
-                  return CanUpdateRow(
-                    canUpdate: config.isUpdateAvailable,
-                    version: config.version,
-                    onUpdate: () {
-                      appConfigBloc.add(const AppConfigEvent.moveUpdateStore());
-                    },
-                  );
-                } else {
-                  return const SizedBox.shrink();
-                }
-              }),
-              SizedBox(height: SizeConstants.getColumnSpacing(context)),
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -301,7 +286,20 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
                     ),
                   ),
                 ],
-              )
+              ),
+              RemoteAppConfigSelector((config) {
+                if (config != null) {
+                  return CanUpdateRow(
+                    canUpdate: config.isUpdateAvailable,
+                    version: config.version,
+                    onUpdate: () {
+                      appConfigBloc.add(const AppConfigEvent.moveUpdateStore());
+                    },
+                  );
+                } else {
+                  return const SizedBox.shrink();
+                }
+              }),
             ]),
         SizedBox(height: SizeConstants.getContainerVerticalMargin(context)),
         CardContainerItem(
