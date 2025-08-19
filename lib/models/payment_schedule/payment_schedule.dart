@@ -9,14 +9,14 @@ class PaymentSchedule with _$PaymentSchedule {
     required String id,
     required int paymentNumber,
     required DateTime paymentDate,
-    required double principalAmount,
-    required double interestAmount,
-    required double totalAmount,
-    required double remainingBalance,
+    @JsonKey(fromJson: _parseDouble) required double principalAmount,
+    @JsonKey(fromJson: _parseDouble) required double interestAmount,
+    @JsonKey(fromJson: _parseDouble) required double totalAmount,
+    @JsonKey(fromJson: _parseDouble) required double remainingBalance,
     required String status,
     DateTime? paidAt,
-    required double actualPaidAmount,
-    required double lateFee,
+    @JsonKey(fromJson: _parseDouble) required double actualPaidAmount,
+    @JsonKey(fromJson: _parseDouble) required double lateFee,
     String? notes,
     required DateTime createdAt,
     required DateTime updatedAt,
@@ -27,4 +27,19 @@ class PaymentSchedule with _$PaymentSchedule {
 
   factory PaymentSchedule.fromJson(Map<String, dynamic> json) =>
       _$PaymentScheduleFromJson(json);
+}
+
+// 안전한 double 파싱 함수
+double _parseDouble(dynamic value) {
+  if (value == null) return 0.0;
+  if (value is double) return value;
+  if (value is int) return value.toDouble();
+  if (value is String) {
+    try {
+      return double.parse(value);
+    } catch (e) {
+      return 0.0;
+    }
+  }
+  return 0.0;
 }

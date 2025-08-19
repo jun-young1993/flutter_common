@@ -23,13 +23,19 @@ mixin _$PaymentSchedule {
   String get id => throw _privateConstructorUsedError;
   int get paymentNumber => throw _privateConstructorUsedError;
   DateTime get paymentDate => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: _parseDouble)
   double get principalAmount => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: _parseDouble)
   double get interestAmount => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: _parseDouble)
   double get totalAmount => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: _parseDouble)
   double get remainingBalance => throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError;
   DateTime? get paidAt => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: _parseDouble)
   double get actualPaidAmount => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: _parseDouble)
   double get lateFee => throw _privateConstructorUsedError;
   String? get notes => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
@@ -56,14 +62,14 @@ abstract class $PaymentScheduleCopyWith<$Res> {
       {String id,
       int paymentNumber,
       DateTime paymentDate,
-      double principalAmount,
-      double interestAmount,
-      double totalAmount,
-      double remainingBalance,
+      @JsonKey(fromJson: _parseDouble) double principalAmount,
+      @JsonKey(fromJson: _parseDouble) double interestAmount,
+      @JsonKey(fromJson: _parseDouble) double totalAmount,
+      @JsonKey(fromJson: _parseDouble) double remainingBalance,
       String status,
       DateTime? paidAt,
-      double actualPaidAmount,
-      double lateFee,
+      @JsonKey(fromJson: _parseDouble) double actualPaidAmount,
+      @JsonKey(fromJson: _parseDouble) double lateFee,
       String? notes,
       DateTime createdAt,
       DateTime updatedAt,
@@ -178,14 +184,14 @@ abstract class _$$PaymentScheduleImplCopyWith<$Res>
       {String id,
       int paymentNumber,
       DateTime paymentDate,
-      double principalAmount,
-      double interestAmount,
-      double totalAmount,
-      double remainingBalance,
+      @JsonKey(fromJson: _parseDouble) double principalAmount,
+      @JsonKey(fromJson: _parseDouble) double interestAmount,
+      @JsonKey(fromJson: _parseDouble) double totalAmount,
+      @JsonKey(fromJson: _parseDouble) double remainingBalance,
       String status,
       DateTime? paidAt,
-      double actualPaidAmount,
-      double lateFee,
+      @JsonKey(fromJson: _parseDouble) double actualPaidAmount,
+      @JsonKey(fromJson: _parseDouble) double lateFee,
       String? notes,
       DateTime createdAt,
       DateTime updatedAt,
@@ -293,14 +299,14 @@ class _$PaymentScheduleImpl extends _PaymentSchedule {
       {required this.id,
       required this.paymentNumber,
       required this.paymentDate,
-      required this.principalAmount,
-      required this.interestAmount,
-      required this.totalAmount,
-      required this.remainingBalance,
+      @JsonKey(fromJson: _parseDouble) required this.principalAmount,
+      @JsonKey(fromJson: _parseDouble) required this.interestAmount,
+      @JsonKey(fromJson: _parseDouble) required this.totalAmount,
+      @JsonKey(fromJson: _parseDouble) required this.remainingBalance,
       required this.status,
       this.paidAt,
-      required this.actualPaidAmount,
-      required this.lateFee,
+      @JsonKey(fromJson: _parseDouble) required this.actualPaidAmount,
+      @JsonKey(fromJson: _parseDouble) required this.lateFee,
       this.notes,
       required this.createdAt,
       required this.updatedAt,
@@ -317,20 +323,26 @@ class _$PaymentScheduleImpl extends _PaymentSchedule {
   @override
   final DateTime paymentDate;
   @override
+  @JsonKey(fromJson: _parseDouble)
   final double principalAmount;
   @override
+  @JsonKey(fromJson: _parseDouble)
   final double interestAmount;
   @override
+  @JsonKey(fromJson: _parseDouble)
   final double totalAmount;
   @override
+  @JsonKey(fromJson: _parseDouble)
   final double remainingBalance;
   @override
   final String status;
   @override
   final DateTime? paidAt;
   @override
+  @JsonKey(fromJson: _parseDouble)
   final double actualPaidAmount;
   @override
+  @JsonKey(fromJson: _parseDouble)
   final double lateFee;
   @override
   final String? notes;
@@ -419,14 +431,14 @@ abstract class _PaymentSchedule extends PaymentSchedule {
       {required final String id,
       required final int paymentNumber,
       required final DateTime paymentDate,
-      required final double principalAmount,
-      required final double interestAmount,
-      required final double totalAmount,
-      required final double remainingBalance,
+      @JsonKey(fromJson: _parseDouble) required final double principalAmount,
+      @JsonKey(fromJson: _parseDouble) required final double interestAmount,
+      @JsonKey(fromJson: _parseDouble) required final double totalAmount,
+      @JsonKey(fromJson: _parseDouble) required final double remainingBalance,
       required final String status,
       final DateTime? paidAt,
-      required final double actualPaidAmount,
-      required final double lateFee,
+      @JsonKey(fromJson: _parseDouble) required final double actualPaidAmount,
+      @JsonKey(fromJson: _parseDouble) required final double lateFee,
       final String? notes,
       required final DateTime createdAt,
       required final DateTime updatedAt,
@@ -443,20 +455,26 @@ abstract class _PaymentSchedule extends PaymentSchedule {
   @override
   DateTime get paymentDate;
   @override
+  @JsonKey(fromJson: _parseDouble)
   double get principalAmount;
   @override
+  @JsonKey(fromJson: _parseDouble)
   double get interestAmount;
   @override
+  @JsonKey(fromJson: _parseDouble)
   double get totalAmount;
   @override
+  @JsonKey(fromJson: _parseDouble)
   double get remainingBalance;
   @override
   String get status;
   @override
   DateTime? get paidAt;
   @override
+  @JsonKey(fromJson: _parseDouble)
   double get actualPaidAmount;
   @override
+  @JsonKey(fromJson: _parseDouble)
   double get lateFee;
   @override
   String? get notes;
