@@ -213,13 +213,17 @@ class _NoticeScreenLayoutState extends State<NoticeScreenLayout> {
         padding: const EdgeInsets.all(0),
         builderDelegate: PagedChildBuilderDelegate<Notice>(
             itemBuilder: (context, item, index) => _buildNoticeItem(item),
-            firstPageProgressIndicatorBuilder: (_) => const Padding(
-                  padding: EdgeInsets.all(16),
-                  child: CircularProgressIndicator(),
+            firstPageProgressIndicatorBuilder: (_) => const Center(
+                  child: Padding(
+                    padding: EdgeInsets.all(16.0),
+                    child: CircularProgressIndicator(),
+                  ),
                 ),
-            newPageProgressIndicatorBuilder: (_) => const Padding(
-                  padding: EdgeInsets.all(16),
-                  child: CircularProgressIndicator(),
+            newPageProgressIndicatorBuilder: (_) => const Center(
+                  child: Padding(
+                    padding: EdgeInsets.all(16.0),
+                    child: CircularProgressIndicator(),
+                  ),
                 ),
             noMoreItemsIndicatorBuilder: (_) => Padding(
                   padding: const EdgeInsets.all(16),

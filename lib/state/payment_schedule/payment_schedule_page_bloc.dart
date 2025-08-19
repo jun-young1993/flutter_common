@@ -66,6 +66,7 @@ class PaymentSchedulePageBloc
           isLoading: false,
         ));
       } catch (e) {
+        print(e);
         emit(state.copyWith(error: e, isLoading: false));
       }
     });
