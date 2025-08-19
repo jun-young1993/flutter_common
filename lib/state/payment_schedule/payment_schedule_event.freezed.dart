@@ -19,6 +19,7 @@ mixin _$PaymentScheduleEvent {
   String get loanId => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(String loanId) initialize,
     required TResult Function(String loanId) findAll,
     required TResult Function(String loanId) addSkip,
     required TResult Function(String loanId, String order) setOrder,
@@ -26,6 +27,7 @@ mixin _$PaymentScheduleEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String loanId)? initialize,
     TResult? Function(String loanId)? findAll,
     TResult? Function(String loanId)? addSkip,
     TResult? Function(String loanId, String order)? setOrder,
@@ -33,6 +35,7 @@ mixin _$PaymentScheduleEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String loanId)? initialize,
     TResult Function(String loanId)? findAll,
     TResult Function(String loanId)? addSkip,
     TResult Function(String loanId, String order)? setOrder,
@@ -41,6 +44,7 @@ mixin _$PaymentScheduleEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(Initialize value) initialize,
     required TResult Function(FindAll value) findAll,
     required TResult Function(AddSkip value) addSkip,
     required TResult Function(SetOrder value) setOrder,
@@ -48,6 +52,7 @@ mixin _$PaymentScheduleEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initialize value)? initialize,
     TResult? Function(FindAll value)? findAll,
     TResult? Function(AddSkip value)? addSkip,
     TResult? Function(SetOrder value)? setOrder,
@@ -55,6 +60,7 @@ mixin _$PaymentScheduleEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initialize value)? initialize,
     TResult Function(FindAll value)? findAll,
     TResult Function(AddSkip value)? addSkip,
     TResult Function(SetOrder value)? setOrder,
@@ -103,6 +109,162 @@ class _$PaymentScheduleEventCopyWithImpl<$Res,
               as String,
     ) as $Val);
   }
+}
+
+/// @nodoc
+abstract class _$$InitializeImplCopyWith<$Res>
+    implements $PaymentScheduleEventCopyWith<$Res> {
+  factory _$$InitializeImplCopyWith(
+          _$InitializeImpl value, $Res Function(_$InitializeImpl) then) =
+      __$$InitializeImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String loanId});
+}
+
+/// @nodoc
+class __$$InitializeImplCopyWithImpl<$Res>
+    extends _$PaymentScheduleEventCopyWithImpl<$Res, _$InitializeImpl>
+    implements _$$InitializeImplCopyWith<$Res> {
+  __$$InitializeImplCopyWithImpl(
+      _$InitializeImpl _value, $Res Function(_$InitializeImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of PaymentScheduleEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? loanId = null,
+  }) {
+    return _then(_$InitializeImpl(
+      null == loanId
+          ? _value.loanId
+          : loanId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$InitializeImpl implements Initialize {
+  const _$InitializeImpl(this.loanId);
+
+  @override
+  final String loanId;
+
+  @override
+  String toString() {
+    return 'PaymentScheduleEvent.initialize(loanId: $loanId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$InitializeImpl &&
+            (identical(other.loanId, loanId) || other.loanId == loanId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, loanId);
+
+  /// Create a copy of PaymentScheduleEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$InitializeImplCopyWith<_$InitializeImpl> get copyWith =>
+      __$$InitializeImplCopyWithImpl<_$InitializeImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String loanId) initialize,
+    required TResult Function(String loanId) findAll,
+    required TResult Function(String loanId) addSkip,
+    required TResult Function(String loanId, String order) setOrder,
+  }) {
+    return initialize(loanId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String loanId)? initialize,
+    TResult? Function(String loanId)? findAll,
+    TResult? Function(String loanId)? addSkip,
+    TResult? Function(String loanId, String order)? setOrder,
+  }) {
+    return initialize?.call(loanId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String loanId)? initialize,
+    TResult Function(String loanId)? findAll,
+    TResult Function(String loanId)? addSkip,
+    TResult Function(String loanId, String order)? setOrder,
+    required TResult orElse(),
+  }) {
+    if (initialize != null) {
+      return initialize(loanId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initialize value) initialize,
+    required TResult Function(FindAll value) findAll,
+    required TResult Function(AddSkip value) addSkip,
+    required TResult Function(SetOrder value) setOrder,
+  }) {
+    return initialize(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initialize value)? initialize,
+    TResult? Function(FindAll value)? findAll,
+    TResult? Function(AddSkip value)? addSkip,
+    TResult? Function(SetOrder value)? setOrder,
+  }) {
+    return initialize?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initialize value)? initialize,
+    TResult Function(FindAll value)? findAll,
+    TResult Function(AddSkip value)? addSkip,
+    TResult Function(SetOrder value)? setOrder,
+    required TResult orElse(),
+  }) {
+    if (initialize != null) {
+      return initialize(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Initialize implements PaymentScheduleEvent {
+  const factory Initialize(final String loanId) = _$InitializeImpl;
+
+  @override
+  String get loanId;
+
+  /// Create a copy of PaymentScheduleEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$InitializeImplCopyWith<_$InitializeImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -175,6 +337,7 @@ class _$FindAllImpl implements FindAll {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(String loanId) initialize,
     required TResult Function(String loanId) findAll,
     required TResult Function(String loanId) addSkip,
     required TResult Function(String loanId, String order) setOrder,
@@ -185,6 +348,7 @@ class _$FindAllImpl implements FindAll {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String loanId)? initialize,
     TResult? Function(String loanId)? findAll,
     TResult? Function(String loanId)? addSkip,
     TResult? Function(String loanId, String order)? setOrder,
@@ -195,6 +359,7 @@ class _$FindAllImpl implements FindAll {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String loanId)? initialize,
     TResult Function(String loanId)? findAll,
     TResult Function(String loanId)? addSkip,
     TResult Function(String loanId, String order)? setOrder,
@@ -209,6 +374,7 @@ class _$FindAllImpl implements FindAll {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(Initialize value) initialize,
     required TResult Function(FindAll value) findAll,
     required TResult Function(AddSkip value) addSkip,
     required TResult Function(SetOrder value) setOrder,
@@ -219,6 +385,7 @@ class _$FindAllImpl implements FindAll {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initialize value)? initialize,
     TResult? Function(FindAll value)? findAll,
     TResult? Function(AddSkip value)? addSkip,
     TResult? Function(SetOrder value)? setOrder,
@@ -229,6 +396,7 @@ class _$FindAllImpl implements FindAll {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initialize value)? initialize,
     TResult Function(FindAll value)? findAll,
     TResult Function(AddSkip value)? addSkip,
     TResult Function(SetOrder value)? setOrder,
@@ -325,6 +493,7 @@ class _$AddSkipImpl implements AddSkip {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(String loanId) initialize,
     required TResult Function(String loanId) findAll,
     required TResult Function(String loanId) addSkip,
     required TResult Function(String loanId, String order) setOrder,
@@ -335,6 +504,7 @@ class _$AddSkipImpl implements AddSkip {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String loanId)? initialize,
     TResult? Function(String loanId)? findAll,
     TResult? Function(String loanId)? addSkip,
     TResult? Function(String loanId, String order)? setOrder,
@@ -345,6 +515,7 @@ class _$AddSkipImpl implements AddSkip {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String loanId)? initialize,
     TResult Function(String loanId)? findAll,
     TResult Function(String loanId)? addSkip,
     TResult Function(String loanId, String order)? setOrder,
@@ -359,6 +530,7 @@ class _$AddSkipImpl implements AddSkip {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(Initialize value) initialize,
     required TResult Function(FindAll value) findAll,
     required TResult Function(AddSkip value) addSkip,
     required TResult Function(SetOrder value) setOrder,
@@ -369,6 +541,7 @@ class _$AddSkipImpl implements AddSkip {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initialize value)? initialize,
     TResult? Function(FindAll value)? findAll,
     TResult? Function(AddSkip value)? addSkip,
     TResult? Function(SetOrder value)? setOrder,
@@ -379,6 +552,7 @@ class _$AddSkipImpl implements AddSkip {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initialize value)? initialize,
     TResult Function(FindAll value)? findAll,
     TResult Function(AddSkip value)? addSkip,
     TResult Function(SetOrder value)? setOrder,
@@ -483,6 +657,7 @@ class _$SetOrderImpl implements SetOrder {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(String loanId) initialize,
     required TResult Function(String loanId) findAll,
     required TResult Function(String loanId) addSkip,
     required TResult Function(String loanId, String order) setOrder,
@@ -493,6 +668,7 @@ class _$SetOrderImpl implements SetOrder {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String loanId)? initialize,
     TResult? Function(String loanId)? findAll,
     TResult? Function(String loanId)? addSkip,
     TResult? Function(String loanId, String order)? setOrder,
@@ -503,6 +679,7 @@ class _$SetOrderImpl implements SetOrder {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String loanId)? initialize,
     TResult Function(String loanId)? findAll,
     TResult Function(String loanId)? addSkip,
     TResult Function(String loanId, String order)? setOrder,
@@ -517,6 +694,7 @@ class _$SetOrderImpl implements SetOrder {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(Initialize value) initialize,
     required TResult Function(FindAll value) findAll,
     required TResult Function(AddSkip value) addSkip,
     required TResult Function(SetOrder value) setOrder,
@@ -527,6 +705,7 @@ class _$SetOrderImpl implements SetOrder {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initialize value)? initialize,
     TResult? Function(FindAll value)? findAll,
     TResult? Function(AddSkip value)? addSkip,
     TResult? Function(SetOrder value)? setOrder,
@@ -537,6 +716,7 @@ class _$SetOrderImpl implements SetOrder {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initialize value)? initialize,
     TResult Function(FindAll value)? findAll,
     TResult Function(AddSkip value)? addSkip,
     TResult Function(SetOrder value)? setOrder,

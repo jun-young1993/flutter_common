@@ -10,6 +10,12 @@
 flutter pub run build_runner watch -d
 ```
 
+# 한 번만 실행
+flutter packages pub run build_runner build
+
+# 또는 지속적으로 감시하면서 실행
+flutter packages pub run build_runner watch
+
 > runner 실행
 
 ```shell

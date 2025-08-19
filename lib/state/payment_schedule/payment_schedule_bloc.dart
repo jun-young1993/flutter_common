@@ -14,6 +14,10 @@ class PaymentScheduleBloc
     on<PaymentScheduleEvent>(
       (event, emit) async {
         await event.map(
+          initialize: (e) async {
+            emit(state.copyWith(skipCount: 0));
+            add(PaymentScheduleEvent.findAll(e.loanId));
+          },
           findAll: (e) async {
             final paymentSchedules =
                 await _paymentScheduleRepository.findAllByLoanId(
