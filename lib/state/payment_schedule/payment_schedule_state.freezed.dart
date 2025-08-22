@@ -21,6 +21,8 @@ mixin _$PaymentScheduleState {
   String? get successMessage => throw _privateConstructorUsedError;
   List<PaymentSchedule>? get paymentSchedules =>
       throw _privateConstructorUsedError;
+  List<Map<String, dynamic>> get paymentStatus =>
+      throw _privateConstructorUsedError;
   int get skipCount => throw _privateConstructorUsedError;
   int get take => throw _privateConstructorUsedError;
   String get order => throw _privateConstructorUsedError;
@@ -44,6 +46,7 @@ abstract class $PaymentScheduleStateCopyWith<$Res> {
       AppException? error,
       String? successMessage,
       List<PaymentSchedule>? paymentSchedules,
+      List<Map<String, dynamic>> paymentStatus,
       int skipCount,
       int take,
       String order,
@@ -72,6 +75,7 @@ class _$PaymentScheduleStateCopyWithImpl<$Res,
     Object? error = freezed,
     Object? successMessage = freezed,
     Object? paymentSchedules = freezed,
+    Object? paymentStatus = null,
     Object? skipCount = null,
     Object? take = null,
     Object? order = null,
@@ -94,6 +98,10 @@ class _$PaymentScheduleStateCopyWithImpl<$Res,
           ? _value.paymentSchedules
           : paymentSchedules // ignore: cast_nullable_to_non_nullable
               as List<PaymentSchedule>?,
+      paymentStatus: null == paymentStatus
+          ? _value.paymentStatus
+          : paymentStatus // ignore: cast_nullable_to_non_nullable
+              as List<Map<String, dynamic>>,
       skipCount: null == skipCount
           ? _value.skipCount
           : skipCount // ignore: cast_nullable_to_non_nullable
@@ -141,6 +149,7 @@ abstract class _$$PaymentScheduleStateImplCopyWith<$Res>
       AppException? error,
       String? successMessage,
       List<PaymentSchedule>? paymentSchedules,
+      List<Map<String, dynamic>> paymentStatus,
       int skipCount,
       int take,
       String order,
@@ -167,6 +176,7 @@ class __$$PaymentScheduleStateImplCopyWithImpl<$Res>
     Object? error = freezed,
     Object? successMessage = freezed,
     Object? paymentSchedules = freezed,
+    Object? paymentStatus = null,
     Object? skipCount = null,
     Object? take = null,
     Object? order = null,
@@ -189,6 +199,10 @@ class __$$PaymentScheduleStateImplCopyWithImpl<$Res>
           ? _value._paymentSchedules
           : paymentSchedules // ignore: cast_nullable_to_non_nullable
               as List<PaymentSchedule>?,
+      paymentStatus: null == paymentStatus
+          ? _value._paymentStatus
+          : paymentStatus // ignore: cast_nullable_to_non_nullable
+              as List<Map<String, dynamic>>,
       skipCount: null == skipCount
           ? _value.skipCount
           : skipCount // ignore: cast_nullable_to_non_nullable
@@ -217,11 +231,13 @@ class _$PaymentScheduleStateImpl extends _PaymentScheduleState {
       this.error = null,
       this.successMessage = null,
       final List<PaymentSchedule>? paymentSchedules = null,
+      final List<Map<String, dynamic>> paymentStatus = const [],
       this.skipCount = 0,
       this.take = 10,
       this.order = 'ASC',
       this.hasMore = false})
       : _paymentSchedules = paymentSchedules,
+        _paymentStatus = paymentStatus,
         super._();
 
   @override
@@ -245,6 +261,15 @@ class _$PaymentScheduleStateImpl extends _PaymentScheduleState {
     return EqualUnmodifiableListView(value);
   }
 
+  final List<Map<String, dynamic>> _paymentStatus;
+  @override
+  @JsonKey()
+  List<Map<String, dynamic>> get paymentStatus {
+    if (_paymentStatus is EqualUnmodifiableListView) return _paymentStatus;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_paymentStatus);
+  }
+
   @override
   @JsonKey()
   final int skipCount;
@@ -260,7 +285,7 @@ class _$PaymentScheduleStateImpl extends _PaymentScheduleState {
 
   @override
   String toString() {
-    return 'PaymentScheduleState(isLoading: $isLoading, error: $error, successMessage: $successMessage, paymentSchedules: $paymentSchedules, skipCount: $skipCount, take: $take, order: $order, hasMore: $hasMore)';
+    return 'PaymentScheduleState(isLoading: $isLoading, error: $error, successMessage: $successMessage, paymentSchedules: $paymentSchedules, paymentStatus: $paymentStatus, skipCount: $skipCount, take: $take, order: $order, hasMore: $hasMore)';
   }
 
   @override
@@ -275,6 +300,8 @@ class _$PaymentScheduleStateImpl extends _PaymentScheduleState {
                 other.successMessage == successMessage) &&
             const DeepCollectionEquality()
                 .equals(other._paymentSchedules, _paymentSchedules) &&
+            const DeepCollectionEquality()
+                .equals(other._paymentStatus, _paymentStatus) &&
             (identical(other.skipCount, skipCount) ||
                 other.skipCount == skipCount) &&
             (identical(other.take, take) || other.take == take) &&
@@ -289,6 +316,7 @@ class _$PaymentScheduleStateImpl extends _PaymentScheduleState {
       error,
       successMessage,
       const DeepCollectionEquality().hash(_paymentSchedules),
+      const DeepCollectionEquality().hash(_paymentStatus),
       skipCount,
       take,
       order,
@@ -311,6 +339,7 @@ abstract class _PaymentScheduleState extends PaymentScheduleState {
       final AppException? error,
       final String? successMessage,
       final List<PaymentSchedule>? paymentSchedules,
+      final List<Map<String, dynamic>> paymentStatus,
       final int skipCount,
       final int take,
       final String order,
@@ -325,6 +354,8 @@ abstract class _PaymentScheduleState extends PaymentScheduleState {
   String? get successMessage;
   @override
   List<PaymentSchedule>? get paymentSchedules;
+  @override
+  List<Map<String, dynamic>> get paymentStatus;
   @override
   int get skipCount;
   @override

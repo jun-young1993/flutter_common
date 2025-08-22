@@ -12,6 +12,7 @@ class PaymentScheduleState with _$PaymentScheduleState, BaseStateMixin {
     @Default(null) AppException? error,
     @Default(null) String? successMessage,
     @Default(null) List<PaymentSchedule>? paymentSchedules,
+    @Default([]) List<Map<String, dynamic>> paymentStatus,
     @Default(0) int skipCount,
     @Default(10) int take,
     @Default('ASC') String order,

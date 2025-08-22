@@ -14,33 +14,10 @@ class PaymentScheduleBloc
     on<PaymentScheduleEvent>(
       (event, emit) async {
         await event.map(
-          initialize: (e) async {
-            emit(state.copyWith(skipCount: 0));
-            add(PaymentScheduleEvent.findAll(e.loanId));
-          },
-          findAll: (e) async {
-            final paymentSchedules =
-                await _paymentScheduleRepository.findAllByLoanId(
-              e.loanId,
-              skip: state.skipCount * state.take,
-              take: state.take,
-              order: state.order,
-            );
-            emit(state.copyWith(
-              paymentSchedules: [
-                ...(state.paymentSchedules ?? []),
-                ...(paymentSchedules)
-              ],
-              hasMore: paymentSchedules.isNotEmpty,
-            ));
-          },
-          addSkip: (e) async {
-            emit(state.copyWith(skipCount: state.skipCount + 1));
-            add(PaymentScheduleEvent.findAll(e.loanId));
-          },
-          setOrder: (e) async {
-            emit(state.copyWith(order: e.order, skipCount: 0));
-            add(PaymentScheduleEvent.findAll(e.loanId));
+          getPaymentStatus: (e) async {
+            final paymentStatus =
+                await _paymentScheduleRepository.getPaymentStatus();
+            emit(state.copyWith(paymentStatus: paymentStatus));
           },
         );
       },

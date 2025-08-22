@@ -8,6 +8,7 @@ abstract class PaymentScheduleRepository {
     required int take,
     required String order,
   });
+  Future<List<Map<String, dynamic>>> getPaymentStatus();
 }
 
 class PaymentScheduleDefaultRepository extends PaymentScheduleRepository {
@@ -30,5 +31,11 @@ class PaymentScheduleDefaultRepository extends PaymentScheduleRepository {
           .toList();
     }
     throw Exception('Failed to load payment schedules: ${response.statusCode}');
+  }
+
+  @override
+  Future<List<Map<String, dynamic>>> getPaymentStatus() async {
+    final response = await dioClient.get('/loans/payment/status');
+    return response.data as List<Map<String, dynamic>>;
   }
 }
