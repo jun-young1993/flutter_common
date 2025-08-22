@@ -15,9 +15,9 @@ class PaymentScheduleBloc
       (event, emit) async {
         await event.map(
           getPaymentStatus: (e) async {
-            final paymentStatus =
+            final PaymentScheduleStatus =
                 await _paymentScheduleRepository.getPaymentStatus();
-            emit(state.copyWith(paymentStatus: paymentStatus));
+            emit(state.copyWith(paymentScheduleStatus: PaymentScheduleStatus));
           },
         );
       },

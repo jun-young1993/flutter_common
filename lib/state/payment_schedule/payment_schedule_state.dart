@@ -1,5 +1,6 @@
 import 'package:flutter_common/extensions/app_exception.dart';
 import 'package:flutter_common/models/payment_schedule/payment_schedule.dart';
+import 'package:flutter_common/models/payment_schedule/payment_schedule_status.dart';
 import 'package:flutter_common/state/base/base_state.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -12,7 +13,7 @@ class PaymentScheduleState with _$PaymentScheduleState, BaseStateMixin {
     @Default(null) AppException? error,
     @Default(null) String? successMessage,
     @Default(null) List<PaymentSchedule>? paymentSchedules,
-    @Default([]) List<Map<String, dynamic>> paymentStatus,
+    @Default([]) List<PaymentScheduleStatus> paymentScheduleStatus,
     @Default(0) int skipCount,
     @Default(10) int take,
     @Default('ASC') String order,

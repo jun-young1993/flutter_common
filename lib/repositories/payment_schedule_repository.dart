@@ -1,5 +1,7 @@
 import 'package:flutter_common/models/payment_schedule/payment_schedule.dart';
+import 'package:flutter_common/models/payment_schedule/payment_schedule_status.dart';
 import 'package:flutter_common/network/dio_client.dart';
+import 'package:flutter_common/state/payment_schedule/payment_schedule_state.dart';
 
 abstract class PaymentScheduleRepository {
   Future<List<PaymentSchedule>> findAllByLoanId(
@@ -8,7 +10,7 @@ abstract class PaymentScheduleRepository {
     required int take,
     required String order,
   });
-  Future<List<Map<String, dynamic>>> getPaymentStatus();
+  Future<List<PaymentScheduleStatus>> getPaymentStatus();
 }
 
 class PaymentScheduleDefaultRepository extends PaymentScheduleRepository {
@@ -34,8 +36,13 @@ class PaymentScheduleDefaultRepository extends PaymentScheduleRepository {
   }
 
   @override
-  Future<List<Map<String, dynamic>>> getPaymentStatus() async {
+  Future<List<PaymentScheduleStatus>> getPaymentStatus() async {
     final response = await dioClient.get('/loans/payment/status');
-    return response.data as List<Map<String, dynamic>>;
+    if (response.statusCode == 200) {
+      return (response.data as List<dynamic>)
+          .map((e) => PaymentScheduleStatus.fromJson(e as Map<String, dynamic>))
+          .toList();
+    }
+    throw Exception('Failed to load payment status: ${response.statusCode}');
   }
 }
