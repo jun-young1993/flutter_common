@@ -234,11 +234,89 @@
         "dependencies": [],
         "status": "pending",
         "subtasks": []
+      },
+      {
+        "id": 26,
+        "title": "Create Flutter Model from NestJS LoanRepaymentSummaryDto",
+        "description": "Implement Flutter model classes based on the NestJS LoanRepaymentSummaryDto, using freezed and json_serializable for code generation in the loan_repayment_summary directory.",
+        "status": "done",
+        "dependencies": [
+          21,
+          23
+        ],
+        "priority": "high",
+        "details": "✅ Implementation of the LoanRepaymentSummary model class and related models has been completed:\n\n1. Created the directory structure at `lib/models/loan_repayment_summary/`\n2. Analyzed the NestJS LoanRepaymentSummaryDto structure and identified all required fields and types\n3. Created the following files:\n   - `loan_repayment_summary.dart`: Main model class\n   - `loan_repayment_summary.freezed.dart`: Generated freezed code\n   - `loan_repayment_summary.g.dart`: Generated json_serializable code\n   - `index.dart`: Export file\n\n4. Implemented the LoanRepaymentSummary class with freezed annotations, including:\n   - Immutable object design using freezed\n   - JSON serialization/deserialization support\n   - Korean comments explaining each field\n   - Field structure matching the NestJS DTO\n\n5. Created an `index.dart` file to export all models\n\n6. Updated the main `models/index.dart` file to include the new model\n\n7. Successfully ran the build_runner to generate the freezed and json_serializable code:\n```bash\nflutter pub run build_runner build --delete-conflicting-outputs\n```",
+        "testStrategy": "1. Create unit tests for the LoanRepaymentSummary model:\n   - Test serialization from JSON to model\n   - Test deserialization from model to JSON\n   - Test all properties are correctly mapped\n   - Test optional fields handling\n\n2. Create test fixtures with sample JSON data that matches the expected API response format.\n\n3. Test the model with edge cases:\n   - Empty lists\n   - Null optional values\n   - Extreme numeric values\n   - Different date formats\n\n4. Verify that the model correctly handles all field types (strings, numbers, dates, nested objects, lists).\n\n5. Test integration with API client by mocking API responses and verifying correct parsing.\n\n6. Ensure the model is correctly exported through the index.dart files by importing it from different locations in the codebase.\n\n7. Verify that the generated code (freezed and json_serializable) works as expected with the actual API response structure.",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Create directory structure",
+            "description": "",
+            "status": "completed",
+            "dependencies": [],
+            "details": "",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Analyze NestJS DTO structure",
+            "description": "",
+            "status": "completed",
+            "dependencies": [],
+            "details": "",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Create model files with freezed annotations",
+            "description": "",
+            "status": "completed",
+            "dependencies": [],
+            "details": "",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Add Korean comments for field documentation",
+            "description": "",
+            "status": "completed",
+            "dependencies": [],
+            "details": "",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Create index.dart export file",
+            "description": "",
+            "status": "completed",
+            "dependencies": [],
+            "details": "",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Update main models/index.dart",
+            "description": "",
+            "status": "completed",
+            "dependencies": [],
+            "details": "",
+            "testStrategy": ""
+          },
+          {
+            "id": 7,
+            "title": "Run build_runner to generate code",
+            "description": "",
+            "status": "completed",
+            "dependencies": [],
+            "details": "",
+            "testStrategy": ""
+          }
+        ]
       }
     ],
     "metadata": {
       "created": "2025-06-15T06:30:22.522Z",
-      "updated": "2025-06-15T06:55:12.119Z",
+      "updated": "2025-08-23T05:09:31.145Z",
       "description": "Tasks for master context"
     }
   }
