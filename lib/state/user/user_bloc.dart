@@ -8,7 +8,10 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   UserRepository userRepository;
   String? fcmToken;
 
-  UserBloc({required this.userRepository}) : super(UserState.initialize()) {
+  UserBloc({
+    required this.userRepository,
+    this.fcmToken,
+  }) : super(UserState.initialize()) {
     on<UserEvent>((event, emit) async {
       try {
         await event.map(initialize: (e) async {
