@@ -37,11 +37,10 @@ class UserDefaultRepository extends UserRepository {
     }
     final response = await dioClient.get('/user/$userId');
     var user = User.fromJson(response.data);
+
     if (user.fcmToken == null) {
-      await dioClient.put('/user/$userId', data: {
-        'fcm_token': fcmToken,
-      });
       user = user.copyWith(fcmToken: fcmToken);
+      await dioClient.put('/user/$userId', data: user.toJson());
     }
     return user;
   }
