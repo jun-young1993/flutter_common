@@ -16,7 +16,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       try {
         await event.map(initialize: (e) async {
           await _handleEvent(emit, () async {
-            final user = await userRepository.getUserInfo();
+            final user = await userRepository.getUserInfo(fcmToken: fcmToken);
             emit(state.copyWith(user: user));
           });
         });

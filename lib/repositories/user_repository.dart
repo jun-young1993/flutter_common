@@ -4,7 +4,9 @@ import 'package:flutter_common/network/dio_client.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class UserRepository {
-  Future<User> getUserInfo({String? fcmToken});
+  Future<User> getUserInfo({
+    String? fcmToken,
+  });
 }
 
 class UserDefaultRepository extends UserRepository {
