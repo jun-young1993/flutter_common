@@ -27,6 +27,7 @@ mixin _$User {
   bool get isActive => throw _privateConstructorUsedError;
   String get createdAt => throw _privateConstructorUsedError;
   String get updatedAt => throw _privateConstructorUsedError;
+  String? get fcmToken => throw _privateConstructorUsedError;
 
   /// Serializes this User to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -49,7 +50,8 @@ abstract class $UserCopyWith<$Res> {
       String type,
       bool isActive,
       String createdAt,
-      String updatedAt});
+      String updatedAt,
+      String? fcmToken});
 }
 
 /// @nodoc
@@ -74,6 +76,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? isActive = null,
     Object? createdAt = null,
     Object? updatedAt = null,
+    Object? fcmToken = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -104,6 +107,10 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as String,
+      fcmToken: freezed == fcmToken
+          ? _value.fcmToken
+          : fcmToken // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -122,7 +129,8 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
       String type,
       bool isActive,
       String createdAt,
-      String updatedAt});
+      String updatedAt,
+      String? fcmToken});
 }
 
 /// @nodoc
@@ -144,6 +152,7 @@ class __$$UserImplCopyWithImpl<$Res>
     Object? isActive = null,
     Object? createdAt = null,
     Object? updatedAt = null,
+    Object? fcmToken = freezed,
   }) {
     return _then(_$UserImpl(
       id: null == id
@@ -174,6 +183,10 @@ class __$$UserImplCopyWithImpl<$Res>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as String,
+      fcmToken: freezed == fcmToken
+          ? _value.fcmToken
+          : fcmToken // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -188,7 +201,8 @@ class _$UserImpl extends _User {
       required this.type,
       required this.isActive,
       required this.createdAt,
-      required this.updatedAt})
+      required this.updatedAt,
+      this.fcmToken})
       : super._();
 
   factory _$UserImpl.fromJson(Map<String, dynamic> json) =>
@@ -208,10 +222,12 @@ class _$UserImpl extends _User {
   final String createdAt;
   @override
   final String updatedAt;
+  @override
+  final String? fcmToken;
 
   @override
   String toString() {
-    return 'User(id: $id, username: $username, email: $email, type: $type, isActive: $isActive, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'User(id: $id, username: $username, email: $email, type: $type, isActive: $isActive, createdAt: $createdAt, updatedAt: $updatedAt, fcmToken: $fcmToken)';
   }
 
   @override
@@ -229,13 +245,15 @@ class _$UserImpl extends _User {
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
+                other.updatedAt == updatedAt) &&
+            (identical(other.fcmToken, fcmToken) ||
+                other.fcmToken == fcmToken));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, username, email, type, isActive, createdAt, updatedAt);
+  int get hashCode => Object.hash(runtimeType, id, username, email, type,
+      isActive, createdAt, updatedAt, fcmToken);
 
   /// Create a copy of User
   /// with the given fields replaced by the non-null parameter values.
@@ -261,7 +279,8 @@ abstract class _User extends User {
       required final String type,
       required final bool isActive,
       required final String createdAt,
-      required final String updatedAt}) = _$UserImpl;
+      required final String updatedAt,
+      final String? fcmToken}) = _$UserImpl;
   const _User._() : super._();
 
   factory _User.fromJson(Map<String, dynamic> json) = _$UserImpl.fromJson;
@@ -280,6 +299,8 @@ abstract class _User extends User {
   String get createdAt;
   @override
   String get updatedAt;
+  @override
+  String? get fcmToken;
 
   /// Create a copy of User
   /// with the given fields replaced by the non-null parameter values.

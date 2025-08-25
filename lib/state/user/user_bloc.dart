@@ -6,6 +6,8 @@ import 'package:flutter_common/state/user/user_state.dart';
 
 class UserBloc extends Bloc<UserEvent, UserState> {
   UserRepository userRepository;
+  String? fcmToken;
+
   UserBloc({required this.userRepository}) : super(UserState.initialize()) {
     on<UserEvent>((event, emit) async {
       try {

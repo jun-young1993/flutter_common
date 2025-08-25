@@ -13,6 +13,7 @@ class User with _$User {
     required bool isActive,
     required String createdAt,
     required String updatedAt,
+    String? fcmToken,
   }) = _User;
 
   const User._();

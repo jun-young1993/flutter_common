@@ -4,7 +4,7 @@ import 'package:flutter_common/network/dio_client.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class UserRepository {
-  Future<User> getUserInfo();
+  Future<User> getUserInfo({String? fcmToken});
 }
 
 class UserDefaultRepository extends UserRepository {
@@ -18,7 +18,7 @@ class UserDefaultRepository extends UserRepository {
       required this.appKey});
 
   @override
-  Future<User> getUserInfo() async {
+  Future<User> getUserInfo({String? fcmToken}) async {
     final appKeyString = JunyConstants.getAppKeyStringOrThrow(appKey);
     final userIdKey = '$appKeyString-user-id';
     final userId = sharedPreferences.getString(userIdKey);
@@ -28,11 +28,19 @@ class UserDefaultRepository extends UserRepository {
         'email': null,
         'password': DateTime.now().toIso8601String(),
         'type': appKeyString,
+        'fcm_token': fcmToken,
       });
       sharedPreferences.setString(userIdKey, response.data['id']);
       return User.fromJson(response.data);
     }
     final response = await dioClient.get('/user/$userId');
-    return User.fromJson(response.data);
+    var user = User.fromJson(response.data);
+    if (user.fcmToken == null) {
+      await dioClient.put('/user/$userId', data: {
+        'fcm_token': fcmToken,
+      });
+      user = user.copyWith(fcmToken: fcmToken);
+    }
+    return user;
   }
 }

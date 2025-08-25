@@ -14,6 +14,7 @@ _$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
       isActive: json['isActive'] as bool,
       createdAt: json['createdAt'] as String,
       updatedAt: json['updatedAt'] as String,
+      fcmToken: json['fcmToken'] as String?,
     );
 
 Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
@@ -25,4 +26,5 @@ Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
       'isActive': instance.isActive,
       'createdAt': instance.createdAt,
       'updatedAt': instance.updatedAt,
+      'fcmToken': instance.fcmToken,
     };
