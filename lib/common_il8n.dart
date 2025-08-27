@@ -11,6 +11,7 @@ abstract class Tr {
   static final notice = _Notice();
   static final report = _Report();
   static final ad = _Ad();
+  static final loan = _Loan();
 }
 
 class _App {
@@ -142,4 +143,41 @@ class _Ad {
   final loadSuccess = 'ad.loadSuccess'; // 광고 로드 성공
   final load = 'ad.load'; // 광고 로드
   final loading = 'ad.loading'; // 광고 로딩중...
+}
+
+class _Loan {
+  final newAddLoan = 'loan.newAddLoan';
+  final loanName = 'loan.loanName';
+  final loanAmount = 'loan.loanAmount';
+  final loanDate = 'loan.loanDate';
+  final loanType = 'loan.loanType';
+  final loanStatus = 'loan.loanStatus';
+  final loanDescription = 'loan.loanDescription';
+  final loanImage = 'loan.loanImage';
+  final year = 'loan.year';
+  final months = 'loan.months';
+  final month = 'loan.month';
+  final day = 'loan.day';
+  final addLoan = 'loan.addLoan';
+  final repaymentDate = 'loan.repaymentDate';
+  final optional = 'loan.optional';
+  final repaymentDateDescription = 'loan.repaymentDateDescription';
+  final loanAddSuccess = 'loan.loanAddSuccess';
+  final error = 'loan.error';
+  final appTitle = 'loan.appTitle';
+  final refreshError = 'loan.refreshError';
+  final emptyLoan = 'loan.emptyLoan';
+  final newLoanDescription = 'loan.newLoanDescription';
+  final firstLoanAdd = 'loan.firstLoanAdd';
+  final repaymentComplete = 'loan.repaymentComplete';
+  final repaymentNotYet = 'loan.repaymentNotYet';
+  final repaymentOverdue = 'loan.repaymentOverdue';
+  final deleteLoan = 'loan.deleteLoan';
+  final deleteLoanConfirmation = 'loan.deleteLoanConfirmation';
+  final deleteLoanSuccess = 'loan.deleteLoanSuccess';
+  final deleteLoanDescription = 'loan.deleteLoanDescription';
+  final cancel = 'loan.cancel';
+  final delete = 'loan.delete';
+  final deletingLoan = 'loan.deletingLoan';
+  final loanPeriod = 'loan.loanPeriod';
 }
