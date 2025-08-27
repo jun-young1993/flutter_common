@@ -86,6 +86,7 @@ class AdState {
 abstract class AdCallback {
   void onAdLoaded();
   void onRewardedAdLoaded(RewardedAd ad);
+  void onInterstitialAdLoaded(InterstitialAd ad);
   void onAdFailedToLoad(AdError error);
   void onAdShown();
   void onAdClosed();
@@ -108,6 +109,11 @@ class DefaultAdCallback implements AdCallback {
   @override
   void onAdFailedToLoad(AdError error) {
     debugPrint('광고 로드 실패: ${error.message}');
+  }
+
+  @override
+  void onInterstitialAdLoaded(InterstitialAd ad) {
+    debugPrint('전면 광고가 로드되었습니다.');
   }
 
   @override
@@ -369,6 +375,7 @@ class AdMaster implements IAdManager {
             _loadedAds[adId] = ad;
             _updateAdState(adId, const AdState(status: AdStatus.loaded));
             callback?.onAdLoaded();
+            callback?.onInterstitialAdLoaded(ad);
           },
           onAdFailedToLoad: (error) {
             final adError = AdError(

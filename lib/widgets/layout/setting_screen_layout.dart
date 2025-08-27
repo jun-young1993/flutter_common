@@ -224,7 +224,6 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
                                     description:
                                         Tr.message.emailVerification.tr(),
                                     hintText: Tr.app.email.tr(),
-                                    maxLength: 20,
                                     validator: (value) =>
                                         value == null || value.isEmpty
                                             ? Tr.message.inputEmail.tr()
