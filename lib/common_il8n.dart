@@ -198,4 +198,5 @@ class _Loan {
   final averageRepaymentDate = 'loan.averageRepaymentDate';
   final totalOverdueAmount = 'loan.totalOverdueAmount';
   final averageOverdueDays = 'loan.averageOverdueDays';
+  final recentAddLoan = 'loan.recentAddLoan';
 }
