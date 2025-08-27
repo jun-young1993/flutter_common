@@ -180,4 +180,22 @@ class _Loan {
   final delete = 'loan.delete';
   final deletingLoan = 'loan.deletingLoan';
   final loanPeriod = 'loan.loanPeriod';
+  final repaymentMethod = 'loan.repaymentMethod';
+  final repaymentMethodDescription = 'loan.repaymentMethodDescription';
+  final notificationSetting = 'loan.notificationSetting';
+  final home = 'loan.home';
+  final loanList = 'loan.loanList';
+  final statistics = 'loan.statistics';
+  final community = 'loan.community';
+  final summaryStatistics = 'loan.summaryStatistics';
+  final count = 'loan.count';
+  final allLoan = 'loan.allLoan';
+  final activeLoan = 'loan.activeLoan';
+  final expiredLoan = 'loan.expiredLoan';
+  final totalLoanAmount = 'loan.totalLoanAmount';
+  final averageInterest = 'loan.averageInterest';
+  final totalRepaymentAmount = 'loan.totalRepaymentAmount';
+  final averageRepaymentDate = 'loan.averageRepaymentDate';
+  final totalOverdueAmount = 'loan.totalOverdueAmount';
+  final averageOverdueDays = 'loan.averageOverdueDays';
 }

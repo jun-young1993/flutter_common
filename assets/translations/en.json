@@ -149,6 +149,24 @@
         "cancel": "Cancel",
         "delete": "Delete",
         "deletingLoan": "Deleting Loan...",
-        "loanPeriod": "Loan Period"
+        "loanPeriod": "Loan Period",
+        "repaymentMethod": "Repayment Method",
+        "repaymentMethodDescription": "Please select from 1 to 31.",
+        "notificationSetting": "Notification Setting",
+        "home": "Home",
+        "loanList": "Loan List",
+        "statistics": "Statistics",
+        "community": "Community",
+        "summaryStatistics": "Summary Statistics",
+        "count": "Count",
+        "allLoan": "All Loan",
+        "activeLoan": "Active Loan",
+        "expiredLoan": "Expired Loan",
+        "totalLoanAmount": "Total Loan Amount",
+        "averageInterest": "Average Interest",
+        "totalRepaymentAmount": "Total Repayment Amount",
+        "averageRepaymentDate": "Average Repayment Date",
+        "totalOverdueAmount": "Total Overdue Amount",
+        "averageOverdueDays": "Average Overdue Days"
     }
 } 
