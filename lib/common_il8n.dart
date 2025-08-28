@@ -225,4 +225,29 @@ class _Loan {
   final updateSoon = 'loan.updateSoon';
   final interestAnalysis = 'loan.interestAnalysis';
   final interestAnalysisDescription = 'loan.interestAnalysisDescription';
+  final loanNameHint = 'loan.loanNameHint';
+  final loanNameValidationEmpty = 'loan.loanNameValidationEmpty';
+  final loanNameValidationMinLength = 'loan.loanNameValidationMinLength';
+  final currencyUnitString = 'loan.currencyUnitString';
+  final currencyUnit = 'loan.currencyUnit';
+  final loanAmountValidationEmpty = 'loan.loanAmountValidationEmpty';
+  final loanAmountValidationInvalid = 'loan.loanAmountValidationInvalid';
+  final loanAmountValidationMin = 'loan.loanAmountValidationMin';
+  final loanAmountValidationMax = 'loan.loanAmountValidationMax';
+  final annualInterestRate = 'loan.annualInterestRate';
+  final annualInterestRateValidationEmpty =
+      'loan.annualInterestRateValidationEmpty';
+  final annualInterestRateValidationInvalid =
+      'loan.annualInterestRateValidationInvalid';
+  final annualInterestRateValidationMin =
+      'loan.annualInterestRateValidationMin';
+  final annualInterestRateValidationMax =
+      'loan.annualInterestRateValidationMax';
+  final loanPeriodValidationEmpty = 'loan.loanPeriodValidationEmpty';
+  final loanPeriodValidationInvalid = 'loan.loanPeriodValidationInvalid';
+  final loanPeriodValidationMin = 'loan.loanPeriodValidationMin';
+  final loanPeriodValidationMaxYear = 'loan.loanPeriodValidationMaxYear';
+  final loanPeriodValidationMaxMonths = 'loan.loanPeriodValidationMaxMonths';
+  final initialRepayment = 'loan.initialRepayment';
+  final contractDeposit = 'loan.contractDeposit';
 }

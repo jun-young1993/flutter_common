@@ -167,6 +167,16 @@
         "totalRepaymentAmount": "Total Repayment Amount",
         "averageRepaymentDate": "Average Repayment Date",
         "totalOverdueAmount": "Total Overdue Amount",
-        "averageOverdueDays": "Average Overdue Days"
+        "averageOverdueDays": "Average Overdue Days",
+        "loanNameHint": "Example: Mortgage Loan, Credit Loan, etc.",
+        "loanNameValidationEmpty": "Please enter a loan name.",
+        "loanNameValidationMinLength": "The loan name must be between {minLength} and {maxLength} characters.",
+        "currencyUnitString": "USD",
+        "currencyUnit": "$",
+        "loanAmountValidationEmpty": "Please enter a loan amount.",
+        "loanAmountValidationInvalid": "Please enter a valid amount.",
+        "loanAmountValidationMin": "Please enter at least {min} USD.",
+        "loanAmountValidationMax": "Please enter at most {max} USD.",
+        "annualInterestRate": "Annual Interest Rate"
     }
 } 

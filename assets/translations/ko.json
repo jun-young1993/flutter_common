@@ -194,6 +194,28 @@
         "repaymentType" : "상환유형",
         "updateSoon": "추후 업데이트 예정입니다.",
         "interestAnalysis": "이자 분석",
-        "interestAnalysisDescription": "이자 분석은 대출 기간 기준으로 계산됩니다."
+        "interestAnalysisDescription": "이자 분석은 대출 기간 기준으로 계산됩니다.",
+        "loanNameHint": "예: 주택담보대출, 신용대출, 등",
+        "loanNameValidationEmpty" : "대출명을 입력해주세요.",
+        "loanNameValidationMinLength" : "대출명은 {minLength}자 이상 {maxLength}자 이하로 입력해주세요.",
+        "currencyUnitString": "KRW",
+        "currencyUnit": "￦",
+        "loanAmountValidationEmpty" : "대출금액을 입력해주세요.",
+        "loanAmountValidationInvalid" : "올바른 금액을 입력해주세요.",
+        "loanAmountValidationMin": "최소 {min}만원 이상 입력해주세요.",
+        "loanAmountValidationMax": "최대 {max}만원 이하로 입력해주세요.",
+        "annualInterestRate": "연 이율",
+        "annualInterestRateValidationEmpty": "이율을 입력해주세요.",
+        "annualInterestRateValidationInvalid": "올바른 이율을 입력해주세요",
+        "annualInterestRateValidationMin": "이율을 {min} 이상이어야 합니다",
+        "annualInterestRateValidationMax": "이율을 {max} 이하로 입력해주세요",
+        "loanPeriodValidationEmpty": "대출 기간을 입력해주세요.",
+        "loanPeriodValidationInvalid": "올바른 기간을 입력해주세요.",
+        "loanPeriodValidationMin": "대출 기간을 {min} 이상이어야 합니다",
+        "loanPeriodValidationMaxYear": "대출 기간을 {max} 년 이하로 입력해주세요",
+        "loanPeriodValidationMaxMonths": "대출 기간을 {max} 개월 이하로 입력해주세요",
+        "initialRepayment": "초기 납부금",
+        "contractDeposit": "계약금, 선이자 등"
+        
     }
 } 
