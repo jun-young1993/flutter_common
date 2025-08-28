@@ -9,7 +9,7 @@ abstract class NoticeRepository {
     String? title,
   });
   Future<Notice> create(String title, String content, String type,
-      String noticeGroupId, String userName);
+      String noticeGroupId, String userId);
   Future<void> report(
       String noticeId, String reporterId, String type, String? content);
   Future<Notice> findOneById(String id, String? userId);
@@ -55,13 +55,13 @@ class NoticeDefaultRepository extends NoticeRepository {
 
   @override
   Future<Notice> create(String title, String content, String type,
-      String noticeGroupId, String userName) async {
+      String noticeGroupId, String userId) async {
     final response = await dioClient.post('/notice', data: {
       'title': title,
       'content': content,
       'type': type,
       'noticeGroupId': noticeGroupId,
-      'userName': userName,
+      'userId': userId,
     });
 
     if (response.statusCode == 201) {
