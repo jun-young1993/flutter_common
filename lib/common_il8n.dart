@@ -260,4 +260,10 @@ class _Loan {
   final loanPeriodValidationMaxMonths = 'loan.loanPeriodValidationMaxMonths';
   final initialRepayment = 'loan.initialRepayment';
   final contractDeposit = 'loan.contractDeposit';
+  final basicInfo = 'loan.basicInfo';
+  final repaymentSchedule = 'loan.repaymentSchedule';
+  final paymentSchedule = 'loan.paymentSchedule';
+  final near = 'loan.near';
+  final preparing = 'loan.preparing';
+  final waiting = 'loan.waiting';
 }

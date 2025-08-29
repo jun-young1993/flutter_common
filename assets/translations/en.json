@@ -165,6 +165,17 @@
         "totalLoanAmount": "Total Loan Amount",
         "averageInterest": "Average Interest",
         "totalRepaymentAmount": "Total Repayment Amount",
+        "recentAddLoan": "Recent Add Loan",
+        "inProgress": "In Progress",
+        "expired": "Expired",
+        "paymentDate": "Payment Date",
+        "next": "Next",
+        "previous": "Previous",
+        "noRepaymentYet": "No Repayment Yet",
+        "totalSummary": "Total Summary",
+        "totalInterest": "Total Interest",
+        "totalRepayment": "Total Repayment",
+        "totalOverdue": "Total Overdue",
         "averageRepaymentDate": "Average Repayment Date",
         "totalOverdueAmount": "Total Overdue Amount",
         "averageOverdueDays": "Average Overdue Days",
@@ -194,6 +205,12 @@
         "loanPeriodValidationMaxYear": "The loan period must be at most {max} years.",
         "loanPeriodValidationMaxMonths": "The loan period must be at most {max} months.",
         "initialRepayment": "Initial Repayment",
-        "contractDeposit": "Contract Deposit, Down Payment"
+        "contractDeposit": "Contract Deposit, Down Payment",
+        "basicInfo": "Basic Info",
+        "repaymentSchedule": "Repayment Schedule",
+        "paymentSchedule": "Payment Schedule",
+        "near": "Near",
+        "preparing": "Preparing",
+        "waiting": "Waiting"
     }
 } 

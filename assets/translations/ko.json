@@ -221,7 +221,13 @@
         "loanPeriodValidationMaxYear": "대출 기간을 {max} 년 이하로 입력해주세요",
         "loanPeriodValidationMaxMonths": "대출 기간을 {max} 개월 이하로 입력해주세요",
         "initialRepayment": "초기 납부금",
-        "contractDeposit": "계약금, 선이자 등"
+        "contractDeposit": "계약금, 선이자 등",
+        "basicInfo": "기본정보",
+        "repaymentSchedule": "상환 스케줄",
+        "paymentSchedule": "납부 스케줄",
+        "near": "임박",
+        "preparing": "준비중",
+        "waiting": "대기중"
         
     }
 } 
