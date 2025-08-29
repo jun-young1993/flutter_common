@@ -194,6 +194,12 @@
         "repaymentType" : "상환유형",
         "updateSoon": "추후 업데이트 예정입니다.",
         "interestAnalysis": "이자 분석",
-        "interestAnalysisDescription": "이자 분석은 대출 기간 기준으로 계산됩니다."
+        "interestAnalysisDescription": "이자 분석은 대출 기간 기준으로 계산됩니다.",
+        "equalPrincipalRepayment": "원금균등상환",
+        "equalPrincipalAndInterestRepayment": "원리금균등상환",
+        "maturityDateRepayment": "만기일시상환",
+        "equalPrincipalRepaymentDescription": "매월 동일한 금액을 납부하는 방식",
+        "equalPrincipalAndInterestRepaymentDescription": "매월 동일한 원금과 이자를 납부하는 방식",
+        "maturityDateRepaymentDescription": "이자만 납부하고 원금은 만기에 일시 상환하는 방식"
     }
 } 

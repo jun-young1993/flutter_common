@@ -225,4 +225,14 @@ class _Loan {
   final updateSoon = 'loan.updateSoon';
   final interestAnalysis = 'loan.interestAnalysis';
   final interestAnalysisDescription = 'loan.interestAnalysisDescription';
+  final equalPrincipalRepayment = 'loan.equalPrincipalRepayment';
+  final equalPrincipalAndInterestRepayment =
+      'loan.equalPrincipalAndInterestRepayment';
+  final maturityDateRepayment = 'loan.maturityDateRepayment';
+  final equalPrincipalRepaymentDescription =
+      'loan.equalPrincipalRepaymentDescription';
+  final equalPrincipalAndInterestRepaymentDescription =
+      'loan.equalPrincipalAndInterestRepaymentDescription';
+  final maturityDateRepaymentDescription =
+      'loan.maturityDateRepaymentDescription';
 }

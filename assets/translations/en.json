@@ -167,6 +167,12 @@
         "totalRepaymentAmount": "Total Repayment Amount",
         "averageRepaymentDate": "Average Repayment Date",
         "totalOverdueAmount": "Total Overdue Amount",
-        "averageOverdueDays": "Average Overdue Days"
+        "averageOverdueDays": "Average Overdue Days",
+        "equalPrincipalRepayment": "Equal Principal Repayment",
+        "equalPrincipalAndInterestRepayment": "Equal Principal and Interest Repayment",
+        "maturityDateRepayment": "Maturity Date Repayment",
+        "equalPrincipalRepaymentDescription": "Monthly equal repayment",
+        "equalPrincipalAndInterestRepaymentDescription": "Monthly equal principal and interest repayment",
+        "maturityDateRepaymentDescription": "Monthly interest repayment, principal repayment at maturity"
     }
 } 
