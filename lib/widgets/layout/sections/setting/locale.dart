@@ -17,10 +17,10 @@ class LocaleSettingSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          Tr.app.selectLanguage.tr(),
-          style: Theme.of(context).textTheme.titleLarge,
-        ),
+        // Text(
+        //   Tr.app.selectLanguage.tr(),
+        //   style: Theme.of(context).textTheme.titleLarge,
+        // ),
         const SizedBox(height: 16),
         Row(
           children: [
