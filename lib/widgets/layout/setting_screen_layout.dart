@@ -297,7 +297,6 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
                               }
                               userBloc.add(UserEvent.deleteUserData(user));
                               widget.onUserDeleted?.call(user);
-                              Navigator.pop(context);
                             });
                           },
                         ),
