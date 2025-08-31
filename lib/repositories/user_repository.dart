@@ -7,6 +7,8 @@ abstract class UserRepository {
   Future<User> getUserInfo({
     String? fcmToken,
   });
+
+  Future<void> deleteUserData(User user);
 }
 
 class UserDefaultRepository extends UserRepository {
@@ -43,5 +45,16 @@ class UserDefaultRepository extends UserRepository {
       await dioClient.put('/user/$userId', data: user.toJson());
     }
     return user;
+  }
+
+  @override
+  Future<void> deleteUserData(User user) async {
+    final appKeyString = JunyConstants.getAppKeyStringOrThrow(appKey);
+    final userIdKey = '$appKeyString-user-id';
+    user.copyWith(isActive: false);
+    final userId = user.id;
+    await dioClient.put('/user/$userId', data: user.toJson());
+    sharedPreferences.getString(userIdKey);
+    sharedPreferences.remove(userIdKey);
   }
 }

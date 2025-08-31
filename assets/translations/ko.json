@@ -38,7 +38,10 @@
         "community": "커뮤니티",
         "userInfo": "사용자 정보",  
         "contacts": "연락처",
-        "noUser": "로그인 후 이용해주세요."
+        "noUser": "로그인 후 이용해주세요.",
+        "verified": "인증되었습니다.",
+        "deleteUserData": "사용자 데이터 삭제",
+        "confirm": "확인"
     },
     "error": {
         "unknownError": "알 수 없는 오류가 발생했습니다.",
@@ -60,7 +63,10 @@
         "emailVerification": "이메일 인증을 통해 계정을 안전하게 유지하고 복구할 수 있습니다.",
         "inputEmail": "이메일을 입력해주세요.",
         "createNotice": "공지사항 작성 완료",
-        "reportNotice": "신고 완료"
+        "reportNotice": "신고 완료",
+        "deleteUserDataWarning": "이 작업은 되돌릴 수 없습니다. 모든 사용자 데이터가 영구적으로 삭제됩니다.",
+        "deleteUserDataTitle": "사용자 데이터 삭제",
+        "deleteUserDataDescription": "정말로 모든 사용자 데이터를 삭제하시겠습니까?"
     },
     "chat": {
         "clearChat": "채팅 지우기",

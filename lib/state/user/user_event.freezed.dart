@@ -19,32 +19,38 @@ mixin _$UserEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialize,
+    required TResult Function(User user) deleteUserData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialize,
+    TResult? Function(User user)? deleteUserData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialize,
+    TResult Function(User user)? deleteUserData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialize value) initialize,
+    required TResult Function(_DeleteUserData value) deleteUserData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialize value)? initialize,
+    TResult? Function(_DeleteUserData value)? deleteUserData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialize value)? initialize,
+    TResult Function(_DeleteUserData value)? deleteUserData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -112,6 +118,7 @@ class _$InitializeImpl implements _Initialize {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialize,
+    required TResult Function(User user) deleteUserData,
   }) {
     return initialize();
   }
@@ -120,6 +127,7 @@ class _$InitializeImpl implements _Initialize {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialize,
+    TResult? Function(User user)? deleteUserData,
   }) {
     return initialize?.call();
   }
@@ -128,6 +136,7 @@ class _$InitializeImpl implements _Initialize {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialize,
+    TResult Function(User user)? deleteUserData,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -140,6 +149,7 @@ class _$InitializeImpl implements _Initialize {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialize value) initialize,
+    required TResult Function(_DeleteUserData value) deleteUserData,
   }) {
     return initialize(this);
   }
@@ -148,6 +158,7 @@ class _$InitializeImpl implements _Initialize {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialize value)? initialize,
+    TResult? Function(_DeleteUserData value)? deleteUserData,
   }) {
     return initialize?.call(this);
   }
@@ -156,6 +167,7 @@ class _$InitializeImpl implements _Initialize {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialize value)? initialize,
+    TResult Function(_DeleteUserData value)? deleteUserData,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -167,4 +179,157 @@ class _$InitializeImpl implements _Initialize {
 
 abstract class _Initialize implements UserEvent {
   const factory _Initialize() = _$InitializeImpl;
+}
+
+/// @nodoc
+abstract class _$$DeleteUserDataImplCopyWith<$Res> {
+  factory _$$DeleteUserDataImplCopyWith(_$DeleteUserDataImpl value,
+          $Res Function(_$DeleteUserDataImpl) then) =
+      __$$DeleteUserDataImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({User user});
+
+  $UserCopyWith<$Res> get user;
+}
+
+/// @nodoc
+class __$$DeleteUserDataImplCopyWithImpl<$Res>
+    extends _$UserEventCopyWithImpl<$Res, _$DeleteUserDataImpl>
+    implements _$$DeleteUserDataImplCopyWith<$Res> {
+  __$$DeleteUserDataImplCopyWithImpl(
+      _$DeleteUserDataImpl _value, $Res Function(_$DeleteUserDataImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? user = null,
+  }) {
+    return _then(_$DeleteUserDataImpl(
+      null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
+    ));
+  }
+
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $UserCopyWith<$Res> get user {
+    return $UserCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$DeleteUserDataImpl implements _DeleteUserData {
+  const _$DeleteUserDataImpl(this.user);
+
+  @override
+  final User user;
+
+  @override
+  String toString() {
+    return 'UserEvent.deleteUserData(user: $user)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteUserDataImpl &&
+            (identical(other.user, user) || other.user == user));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, user);
+
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleteUserDataImplCopyWith<_$DeleteUserDataImpl> get copyWith =>
+      __$$DeleteUserDataImplCopyWithImpl<_$DeleteUserDataImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialize,
+    required TResult Function(User user) deleteUserData,
+  }) {
+    return deleteUserData(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialize,
+    TResult? Function(User user)? deleteUserData,
+  }) {
+    return deleteUserData?.call(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialize,
+    TResult Function(User user)? deleteUserData,
+    required TResult orElse(),
+  }) {
+    if (deleteUserData != null) {
+      return deleteUserData(user);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_DeleteUserData value) deleteUserData,
+  }) {
+    return deleteUserData(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialize value)? initialize,
+    TResult? Function(_DeleteUserData value)? deleteUserData,
+  }) {
+    return deleteUserData?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_DeleteUserData value)? deleteUserData,
+    required TResult orElse(),
+  }) {
+    if (deleteUserData != null) {
+      return deleteUserData(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteUserData implements UserEvent {
+  const factory _DeleteUserData(final User user) = _$DeleteUserDataImpl;
+
+  User get user;
+
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$DeleteUserDataImplCopyWith<_$DeleteUserDataImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

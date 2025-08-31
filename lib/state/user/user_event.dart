@@ -6,4 +6,5 @@ part 'user_event.freezed.dart';
 @freezed
 class UserEvent with _$UserEvent {
   const factory UserEvent.initialize() = _Initialize;
+  const factory UserEvent.deleteUserData(User user) = _DeleteUserData;
 }

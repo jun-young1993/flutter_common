@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_common/common_il8n.dart';
+import 'package:flutter_common/flutter_common.dart';
 
 class VerifiedBanner extends StatelessWidget {
   final String? label;
@@ -22,7 +24,7 @@ class VerifiedBanner extends StatelessWidget {
               Icon(Icons.verified, color: Colors.green.shade700, size: 20),
               const SizedBox(width: 8),
               Text(
-                '인증되었습니다',
+                Tr.app.verified.tr(),
                 style: TextStyle(
                   color: Colors.green.shade700,
                   fontWeight: FontWeight.w600,

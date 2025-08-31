@@ -38,7 +38,10 @@
         "community": "Community",
         "userInfo": "User Info",
         "contacts": "Contacts",
-        "noUser": "Please login to use."
+        "noUser": "Please login to use.",
+        "verified": "Verified",
+        "deleteUserData": "Delete User Data",
+        "confirm": "Confirm"
     },
     "error": {
         "unknownError": "An unknown error has occurred.",
@@ -60,7 +63,10 @@
         "emailVerification": "You can keep your account secure and recover it through email verification.",
         "inputEmail": "Please enter your email.",
         "createNotice": "Notice created successfully",
-        "reportNotice": "Report created successfully"
+        "reportNotice": "Report created successfully",
+        "deleteUserDataWarning": "This action cannot be undone. All user data will be permanently deleted.",
+        "deleteUserDataTitle": "Delete User Data",
+        "deleteUserDataDescription": "Are you sure you want to delete all user data?"
     },
     "chat": {
         "clearChat": "Clear Chat",

@@ -7,10 +7,13 @@ import 'package:flutter_common/constants/common_constants.dart';
 import 'package:flutter_common/constants/juny_constants.dart';
 import 'package:flutter_common/constants/size_constants.dart';
 import 'package:flutter_common/extensions/app_exception.dart';
+import 'package:flutter_common/models/user/user.dart';
 import 'package:flutter_common/state/app_config/app_config_bloc.dart';
 import 'package:flutter_common/state/app_config/app_config_event.dart';
 import 'package:flutter_common/state/app_config/app_config_selector.dart';
 import 'package:flutter_common/state/app_config/app_config_state.dart';
+import 'package:flutter_common/state/user/user_bloc.dart';
+import 'package:flutter_common/state/user/user_event.dart';
 import 'package:flutter_common/state/user/user_selector.dart';
 import 'package:flutter_common/state/verification/verification_bloc.dart';
 import 'package:flutter_common/state/verification/verification_event.dart';
@@ -37,10 +40,12 @@ class SettingScreenLayout extends StatefulWidget {
       {Key? key,
       required this.appKey,
       this.topChildren = const [],
-      this.bottomChildren = const []})
+      this.bottomChildren = const [],
+      this.onUserDeleted})
       : super(key: key);
   final List<Widget> topChildren;
   final List<Widget> bottomChildren;
+  final void Function(User user)? onUserDeleted;
 
   final AppKeys appKey;
   @override
@@ -49,7 +54,7 @@ class SettingScreenLayout extends StatefulWidget {
 
 class _SettingScreenLayoutState extends State<SettingScreenLayout> {
   String? _version;
-
+  UserBloc get userBloc => context.read<UserBloc>();
   AppKeys get appKey => widget.appKey;
   AppConfigBloc get appConfigBloc => context.read<AppConfigBloc>();
   VerificationBloc get verificationBloc => context.read<VerificationBloc>();
@@ -211,7 +216,7 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
                                 ),
                               )
                             : AwesomeTextButton(
-                                text: "email 인증하기",
+                                text: Tr.app.emailVerification.tr(),
                                 fontSize: SizeConstants.getSmallButtonFontSize(
                                     context),
                                 padding: SizeConstants.getSmallButtonPadding(
@@ -248,6 +253,61 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
               ],
             );
           });
+        }),
+        // 사용자 데이터 삭제 버튼 추가
+        UserInfoSelector((user) {
+          return Column(
+            children: [
+              SizedBox(
+                  height: SizeConstants.getContainerVerticalMargin(context)),
+              CardContainerItem(
+                initiallyExpanded: false,
+                icon: Icons.delete_forever_outlined,
+                title: Tr.app.deleteUserData.tr(),
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal:
+                          SizeConstants.getContainerHorizontalMargin(context),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          Tr.message.deleteUserDataWarning.tr(),
+                          style: TextStyle(
+                            fontSize:
+                                SizeConstants.getTextSmallFontSize(context),
+                            color: Colors.red.shade600,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        SizedBox(
+                            height: SizeConstants.getColumnSpacing(context)),
+                        AwesomeTextButton(
+                          text: Tr.app.deleteUserData.tr(),
+                          fontSize:
+                              SizeConstants.getSmallButtonFontSize(context),
+                          padding: SizeConstants.getSmallButtonPadding(context),
+                          icon: Icons.delete_forever_outlined,
+                          onPressed: () {
+                            _showDeleteUserDataDialog(context, () {
+                              if (user == null) {
+                                return;
+                              }
+                              userBloc.add(UserEvent.deleteUserData(user));
+                              widget.onUserDeleted?.call(user);
+                              Navigator.pop(context);
+                            });
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          );
         }),
       ],
     );
@@ -386,6 +446,20 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
               )
             ]),
       ],
+    );
+  }
+
+  void _showDeleteUserDataDialog(
+      BuildContext context, void Function() onConfirmed) {
+    AppDialog.show(
+      context: context,
+      title: Tr.message.deleteUserDataTitle.tr(),
+      message:
+          '${Tr.message.deleteUserDataDescription.tr()}\n\n${Tr.message.deleteUserDataWarning.tr()}',
+      confirmText: Tr.app.confirm.tr(),
+      cancelText: Tr.app.cancel.tr(),
+      type: DialogType.warning,
+      onConfirm: onConfirmed,
     );
   }
 }
