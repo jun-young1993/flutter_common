@@ -50,7 +50,8 @@
     },
     "message": {
         "etcReasonRequired": "기타 사유를 입력해주세요.",
-        "notFoundNotice": "공지사항이 없습니다.",
+        "notFoundNotice": "게시글이 없습니다.",
+        "searchNoticeDescription": "게시글을 검색해보세요...",
         "lastNotice": "마지막 공지입니다.",
         "printError": "인쇄 중 오류가 발생했습니다.",
         "printSuccess": "인쇄 완료",
@@ -62,7 +63,7 @@
         "contact": "아래 이메일로 문의해주세요.",
         "emailVerification": "이메일 인증을 통해 계정을 안전하게 유지하고 복구할 수 있습니다.",
         "inputEmail": "이메일을 입력해주세요.",
-        "createNotice": "공지사항 작성 완료",
+        "createNotice": "게시글 작성 완료",
         "reportNotice": "신고 완료",
         "deleteUserDataWarning": "이 작업은 되돌릴 수 없습니다. 모든 사용자 데이터가 영구적으로 삭제됩니다.",
         "deleteUserDataTitle": "사용자 데이터 삭제",

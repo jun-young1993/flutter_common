@@ -51,6 +51,7 @@
     "message": {
         "etcReasonRequired": "Please enter a reason for 'Other'.",
         "notFoundNotice": "No notices found.",
+        "searchNoticeDescription": "Search for notices...",
         "lastNotice": "This is the last notice.",
         "printError": "An error occurred while printing.",
         "printSuccess": "Print successful.",

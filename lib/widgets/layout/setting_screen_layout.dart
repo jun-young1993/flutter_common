@@ -273,18 +273,8 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          Tr.message.deleteUserDataWarning.tr(),
-                          style: TextStyle(
-                            fontSize:
-                                SizeConstants.getTextSmallFontSize(context),
-                            color: Colors.red.shade600,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        SizedBox(
-                            height: SizeConstants.getColumnSpacing(context)),
-                        AwesomeTextButton(
+                        Center(
+                            child: AwesomeTextButton(
                           text: Tr.app.deleteUserData.tr(),
                           fontSize:
                               SizeConstants.getSmallButtonFontSize(context),
@@ -299,6 +289,14 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
                               widget.onUserDeleted?.call(user);
                             });
                           },
+                        )),
+                        SizedBox(
+                            height: SizeConstants.getColumnSpacing(context)),
+                        AwesomeDescriptionText(
+                          text: Tr.message.deleteUserDataWarning.tr(),
+                          icon: Icons.delete_forever_outlined,
+                          textAlign: TextAlign.center,
+                          color: Colors.red.shade600,
                         ),
                       ],
                     ),

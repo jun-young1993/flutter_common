@@ -51,7 +51,7 @@ class UserDefaultRepository extends UserRepository {
   Future<void> deleteUserData(User user) async {
     final appKeyString = JunyConstants.getAppKeyStringOrThrow(appKey);
     final userIdKey = '$appKeyString-user-id';
-    user.copyWith(isActive: false);
+    user = user.copyWith(isActive: false);
     final userId = user.id;
     await dioClient.put('/user/$userId', data: user.toJson());
     sharedPreferences.getString(userIdKey);

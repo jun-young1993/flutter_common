@@ -54,6 +54,8 @@ class _Error {
 class _Message {
   final etcReasonRequired = 'message.etcReasonRequired'; // 기타 사유를 입력해주세요.
   final notFoundNotice = 'message.notFoundNotice'; // 공지사항이 없습니다.
+  final searchNoticeDescription =
+      'message.searchNoticeDescription'; // 공지사항을 검색해보세요...
   final lastNotice = 'message.lastNotice'; // 마지막 공지입니다.
   final printError = 'message.printError'; // 프린트 중 오류가 발생했습니다.
   final printSuccess = 'message.printSuccess'; // 프린트 완료

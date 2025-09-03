@@ -159,7 +159,7 @@ class _NoticeScreenLayoutState extends State<NoticeScreenLayout> {
       ),
       child: TextField(
         decoration: InputDecoration(
-          hintText: '게시글을 검색해보세요...',
+          hintText: Tr.message.searchNoticeDescription.tr(),
           hintStyle: TextStyle(
             color: Colors.grey[400],
             fontSize: 14,
