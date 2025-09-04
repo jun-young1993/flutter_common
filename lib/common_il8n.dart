@@ -43,6 +43,12 @@ class _App {
   final verified = 'app.verified';
   final deleteUserData = 'app.deleteUserData';
   final confirm = 'app.confirm';
+  final qrCode = 'app.qrCode';
+  final linkShare = 'app.linkShare';
+  final copyLink = 'app.copyLink';
+  final moveToStore = 'app.moveToStore';
+  final printQrCode = 'app.printQrCode';
+  final viewInStore = 'app.viewInStore';
 }
 
 class _Error {

@@ -36,7 +36,7 @@ class ShareAppRow extends StatelessWidget {
         _buildShareOption(
           context,
           icon: Icons.qr_code,
-          title: 'QR 코드',
+          title: Tr.app.qrCode.tr(),
           subtitle: 'QR 코드로 앱 공유하기',
           onTap: () => _showQrCodeDialog(context),
         ),
@@ -44,16 +44,16 @@ class ShareAppRow extends StatelessWidget {
         _buildShareOption(
           context,
           icon: Icons.link,
-          title: '링크 공유',
-          subtitle: '앱 링크 복사하기',
+          title: Tr.app.linkShare.tr(),
+          subtitle: Tr.app.copyLink.tr(),
           onTap: () => _copyAppUrl(context),
         ),
         const SizedBox(height: 8),
         _buildShareOption(
           context,
           icon: Icons.shopping_bag_outlined,
-          title: '스토어로 이동',
-          subtitle: '앱스토어/플레이스토어에서 보기',
+          title: Tr.app.moveToStore.tr(),
+          subtitle: Tr.app.viewInStore.tr(),
           onTap: () => _openStore(context),
         )
       ],

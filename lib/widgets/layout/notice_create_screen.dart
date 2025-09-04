@@ -68,7 +68,7 @@ class _NoticeCreateSectionState extends State<NoticeCreateSection> {
           children: [
             // 제목 입력
             Text(
-              '제목',
+              Tr.notice.title.tr(),
               style: theme.textTheme.titleMedium?.copyWith(
                 fontWeight: FontWeight.bold,
               ),

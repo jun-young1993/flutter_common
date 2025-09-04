@@ -41,7 +41,13 @@
         "noUser": "Please login to use.",
         "verified": "Verified",
         "deleteUserData": "Delete User Data",
-        "confirm": "Confirm"
+        "confirm": "Confirm",
+        "qrCode": "QR Code",
+        "linkShare": "Link Share",
+        "copyLink": "Copy Link",
+        "moveToStore": "Move to Store",
+        "printQrCode": "Print QR Code",
+        "viewInStore": "View in Store"
     },
     "error": {
         "unknownError": "An unknown error has occurred.",
