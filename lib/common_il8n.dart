@@ -4,6 +4,7 @@ abstract class Tr {
   const Tr._();
 
   static final mcp = _Mcp();
+  static final api = _Api();
   static final app = _App();
   static final error = _Error();
   static final message = _Message();
@@ -12,6 +13,19 @@ abstract class Tr {
   static final report = _Report();
   static final ad = _Ad();
   static final loan = _Loan();
+}
+
+class _Api {
+  final notFound = 'api.notFound';
+  final notFoundMcpApiKey = 'api.notFoundMcpApiKey';
+  final requestTimeout = 'api.requestTimeout';
+  final network = 'api.network';
+  final badRequest = 'api.badRequest';
+  final unauthorized = 'api.unauthorized';
+  final forbidden = 'api.forbidden';
+  final server = 'api.server';
+  final cancelled = 'api.cancelled';
+  final unknown = 'api.unknown';
 }
 
 class _App {

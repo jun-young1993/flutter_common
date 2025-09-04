@@ -13,6 +13,18 @@
         "noToolsAvailable": "No tools available.",
         "toolListItem": "Tool Info"
     },
+    "api": {
+        "notFound" : "Requested resource not found.",
+        "notFoundMcpApiKey" : "MCP API key not found.",
+        "requestTimeout" : "Request timeout.",
+        "network" : "Network error.",
+        "badRequest" : "Bad request.",
+        "unauthorized" : "Unauthorized.",
+        "forbidden" : "Forbidden.",
+        "server" : "Server error.",
+        "cancelled" : "Request cancelled.",
+        "unknown" : "Unknown error."
+    },
     "app": {
         "enable": "Enable",
         "disable": "Disable",

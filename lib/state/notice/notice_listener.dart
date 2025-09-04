@@ -17,7 +17,8 @@ class NoticeListener extends BlocListener<NoticeBloc, NoticeState> {
           if (state.error != null) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
               Toast.show(context,
-                  message: state.error!.message, type: ToastType.error);
+                  message: state.error!.message ?? 'unknown',
+                  type: ToastType.error);
             });
           }
         });

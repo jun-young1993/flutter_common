@@ -55,7 +55,7 @@ class Toast extends StatelessWidget {
   }) {
     show(
       context,
-      message: error.message,
+      message: error.message ?? 'unknown',
       type: ToastType.error,
       duration: duration,
       onDismiss: onDismiss,

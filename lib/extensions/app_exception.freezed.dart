@@ -16,46 +16,47 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AppException {
+  String? get message => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() timeout,
-    required TResult Function(String message) network,
-    required TResult Function(String message) unknown,
-    required TResult Function(String message) badRequest,
-    required TResult Function() unauthorized,
-    required TResult Function() forbidden,
-    required TResult Function() notFound,
-    required TResult Function(String message) server,
-    required TResult Function() cancelled,
-    required TResult Function() notFoundMcpApiKey,
+    required TResult Function(String? message) timeout,
+    required TResult Function(String? message) network,
+    required TResult Function(String? message) unknown,
+    required TResult Function(String? message) badRequest,
+    required TResult Function(String? message) unauthorized,
+    required TResult Function(String? message) forbidden,
+    required TResult Function(String? message) notFound,
+    required TResult Function(String? message) server,
+    required TResult Function(String? message) cancelled,
+    required TResult Function(String? message) notFoundMcpApiKey,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? timeout,
-    TResult? Function(String message)? network,
-    TResult? Function(String message)? unknown,
-    TResult? Function(String message)? badRequest,
-    TResult? Function()? unauthorized,
-    TResult? Function()? forbidden,
-    TResult? Function()? notFound,
-    TResult? Function(String message)? server,
-    TResult? Function()? cancelled,
-    TResult? Function()? notFoundMcpApiKey,
+    TResult? Function(String? message)? timeout,
+    TResult? Function(String? message)? network,
+    TResult? Function(String? message)? unknown,
+    TResult? Function(String? message)? badRequest,
+    TResult? Function(String? message)? unauthorized,
+    TResult? Function(String? message)? forbidden,
+    TResult? Function(String? message)? notFound,
+    TResult? Function(String? message)? server,
+    TResult? Function(String? message)? cancelled,
+    TResult? Function(String? message)? notFoundMcpApiKey,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? timeout,
-    TResult Function(String message)? network,
-    TResult Function(String message)? unknown,
-    TResult Function(String message)? badRequest,
-    TResult Function()? unauthorized,
-    TResult Function()? forbidden,
-    TResult Function()? notFound,
-    TResult Function(String message)? server,
-    TResult Function()? cancelled,
-    TResult Function()? notFoundMcpApiKey,
+    TResult Function(String? message)? timeout,
+    TResult Function(String? message)? network,
+    TResult Function(String? message)? unknown,
+    TResult Function(String? message)? badRequest,
+    TResult Function(String? message)? unauthorized,
+    TResult Function(String? message)? forbidden,
+    TResult Function(String? message)? notFound,
+    TResult Function(String? message)? server,
+    TResult Function(String? message)? cancelled,
+    TResult Function(String? message)? notFoundMcpApiKey,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -102,6 +103,12 @@ mixin _$AppException {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Create a copy of AppException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $AppExceptionCopyWith<AppException> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -109,6 +116,8 @@ abstract class $AppExceptionCopyWith<$Res> {
   factory $AppExceptionCopyWith(
           AppException value, $Res Function(AppException) then) =
       _$AppExceptionCopyWithImpl<$Res, AppException>;
+  @useResult
+  $Res call({String? message});
 }
 
 /// @nodoc
@@ -123,13 +132,29 @@ class _$AppExceptionCopyWithImpl<$Res, $Val extends AppException>
 
   /// Create a copy of AppException
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_value.copyWith(
+      message: freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$TimeoutImplCopyWith<$Res> {
+abstract class _$$TimeoutImplCopyWith<$Res>
+    implements $AppExceptionCopyWith<$Res> {
   factory _$$TimeoutImplCopyWith(
           _$TimeoutImpl value, $Res Function(_$TimeoutImpl) then) =
       __$$TimeoutImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? message});
 }
 
 /// @nodoc
@@ -142,78 +167,103 @@ class __$$TimeoutImplCopyWithImpl<$Res>
 
   /// Create a copy of AppException
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_$TimeoutImpl(
+      freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$TimeoutImpl implements _Timeout {
-  const _$TimeoutImpl();
+  const _$TimeoutImpl([this.message]);
+
+  @override
+  final String? message;
 
   @override
   String toString() {
-    return 'AppException.timeout()';
+    return 'AppException.timeout(message: $message)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$TimeoutImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$TimeoutImpl &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, message);
+
+  /// Create a copy of AppException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$TimeoutImplCopyWith<_$TimeoutImpl> get copyWith =>
+      __$$TimeoutImplCopyWithImpl<_$TimeoutImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() timeout,
-    required TResult Function(String message) network,
-    required TResult Function(String message) unknown,
-    required TResult Function(String message) badRequest,
-    required TResult Function() unauthorized,
-    required TResult Function() forbidden,
-    required TResult Function() notFound,
-    required TResult Function(String message) server,
-    required TResult Function() cancelled,
-    required TResult Function() notFoundMcpApiKey,
+    required TResult Function(String? message) timeout,
+    required TResult Function(String? message) network,
+    required TResult Function(String? message) unknown,
+    required TResult Function(String? message) badRequest,
+    required TResult Function(String? message) unauthorized,
+    required TResult Function(String? message) forbidden,
+    required TResult Function(String? message) notFound,
+    required TResult Function(String? message) server,
+    required TResult Function(String? message) cancelled,
+    required TResult Function(String? message) notFoundMcpApiKey,
   }) {
-    return timeout();
+    return timeout(message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? timeout,
-    TResult? Function(String message)? network,
-    TResult? Function(String message)? unknown,
-    TResult? Function(String message)? badRequest,
-    TResult? Function()? unauthorized,
-    TResult? Function()? forbidden,
-    TResult? Function()? notFound,
-    TResult? Function(String message)? server,
-    TResult? Function()? cancelled,
-    TResult? Function()? notFoundMcpApiKey,
+    TResult? Function(String? message)? timeout,
+    TResult? Function(String? message)? network,
+    TResult? Function(String? message)? unknown,
+    TResult? Function(String? message)? badRequest,
+    TResult? Function(String? message)? unauthorized,
+    TResult? Function(String? message)? forbidden,
+    TResult? Function(String? message)? notFound,
+    TResult? Function(String? message)? server,
+    TResult? Function(String? message)? cancelled,
+    TResult? Function(String? message)? notFoundMcpApiKey,
   }) {
-    return timeout?.call();
+    return timeout?.call(message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? timeout,
-    TResult Function(String message)? network,
-    TResult Function(String message)? unknown,
-    TResult Function(String message)? badRequest,
-    TResult Function()? unauthorized,
-    TResult Function()? forbidden,
-    TResult Function()? notFound,
-    TResult Function(String message)? server,
-    TResult Function()? cancelled,
-    TResult Function()? notFoundMcpApiKey,
+    TResult Function(String? message)? timeout,
+    TResult Function(String? message)? network,
+    TResult Function(String? message)? unknown,
+    TResult Function(String? message)? badRequest,
+    TResult Function(String? message)? unauthorized,
+    TResult Function(String? message)? forbidden,
+    TResult Function(String? message)? notFound,
+    TResult Function(String? message)? server,
+    TResult Function(String? message)? cancelled,
+    TResult Function(String? message)? notFoundMcpApiKey,
     required TResult orElse(),
   }) {
     if (timeout != null) {
-      return timeout();
+      return timeout(message);
     }
     return orElse();
   }
@@ -275,16 +325,28 @@ class _$TimeoutImpl implements _Timeout {
 }
 
 abstract class _Timeout implements AppException {
-  const factory _Timeout() = _$TimeoutImpl;
+  const factory _Timeout([final String? message]) = _$TimeoutImpl;
+
+  @override
+  String? get message;
+
+  /// Create a copy of AppException
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$TimeoutImplCopyWith<_$TimeoutImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$NetworkImplCopyWith<$Res> {
+abstract class _$$NetworkImplCopyWith<$Res>
+    implements $AppExceptionCopyWith<$Res> {
   factory _$$NetworkImplCopyWith(
           _$NetworkImpl value, $Res Function(_$NetworkImpl) then) =
       __$$NetworkImplCopyWithImpl<$Res>;
+  @override
   @useResult
-  $Res call({String message});
+  $Res call({String? message});
 }
 
 /// @nodoc
@@ -300,13 +362,13 @@ class __$$NetworkImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? message = null,
+    Object? message = freezed,
   }) {
     return _then(_$NetworkImpl(
-      null == message
+      freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -314,10 +376,10 @@ class __$$NetworkImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$NetworkImpl implements _Network {
-  const _$NetworkImpl(this.message);
+  const _$NetworkImpl([this.message]);
 
   @override
-  final String message;
+  final String? message;
 
   @override
   String toString() {
@@ -346,16 +408,16 @@ class _$NetworkImpl implements _Network {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() timeout,
-    required TResult Function(String message) network,
-    required TResult Function(String message) unknown,
-    required TResult Function(String message) badRequest,
-    required TResult Function() unauthorized,
-    required TResult Function() forbidden,
-    required TResult Function() notFound,
-    required TResult Function(String message) server,
-    required TResult Function() cancelled,
-    required TResult Function() notFoundMcpApiKey,
+    required TResult Function(String? message) timeout,
+    required TResult Function(String? message) network,
+    required TResult Function(String? message) unknown,
+    required TResult Function(String? message) badRequest,
+    required TResult Function(String? message) unauthorized,
+    required TResult Function(String? message) forbidden,
+    required TResult Function(String? message) notFound,
+    required TResult Function(String? message) server,
+    required TResult Function(String? message) cancelled,
+    required TResult Function(String? message) notFoundMcpApiKey,
   }) {
     return network(message);
   }
@@ -363,16 +425,16 @@ class _$NetworkImpl implements _Network {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? timeout,
-    TResult? Function(String message)? network,
-    TResult? Function(String message)? unknown,
-    TResult? Function(String message)? badRequest,
-    TResult? Function()? unauthorized,
-    TResult? Function()? forbidden,
-    TResult? Function()? notFound,
-    TResult? Function(String message)? server,
-    TResult? Function()? cancelled,
-    TResult? Function()? notFoundMcpApiKey,
+    TResult? Function(String? message)? timeout,
+    TResult? Function(String? message)? network,
+    TResult? Function(String? message)? unknown,
+    TResult? Function(String? message)? badRequest,
+    TResult? Function(String? message)? unauthorized,
+    TResult? Function(String? message)? forbidden,
+    TResult? Function(String? message)? notFound,
+    TResult? Function(String? message)? server,
+    TResult? Function(String? message)? cancelled,
+    TResult? Function(String? message)? notFoundMcpApiKey,
   }) {
     return network?.call(message);
   }
@@ -380,16 +442,16 @@ class _$NetworkImpl implements _Network {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? timeout,
-    TResult Function(String message)? network,
-    TResult Function(String message)? unknown,
-    TResult Function(String message)? badRequest,
-    TResult Function()? unauthorized,
-    TResult Function()? forbidden,
-    TResult Function()? notFound,
-    TResult Function(String message)? server,
-    TResult Function()? cancelled,
-    TResult Function()? notFoundMcpApiKey,
+    TResult Function(String? message)? timeout,
+    TResult Function(String? message)? network,
+    TResult Function(String? message)? unknown,
+    TResult Function(String? message)? badRequest,
+    TResult Function(String? message)? unauthorized,
+    TResult Function(String? message)? forbidden,
+    TResult Function(String? message)? notFound,
+    TResult Function(String? message)? server,
+    TResult Function(String? message)? cancelled,
+    TResult Function(String? message)? notFoundMcpApiKey,
     required TResult orElse(),
   }) {
     if (network != null) {
@@ -455,24 +517,28 @@ class _$NetworkImpl implements _Network {
 }
 
 abstract class _Network implements AppException {
-  const factory _Network(final String message) = _$NetworkImpl;
+  const factory _Network([final String? message]) = _$NetworkImpl;
 
-  String get message;
+  @override
+  String? get message;
 
   /// Create a copy of AppException
   /// with the given fields replaced by the non-null parameter values.
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NetworkImplCopyWith<_$NetworkImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$UnknownImplCopyWith<$Res> {
+abstract class _$$UnknownImplCopyWith<$Res>
+    implements $AppExceptionCopyWith<$Res> {
   factory _$$UnknownImplCopyWith(
           _$UnknownImpl value, $Res Function(_$UnknownImpl) then) =
       __$$UnknownImplCopyWithImpl<$Res>;
+  @override
   @useResult
-  $Res call({String message});
+  $Res call({String? message});
 }
 
 /// @nodoc
@@ -488,13 +554,13 @@ class __$$UnknownImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? message = null,
+    Object? message = freezed,
   }) {
     return _then(_$UnknownImpl(
-      null == message
+      freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -502,10 +568,10 @@ class __$$UnknownImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UnknownImpl implements _Unknown {
-  const _$UnknownImpl(this.message);
+  const _$UnknownImpl([this.message]);
 
   @override
-  final String message;
+  final String? message;
 
   @override
   String toString() {
@@ -534,16 +600,16 @@ class _$UnknownImpl implements _Unknown {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() timeout,
-    required TResult Function(String message) network,
-    required TResult Function(String message) unknown,
-    required TResult Function(String message) badRequest,
-    required TResult Function() unauthorized,
-    required TResult Function() forbidden,
-    required TResult Function() notFound,
-    required TResult Function(String message) server,
-    required TResult Function() cancelled,
-    required TResult Function() notFoundMcpApiKey,
+    required TResult Function(String? message) timeout,
+    required TResult Function(String? message) network,
+    required TResult Function(String? message) unknown,
+    required TResult Function(String? message) badRequest,
+    required TResult Function(String? message) unauthorized,
+    required TResult Function(String? message) forbidden,
+    required TResult Function(String? message) notFound,
+    required TResult Function(String? message) server,
+    required TResult Function(String? message) cancelled,
+    required TResult Function(String? message) notFoundMcpApiKey,
   }) {
     return unknown(message);
   }
@@ -551,16 +617,16 @@ class _$UnknownImpl implements _Unknown {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? timeout,
-    TResult? Function(String message)? network,
-    TResult? Function(String message)? unknown,
-    TResult? Function(String message)? badRequest,
-    TResult? Function()? unauthorized,
-    TResult? Function()? forbidden,
-    TResult? Function()? notFound,
-    TResult? Function(String message)? server,
-    TResult? Function()? cancelled,
-    TResult? Function()? notFoundMcpApiKey,
+    TResult? Function(String? message)? timeout,
+    TResult? Function(String? message)? network,
+    TResult? Function(String? message)? unknown,
+    TResult? Function(String? message)? badRequest,
+    TResult? Function(String? message)? unauthorized,
+    TResult? Function(String? message)? forbidden,
+    TResult? Function(String? message)? notFound,
+    TResult? Function(String? message)? server,
+    TResult? Function(String? message)? cancelled,
+    TResult? Function(String? message)? notFoundMcpApiKey,
   }) {
     return unknown?.call(message);
   }
@@ -568,16 +634,16 @@ class _$UnknownImpl implements _Unknown {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? timeout,
-    TResult Function(String message)? network,
-    TResult Function(String message)? unknown,
-    TResult Function(String message)? badRequest,
-    TResult Function()? unauthorized,
-    TResult Function()? forbidden,
-    TResult Function()? notFound,
-    TResult Function(String message)? server,
-    TResult Function()? cancelled,
-    TResult Function()? notFoundMcpApiKey,
+    TResult Function(String? message)? timeout,
+    TResult Function(String? message)? network,
+    TResult Function(String? message)? unknown,
+    TResult Function(String? message)? badRequest,
+    TResult Function(String? message)? unauthorized,
+    TResult Function(String? message)? forbidden,
+    TResult Function(String? message)? notFound,
+    TResult Function(String? message)? server,
+    TResult Function(String? message)? cancelled,
+    TResult Function(String? message)? notFoundMcpApiKey,
     required TResult orElse(),
   }) {
     if (unknown != null) {
@@ -643,24 +709,28 @@ class _$UnknownImpl implements _Unknown {
 }
 
 abstract class _Unknown implements AppException {
-  const factory _Unknown(final String message) = _$UnknownImpl;
+  const factory _Unknown([final String? message]) = _$UnknownImpl;
 
-  String get message;
+  @override
+  String? get message;
 
   /// Create a copy of AppException
   /// with the given fields replaced by the non-null parameter values.
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UnknownImplCopyWith<_$UnknownImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$BadRequestImplCopyWith<$Res> {
+abstract class _$$BadRequestImplCopyWith<$Res>
+    implements $AppExceptionCopyWith<$Res> {
   factory _$$BadRequestImplCopyWith(
           _$BadRequestImpl value, $Res Function(_$BadRequestImpl) then) =
       __$$BadRequestImplCopyWithImpl<$Res>;
+  @override
   @useResult
-  $Res call({String message});
+  $Res call({String? message});
 }
 
 /// @nodoc
@@ -676,13 +746,13 @@ class __$$BadRequestImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? message = null,
+    Object? message = freezed,
   }) {
     return _then(_$BadRequestImpl(
-      null == message
+      freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -690,10 +760,10 @@ class __$$BadRequestImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$BadRequestImpl implements _BadRequest {
-  const _$BadRequestImpl(this.message);
+  const _$BadRequestImpl([this.message]);
 
   @override
-  final String message;
+  final String? message;
 
   @override
   String toString() {
@@ -722,16 +792,16 @@ class _$BadRequestImpl implements _BadRequest {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() timeout,
-    required TResult Function(String message) network,
-    required TResult Function(String message) unknown,
-    required TResult Function(String message) badRequest,
-    required TResult Function() unauthorized,
-    required TResult Function() forbidden,
-    required TResult Function() notFound,
-    required TResult Function(String message) server,
-    required TResult Function() cancelled,
-    required TResult Function() notFoundMcpApiKey,
+    required TResult Function(String? message) timeout,
+    required TResult Function(String? message) network,
+    required TResult Function(String? message) unknown,
+    required TResult Function(String? message) badRequest,
+    required TResult Function(String? message) unauthorized,
+    required TResult Function(String? message) forbidden,
+    required TResult Function(String? message) notFound,
+    required TResult Function(String? message) server,
+    required TResult Function(String? message) cancelled,
+    required TResult Function(String? message) notFoundMcpApiKey,
   }) {
     return badRequest(message);
   }
@@ -739,16 +809,16 @@ class _$BadRequestImpl implements _BadRequest {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? timeout,
-    TResult? Function(String message)? network,
-    TResult? Function(String message)? unknown,
-    TResult? Function(String message)? badRequest,
-    TResult? Function()? unauthorized,
-    TResult? Function()? forbidden,
-    TResult? Function()? notFound,
-    TResult? Function(String message)? server,
-    TResult? Function()? cancelled,
-    TResult? Function()? notFoundMcpApiKey,
+    TResult? Function(String? message)? timeout,
+    TResult? Function(String? message)? network,
+    TResult? Function(String? message)? unknown,
+    TResult? Function(String? message)? badRequest,
+    TResult? Function(String? message)? unauthorized,
+    TResult? Function(String? message)? forbidden,
+    TResult? Function(String? message)? notFound,
+    TResult? Function(String? message)? server,
+    TResult? Function(String? message)? cancelled,
+    TResult? Function(String? message)? notFoundMcpApiKey,
   }) {
     return badRequest?.call(message);
   }
@@ -756,16 +826,16 @@ class _$BadRequestImpl implements _BadRequest {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? timeout,
-    TResult Function(String message)? network,
-    TResult Function(String message)? unknown,
-    TResult Function(String message)? badRequest,
-    TResult Function()? unauthorized,
-    TResult Function()? forbidden,
-    TResult Function()? notFound,
-    TResult Function(String message)? server,
-    TResult Function()? cancelled,
-    TResult Function()? notFoundMcpApiKey,
+    TResult Function(String? message)? timeout,
+    TResult Function(String? message)? network,
+    TResult Function(String? message)? unknown,
+    TResult Function(String? message)? badRequest,
+    TResult Function(String? message)? unauthorized,
+    TResult Function(String? message)? forbidden,
+    TResult Function(String? message)? notFound,
+    TResult Function(String? message)? server,
+    TResult Function(String? message)? cancelled,
+    TResult Function(String? message)? notFoundMcpApiKey,
     required TResult orElse(),
   }) {
     if (badRequest != null) {
@@ -831,22 +901,28 @@ class _$BadRequestImpl implements _BadRequest {
 }
 
 abstract class _BadRequest implements AppException {
-  const factory _BadRequest(final String message) = _$BadRequestImpl;
+  const factory _BadRequest([final String? message]) = _$BadRequestImpl;
 
-  String get message;
+  @override
+  String? get message;
 
   /// Create a copy of AppException
   /// with the given fields replaced by the non-null parameter values.
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BadRequestImplCopyWith<_$BadRequestImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$UnauthorizedImplCopyWith<$Res> {
+abstract class _$$UnauthorizedImplCopyWith<$Res>
+    implements $AppExceptionCopyWith<$Res> {
   factory _$$UnauthorizedImplCopyWith(
           _$UnauthorizedImpl value, $Res Function(_$UnauthorizedImpl) then) =
       __$$UnauthorizedImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? message});
 }
 
 /// @nodoc
@@ -859,78 +935,103 @@ class __$$UnauthorizedImplCopyWithImpl<$Res>
 
   /// Create a copy of AppException
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_$UnauthorizedImpl(
+      freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$UnauthorizedImpl implements _Unauthorized {
-  const _$UnauthorizedImpl();
+  const _$UnauthorizedImpl([this.message]);
+
+  @override
+  final String? message;
 
   @override
   String toString() {
-    return 'AppException.unauthorized()';
+    return 'AppException.unauthorized(message: $message)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$UnauthorizedImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$UnauthorizedImpl &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, message);
+
+  /// Create a copy of AppException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UnauthorizedImplCopyWith<_$UnauthorizedImpl> get copyWith =>
+      __$$UnauthorizedImplCopyWithImpl<_$UnauthorizedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() timeout,
-    required TResult Function(String message) network,
-    required TResult Function(String message) unknown,
-    required TResult Function(String message) badRequest,
-    required TResult Function() unauthorized,
-    required TResult Function() forbidden,
-    required TResult Function() notFound,
-    required TResult Function(String message) server,
-    required TResult Function() cancelled,
-    required TResult Function() notFoundMcpApiKey,
+    required TResult Function(String? message) timeout,
+    required TResult Function(String? message) network,
+    required TResult Function(String? message) unknown,
+    required TResult Function(String? message) badRequest,
+    required TResult Function(String? message) unauthorized,
+    required TResult Function(String? message) forbidden,
+    required TResult Function(String? message) notFound,
+    required TResult Function(String? message) server,
+    required TResult Function(String? message) cancelled,
+    required TResult Function(String? message) notFoundMcpApiKey,
   }) {
-    return unauthorized();
+    return unauthorized(message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? timeout,
-    TResult? Function(String message)? network,
-    TResult? Function(String message)? unknown,
-    TResult? Function(String message)? badRequest,
-    TResult? Function()? unauthorized,
-    TResult? Function()? forbidden,
-    TResult? Function()? notFound,
-    TResult? Function(String message)? server,
-    TResult? Function()? cancelled,
-    TResult? Function()? notFoundMcpApiKey,
+    TResult? Function(String? message)? timeout,
+    TResult? Function(String? message)? network,
+    TResult? Function(String? message)? unknown,
+    TResult? Function(String? message)? badRequest,
+    TResult? Function(String? message)? unauthorized,
+    TResult? Function(String? message)? forbidden,
+    TResult? Function(String? message)? notFound,
+    TResult? Function(String? message)? server,
+    TResult? Function(String? message)? cancelled,
+    TResult? Function(String? message)? notFoundMcpApiKey,
   }) {
-    return unauthorized?.call();
+    return unauthorized?.call(message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? timeout,
-    TResult Function(String message)? network,
-    TResult Function(String message)? unknown,
-    TResult Function(String message)? badRequest,
-    TResult Function()? unauthorized,
-    TResult Function()? forbidden,
-    TResult Function()? notFound,
-    TResult Function(String message)? server,
-    TResult Function()? cancelled,
-    TResult Function()? notFoundMcpApiKey,
+    TResult Function(String? message)? timeout,
+    TResult Function(String? message)? network,
+    TResult Function(String? message)? unknown,
+    TResult Function(String? message)? badRequest,
+    TResult Function(String? message)? unauthorized,
+    TResult Function(String? message)? forbidden,
+    TResult Function(String? message)? notFound,
+    TResult Function(String? message)? server,
+    TResult Function(String? message)? cancelled,
+    TResult Function(String? message)? notFoundMcpApiKey,
     required TResult orElse(),
   }) {
     if (unauthorized != null) {
-      return unauthorized();
+      return unauthorized(message);
     }
     return orElse();
   }
@@ -992,14 +1093,28 @@ class _$UnauthorizedImpl implements _Unauthorized {
 }
 
 abstract class _Unauthorized implements AppException {
-  const factory _Unauthorized() = _$UnauthorizedImpl;
+  const factory _Unauthorized([final String? message]) = _$UnauthorizedImpl;
+
+  @override
+  String? get message;
+
+  /// Create a copy of AppException
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UnauthorizedImplCopyWith<_$UnauthorizedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ForbiddenImplCopyWith<$Res> {
+abstract class _$$ForbiddenImplCopyWith<$Res>
+    implements $AppExceptionCopyWith<$Res> {
   factory _$$ForbiddenImplCopyWith(
           _$ForbiddenImpl value, $Res Function(_$ForbiddenImpl) then) =
       __$$ForbiddenImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? message});
 }
 
 /// @nodoc
@@ -1012,78 +1127,103 @@ class __$$ForbiddenImplCopyWithImpl<$Res>
 
   /// Create a copy of AppException
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_$ForbiddenImpl(
+      freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$ForbiddenImpl implements _Forbidden {
-  const _$ForbiddenImpl();
+  const _$ForbiddenImpl([this.message]);
+
+  @override
+  final String? message;
 
   @override
   String toString() {
-    return 'AppException.forbidden()';
+    return 'AppException.forbidden(message: $message)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ForbiddenImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$ForbiddenImpl &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, message);
+
+  /// Create a copy of AppException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ForbiddenImplCopyWith<_$ForbiddenImpl> get copyWith =>
+      __$$ForbiddenImplCopyWithImpl<_$ForbiddenImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() timeout,
-    required TResult Function(String message) network,
-    required TResult Function(String message) unknown,
-    required TResult Function(String message) badRequest,
-    required TResult Function() unauthorized,
-    required TResult Function() forbidden,
-    required TResult Function() notFound,
-    required TResult Function(String message) server,
-    required TResult Function() cancelled,
-    required TResult Function() notFoundMcpApiKey,
+    required TResult Function(String? message) timeout,
+    required TResult Function(String? message) network,
+    required TResult Function(String? message) unknown,
+    required TResult Function(String? message) badRequest,
+    required TResult Function(String? message) unauthorized,
+    required TResult Function(String? message) forbidden,
+    required TResult Function(String? message) notFound,
+    required TResult Function(String? message) server,
+    required TResult Function(String? message) cancelled,
+    required TResult Function(String? message) notFoundMcpApiKey,
   }) {
-    return forbidden();
+    return forbidden(message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? timeout,
-    TResult? Function(String message)? network,
-    TResult? Function(String message)? unknown,
-    TResult? Function(String message)? badRequest,
-    TResult? Function()? unauthorized,
-    TResult? Function()? forbidden,
-    TResult? Function()? notFound,
-    TResult? Function(String message)? server,
-    TResult? Function()? cancelled,
-    TResult? Function()? notFoundMcpApiKey,
+    TResult? Function(String? message)? timeout,
+    TResult? Function(String? message)? network,
+    TResult? Function(String? message)? unknown,
+    TResult? Function(String? message)? badRequest,
+    TResult? Function(String? message)? unauthorized,
+    TResult? Function(String? message)? forbidden,
+    TResult? Function(String? message)? notFound,
+    TResult? Function(String? message)? server,
+    TResult? Function(String? message)? cancelled,
+    TResult? Function(String? message)? notFoundMcpApiKey,
   }) {
-    return forbidden?.call();
+    return forbidden?.call(message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? timeout,
-    TResult Function(String message)? network,
-    TResult Function(String message)? unknown,
-    TResult Function(String message)? badRequest,
-    TResult Function()? unauthorized,
-    TResult Function()? forbidden,
-    TResult Function()? notFound,
-    TResult Function(String message)? server,
-    TResult Function()? cancelled,
-    TResult Function()? notFoundMcpApiKey,
+    TResult Function(String? message)? timeout,
+    TResult Function(String? message)? network,
+    TResult Function(String? message)? unknown,
+    TResult Function(String? message)? badRequest,
+    TResult Function(String? message)? unauthorized,
+    TResult Function(String? message)? forbidden,
+    TResult Function(String? message)? notFound,
+    TResult Function(String? message)? server,
+    TResult Function(String? message)? cancelled,
+    TResult Function(String? message)? notFoundMcpApiKey,
     required TResult orElse(),
   }) {
     if (forbidden != null) {
-      return forbidden();
+      return forbidden(message);
     }
     return orElse();
   }
@@ -1145,14 +1285,28 @@ class _$ForbiddenImpl implements _Forbidden {
 }
 
 abstract class _Forbidden implements AppException {
-  const factory _Forbidden() = _$ForbiddenImpl;
+  const factory _Forbidden([final String? message]) = _$ForbiddenImpl;
+
+  @override
+  String? get message;
+
+  /// Create a copy of AppException
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ForbiddenImplCopyWith<_$ForbiddenImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$NotFoundImplCopyWith<$Res> {
+abstract class _$$NotFoundImplCopyWith<$Res>
+    implements $AppExceptionCopyWith<$Res> {
   factory _$$NotFoundImplCopyWith(
           _$NotFoundImpl value, $Res Function(_$NotFoundImpl) then) =
       __$$NotFoundImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? message});
 }
 
 /// @nodoc
@@ -1165,78 +1319,103 @@ class __$$NotFoundImplCopyWithImpl<$Res>
 
   /// Create a copy of AppException
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_$NotFoundImpl(
+      freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$NotFoundImpl implements _NotFound {
-  const _$NotFoundImpl();
+  const _$NotFoundImpl([this.message]);
+
+  @override
+  final String? message;
 
   @override
   String toString() {
-    return 'AppException.notFound()';
+    return 'AppException.notFound(message: $message)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$NotFoundImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$NotFoundImpl &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, message);
+
+  /// Create a copy of AppException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$NotFoundImplCopyWith<_$NotFoundImpl> get copyWith =>
+      __$$NotFoundImplCopyWithImpl<_$NotFoundImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() timeout,
-    required TResult Function(String message) network,
-    required TResult Function(String message) unknown,
-    required TResult Function(String message) badRequest,
-    required TResult Function() unauthorized,
-    required TResult Function() forbidden,
-    required TResult Function() notFound,
-    required TResult Function(String message) server,
-    required TResult Function() cancelled,
-    required TResult Function() notFoundMcpApiKey,
+    required TResult Function(String? message) timeout,
+    required TResult Function(String? message) network,
+    required TResult Function(String? message) unknown,
+    required TResult Function(String? message) badRequest,
+    required TResult Function(String? message) unauthorized,
+    required TResult Function(String? message) forbidden,
+    required TResult Function(String? message) notFound,
+    required TResult Function(String? message) server,
+    required TResult Function(String? message) cancelled,
+    required TResult Function(String? message) notFoundMcpApiKey,
   }) {
-    return notFound();
+    return notFound(message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? timeout,
-    TResult? Function(String message)? network,
-    TResult? Function(String message)? unknown,
-    TResult? Function(String message)? badRequest,
-    TResult? Function()? unauthorized,
-    TResult? Function()? forbidden,
-    TResult? Function()? notFound,
-    TResult? Function(String message)? server,
-    TResult? Function()? cancelled,
-    TResult? Function()? notFoundMcpApiKey,
+    TResult? Function(String? message)? timeout,
+    TResult? Function(String? message)? network,
+    TResult? Function(String? message)? unknown,
+    TResult? Function(String? message)? badRequest,
+    TResult? Function(String? message)? unauthorized,
+    TResult? Function(String? message)? forbidden,
+    TResult? Function(String? message)? notFound,
+    TResult? Function(String? message)? server,
+    TResult? Function(String? message)? cancelled,
+    TResult? Function(String? message)? notFoundMcpApiKey,
   }) {
-    return notFound?.call();
+    return notFound?.call(message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? timeout,
-    TResult Function(String message)? network,
-    TResult Function(String message)? unknown,
-    TResult Function(String message)? badRequest,
-    TResult Function()? unauthorized,
-    TResult Function()? forbidden,
-    TResult Function()? notFound,
-    TResult Function(String message)? server,
-    TResult Function()? cancelled,
-    TResult Function()? notFoundMcpApiKey,
+    TResult Function(String? message)? timeout,
+    TResult Function(String? message)? network,
+    TResult Function(String? message)? unknown,
+    TResult Function(String? message)? badRequest,
+    TResult Function(String? message)? unauthorized,
+    TResult Function(String? message)? forbidden,
+    TResult Function(String? message)? notFound,
+    TResult Function(String? message)? server,
+    TResult Function(String? message)? cancelled,
+    TResult Function(String? message)? notFoundMcpApiKey,
     required TResult orElse(),
   }) {
     if (notFound != null) {
-      return notFound();
+      return notFound(message);
     }
     return orElse();
   }
@@ -1298,16 +1477,28 @@ class _$NotFoundImpl implements _NotFound {
 }
 
 abstract class _NotFound implements AppException {
-  const factory _NotFound() = _$NotFoundImpl;
+  const factory _NotFound([final String? message]) = _$NotFoundImpl;
+
+  @override
+  String? get message;
+
+  /// Create a copy of AppException
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$NotFoundImplCopyWith<_$NotFoundImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ServerImplCopyWith<$Res> {
+abstract class _$$ServerImplCopyWith<$Res>
+    implements $AppExceptionCopyWith<$Res> {
   factory _$$ServerImplCopyWith(
           _$ServerImpl value, $Res Function(_$ServerImpl) then) =
       __$$ServerImplCopyWithImpl<$Res>;
+  @override
   @useResult
-  $Res call({String message});
+  $Res call({String? message});
 }
 
 /// @nodoc
@@ -1323,13 +1514,13 @@ class __$$ServerImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? message = null,
+    Object? message = freezed,
   }) {
     return _then(_$ServerImpl(
-      null == message
+      freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -1337,10 +1528,10 @@ class __$$ServerImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ServerImpl implements _Server {
-  const _$ServerImpl(this.message);
+  const _$ServerImpl([this.message]);
 
   @override
-  final String message;
+  final String? message;
 
   @override
   String toString() {
@@ -1369,16 +1560,16 @@ class _$ServerImpl implements _Server {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() timeout,
-    required TResult Function(String message) network,
-    required TResult Function(String message) unknown,
-    required TResult Function(String message) badRequest,
-    required TResult Function() unauthorized,
-    required TResult Function() forbidden,
-    required TResult Function() notFound,
-    required TResult Function(String message) server,
-    required TResult Function() cancelled,
-    required TResult Function() notFoundMcpApiKey,
+    required TResult Function(String? message) timeout,
+    required TResult Function(String? message) network,
+    required TResult Function(String? message) unknown,
+    required TResult Function(String? message) badRequest,
+    required TResult Function(String? message) unauthorized,
+    required TResult Function(String? message) forbidden,
+    required TResult Function(String? message) notFound,
+    required TResult Function(String? message) server,
+    required TResult Function(String? message) cancelled,
+    required TResult Function(String? message) notFoundMcpApiKey,
   }) {
     return server(message);
   }
@@ -1386,16 +1577,16 @@ class _$ServerImpl implements _Server {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? timeout,
-    TResult? Function(String message)? network,
-    TResult? Function(String message)? unknown,
-    TResult? Function(String message)? badRequest,
-    TResult? Function()? unauthorized,
-    TResult? Function()? forbidden,
-    TResult? Function()? notFound,
-    TResult? Function(String message)? server,
-    TResult? Function()? cancelled,
-    TResult? Function()? notFoundMcpApiKey,
+    TResult? Function(String? message)? timeout,
+    TResult? Function(String? message)? network,
+    TResult? Function(String? message)? unknown,
+    TResult? Function(String? message)? badRequest,
+    TResult? Function(String? message)? unauthorized,
+    TResult? Function(String? message)? forbidden,
+    TResult? Function(String? message)? notFound,
+    TResult? Function(String? message)? server,
+    TResult? Function(String? message)? cancelled,
+    TResult? Function(String? message)? notFoundMcpApiKey,
   }) {
     return server?.call(message);
   }
@@ -1403,16 +1594,16 @@ class _$ServerImpl implements _Server {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? timeout,
-    TResult Function(String message)? network,
-    TResult Function(String message)? unknown,
-    TResult Function(String message)? badRequest,
-    TResult Function()? unauthorized,
-    TResult Function()? forbidden,
-    TResult Function()? notFound,
-    TResult Function(String message)? server,
-    TResult Function()? cancelled,
-    TResult Function()? notFoundMcpApiKey,
+    TResult Function(String? message)? timeout,
+    TResult Function(String? message)? network,
+    TResult Function(String? message)? unknown,
+    TResult Function(String? message)? badRequest,
+    TResult Function(String? message)? unauthorized,
+    TResult Function(String? message)? forbidden,
+    TResult Function(String? message)? notFound,
+    TResult Function(String? message)? server,
+    TResult Function(String? message)? cancelled,
+    TResult Function(String? message)? notFoundMcpApiKey,
     required TResult orElse(),
   }) {
     if (server != null) {
@@ -1478,22 +1669,28 @@ class _$ServerImpl implements _Server {
 }
 
 abstract class _Server implements AppException {
-  const factory _Server(final String message) = _$ServerImpl;
+  const factory _Server([final String? message]) = _$ServerImpl;
 
-  String get message;
+  @override
+  String? get message;
 
   /// Create a copy of AppException
   /// with the given fields replaced by the non-null parameter values.
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ServerImplCopyWith<_$ServerImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$CancelledImplCopyWith<$Res> {
+abstract class _$$CancelledImplCopyWith<$Res>
+    implements $AppExceptionCopyWith<$Res> {
   factory _$$CancelledImplCopyWith(
           _$CancelledImpl value, $Res Function(_$CancelledImpl) then) =
       __$$CancelledImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? message});
 }
 
 /// @nodoc
@@ -1506,78 +1703,103 @@ class __$$CancelledImplCopyWithImpl<$Res>
 
   /// Create a copy of AppException
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_$CancelledImpl(
+      freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$CancelledImpl implements _Cancelled {
-  const _$CancelledImpl();
+  const _$CancelledImpl([this.message]);
+
+  @override
+  final String? message;
 
   @override
   String toString() {
-    return 'AppException.cancelled()';
+    return 'AppException.cancelled(message: $message)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$CancelledImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$CancelledImpl &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, message);
+
+  /// Create a copy of AppException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CancelledImplCopyWith<_$CancelledImpl> get copyWith =>
+      __$$CancelledImplCopyWithImpl<_$CancelledImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() timeout,
-    required TResult Function(String message) network,
-    required TResult Function(String message) unknown,
-    required TResult Function(String message) badRequest,
-    required TResult Function() unauthorized,
-    required TResult Function() forbidden,
-    required TResult Function() notFound,
-    required TResult Function(String message) server,
-    required TResult Function() cancelled,
-    required TResult Function() notFoundMcpApiKey,
+    required TResult Function(String? message) timeout,
+    required TResult Function(String? message) network,
+    required TResult Function(String? message) unknown,
+    required TResult Function(String? message) badRequest,
+    required TResult Function(String? message) unauthorized,
+    required TResult Function(String? message) forbidden,
+    required TResult Function(String? message) notFound,
+    required TResult Function(String? message) server,
+    required TResult Function(String? message) cancelled,
+    required TResult Function(String? message) notFoundMcpApiKey,
   }) {
-    return cancelled();
+    return cancelled(message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? timeout,
-    TResult? Function(String message)? network,
-    TResult? Function(String message)? unknown,
-    TResult? Function(String message)? badRequest,
-    TResult? Function()? unauthorized,
-    TResult? Function()? forbidden,
-    TResult? Function()? notFound,
-    TResult? Function(String message)? server,
-    TResult? Function()? cancelled,
-    TResult? Function()? notFoundMcpApiKey,
+    TResult? Function(String? message)? timeout,
+    TResult? Function(String? message)? network,
+    TResult? Function(String? message)? unknown,
+    TResult? Function(String? message)? badRequest,
+    TResult? Function(String? message)? unauthorized,
+    TResult? Function(String? message)? forbidden,
+    TResult? Function(String? message)? notFound,
+    TResult? Function(String? message)? server,
+    TResult? Function(String? message)? cancelled,
+    TResult? Function(String? message)? notFoundMcpApiKey,
   }) {
-    return cancelled?.call();
+    return cancelled?.call(message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? timeout,
-    TResult Function(String message)? network,
-    TResult Function(String message)? unknown,
-    TResult Function(String message)? badRequest,
-    TResult Function()? unauthorized,
-    TResult Function()? forbidden,
-    TResult Function()? notFound,
-    TResult Function(String message)? server,
-    TResult Function()? cancelled,
-    TResult Function()? notFoundMcpApiKey,
+    TResult Function(String? message)? timeout,
+    TResult Function(String? message)? network,
+    TResult Function(String? message)? unknown,
+    TResult Function(String? message)? badRequest,
+    TResult Function(String? message)? unauthorized,
+    TResult Function(String? message)? forbidden,
+    TResult Function(String? message)? notFound,
+    TResult Function(String? message)? server,
+    TResult Function(String? message)? cancelled,
+    TResult Function(String? message)? notFoundMcpApiKey,
     required TResult orElse(),
   }) {
     if (cancelled != null) {
-      return cancelled();
+      return cancelled(message);
     }
     return orElse();
   }
@@ -1639,14 +1861,28 @@ class _$CancelledImpl implements _Cancelled {
 }
 
 abstract class _Cancelled implements AppException {
-  const factory _Cancelled() = _$CancelledImpl;
+  const factory _Cancelled([final String? message]) = _$CancelledImpl;
+
+  @override
+  String? get message;
+
+  /// Create a copy of AppException
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CancelledImplCopyWith<_$CancelledImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$NotFoundMcpApiKeyImplCopyWith<$Res> {
+abstract class _$$NotFoundMcpApiKeyImplCopyWith<$Res>
+    implements $AppExceptionCopyWith<$Res> {
   factory _$$NotFoundMcpApiKeyImplCopyWith(_$NotFoundMcpApiKeyImpl value,
           $Res Function(_$NotFoundMcpApiKeyImpl) then) =
       __$$NotFoundMcpApiKeyImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? message});
 }
 
 /// @nodoc
@@ -1659,78 +1895,104 @@ class __$$NotFoundMcpApiKeyImplCopyWithImpl<$Res>
 
   /// Create a copy of AppException
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_$NotFoundMcpApiKeyImpl(
+      freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$NotFoundMcpApiKeyImpl implements _NotFoundMcpApiKey {
-  const _$NotFoundMcpApiKeyImpl();
+  const _$NotFoundMcpApiKeyImpl([this.message]);
+
+  @override
+  final String? message;
 
   @override
   String toString() {
-    return 'AppException.notFoundMcpApiKey()';
+    return 'AppException.notFoundMcpApiKey(message: $message)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$NotFoundMcpApiKeyImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$NotFoundMcpApiKeyImpl &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, message);
+
+  /// Create a copy of AppException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$NotFoundMcpApiKeyImplCopyWith<_$NotFoundMcpApiKeyImpl> get copyWith =>
+      __$$NotFoundMcpApiKeyImplCopyWithImpl<_$NotFoundMcpApiKeyImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() timeout,
-    required TResult Function(String message) network,
-    required TResult Function(String message) unknown,
-    required TResult Function(String message) badRequest,
-    required TResult Function() unauthorized,
-    required TResult Function() forbidden,
-    required TResult Function() notFound,
-    required TResult Function(String message) server,
-    required TResult Function() cancelled,
-    required TResult Function() notFoundMcpApiKey,
+    required TResult Function(String? message) timeout,
+    required TResult Function(String? message) network,
+    required TResult Function(String? message) unknown,
+    required TResult Function(String? message) badRequest,
+    required TResult Function(String? message) unauthorized,
+    required TResult Function(String? message) forbidden,
+    required TResult Function(String? message) notFound,
+    required TResult Function(String? message) server,
+    required TResult Function(String? message) cancelled,
+    required TResult Function(String? message) notFoundMcpApiKey,
   }) {
-    return notFoundMcpApiKey();
+    return notFoundMcpApiKey(message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? timeout,
-    TResult? Function(String message)? network,
-    TResult? Function(String message)? unknown,
-    TResult? Function(String message)? badRequest,
-    TResult? Function()? unauthorized,
-    TResult? Function()? forbidden,
-    TResult? Function()? notFound,
-    TResult? Function(String message)? server,
-    TResult? Function()? cancelled,
-    TResult? Function()? notFoundMcpApiKey,
+    TResult? Function(String? message)? timeout,
+    TResult? Function(String? message)? network,
+    TResult? Function(String? message)? unknown,
+    TResult? Function(String? message)? badRequest,
+    TResult? Function(String? message)? unauthorized,
+    TResult? Function(String? message)? forbidden,
+    TResult? Function(String? message)? notFound,
+    TResult? Function(String? message)? server,
+    TResult? Function(String? message)? cancelled,
+    TResult? Function(String? message)? notFoundMcpApiKey,
   }) {
-    return notFoundMcpApiKey?.call();
+    return notFoundMcpApiKey?.call(message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? timeout,
-    TResult Function(String message)? network,
-    TResult Function(String message)? unknown,
-    TResult Function(String message)? badRequest,
-    TResult Function()? unauthorized,
-    TResult Function()? forbidden,
-    TResult Function()? notFound,
-    TResult Function(String message)? server,
-    TResult Function()? cancelled,
-    TResult Function()? notFoundMcpApiKey,
+    TResult Function(String? message)? timeout,
+    TResult Function(String? message)? network,
+    TResult Function(String? message)? unknown,
+    TResult Function(String? message)? badRequest,
+    TResult Function(String? message)? unauthorized,
+    TResult Function(String? message)? forbidden,
+    TResult Function(String? message)? notFound,
+    TResult Function(String? message)? server,
+    TResult Function(String? message)? cancelled,
+    TResult Function(String? message)? notFoundMcpApiKey,
     required TResult orElse(),
   }) {
     if (notFoundMcpApiKey != null) {
-      return notFoundMcpApiKey();
+      return notFoundMcpApiKey(message);
     }
     return orElse();
   }
@@ -1792,5 +2054,16 @@ class _$NotFoundMcpApiKeyImpl implements _NotFoundMcpApiKey {
 }
 
 abstract class _NotFoundMcpApiKey implements AppException {
-  const factory _NotFoundMcpApiKey() = _$NotFoundMcpApiKeyImpl;
+  const factory _NotFoundMcpApiKey([final String? message]) =
+      _$NotFoundMcpApiKeyImpl;
+
+  @override
+  String? get message;
+
+  /// Create a copy of AppException
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$NotFoundMcpApiKeyImplCopyWith<_$NotFoundMcpApiKeyImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
