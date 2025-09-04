@@ -91,6 +91,8 @@ class _Message {
   final inputEmail = 'message.inputEmail'; // 이메일
   final createNotice = 'message.createNotice'; // 공지사항 작성 완료
   final reportNotice = 'message.reportNotice'; // 신고 완료
+  final reportNoticeReply = 'message.reportNoticeReply'; // 댓글 신고 완료
+  final reportReply = 'message.reportReply'; // 댓글 신고 완료
   final deleteUserDataWarning =
       'message.deleteUserDataWarning'; // 이 작업은 되돌릴 수 없습니다. 모든 사용자 데이터가 영구적으로 삭제됩니다.
   final deleteUserDataTitle = 'message.deleteUserDataTitle'; // 사용자 데이터 삭제

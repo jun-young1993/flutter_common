@@ -16,24 +16,32 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$NoticeReplyEvent {
-  String get noticeId => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String noticeId, String content, String userId)
         add,
     required TResult Function(String noticeId) findAll,
+    required TResult Function(String noticeReplyId, String reporterId,
+            String type, String? comment)
+        report,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String noticeId, String content, String userId)? add,
     TResult? Function(String noticeId)? findAll,
+    TResult? Function(String noticeReplyId, String reporterId, String type,
+            String? comment)?
+        report,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String noticeId, String content, String userId)? add,
     TResult Function(String noticeId)? findAll,
+    TResult Function(String noticeReplyId, String reporterId, String type,
+            String? comment)?
+        report,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -41,26 +49,23 @@ mixin _$NoticeReplyEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(NoticeReplyAddEvent value) add,
     required TResult Function(NoticeReplyFindAllEvent value) findAll,
+    required TResult Function(Report value) report,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(NoticeReplyAddEvent value)? add,
     TResult? Function(NoticeReplyFindAllEvent value)? findAll,
+    TResult? Function(Report value)? report,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(NoticeReplyAddEvent value)? add,
     TResult Function(NoticeReplyFindAllEvent value)? findAll,
+    TResult Function(Report value)? report,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  /// Create a copy of NoticeReplyEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $NoticeReplyEventCopyWith<NoticeReplyEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -69,8 +74,6 @@ abstract class $NoticeReplyEventCopyWith<$Res> {
   factory $NoticeReplyEventCopyWith(
           NoticeReplyEvent value, $Res Function(NoticeReplyEvent) then) =
       _$NoticeReplyEventCopyWithImpl<$Res, NoticeReplyEvent>;
-  @useResult
-  $Res call({String noticeId});
 }
 
 /// @nodoc
@@ -85,27 +88,13 @@ class _$NoticeReplyEventCopyWithImpl<$Res, $Val extends NoticeReplyEvent>
 
   /// Create a copy of NoticeReplyEvent
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? noticeId = null,
-  }) {
-    return _then(_value.copyWith(
-      noticeId: null == noticeId
-          ? _value.noticeId
-          : noticeId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$NoticeReplyAddEventImplCopyWith<$Res>
-    implements $NoticeReplyEventCopyWith<$Res> {
+abstract class _$$NoticeReplyAddEventImplCopyWith<$Res> {
   factory _$$NoticeReplyAddEventImplCopyWith(_$NoticeReplyAddEventImpl value,
           $Res Function(_$NoticeReplyAddEventImpl) then) =
       __$$NoticeReplyAddEventImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({String noticeId, String content, String userId});
 }
@@ -190,6 +179,9 @@ class _$NoticeReplyAddEventImpl implements NoticeReplyAddEvent {
     required TResult Function(String noticeId, String content, String userId)
         add,
     required TResult Function(String noticeId) findAll,
+    required TResult Function(String noticeReplyId, String reporterId,
+            String type, String? comment)
+        report,
   }) {
     return add(noticeId, content, userId);
   }
@@ -199,6 +191,9 @@ class _$NoticeReplyAddEventImpl implements NoticeReplyAddEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String noticeId, String content, String userId)? add,
     TResult? Function(String noticeId)? findAll,
+    TResult? Function(String noticeReplyId, String reporterId, String type,
+            String? comment)?
+        report,
   }) {
     return add?.call(noticeId, content, userId);
   }
@@ -208,6 +203,9 @@ class _$NoticeReplyAddEventImpl implements NoticeReplyAddEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String noticeId, String content, String userId)? add,
     TResult Function(String noticeId)? findAll,
+    TResult Function(String noticeReplyId, String reporterId, String type,
+            String? comment)?
+        report,
     required TResult orElse(),
   }) {
     if (add != null) {
@@ -221,6 +219,7 @@ class _$NoticeReplyAddEventImpl implements NoticeReplyAddEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(NoticeReplyAddEvent value) add,
     required TResult Function(NoticeReplyFindAllEvent value) findAll,
+    required TResult Function(Report value) report,
   }) {
     return add(this);
   }
@@ -230,6 +229,7 @@ class _$NoticeReplyAddEventImpl implements NoticeReplyAddEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(NoticeReplyAddEvent value)? add,
     TResult? Function(NoticeReplyFindAllEvent value)? findAll,
+    TResult? Function(Report value)? report,
   }) {
     return add?.call(this);
   }
@@ -239,6 +239,7 @@ class _$NoticeReplyAddEventImpl implements NoticeReplyAddEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(NoticeReplyAddEvent value)? add,
     TResult Function(NoticeReplyFindAllEvent value)? findAll,
+    TResult Function(Report value)? report,
     required TResult orElse(),
   }) {
     if (add != null) {
@@ -253,27 +254,23 @@ abstract class NoticeReplyAddEvent implements NoticeReplyEvent {
           final String noticeId, final String content, final String userId) =
       _$NoticeReplyAddEventImpl;
 
-  @override
   String get noticeId;
   String get content;
   String get userId;
 
   /// Create a copy of NoticeReplyEvent
   /// with the given fields replaced by the non-null parameter values.
-  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NoticeReplyAddEventImplCopyWith<_$NoticeReplyAddEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$NoticeReplyFindAllEventImplCopyWith<$Res>
-    implements $NoticeReplyEventCopyWith<$Res> {
+abstract class _$$NoticeReplyFindAllEventImplCopyWith<$Res> {
   factory _$$NoticeReplyFindAllEventImplCopyWith(
           _$NoticeReplyFindAllEventImpl value,
           $Res Function(_$NoticeReplyFindAllEventImpl) then) =
       __$$NoticeReplyFindAllEventImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({String noticeId});
 }
@@ -343,6 +340,9 @@ class _$NoticeReplyFindAllEventImpl implements NoticeReplyFindAllEvent {
     required TResult Function(String noticeId, String content, String userId)
         add,
     required TResult Function(String noticeId) findAll,
+    required TResult Function(String noticeReplyId, String reporterId,
+            String type, String? comment)
+        report,
   }) {
     return findAll(noticeId);
   }
@@ -352,6 +352,9 @@ class _$NoticeReplyFindAllEventImpl implements NoticeReplyFindAllEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String noticeId, String content, String userId)? add,
     TResult? Function(String noticeId)? findAll,
+    TResult? Function(String noticeReplyId, String reporterId, String type,
+            String? comment)?
+        report,
   }) {
     return findAll?.call(noticeId);
   }
@@ -361,6 +364,9 @@ class _$NoticeReplyFindAllEventImpl implements NoticeReplyFindAllEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String noticeId, String content, String userId)? add,
     TResult Function(String noticeId)? findAll,
+    TResult Function(String noticeReplyId, String reporterId, String type,
+            String? comment)?
+        report,
     required TResult orElse(),
   }) {
     if (findAll != null) {
@@ -374,6 +380,7 @@ class _$NoticeReplyFindAllEventImpl implements NoticeReplyFindAllEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(NoticeReplyAddEvent value) add,
     required TResult Function(NoticeReplyFindAllEvent value) findAll,
+    required TResult Function(Report value) report,
   }) {
     return findAll(this);
   }
@@ -383,6 +390,7 @@ class _$NoticeReplyFindAllEventImpl implements NoticeReplyFindAllEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(NoticeReplyAddEvent value)? add,
     TResult? Function(NoticeReplyFindAllEvent value)? findAll,
+    TResult? Function(Report value)? report,
   }) {
     return findAll?.call(this);
   }
@@ -392,6 +400,7 @@ class _$NoticeReplyFindAllEventImpl implements NoticeReplyFindAllEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(NoticeReplyAddEvent value)? add,
     TResult Function(NoticeReplyFindAllEvent value)? findAll,
+    TResult Function(Report value)? report,
     required TResult orElse(),
   }) {
     if (findAll != null) {
@@ -405,13 +414,197 @@ abstract class NoticeReplyFindAllEvent implements NoticeReplyEvent {
   const factory NoticeReplyFindAllEvent(final String noticeId) =
       _$NoticeReplyFindAllEventImpl;
 
-  @override
   String get noticeId;
 
   /// Create a copy of NoticeReplyEvent
   /// with the given fields replaced by the non-null parameter values.
-  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NoticeReplyFindAllEventImplCopyWith<_$NoticeReplyFindAllEventImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ReportImplCopyWith<$Res> {
+  factory _$$ReportImplCopyWith(
+          _$ReportImpl value, $Res Function(_$ReportImpl) then) =
+      __$$ReportImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {String noticeReplyId, String reporterId, String type, String? comment});
+}
+
+/// @nodoc
+class __$$ReportImplCopyWithImpl<$Res>
+    extends _$NoticeReplyEventCopyWithImpl<$Res, _$ReportImpl>
+    implements _$$ReportImplCopyWith<$Res> {
+  __$$ReportImplCopyWithImpl(
+      _$ReportImpl _value, $Res Function(_$ReportImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of NoticeReplyEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? noticeReplyId = null,
+    Object? reporterId = null,
+    Object? type = null,
+    Object? comment = freezed,
+  }) {
+    return _then(_$ReportImpl(
+      null == noticeReplyId
+          ? _value.noticeReplyId
+          : noticeReplyId // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == reporterId
+          ? _value.reporterId
+          : reporterId // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      freezed == comment
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ReportImpl implements Report {
+  const _$ReportImpl(
+      this.noticeReplyId, this.reporterId, this.type, this.comment);
+
+  @override
+  final String noticeReplyId;
+  @override
+  final String reporterId;
+  @override
+  final String type;
+  @override
+  final String? comment;
+
+  @override
+  String toString() {
+    return 'NoticeReplyEvent.report(noticeReplyId: $noticeReplyId, reporterId: $reporterId, type: $type, comment: $comment)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ReportImpl &&
+            (identical(other.noticeReplyId, noticeReplyId) ||
+                other.noticeReplyId == noticeReplyId) &&
+            (identical(other.reporterId, reporterId) ||
+                other.reporterId == reporterId) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.comment, comment) || other.comment == comment));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, noticeReplyId, reporterId, type, comment);
+
+  /// Create a copy of NoticeReplyEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ReportImplCopyWith<_$ReportImpl> get copyWith =>
+      __$$ReportImplCopyWithImpl<_$ReportImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String noticeId, String content, String userId)
+        add,
+    required TResult Function(String noticeId) findAll,
+    required TResult Function(String noticeReplyId, String reporterId,
+            String type, String? comment)
+        report,
+  }) {
+    return report(noticeReplyId, reporterId, type, comment);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String noticeId, String content, String userId)? add,
+    TResult? Function(String noticeId)? findAll,
+    TResult? Function(String noticeReplyId, String reporterId, String type,
+            String? comment)?
+        report,
+  }) {
+    return report?.call(noticeReplyId, reporterId, type, comment);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String noticeId, String content, String userId)? add,
+    TResult Function(String noticeId)? findAll,
+    TResult Function(String noticeReplyId, String reporterId, String type,
+            String? comment)?
+        report,
+    required TResult orElse(),
+  }) {
+    if (report != null) {
+      return report(noticeReplyId, reporterId, type, comment);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(NoticeReplyAddEvent value) add,
+    required TResult Function(NoticeReplyFindAllEvent value) findAll,
+    required TResult Function(Report value) report,
+  }) {
+    return report(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(NoticeReplyAddEvent value)? add,
+    TResult? Function(NoticeReplyFindAllEvent value)? findAll,
+    TResult? Function(Report value)? report,
+  }) {
+    return report?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(NoticeReplyAddEvent value)? add,
+    TResult Function(NoticeReplyFindAllEvent value)? findAll,
+    TResult Function(Report value)? report,
+    required TResult orElse(),
+  }) {
+    if (report != null) {
+      return report(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Report implements NoticeReplyEvent {
+  const factory Report(final String noticeReplyId, final String reporterId,
+      final String type, final String? comment) = _$ReportImpl;
+
+  String get noticeReplyId;
+  String get reporterId;
+  String get type;
+  String? get comment;
+
+  /// Create a copy of NoticeReplyEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ReportImplCopyWith<_$ReportImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

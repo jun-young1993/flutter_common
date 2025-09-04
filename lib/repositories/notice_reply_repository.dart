@@ -4,6 +4,8 @@ import 'package:flutter_common/network/dio_client.dart';
 abstract class NoticeReplyRepository {
   Future<List<NoticeReply>> findAll(String noticeId);
   Future<NoticeReply> add(String noticeId, String content, String userId);
+  Future<void> report(
+      String noticeReplyId, String reporterId, String type, String? content);
 }
 
 class NoticeReplyDefaultRepository extends NoticeReplyRepository {
@@ -29,5 +31,22 @@ class NoticeReplyDefaultRepository extends NoticeReplyRepository {
     });
 
     return NoticeReply.fromJson(response.data);
+  }
+
+  @override
+  Future<void> report(String noticeReplyId, String reporterId, String type,
+      String? content) async {
+    final response =
+        await dioClient.post('/notice-reports/notice-reply', data: {
+      'noticeReplyId': noticeReplyId,
+      'reporterId': reporterId,
+      'type': type,
+      'content': content ?? 'no content',
+    });
+
+    if (response.statusCode != 201) {
+      throw Exception(
+          '[${response.statusCode}] Failed to report notice reply: ${response.statusMessage ?? 'Unknown error'}');
+    }
   }
 }

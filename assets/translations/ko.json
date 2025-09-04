@@ -83,6 +83,8 @@
         "inputEmail": "이메일을 입력해주세요.",
         "createNotice": "게시글 작성 완료",
         "reportNotice": "신고 완료",
+        "reportNoticeReply": "댓글 신고 완료",
+        "reportReply": "댓글 신고",
         "deleteUserDataWarning": "이 작업은 되돌릴 수 없습니다. 모든 사용자 데이터가 영구적으로 삭제됩니다.",
         "deleteUserDataTitle": "사용자 데이터 삭제",
         "deleteUserDataDescription": "정말로 모든 사용자 데이터를 삭제하시겠습니까?"

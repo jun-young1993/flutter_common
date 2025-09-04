@@ -1,4 +1,6 @@
+import 'package:flutter_common/common_il8n.dart';
 import 'package:flutter_common/extensions/app_exception.dart';
+import 'package:flutter_common/flutter_common.dart';
 import 'package:flutter_common/repositories/notice_reply_repository.dart';
 import 'package:flutter_common/state/base/base_bloc.dart';
 import 'package:flutter_common/state/notice_reply/notice_reply_event.dart';
@@ -23,6 +25,12 @@ class NoticeReplyBloc extends BaseBloc<NoticeReplyEvent, NoticeReplyState> {
             await handleEvent(emit, () async {
               await noticeReplyRepository.add(e.noticeId, e.content, e.userId);
               add(NoticeReplyEvent.findAll(e.noticeId));
+            });
+          },
+          report: (e) async {
+            await handleEvent(emit, () async {
+              await noticeReplyRepository.report(
+                  e.noticeReplyId, e.reporterId, e.type, e.comment);
             });
           },
         );

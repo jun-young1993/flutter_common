@@ -72,4 +72,8 @@ class SizeConstants {
   static double getTextFieldHintFontSize(BuildContext context) {
     return isTablet(context) ? 14 : 12;
   }
+
+  static double getSmallIconButtonSize(BuildContext context) {
+    return isTablet(context) ? 20 : 16;
+  }
 }

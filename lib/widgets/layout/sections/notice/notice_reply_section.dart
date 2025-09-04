@@ -4,18 +4,22 @@ import 'package:flutter_common/common_il8n.dart';
 import 'package:flutter_common/constants/size_constants.dart';
 import 'package:flutter_common/models/notice/notice_reply.dart';
 import 'package:flutter_common/models/user/user.dart';
+import 'package:flutter_common/widgets/buttons/report_button.dart';
+import 'package:flutter_common/widgets/dialogs/report_dialog.dart';
 import 'package:intl/intl.dart';
 
 class NoticeReplySection extends StatefulWidget {
   final List<NoticeReply> replies;
   final User? user;
   final Function(String) onSubmitReply;
+  final Function(String noticeReplyId) onReport;
 
   const NoticeReplySection({
     super.key,
     required this.replies,
     required this.onSubmitReply,
     this.user,
+    required this.onReport,
   });
 
   @override
@@ -112,7 +116,8 @@ class _NoticeReplySectionState extends State<NoticeReplySection> {
           separatorBuilder: (context, index) => const Divider(height: 24),
           itemBuilder: (context, index) {
             final reply = widget.replies[index];
-            return NoticeReplyItem(reply: reply);
+            return NoticeReplyItem(
+                reply: reply, onReport: () => widget.onReport(reply.id));
           },
         ),
       ],
@@ -145,10 +150,11 @@ class _NoticeReplySectionState extends State<NoticeReplySection> {
 class NoticeReplyItem extends StatelessWidget {
   final NoticeReply reply;
   final dateFormatter = DateFormat('yyyy-MM-dd HH:mm');
-
+  final Function() onReport;
   NoticeReplyItem({
     super.key,
     required this.reply,
+    required this.onReport,
   });
 
   @override
@@ -163,30 +169,39 @@ class NoticeReplyItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // 댓글 작성자 정보
-          Row(
-            children: [
-              const Icon(
-                Icons.person_outline,
-                size: 16,
-                color: Colors.grey,
-              ),
-              const SizedBox(width: 4),
-              Text(
-                reply.userName,
-                style: const TextStyle(
-                  fontWeight: FontWeight.w500,
+          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+            Row(
+              children: [
+                const Icon(
+                  Icons.person_outline,
+                  size: 16,
+                  color: Colors.grey,
                 ),
-              ),
-              const SizedBox(width: 8),
-              Text(
-                dateFormatter.format(reply.createdAt),
-                style: TextStyle(
-                  color: Colors.grey.shade600,
-                  fontSize: 12,
+                const SizedBox(width: 4),
+                Text(
+                  reply.userName,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
-              ),
-            ],
-          ),
+                const SizedBox(width: 8),
+                Text(
+                  dateFormatter.format(reply.createdAt),
+                  style: TextStyle(
+                    color: Colors.grey.shade600,
+                    fontSize: 12,
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                ReportButton(
+                    onReport: onReport,
+                    size: SizeConstants.getSmallIconButtonSize(context)),
+              ],
+            )
+          ]),
           const SizedBox(height: 8),
           // 댓글 내용
           Text(

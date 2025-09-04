@@ -2,7 +2,9 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_common/constants/size_constants.dart';
+import 'package:flutter_common/flutter_common.dart';
 import 'package:flutter_common/models/notice/notice.dart';
+import 'package:flutter_common/widgets/buttons/report_button.dart';
 import 'package:intl/intl.dart';
 
 class NoticeDetailMainSection extends StatelessWidget {
@@ -87,18 +89,7 @@ class NoticeDetailMainSection extends StatelessWidget {
                 text: '${notice.viewCount}',
               ),
               const Spacer(),
-              IconButton(
-                onPressed: onReport,
-                icon: Icon(
-                  Icons.flag_outlined,
-                  size: 22,
-                  color: Colors.grey.shade500,
-                ),
-                style: IconButton.styleFrom(
-                  backgroundColor: Colors.grey.shade100,
-                  padding: const EdgeInsets.all(8),
-                ),
-              ),
+              ReportButton(onReport: onReport),
             ],
           ),
         ],
@@ -128,7 +119,7 @@ class NoticeDetailMainSection extends StatelessWidget {
           ),
           const SizedBox(width: 5),
           Text(
-            isNotice ? '공지' : '일반',
+            isNotice ? Tr.notice.notice.tr() : Tr.notice.normal.tr(),
             style: TextStyle(
               color: isNotice ? Colors.red : Colors.blue,
               fontSize: 13,

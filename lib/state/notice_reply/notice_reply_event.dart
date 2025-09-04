@@ -8,4 +8,6 @@ class NoticeReplyEvent with _$NoticeReplyEvent {
       String noticeId, String content, String userId) = NoticeReplyAddEvent;
   const factory NoticeReplyEvent.findAll(String noticeId) =
       NoticeReplyFindAllEvent;
+  const factory NoticeReplyEvent.report(String noticeReplyId, String reporterId,
+      String type, String? comment) = Report;
 }
