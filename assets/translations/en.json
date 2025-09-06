@@ -13,6 +13,15 @@
         "noToolsAvailable": "No tools available.",
         "toolListItem": "Tool Info"
     },
+    "user": {
+        "block": "Block User",
+        "blockConfirmation": "Are you sure you want to block this user?\nThe user's comments will no longer be displayed.",
+        "blockSuccess": "User blocked successfully.",
+        "blockUser": "Block User",
+        "blockReason": "Block Reason",
+        "blockReasonHint": "Please enter a reason for blocking.",
+        "blockedUser": "Blocked user's post."
+    },
     "api": {
         "notFound" : "Requested resource not found.",
         "notFoundMcpApiKey" : "MCP API key not found.",

@@ -13,6 +13,17 @@ abstract class Tr {
   static final report = _Report();
   static final ad = _Ad();
   static final loan = _Loan();
+  static final user = _User();
+}
+
+class _User {
+  final block = 'user.block';
+  final blockConfirmation = 'user.blockConfirmation';
+  final blockSuccess = 'user.blockSuccess';
+  final blockUser = 'user.blockUser';
+  final blockReason = 'user.blockReason';
+  final blockReasonHint = 'user.blockReasonHint';
+  final blockedUser = 'user.blockedUser';
 }
 
 class _Api {

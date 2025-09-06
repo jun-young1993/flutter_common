@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_common/constants/juny_constants.dart';
 import 'package:flutter_common/extensions/app_exception.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DioClient {
   static DioClient? _instance;
@@ -9,16 +10,22 @@ class DioClient {
   final String? debugBaseUrl;
   final String? baseUrl;
   final bool? useLogInterceptor;
+  final SharedPreferences _sharedPreferences;
+  final AppKeys appKey;
 
   factory DioClient({
     String? debugBaseUrl,
     String? baseUrl,
     bool? useLogInterceptor,
+    required SharedPreferences sharedPreferences,
+    required AppKeys appKey,
   }) {
     _instance = DioClient._internal(
       debugBaseUrl: debugBaseUrl,
       baseUrl: baseUrl,
       useLogInterceptor: useLogInterceptor,
+      sharedPreferences: sharedPreferences,
+      appKey: appKey,
     );
     return _instance!;
   }
@@ -27,7 +34,10 @@ class DioClient {
     this.debugBaseUrl,
     this.baseUrl,
     this.useLogInterceptor,
-  }) {
+    required SharedPreferences sharedPreferences,
+    required AppKeys appKey,
+  })  : _sharedPreferences = sharedPreferences,
+        appKey = appKey {
     _dio = Dio(
       BaseOptions(
         baseUrl: _getBaseUrl(),
@@ -38,6 +48,20 @@ class DioClient {
         },
       ),
     );
+
+    // Authorization 헤더 인터셉터 추가
+    _dio.interceptors.add(InterceptorsWrapper(
+      onRequest: (options, handler) async {
+        // 사용자 ID가 있으면 Authorization 헤더 추가
+        final userId = await _getCurrentUserId();
+
+        debugPrint('🔥 [USER ID] $userId');
+        if (userId != null) {
+          options.headers['Authorization'] = 'Bearer user:$userId';
+        }
+        handler.next(options);
+      },
+    ));
 
     if (kDebugMode && useLogInterceptor == true) {
       _dio.interceptors.add(LogInterceptor(
@@ -58,6 +82,23 @@ class DioClient {
       throw Exception('baseUrl is not set');
     }
     return baseUrl!;
+  }
+
+  Future<String?> _getCurrentUserId() async {
+    // 모든 앱 키에 대해 사용자 ID를 찾아봅니다
+
+    try {
+      final appKeyString = JunyConstants.getAppKeyStringOrThrow(appKey);
+      final userIdKey = '$appKeyString-user-id';
+      final userId = _sharedPreferences.getString(userIdKey);
+      if (userId != null) {
+        return userId;
+      }
+    } catch (e) {
+      // 해당 앱 키가 설정되지 않은 경우 무시
+    }
+
+    return null;
   }
 
   Future<Response<T>> get<T>(

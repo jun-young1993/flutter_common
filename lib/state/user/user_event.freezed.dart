@@ -20,18 +20,21 @@ mixin _$UserEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() initialize,
     required TResult Function(User user) deleteUserData,
+    required TResult Function(String blockedUserId, String reason) userBlock,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialize,
     TResult? Function(User user)? deleteUserData,
+    TResult? Function(String blockedUserId, String reason)? userBlock,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialize,
     TResult Function(User user)? deleteUserData,
+    TResult Function(String blockedUserId, String reason)? userBlock,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$UserEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialize value) initialize,
     required TResult Function(_DeleteUserData value) deleteUserData,
+    required TResult Function(_UserBlock value) userBlock,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialize value)? initialize,
     TResult? Function(_DeleteUserData value)? deleteUserData,
+    TResult? Function(_UserBlock value)? userBlock,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialize value)? initialize,
     TResult Function(_DeleteUserData value)? deleteUserData,
+    TResult Function(_UserBlock value)? userBlock,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -119,6 +125,7 @@ class _$InitializeImpl implements _Initialize {
   TResult when<TResult extends Object?>({
     required TResult Function() initialize,
     required TResult Function(User user) deleteUserData,
+    required TResult Function(String blockedUserId, String reason) userBlock,
   }) {
     return initialize();
   }
@@ -128,6 +135,7 @@ class _$InitializeImpl implements _Initialize {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialize,
     TResult? Function(User user)? deleteUserData,
+    TResult? Function(String blockedUserId, String reason)? userBlock,
   }) {
     return initialize?.call();
   }
@@ -137,6 +145,7 @@ class _$InitializeImpl implements _Initialize {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialize,
     TResult Function(User user)? deleteUserData,
+    TResult Function(String blockedUserId, String reason)? userBlock,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -150,6 +159,7 @@ class _$InitializeImpl implements _Initialize {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialize value) initialize,
     required TResult Function(_DeleteUserData value) deleteUserData,
+    required TResult Function(_UserBlock value) userBlock,
   }) {
     return initialize(this);
   }
@@ -159,6 +169,7 @@ class _$InitializeImpl implements _Initialize {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialize value)? initialize,
     TResult? Function(_DeleteUserData value)? deleteUserData,
+    TResult? Function(_UserBlock value)? userBlock,
   }) {
     return initialize?.call(this);
   }
@@ -168,6 +179,7 @@ class _$InitializeImpl implements _Initialize {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialize value)? initialize,
     TResult Function(_DeleteUserData value)? deleteUserData,
+    TResult Function(_UserBlock value)? userBlock,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -264,6 +276,7 @@ class _$DeleteUserDataImpl implements _DeleteUserData {
   TResult when<TResult extends Object?>({
     required TResult Function() initialize,
     required TResult Function(User user) deleteUserData,
+    required TResult Function(String blockedUserId, String reason) userBlock,
   }) {
     return deleteUserData(user);
   }
@@ -273,6 +286,7 @@ class _$DeleteUserDataImpl implements _DeleteUserData {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialize,
     TResult? Function(User user)? deleteUserData,
+    TResult? Function(String blockedUserId, String reason)? userBlock,
   }) {
     return deleteUserData?.call(user);
   }
@@ -282,6 +296,7 @@ class _$DeleteUserDataImpl implements _DeleteUserData {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialize,
     TResult Function(User user)? deleteUserData,
+    TResult Function(String blockedUserId, String reason)? userBlock,
     required TResult orElse(),
   }) {
     if (deleteUserData != null) {
@@ -295,6 +310,7 @@ class _$DeleteUserDataImpl implements _DeleteUserData {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialize value) initialize,
     required TResult Function(_DeleteUserData value) deleteUserData,
+    required TResult Function(_UserBlock value) userBlock,
   }) {
     return deleteUserData(this);
   }
@@ -304,6 +320,7 @@ class _$DeleteUserDataImpl implements _DeleteUserData {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialize value)? initialize,
     TResult? Function(_DeleteUserData value)? deleteUserData,
+    TResult? Function(_UserBlock value)? userBlock,
   }) {
     return deleteUserData?.call(this);
   }
@@ -313,6 +330,7 @@ class _$DeleteUserDataImpl implements _DeleteUserData {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialize value)? initialize,
     TResult Function(_DeleteUserData value)? deleteUserData,
+    TResult Function(_UserBlock value)? userBlock,
     required TResult orElse(),
   }) {
     if (deleteUserData != null) {
@@ -331,5 +349,162 @@ abstract class _DeleteUserData implements UserEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DeleteUserDataImplCopyWith<_$DeleteUserDataImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UserBlockImplCopyWith<$Res> {
+  factory _$$UserBlockImplCopyWith(
+          _$UserBlockImpl value, $Res Function(_$UserBlockImpl) then) =
+      __$$UserBlockImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String blockedUserId, String reason});
+}
+
+/// @nodoc
+class __$$UserBlockImplCopyWithImpl<$Res>
+    extends _$UserEventCopyWithImpl<$Res, _$UserBlockImpl>
+    implements _$$UserBlockImplCopyWith<$Res> {
+  __$$UserBlockImplCopyWithImpl(
+      _$UserBlockImpl _value, $Res Function(_$UserBlockImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? blockedUserId = null,
+    Object? reason = null,
+  }) {
+    return _then(_$UserBlockImpl(
+      null == blockedUserId
+          ? _value.blockedUserId
+          : blockedUserId // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == reason
+          ? _value.reason
+          : reason // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UserBlockImpl implements _UserBlock {
+  const _$UserBlockImpl(this.blockedUserId, this.reason);
+
+  @override
+  final String blockedUserId;
+  @override
+  final String reason;
+
+  @override
+  String toString() {
+    return 'UserEvent.userBlock(blockedUserId: $blockedUserId, reason: $reason)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UserBlockImpl &&
+            (identical(other.blockedUserId, blockedUserId) ||
+                other.blockedUserId == blockedUserId) &&
+            (identical(other.reason, reason) || other.reason == reason));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, blockedUserId, reason);
+
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UserBlockImplCopyWith<_$UserBlockImpl> get copyWith =>
+      __$$UserBlockImplCopyWithImpl<_$UserBlockImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialize,
+    required TResult Function(User user) deleteUserData,
+    required TResult Function(String blockedUserId, String reason) userBlock,
+  }) {
+    return userBlock(blockedUserId, reason);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialize,
+    TResult? Function(User user)? deleteUserData,
+    TResult? Function(String blockedUserId, String reason)? userBlock,
+  }) {
+    return userBlock?.call(blockedUserId, reason);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialize,
+    TResult Function(User user)? deleteUserData,
+    TResult Function(String blockedUserId, String reason)? userBlock,
+    required TResult orElse(),
+  }) {
+    if (userBlock != null) {
+      return userBlock(blockedUserId, reason);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_DeleteUserData value) deleteUserData,
+    required TResult Function(_UserBlock value) userBlock,
+  }) {
+    return userBlock(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialize value)? initialize,
+    TResult? Function(_DeleteUserData value)? deleteUserData,
+    TResult? Function(_UserBlock value)? userBlock,
+  }) {
+    return userBlock?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_DeleteUserData value)? deleteUserData,
+    TResult Function(_UserBlock value)? userBlock,
+    required TResult orElse(),
+  }) {
+    if (userBlock != null) {
+      return userBlock(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UserBlock implements UserEvent {
+  const factory _UserBlock(final String blockedUserId, final String reason) =
+      _$UserBlockImpl;
+
+  String get blockedUserId;
+  String get reason;
+
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UserBlockImplCopyWith<_$UserBlockImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

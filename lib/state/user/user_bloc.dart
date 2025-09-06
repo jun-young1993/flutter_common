@@ -25,6 +25,14 @@ class UserBloc extends Bloc<UserEvent, UserState> {
             emit(state.copyWith(user: null));
             add(const UserEvent.initialize());
           });
+        }, userBlock: (e) async {
+          await _handleEvent(emit, () async {
+            if (state.user == null) {
+              throw const AppException.unknown('User not found');
+            }
+            await userRepository.userBlock(
+                state.user!, e.blockedUserId, e.reason);
+          });
         });
       } catch (e) {
         await _handleEvent(emit, () async {},

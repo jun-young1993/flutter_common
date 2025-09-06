@@ -9,6 +9,7 @@ abstract class UserRepository {
   });
 
   Future<void> deleteUserData(User user);
+  Future<void> userBlock(User blockerUser, String blockedUserId, String reason);
 }
 
 class UserDefaultRepository extends UserRepository {
@@ -44,6 +45,7 @@ class UserDefaultRepository extends UserRepository {
       user = user.copyWith(fcmToken: fcmToken);
       await dioClient.put('/user/$userId', data: user.toJson());
     }
+
     return user;
   }
 
@@ -56,5 +58,14 @@ class UserDefaultRepository extends UserRepository {
     await dioClient.put('/user/$userId', data: user.toJson());
     sharedPreferences.getString(userIdKey);
     sharedPreferences.remove(userIdKey);
+  }
+
+  @override
+  Future<void> userBlock(
+      User blockerUser, String blockedUserId, String reason) async {
+    await dioClient.post(
+      '/user-blocks',
+      data: {'blockedId': blockedUserId, "reason": reason, "status": "ACTIVE"},
+    );
   }
 }

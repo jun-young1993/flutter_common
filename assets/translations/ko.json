@@ -25,6 +25,15 @@
         "cancelled" : "요청이 취소되었습니다.",
         "unknown" : "알 수 없는 오류가 발생했습니다."
     },
+    "user": {
+        "block": "사용자 차단",
+        "blockConfirmation": "사용자를 차단하시겠습니까?\n차단된 사용자의 글은 더 이상 표시되지 않습니다.",
+        "blockSuccess": "사용자가 차단되었습니다.",
+        "blockUser": "사용자 차단",
+        "blockReason": "차단 사유",
+        "blockReasonHint": "차단 사유를 입력해주세요",
+        "blockedUser": "차단된 사용자의 글입니다."
+    },
     "app": {
         "enable": "활성화",
         "disable": "비활성화",

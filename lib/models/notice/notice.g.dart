@@ -14,6 +14,7 @@ _$NoticeImpl _$$NoticeImplFromJson(Map<String, dynamic> json) => _$NoticeImpl(
       userName: json['userName'] as String,
       createdAt: DateTime.parse(json['createdAt'] as String),
       viewCount: (json['viewCount'] as num).toInt(),
+      isBlocked: json['isBlocked'] as bool? ?? false,
       noticeReplies: (json['noticeReplies'] as List<dynamic>?)
               ?.map((e) => NoticeReply.fromJson(e as Map<String, dynamic>))
               .toList() ??
@@ -29,5 +30,6 @@ Map<String, dynamic> _$$NoticeImplToJson(_$NoticeImpl instance) =>
       'userName': instance.userName,
       'createdAt': instance.createdAt.toIso8601String(),
       'viewCount': instance.viewCount,
+      'isBlocked': instance.isBlocked,
       'noticeReplies': instance.noticeReplies,
     };

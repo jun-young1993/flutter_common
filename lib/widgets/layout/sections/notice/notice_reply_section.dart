@@ -5,7 +5,6 @@ import 'package:flutter_common/constants/size_constants.dart';
 import 'package:flutter_common/models/notice/notice_reply.dart';
 import 'package:flutter_common/models/user/user.dart';
 import 'package:flutter_common/widgets/buttons/report_button.dart';
-import 'package:flutter_common/widgets/dialogs/report_dialog.dart';
 import 'package:intl/intl.dart';
 
 class NoticeReplySection extends StatefulWidget {
@@ -13,6 +12,7 @@ class NoticeReplySection extends StatefulWidget {
   final User? user;
   final Function(String) onSubmitReply;
   final Function(String noticeReplyId) onReport;
+  final Function(NoticeReply reply) onBlockUser;
 
   const NoticeReplySection({
     super.key,
@@ -20,6 +20,7 @@ class NoticeReplySection extends StatefulWidget {
     required this.onSubmitReply,
     this.user,
     required this.onReport,
+    required this.onBlockUser,
   });
 
   @override
@@ -117,7 +118,10 @@ class _NoticeReplySectionState extends State<NoticeReplySection> {
           itemBuilder: (context, index) {
             final reply = widget.replies[index];
             return NoticeReplyItem(
-                reply: reply, onReport: () => widget.onReport(reply.id));
+              reply: reply,
+              onReport: () => widget.onReport(reply.id),
+              onBlockUser: () => widget.onBlockUser(reply),
+            );
           },
         ),
       ],
@@ -151,10 +155,13 @@ class NoticeReplyItem extends StatelessWidget {
   final NoticeReply reply;
   final dateFormatter = DateFormat('yyyy-MM-dd HH:mm');
   final Function() onReport;
+  final Function() onBlockUser;
+
   NoticeReplyItem({
     super.key,
     required this.reply,
     required this.onReport,
+    required this.onBlockUser,
   });
 
   @override
@@ -170,48 +177,199 @@ class NoticeReplyItem extends StatelessWidget {
         children: [
           // 댓글 작성자 정보
           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            Row(
-              children: [
-                const Icon(
-                  Icons.person_outline,
-                  size: 16,
-                  color: Colors.grey,
-                ),
-                const SizedBox(width: 4),
-                Text(
-                  reply.userName,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                const SizedBox(width: 8),
-                Text(
-                  dateFormatter.format(reply.createdAt),
-                  style: TextStyle(
-                    color: Colors.grey.shade600,
-                    fontSize: 12,
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                ReportButton(
-                    onReport: onReport,
-                    size: SizeConstants.getSmallIconButtonSize(context)),
-              ],
-            )
+            reply.isBlocked
+                ? _buildBlockedUserProfile()
+                : _buildUserProfileSection(context,
+                    onBlockUser: () => onBlockUser(), onReport: onReport),
+            if (!reply.isBlocked)
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  ReportButton(
+                      onReport: onReport,
+                      size: SizeConstants.getSmallIconButtonSize(context)),
+                ],
+              )
           ]),
           const SizedBox(height: 8),
           // 댓글 내용
+          _buildReplyContent(),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildReplyContent() {
+    if (reply.isBlocked) {
+      return Container(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        decoration: BoxDecoration(
+          color: Colors.grey.shade200,
+          borderRadius: BorderRadius.circular(6),
+          border: Border.all(color: Colors.grey.shade300),
+        ),
+        child: Row(
+          children: [
+            Icon(
+              Icons.block,
+              size: 16,
+              color: Colors.grey.shade500,
+            ),
+            const SizedBox(width: 8),
+            Text(
+              Tr.user.blockedUser.tr(),
+              style: TextStyle(
+                color: Colors.grey.shade600,
+                fontStyle: FontStyle.italic,
+                fontSize: 14,
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
+    return Text(
+      reply.content,
+      style: const TextStyle(
+        height: 1.5,
+      ),
+    );
+  }
+
+  Widget _buildBlockedUserProfile() {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      decoration: BoxDecoration(
+        color: Colors.grey.shade200,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: Colors.grey.shade300),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(
+            Icons.person_off,
+            size: 16,
+            color: Colors.grey.shade500,
+          ),
+          const SizedBox(width: 4),
           Text(
-            reply.content,
-            style: const TextStyle(
-              height: 1.5,
+            '차단된 사용자',
+            style: TextStyle(
+              fontWeight: FontWeight.w500,
+              color: Colors.grey.shade600,
+            ),
+          ),
+          const SizedBox(width: 8),
+          Text(
+            dateFormatter.format(reply.createdAt),
+            style: TextStyle(
+              color: Colors.grey.shade500,
+              fontSize: 12,
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildUserProfileSection(
+    BuildContext context, {
+    required Function() onBlockUser,
+    required Function() onReport,
+  }) {
+    return PopupMenuButton<String>(
+      onSelected: (value) {
+        switch (value) {
+          case 'block':
+            onBlockUser();
+            break;
+          case 'report':
+            onReport();
+            break;
+        }
+      },
+      itemBuilder: (BuildContext context) => [
+        PopupMenuItem<String>(
+          value: 'block',
+          child: Row(
+            children: [
+              Icon(
+                Icons.block,
+                size: 18,
+                color: Colors.red.shade600,
+              ),
+              const SizedBox(width: 8),
+              Text(
+                Tr.user.blockUser.tr(),
+                style: TextStyle(
+                  color: Colors.red.shade600,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
+          ),
+        ),
+        PopupMenuItem<String>(
+          value: 'report',
+          child: Row(
+            children: [
+              Icon(
+                Icons.report,
+                size: 18,
+                color: Colors.orange.shade600,
+              ),
+              const SizedBox(width: 8),
+              Text(
+                Tr.report.submit.tr(),
+                style: TextStyle(
+                  color: Colors.orange.shade600,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+        decoration: BoxDecoration(
+          color: Colors.grey.shade100,
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(color: Colors.grey.shade300),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Icon(
+              Icons.person_outline,
+              size: 16,
+              color: Colors.grey,
+            ),
+            const SizedBox(width: 4),
+            Text(
+              reply.userName,
+              style: const TextStyle(
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            const SizedBox(width: 8),
+            Text(
+              dateFormatter.format(reply.createdAt),
+              style: TextStyle(
+                color: Colors.grey.shade600,
+                fontSize: 12,
+              ),
+            ),
+            const SizedBox(width: 4),
+            Icon(
+              Icons.keyboard_arrow_down,
+              size: 16,
+              color: Colors.grey.shade500,
+            ),
+          ],
+        ),
       ),
     );
   }

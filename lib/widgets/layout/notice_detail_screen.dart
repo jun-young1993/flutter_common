@@ -10,12 +10,10 @@ import 'package:flutter_common/state/notice_reply/notice_reply_bloc.dart';
 import 'package:flutter_common/state/notice_reply/notice_reply_event.dart';
 import 'package:flutter_common/state/notice_reply/notice_reply_selector.dart';
 import 'package:flutter_common/widgets/ad/ad_master.dart';
-import 'package:flutter_common/widgets/ad/ad_widgets.dart';
 import 'package:flutter_common/widgets/dialogs/report_dialog.dart';
 import 'package:flutter_common/widgets/layout/sections/notice/notice_detail_main_section.dart';
 import 'package:flutter_common/widgets/layout/sections/notice/notice_reply_section.dart';
 import 'package:flutter_common/widgets/toast/toast.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_common/models/user/user.dart';
@@ -25,8 +23,10 @@ class NoticeDetailSection extends StatefulWidget {
   final DateFormat dateFormatter = DateFormat('yyyy.MM.dd HH:mm');
   final Function(String)? onSubmitReply;
   final Function(ReportReason, String?) onReport;
+  final Function(NoticeReply reply, String reason) onBlockUser;
   final User? user;
   final AdMasterWidget? detailAd;
+  final VoidCallback? onStateChanged;
 
   NoticeDetailSection({
     super.key,
@@ -35,6 +35,8 @@ class NoticeDetailSection extends StatefulWidget {
     this.onSubmitReply,
     this.user,
     this.detailAd,
+    required this.onBlockUser,
+    this.onStateChanged,
   });
 
   @override
@@ -56,6 +58,126 @@ class _NoticeDetailSectionState extends State<NoticeDetailSection> {
     ReportDialog.show(
       context: context,
       onReport: widget.onReport,
+    );
+  }
+
+  void _showBlockConfirmationDialog(BuildContext context,
+      {required NoticeReply reply}) {
+    final TextEditingController reasonController = TextEditingController();
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return StatefulBuilder(
+          builder: (context, setState) {
+            final bool isReasonEmpty = reasonController.text.trim().isEmpty;
+
+            return AlertDialog(
+              title: Text(Tr.user.block),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(Tr.user.blockConfirmation
+                      .tr(namedArgs: {'userName': reply.userName})),
+                  const SizedBox(height: 16),
+                  Row(
+                    children: [
+                      Text(
+                        Tr.user.blockReason.tr(),
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          color: Colors.grey.shade700,
+                        ),
+                      ),
+                      const SizedBox(width: 4),
+                      Text(
+                        '*',
+                        style: TextStyle(
+                          color: Colors.red.shade600,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+                  TextField(
+                    controller: reasonController,
+                    onChanged: (value) {
+                      setState(() {}); // UI 업데이트를 위해 setState 호출
+                    },
+                    decoration: InputDecoration(
+                      hintText: Tr.user.blockReasonHint.tr(),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide: BorderSide(
+                          color: isReasonEmpty
+                              ? Colors.red.shade300
+                              : Colors.grey.shade300,
+                        ),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide: BorderSide(
+                          color: isReasonEmpty
+                              ? Colors.red.shade300
+                              : Colors.grey.shade300,
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide: BorderSide(
+                          color: isReasonEmpty
+                              ? Colors.red.shade500
+                              : Colors.blue.shade500,
+                        ),
+                      ),
+                      contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 8,
+                      ),
+                    ),
+                    maxLines: 3,
+                    maxLength: 200,
+                  ),
+                  if (isReasonEmpty) ...[
+                    const SizedBox(height: 4),
+                    Text(
+                      Tr.user.blockReasonHint.tr(),
+                      style: TextStyle(
+                        color: Colors.red.shade600,
+                        fontSize: 12,
+                      ),
+                    ),
+                  ],
+                ],
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.of(context).pop(),
+                  child: Text(Tr.app.cancel),
+                ),
+                TextButton(
+                  onPressed: isReasonEmpty
+                      ? null
+                      : () {
+                          Navigator.of(context).pop();
+                          widget.onBlockUser(
+                              reply, reasonController.text.trim());
+                          // 상태 변경 알림
+                          widget.onStateChanged?.call();
+                        },
+                  style: TextButton.styleFrom(
+                    foregroundColor:
+                        isReasonEmpty ? Colors.grey : Colors.red.shade600,
+                  ),
+                  child: Text(Tr.user.blockUser.tr()),
+                ),
+              ],
+            );
+          },
+        );
+      },
     );
   }
 
@@ -130,6 +252,8 @@ class _NoticeDetailSectionState extends State<NoticeDetailSection> {
                       onReport: (noticeReplyId) => _showReportReplyDialog(
                           context,
                           noticeReplyId: noticeReplyId),
+                      onBlockUser: (reply) =>
+                          _showBlockConfirmationDialog(context, reply: reply),
                       onSubmitReply: widget.onSubmitReply ?? (reply) {},
                     ),
                   ),

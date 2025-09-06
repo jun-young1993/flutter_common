@@ -1,25 +1,22 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_common/common_il8n.dart';
-import 'package:flutter_common/extensions/app_exception.dart';
 import 'package:flutter_common/models/notice/notice.dart';
 import 'package:flutter_common/models/user/user.dart';
-import 'package:flutter_common/repositories/notice_group_repository.dart';
 import 'package:flutter_common/state/notice/notice_bloc.dart';
 import 'package:flutter_common/state/notice/notice_event.dart';
 import 'package:flutter_common/state/notice/notice_page_bloc.dart';
-import 'package:flutter_common/state/notice/notice_selector.dart';
 import 'package:flutter_common/state/notice_group/notice_group_bloc.dart';
 import 'package:flutter_common/state/notice_group/notice_group_event.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_common/state/notice_group/notice_group_selector.dart';
 import 'package:flutter_common/state/notice_reply/notice_reply_bloc.dart';
 import 'package:flutter_common/state/notice_reply/notice_reply_event.dart';
+import 'package:flutter_common/state/user/user_bloc.dart';
+import 'package:flutter_common/state/user/user_event.dart';
 import 'package:flutter_common/widgets/ad/ad_master.dart';
 import 'package:flutter_common/widgets/layout/notice_create_screen.dart';
 import 'package:flutter_common/widgets/layout/notice_detail_screen.dart';
-import 'package:flutter_common/widgets/lib/container/card_container.dart';
-import 'package:flutter_common/widgets/toast/toast.dart';
 import 'package:flutter_common/widgets/ui/notice/notice_list_item.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'dart:async';
@@ -47,7 +44,7 @@ class _NoticeScreenLayoutState extends State<NoticeScreenLayout> {
   NoticeBloc get noticeBloc => context.read<NoticeBloc>();
   NoticeReplyBloc get noticeReplyBloc => context.read<NoticeReplyBloc>();
   NoticePageBloc get noticePageBloc => context.read<NoticePageBloc>();
-
+  UserBloc get userBloc => context.read<UserBloc>();
   // 검색 디바운싱을 위한 타이머
   Timer? _searchDebounceTimer;
   String _currentSearchQuery = '';
@@ -240,6 +237,41 @@ class _NoticeScreenLayoutState extends State<NoticeScreenLayout> {
     );
   }
 
+  void _navigateToDetailPage(Notice notice) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => NoticeDetailSection(
+          notice: notice,
+          user: widget.user,
+          detailAd: widget.detailAd,
+          onReport: (reason, comment) {
+            noticeBloc.add(NoticeEvent.report(
+                notice.id, widget.user.id, reason.value, comment));
+          },
+          onSubmitReply: (reply) {
+            noticeReplyBloc
+                .add(NoticeReplyEvent.add(notice.id, reply, widget.user.id));
+          },
+          onBlockUser: (reply, reason) {
+            userBloc.add(UserEvent.userBlock(reply.userId, reason));
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(Tr.user.blockSuccess
+                    .tr(namedArgs: {'userName': reply.userName})),
+                backgroundColor: Colors.red.shade600,
+              ),
+            );
+            // 재귀적으로 다시 새로고침
+            Navigator.of(context).pop();
+            Future.delayed(const Duration(milliseconds: 100), () {
+              _navigateToDetailPage(notice);
+            });
+          },
+        ),
+      ),
+    );
+  }
+
   Widget _buildNoticeItem(Notice notice) {
     return NoticeListItem(
       title: notice.title,
@@ -248,25 +280,7 @@ class _NoticeScreenLayoutState extends State<NoticeScreenLayout> {
       createdAt: notice.createdAt,
       viewCount: notice.viewCount,
       replyCount: notice.noticeReplies?.length ?? 0,
-      onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (_) => NoticeDetailSection(
-              notice: notice,
-              user: widget.user,
-              detailAd: widget.detailAd,
-              onReport: (reason, comment) {
-                noticeBloc.add(NoticeEvent.report(
-                    notice.id, widget.user.id, reason.value, comment));
-              },
-              onSubmitReply: (reply) {
-                noticeReplyBloc.add(
-                    NoticeReplyEvent.add(notice.id, reply, widget.user.id));
-              },
-            ),
-          ),
-        );
-      },
+      onTap: () => _navigateToDetailPage(notice),
     );
   }
 }

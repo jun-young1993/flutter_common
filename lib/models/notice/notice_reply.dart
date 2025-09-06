@@ -10,6 +10,8 @@ class NoticeReply with _$NoticeReply {
       required String content,
       required String noticeId,
       required String userName,
+      required String userId,
+      @Default(false) bool isBlocked,
       required DateTime createdAt}) = _NoticeReply;
 
   const NoticeReply._();

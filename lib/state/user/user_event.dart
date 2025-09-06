@@ -7,4 +7,6 @@ part 'user_event.freezed.dart';
 class UserEvent with _$UserEvent {
   const factory UserEvent.initialize() = _Initialize;
   const factory UserEvent.deleteUserData(User user) = _DeleteUserData;
+  const factory UserEvent.userBlock(String blockedUserId, String reason) =
+      _UserBlock;
 }

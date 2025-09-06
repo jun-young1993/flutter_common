@@ -12,6 +12,8 @@ _$NoticeReplyImpl _$$NoticeReplyImplFromJson(Map<String, dynamic> json) =>
       content: json['content'] as String,
       noticeId: json['noticeId'] as String,
       userName: json['userName'] as String,
+      userId: json['userId'] as String,
+      isBlocked: json['isBlocked'] as bool? ?? false,
       createdAt: DateTime.parse(json['createdAt'] as String),
     );
 
@@ -21,5 +23,7 @@ Map<String, dynamic> _$$NoticeReplyImplToJson(_$NoticeReplyImpl instance) =>
       'content': instance.content,
       'noticeId': instance.noticeId,
       'userName': instance.userName,
+      'userId': instance.userId,
+      'isBlocked': instance.isBlocked,
       'createdAt': instance.createdAt.toIso8601String(),
     };

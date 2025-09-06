@@ -24,6 +24,8 @@ mixin _$NoticeReply {
   String get content => throw _privateConstructorUsedError;
   String get noticeId => throw _privateConstructorUsedError;
   String get userName => throw _privateConstructorUsedError;
+  String get userId => throw _privateConstructorUsedError;
+  bool get isBlocked => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
 
   /// Serializes this NoticeReply to a JSON map.
@@ -47,6 +49,8 @@ abstract class $NoticeReplyCopyWith<$Res> {
       String content,
       String noticeId,
       String userName,
+      String userId,
+      bool isBlocked,
       DateTime createdAt});
 }
 
@@ -69,6 +73,8 @@ class _$NoticeReplyCopyWithImpl<$Res, $Val extends NoticeReply>
     Object? content = null,
     Object? noticeId = null,
     Object? userName = null,
+    Object? userId = null,
+    Object? isBlocked = null,
     Object? createdAt = null,
   }) {
     return _then(_value.copyWith(
@@ -88,6 +94,14 @@ class _$NoticeReplyCopyWithImpl<$Res, $Val extends NoticeReply>
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
               as String,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      isBlocked: null == isBlocked
+          ? _value.isBlocked
+          : isBlocked // ignore: cast_nullable_to_non_nullable
+              as bool,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -109,6 +123,8 @@ abstract class _$$NoticeReplyImplCopyWith<$Res>
       String content,
       String noticeId,
       String userName,
+      String userId,
+      bool isBlocked,
       DateTime createdAt});
 }
 
@@ -129,6 +145,8 @@ class __$$NoticeReplyImplCopyWithImpl<$Res>
     Object? content = null,
     Object? noticeId = null,
     Object? userName = null,
+    Object? userId = null,
+    Object? isBlocked = null,
     Object? createdAt = null,
   }) {
     return _then(_$NoticeReplyImpl(
@@ -148,6 +166,14 @@ class __$$NoticeReplyImplCopyWithImpl<$Res>
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
               as String,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      isBlocked: null == isBlocked
+          ? _value.isBlocked
+          : isBlocked // ignore: cast_nullable_to_non_nullable
+              as bool,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -164,6 +190,8 @@ class _$NoticeReplyImpl extends _NoticeReply {
       required this.content,
       required this.noticeId,
       required this.userName,
+      required this.userId,
+      this.isBlocked = false,
       required this.createdAt})
       : super._();
 
@@ -179,11 +207,16 @@ class _$NoticeReplyImpl extends _NoticeReply {
   @override
   final String userName;
   @override
+  final String userId;
+  @override
+  @JsonKey()
+  final bool isBlocked;
+  @override
   final DateTime createdAt;
 
   @override
   String toString() {
-    return 'NoticeReply(id: $id, content: $content, noticeId: $noticeId, userName: $userName, createdAt: $createdAt)';
+    return 'NoticeReply(id: $id, content: $content, noticeId: $noticeId, userName: $userName, userId: $userId, isBlocked: $isBlocked, createdAt: $createdAt)';
   }
 
   @override
@@ -197,14 +230,17 @@ class _$NoticeReplyImpl extends _NoticeReply {
                 other.noticeId == noticeId) &&
             (identical(other.userName, userName) ||
                 other.userName == userName) &&
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.isBlocked, isBlocked) ||
+                other.isBlocked == isBlocked) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, content, noticeId, userName, createdAt);
+  int get hashCode => Object.hash(runtimeType, id, content, noticeId, userName,
+      userId, isBlocked, createdAt);
 
   /// Create a copy of NoticeReply
   /// with the given fields replaced by the non-null parameter values.
@@ -228,6 +264,8 @@ abstract class _NoticeReply extends NoticeReply {
       required final String content,
       required final String noticeId,
       required final String userName,
+      required final String userId,
+      final bool isBlocked,
       required final DateTime createdAt}) = _$NoticeReplyImpl;
   const _NoticeReply._() : super._();
 
@@ -242,6 +280,10 @@ abstract class _NoticeReply extends NoticeReply {
   String get noticeId;
   @override
   String get userName;
+  @override
+  String get userId;
+  @override
+  bool get isBlocked;
   @override
   DateTime get createdAt;
 

@@ -14,6 +14,7 @@ class Notice with _$Notice {
     required String userName,
     required DateTime createdAt,
     required int viewCount,
+    @Default(false) bool isBlocked,
     @Default([]) List<NoticeReply>? noticeReplies,
   }) = _Notice;
 
