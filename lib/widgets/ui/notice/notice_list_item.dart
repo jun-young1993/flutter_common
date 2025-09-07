@@ -1,12 +1,15 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_common/flutter_common.dart';
+import 'package:flutter_common/widgets/user/blocked_user.dart';
 
 class NoticeListItem extends StatelessWidget {
   final String title;
   final String content;
   final String userName;
   final DateTime createdAt;
+  final bool isBlocked;
   final int viewCount;
   final int replyCount;
   final VoidCallback? onTap;
@@ -17,6 +20,7 @@ class NoticeListItem extends StatelessWidget {
     required this.content,
     required this.userName,
     required this.createdAt,
+    required this.isBlocked,
     required this.viewCount,
     required this.replyCount,
     this.onTap,
@@ -36,19 +40,21 @@ class NoticeListItem extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                title,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                  color: Colors.black87,
+              if (isBlocked) const BlockedUser(type: BlockedUserType.post),
+              if (!isBlocked)
+                Text(
+                  title,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                    color: Colors.black87,
+                  ),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                 ),
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-              ),
               const SizedBox(height: 6),
               Text(
-                content,
+                (!isBlocked) ? content : Tr.user.blockedUserPost.tr(),
                 style: const TextStyle(
                   fontSize: 14,
                   color: Colors.black54,
@@ -68,13 +74,16 @@ class NoticeListItem extends StatelessWidget {
                           Icon(Icons.person,
                               size: 14, color: Colors.grey.shade500),
                           const SizedBox(width: 4),
-                          Text(
-                            userName,
-                            style: TextStyle(
-                              color: Colors.grey.shade700,
-                              fontSize: 12,
+                          if (isBlocked)
+                            const BlockedUser(type: BlockedUserType.user),
+                          if (!isBlocked)
+                            Text(
+                              userName,
+                              style: TextStyle(
+                                color: Colors.grey.shade700,
+                                fontSize: 12,
+                              ),
                             ),
-                          ),
                         ],
                       ),
                       const SizedBox(height: 2),

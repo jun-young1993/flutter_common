@@ -5,18 +5,21 @@ import 'package:flutter_common/constants/size_constants.dart';
 import 'package:flutter_common/flutter_common.dart';
 import 'package:flutter_common/models/notice/notice.dart';
 import 'package:flutter_common/widgets/buttons/report_button.dart';
+import 'package:flutter_common/widgets/user/blocked_user.dart';
+import 'package:flutter_common/widgets/user/user_profile.dart';
 import 'package:intl/intl.dart';
 
 class NoticeDetailMainSection extends StatelessWidget {
   final Notice notice;
   final DateFormat dateFormatter;
   final VoidCallback onReport;
-
+  final VoidCallback onBlockUser;
   const NoticeDetailMainSection({
     super.key,
     required this.notice,
     required this.dateFormatter,
     required this.onReport,
+    required this.onBlockUser,
   });
 
   @override
@@ -53,43 +56,45 @@ class NoticeDetailMainSection extends StatelessWidget {
             ],
           ),
           SizedBox(height: SizeConstants.getContainerVerticalMargin(context)),
-          Text(
-            notice.title,
-            style: const TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-              height: 1.4,
-              color: Color(0xFF222222),
-            ),
-          ),
+          if (notice.isBlocked) const BlockedUser(type: BlockedUserType.post),
+          if (!notice.isBlocked)
+            Text(notice.title,
+                style: const TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  height: 1.4,
+                  color: Color(0xFF222222),
+                )),
           const SizedBox(height: 5),
           Container(
             height: 1,
             margin: const EdgeInsets.only(bottom: 5),
             color: Colors.grey.shade200,
           ),
-          Text(
-            notice.content,
-            style: const TextStyle(
-              fontSize: 16,
-              height: 1.7,
-              color: Color(0xFF222222),
+          if (!notice.isBlocked)
+            Text(
+              notice.content,
+              style: const TextStyle(
+                fontSize: 16,
+                height: 1.7,
+                color: Color(0xFF222222),
+              ),
             ),
-          ),
           SizedBox(height: SizeConstants.getContainerVerticalMargin(context)),
           Row(
             children: [
-              _buildMetaItem(
-                icon: Icons.person_outline,
-                text: notice.userName,
+              UserProfile(
+                onBlockUser: onBlockUser,
+                onReport: onReport,
+                userName: notice.userName,
+                date: notice.createdAt,
+                isBlocked: notice.isBlocked,
               ),
               const SizedBox(width: 18),
               _buildMetaItem(
                 icon: Icons.remove_red_eye_outlined,
                 text: '${notice.viewCount}',
               ),
-              const Spacer(),
-              ReportButton(onReport: onReport),
             ],
           ),
         ],

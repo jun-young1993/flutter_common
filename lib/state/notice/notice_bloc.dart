@@ -62,8 +62,6 @@ class NoticeBloc extends Bloc<NoticeEvent, NoticeState> {
                   notices: [notice, ...(state.notices ?? [])],
                   successMessage: Tr.message.createNotice.tr(),
                 ));
-
-                add(NoticeEvent.findAll(e.noticeGroupId));
               },
             );
           },

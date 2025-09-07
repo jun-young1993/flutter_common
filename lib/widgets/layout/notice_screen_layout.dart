@@ -119,7 +119,15 @@ class _NoticeScreenLayoutState extends State<NoticeScreenLayout> {
                           onSubmit: (title, content, type) {
                             noticeBloc.add(NoticeEvent.create(title, content,
                                 type, noticeGroup.id, widget.user.id));
+
                             Navigator.of(context).pop();
+
+                            Future.delayed(const Duration(milliseconds: 300),
+                                () {
+                              noticePageBloc.add(ClearNotice());
+                              noticePageBloc
+                                  .add(FetchNextNotice(widget.groupName));
+                            });
                           },
                         )),
               );
@@ -252,18 +260,18 @@ class _NoticeScreenLayoutState extends State<NoticeScreenLayout> {
             noticeReplyBloc
                 .add(NoticeReplyEvent.add(notice.id, reply, widget.user.id));
           },
-          onBlockUser: (reply, reason) {
-            userBloc.add(UserEvent.userBlock(reply.userId, reason));
+          onBlockUser: (blockedUserId, userName, reason) {
+            userBloc.add(UserEvent.userBlock(blockedUserId, reason));
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
-                content: Text(Tr.user.blockSuccess
-                    .tr(namedArgs: {'userName': reply.userName})),
+                content: Text(
+                    Tr.user.blockSuccess.tr(namedArgs: {'userName': userName})),
                 backgroundColor: Colors.red.shade600,
               ),
             );
             // 재귀적으로 다시 새로고침
             Navigator.of(context).pop();
-            Future.delayed(const Duration(milliseconds: 100), () {
+            Future.delayed(const Duration(milliseconds: 300), () {
               _navigateToDetailPage(notice);
             });
           },
@@ -275,6 +283,7 @@ class _NoticeScreenLayoutState extends State<NoticeScreenLayout> {
   Widget _buildNoticeItem(Notice notice) {
     return NoticeListItem(
       title: notice.title,
+      isBlocked: notice.isBlocked,
       content: notice.content,
       userName: notice.userName,
       createdAt: notice.createdAt,

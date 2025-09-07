@@ -23,7 +23,8 @@ class NoticeDetailSection extends StatefulWidget {
   final DateFormat dateFormatter = DateFormat('yyyy.MM.dd HH:mm');
   final Function(String)? onSubmitReply;
   final Function(ReportReason, String?) onReport;
-  final Function(NoticeReply reply, String reason) onBlockUser;
+  final Function(String blockedUserId, String userName, String reason)
+      onBlockUser;
   final User? user;
   final AdMasterWidget? detailAd;
   final VoidCallback? onStateChanged;
@@ -62,7 +63,7 @@ class _NoticeDetailSectionState extends State<NoticeDetailSection> {
   }
 
   void _showBlockConfirmationDialog(BuildContext context,
-      {required NoticeReply reply}) {
+      {required String userName, required String blockedUserId}) {
     final TextEditingController reasonController = TextEditingController();
 
     showDialog(
@@ -79,7 +80,7 @@ class _NoticeDetailSectionState extends State<NoticeDetailSection> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(Tr.user.blockConfirmation
-                      .tr(namedArgs: {'userName': reply.userName})),
+                      .tr(namedArgs: {'userName': userName})),
                   const SizedBox(height: 16),
                   Row(
                     children: [
@@ -162,8 +163,8 @@ class _NoticeDetailSectionState extends State<NoticeDetailSection> {
                       ? null
                       : () {
                           Navigator.of(context).pop();
-                          widget.onBlockUser(
-                              reply, reasonController.text.trim());
+                          widget.onBlockUser(blockedUserId, userName,
+                              reasonController.text.trim());
                           // 상태 변경 알림
                           widget.onStateChanged?.call();
                         },
@@ -225,6 +226,9 @@ class _NoticeDetailSectionState extends State<NoticeDetailSection> {
                       notice: notice ?? widget.notice,
                       dateFormatter: widget.dateFormatter,
                       onReport: () => _showReportDialog(context),
+                      onBlockUser: () => _showBlockConfirmationDialog(context,
+                          userName: widget.notice.userName,
+                          blockedUserId: widget.notice.userId),
                     );
                   }),
                   SizedBox(
@@ -252,8 +256,10 @@ class _NoticeDetailSectionState extends State<NoticeDetailSection> {
                       onReport: (noticeReplyId) => _showReportReplyDialog(
                           context,
                           noticeReplyId: noticeReplyId),
-                      onBlockUser: (reply) =>
-                          _showBlockConfirmationDialog(context, reply: reply),
+                      onBlockUser: (reply) => _showBlockConfirmationDialog(
+                          context,
+                          userName: reply.userName,
+                          blockedUserId: reply.userId),
                       onSubmitReply: widget.onSubmitReply ?? (reply) {},
                     ),
                   ),

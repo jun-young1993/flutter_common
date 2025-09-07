@@ -20,7 +20,8 @@
         "blockUser": "Block User",
         "blockReason": "Block Reason",
         "blockReasonHint": "Please enter a reason for blocking.",
-        "blockedUser": "Blocked user's post."
+        "blockedUser": "Blocked user.",
+        "blockedUserPost": "Blocked user's post."
     },
     "api": {
         "notFound" : "Requested resource not found.",

@@ -32,7 +32,8 @@
         "blockUser": "사용자 차단",
         "blockReason": "차단 사유",
         "blockReasonHint": "차단 사유를 입력해주세요",
-        "blockedUser": "차단된 사용자의 글입니다."
+        "blockedUser": "차단된 사용자 입니다.",
+        "blockedUserPost": "차단된 사용자의 게시글 입니다."
     },
     "app": {
         "enable": "활성화",

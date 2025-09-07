@@ -27,6 +27,7 @@ mixin _$Notice {
   String get userName => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   int get viewCount => throw _privateConstructorUsedError;
+  String get userId => throw _privateConstructorUsedError;
   bool get isBlocked => throw _privateConstructorUsedError;
   List<NoticeReply>? get noticeReplies => throw _privateConstructorUsedError;
 
@@ -52,6 +53,7 @@ abstract class $NoticeCopyWith<$Res> {
       String userName,
       DateTime createdAt,
       int viewCount,
+      String userId,
       bool isBlocked,
       List<NoticeReply>? noticeReplies});
 }
@@ -78,6 +80,7 @@ class _$NoticeCopyWithImpl<$Res, $Val extends Notice>
     Object? userName = null,
     Object? createdAt = null,
     Object? viewCount = null,
+    Object? userId = null,
     Object? isBlocked = null,
     Object? noticeReplies = freezed,
   }) {
@@ -110,6 +113,10 @@ class _$NoticeCopyWithImpl<$Res, $Val extends Notice>
           ? _value.viewCount
           : viewCount // ignore: cast_nullable_to_non_nullable
               as int,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
       isBlocked: null == isBlocked
           ? _value.isBlocked
           : isBlocked // ignore: cast_nullable_to_non_nullable
@@ -137,6 +144,7 @@ abstract class _$$NoticeImplCopyWith<$Res> implements $NoticeCopyWith<$Res> {
       String userName,
       DateTime createdAt,
       int viewCount,
+      String userId,
       bool isBlocked,
       List<NoticeReply>? noticeReplies});
 }
@@ -161,6 +169,7 @@ class __$$NoticeImplCopyWithImpl<$Res>
     Object? userName = null,
     Object? createdAt = null,
     Object? viewCount = null,
+    Object? userId = null,
     Object? isBlocked = null,
     Object? noticeReplies = freezed,
   }) {
@@ -193,6 +202,10 @@ class __$$NoticeImplCopyWithImpl<$Res>
           ? _value.viewCount
           : viewCount // ignore: cast_nullable_to_non_nullable
               as int,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
       isBlocked: null == isBlocked
           ? _value.isBlocked
           : isBlocked // ignore: cast_nullable_to_non_nullable
@@ -216,6 +229,7 @@ class _$NoticeImpl extends _Notice {
       required this.userName,
       required this.createdAt,
       required this.viewCount,
+      required this.userId,
       this.isBlocked = false,
       final List<NoticeReply>? noticeReplies = const []})
       : _noticeReplies = noticeReplies,
@@ -239,6 +253,8 @@ class _$NoticeImpl extends _Notice {
   @override
   final int viewCount;
   @override
+  final String userId;
+  @override
   @JsonKey()
   final bool isBlocked;
   final List<NoticeReply>? _noticeReplies;
@@ -254,7 +270,7 @@ class _$NoticeImpl extends _Notice {
 
   @override
   String toString() {
-    return 'Notice(id: $id, title: $title, content: $content, type: $type, userName: $userName, createdAt: $createdAt, viewCount: $viewCount, isBlocked: $isBlocked, noticeReplies: $noticeReplies)';
+    return 'Notice(id: $id, title: $title, content: $content, type: $type, userName: $userName, createdAt: $createdAt, viewCount: $viewCount, userId: $userId, isBlocked: $isBlocked, noticeReplies: $noticeReplies)';
   }
 
   @override
@@ -272,6 +288,7 @@ class _$NoticeImpl extends _Notice {
                 other.createdAt == createdAt) &&
             (identical(other.viewCount, viewCount) ||
                 other.viewCount == viewCount) &&
+            (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.isBlocked, isBlocked) ||
                 other.isBlocked == isBlocked) &&
             const DeepCollectionEquality()
@@ -289,6 +306,7 @@ class _$NoticeImpl extends _Notice {
       userName,
       createdAt,
       viewCount,
+      userId,
       isBlocked,
       const DeepCollectionEquality().hash(_noticeReplies));
 
@@ -317,6 +335,7 @@ abstract class _Notice extends Notice {
       required final String userName,
       required final DateTime createdAt,
       required final int viewCount,
+      required final String userId,
       final bool isBlocked,
       final List<NoticeReply>? noticeReplies}) = _$NoticeImpl;
   const _Notice._() : super._();
@@ -337,6 +356,8 @@ abstract class _Notice extends Notice {
   DateTime get createdAt;
   @override
   int get viewCount;
+  @override
+  String get userId;
   @override
   bool get isBlocked;
   @override
