@@ -41,7 +41,7 @@ class UserDefaultRepository extends UserRepository {
     final response = await dioClient.get('/user/$userId');
     var user = User.fromJson(response.data);
 
-    if (user.fcmToken == null) {
+    if (user.fcmToken == null && fcmToken != null) {
       user = user.copyWith(fcmToken: fcmToken);
       await dioClient.patch('/user/$userId/fcm-token/$fcmToken');
     }
