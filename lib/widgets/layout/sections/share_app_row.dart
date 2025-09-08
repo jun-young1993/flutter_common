@@ -37,7 +37,7 @@ class ShareAppRow extends StatelessWidget {
           context,
           icon: Icons.qr_code,
           title: Tr.app.qrCode.tr(),
-          subtitle: 'QR 코드로 앱 공유하기',
+          subtitle: Tr.app.shareAppWithQrCode.tr(),
           onTap: () => _showQrCodeDialog(context),
         ),
         const SizedBox(height: 8),

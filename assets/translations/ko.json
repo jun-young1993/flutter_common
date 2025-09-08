@@ -69,7 +69,8 @@
         "copyLink": "링크 복사",
         "moveToStore": "스토어로 이동",
         "printQrCode": "QR 코드 인쇄",
-        "viewInStore": "앱스토어/플레이스토어에서 보기"
+        "viewInStore": "앱스토어/플레이스토어에서 보기",
+        "shareAppWithQrCode": "QR 코드로 앱 공유하기"
     },
     "error": {
         "unknownError": "알 수 없는 오류가 발생했습니다.",

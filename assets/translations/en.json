@@ -69,7 +69,8 @@
         "copyLink": "Copy Link",
         "moveToStore": "Move to Store",
         "printQrCode": "Print QR Code",
-        "viewInStore": "View in Store"
+        "viewInStore": "View in Store",
+        "shareAppWithQrCode": "Share App with QR Code"
     },
     "error": {
         "unknownError": "An unknown error has occurred.",

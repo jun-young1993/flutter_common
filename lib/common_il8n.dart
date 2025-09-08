@@ -75,6 +75,7 @@ class _App {
   final moveToStore = 'app.moveToStore';
   final printQrCode = 'app.printQrCode';
   final viewInStore = 'app.viewInStore';
+  final shareAppWithQrCode = 'app.shareAppWithQrCode';
 }
 
 class _Error {
