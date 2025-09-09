@@ -21,6 +21,7 @@ mixin _$UserEvent {
     required TResult Function() initialize,
     required TResult Function(User user) deleteUserData,
     required TResult Function(String blockedUserId, String reason) userBlock,
+    required TResult Function(String userName) updateUserName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$UserEvent {
     TResult? Function()? initialize,
     TResult? Function(User user)? deleteUserData,
     TResult? Function(String blockedUserId, String reason)? userBlock,
+    TResult? Function(String userName)? updateUserName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$UserEvent {
     TResult Function()? initialize,
     TResult Function(User user)? deleteUserData,
     TResult Function(String blockedUserId, String reason)? userBlock,
+    TResult Function(String userName)? updateUserName,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$UserEvent {
     required TResult Function(_Initialize value) initialize,
     required TResult Function(_DeleteUserData value) deleteUserData,
     required TResult Function(_UserBlock value) userBlock,
+    required TResult Function(_UpdateUserName value) updateUserName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$UserEvent {
     TResult? Function(_Initialize value)? initialize,
     TResult? Function(_DeleteUserData value)? deleteUserData,
     TResult? Function(_UserBlock value)? userBlock,
+    TResult? Function(_UpdateUserName value)? updateUserName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$UserEvent {
     TResult Function(_Initialize value)? initialize,
     TResult Function(_DeleteUserData value)? deleteUserData,
     TResult Function(_UserBlock value)? userBlock,
+    TResult Function(_UpdateUserName value)? updateUserName,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -126,6 +132,7 @@ class _$InitializeImpl implements _Initialize {
     required TResult Function() initialize,
     required TResult Function(User user) deleteUserData,
     required TResult Function(String blockedUserId, String reason) userBlock,
+    required TResult Function(String userName) updateUserName,
   }) {
     return initialize();
   }
@@ -136,6 +143,7 @@ class _$InitializeImpl implements _Initialize {
     TResult? Function()? initialize,
     TResult? Function(User user)? deleteUserData,
     TResult? Function(String blockedUserId, String reason)? userBlock,
+    TResult? Function(String userName)? updateUserName,
   }) {
     return initialize?.call();
   }
@@ -146,6 +154,7 @@ class _$InitializeImpl implements _Initialize {
     TResult Function()? initialize,
     TResult Function(User user)? deleteUserData,
     TResult Function(String blockedUserId, String reason)? userBlock,
+    TResult Function(String userName)? updateUserName,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -160,6 +169,7 @@ class _$InitializeImpl implements _Initialize {
     required TResult Function(_Initialize value) initialize,
     required TResult Function(_DeleteUserData value) deleteUserData,
     required TResult Function(_UserBlock value) userBlock,
+    required TResult Function(_UpdateUserName value) updateUserName,
   }) {
     return initialize(this);
   }
@@ -170,6 +180,7 @@ class _$InitializeImpl implements _Initialize {
     TResult? Function(_Initialize value)? initialize,
     TResult? Function(_DeleteUserData value)? deleteUserData,
     TResult? Function(_UserBlock value)? userBlock,
+    TResult? Function(_UpdateUserName value)? updateUserName,
   }) {
     return initialize?.call(this);
   }
@@ -180,6 +191,7 @@ class _$InitializeImpl implements _Initialize {
     TResult Function(_Initialize value)? initialize,
     TResult Function(_DeleteUserData value)? deleteUserData,
     TResult Function(_UserBlock value)? userBlock,
+    TResult Function(_UpdateUserName value)? updateUserName,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -277,6 +289,7 @@ class _$DeleteUserDataImpl implements _DeleteUserData {
     required TResult Function() initialize,
     required TResult Function(User user) deleteUserData,
     required TResult Function(String blockedUserId, String reason) userBlock,
+    required TResult Function(String userName) updateUserName,
   }) {
     return deleteUserData(user);
   }
@@ -287,6 +300,7 @@ class _$DeleteUserDataImpl implements _DeleteUserData {
     TResult? Function()? initialize,
     TResult? Function(User user)? deleteUserData,
     TResult? Function(String blockedUserId, String reason)? userBlock,
+    TResult? Function(String userName)? updateUserName,
   }) {
     return deleteUserData?.call(user);
   }
@@ -297,6 +311,7 @@ class _$DeleteUserDataImpl implements _DeleteUserData {
     TResult Function()? initialize,
     TResult Function(User user)? deleteUserData,
     TResult Function(String blockedUserId, String reason)? userBlock,
+    TResult Function(String userName)? updateUserName,
     required TResult orElse(),
   }) {
     if (deleteUserData != null) {
@@ -311,6 +326,7 @@ class _$DeleteUserDataImpl implements _DeleteUserData {
     required TResult Function(_Initialize value) initialize,
     required TResult Function(_DeleteUserData value) deleteUserData,
     required TResult Function(_UserBlock value) userBlock,
+    required TResult Function(_UpdateUserName value) updateUserName,
   }) {
     return deleteUserData(this);
   }
@@ -321,6 +337,7 @@ class _$DeleteUserDataImpl implements _DeleteUserData {
     TResult? Function(_Initialize value)? initialize,
     TResult? Function(_DeleteUserData value)? deleteUserData,
     TResult? Function(_UserBlock value)? userBlock,
+    TResult? Function(_UpdateUserName value)? updateUserName,
   }) {
     return deleteUserData?.call(this);
   }
@@ -331,6 +348,7 @@ class _$DeleteUserDataImpl implements _DeleteUserData {
     TResult Function(_Initialize value)? initialize,
     TResult Function(_DeleteUserData value)? deleteUserData,
     TResult Function(_UserBlock value)? userBlock,
+    TResult Function(_UpdateUserName value)? updateUserName,
     required TResult orElse(),
   }) {
     if (deleteUserData != null) {
@@ -432,6 +450,7 @@ class _$UserBlockImpl implements _UserBlock {
     required TResult Function() initialize,
     required TResult Function(User user) deleteUserData,
     required TResult Function(String blockedUserId, String reason) userBlock,
+    required TResult Function(String userName) updateUserName,
   }) {
     return userBlock(blockedUserId, reason);
   }
@@ -442,6 +461,7 @@ class _$UserBlockImpl implements _UserBlock {
     TResult? Function()? initialize,
     TResult? Function(User user)? deleteUserData,
     TResult? Function(String blockedUserId, String reason)? userBlock,
+    TResult? Function(String userName)? updateUserName,
   }) {
     return userBlock?.call(blockedUserId, reason);
   }
@@ -452,6 +472,7 @@ class _$UserBlockImpl implements _UserBlock {
     TResult Function()? initialize,
     TResult Function(User user)? deleteUserData,
     TResult Function(String blockedUserId, String reason)? userBlock,
+    TResult Function(String userName)? updateUserName,
     required TResult orElse(),
   }) {
     if (userBlock != null) {
@@ -466,6 +487,7 @@ class _$UserBlockImpl implements _UserBlock {
     required TResult Function(_Initialize value) initialize,
     required TResult Function(_DeleteUserData value) deleteUserData,
     required TResult Function(_UserBlock value) userBlock,
+    required TResult Function(_UpdateUserName value) updateUserName,
   }) {
     return userBlock(this);
   }
@@ -476,6 +498,7 @@ class _$UserBlockImpl implements _UserBlock {
     TResult? Function(_Initialize value)? initialize,
     TResult? Function(_DeleteUserData value)? deleteUserData,
     TResult? Function(_UserBlock value)? userBlock,
+    TResult? Function(_UpdateUserName value)? updateUserName,
   }) {
     return userBlock?.call(this);
   }
@@ -486,6 +509,7 @@ class _$UserBlockImpl implements _UserBlock {
     TResult Function(_Initialize value)? initialize,
     TResult Function(_DeleteUserData value)? deleteUserData,
     TResult Function(_UserBlock value)? userBlock,
+    TResult Function(_UpdateUserName value)? updateUserName,
     required TResult orElse(),
   }) {
     if (userBlock != null) {
@@ -506,5 +530,159 @@ abstract class _UserBlock implements UserEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UserBlockImplCopyWith<_$UserBlockImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateUserNameImplCopyWith<$Res> {
+  factory _$$UpdateUserNameImplCopyWith(_$UpdateUserNameImpl value,
+          $Res Function(_$UpdateUserNameImpl) then) =
+      __$$UpdateUserNameImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String userName});
+}
+
+/// @nodoc
+class __$$UpdateUserNameImplCopyWithImpl<$Res>
+    extends _$UserEventCopyWithImpl<$Res, _$UpdateUserNameImpl>
+    implements _$$UpdateUserNameImplCopyWith<$Res> {
+  __$$UpdateUserNameImplCopyWithImpl(
+      _$UpdateUserNameImpl _value, $Res Function(_$UpdateUserNameImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userName = null,
+  }) {
+    return _then(_$UpdateUserNameImpl(
+      null == userName
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateUserNameImpl implements _UpdateUserName {
+  const _$UpdateUserNameImpl(this.userName);
+
+  @override
+  final String userName;
+
+  @override
+  String toString() {
+    return 'UserEvent.updateUserName(userName: $userName)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateUserNameImpl &&
+            (identical(other.userName, userName) ||
+                other.userName == userName));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, userName);
+
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateUserNameImplCopyWith<_$UpdateUserNameImpl> get copyWith =>
+      __$$UpdateUserNameImplCopyWithImpl<_$UpdateUserNameImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialize,
+    required TResult Function(User user) deleteUserData,
+    required TResult Function(String blockedUserId, String reason) userBlock,
+    required TResult Function(String userName) updateUserName,
+  }) {
+    return updateUserName(userName);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialize,
+    TResult? Function(User user)? deleteUserData,
+    TResult? Function(String blockedUserId, String reason)? userBlock,
+    TResult? Function(String userName)? updateUserName,
+  }) {
+    return updateUserName?.call(userName);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialize,
+    TResult Function(User user)? deleteUserData,
+    TResult Function(String blockedUserId, String reason)? userBlock,
+    TResult Function(String userName)? updateUserName,
+    required TResult orElse(),
+  }) {
+    if (updateUserName != null) {
+      return updateUserName(userName);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_DeleteUserData value) deleteUserData,
+    required TResult Function(_UserBlock value) userBlock,
+    required TResult Function(_UpdateUserName value) updateUserName,
+  }) {
+    return updateUserName(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialize value)? initialize,
+    TResult? Function(_DeleteUserData value)? deleteUserData,
+    TResult? Function(_UserBlock value)? userBlock,
+    TResult? Function(_UpdateUserName value)? updateUserName,
+  }) {
+    return updateUserName?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_DeleteUserData value)? deleteUserData,
+    TResult Function(_UserBlock value)? userBlock,
+    TResult Function(_UpdateUserName value)? updateUserName,
+    required TResult orElse(),
+  }) {
+    if (updateUserName != null) {
+      return updateUserName(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateUserName implements UserEvent {
+  const factory _UpdateUserName(final String userName) = _$UpdateUserNameImpl;
+
+  String get userName;
+
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UpdateUserNameImplCopyWith<_$UpdateUserNameImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

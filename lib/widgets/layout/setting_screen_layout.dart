@@ -135,8 +135,7 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
             initialValue: user.username,
             hintText: Tr.user.userName.tr(),
             onSubmitted: (value) {
-              // TODO: 사용자 ID 편집 로직 구현
-              print('사용자 ID 편집' + value);
+              userBloc.add(UserEvent.updateUserName(value));
             },
           );
         }),

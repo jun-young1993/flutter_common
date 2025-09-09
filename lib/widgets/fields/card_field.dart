@@ -301,7 +301,7 @@ class _InputCardFieldState extends State<InputCardField> {
         children: [
           // 입력 필드
           Padding(
-            padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+            padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
             child: TextFormField(
               controller: controller,
               initialValue: controller == null ? initialValue : null,
