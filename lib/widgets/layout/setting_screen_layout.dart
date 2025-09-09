@@ -28,6 +28,7 @@ import 'package:flutter_common/widgets/layout/sections/setting/locale.dart';
 import 'package:flutter_common/widgets/layout/sections/share_app_row.dart';
 import 'package:flutter_common/widgets/lib/container/card_container.dart';
 import 'package:flutter_common/widgets/lib/container/card_container_item.dart';
+import 'package:flutter_common/widgets/fields/card_field.dart';
 import 'package:flutter_common/widgets/loader/loading_overay.dart';
 import 'package:flutter_common/widgets/textes/awesome_description_text.dart';
 import 'package:flutter_common/widgets/timer/countdown_display.dart';
@@ -116,6 +117,30 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
       title: Tr.app.userInfo.tr(),
       icon: Icons.person_outline,
       children: [
+        UserInfoSelector((user) {
+          if (user == null) {
+            return Center(
+              child: Text(
+                Tr.user.userNotFound.tr(),
+                style: TextStyle(
+                  fontSize: SizeConstants.getTextSmallFontSize(context),
+                  color: Colors.grey.shade600,
+                ),
+              ),
+            );
+          }
+
+          return InputCardField(
+            label: Tr.user.userName.tr(),
+            initialValue: user.username,
+            hintText: Tr.user.userName.tr(),
+            onSubmitted: (value) {
+              // TODO: 사용자 ID 편집 로직 구현
+              print('사용자 ID 편집' + value);
+            },
+          );
+        }),
+        SizedBox(height: SizeConstants.getColumnSpacing(context)),
         UserInfoSelector((user) {
           return VerificationLoadingSelector((isLoading) {
             return CardContainerItem(
@@ -302,7 +327,7 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
                     ),
                   ),
                 ],
-              ),
+              )
             ],
           );
         }),

@@ -21,7 +21,9 @@
         "blockReason": "Block Reason",
         "blockReasonHint": "Please enter a reason for blocking.",
         "blockedUser": "Blocked user.",
-        "blockedUserPost": "Blocked user's post."
+        "blockedUserPost": "Blocked user's post.",
+        "userNotFound": "User not found.",
+        "userName": "User Name"
     },
     "api": {
         "notFound" : "Requested resource not found.",

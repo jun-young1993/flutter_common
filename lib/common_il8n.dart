@@ -25,6 +25,8 @@ class _User {
   final blockReasonHint = 'user.blockReasonHint';
   final blockedUser = 'user.blockedUser';
   final blockedUserPost = 'user.blockedUserPost';
+  final userNotFound = 'user.userNotFound';
+  final userName = 'user.userName';
 }
 
 class _Api {
