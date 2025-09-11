@@ -292,7 +292,8 @@
         "chartDataLoadError": "Failed to load chart data",
         "principalVsInterestRatio": "Principal vs Interest Ratio",
         "monthlyPaymentTrend": "Monthly Payment Trend",
-        "remainingAmountTrend": "Remaining Amount Trend"
+        "remainingAmountTrend": "Remaining Amount Trend",
+        "remainingBalance": "Remaining Balance"
 
     }
 } 

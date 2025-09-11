@@ -357,4 +357,5 @@ class _Loan {
   final uncomplete = 'loan.uncomplete';
   final overdue = 'loan.overdue';
   final overdueDays = 'loan.overdueDays';
+  final remainingBalance = 'loan.remainingBalance';
 }

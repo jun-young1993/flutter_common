@@ -311,6 +311,7 @@
         "completed" : "완료",
         "uncomplete" : "미납",
         "overdue" : "연체",
-        "overdueDays" : "연체일"        
+        "overdueDays" : "연체일"       ,
+        "remainingBalance"  : "잔액"
     }
 } 
