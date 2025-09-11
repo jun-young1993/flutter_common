@@ -243,100 +243,120 @@ class InputCardField extends StatefulWidget {
 }
 
 class _InputCardFieldState extends State<InputCardField> {
-  bool get initialShowEditableWidget =>
-      widget.initialShowEditableWidget ?? true;
-  get label => widget.label;
-  get initialValue => widget.initialValue;
-  get hintText => widget.hintText;
-  get controller => widget.controller;
-  get validator => widget.validator;
-  get onChanged => widget.onChanged;
-  get onSubmitted => widget.onSubmitted;
-  get keyboardType => widget.keyboardType;
-  get obscureText => widget.obscureText;
-  get suffix => widget.suffix;
-  get prefix => widget.prefix;
-  get readOnly => widget.readOnly;
-  get focusNode => widget.focusNode;
-  get textInputAction => widget.textInputAction;
-  get enabled => widget.enabled;
-  get maxLines => widget.maxLines;
-  get maxLength => widget.maxLength;
-
-  bool showEditableWidget = true;
+  late bool showEditableWidget;
 
   @override
   void initState() {
     super.initState();
-    setState(() {
-      showEditableWidget = initialShowEditableWidget;
-    });
+    showEditableWidget = widget.initialShowEditableWidget ?? true;
   }
 
   @override
   Widget build(BuildContext context) {
     if (showEditableWidget) {
       return EditableCardField(
-        label: label,
-        value: initialValue ?? '',
+        label: widget.label,
+        value: widget.initialValue ?? '',
         onEdit: () {
           setState(() {
-            showEditableWidget = !showEditableWidget;
+            showEditableWidget = false;
           });
         },
-        suffix: suffix,
-        hintText: hintText,
+        suffix: widget.suffix,
+        hintText: widget.hintText,
       );
     }
+
     return Container(
       decoration: BoxDecoration(
-        color: enabled ? Colors.white : Colors.grey.shade50,
+        color: widget.enabled ? Colors.white : Colors.grey.shade50,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: enabled ? Colors.grey.shade300 : Colors.grey.shade200,
+          color: widget.enabled ? Colors.grey.shade300 : Colors.grey.shade200,
         ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // 라벨
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+            child: Text(
+              widget.label,
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.w600,
+                    color: widget.enabled ? Colors.grey[700] : Colors.grey[500],
+                  ),
+            ),
+          ),
           // 입력 필드
           Padding(
-            padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-            child: TextFormField(
-              controller: controller,
-              initialValue: controller == null ? initialValue : null,
-              validator: validator,
-              onChanged: onChanged,
-              onFieldSubmitted: (value) {
-                setState(() {
-                  showEditableWidget = !showEditableWidget;
-                });
-                onSubmitted?.call(value);
-              },
-              keyboardType: keyboardType,
-              obscureText: obscureText,
-              enabled: enabled,
-              maxLines: maxLines,
-              maxLength: maxLength,
-              readOnly: readOnly,
-              focusNode: focusNode,
-              textInputAction: textInputAction,
-              decoration: InputDecoration(
-                hintText: hintText,
-                hintStyle: TextStyle(
-                  color: Colors.grey[400],
-                  fontStyle: FontStyle.italic,
-                ),
-                border: InputBorder.none,
-                contentPadding: EdgeInsets.zero,
-                prefixIcon: prefix,
-                suffixIcon: suffix,
-                counterText: '', // maxLength 카운터 숨기기
-              ),
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    fontWeight: FontWeight.w500,
-                    color: enabled ? Colors.black87 : Colors.grey[600],
+            padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextFormField(
+                    controller: widget.controller,
+                    initialValue:
+                        widget.controller == null ? widget.initialValue : null,
+                    validator: widget.validator,
+                    onChanged: widget.onChanged,
+                    onFieldSubmitted: (value) {
+                      setState(() {
+                        showEditableWidget = true;
+                      });
+                      widget.onSubmitted?.call(value);
+                    },
+                    keyboardType: widget.keyboardType,
+                    obscureText: widget.obscureText,
+                    enabled: widget.enabled,
+                    maxLines: widget.maxLines,
+                    maxLength: widget.maxLength,
+                    readOnly: widget.readOnly,
+                    focusNode: widget.focusNode,
+                    textInputAction: widget.textInputAction,
+                    decoration: InputDecoration(
+                      hintText: widget.hintText,
+                      hintStyle: TextStyle(
+                        color: Colors.grey[400],
+                        fontStyle: FontStyle.italic,
+                      ),
+                      border: InputBorder.none,
+                      contentPadding: EdgeInsets.zero,
+                      prefixIcon: widget.prefix,
+                      suffixIcon: widget.suffix,
+                      counterText: '', // maxLength 카운터 숨기기
+                    ),
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          fontWeight: FontWeight.w500,
+                          color: widget.enabled
+                              ? Colors.black87
+                              : Colors.grey[600],
+                        ),
                   ),
+                ),
+                // 완료 버튼
+                const SizedBox(width: 8),
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      showEditableWidget = true;
+                    });
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).primaryColor.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Icon(
+                      Icons.check,
+                      size: 18,
+                      color: Theme.of(context).primaryColor,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ],

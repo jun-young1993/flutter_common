@@ -313,4 +313,48 @@ class _Loan {
   final near = 'loan.near';
   final preparing = 'loan.preparing';
   final waiting = 'loan.waiting';
+  final repaymentSummary = 'loan.repaymentSummary';
+  final repaymentSummaryLoadError = 'loan.repaymentSummaryLoadError';
+  final repaymentSummaryLoadSuccess = 'loan.repaymentSummaryLoadSuccess';
+  final totalInterestAmount = 'loan.totalInterestAmount';
+  final averageMonthlyPayment = 'loan.averageMonthlyPayment';
+  final remainingPrincipal = 'loan.remainingPrincipal';
+  final remainingInterest = 'loan.remainingInterest';
+  final remainingInterestDescription = 'loan.remainingInterestDescription';
+  final nextPaymentDate = 'loan.nextPaymentDate';
+  final interestRatio = 'loan.interestRatio';
+  final principalRatio = 'loan.principalRatio';
+  final completedPayments = 'loan.completedPayments';
+  final totalPayments = 'loan.totalPayments';
+  final overduePayments = 'loan.overduePayments';
+  final overduePaymentsDescription = 'loan.overduePaymentsDescription';
+  final totalPrepaymentAmountDescription =
+      'loan.totalPrepaymentAmountDescription';
+  final totalPrepaymentAmount = 'loan.totalPrepaymentAmount';
+  final prepaymentInterestSavings = 'loan.prepaymentInterestSavings';
+  final totalRepaymentAmountDescription =
+      'loan.totalRepaymentAmountDescription';
+  final totalInterestAmountDescription = 'loan.totalInterestAmountDescription';
+  final averageMonthlyPaymentDescription =
+      'loan.averageMonthlyPaymentDescription';
+  final remainingPrincipalDescription = 'loan.remainingPrincipalDescription';
+  final completedPaymentsDescription = 'loan.completedPaymentsDescription';
+  final totalPaymentsDescription = 'loan.totalPaymentsDescription';
+  final nextPaymentDateDescription = 'loan.nextPaymentDateDescription';
+  final currentValue = 'loan.currentValue';
+  final description = 'loan.description';
+  final confirm = 'loan.confirm';
+  final principal = 'loan.principal';
+  final interest = 'loan.interest';
+  final totalAmount = 'loan.totalAmount';
+  final remainingAmount = 'loan.remainingAmount';
+  final chartDataLoadError = 'loan.chartDataLoadError';
+  final principalVsInterestRatio = 'loan.principalVsInterestRatio';
+  final monthlyPaymentTrend = 'loan.monthlyPaymentTrend';
+  final remainingAmountTrend = 'loan.remainingAmountTrend';
+  final completedPaymentsTitle = 'loan.completedPaymentsTitle';
+  final completed = 'loan.completed';
+  final uncomplete = 'loan.uncomplete';
+  final overdue = 'loan.overdue';
+  final overdueDays = 'loan.overdueDays';
 }
