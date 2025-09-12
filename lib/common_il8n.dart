@@ -358,4 +358,8 @@ class _Loan {
   final overdue = 'loan.overdue';
   final overdueDays = 'loan.overdueDays';
   final remainingBalance = 'loan.remainingBalance';
+  final prepaymentInterestSavingsDescription =
+      'loan.prepaymentInterestSavingsDescription';
+  final principalRatioDescription = 'loan.principalRatioDescription';
+  final interestRatioDescription = 'loan.interestRatioDescription';
 }
