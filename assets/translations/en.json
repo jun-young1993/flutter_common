@@ -74,6 +74,14 @@
         "viewInStore": "View in Store",
         "shareAppWithQrCode": "Share App with QR Code"
     },
+    "common": {
+        "yes": "Yes",
+        "no": "No",
+        "filter": "Filter",
+        "search": "Search",
+        "filterSetting": "Filter Setting",
+        "all": "All"
+    },
     "error": {
         "unknownError": "An unknown error has occurred.",
         "adNotLoaded": "Ad not loaded.",
@@ -186,6 +194,7 @@
         "deleteLoanConfirmation": "Are you sure you want to delete this loan? This action cannot be undone.",
         "deleteLoanSuccess": "Loan deleted successfully!",
         "deleteLoanDescription": "This action cannot be undone and all loan information and repayment schedules will be permanently deleted.",
+        "deleteLoanError" : "An error occurred while deleting the loan. \r\n {error}",
         "cancel": "Cancel",
         "delete": "Delete",
         "deletingLoan": "Deleting Loan...",
@@ -297,7 +306,8 @@
         "principalVsInterestRatio": "Principal vs Interest Ratio",
         "monthlyPaymentTrend": "Monthly Payment Trend",
         "remainingAmountTrend": "Remaining Amount Trend",
-        "remainingBalance": "Remaining Balance"
+        "remainingBalance": "Remaining Balance",
+        "prepayment": "Prepayment"
 
     }
 } 

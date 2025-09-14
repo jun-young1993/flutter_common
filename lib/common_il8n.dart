@@ -6,6 +6,7 @@ abstract class Tr {
   static final mcp = _Mcp();
   static final api = _Api();
   static final app = _App();
+  static final common = _Common();
   static final error = _Error();
   static final message = _Message();
   static final chat = _Chat();
@@ -14,6 +15,15 @@ abstract class Tr {
   static final ad = _Ad();
   static final loan = _Loan();
   static final user = _User();
+}
+
+class _Common {
+  final yes = 'common.yes';
+  final no = 'common.no';
+  final filter = 'common.filter';
+  final search = 'common.search';
+  final filterSetting = 'common.filterSetting';
+  final all = 'common.all';
 }
 
 class _User {
@@ -223,6 +233,7 @@ class _Loan {
   final deleteLoanConfirmation = 'loan.deleteLoanConfirmation';
   final deleteLoanSuccess = 'loan.deleteLoanSuccess';
   final deleteLoanDescription = 'loan.deleteLoanDescription';
+  final deleteLoanError = 'loan.deleteLoanError';
   final cancel = 'loan.cancel';
   final delete = 'loan.delete';
   final deletingLoan = 'loan.deletingLoan';
@@ -362,4 +373,5 @@ class _Loan {
       'loan.prepaymentInterestSavingsDescription';
   final principalRatioDescription = 'loan.principalRatioDescription';
   final interestRatioDescription = 'loan.interestRatioDescription';
+  final prepayment = 'loan.prepayment';
 }
