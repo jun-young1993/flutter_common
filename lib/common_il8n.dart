@@ -24,6 +24,10 @@ class _Common {
   final search = 'common.search';
   final filterSetting = 'common.filterSetting';
   final all = 'common.all';
+  final select = 'common.select';
+  final monthly = 'common.monthly';
+  final apply = 'common.apply';
+  final reset = 'common.reset';
 }
 
 class _User {
@@ -37,6 +41,8 @@ class _User {
   final blockedUserPost = 'user.blockedUserPost';
   final userNotFound = 'user.userNotFound';
   final userName = 'user.userName';
+  final select = 'user.select';
+  final monthly = 'user.monthly';
 }
 
 class _Api {

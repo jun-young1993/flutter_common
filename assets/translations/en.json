@@ -80,7 +80,11 @@
         "filter": "Filter",
         "search": "Search",
         "filterSetting": "Filter Setting",
-        "all": "All"
+        "all": "All",
+        "select": "Select",
+        "monthly": "Monthly",
+        "apply": "Apply",
+        "reset": "Reset"
     },
     "error": {
         "unknownError": "An unknown error has occurred.",
@@ -265,6 +269,7 @@
         "near": "Near",
         "preparing": "Preparing",
         "waiting": "Waiting",
+        "repaymentStatus": "Repayment Status",
         "repaymentSummary": "Repayment Summary",
         "repaymentSummaryLoadError": "Failed to load repayment summary.",
         "repaymentSummaryLoadSuccess": "Repayment summary loaded successfully.",

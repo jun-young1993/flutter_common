@@ -9,6 +9,7 @@ abstract class PaymentScheduleRepository {
     required int skip,
     required int take,
     required String order,
+    String? status,
   });
   Future<List<PaymentScheduleStatus>> getPaymentStatus();
   Future<LoanRepaymentSummary> getLoanRepaymentSummary(String loanId);
@@ -25,9 +26,16 @@ class PaymentScheduleDefaultRepository extends PaymentScheduleRepository {
     required int skip,
     required int take,
     required String order,
+    String? status,
   }) async {
-    final response = await dioClient.get('/loans/$loanId/schedule',
-        queryParameters: {'skip': skip, 'take': take, 'order': order});
+    final response =
+        await dioClient.get('/loans/$loanId/schedule', queryParameters: {
+      'skip': skip,
+      'take': take,
+      'order': order,
+      'status': status,
+    });
+
     if (response.statusCode == 200) {
       return (response.data as List<dynamic>)
           .map((e) => PaymentSchedule.fromJson(e as Map<String, dynamic>))
