@@ -1,0 +1,242 @@
+// coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+
+part of 's3_object_state.dart';
+
+// **************************************************************************
+// FreezedGenerator
+// **************************************************************************
+
+T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+
+/// @nodoc
+mixin _$S3ObjectState {
+  bool get isLoading => throw _privateConstructorUsedError;
+  bool get isUploading => throw _privateConstructorUsedError;
+  AppException? get error => throw _privateConstructorUsedError;
+  List<S3Object> get s3Objects => throw _privateConstructorUsedError;
+
+  /// Create a copy of S3ObjectState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $S3ObjectStateCopyWith<S3ObjectState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $S3ObjectStateCopyWith<$Res> {
+  factory $S3ObjectStateCopyWith(
+          S3ObjectState value, $Res Function(S3ObjectState) then) =
+      _$S3ObjectStateCopyWithImpl<$Res, S3ObjectState>;
+  @useResult
+  $Res call(
+      {bool isLoading,
+      bool isUploading,
+      AppException? error,
+      List<S3Object> s3Objects});
+
+  $AppExceptionCopyWith<$Res>? get error;
+}
+
+/// @nodoc
+class _$S3ObjectStateCopyWithImpl<$Res, $Val extends S3ObjectState>
+    implements $S3ObjectStateCopyWith<$Res> {
+  _$S3ObjectStateCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of S3ObjectState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isLoading = null,
+    Object? isUploading = null,
+    Object? error = freezed,
+    Object? s3Objects = null,
+  }) {
+    return _then(_value.copyWith(
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isUploading: null == isUploading
+          ? _value.isUploading
+          : isUploading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      error: freezed == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as AppException?,
+      s3Objects: null == s3Objects
+          ? _value.s3Objects
+          : s3Objects // ignore: cast_nullable_to_non_nullable
+              as List<S3Object>,
+    ) as $Val);
+  }
+
+  /// Create a copy of S3ObjectState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AppExceptionCopyWith<$Res>? get error {
+    if (_value.error == null) {
+      return null;
+    }
+
+    return $AppExceptionCopyWith<$Res>(_value.error!, (value) {
+      return _then(_value.copyWith(error: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$S3ObjectStateImplCopyWith<$Res>
+    implements $S3ObjectStateCopyWith<$Res> {
+  factory _$$S3ObjectStateImplCopyWith(
+          _$S3ObjectStateImpl value, $Res Function(_$S3ObjectStateImpl) then) =
+      __$$S3ObjectStateImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {bool isLoading,
+      bool isUploading,
+      AppException? error,
+      List<S3Object> s3Objects});
+
+  @override
+  $AppExceptionCopyWith<$Res>? get error;
+}
+
+/// @nodoc
+class __$$S3ObjectStateImplCopyWithImpl<$Res>
+    extends _$S3ObjectStateCopyWithImpl<$Res, _$S3ObjectStateImpl>
+    implements _$$S3ObjectStateImplCopyWith<$Res> {
+  __$$S3ObjectStateImplCopyWithImpl(
+      _$S3ObjectStateImpl _value, $Res Function(_$S3ObjectStateImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of S3ObjectState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isLoading = null,
+    Object? isUploading = null,
+    Object? error = freezed,
+    Object? s3Objects = null,
+  }) {
+    return _then(_$S3ObjectStateImpl(
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isUploading: null == isUploading
+          ? _value.isUploading
+          : isUploading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      error: freezed == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as AppException?,
+      s3Objects: null == s3Objects
+          ? _value._s3Objects
+          : s3Objects // ignore: cast_nullable_to_non_nullable
+              as List<S3Object>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$S3ObjectStateImpl extends _S3ObjectState {
+  const _$S3ObjectStateImpl(
+      {this.isLoading = false,
+      this.isUploading = false,
+      this.error = null,
+      final List<S3Object> s3Objects = const []})
+      : _s3Objects = s3Objects,
+        super._();
+
+  @override
+  @JsonKey()
+  final bool isLoading;
+  @override
+  @JsonKey()
+  final bool isUploading;
+  @override
+  @JsonKey()
+  final AppException? error;
+  final List<S3Object> _s3Objects;
+  @override
+  @JsonKey()
+  List<S3Object> get s3Objects {
+    if (_s3Objects is EqualUnmodifiableListView) return _s3Objects;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_s3Objects);
+  }
+
+  @override
+  String toString() {
+    return 'S3ObjectState(isLoading: $isLoading, isUploading: $isUploading, error: $error, s3Objects: $s3Objects)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$S3ObjectStateImpl &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
+            (identical(other.isUploading, isUploading) ||
+                other.isUploading == isUploading) &&
+            (identical(other.error, error) || other.error == error) &&
+            const DeepCollectionEquality()
+                .equals(other._s3Objects, _s3Objects));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, isLoading, isUploading, error,
+      const DeepCollectionEquality().hash(_s3Objects));
+
+  /// Create a copy of S3ObjectState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$S3ObjectStateImplCopyWith<_$S3ObjectStateImpl> get copyWith =>
+      __$$S3ObjectStateImplCopyWithImpl<_$S3ObjectStateImpl>(this, _$identity);
+}
+
+abstract class _S3ObjectState extends S3ObjectState {
+  const factory _S3ObjectState(
+      {final bool isLoading,
+      final bool isUploading,
+      final AppException? error,
+      final List<S3Object> s3Objects}) = _$S3ObjectStateImpl;
+  const _S3ObjectState._() : super._();
+
+  @override
+  bool get isLoading;
+  @override
+  bool get isUploading;
+  @override
+  AppException? get error;
+  @override
+  List<S3Object> get s3Objects;
+
+  /// Create a copy of S3ObjectState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$S3ObjectStateImplCopyWith<_$S3ObjectStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

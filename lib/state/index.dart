@@ -5,3 +5,8 @@ export 'mcp_chat/index.dart';
 export 'notice/index.dart';
 export 'app_reward/index.dart';
 export 'loan_summery/index.dart';
+export 'notice_group/index.dart';
+export 'notice_reply/index.dart' hide Report;
+export 'user/index.dart';
+export 'verification/index.dart';
+export 'aws/index.dart';

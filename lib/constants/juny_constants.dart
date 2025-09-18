@@ -4,7 +4,8 @@ enum AppKeys {
   caughtSmoking,
   mcpClient,
   moneyTree,
-  loanCountdown
+  loanCountdown,
+  babyLog
 }
 
 class JunyConstants {
@@ -21,7 +22,8 @@ class JunyConstants {
     AppKeys.caughtSmoking: 'caught-smoking',
     AppKeys.mcpClient: 'mcp-client',
     AppKeys.moneyTree: 'money-tree',
-    AppKeys.loanCountdown: 'loan-countdown'
+    AppKeys.loanCountdown: 'loan-countdown',
+    AppKeys.babyLog: 'baby-log'
   };
   static const Map<AppKeys, String> appNames = {
     AppKeys.myHomeParking: '우리집주차장',
@@ -29,7 +31,8 @@ class JunyConstants {
     AppKeys.caughtSmoking: '딱걸렸담',
     AppKeys.mcpClient: 'MCP Client',
     AppKeys.moneyTree: 'Money Tree',
-    AppKeys.loanCountdown: 'Loan Countdown'
+    AppKeys.loanCountdown: 'Loan Countdown',
+    AppKeys.babyLog: 'Baby Log'
   };
   static String getAppKeyStringOrThrow(AppKeys key) {
     final keyString = appKeys[key];
