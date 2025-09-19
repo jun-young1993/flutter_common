@@ -20,6 +20,7 @@ mixin _$S3ObjectState {
   bool get isUploading => throw _privateConstructorUsedError;
   AppException? get error => throw _privateConstructorUsedError;
   List<S3Object> get s3Objects => throw _privateConstructorUsedError;
+  S3Object? get s3Object => throw _privateConstructorUsedError;
 
   /// Create a copy of S3ObjectState
   /// with the given fields replaced by the non-null parameter values.
@@ -38,9 +39,11 @@ abstract class $S3ObjectStateCopyWith<$Res> {
       {bool isLoading,
       bool isUploading,
       AppException? error,
-      List<S3Object> s3Objects});
+      List<S3Object> s3Objects,
+      S3Object? s3Object});
 
   $AppExceptionCopyWith<$Res>? get error;
+  $S3ObjectCopyWith<$Res>? get s3Object;
 }
 
 /// @nodoc
@@ -62,6 +65,7 @@ class _$S3ObjectStateCopyWithImpl<$Res, $Val extends S3ObjectState>
     Object? isUploading = null,
     Object? error = freezed,
     Object? s3Objects = null,
+    Object? s3Object = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -80,6 +84,10 @@ class _$S3ObjectStateCopyWithImpl<$Res, $Val extends S3ObjectState>
           ? _value.s3Objects
           : s3Objects // ignore: cast_nullable_to_non_nullable
               as List<S3Object>,
+      s3Object: freezed == s3Object
+          ? _value.s3Object
+          : s3Object // ignore: cast_nullable_to_non_nullable
+              as S3Object?,
     ) as $Val);
   }
 
@@ -96,6 +104,20 @@ class _$S3ObjectStateCopyWithImpl<$Res, $Val extends S3ObjectState>
       return _then(_value.copyWith(error: value) as $Val);
     });
   }
+
+  /// Create a copy of S3ObjectState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $S3ObjectCopyWith<$Res>? get s3Object {
+    if (_value.s3Object == null) {
+      return null;
+    }
+
+    return $S3ObjectCopyWith<$Res>(_value.s3Object!, (value) {
+      return _then(_value.copyWith(s3Object: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -110,10 +132,13 @@ abstract class _$$S3ObjectStateImplCopyWith<$Res>
       {bool isLoading,
       bool isUploading,
       AppException? error,
-      List<S3Object> s3Objects});
+      List<S3Object> s3Objects,
+      S3Object? s3Object});
 
   @override
   $AppExceptionCopyWith<$Res>? get error;
+  @override
+  $S3ObjectCopyWith<$Res>? get s3Object;
 }
 
 /// @nodoc
@@ -133,6 +158,7 @@ class __$$S3ObjectStateImplCopyWithImpl<$Res>
     Object? isUploading = null,
     Object? error = freezed,
     Object? s3Objects = null,
+    Object? s3Object = freezed,
   }) {
     return _then(_$S3ObjectStateImpl(
       isLoading: null == isLoading
@@ -151,6 +177,10 @@ class __$$S3ObjectStateImplCopyWithImpl<$Res>
           ? _value._s3Objects
           : s3Objects // ignore: cast_nullable_to_non_nullable
               as List<S3Object>,
+      s3Object: freezed == s3Object
+          ? _value.s3Object
+          : s3Object // ignore: cast_nullable_to_non_nullable
+              as S3Object?,
     ));
   }
 }
@@ -162,7 +192,8 @@ class _$S3ObjectStateImpl extends _S3ObjectState {
       {this.isLoading = false,
       this.isUploading = false,
       this.error = null,
-      final List<S3Object> s3Objects = const []})
+      final List<S3Object> s3Objects = const [],
+      this.s3Object = null})
       : _s3Objects = s3Objects,
         super._();
 
@@ -185,8 +216,12 @@ class _$S3ObjectStateImpl extends _S3ObjectState {
   }
 
   @override
+  @JsonKey()
+  final S3Object? s3Object;
+
+  @override
   String toString() {
-    return 'S3ObjectState(isLoading: $isLoading, isUploading: $isUploading, error: $error, s3Objects: $s3Objects)';
+    return 'S3ObjectState(isLoading: $isLoading, isUploading: $isUploading, error: $error, s3Objects: $s3Objects, s3Object: $s3Object)';
   }
 
   @override
@@ -200,12 +235,14 @@ class _$S3ObjectStateImpl extends _S3ObjectState {
                 other.isUploading == isUploading) &&
             (identical(other.error, error) || other.error == error) &&
             const DeepCollectionEquality()
-                .equals(other._s3Objects, _s3Objects));
+                .equals(other._s3Objects, _s3Objects) &&
+            (identical(other.s3Object, s3Object) ||
+                other.s3Object == s3Object));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, isLoading, isUploading, error,
-      const DeepCollectionEquality().hash(_s3Objects));
+      const DeepCollectionEquality().hash(_s3Objects), s3Object);
 
   /// Create a copy of S3ObjectState
   /// with the given fields replaced by the non-null parameter values.
@@ -221,7 +258,8 @@ abstract class _S3ObjectState extends S3ObjectState {
       {final bool isLoading,
       final bool isUploading,
       final AppException? error,
-      final List<S3Object> s3Objects}) = _$S3ObjectStateImpl;
+      final List<S3Object> s3Objects,
+      final S3Object? s3Object}) = _$S3ObjectStateImpl;
   const _S3ObjectState._() : super._();
 
   @override
@@ -232,6 +270,8 @@ abstract class _S3ObjectState extends S3ObjectState {
   AppException? get error;
   @override
   List<S3Object> get s3Objects;
+  @override
+  S3Object? get s3Object;
 
   /// Create a copy of S3ObjectState
   /// with the given fields replaced by the non-null parameter values.

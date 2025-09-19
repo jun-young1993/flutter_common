@@ -10,4 +10,5 @@ class UserEvent with _$UserEvent {
   const factory UserEvent.userBlock(String blockedUserId, String reason) =
       _UserBlock;
   const factory UserEvent.updateUserName(String userName) = _UpdateUserName;
+  const factory UserEvent.clearError() = _ClearError;
 }

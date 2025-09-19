@@ -37,6 +37,11 @@
         "cancelled" : "Request cancelled.",
         "unknown" : "Unknown error."
     },
+    "photo": {
+        "recentPhotos": "Recent Photos",
+        "uploadPhoto": "Upload Photo",
+        "noPhoto": "No photo."
+    },
     "app": {
         "enable": "Enable",
         "disable": "Disable",
@@ -72,7 +77,8 @@
         "moveToStore": "Move to Store",
         "printQrCode": "Print QR Code",
         "viewInStore": "View in Store",
-        "shareAppWithQrCode": "Share App with QR Code"
+        "shareAppWithQrCode": "Share App with QR Code",
+        "babyLog" : "Baby Log"
     },
     "common": {
         "yes": "Yes",
@@ -84,7 +90,15 @@
         "select": "Select",
         "monthly": "Monthly",
         "apply": "Apply",
-        "reset": "Reset"
+        "reset": "Reset",
+        "justNow": "Just Now",
+        "minutesAgo": "{minutes} minutes ago",
+        "hoursAgo": "{hours} hours ago",
+        "daysAgo": "{days} days ago",
+        "monthsAgo": "{months} months ago",
+        "yearsAgo": "{years} years ago",
+        "noDate": "No Date",
+        "share": "Share"
     },
     "error": {
         "unknownError": "An unknown error has occurred.",

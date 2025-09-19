@@ -42,6 +42,8 @@ class UserBloc extends Bloc<UserEvent, UserState> {
                 await userRepository.updateUserName(state.user!.id, e.userName);
             emit(state.copyWith(user: user));
           });
+        }, clearError: (e) async {
+          emit(state.copyWith(error: null, isLoading: false));
         });
       } catch (e) {
         await _handleEvent(emit, () async {},

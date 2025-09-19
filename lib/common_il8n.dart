@@ -5,6 +5,7 @@ abstract class Tr {
 
   static final mcp = _Mcp();
   static final api = _Api();
+  static final photo = _Photo();
   static final app = _App();
   static final common = _Common();
   static final error = _Error();
@@ -28,6 +29,12 @@ class _Common {
   final monthly = 'common.monthly';
   final apply = 'common.apply';
   final reset = 'common.reset';
+  final justNow = 'common.justNow';
+  final minutesAgo = 'common.minutesAgo';
+  final hoursAgo = 'common.hoursAgo';
+  final daysAgo = 'common.daysAgo';
+  final monthsAgo = 'common.monthsAgo';
+  final yearsAgo = 'common.yearsAgo';
 }
 
 class _User {
@@ -56,6 +63,12 @@ class _Api {
   final server = 'api.server';
   final cancelled = 'api.cancelled';
   final unknown = 'api.unknown';
+}
+
+class _Photo {
+  final recentPhotos = 'photo.recentPhotos';
+  final uploadPhoto = 'photo.uploadPhoto';
+  final noPhoto = 'photo.noPhoto';
 }
 
 class _App {
@@ -94,6 +107,9 @@ class _App {
   final printQrCode = 'app.printQrCode';
   final viewInStore = 'app.viewInStore';
   final shareAppWithQrCode = 'app.shareAppWithQrCode';
+  final babyLog = 'app.babyLog';
+  final noDate = 'app.noDate';
+  final share = 'app.share';
 }
 
 class _Error {

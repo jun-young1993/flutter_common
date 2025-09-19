@@ -37,6 +37,11 @@
         "userNotFound": "사용자를 찾을 수 없습니다.",
         "userName": "사용자 이름"
     },
+    "photo": {
+        "recentPhotos": "최근 사진",
+        "uploadPhoto": "사진 업로드",
+        "noPhoto": "사진이 없습니다."
+    },
     "app": {
         "enable": "활성화",
         "disable": "비활성화",
@@ -72,7 +77,10 @@
         "moveToStore": "스토어로 이동",
         "printQrCode": "QR 코드 인쇄",
         "viewInStore": "앱스토어/플레이스토어에서 보기",
-        "shareAppWithQrCode": "QR 코드로 앱 공유하기"
+        "shareAppWithQrCode": "QR 코드로 앱 공유하기",
+        "babyLog" : "Baby Log",
+        "noDate" : "날짜 없음",
+        "share" : "공유하기"
     },
     "common": {
         "yes": "예",
@@ -84,7 +92,13 @@
         "select": "선택",
         "monthly": "월별",
         "apply": "적용",
-        "reset": "초기화"
+        "reset": "초기화",
+        "justNow": "방금 전",
+        "minutesAgo": "{minutes}분 전",
+        "hoursAgo": "{hours}시간 전",
+        "daysAgo": "{days}일 전",
+        "monthsAgo": "{months}개월 전",
+        "yearsAgo": "{years}년 전"
     },
     "error": {
         "unknownError": "알 수 없는 오류가 발생했습니다.",

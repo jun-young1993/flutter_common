@@ -1169,4 +1169,3 @@ class MockResponse<T> extends _i1.Mock implements _i2.Response<T> {
         returnValueForMissingStub: null,
       );
 }
-

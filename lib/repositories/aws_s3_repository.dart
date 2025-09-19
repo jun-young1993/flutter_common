@@ -9,7 +9,8 @@ import 'package:http_parser/http_parser.dart';
 
 abstract class AwsS3Repository {
   Future<bool> uploadFile(File file, User user, AppKeys appKey);
-  Future<List<S3Object>> getS3Object(User user);
+  Future<List<S3Object>> getS3Object(User user, int? skip, int? take);
+  Future<S3Object> findOneOrFail(String id);
 }
 
 class AwsS3DefaultRepository extends AwsS3Repository {
@@ -63,12 +64,24 @@ class AwsS3DefaultRepository extends AwsS3Repository {
   }
 
   @override
-  Future<List<S3Object>> getS3Object(User user) async {
-    final response = await dioClient.get('/aws/s3/objects');
+  Future<List<S3Object>> getS3Object(User user, int? skip, int? take) async {
+    final response = await dioClient.get('/aws/s3/objects', queryParameters: {
+      'skip': skip,
+      'take': take,
+    });
     if (response.statusCode == 200) {
       return (response.data as List<dynamic>)
           .map((e) => S3Object.fromJson(e as Map<String, dynamic>))
           .toList();
+    }
+    throw Exception('S3 객체 조회 실패');
+  }
+
+  @override
+  Future<S3Object> findOneOrFail(String id) async {
+    final response = await dioClient.get('/aws/s3/objects/$id');
+    if (response.statusCode == 200) {
+      return S3Object.fromJson(response.data);
     }
     throw Exception('S3 객체 조회 실패');
   }

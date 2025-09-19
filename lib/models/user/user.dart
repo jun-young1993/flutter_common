@@ -11,6 +11,7 @@ class User with _$User {
     required String? email,
     required String type,
     required bool isActive,
+    required bool isAdmin,
     required String createdAt,
     required String updatedAt,
     String? fcmToken,

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter_common/constants/juny_constants.dart';
 import 'package:flutter_common/models/user/user.dart';
 import 'package:flutter_common/network/dio_client.dart';
@@ -23,6 +25,18 @@ class UserDefaultRepository extends UserRepository {
       required this.sharedPreferences,
       required this.appKey});
 
+  Future printIps() async {
+    try {
+      for (var interface in await NetworkInterface.list()) {
+        for (var addr in interface.addresses) {
+          return '${addr.address} ${addr.host} ${addr.isLoopback} ${addr.rawAddress} ${addr.type.name}';
+        }
+      }
+    } catch (e) {
+      return null;
+    }
+  }
+
   @override
   Future<User> getUserInfo({String? fcmToken}) async {
     final appKeyString = JunyConstants.getAppKeyStringOrThrow(appKey);
@@ -35,6 +49,7 @@ class UserDefaultRepository extends UserRepository {
         'password': DateTime.now().toIso8601String(),
         'type': appKeyString,
         'fcm_token': fcmToken,
+        'registrationIp': await printIps(),
       });
       sharedPreferences.setString(userIdKey, response.data['id']);
       return User.fromJson(response.data);

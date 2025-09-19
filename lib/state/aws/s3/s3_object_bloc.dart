@@ -16,7 +16,8 @@ class S3ObjectBloc extends Bloc<S3ObjectEvent, S3ObjectState> {
           emit(S3ObjectState.initialize());
         }, getS3Objects: (e) async {
           emit(state.copyWith(isLoading: true));
-          final s3Objects = await s3ObjectRepository.getS3Object(e.user);
+          final s3Objects =
+              await s3ObjectRepository.getS3Object(e.user, e.skip, e.take);
           emit(state.copyWith(s3Objects: s3Objects, isLoading: false));
         }, uploadFile: (e) async {
           emit(state.copyWith(isUploading: true));
@@ -25,6 +26,10 @@ class S3ObjectBloc extends Bloc<S3ObjectEvent, S3ObjectState> {
         }, clearError: (e) async {
           emit(state.copyWith(
               isLoading: false, isUploading: false, error: null));
+        }, findOneOrFail: (e) async {
+          emit(state.copyWith(isLoading: true));
+          final s3Object = await s3ObjectRepository.findOneOrFail(e.id);
+          emit(state.copyWith(s3Object: s3Object, isLoading: false));
         });
       },
     );
