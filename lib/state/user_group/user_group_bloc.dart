@@ -25,7 +25,7 @@ class UserGroupBloc extends Bloc<UserGroupEvent, UserGroupState> {
             },
             findAll: (e) async {
               final userGroups = await userGroupRepository.getUserGroups();
-              emit(state.copyWith(userGroups: userGroups));
+              emit(state.copyWith(userGroup: userGroups));
             },
             addUser: (e) async {
               final userGroup = await userGroupRepository.addUser();

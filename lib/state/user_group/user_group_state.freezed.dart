@@ -18,7 +18,6 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$UserGroupState {
   bool get isLoading => throw _privateConstructorUsedError;
   AppException? get error => throw _privateConstructorUsedError;
-  List<UserGroup> get userGroups => throw _privateConstructorUsedError;
   UserGroup? get userGroup => throw _privateConstructorUsedError;
 
   /// Create a copy of UserGroupState
@@ -34,11 +33,7 @@ abstract class $UserGroupStateCopyWith<$Res> {
           UserGroupState value, $Res Function(UserGroupState) then) =
       _$UserGroupStateCopyWithImpl<$Res, UserGroupState>;
   @useResult
-  $Res call(
-      {bool isLoading,
-      AppException? error,
-      List<UserGroup> userGroups,
-      UserGroup? userGroup});
+  $Res call({bool isLoading, AppException? error, UserGroup? userGroup});
 
   $AppExceptionCopyWith<$Res>? get error;
   $UserGroupCopyWith<$Res>? get userGroup;
@@ -61,7 +56,6 @@ class _$UserGroupStateCopyWithImpl<$Res, $Val extends UserGroupState>
   $Res call({
     Object? isLoading = null,
     Object? error = freezed,
-    Object? userGroups = null,
     Object? userGroup = freezed,
   }) {
     return _then(_value.copyWith(
@@ -73,10 +67,6 @@ class _$UserGroupStateCopyWithImpl<$Res, $Val extends UserGroupState>
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as AppException?,
-      userGroups: null == userGroups
-          ? _value.userGroups
-          : userGroups // ignore: cast_nullable_to_non_nullable
-              as List<UserGroup>,
       userGroup: freezed == userGroup
           ? _value.userGroup
           : userGroup // ignore: cast_nullable_to_non_nullable
@@ -121,11 +111,7 @@ abstract class _$$UserGroupStateImplCopyWith<$Res>
       __$$UserGroupStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {bool isLoading,
-      AppException? error,
-      List<UserGroup> userGroups,
-      UserGroup? userGroup});
+  $Res call({bool isLoading, AppException? error, UserGroup? userGroup});
 
   @override
   $AppExceptionCopyWith<$Res>? get error;
@@ -148,7 +134,6 @@ class __$$UserGroupStateImplCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = null,
     Object? error = freezed,
-    Object? userGroups = null,
     Object? userGroup = freezed,
   }) {
     return _then(_$UserGroupStateImpl(
@@ -160,10 +145,6 @@ class __$$UserGroupStateImplCopyWithImpl<$Res>
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as AppException?,
-      userGroups: null == userGroups
-          ? _value._userGroups
-          : userGroups // ignore: cast_nullable_to_non_nullable
-              as List<UserGroup>,
       userGroup: freezed == userGroup
           ? _value.userGroup
           : userGroup // ignore: cast_nullable_to_non_nullable
@@ -176,12 +157,8 @@ class __$$UserGroupStateImplCopyWithImpl<$Res>
 
 class _$UserGroupStateImpl extends _UserGroupState {
   const _$UserGroupStateImpl(
-      {this.isLoading = false,
-      this.error = null,
-      final List<UserGroup> userGroups = const [],
-      this.userGroup = null})
-      : _userGroups = userGroups,
-        super._();
+      {this.isLoading = false, this.error = null, this.userGroup = null})
+      : super._();
 
   @override
   @JsonKey()
@@ -189,22 +166,13 @@ class _$UserGroupStateImpl extends _UserGroupState {
   @override
   @JsonKey()
   final AppException? error;
-  final List<UserGroup> _userGroups;
-  @override
-  @JsonKey()
-  List<UserGroup> get userGroups {
-    if (_userGroups is EqualUnmodifiableListView) return _userGroups;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_userGroups);
-  }
-
   @override
   @JsonKey()
   final UserGroup? userGroup;
 
   @override
   String toString() {
-    return 'UserGroupState(isLoading: $isLoading, error: $error, userGroups: $userGroups, userGroup: $userGroup)';
+    return 'UserGroupState(isLoading: $isLoading, error: $error, userGroup: $userGroup)';
   }
 
   @override
@@ -215,15 +183,12 @@ class _$UserGroupStateImpl extends _UserGroupState {
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             (identical(other.error, error) || other.error == error) &&
-            const DeepCollectionEquality()
-                .equals(other._userGroups, _userGroups) &&
             (identical(other.userGroup, userGroup) ||
                 other.userGroup == userGroup));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, error,
-      const DeepCollectionEquality().hash(_userGroups), userGroup);
+  int get hashCode => Object.hash(runtimeType, isLoading, error, userGroup);
 
   /// Create a copy of UserGroupState
   /// with the given fields replaced by the non-null parameter values.
@@ -239,7 +204,6 @@ abstract class _UserGroupState extends UserGroupState {
   const factory _UserGroupState(
       {final bool isLoading,
       final AppException? error,
-      final List<UserGroup> userGroups,
       final UserGroup? userGroup}) = _$UserGroupStateImpl;
   const _UserGroupState._() : super._();
 
@@ -247,8 +211,6 @@ abstract class _UserGroupState extends UserGroupState {
   bool get isLoading;
   @override
   AppException? get error;
-  @override
-  List<UserGroup> get userGroups;
   @override
   UserGroup? get userGroup;
 

@@ -2,7 +2,7 @@ import 'package:flutter_common/models/user_group/user_group.dart';
 import 'package:flutter_common/network/dio_client.dart';
 
 abstract class UserGroupRepository {
-  Future<List<UserGroup>> getUserGroups();
+  Future<UserGroup> getUserGroups();
   Future<UserGroup> createUserGroup();
   Future<UserGroup> addUser();
   Future<UserGroup> removeUser();
@@ -14,19 +14,19 @@ class UserGroupDefaultRepository extends UserGroupRepository {
   UserGroupDefaultRepository({required this.dioClient});
 
   @override
-  Future<List<UserGroup>> getUserGroups() async {
+  Future<UserGroup> getUserGroups() async {
     final response = await dioClient.get('/user-groups/groups');
     if (response.statusCode != 200) {
       throw Exception(
           '[${response.statusCode}] Failed to fetch user groups: ${response.statusMessage ?? 'Unknown error'}');
     }
-    return (response.data as List).map((e) => UserGroup.fromJson(e)).toList();
+    return UserGroup.fromJson(response.data);
   }
 
   @override
   Future<UserGroup> createUserGroup() async {
-    final response = await dioClient.post('/user-groups',
-        data: {'name': 'no name', 'description': 'no description'});
+    final response = await dioClient
+        .post('/user-groups', data: {'name': null, 'description': null});
     if (response.statusCode != 201) {
       throw Exception(
           '[${response.statusCode}] Failed to create user group: ${response.statusMessage ?? 'Unknown error'}');

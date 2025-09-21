@@ -23,42 +23,6 @@ class UserGroupFindSelector extends UserGroupSelector<UserGroup?> {
             builder: (context, userGroup) => builder(userGroup));
 }
 
-class UserGroupFindAllSelector extends UserGroupSelector<List<UserGroup>> {
-  UserGroupFindAllSelector(Widget Function(List<UserGroup> userGroups) builder,
-      {Key? key})
-      : super(
-            key: key,
-            selector: (state) => state.userGroups,
-            builder: (context, userGroups) => builder(userGroups));
-}
-
-class UserGroupCreateSelector extends UserGroupSelector<UserGroup?> {
-  UserGroupCreateSelector(Widget Function(UserGroup? userGroup) builder,
-      {Key? key})
-      : super(
-            key: key,
-            selector: (state) => state.userGroup,
-            builder: (context, userGroup) => builder(userGroup));
-}
-
-class UserGroupAddUserSelector extends UserGroupSelector<UserGroup?> {
-  UserGroupAddUserSelector(Widget Function(UserGroup? userGroup) builder,
-      {Key? key})
-      : super(
-            key: key,
-            selector: (state) => state.userGroup,
-            builder: (context, userGroup) => builder(userGroup));
-}
-
-class UserGroupRemoveUserSelector extends UserGroupSelector<UserGroup?> {
-  UserGroupRemoveUserSelector(Widget Function(UserGroup? userGroup) builder,
-      {Key? key})
-      : super(
-            key: key,
-            selector: (state) => state.userGroup,
-            builder: (context, userGroup) => builder(userGroup));
-}
-
 class UserGroupLoadingSelector extends UserGroupSelector<bool> {
   UserGroupLoadingSelector(Widget Function(bool isLoading) builder, {Key? key})
       : super(
