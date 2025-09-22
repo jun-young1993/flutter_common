@@ -17,15 +17,20 @@ class UserGroupBloc extends Bloc<UserGroupEvent, UserGroupState> {
               emit(const UserGroupState());
             },
             create: (e) async {
-              final userGroup = await userGroupRepository.createUserGroup();
+              final userGroup = await userGroupRepository.createUserGroup(
+                  e.name, e.description);
               emit(state.copyWith(userGroup: userGroup));
             },
             clearError: (e) async {
               emit(state.copyWith(error: null));
             },
             findAll: (e) async {
-              final userGroups = await userGroupRepository.getUserGroups();
-              emit(state.copyWith(userGroup: userGroups));
+              try {
+                final userGroups = await userGroupRepository.getUserGroups();
+                emit(state.copyWith(userGroup: userGroups));
+              } catch (e) {
+                emit(state.copyWith(error: AppException.unknown(e.toString())));
+              }
             },
             addUser: (e) async {
               final userGroup = await userGroupRepository.addUser();
@@ -33,6 +38,26 @@ class UserGroupBloc extends Bloc<UserGroupEvent, UserGroupState> {
             },
             removeUser: (e) async {
               final userGroup = await userGroupRepository.removeUser();
+              emit(state.copyWith(userGroup: userGroup));
+            },
+            updateName: (e) async {
+              if (state.userGroup == null) {
+                throw const AppException.unknown('User group not found');
+              }
+              final userGroupId = state.userGroup?.id as String;
+              final userGroup =
+                  await userGroupRepository.updateName(userGroupId, e.name);
+              emit(state.copyWith(userGroup: userGroup));
+            },
+            updateDescription: (e) async {
+              if (state.userGroup == null) {
+                throw const AppException.unknown('User group not found');
+              }
+              final userGroupId = state.userGroup?.id as String;
+              final userGroup = await userGroupRepository.updateDescription(
+                  userGroupId, e.description);
+              await userGroupRepository.updateDescription(
+                  userGroupId, e.description);
               emit(state.copyWith(userGroup: userGroup));
             },
           );

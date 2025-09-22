@@ -26,7 +26,8 @@ class ErrorView<T extends Exception> extends StatelessWidget {
     }
 
     // 기본 에러 뷰
-    return SingleChildScrollView(
+    return Container(
+      color: Colors.white,
       child: Center(
         child: Padding(
           padding: const EdgeInsets.all(16.0),

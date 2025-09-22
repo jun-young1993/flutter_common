@@ -3,9 +3,11 @@ import 'package:flutter_common/network/dio_client.dart';
 
 abstract class UserGroupRepository {
   Future<UserGroup> getUserGroups();
-  Future<UserGroup> createUserGroup();
+  Future<UserGroup> createUserGroup(String? name, String? description);
   Future<UserGroup> addUser();
   Future<UserGroup> removeUser();
+  Future<UserGroup> updateName(String userGroupId, String name);
+  Future<UserGroup> updateDescription(String userGroupId, String description);
 }
 
 class UserGroupDefaultRepository extends UserGroupRepository {
@@ -24,9 +26,9 @@ class UserGroupDefaultRepository extends UserGroupRepository {
   }
 
   @override
-  Future<UserGroup> createUserGroup() async {
+  Future<UserGroup> createUserGroup(String? name, String? description) async {
     final response = await dioClient
-        .post('/user-groups', data: {'name': null, 'description': null});
+        .post('/user-groups', data: {'name': name, 'description': description});
     if (response.statusCode != 201) {
       throw Exception(
           '[${response.statusCode}] Failed to create user group: ${response.statusMessage ?? 'Unknown error'}');
@@ -51,6 +53,23 @@ class UserGroupDefaultRepository extends UserGroupRepository {
       throw Exception(
           '[${response.statusCode}] Failed to remove user from user group: ${response.statusMessage ?? 'Unknown error'}');
     }
+    return UserGroup.fromJson(response.data);
+  }
+
+  @override
+  Future<UserGroup> updateName(String userGroupId, String name) async {
+    final response = await dioClient.patch('/user-groups/$userGroupId', data: {
+      'name': name,
+    });
+    return UserGroup.fromJson(response.data);
+  }
+
+  @override
+  Future<UserGroup> updateDescription(
+      String userGroupId, String description) async {
+    final response = await dioClient.patch('/user-groups/$userGroupId', data: {
+      'description': description,
+    });
     return UserGroup.fromJson(response.data);
   }
 }

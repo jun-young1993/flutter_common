@@ -8,13 +8,15 @@ part 'user_group.g.dart';
 class UserGroup with _$UserGroup {
   const factory UserGroup({
     required String id,
-    required String name,
-    required String description,
+    @Default(null) String? name,
+    @Default(null) String? description,
     required bool isActive,
     required bool isSystem,
     required String createdAt,
     required String updatedAt,
-    required List<User> users,
+    @Default([]) List<User>? users,
+    @Default(null) String? number,
+    required bool isJoinable,
   }) = _UserGroup;
 
   const UserGroup._();

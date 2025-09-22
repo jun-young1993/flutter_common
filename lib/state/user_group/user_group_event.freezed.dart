@@ -19,31 +19,37 @@ mixin _$UserGroupEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialize,
-    required TResult Function() create,
+    required TResult Function(String? name, String? description) create,
     required TResult Function() clearError,
     required TResult Function() findAll,
     required TResult Function() addUser,
     required TResult Function() removeUser,
+    required TResult Function(String name) updateName,
+    required TResult Function(String description) updateDescription,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialize,
-    TResult? Function()? create,
+    TResult? Function(String? name, String? description)? create,
     TResult? Function()? clearError,
     TResult? Function()? findAll,
     TResult? Function()? addUser,
     TResult? Function()? removeUser,
+    TResult? Function(String name)? updateName,
+    TResult? Function(String description)? updateDescription,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialize,
-    TResult Function()? create,
+    TResult Function(String? name, String? description)? create,
     TResult Function()? clearError,
     TResult Function()? findAll,
     TResult Function()? addUser,
     TResult Function()? removeUser,
+    TResult Function(String name)? updateName,
+    TResult Function(String description)? updateDescription,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -55,6 +61,8 @@ mixin _$UserGroupEvent {
     required TResult Function(_FindAll value) findAll,
     required TResult Function(_AddUser value) addUser,
     required TResult Function(_RemoveUser value) removeUser,
+    required TResult Function(_UpdateName value) updateName,
+    required TResult Function(_UpdateDescription value) updateDescription,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,6 +73,8 @@ mixin _$UserGroupEvent {
     TResult? Function(_FindAll value)? findAll,
     TResult? Function(_AddUser value)? addUser,
     TResult? Function(_RemoveUser value)? removeUser,
+    TResult? Function(_UpdateName value)? updateName,
+    TResult? Function(_UpdateDescription value)? updateDescription,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -75,6 +85,8 @@ mixin _$UserGroupEvent {
     TResult Function(_FindAll value)? findAll,
     TResult Function(_AddUser value)? addUser,
     TResult Function(_RemoveUser value)? removeUser,
+    TResult Function(_UpdateName value)? updateName,
+    TResult Function(_UpdateDescription value)? updateDescription,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -143,11 +155,13 @@ class _$InitializeImpl implements _Initialize {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialize,
-    required TResult Function() create,
+    required TResult Function(String? name, String? description) create,
     required TResult Function() clearError,
     required TResult Function() findAll,
     required TResult Function() addUser,
     required TResult Function() removeUser,
+    required TResult Function(String name) updateName,
+    required TResult Function(String description) updateDescription,
   }) {
     return initialize();
   }
@@ -156,11 +170,13 @@ class _$InitializeImpl implements _Initialize {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialize,
-    TResult? Function()? create,
+    TResult? Function(String? name, String? description)? create,
     TResult? Function()? clearError,
     TResult? Function()? findAll,
     TResult? Function()? addUser,
     TResult? Function()? removeUser,
+    TResult? Function(String name)? updateName,
+    TResult? Function(String description)? updateDescription,
   }) {
     return initialize?.call();
   }
@@ -169,11 +185,13 @@ class _$InitializeImpl implements _Initialize {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialize,
-    TResult Function()? create,
+    TResult Function(String? name, String? description)? create,
     TResult Function()? clearError,
     TResult Function()? findAll,
     TResult Function()? addUser,
     TResult Function()? removeUser,
+    TResult Function(String name)? updateName,
+    TResult Function(String description)? updateDescription,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -191,6 +209,8 @@ class _$InitializeImpl implements _Initialize {
     required TResult Function(_FindAll value) findAll,
     required TResult Function(_AddUser value) addUser,
     required TResult Function(_RemoveUser value) removeUser,
+    required TResult Function(_UpdateName value) updateName,
+    required TResult Function(_UpdateDescription value) updateDescription,
   }) {
     return initialize(this);
   }
@@ -204,6 +224,8 @@ class _$InitializeImpl implements _Initialize {
     TResult? Function(_FindAll value)? findAll,
     TResult? Function(_AddUser value)? addUser,
     TResult? Function(_RemoveUser value)? removeUser,
+    TResult? Function(_UpdateName value)? updateName,
+    TResult? Function(_UpdateDescription value)? updateDescription,
   }) {
     return initialize?.call(this);
   }
@@ -217,6 +239,8 @@ class _$InitializeImpl implements _Initialize {
     TResult Function(_FindAll value)? findAll,
     TResult Function(_AddUser value)? addUser,
     TResult Function(_RemoveUser value)? removeUser,
+    TResult Function(_UpdateName value)? updateName,
+    TResult Function(_UpdateDescription value)? updateDescription,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -235,6 +259,8 @@ abstract class _$$CreateImplCopyWith<$Res> {
   factory _$$CreateImplCopyWith(
           _$CreateImpl value, $Res Function(_$CreateImpl) then) =
       __$$CreateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String? name, String? description});
 }
 
 /// @nodoc
@@ -247,66 +273,106 @@ class __$$CreateImplCopyWithImpl<$Res>
 
   /// Create a copy of UserGroupEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = freezed,
+    Object? description = freezed,
+  }) {
+    return _then(_$CreateImpl(
+      freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$CreateImpl implements _Create {
-  const _$CreateImpl();
+  const _$CreateImpl(this.name, this.description);
+
+  @override
+  final String? name;
+  @override
+  final String? description;
 
   @override
   String toString() {
-    return 'UserGroupEvent.create()';
+    return 'UserGroupEvent.create(name: $name, description: $description)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$CreateImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$CreateImpl &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.description, description) ||
+                other.description == description));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, name, description);
+
+  /// Create a copy of UserGroupEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CreateImplCopyWith<_$CreateImpl> get copyWith =>
+      __$$CreateImplCopyWithImpl<_$CreateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialize,
-    required TResult Function() create,
+    required TResult Function(String? name, String? description) create,
     required TResult Function() clearError,
     required TResult Function() findAll,
     required TResult Function() addUser,
     required TResult Function() removeUser,
+    required TResult Function(String name) updateName,
+    required TResult Function(String description) updateDescription,
   }) {
-    return create();
+    return create(name, description);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialize,
-    TResult? Function()? create,
+    TResult? Function(String? name, String? description)? create,
     TResult? Function()? clearError,
     TResult? Function()? findAll,
     TResult? Function()? addUser,
     TResult? Function()? removeUser,
+    TResult? Function(String name)? updateName,
+    TResult? Function(String description)? updateDescription,
   }) {
-    return create?.call();
+    return create?.call(name, description);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialize,
-    TResult Function()? create,
+    TResult Function(String? name, String? description)? create,
     TResult Function()? clearError,
     TResult Function()? findAll,
     TResult Function()? addUser,
     TResult Function()? removeUser,
+    TResult Function(String name)? updateName,
+    TResult Function(String description)? updateDescription,
     required TResult orElse(),
   }) {
     if (create != null) {
-      return create();
+      return create(name, description);
     }
     return orElse();
   }
@@ -320,6 +386,8 @@ class _$CreateImpl implements _Create {
     required TResult Function(_FindAll value) findAll,
     required TResult Function(_AddUser value) addUser,
     required TResult Function(_RemoveUser value) removeUser,
+    required TResult Function(_UpdateName value) updateName,
+    required TResult Function(_UpdateDescription value) updateDescription,
   }) {
     return create(this);
   }
@@ -333,6 +401,8 @@ class _$CreateImpl implements _Create {
     TResult? Function(_FindAll value)? findAll,
     TResult? Function(_AddUser value)? addUser,
     TResult? Function(_RemoveUser value)? removeUser,
+    TResult? Function(_UpdateName value)? updateName,
+    TResult? Function(_UpdateDescription value)? updateDescription,
   }) {
     return create?.call(this);
   }
@@ -346,6 +416,8 @@ class _$CreateImpl implements _Create {
     TResult Function(_FindAll value)? findAll,
     TResult Function(_AddUser value)? addUser,
     TResult Function(_RemoveUser value)? removeUser,
+    TResult Function(_UpdateName value)? updateName,
+    TResult Function(_UpdateDescription value)? updateDescription,
     required TResult orElse(),
   }) {
     if (create != null) {
@@ -356,7 +428,17 @@ class _$CreateImpl implements _Create {
 }
 
 abstract class _Create implements UserGroupEvent {
-  const factory _Create() = _$CreateImpl;
+  const factory _Create(final String? name, final String? description) =
+      _$CreateImpl;
+
+  String? get name;
+  String? get description;
+
+  /// Create a copy of UserGroupEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CreateImplCopyWith<_$CreateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -401,11 +483,13 @@ class _$ClearErrorImpl implements _ClearError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialize,
-    required TResult Function() create,
+    required TResult Function(String? name, String? description) create,
     required TResult Function() clearError,
     required TResult Function() findAll,
     required TResult Function() addUser,
     required TResult Function() removeUser,
+    required TResult Function(String name) updateName,
+    required TResult Function(String description) updateDescription,
   }) {
     return clearError();
   }
@@ -414,11 +498,13 @@ class _$ClearErrorImpl implements _ClearError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialize,
-    TResult? Function()? create,
+    TResult? Function(String? name, String? description)? create,
     TResult? Function()? clearError,
     TResult? Function()? findAll,
     TResult? Function()? addUser,
     TResult? Function()? removeUser,
+    TResult? Function(String name)? updateName,
+    TResult? Function(String description)? updateDescription,
   }) {
     return clearError?.call();
   }
@@ -427,11 +513,13 @@ class _$ClearErrorImpl implements _ClearError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialize,
-    TResult Function()? create,
+    TResult Function(String? name, String? description)? create,
     TResult Function()? clearError,
     TResult Function()? findAll,
     TResult Function()? addUser,
     TResult Function()? removeUser,
+    TResult Function(String name)? updateName,
+    TResult Function(String description)? updateDescription,
     required TResult orElse(),
   }) {
     if (clearError != null) {
@@ -449,6 +537,8 @@ class _$ClearErrorImpl implements _ClearError {
     required TResult Function(_FindAll value) findAll,
     required TResult Function(_AddUser value) addUser,
     required TResult Function(_RemoveUser value) removeUser,
+    required TResult Function(_UpdateName value) updateName,
+    required TResult Function(_UpdateDescription value) updateDescription,
   }) {
     return clearError(this);
   }
@@ -462,6 +552,8 @@ class _$ClearErrorImpl implements _ClearError {
     TResult? Function(_FindAll value)? findAll,
     TResult? Function(_AddUser value)? addUser,
     TResult? Function(_RemoveUser value)? removeUser,
+    TResult? Function(_UpdateName value)? updateName,
+    TResult? Function(_UpdateDescription value)? updateDescription,
   }) {
     return clearError?.call(this);
   }
@@ -475,6 +567,8 @@ class _$ClearErrorImpl implements _ClearError {
     TResult Function(_FindAll value)? findAll,
     TResult Function(_AddUser value)? addUser,
     TResult Function(_RemoveUser value)? removeUser,
+    TResult Function(_UpdateName value)? updateName,
+    TResult Function(_UpdateDescription value)? updateDescription,
     required TResult orElse(),
   }) {
     if (clearError != null) {
@@ -530,11 +624,13 @@ class _$FindAllImpl implements _FindAll {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialize,
-    required TResult Function() create,
+    required TResult Function(String? name, String? description) create,
     required TResult Function() clearError,
     required TResult Function() findAll,
     required TResult Function() addUser,
     required TResult Function() removeUser,
+    required TResult Function(String name) updateName,
+    required TResult Function(String description) updateDescription,
   }) {
     return findAll();
   }
@@ -543,11 +639,13 @@ class _$FindAllImpl implements _FindAll {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialize,
-    TResult? Function()? create,
+    TResult? Function(String? name, String? description)? create,
     TResult? Function()? clearError,
     TResult? Function()? findAll,
     TResult? Function()? addUser,
     TResult? Function()? removeUser,
+    TResult? Function(String name)? updateName,
+    TResult? Function(String description)? updateDescription,
   }) {
     return findAll?.call();
   }
@@ -556,11 +654,13 @@ class _$FindAllImpl implements _FindAll {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialize,
-    TResult Function()? create,
+    TResult Function(String? name, String? description)? create,
     TResult Function()? clearError,
     TResult Function()? findAll,
     TResult Function()? addUser,
     TResult Function()? removeUser,
+    TResult Function(String name)? updateName,
+    TResult Function(String description)? updateDescription,
     required TResult orElse(),
   }) {
     if (findAll != null) {
@@ -578,6 +678,8 @@ class _$FindAllImpl implements _FindAll {
     required TResult Function(_FindAll value) findAll,
     required TResult Function(_AddUser value) addUser,
     required TResult Function(_RemoveUser value) removeUser,
+    required TResult Function(_UpdateName value) updateName,
+    required TResult Function(_UpdateDescription value) updateDescription,
   }) {
     return findAll(this);
   }
@@ -591,6 +693,8 @@ class _$FindAllImpl implements _FindAll {
     TResult? Function(_FindAll value)? findAll,
     TResult? Function(_AddUser value)? addUser,
     TResult? Function(_RemoveUser value)? removeUser,
+    TResult? Function(_UpdateName value)? updateName,
+    TResult? Function(_UpdateDescription value)? updateDescription,
   }) {
     return findAll?.call(this);
   }
@@ -604,6 +708,8 @@ class _$FindAllImpl implements _FindAll {
     TResult Function(_FindAll value)? findAll,
     TResult Function(_AddUser value)? addUser,
     TResult Function(_RemoveUser value)? removeUser,
+    TResult Function(_UpdateName value)? updateName,
+    TResult Function(_UpdateDescription value)? updateDescription,
     required TResult orElse(),
   }) {
     if (findAll != null) {
@@ -659,11 +765,13 @@ class _$AddUserImpl implements _AddUser {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialize,
-    required TResult Function() create,
+    required TResult Function(String? name, String? description) create,
     required TResult Function() clearError,
     required TResult Function() findAll,
     required TResult Function() addUser,
     required TResult Function() removeUser,
+    required TResult Function(String name) updateName,
+    required TResult Function(String description) updateDescription,
   }) {
     return addUser();
   }
@@ -672,11 +780,13 @@ class _$AddUserImpl implements _AddUser {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialize,
-    TResult? Function()? create,
+    TResult? Function(String? name, String? description)? create,
     TResult? Function()? clearError,
     TResult? Function()? findAll,
     TResult? Function()? addUser,
     TResult? Function()? removeUser,
+    TResult? Function(String name)? updateName,
+    TResult? Function(String description)? updateDescription,
   }) {
     return addUser?.call();
   }
@@ -685,11 +795,13 @@ class _$AddUserImpl implements _AddUser {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialize,
-    TResult Function()? create,
+    TResult Function(String? name, String? description)? create,
     TResult Function()? clearError,
     TResult Function()? findAll,
     TResult Function()? addUser,
     TResult Function()? removeUser,
+    TResult Function(String name)? updateName,
+    TResult Function(String description)? updateDescription,
     required TResult orElse(),
   }) {
     if (addUser != null) {
@@ -707,6 +819,8 @@ class _$AddUserImpl implements _AddUser {
     required TResult Function(_FindAll value) findAll,
     required TResult Function(_AddUser value) addUser,
     required TResult Function(_RemoveUser value) removeUser,
+    required TResult Function(_UpdateName value) updateName,
+    required TResult Function(_UpdateDescription value) updateDescription,
   }) {
     return addUser(this);
   }
@@ -720,6 +834,8 @@ class _$AddUserImpl implements _AddUser {
     TResult? Function(_FindAll value)? findAll,
     TResult? Function(_AddUser value)? addUser,
     TResult? Function(_RemoveUser value)? removeUser,
+    TResult? Function(_UpdateName value)? updateName,
+    TResult? Function(_UpdateDescription value)? updateDescription,
   }) {
     return addUser?.call(this);
   }
@@ -733,6 +849,8 @@ class _$AddUserImpl implements _AddUser {
     TResult Function(_FindAll value)? findAll,
     TResult Function(_AddUser value)? addUser,
     TResult Function(_RemoveUser value)? removeUser,
+    TResult Function(_UpdateName value)? updateName,
+    TResult Function(_UpdateDescription value)? updateDescription,
     required TResult orElse(),
   }) {
     if (addUser != null) {
@@ -788,11 +906,13 @@ class _$RemoveUserImpl implements _RemoveUser {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialize,
-    required TResult Function() create,
+    required TResult Function(String? name, String? description) create,
     required TResult Function() clearError,
     required TResult Function() findAll,
     required TResult Function() addUser,
     required TResult Function() removeUser,
+    required TResult Function(String name) updateName,
+    required TResult Function(String description) updateDescription,
   }) {
     return removeUser();
   }
@@ -801,11 +921,13 @@ class _$RemoveUserImpl implements _RemoveUser {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialize,
-    TResult? Function()? create,
+    TResult? Function(String? name, String? description)? create,
     TResult? Function()? clearError,
     TResult? Function()? findAll,
     TResult? Function()? addUser,
     TResult? Function()? removeUser,
+    TResult? Function(String name)? updateName,
+    TResult? Function(String description)? updateDescription,
   }) {
     return removeUser?.call();
   }
@@ -814,11 +936,13 @@ class _$RemoveUserImpl implements _RemoveUser {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialize,
-    TResult Function()? create,
+    TResult Function(String? name, String? description)? create,
     TResult Function()? clearError,
     TResult Function()? findAll,
     TResult Function()? addUser,
     TResult Function()? removeUser,
+    TResult Function(String name)? updateName,
+    TResult Function(String description)? updateDescription,
     required TResult orElse(),
   }) {
     if (removeUser != null) {
@@ -836,6 +960,8 @@ class _$RemoveUserImpl implements _RemoveUser {
     required TResult Function(_FindAll value) findAll,
     required TResult Function(_AddUser value) addUser,
     required TResult Function(_RemoveUser value) removeUser,
+    required TResult Function(_UpdateName value) updateName,
+    required TResult Function(_UpdateDescription value) updateDescription,
   }) {
     return removeUser(this);
   }
@@ -849,6 +975,8 @@ class _$RemoveUserImpl implements _RemoveUser {
     TResult? Function(_FindAll value)? findAll,
     TResult? Function(_AddUser value)? addUser,
     TResult? Function(_RemoveUser value)? removeUser,
+    TResult? Function(_UpdateName value)? updateName,
+    TResult? Function(_UpdateDescription value)? updateDescription,
   }) {
     return removeUser?.call(this);
   }
@@ -862,6 +990,8 @@ class _$RemoveUserImpl implements _RemoveUser {
     TResult Function(_FindAll value)? findAll,
     TResult Function(_AddUser value)? addUser,
     TResult Function(_RemoveUser value)? removeUser,
+    TResult Function(_UpdateName value)? updateName,
+    TResult Function(_UpdateDescription value)? updateDescription,
     required TResult orElse(),
   }) {
     if (removeUser != null) {
@@ -873,4 +1003,359 @@ class _$RemoveUserImpl implements _RemoveUser {
 
 abstract class _RemoveUser implements UserGroupEvent {
   const factory _RemoveUser() = _$RemoveUserImpl;
+}
+
+/// @nodoc
+abstract class _$$UpdateNameImplCopyWith<$Res> {
+  factory _$$UpdateNameImplCopyWith(
+          _$UpdateNameImpl value, $Res Function(_$UpdateNameImpl) then) =
+      __$$UpdateNameImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String name});
+}
+
+/// @nodoc
+class __$$UpdateNameImplCopyWithImpl<$Res>
+    extends _$UserGroupEventCopyWithImpl<$Res, _$UpdateNameImpl>
+    implements _$$UpdateNameImplCopyWith<$Res> {
+  __$$UpdateNameImplCopyWithImpl(
+      _$UpdateNameImpl _value, $Res Function(_$UpdateNameImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of UserGroupEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+  }) {
+    return _then(_$UpdateNameImpl(
+      null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateNameImpl implements _UpdateName {
+  const _$UpdateNameImpl(this.name);
+
+  @override
+  final String name;
+
+  @override
+  String toString() {
+    return 'UserGroupEvent.updateName(name: $name)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateNameImpl &&
+            (identical(other.name, name) || other.name == name));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, name);
+
+  /// Create a copy of UserGroupEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateNameImplCopyWith<_$UpdateNameImpl> get copyWith =>
+      __$$UpdateNameImplCopyWithImpl<_$UpdateNameImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialize,
+    required TResult Function(String? name, String? description) create,
+    required TResult Function() clearError,
+    required TResult Function() findAll,
+    required TResult Function() addUser,
+    required TResult Function() removeUser,
+    required TResult Function(String name) updateName,
+    required TResult Function(String description) updateDescription,
+  }) {
+    return updateName(name);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialize,
+    TResult? Function(String? name, String? description)? create,
+    TResult? Function()? clearError,
+    TResult? Function()? findAll,
+    TResult? Function()? addUser,
+    TResult? Function()? removeUser,
+    TResult? Function(String name)? updateName,
+    TResult? Function(String description)? updateDescription,
+  }) {
+    return updateName?.call(name);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialize,
+    TResult Function(String? name, String? description)? create,
+    TResult Function()? clearError,
+    TResult Function()? findAll,
+    TResult Function()? addUser,
+    TResult Function()? removeUser,
+    TResult Function(String name)? updateName,
+    TResult Function(String description)? updateDescription,
+    required TResult orElse(),
+  }) {
+    if (updateName != null) {
+      return updateName(name);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_Create value) create,
+    required TResult Function(_ClearError value) clearError,
+    required TResult Function(_FindAll value) findAll,
+    required TResult Function(_AddUser value) addUser,
+    required TResult Function(_RemoveUser value) removeUser,
+    required TResult Function(_UpdateName value) updateName,
+    required TResult Function(_UpdateDescription value) updateDescription,
+  }) {
+    return updateName(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialize value)? initialize,
+    TResult? Function(_Create value)? create,
+    TResult? Function(_ClearError value)? clearError,
+    TResult? Function(_FindAll value)? findAll,
+    TResult? Function(_AddUser value)? addUser,
+    TResult? Function(_RemoveUser value)? removeUser,
+    TResult? Function(_UpdateName value)? updateName,
+    TResult? Function(_UpdateDescription value)? updateDescription,
+  }) {
+    return updateName?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_Create value)? create,
+    TResult Function(_ClearError value)? clearError,
+    TResult Function(_FindAll value)? findAll,
+    TResult Function(_AddUser value)? addUser,
+    TResult Function(_RemoveUser value)? removeUser,
+    TResult Function(_UpdateName value)? updateName,
+    TResult Function(_UpdateDescription value)? updateDescription,
+    required TResult orElse(),
+  }) {
+    if (updateName != null) {
+      return updateName(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateName implements UserGroupEvent {
+  const factory _UpdateName(final String name) = _$UpdateNameImpl;
+
+  String get name;
+
+  /// Create a copy of UserGroupEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UpdateNameImplCopyWith<_$UpdateNameImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateDescriptionImplCopyWith<$Res> {
+  factory _$$UpdateDescriptionImplCopyWith(_$UpdateDescriptionImpl value,
+          $Res Function(_$UpdateDescriptionImpl) then) =
+      __$$UpdateDescriptionImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String description});
+}
+
+/// @nodoc
+class __$$UpdateDescriptionImplCopyWithImpl<$Res>
+    extends _$UserGroupEventCopyWithImpl<$Res, _$UpdateDescriptionImpl>
+    implements _$$UpdateDescriptionImplCopyWith<$Res> {
+  __$$UpdateDescriptionImplCopyWithImpl(_$UpdateDescriptionImpl _value,
+      $Res Function(_$UpdateDescriptionImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of UserGroupEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? description = null,
+  }) {
+    return _then(_$UpdateDescriptionImpl(
+      null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateDescriptionImpl implements _UpdateDescription {
+  const _$UpdateDescriptionImpl(this.description);
+
+  @override
+  final String description;
+
+  @override
+  String toString() {
+    return 'UserGroupEvent.updateDescription(description: $description)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateDescriptionImpl &&
+            (identical(other.description, description) ||
+                other.description == description));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, description);
+
+  /// Create a copy of UserGroupEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateDescriptionImplCopyWith<_$UpdateDescriptionImpl> get copyWith =>
+      __$$UpdateDescriptionImplCopyWithImpl<_$UpdateDescriptionImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialize,
+    required TResult Function(String? name, String? description) create,
+    required TResult Function() clearError,
+    required TResult Function() findAll,
+    required TResult Function() addUser,
+    required TResult Function() removeUser,
+    required TResult Function(String name) updateName,
+    required TResult Function(String description) updateDescription,
+  }) {
+    return updateDescription(description);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialize,
+    TResult? Function(String? name, String? description)? create,
+    TResult? Function()? clearError,
+    TResult? Function()? findAll,
+    TResult? Function()? addUser,
+    TResult? Function()? removeUser,
+    TResult? Function(String name)? updateName,
+    TResult? Function(String description)? updateDescription,
+  }) {
+    return updateDescription?.call(description);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialize,
+    TResult Function(String? name, String? description)? create,
+    TResult Function()? clearError,
+    TResult Function()? findAll,
+    TResult Function()? addUser,
+    TResult Function()? removeUser,
+    TResult Function(String name)? updateName,
+    TResult Function(String description)? updateDescription,
+    required TResult orElse(),
+  }) {
+    if (updateDescription != null) {
+      return updateDescription(description);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_Create value) create,
+    required TResult Function(_ClearError value) clearError,
+    required TResult Function(_FindAll value) findAll,
+    required TResult Function(_AddUser value) addUser,
+    required TResult Function(_RemoveUser value) removeUser,
+    required TResult Function(_UpdateName value) updateName,
+    required TResult Function(_UpdateDescription value) updateDescription,
+  }) {
+    return updateDescription(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialize value)? initialize,
+    TResult? Function(_Create value)? create,
+    TResult? Function(_ClearError value)? clearError,
+    TResult? Function(_FindAll value)? findAll,
+    TResult? Function(_AddUser value)? addUser,
+    TResult? Function(_RemoveUser value)? removeUser,
+    TResult? Function(_UpdateName value)? updateName,
+    TResult? Function(_UpdateDescription value)? updateDescription,
+  }) {
+    return updateDescription?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_Create value)? create,
+    TResult Function(_ClearError value)? clearError,
+    TResult Function(_FindAll value)? findAll,
+    TResult Function(_AddUser value)? addUser,
+    TResult Function(_RemoveUser value)? removeUser,
+    TResult Function(_UpdateName value)? updateName,
+    TResult Function(_UpdateDescription value)? updateDescription,
+    required TResult orElse(),
+  }) {
+    if (updateDescription != null) {
+      return updateDescription(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateDescription implements UserGroupEvent {
+  const factory _UpdateDescription(final String description) =
+      _$UpdateDescriptionImpl;
+
+  String get description;
+
+  /// Create a copy of UserGroupEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UpdateDescriptionImplCopyWith<_$UpdateDescriptionImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

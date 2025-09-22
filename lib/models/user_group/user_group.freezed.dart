@@ -21,13 +21,15 @@ UserGroup _$UserGroupFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$UserGroup {
   String get id => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String get description => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
   bool get isActive => throw _privateConstructorUsedError;
   bool get isSystem => throw _privateConstructorUsedError;
   String get createdAt => throw _privateConstructorUsedError;
   String get updatedAt => throw _privateConstructorUsedError;
-  List<User> get users => throw _privateConstructorUsedError;
+  List<User>? get users => throw _privateConstructorUsedError;
+  String? get number => throw _privateConstructorUsedError;
+  bool get isJoinable => throw _privateConstructorUsedError;
 
   /// Serializes this UserGroup to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -46,13 +48,15 @@ abstract class $UserGroupCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      String name,
-      String description,
+      String? name,
+      String? description,
       bool isActive,
       bool isSystem,
       String createdAt,
       String updatedAt,
-      List<User> users});
+      List<User>? users,
+      String? number,
+      bool isJoinable});
 }
 
 /// @nodoc
@@ -71,27 +75,29 @@ class _$UserGroupCopyWithImpl<$Res, $Val extends UserGroup>
   @override
   $Res call({
     Object? id = null,
-    Object? name = null,
-    Object? description = null,
+    Object? name = freezed,
+    Object? description = freezed,
     Object? isActive = null,
     Object? isSystem = null,
     Object? createdAt = null,
     Object? updatedAt = null,
-    Object? users = null,
+    Object? users = freezed,
+    Object? number = freezed,
+    Object? isJoinable = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      name: null == name
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: null == description
+              as String?,
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       isActive: null == isActive
           ? _value.isActive
           : isActive // ignore: cast_nullable_to_non_nullable
@@ -108,10 +114,18 @@ class _$UserGroupCopyWithImpl<$Res, $Val extends UserGroup>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as String,
-      users: null == users
+      users: freezed == users
           ? _value.users
           : users // ignore: cast_nullable_to_non_nullable
-              as List<User>,
+              as List<User>?,
+      number: freezed == number
+          ? _value.number
+          : number // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isJoinable: null == isJoinable
+          ? _value.isJoinable
+          : isJoinable // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -126,13 +140,15 @@ abstract class _$$UserGroupImplCopyWith<$Res>
   @useResult
   $Res call(
       {String id,
-      String name,
-      String description,
+      String? name,
+      String? description,
       bool isActive,
       bool isSystem,
       String createdAt,
       String updatedAt,
-      List<User> users});
+      List<User>? users,
+      String? number,
+      bool isJoinable});
 }
 
 /// @nodoc
@@ -149,27 +165,29 @@ class __$$UserGroupImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? name = null,
-    Object? description = null,
+    Object? name = freezed,
+    Object? description = freezed,
     Object? isActive = null,
     Object? isSystem = null,
     Object? createdAt = null,
     Object? updatedAt = null,
-    Object? users = null,
+    Object? users = freezed,
+    Object? number = freezed,
+    Object? isJoinable = null,
   }) {
     return _then(_$UserGroupImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      name: null == name
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: null == description
+              as String?,
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       isActive: null == isActive
           ? _value.isActive
           : isActive // ignore: cast_nullable_to_non_nullable
@@ -186,10 +204,18 @@ class __$$UserGroupImplCopyWithImpl<$Res>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as String,
-      users: null == users
+      users: freezed == users
           ? _value._users
           : users // ignore: cast_nullable_to_non_nullable
-              as List<User>,
+              as List<User>?,
+      number: freezed == number
+          ? _value.number
+          : number // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isJoinable: null == isJoinable
+          ? _value.isJoinable
+          : isJoinable // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -199,13 +225,15 @@ class __$$UserGroupImplCopyWithImpl<$Res>
 class _$UserGroupImpl extends _UserGroup {
   const _$UserGroupImpl(
       {required this.id,
-      required this.name,
-      required this.description,
+      this.name = null,
+      this.description = null,
       required this.isActive,
       required this.isSystem,
       required this.createdAt,
       required this.updatedAt,
-      required final List<User> users})
+      final List<User>? users = const [],
+      this.number = null,
+      required this.isJoinable})
       : _users = users,
         super._();
 
@@ -215,9 +243,11 @@ class _$UserGroupImpl extends _UserGroup {
   @override
   final String id;
   @override
-  final String name;
+  @JsonKey()
+  final String? name;
   @override
-  final String description;
+  @JsonKey()
+  final String? description;
   @override
   final bool isActive;
   @override
@@ -226,17 +256,26 @@ class _$UserGroupImpl extends _UserGroup {
   final String createdAt;
   @override
   final String updatedAt;
-  final List<User> _users;
+  final List<User>? _users;
   @override
-  List<User> get users {
+  @JsonKey()
+  List<User>? get users {
+    final value = _users;
+    if (value == null) return null;
     if (_users is EqualUnmodifiableListView) return _users;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_users);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
+  @JsonKey()
+  final String? number;
+  @override
+  final bool isJoinable;
+
+  @override
   String toString() {
-    return 'UserGroup(id: $id, name: $name, description: $description, isActive: $isActive, isSystem: $isSystem, createdAt: $createdAt, updatedAt: $updatedAt, users: $users)';
+    return 'UserGroup(id: $id, name: $name, description: $description, isActive: $isActive, isSystem: $isSystem, createdAt: $createdAt, updatedAt: $updatedAt, users: $users, number: $number, isJoinable: $isJoinable)';
   }
 
   @override
@@ -256,7 +295,10 @@ class _$UserGroupImpl extends _UserGroup {
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
                 other.updatedAt == updatedAt) &&
-            const DeepCollectionEquality().equals(other._users, _users));
+            const DeepCollectionEquality().equals(other._users, _users) &&
+            (identical(other.number, number) || other.number == number) &&
+            (identical(other.isJoinable, isJoinable) ||
+                other.isJoinable == isJoinable));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -270,7 +312,9 @@ class _$UserGroupImpl extends _UserGroup {
       isSystem,
       createdAt,
       updatedAt,
-      const DeepCollectionEquality().hash(_users));
+      const DeepCollectionEquality().hash(_users),
+      number,
+      isJoinable);
 
   /// Create a copy of UserGroup
   /// with the given fields replaced by the non-null parameter values.
@@ -291,13 +335,15 @@ class _$UserGroupImpl extends _UserGroup {
 abstract class _UserGroup extends UserGroup {
   const factory _UserGroup(
       {required final String id,
-      required final String name,
-      required final String description,
+      final String? name,
+      final String? description,
       required final bool isActive,
       required final bool isSystem,
       required final String createdAt,
       required final String updatedAt,
-      required final List<User> users}) = _$UserGroupImpl;
+      final List<User>? users,
+      final String? number,
+      required final bool isJoinable}) = _$UserGroupImpl;
   const _UserGroup._() : super._();
 
   factory _UserGroup.fromJson(Map<String, dynamic> json) =
@@ -306,9 +352,9 @@ abstract class _UserGroup extends UserGroup {
   @override
   String get id;
   @override
-  String get name;
+  String? get name;
   @override
-  String get description;
+  String? get description;
   @override
   bool get isActive;
   @override
@@ -318,7 +364,11 @@ abstract class _UserGroup extends UserGroup {
   @override
   String get updatedAt;
   @override
-  List<User> get users;
+  List<User>? get users;
+  @override
+  String? get number;
+  @override
+  bool get isJoinable;
 
   /// Create a copy of UserGroup
   /// with the given fields replaced by the non-null parameter values.

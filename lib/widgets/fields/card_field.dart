@@ -9,6 +9,7 @@ class CardField extends StatelessWidget {
   final Widget? suffix;
   final String? hintText;
   final bool isLoading;
+  final bool? hiddenLabel;
 
   const CardField({
     super.key,
@@ -19,6 +20,7 @@ class CardField extends StatelessWidget {
     this.suffix,
     this.hintText,
     this.isLoading = false,
+    this.hiddenLabel = false,
   });
 
   @override
@@ -30,35 +32,37 @@ class CardField extends StatelessWidget {
           border: Border.all(color: Colors.grey.shade200),
         ),
         child: Column(children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
-              children: [
-                // 라벨
-                Expanded(
-                  flex: 2,
-                  child: Text(
-                    label,
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.w600,
-                          color: Colors.grey[700],
-                        ),
+          if (hiddenLabel == false) ...[
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                children: [
+                  // 라벨
+                  Expanded(
+                    flex: 2,
+                    child: Text(
+                      label,
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                            fontWeight: FontWeight.w600,
+                            color: Colors.grey[700],
+                          ),
+                    ),
                   ),
-                ),
-                const SizedBox(width: 16),
-                // 값
-                Expanded(
-                  flex: 3,
-                  child: _buildValue(context),
-                ),
-                // 편집 버튼 또는 서픽스
-                if (isEditable || suffix != null) ...[
-                  const SizedBox(width: 12),
-                  _buildSuffix(context),
+                  const SizedBox(width: 16),
+                  // 값
+                  Expanded(
+                    flex: 3,
+                    child: _buildValue(context),
+                  ),
+                  // 편집 버튼 또는 서픽스
+                  if (isEditable || suffix != null) ...[
+                    const SizedBox(width: 12),
+                    _buildSuffix(context),
+                  ],
                 ],
-              ],
-            ),
-          ),
+              ),
+            )
+          ],
         ]));
   }
 
@@ -197,7 +201,7 @@ class EditableCardField extends StatelessWidget {
 
 // 실제 입력 필드
 class InputCardField extends StatefulWidget {
-  final String label;
+  final String? label;
   final String? initialValue;
   final String? hintText;
   final TextEditingController? controller;
@@ -215,10 +219,11 @@ class InputCardField extends StatefulWidget {
   final FocusNode? focusNode;
   final TextInputAction? textInputAction;
   final bool? initialShowEditableWidget;
+  final bool? hiddenLabel;
 
   const InputCardField({
     super.key,
-    required this.label,
+    this.label,
     this.initialValue,
     this.hintText,
     this.controller,
@@ -236,6 +241,7 @@ class InputCardField extends StatefulWidget {
     this.focusNode,
     this.textInputAction,
     this.initialShowEditableWidget,
+    this.hiddenLabel = false,
   });
 
   @override
@@ -255,7 +261,7 @@ class _InputCardFieldState extends State<InputCardField> {
   Widget build(BuildContext context) {
     if (showEditableWidget) {
       return EditableCardField(
-        label: widget.label,
+        label: widget.label ?? '',
         value: widget.initialValue ?? '',
         onEdit: () {
           setState(() {
@@ -278,17 +284,20 @@ class _InputCardFieldState extends State<InputCardField> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // 라벨
-          Padding(
-            padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
-            child: Text(
-              widget.label,
-              style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.w600,
-                    color: widget.enabled ? Colors.grey[700] : Colors.grey[500],
-                  ),
+          if (widget.hiddenLabel == false) ...[
+            // 라벨
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+              child: Text(
+                widget.label ?? '',
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.w600,
+                      color:
+                          widget.enabled ? Colors.grey[700] : Colors.grey[500],
+                    ),
+              ),
             ),
-          ),
+          ],
           // 입력 필드
           Padding(
             padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
@@ -342,6 +351,10 @@ class _InputCardFieldState extends State<InputCardField> {
                     setState(() {
                       showEditableWidget = true;
                     });
+                    if (widget.controller?.text != null) {
+                      widget.onSubmitted
+                          ?.call(widget.controller?.text as String);
+                    }
                   },
                   child: Container(
                     padding: const EdgeInsets.all(8),
