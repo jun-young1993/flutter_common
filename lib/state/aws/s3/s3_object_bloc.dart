@@ -30,6 +30,10 @@ class S3ObjectBloc extends Bloc<S3ObjectEvent, S3ObjectState> {
           emit(state.copyWith(isLoading: true));
           final s3Object = await s3ObjectRepository.findOneOrFail(e.id);
           emit(state.copyWith(s3Object: s3Object, isLoading: false));
+        }, count: (e) async {
+          emit(state.copyWith(isAllCountLoading: true));
+          final allCount = await s3ObjectRepository.count();
+          emit(state.copyWith(allCount: allCount, isAllCountLoading: false));
         });
       },
     );

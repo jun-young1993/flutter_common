@@ -21,6 +21,8 @@ mixin _$S3ObjectState {
   AppException? get error => throw _privateConstructorUsedError;
   List<S3Object> get s3Objects => throw _privateConstructorUsedError;
   S3Object? get s3Object => throw _privateConstructorUsedError;
+  int get allCount => throw _privateConstructorUsedError;
+  bool get isAllCountLoading => throw _privateConstructorUsedError;
 
   /// Create a copy of S3ObjectState
   /// with the given fields replaced by the non-null parameter values.
@@ -40,7 +42,9 @@ abstract class $S3ObjectStateCopyWith<$Res> {
       bool isUploading,
       AppException? error,
       List<S3Object> s3Objects,
-      S3Object? s3Object});
+      S3Object? s3Object,
+      int allCount,
+      bool isAllCountLoading});
 
   $AppExceptionCopyWith<$Res>? get error;
   $S3ObjectCopyWith<$Res>? get s3Object;
@@ -66,6 +70,8 @@ class _$S3ObjectStateCopyWithImpl<$Res, $Val extends S3ObjectState>
     Object? error = freezed,
     Object? s3Objects = null,
     Object? s3Object = freezed,
+    Object? allCount = null,
+    Object? isAllCountLoading = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -88,6 +94,14 @@ class _$S3ObjectStateCopyWithImpl<$Res, $Val extends S3ObjectState>
           ? _value.s3Object
           : s3Object // ignore: cast_nullable_to_non_nullable
               as S3Object?,
+      allCount: null == allCount
+          ? _value.allCount
+          : allCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      isAllCountLoading: null == isAllCountLoading
+          ? _value.isAllCountLoading
+          : isAllCountLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -133,7 +147,9 @@ abstract class _$$S3ObjectStateImplCopyWith<$Res>
       bool isUploading,
       AppException? error,
       List<S3Object> s3Objects,
-      S3Object? s3Object});
+      S3Object? s3Object,
+      int allCount,
+      bool isAllCountLoading});
 
   @override
   $AppExceptionCopyWith<$Res>? get error;
@@ -159,6 +175,8 @@ class __$$S3ObjectStateImplCopyWithImpl<$Res>
     Object? error = freezed,
     Object? s3Objects = null,
     Object? s3Object = freezed,
+    Object? allCount = null,
+    Object? isAllCountLoading = null,
   }) {
     return _then(_$S3ObjectStateImpl(
       isLoading: null == isLoading
@@ -181,6 +199,14 @@ class __$$S3ObjectStateImplCopyWithImpl<$Res>
           ? _value.s3Object
           : s3Object // ignore: cast_nullable_to_non_nullable
               as S3Object?,
+      allCount: null == allCount
+          ? _value.allCount
+          : allCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      isAllCountLoading: null == isAllCountLoading
+          ? _value.isAllCountLoading
+          : isAllCountLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -193,7 +219,9 @@ class _$S3ObjectStateImpl extends _S3ObjectState {
       this.isUploading = false,
       this.error = null,
       final List<S3Object> s3Objects = const [],
-      this.s3Object = null})
+      this.s3Object = null,
+      this.allCount = 0,
+      this.isAllCountLoading = false})
       : _s3Objects = s3Objects,
         super._();
 
@@ -218,10 +246,16 @@ class _$S3ObjectStateImpl extends _S3ObjectState {
   @override
   @JsonKey()
   final S3Object? s3Object;
+  @override
+  @JsonKey()
+  final int allCount;
+  @override
+  @JsonKey()
+  final bool isAllCountLoading;
 
   @override
   String toString() {
-    return 'S3ObjectState(isLoading: $isLoading, isUploading: $isUploading, error: $error, s3Objects: $s3Objects, s3Object: $s3Object)';
+    return 'S3ObjectState(isLoading: $isLoading, isUploading: $isUploading, error: $error, s3Objects: $s3Objects, s3Object: $s3Object, allCount: $allCount, isAllCountLoading: $isAllCountLoading)';
   }
 
   @override
@@ -237,12 +271,23 @@ class _$S3ObjectStateImpl extends _S3ObjectState {
             const DeepCollectionEquality()
                 .equals(other._s3Objects, _s3Objects) &&
             (identical(other.s3Object, s3Object) ||
-                other.s3Object == s3Object));
+                other.s3Object == s3Object) &&
+            (identical(other.allCount, allCount) ||
+                other.allCount == allCount) &&
+            (identical(other.isAllCountLoading, isAllCountLoading) ||
+                other.isAllCountLoading == isAllCountLoading));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, isUploading, error,
-      const DeepCollectionEquality().hash(_s3Objects), s3Object);
+  int get hashCode => Object.hash(
+      runtimeType,
+      isLoading,
+      isUploading,
+      error,
+      const DeepCollectionEquality().hash(_s3Objects),
+      s3Object,
+      allCount,
+      isAllCountLoading);
 
   /// Create a copy of S3ObjectState
   /// with the given fields replaced by the non-null parameter values.
@@ -259,7 +304,9 @@ abstract class _S3ObjectState extends S3ObjectState {
       final bool isUploading,
       final AppException? error,
       final List<S3Object> s3Objects,
-      final S3Object? s3Object}) = _$S3ObjectStateImpl;
+      final S3Object? s3Object,
+      final int allCount,
+      final bool isAllCountLoading}) = _$S3ObjectStateImpl;
   const _S3ObjectState._() : super._();
 
   @override
@@ -272,6 +319,10 @@ abstract class _S3ObjectState extends S3ObjectState {
   List<S3Object> get s3Objects;
   @override
   S3Object? get s3Object;
+  @override
+  int get allCount;
+  @override
+  bool get isAllCountLoading;
 
   /// Create a copy of S3ObjectState
   /// with the given fields replaced by the non-null parameter values.

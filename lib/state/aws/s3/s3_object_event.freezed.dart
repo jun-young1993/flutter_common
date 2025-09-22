@@ -23,6 +23,7 @@ mixin _$S3ObjectEvent {
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
     required TResult Function(String id) findOneOrFail,
+    required TResult Function() count,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +33,7 @@ mixin _$S3ObjectEvent {
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
     TResult? Function(String id)? findOneOrFail,
+    TResult? Function()? count,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +43,7 @@ mixin _$S3ObjectEvent {
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
     TResult Function(String id)? findOneOrFail,
+    TResult Function()? count,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -51,6 +54,7 @@ mixin _$S3ObjectEvent {
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_UploadFile value) uploadFile,
     required TResult Function(_FindOneOrFail value) findOneOrFail,
+    required TResult Function(_Count value) count,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +64,7 @@ mixin _$S3ObjectEvent {
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_UploadFile value)? uploadFile,
     TResult? Function(_FindOneOrFail value)? findOneOrFail,
+    TResult? Function(_Count value)? count,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +74,7 @@ mixin _$S3ObjectEvent {
     TResult Function(_ClearError value)? clearError,
     TResult Function(_UploadFile value)? uploadFile,
     TResult Function(_FindOneOrFail value)? findOneOrFail,
+    TResult Function(_Count value)? count,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -141,6 +147,7 @@ class _$InitializeImpl implements _Initialize {
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
     required TResult Function(String id) findOneOrFail,
+    required TResult Function() count,
   }) {
     return initialize();
   }
@@ -153,6 +160,7 @@ class _$InitializeImpl implements _Initialize {
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
     TResult? Function(String id)? findOneOrFail,
+    TResult? Function()? count,
   }) {
     return initialize?.call();
   }
@@ -165,6 +173,7 @@ class _$InitializeImpl implements _Initialize {
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
     TResult Function(String id)? findOneOrFail,
+    TResult Function()? count,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -181,6 +190,7 @@ class _$InitializeImpl implements _Initialize {
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_UploadFile value) uploadFile,
     required TResult Function(_FindOneOrFail value) findOneOrFail,
+    required TResult Function(_Count value) count,
   }) {
     return initialize(this);
   }
@@ -193,6 +203,7 @@ class _$InitializeImpl implements _Initialize {
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_UploadFile value)? uploadFile,
     TResult? Function(_FindOneOrFail value)? findOneOrFail,
+    TResult? Function(_Count value)? count,
   }) {
     return initialize?.call(this);
   }
@@ -205,6 +216,7 @@ class _$InitializeImpl implements _Initialize {
     TResult Function(_ClearError value)? clearError,
     TResult Function(_UploadFile value)? uploadFile,
     TResult Function(_FindOneOrFail value)? findOneOrFail,
+    TResult Function(_Count value)? count,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -319,6 +331,7 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
     required TResult Function(String id) findOneOrFail,
+    required TResult Function() count,
   }) {
     return getS3Objects(user, skip, take);
   }
@@ -331,6 +344,7 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
     TResult? Function(String id)? findOneOrFail,
+    TResult? Function()? count,
   }) {
     return getS3Objects?.call(user, skip, take);
   }
@@ -343,6 +357,7 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
     TResult Function(String id)? findOneOrFail,
+    TResult Function()? count,
     required TResult orElse(),
   }) {
     if (getS3Objects != null) {
@@ -359,6 +374,7 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_UploadFile value) uploadFile,
     required TResult Function(_FindOneOrFail value) findOneOrFail,
+    required TResult Function(_Count value) count,
   }) {
     return getS3Objects(this);
   }
@@ -371,6 +387,7 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_UploadFile value)? uploadFile,
     TResult? Function(_FindOneOrFail value)? findOneOrFail,
+    TResult? Function(_Count value)? count,
   }) {
     return getS3Objects?.call(this);
   }
@@ -383,6 +400,7 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     TResult Function(_ClearError value)? clearError,
     TResult Function(_UploadFile value)? uploadFile,
     TResult Function(_FindOneOrFail value)? findOneOrFail,
+    TResult Function(_Count value)? count,
     required TResult orElse(),
   }) {
     if (getS3Objects != null) {
@@ -453,6 +471,7 @@ class _$ClearErrorImpl implements _ClearError {
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
     required TResult Function(String id) findOneOrFail,
+    required TResult Function() count,
   }) {
     return clearError();
   }
@@ -465,6 +484,7 @@ class _$ClearErrorImpl implements _ClearError {
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
     TResult? Function(String id)? findOneOrFail,
+    TResult? Function()? count,
   }) {
     return clearError?.call();
   }
@@ -477,6 +497,7 @@ class _$ClearErrorImpl implements _ClearError {
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
     TResult Function(String id)? findOneOrFail,
+    TResult Function()? count,
     required TResult orElse(),
   }) {
     if (clearError != null) {
@@ -493,6 +514,7 @@ class _$ClearErrorImpl implements _ClearError {
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_UploadFile value) uploadFile,
     required TResult Function(_FindOneOrFail value) findOneOrFail,
+    required TResult Function(_Count value) count,
   }) {
     return clearError(this);
   }
@@ -505,6 +527,7 @@ class _$ClearErrorImpl implements _ClearError {
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_UploadFile value)? uploadFile,
     TResult? Function(_FindOneOrFail value)? findOneOrFail,
+    TResult? Function(_Count value)? count,
   }) {
     return clearError?.call(this);
   }
@@ -517,6 +540,7 @@ class _$ClearErrorImpl implements _ClearError {
     TResult Function(_ClearError value)? clearError,
     TResult Function(_UploadFile value)? uploadFile,
     TResult Function(_FindOneOrFail value)? findOneOrFail,
+    TResult Function(_Count value)? count,
     required TResult orElse(),
   }) {
     if (clearError != null) {
@@ -623,6 +647,7 @@ class _$UploadFileImpl implements _UploadFile {
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
     required TResult Function(String id) findOneOrFail,
+    required TResult Function() count,
   }) {
     return uploadFile(file, user);
   }
@@ -635,6 +660,7 @@ class _$UploadFileImpl implements _UploadFile {
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
     TResult? Function(String id)? findOneOrFail,
+    TResult? Function()? count,
   }) {
     return uploadFile?.call(file, user);
   }
@@ -647,6 +673,7 @@ class _$UploadFileImpl implements _UploadFile {
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
     TResult Function(String id)? findOneOrFail,
+    TResult Function()? count,
     required TResult orElse(),
   }) {
     if (uploadFile != null) {
@@ -663,6 +690,7 @@ class _$UploadFileImpl implements _UploadFile {
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_UploadFile value) uploadFile,
     required TResult Function(_FindOneOrFail value) findOneOrFail,
+    required TResult Function(_Count value) count,
   }) {
     return uploadFile(this);
   }
@@ -675,6 +703,7 @@ class _$UploadFileImpl implements _UploadFile {
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_UploadFile value)? uploadFile,
     TResult? Function(_FindOneOrFail value)? findOneOrFail,
+    TResult? Function(_Count value)? count,
   }) {
     return uploadFile?.call(this);
   }
@@ -687,6 +716,7 @@ class _$UploadFileImpl implements _UploadFile {
     TResult Function(_ClearError value)? clearError,
     TResult Function(_UploadFile value)? uploadFile,
     TResult Function(_FindOneOrFail value)? findOneOrFail,
+    TResult Function(_Count value)? count,
     required TResult orElse(),
   }) {
     if (uploadFile != null) {
@@ -783,6 +813,7 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
     required TResult Function(String id) findOneOrFail,
+    required TResult Function() count,
   }) {
     return findOneOrFail(id);
   }
@@ -795,6 +826,7 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
     TResult? Function(String id)? findOneOrFail,
+    TResult? Function()? count,
   }) {
     return findOneOrFail?.call(id);
   }
@@ -807,6 +839,7 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
     TResult Function(String id)? findOneOrFail,
+    TResult Function()? count,
     required TResult orElse(),
   }) {
     if (findOneOrFail != null) {
@@ -823,6 +856,7 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_UploadFile value) uploadFile,
     required TResult Function(_FindOneOrFail value) findOneOrFail,
+    required TResult Function(_Count value) count,
   }) {
     return findOneOrFail(this);
   }
@@ -835,6 +869,7 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_UploadFile value)? uploadFile,
     TResult? Function(_FindOneOrFail value)? findOneOrFail,
+    TResult? Function(_Count value)? count,
   }) {
     return findOneOrFail?.call(this);
   }
@@ -847,6 +882,7 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     TResult Function(_ClearError value)? clearError,
     TResult Function(_UploadFile value)? uploadFile,
     TResult Function(_FindOneOrFail value)? findOneOrFail,
+    TResult Function(_Count value)? count,
     required TResult orElse(),
   }) {
     if (findOneOrFail != null) {
@@ -866,4 +902,133 @@ abstract class _FindOneOrFail implements S3ObjectEvent {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FindOneOrFailImplCopyWith<_$FindOneOrFailImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CountImplCopyWith<$Res> {
+  factory _$$CountImplCopyWith(
+          _$CountImpl value, $Res Function(_$CountImpl) then) =
+      __$$CountImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$CountImplCopyWithImpl<$Res>
+    extends _$S3ObjectEventCopyWithImpl<$Res, _$CountImpl>
+    implements _$$CountImplCopyWith<$Res> {
+  __$$CountImplCopyWithImpl(
+      _$CountImpl _value, $Res Function(_$CountImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of S3ObjectEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$CountImpl implements _Count {
+  const _$CountImpl();
+
+  @override
+  String toString() {
+    return 'S3ObjectEvent.count()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$CountImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialize,
+    required TResult Function(User user, int skip, int take) getS3Objects,
+    required TResult Function() clearError,
+    required TResult Function(File file, User user) uploadFile,
+    required TResult Function(String id) findOneOrFail,
+    required TResult Function() count,
+  }) {
+    return count();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialize,
+    TResult? Function(User user, int skip, int take)? getS3Objects,
+    TResult? Function()? clearError,
+    TResult? Function(File file, User user)? uploadFile,
+    TResult? Function(String id)? findOneOrFail,
+    TResult? Function()? count,
+  }) {
+    return count?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialize,
+    TResult Function(User user, int skip, int take)? getS3Objects,
+    TResult Function()? clearError,
+    TResult Function(File file, User user)? uploadFile,
+    TResult Function(String id)? findOneOrFail,
+    TResult Function()? count,
+    required TResult orElse(),
+  }) {
+    if (count != null) {
+      return count();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_GetS3Objects value) getS3Objects,
+    required TResult Function(_ClearError value) clearError,
+    required TResult Function(_UploadFile value) uploadFile,
+    required TResult Function(_FindOneOrFail value) findOneOrFail,
+    required TResult Function(_Count value) count,
+  }) {
+    return count(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialize value)? initialize,
+    TResult? Function(_GetS3Objects value)? getS3Objects,
+    TResult? Function(_ClearError value)? clearError,
+    TResult? Function(_UploadFile value)? uploadFile,
+    TResult? Function(_FindOneOrFail value)? findOneOrFail,
+    TResult? Function(_Count value)? count,
+  }) {
+    return count?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_GetS3Objects value)? getS3Objects,
+    TResult Function(_ClearError value)? clearError,
+    TResult Function(_UploadFile value)? uploadFile,
+    TResult Function(_FindOneOrFail value)? findOneOrFail,
+    TResult Function(_Count value)? count,
+    required TResult orElse(),
+  }) {
+    if (count != null) {
+      return count(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Count implements S3ObjectEvent {
+  const factory _Count() = _$CountImpl;
 }

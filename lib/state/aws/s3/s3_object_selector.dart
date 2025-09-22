@@ -61,3 +61,23 @@ class S3ObjectFindOneSelector extends S3ObjectSelector<S3Object?> {
           builder: (context, s3Object) => builder(s3Object),
         );
 }
+
+class S3ObjectAllCountSelector extends S3ObjectSelector<int> {
+  S3ObjectAllCountSelector(Widget Function(int allCount) builder, {Key? key})
+      : super(
+          key: key,
+          selector: (state) => state.allCount,
+          builder: (context, allCount) => builder(allCount),
+        );
+}
+
+class S3ObjectIsAllCountLoadingSelector extends S3ObjectSelector<bool> {
+  S3ObjectIsAllCountLoadingSelector(
+      Widget Function(bool isAllCountLoading) builder,
+      {Key? key})
+      : super(
+          key: key,
+          selector: (state) => state.isAllCountLoading,
+          builder: (context, isAllCountLoading) => builder(isAllCountLoading),
+        );
+}

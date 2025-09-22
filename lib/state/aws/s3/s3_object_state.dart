@@ -12,6 +12,8 @@ class S3ObjectState with _$S3ObjectState {
     @Default(null) AppException? error,
     @Default([]) List<S3Object> s3Objects,
     @Default(null) S3Object? s3Object,
+    @Default(0) int allCount,
+    @Default(false) bool isAllCountLoading,
   }) = _S3ObjectState;
 
   factory S3ObjectState.initialize() => const S3ObjectState();

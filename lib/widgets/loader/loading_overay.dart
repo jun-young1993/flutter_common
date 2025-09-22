@@ -5,12 +5,20 @@ class LoadingOverlay extends StatelessWidget {
   final bool isLoading;
   final Widget child;
   final String? message;
+  final Color? backgroundColor;
+  final Color? progressColor;
+  final double? progressValue;
+  final bool showProgress;
 
   const LoadingOverlay({
     super.key,
     required this.isLoading,
     required this.child,
     this.message,
+    this.backgroundColor,
+    this.progressColor,
+    this.progressValue,
+    this.showProgress = true,
   });
 
   @override

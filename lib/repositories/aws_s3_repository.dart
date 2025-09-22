@@ -11,6 +11,7 @@ abstract class AwsS3Repository {
   Future<bool> uploadFile(File file, User user, AppKeys appKey);
   Future<List<S3Object>> getS3Object(User user, int? skip, int? take);
   Future<S3Object> findOneOrFail(String id);
+  Future<int> count();
 }
 
 class AwsS3DefaultRepository extends AwsS3Repository {
@@ -84,5 +85,22 @@ class AwsS3DefaultRepository extends AwsS3Repository {
       return S3Object.fromJson(response.data);
     }
     throw Exception('S3 객체 조회 실패');
+  }
+
+  @override
+  Future<int> count() async {
+    final response = await dioClient.get('/aws/s3/objects/count');
+    if (response.statusCode == 200) {
+      if (response.data is int) {
+        return response.data as int;
+      } else if (response.data is String) {
+        return int.parse(response.data as String);
+      } else if (response.data is double) {
+        return (response.data as double).toInt();
+      } else {
+        return int.parse(response.data.toString());
+      }
+    }
+    throw Exception('S3 객체 개수 조회 실패');
   }
 }
