@@ -80,6 +80,32 @@ class NoticeBloc extends Bloc<NoticeEvent, NoticeState> {
           removeSuccessMessage: (e) {
             emit(state.copyWith(successMessage: null));
           },
+          checkNoticeExistence: (e) async {
+            await _handleEvent(
+              emit,
+              () async {
+                emit(state.copyWith(isNoticeExistenceByMonthLoading: true));
+                final noticeExistenceByMonth = await _noticeRepository
+                    .checkNoticeExistence(e.name, e.year, e.month);
+                emit(state.copyWith(
+                  noticeExistenceByMonth: noticeExistenceByMonth,
+                  isNoticeExistenceByMonthLoading: false,
+                ));
+              },
+            );
+          },
+          findAllByMonth: (e) async {
+            await _handleEvent(
+              emit,
+              () async {
+                emit(state.copyWith(isNoticesByMonthLoading: true));
+                final notices = await _noticeRepository.findAllByMonth(
+                    e.name, e.year, e.month, e.day);
+                emit(state.copyWith(
+                    noticesByMonth: notices, isNoticesByMonthLoading: false));
+              },
+            );
+          },
         );
       },
     );

@@ -24,6 +24,10 @@ mixin _$S3ObjectEvent {
     required TResult Function(File file, User user) uploadFile,
     required TResult Function(String id) findOneOrFail,
     required TResult Function() count,
+    required TResult Function(String year, String month)
+        checkObjectsExistenceByMonth,
+    required TResult Function(String year, String month, String day)
+        getObjectsByDate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -34,6 +38,8 @@ mixin _$S3ObjectEvent {
     TResult? Function(File file, User user)? uploadFile,
     TResult? Function(String id)? findOneOrFail,
     TResult? Function()? count,
+    TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
+    TResult? Function(String year, String month, String day)? getObjectsByDate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -44,6 +50,8 @@ mixin _$S3ObjectEvent {
     TResult Function(File file, User user)? uploadFile,
     TResult Function(String id)? findOneOrFail,
     TResult Function()? count,
+    TResult Function(String year, String month)? checkObjectsExistenceByMonth,
+    TResult Function(String year, String month, String day)? getObjectsByDate,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -55,6 +63,9 @@ mixin _$S3ObjectEvent {
     required TResult Function(_UploadFile value) uploadFile,
     required TResult Function(_FindOneOrFail value) findOneOrFail,
     required TResult Function(_Count value) count,
+    required TResult Function(_CheckObjectsExistenceByMonth value)
+        checkObjectsExistenceByMonth,
+    required TResult Function(_GetObjectsByDate value) getObjectsByDate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,6 +76,9 @@ mixin _$S3ObjectEvent {
     TResult? Function(_UploadFile value)? uploadFile,
     TResult? Function(_FindOneOrFail value)? findOneOrFail,
     TResult? Function(_Count value)? count,
+    TResult? Function(_CheckObjectsExistenceByMonth value)?
+        checkObjectsExistenceByMonth,
+    TResult? Function(_GetObjectsByDate value)? getObjectsByDate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -75,6 +89,9 @@ mixin _$S3ObjectEvent {
     TResult Function(_UploadFile value)? uploadFile,
     TResult Function(_FindOneOrFail value)? findOneOrFail,
     TResult Function(_Count value)? count,
+    TResult Function(_CheckObjectsExistenceByMonth value)?
+        checkObjectsExistenceByMonth,
+    TResult Function(_GetObjectsByDate value)? getObjectsByDate,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -148,6 +165,10 @@ class _$InitializeImpl implements _Initialize {
     required TResult Function(File file, User user) uploadFile,
     required TResult Function(String id) findOneOrFail,
     required TResult Function() count,
+    required TResult Function(String year, String month)
+        checkObjectsExistenceByMonth,
+    required TResult Function(String year, String month, String day)
+        getObjectsByDate,
   }) {
     return initialize();
   }
@@ -161,6 +182,8 @@ class _$InitializeImpl implements _Initialize {
     TResult? Function(File file, User user)? uploadFile,
     TResult? Function(String id)? findOneOrFail,
     TResult? Function()? count,
+    TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
+    TResult? Function(String year, String month, String day)? getObjectsByDate,
   }) {
     return initialize?.call();
   }
@@ -174,6 +197,8 @@ class _$InitializeImpl implements _Initialize {
     TResult Function(File file, User user)? uploadFile,
     TResult Function(String id)? findOneOrFail,
     TResult Function()? count,
+    TResult Function(String year, String month)? checkObjectsExistenceByMonth,
+    TResult Function(String year, String month, String day)? getObjectsByDate,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -191,6 +216,9 @@ class _$InitializeImpl implements _Initialize {
     required TResult Function(_UploadFile value) uploadFile,
     required TResult Function(_FindOneOrFail value) findOneOrFail,
     required TResult Function(_Count value) count,
+    required TResult Function(_CheckObjectsExistenceByMonth value)
+        checkObjectsExistenceByMonth,
+    required TResult Function(_GetObjectsByDate value) getObjectsByDate,
   }) {
     return initialize(this);
   }
@@ -204,6 +232,9 @@ class _$InitializeImpl implements _Initialize {
     TResult? Function(_UploadFile value)? uploadFile,
     TResult? Function(_FindOneOrFail value)? findOneOrFail,
     TResult? Function(_Count value)? count,
+    TResult? Function(_CheckObjectsExistenceByMonth value)?
+        checkObjectsExistenceByMonth,
+    TResult? Function(_GetObjectsByDate value)? getObjectsByDate,
   }) {
     return initialize?.call(this);
   }
@@ -217,6 +248,9 @@ class _$InitializeImpl implements _Initialize {
     TResult Function(_UploadFile value)? uploadFile,
     TResult Function(_FindOneOrFail value)? findOneOrFail,
     TResult Function(_Count value)? count,
+    TResult Function(_CheckObjectsExistenceByMonth value)?
+        checkObjectsExistenceByMonth,
+    TResult Function(_GetObjectsByDate value)? getObjectsByDate,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -332,6 +366,10 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     required TResult Function(File file, User user) uploadFile,
     required TResult Function(String id) findOneOrFail,
     required TResult Function() count,
+    required TResult Function(String year, String month)
+        checkObjectsExistenceByMonth,
+    required TResult Function(String year, String month, String day)
+        getObjectsByDate,
   }) {
     return getS3Objects(user, skip, take);
   }
@@ -345,6 +383,8 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     TResult? Function(File file, User user)? uploadFile,
     TResult? Function(String id)? findOneOrFail,
     TResult? Function()? count,
+    TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
+    TResult? Function(String year, String month, String day)? getObjectsByDate,
   }) {
     return getS3Objects?.call(user, skip, take);
   }
@@ -358,6 +398,8 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     TResult Function(File file, User user)? uploadFile,
     TResult Function(String id)? findOneOrFail,
     TResult Function()? count,
+    TResult Function(String year, String month)? checkObjectsExistenceByMonth,
+    TResult Function(String year, String month, String day)? getObjectsByDate,
     required TResult orElse(),
   }) {
     if (getS3Objects != null) {
@@ -375,6 +417,9 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     required TResult Function(_UploadFile value) uploadFile,
     required TResult Function(_FindOneOrFail value) findOneOrFail,
     required TResult Function(_Count value) count,
+    required TResult Function(_CheckObjectsExistenceByMonth value)
+        checkObjectsExistenceByMonth,
+    required TResult Function(_GetObjectsByDate value) getObjectsByDate,
   }) {
     return getS3Objects(this);
   }
@@ -388,6 +433,9 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     TResult? Function(_UploadFile value)? uploadFile,
     TResult? Function(_FindOneOrFail value)? findOneOrFail,
     TResult? Function(_Count value)? count,
+    TResult? Function(_CheckObjectsExistenceByMonth value)?
+        checkObjectsExistenceByMonth,
+    TResult? Function(_GetObjectsByDate value)? getObjectsByDate,
   }) {
     return getS3Objects?.call(this);
   }
@@ -401,6 +449,9 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     TResult Function(_UploadFile value)? uploadFile,
     TResult Function(_FindOneOrFail value)? findOneOrFail,
     TResult Function(_Count value)? count,
+    TResult Function(_CheckObjectsExistenceByMonth value)?
+        checkObjectsExistenceByMonth,
+    TResult Function(_GetObjectsByDate value)? getObjectsByDate,
     required TResult orElse(),
   }) {
     if (getS3Objects != null) {
@@ -472,6 +523,10 @@ class _$ClearErrorImpl implements _ClearError {
     required TResult Function(File file, User user) uploadFile,
     required TResult Function(String id) findOneOrFail,
     required TResult Function() count,
+    required TResult Function(String year, String month)
+        checkObjectsExistenceByMonth,
+    required TResult Function(String year, String month, String day)
+        getObjectsByDate,
   }) {
     return clearError();
   }
@@ -485,6 +540,8 @@ class _$ClearErrorImpl implements _ClearError {
     TResult? Function(File file, User user)? uploadFile,
     TResult? Function(String id)? findOneOrFail,
     TResult? Function()? count,
+    TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
+    TResult? Function(String year, String month, String day)? getObjectsByDate,
   }) {
     return clearError?.call();
   }
@@ -498,6 +555,8 @@ class _$ClearErrorImpl implements _ClearError {
     TResult Function(File file, User user)? uploadFile,
     TResult Function(String id)? findOneOrFail,
     TResult Function()? count,
+    TResult Function(String year, String month)? checkObjectsExistenceByMonth,
+    TResult Function(String year, String month, String day)? getObjectsByDate,
     required TResult orElse(),
   }) {
     if (clearError != null) {
@@ -515,6 +574,9 @@ class _$ClearErrorImpl implements _ClearError {
     required TResult Function(_UploadFile value) uploadFile,
     required TResult Function(_FindOneOrFail value) findOneOrFail,
     required TResult Function(_Count value) count,
+    required TResult Function(_CheckObjectsExistenceByMonth value)
+        checkObjectsExistenceByMonth,
+    required TResult Function(_GetObjectsByDate value) getObjectsByDate,
   }) {
     return clearError(this);
   }
@@ -528,6 +590,9 @@ class _$ClearErrorImpl implements _ClearError {
     TResult? Function(_UploadFile value)? uploadFile,
     TResult? Function(_FindOneOrFail value)? findOneOrFail,
     TResult? Function(_Count value)? count,
+    TResult? Function(_CheckObjectsExistenceByMonth value)?
+        checkObjectsExistenceByMonth,
+    TResult? Function(_GetObjectsByDate value)? getObjectsByDate,
   }) {
     return clearError?.call(this);
   }
@@ -541,6 +606,9 @@ class _$ClearErrorImpl implements _ClearError {
     TResult Function(_UploadFile value)? uploadFile,
     TResult Function(_FindOneOrFail value)? findOneOrFail,
     TResult Function(_Count value)? count,
+    TResult Function(_CheckObjectsExistenceByMonth value)?
+        checkObjectsExistenceByMonth,
+    TResult Function(_GetObjectsByDate value)? getObjectsByDate,
     required TResult orElse(),
   }) {
     if (clearError != null) {
@@ -648,6 +716,10 @@ class _$UploadFileImpl implements _UploadFile {
     required TResult Function(File file, User user) uploadFile,
     required TResult Function(String id) findOneOrFail,
     required TResult Function() count,
+    required TResult Function(String year, String month)
+        checkObjectsExistenceByMonth,
+    required TResult Function(String year, String month, String day)
+        getObjectsByDate,
   }) {
     return uploadFile(file, user);
   }
@@ -661,6 +733,8 @@ class _$UploadFileImpl implements _UploadFile {
     TResult? Function(File file, User user)? uploadFile,
     TResult? Function(String id)? findOneOrFail,
     TResult? Function()? count,
+    TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
+    TResult? Function(String year, String month, String day)? getObjectsByDate,
   }) {
     return uploadFile?.call(file, user);
   }
@@ -674,6 +748,8 @@ class _$UploadFileImpl implements _UploadFile {
     TResult Function(File file, User user)? uploadFile,
     TResult Function(String id)? findOneOrFail,
     TResult Function()? count,
+    TResult Function(String year, String month)? checkObjectsExistenceByMonth,
+    TResult Function(String year, String month, String day)? getObjectsByDate,
     required TResult orElse(),
   }) {
     if (uploadFile != null) {
@@ -691,6 +767,9 @@ class _$UploadFileImpl implements _UploadFile {
     required TResult Function(_UploadFile value) uploadFile,
     required TResult Function(_FindOneOrFail value) findOneOrFail,
     required TResult Function(_Count value) count,
+    required TResult Function(_CheckObjectsExistenceByMonth value)
+        checkObjectsExistenceByMonth,
+    required TResult Function(_GetObjectsByDate value) getObjectsByDate,
   }) {
     return uploadFile(this);
   }
@@ -704,6 +783,9 @@ class _$UploadFileImpl implements _UploadFile {
     TResult? Function(_UploadFile value)? uploadFile,
     TResult? Function(_FindOneOrFail value)? findOneOrFail,
     TResult? Function(_Count value)? count,
+    TResult? Function(_CheckObjectsExistenceByMonth value)?
+        checkObjectsExistenceByMonth,
+    TResult? Function(_GetObjectsByDate value)? getObjectsByDate,
   }) {
     return uploadFile?.call(this);
   }
@@ -717,6 +799,9 @@ class _$UploadFileImpl implements _UploadFile {
     TResult Function(_UploadFile value)? uploadFile,
     TResult Function(_FindOneOrFail value)? findOneOrFail,
     TResult Function(_Count value)? count,
+    TResult Function(_CheckObjectsExistenceByMonth value)?
+        checkObjectsExistenceByMonth,
+    TResult Function(_GetObjectsByDate value)? getObjectsByDate,
     required TResult orElse(),
   }) {
     if (uploadFile != null) {
@@ -814,6 +899,10 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     required TResult Function(File file, User user) uploadFile,
     required TResult Function(String id) findOneOrFail,
     required TResult Function() count,
+    required TResult Function(String year, String month)
+        checkObjectsExistenceByMonth,
+    required TResult Function(String year, String month, String day)
+        getObjectsByDate,
   }) {
     return findOneOrFail(id);
   }
@@ -827,6 +916,8 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     TResult? Function(File file, User user)? uploadFile,
     TResult? Function(String id)? findOneOrFail,
     TResult? Function()? count,
+    TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
+    TResult? Function(String year, String month, String day)? getObjectsByDate,
   }) {
     return findOneOrFail?.call(id);
   }
@@ -840,6 +931,8 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     TResult Function(File file, User user)? uploadFile,
     TResult Function(String id)? findOneOrFail,
     TResult Function()? count,
+    TResult Function(String year, String month)? checkObjectsExistenceByMonth,
+    TResult Function(String year, String month, String day)? getObjectsByDate,
     required TResult orElse(),
   }) {
     if (findOneOrFail != null) {
@@ -857,6 +950,9 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     required TResult Function(_UploadFile value) uploadFile,
     required TResult Function(_FindOneOrFail value) findOneOrFail,
     required TResult Function(_Count value) count,
+    required TResult Function(_CheckObjectsExistenceByMonth value)
+        checkObjectsExistenceByMonth,
+    required TResult Function(_GetObjectsByDate value) getObjectsByDate,
   }) {
     return findOneOrFail(this);
   }
@@ -870,6 +966,9 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     TResult? Function(_UploadFile value)? uploadFile,
     TResult? Function(_FindOneOrFail value)? findOneOrFail,
     TResult? Function(_Count value)? count,
+    TResult? Function(_CheckObjectsExistenceByMonth value)?
+        checkObjectsExistenceByMonth,
+    TResult? Function(_GetObjectsByDate value)? getObjectsByDate,
   }) {
     return findOneOrFail?.call(this);
   }
@@ -883,6 +982,9 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     TResult Function(_UploadFile value)? uploadFile,
     TResult Function(_FindOneOrFail value)? findOneOrFail,
     TResult Function(_Count value)? count,
+    TResult Function(_CheckObjectsExistenceByMonth value)?
+        checkObjectsExistenceByMonth,
+    TResult Function(_GetObjectsByDate value)? getObjectsByDate,
     required TResult orElse(),
   }) {
     if (findOneOrFail != null) {
@@ -951,6 +1053,10 @@ class _$CountImpl implements _Count {
     required TResult Function(File file, User user) uploadFile,
     required TResult Function(String id) findOneOrFail,
     required TResult Function() count,
+    required TResult Function(String year, String month)
+        checkObjectsExistenceByMonth,
+    required TResult Function(String year, String month, String day)
+        getObjectsByDate,
   }) {
     return count();
   }
@@ -964,6 +1070,8 @@ class _$CountImpl implements _Count {
     TResult? Function(File file, User user)? uploadFile,
     TResult? Function(String id)? findOneOrFail,
     TResult? Function()? count,
+    TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
+    TResult? Function(String year, String month, String day)? getObjectsByDate,
   }) {
     return count?.call();
   }
@@ -977,6 +1085,8 @@ class _$CountImpl implements _Count {
     TResult Function(File file, User user)? uploadFile,
     TResult Function(String id)? findOneOrFail,
     TResult Function()? count,
+    TResult Function(String year, String month)? checkObjectsExistenceByMonth,
+    TResult Function(String year, String month, String day)? getObjectsByDate,
     required TResult orElse(),
   }) {
     if (count != null) {
@@ -994,6 +1104,9 @@ class _$CountImpl implements _Count {
     required TResult Function(_UploadFile value) uploadFile,
     required TResult Function(_FindOneOrFail value) findOneOrFail,
     required TResult Function(_Count value) count,
+    required TResult Function(_CheckObjectsExistenceByMonth value)
+        checkObjectsExistenceByMonth,
+    required TResult Function(_GetObjectsByDate value) getObjectsByDate,
   }) {
     return count(this);
   }
@@ -1007,6 +1120,9 @@ class _$CountImpl implements _Count {
     TResult? Function(_UploadFile value)? uploadFile,
     TResult? Function(_FindOneOrFail value)? findOneOrFail,
     TResult? Function(_Count value)? count,
+    TResult? Function(_CheckObjectsExistenceByMonth value)?
+        checkObjectsExistenceByMonth,
+    TResult? Function(_GetObjectsByDate value)? getObjectsByDate,
   }) {
     return count?.call(this);
   }
@@ -1020,6 +1136,9 @@ class _$CountImpl implements _Count {
     TResult Function(_UploadFile value)? uploadFile,
     TResult Function(_FindOneOrFail value)? findOneOrFail,
     TResult Function(_Count value)? count,
+    TResult Function(_CheckObjectsExistenceByMonth value)?
+        checkObjectsExistenceByMonth,
+    TResult Function(_GetObjectsByDate value)? getObjectsByDate,
     required TResult orElse(),
   }) {
     if (count != null) {
@@ -1031,4 +1150,405 @@ class _$CountImpl implements _Count {
 
 abstract class _Count implements S3ObjectEvent {
   const factory _Count() = _$CountImpl;
+}
+
+/// @nodoc
+abstract class _$$CheckObjectsExistenceByMonthImplCopyWith<$Res> {
+  factory _$$CheckObjectsExistenceByMonthImplCopyWith(
+          _$CheckObjectsExistenceByMonthImpl value,
+          $Res Function(_$CheckObjectsExistenceByMonthImpl) then) =
+      __$$CheckObjectsExistenceByMonthImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String year, String month});
+}
+
+/// @nodoc
+class __$$CheckObjectsExistenceByMonthImplCopyWithImpl<$Res>
+    extends _$S3ObjectEventCopyWithImpl<$Res,
+        _$CheckObjectsExistenceByMonthImpl>
+    implements _$$CheckObjectsExistenceByMonthImplCopyWith<$Res> {
+  __$$CheckObjectsExistenceByMonthImplCopyWithImpl(
+      _$CheckObjectsExistenceByMonthImpl _value,
+      $Res Function(_$CheckObjectsExistenceByMonthImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of S3ObjectEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? year = null,
+    Object? month = null,
+  }) {
+    return _then(_$CheckObjectsExistenceByMonthImpl(
+      null == year
+          ? _value.year
+          : year // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == month
+          ? _value.month
+          : month // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CheckObjectsExistenceByMonthImpl
+    implements _CheckObjectsExistenceByMonth {
+  const _$CheckObjectsExistenceByMonthImpl(this.year, this.month);
+
+  @override
+  final String year;
+  @override
+  final String month;
+
+  @override
+  String toString() {
+    return 'S3ObjectEvent.checkObjectsExistenceByMonth(year: $year, month: $month)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CheckObjectsExistenceByMonthImpl &&
+            (identical(other.year, year) || other.year == year) &&
+            (identical(other.month, month) || other.month == month));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, year, month);
+
+  /// Create a copy of S3ObjectEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CheckObjectsExistenceByMonthImplCopyWith<
+          _$CheckObjectsExistenceByMonthImpl>
+      get copyWith => __$$CheckObjectsExistenceByMonthImplCopyWithImpl<
+          _$CheckObjectsExistenceByMonthImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialize,
+    required TResult Function(User user, int skip, int take) getS3Objects,
+    required TResult Function() clearError,
+    required TResult Function(File file, User user) uploadFile,
+    required TResult Function(String id) findOneOrFail,
+    required TResult Function() count,
+    required TResult Function(String year, String month)
+        checkObjectsExistenceByMonth,
+    required TResult Function(String year, String month, String day)
+        getObjectsByDate,
+  }) {
+    return checkObjectsExistenceByMonth(year, month);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialize,
+    TResult? Function(User user, int skip, int take)? getS3Objects,
+    TResult? Function()? clearError,
+    TResult? Function(File file, User user)? uploadFile,
+    TResult? Function(String id)? findOneOrFail,
+    TResult? Function()? count,
+    TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
+    TResult? Function(String year, String month, String day)? getObjectsByDate,
+  }) {
+    return checkObjectsExistenceByMonth?.call(year, month);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialize,
+    TResult Function(User user, int skip, int take)? getS3Objects,
+    TResult Function()? clearError,
+    TResult Function(File file, User user)? uploadFile,
+    TResult Function(String id)? findOneOrFail,
+    TResult Function()? count,
+    TResult Function(String year, String month)? checkObjectsExistenceByMonth,
+    TResult Function(String year, String month, String day)? getObjectsByDate,
+    required TResult orElse(),
+  }) {
+    if (checkObjectsExistenceByMonth != null) {
+      return checkObjectsExistenceByMonth(year, month);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_GetS3Objects value) getS3Objects,
+    required TResult Function(_ClearError value) clearError,
+    required TResult Function(_UploadFile value) uploadFile,
+    required TResult Function(_FindOneOrFail value) findOneOrFail,
+    required TResult Function(_Count value) count,
+    required TResult Function(_CheckObjectsExistenceByMonth value)
+        checkObjectsExistenceByMonth,
+    required TResult Function(_GetObjectsByDate value) getObjectsByDate,
+  }) {
+    return checkObjectsExistenceByMonth(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialize value)? initialize,
+    TResult? Function(_GetS3Objects value)? getS3Objects,
+    TResult? Function(_ClearError value)? clearError,
+    TResult? Function(_UploadFile value)? uploadFile,
+    TResult? Function(_FindOneOrFail value)? findOneOrFail,
+    TResult? Function(_Count value)? count,
+    TResult? Function(_CheckObjectsExistenceByMonth value)?
+        checkObjectsExistenceByMonth,
+    TResult? Function(_GetObjectsByDate value)? getObjectsByDate,
+  }) {
+    return checkObjectsExistenceByMonth?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_GetS3Objects value)? getS3Objects,
+    TResult Function(_ClearError value)? clearError,
+    TResult Function(_UploadFile value)? uploadFile,
+    TResult Function(_FindOneOrFail value)? findOneOrFail,
+    TResult Function(_Count value)? count,
+    TResult Function(_CheckObjectsExistenceByMonth value)?
+        checkObjectsExistenceByMonth,
+    TResult Function(_GetObjectsByDate value)? getObjectsByDate,
+    required TResult orElse(),
+  }) {
+    if (checkObjectsExistenceByMonth != null) {
+      return checkObjectsExistenceByMonth(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CheckObjectsExistenceByMonth implements S3ObjectEvent {
+  const factory _CheckObjectsExistenceByMonth(
+          final String year, final String month) =
+      _$CheckObjectsExistenceByMonthImpl;
+
+  String get year;
+  String get month;
+
+  /// Create a copy of S3ObjectEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CheckObjectsExistenceByMonthImplCopyWith<
+          _$CheckObjectsExistenceByMonthImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GetObjectsByDateImplCopyWith<$Res> {
+  factory _$$GetObjectsByDateImplCopyWith(_$GetObjectsByDateImpl value,
+          $Res Function(_$GetObjectsByDateImpl) then) =
+      __$$GetObjectsByDateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String year, String month, String day});
+}
+
+/// @nodoc
+class __$$GetObjectsByDateImplCopyWithImpl<$Res>
+    extends _$S3ObjectEventCopyWithImpl<$Res, _$GetObjectsByDateImpl>
+    implements _$$GetObjectsByDateImplCopyWith<$Res> {
+  __$$GetObjectsByDateImplCopyWithImpl(_$GetObjectsByDateImpl _value,
+      $Res Function(_$GetObjectsByDateImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of S3ObjectEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? year = null,
+    Object? month = null,
+    Object? day = null,
+  }) {
+    return _then(_$GetObjectsByDateImpl(
+      null == year
+          ? _value.year
+          : year // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == month
+          ? _value.month
+          : month // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == day
+          ? _value.day
+          : day // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetObjectsByDateImpl implements _GetObjectsByDate {
+  const _$GetObjectsByDateImpl(this.year, this.month, this.day);
+
+  @override
+  final String year;
+  @override
+  final String month;
+  @override
+  final String day;
+
+  @override
+  String toString() {
+    return 'S3ObjectEvent.getObjectsByDate(year: $year, month: $month, day: $day)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetObjectsByDateImpl &&
+            (identical(other.year, year) || other.year == year) &&
+            (identical(other.month, month) || other.month == month) &&
+            (identical(other.day, day) || other.day == day));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, year, month, day);
+
+  /// Create a copy of S3ObjectEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetObjectsByDateImplCopyWith<_$GetObjectsByDateImpl> get copyWith =>
+      __$$GetObjectsByDateImplCopyWithImpl<_$GetObjectsByDateImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialize,
+    required TResult Function(User user, int skip, int take) getS3Objects,
+    required TResult Function() clearError,
+    required TResult Function(File file, User user) uploadFile,
+    required TResult Function(String id) findOneOrFail,
+    required TResult Function() count,
+    required TResult Function(String year, String month)
+        checkObjectsExistenceByMonth,
+    required TResult Function(String year, String month, String day)
+        getObjectsByDate,
+  }) {
+    return getObjectsByDate(year, month, day);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialize,
+    TResult? Function(User user, int skip, int take)? getS3Objects,
+    TResult? Function()? clearError,
+    TResult? Function(File file, User user)? uploadFile,
+    TResult? Function(String id)? findOneOrFail,
+    TResult? Function()? count,
+    TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
+    TResult? Function(String year, String month, String day)? getObjectsByDate,
+  }) {
+    return getObjectsByDate?.call(year, month, day);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialize,
+    TResult Function(User user, int skip, int take)? getS3Objects,
+    TResult Function()? clearError,
+    TResult Function(File file, User user)? uploadFile,
+    TResult Function(String id)? findOneOrFail,
+    TResult Function()? count,
+    TResult Function(String year, String month)? checkObjectsExistenceByMonth,
+    TResult Function(String year, String month, String day)? getObjectsByDate,
+    required TResult orElse(),
+  }) {
+    if (getObjectsByDate != null) {
+      return getObjectsByDate(year, month, day);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_GetS3Objects value) getS3Objects,
+    required TResult Function(_ClearError value) clearError,
+    required TResult Function(_UploadFile value) uploadFile,
+    required TResult Function(_FindOneOrFail value) findOneOrFail,
+    required TResult Function(_Count value) count,
+    required TResult Function(_CheckObjectsExistenceByMonth value)
+        checkObjectsExistenceByMonth,
+    required TResult Function(_GetObjectsByDate value) getObjectsByDate,
+  }) {
+    return getObjectsByDate(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialize value)? initialize,
+    TResult? Function(_GetS3Objects value)? getS3Objects,
+    TResult? Function(_ClearError value)? clearError,
+    TResult? Function(_UploadFile value)? uploadFile,
+    TResult? Function(_FindOneOrFail value)? findOneOrFail,
+    TResult? Function(_Count value)? count,
+    TResult? Function(_CheckObjectsExistenceByMonth value)?
+        checkObjectsExistenceByMonth,
+    TResult? Function(_GetObjectsByDate value)? getObjectsByDate,
+  }) {
+    return getObjectsByDate?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_GetS3Objects value)? getS3Objects,
+    TResult Function(_ClearError value)? clearError,
+    TResult Function(_UploadFile value)? uploadFile,
+    TResult Function(_FindOneOrFail value)? findOneOrFail,
+    TResult Function(_Count value)? count,
+    TResult Function(_CheckObjectsExistenceByMonth value)?
+        checkObjectsExistenceByMonth,
+    TResult Function(_GetObjectsByDate value)? getObjectsByDate,
+    required TResult orElse(),
+  }) {
+    if (getObjectsByDate != null) {
+      return getObjectsByDate(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetObjectsByDate implements S3ObjectEvent {
+  const factory _GetObjectsByDate(
+          final String year, final String month, final String day) =
+      _$GetObjectsByDateImpl;
+
+  String get year;
+  String get month;
+  String get day;
+
+  /// Create a copy of S3ObjectEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$GetObjectsByDateImplCopyWith<_$GetObjectsByDateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

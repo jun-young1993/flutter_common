@@ -23,6 +23,12 @@ mixin _$S3ObjectState {
   S3Object? get s3Object => throw _privateConstructorUsedError;
   int get allCount => throw _privateConstructorUsedError;
   bool get isAllCountLoading => throw _privateConstructorUsedError;
+  Map<String, bool> get objectsExistenceByMonth =>
+      throw _privateConstructorUsedError;
+  bool get isObjectsExistenceByMonthLoading =>
+      throw _privateConstructorUsedError;
+  List<S3Object> get objectsByDate => throw _privateConstructorUsedError;
+  bool get isObjectsByDateLoading => throw _privateConstructorUsedError;
 
   /// Create a copy of S3ObjectState
   /// with the given fields replaced by the non-null parameter values.
@@ -44,7 +50,11 @@ abstract class $S3ObjectStateCopyWith<$Res> {
       List<S3Object> s3Objects,
       S3Object? s3Object,
       int allCount,
-      bool isAllCountLoading});
+      bool isAllCountLoading,
+      Map<String, bool> objectsExistenceByMonth,
+      bool isObjectsExistenceByMonthLoading,
+      List<S3Object> objectsByDate,
+      bool isObjectsByDateLoading});
 
   $AppExceptionCopyWith<$Res>? get error;
   $S3ObjectCopyWith<$Res>? get s3Object;
@@ -72,6 +82,10 @@ class _$S3ObjectStateCopyWithImpl<$Res, $Val extends S3ObjectState>
     Object? s3Object = freezed,
     Object? allCount = null,
     Object? isAllCountLoading = null,
+    Object? objectsExistenceByMonth = null,
+    Object? isObjectsExistenceByMonthLoading = null,
+    Object? objectsByDate = null,
+    Object? isObjectsByDateLoading = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -101,6 +115,22 @@ class _$S3ObjectStateCopyWithImpl<$Res, $Val extends S3ObjectState>
       isAllCountLoading: null == isAllCountLoading
           ? _value.isAllCountLoading
           : isAllCountLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      objectsExistenceByMonth: null == objectsExistenceByMonth
+          ? _value.objectsExistenceByMonth
+          : objectsExistenceByMonth // ignore: cast_nullable_to_non_nullable
+              as Map<String, bool>,
+      isObjectsExistenceByMonthLoading: null == isObjectsExistenceByMonthLoading
+          ? _value.isObjectsExistenceByMonthLoading
+          : isObjectsExistenceByMonthLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      objectsByDate: null == objectsByDate
+          ? _value.objectsByDate
+          : objectsByDate // ignore: cast_nullable_to_non_nullable
+              as List<S3Object>,
+      isObjectsByDateLoading: null == isObjectsByDateLoading
+          ? _value.isObjectsByDateLoading
+          : isObjectsByDateLoading // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -149,7 +179,11 @@ abstract class _$$S3ObjectStateImplCopyWith<$Res>
       List<S3Object> s3Objects,
       S3Object? s3Object,
       int allCount,
-      bool isAllCountLoading});
+      bool isAllCountLoading,
+      Map<String, bool> objectsExistenceByMonth,
+      bool isObjectsExistenceByMonthLoading,
+      List<S3Object> objectsByDate,
+      bool isObjectsByDateLoading});
 
   @override
   $AppExceptionCopyWith<$Res>? get error;
@@ -177,6 +211,10 @@ class __$$S3ObjectStateImplCopyWithImpl<$Res>
     Object? s3Object = freezed,
     Object? allCount = null,
     Object? isAllCountLoading = null,
+    Object? objectsExistenceByMonth = null,
+    Object? isObjectsExistenceByMonthLoading = null,
+    Object? objectsByDate = null,
+    Object? isObjectsByDateLoading = null,
   }) {
     return _then(_$S3ObjectStateImpl(
       isLoading: null == isLoading
@@ -207,6 +245,22 @@ class __$$S3ObjectStateImplCopyWithImpl<$Res>
           ? _value.isAllCountLoading
           : isAllCountLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      objectsExistenceByMonth: null == objectsExistenceByMonth
+          ? _value._objectsExistenceByMonth
+          : objectsExistenceByMonth // ignore: cast_nullable_to_non_nullable
+              as Map<String, bool>,
+      isObjectsExistenceByMonthLoading: null == isObjectsExistenceByMonthLoading
+          ? _value.isObjectsExistenceByMonthLoading
+          : isObjectsExistenceByMonthLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      objectsByDate: null == objectsByDate
+          ? _value._objectsByDate
+          : objectsByDate // ignore: cast_nullable_to_non_nullable
+              as List<S3Object>,
+      isObjectsByDateLoading: null == isObjectsByDateLoading
+          ? _value.isObjectsByDateLoading
+          : isObjectsByDateLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -221,8 +275,14 @@ class _$S3ObjectStateImpl extends _S3ObjectState {
       final List<S3Object> s3Objects = const [],
       this.s3Object = null,
       this.allCount = 0,
-      this.isAllCountLoading = false})
+      this.isAllCountLoading = false,
+      final Map<String, bool> objectsExistenceByMonth = const {},
+      this.isObjectsExistenceByMonthLoading = false,
+      final List<S3Object> objectsByDate = const [],
+      this.isObjectsByDateLoading = false})
       : _s3Objects = s3Objects,
+        _objectsExistenceByMonth = objectsExistenceByMonth,
+        _objectsByDate = objectsByDate,
         super._();
 
   @override
@@ -252,10 +312,35 @@ class _$S3ObjectStateImpl extends _S3ObjectState {
   @override
   @JsonKey()
   final bool isAllCountLoading;
+  final Map<String, bool> _objectsExistenceByMonth;
+  @override
+  @JsonKey()
+  Map<String, bool> get objectsExistenceByMonth {
+    if (_objectsExistenceByMonth is EqualUnmodifiableMapView)
+      return _objectsExistenceByMonth;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_objectsExistenceByMonth);
+  }
+
+  @override
+  @JsonKey()
+  final bool isObjectsExistenceByMonthLoading;
+  final List<S3Object> _objectsByDate;
+  @override
+  @JsonKey()
+  List<S3Object> get objectsByDate {
+    if (_objectsByDate is EqualUnmodifiableListView) return _objectsByDate;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_objectsByDate);
+  }
+
+  @override
+  @JsonKey()
+  final bool isObjectsByDateLoading;
 
   @override
   String toString() {
-    return 'S3ObjectState(isLoading: $isLoading, isUploading: $isUploading, error: $error, s3Objects: $s3Objects, s3Object: $s3Object, allCount: $allCount, isAllCountLoading: $isAllCountLoading)';
+    return 'S3ObjectState(isLoading: $isLoading, isUploading: $isUploading, error: $error, s3Objects: $s3Objects, s3Object: $s3Object, allCount: $allCount, isAllCountLoading: $isAllCountLoading, objectsExistenceByMonth: $objectsExistenceByMonth, isObjectsExistenceByMonthLoading: $isObjectsExistenceByMonthLoading, objectsByDate: $objectsByDate, isObjectsByDateLoading: $isObjectsByDateLoading)';
   }
 
   @override
@@ -275,7 +360,17 @@ class _$S3ObjectStateImpl extends _S3ObjectState {
             (identical(other.allCount, allCount) ||
                 other.allCount == allCount) &&
             (identical(other.isAllCountLoading, isAllCountLoading) ||
-                other.isAllCountLoading == isAllCountLoading));
+                other.isAllCountLoading == isAllCountLoading) &&
+            const DeepCollectionEquality().equals(
+                other._objectsExistenceByMonth, _objectsExistenceByMonth) &&
+            (identical(other.isObjectsExistenceByMonthLoading,
+                    isObjectsExistenceByMonthLoading) ||
+                other.isObjectsExistenceByMonthLoading ==
+                    isObjectsExistenceByMonthLoading) &&
+            const DeepCollectionEquality()
+                .equals(other._objectsByDate, _objectsByDate) &&
+            (identical(other.isObjectsByDateLoading, isObjectsByDateLoading) ||
+                other.isObjectsByDateLoading == isObjectsByDateLoading));
   }
 
   @override
@@ -287,7 +382,11 @@ class _$S3ObjectStateImpl extends _S3ObjectState {
       const DeepCollectionEquality().hash(_s3Objects),
       s3Object,
       allCount,
-      isAllCountLoading);
+      isAllCountLoading,
+      const DeepCollectionEquality().hash(_objectsExistenceByMonth),
+      isObjectsExistenceByMonthLoading,
+      const DeepCollectionEquality().hash(_objectsByDate),
+      isObjectsByDateLoading);
 
   /// Create a copy of S3ObjectState
   /// with the given fields replaced by the non-null parameter values.
@@ -306,7 +405,11 @@ abstract class _S3ObjectState extends S3ObjectState {
       final List<S3Object> s3Objects,
       final S3Object? s3Object,
       final int allCount,
-      final bool isAllCountLoading}) = _$S3ObjectStateImpl;
+      final bool isAllCountLoading,
+      final Map<String, bool> objectsExistenceByMonth,
+      final bool isObjectsExistenceByMonthLoading,
+      final List<S3Object> objectsByDate,
+      final bool isObjectsByDateLoading}) = _$S3ObjectStateImpl;
   const _S3ObjectState._() : super._();
 
   @override
@@ -323,6 +426,14 @@ abstract class _S3ObjectState extends S3ObjectState {
   int get allCount;
   @override
   bool get isAllCountLoading;
+  @override
+  Map<String, bool> get objectsExistenceByMonth;
+  @override
+  bool get isObjectsExistenceByMonthLoading;
+  @override
+  List<S3Object> get objectsByDate;
+  @override
+  bool get isObjectsByDateLoading;
 
   /// Create a copy of S3ObjectState
   /// with the given fields replaced by the non-null parameter values.

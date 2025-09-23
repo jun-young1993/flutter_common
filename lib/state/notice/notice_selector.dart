@@ -48,3 +48,29 @@ class NoticeErrorSelector extends NoticeSelector<AppException?> {
           builder: (context, error) => builder(error),
         );
 }
+
+class NoticeIsNoticeExistenceByMonthLoadingSelector
+    extends NoticeSelector<bool> {
+  NoticeIsNoticeExistenceByMonthLoadingSelector(
+      Widget Function(bool isNoticeExistenceByMonthLoading) builder,
+      {Key? key})
+      : super(
+          key: key,
+          selector: (state) => state.isNoticeExistenceByMonthLoading,
+          builder: (context, isNoticeExistenceByMonthLoading) =>
+              builder(isNoticeExistenceByMonthLoading),
+        );
+}
+
+class NoticeNoticeExistenceByMonthSelector
+    extends NoticeSelector<Map<String, bool>> {
+  NoticeNoticeExistenceByMonthSelector(
+      Widget Function(Map<String, bool> noticeExistenceByMonth) builder,
+      {Key? key})
+      : super(
+          key: key,
+          selector: (state) => state.noticeExistenceByMonth,
+          builder: (context, noticeExistenceByMonth) =>
+              builder(noticeExistenceByMonth),
+        );
+}

@@ -6,4 +6,7 @@ part 'notice_group_event.freezed.dart';
 class NoticeGroupEvent with _$NoticeGroupEvent {
   const factory NoticeGroupEvent.findNoticeGroup(String name) =
       _FindNoticeGroup;
+  const factory NoticeGroupEvent.createNoticeGroup(String name) =
+      _CreateNoticeGroup;
+  const factory NoticeGroupEvent.initialize(String name) = _Initialize;
 }

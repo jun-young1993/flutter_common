@@ -14,6 +14,10 @@ class S3ObjectState with _$S3ObjectState {
     @Default(null) S3Object? s3Object,
     @Default(0) int allCount,
     @Default(false) bool isAllCountLoading,
+    @Default({}) Map<String, bool> objectsExistenceByMonth,
+    @Default(false) bool isObjectsExistenceByMonthLoading,
+    @Default([]) List<S3Object> objectsByDate,
+    @Default(false) bool isObjectsByDateLoading,
   }) = _S3ObjectState;
 
   factory S3ObjectState.initialize() => const S3ObjectState();

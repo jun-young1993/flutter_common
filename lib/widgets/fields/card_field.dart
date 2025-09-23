@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_common/constants/size_constants.dart';
 import 'package:flutter_common/widgets/lib/container/card_container_item.dart';
 
 class CardField extends StatelessWidget {
@@ -294,6 +295,7 @@ class _InputCardFieldState extends State<InputCardField> {
                       fontWeight: FontWeight.w600,
                       color:
                           widget.enabled ? Colors.grey[700] : Colors.grey[500],
+                      fontSize: SizeConstants.getTextSmallFontSize(context),
                     ),
               ),
             ),

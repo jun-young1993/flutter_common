@@ -28,6 +28,11 @@ mixin _$NoticeEvent {
         report,
     required TResult Function() removeSuccessMessage,
     required TResult Function(String id, String? userId) findOneById,
+    required TResult Function(String name, String year, String month)
+        checkNoticeExistence,
+    required TResult Function(
+            String name, String year, String month, String day)
+        findAllByMonth,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -42,6 +47,10 @@ mixin _$NoticeEvent {
         report,
     TResult? Function()? removeSuccessMessage,
     TResult? Function(String id, String? userId)? findOneById,
+    TResult? Function(String name, String year, String month)?
+        checkNoticeExistence,
+    TResult? Function(String name, String year, String month, String day)?
+        findAllByMonth,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,6 +65,10 @@ mixin _$NoticeEvent {
         report,
     TResult Function()? removeSuccessMessage,
     TResult Function(String id, String? userId)? findOneById,
+    TResult Function(String name, String year, String month)?
+        checkNoticeExistence,
+    TResult Function(String name, String year, String month, String day)?
+        findAllByMonth,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -67,6 +80,8 @@ mixin _$NoticeEvent {
     required TResult Function(Report value) report,
     required TResult Function(RemoveSuccessMessage value) removeSuccessMessage,
     required TResult Function(FindOneById value) findOneById,
+    required TResult Function(CheckNoticeExistence value) checkNoticeExistence,
+    required TResult Function(FindAllByMonth value) findAllByMonth,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -77,6 +92,8 @@ mixin _$NoticeEvent {
     TResult? Function(Report value)? report,
     TResult? Function(RemoveSuccessMessage value)? removeSuccessMessage,
     TResult? Function(FindOneById value)? findOneById,
+    TResult? Function(CheckNoticeExistence value)? checkNoticeExistence,
+    TResult? Function(FindAllByMonth value)? findAllByMonth,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -87,6 +104,8 @@ mixin _$NoticeEvent {
     TResult Function(Report value)? report,
     TResult Function(RemoveSuccessMessage value)? removeSuccessMessage,
     TResult Function(FindOneById value)? findOneById,
+    TResult Function(CheckNoticeExistence value)? checkNoticeExistence,
+    TResult Function(FindAllByMonth value)? findAllByMonth,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -191,6 +210,11 @@ class _$FindAllImpl implements FindAll {
         report,
     required TResult Function() removeSuccessMessage,
     required TResult Function(String id, String? userId) findOneById,
+    required TResult Function(String name, String year, String month)
+        checkNoticeExistence,
+    required TResult Function(
+            String name, String year, String month, String day)
+        findAllByMonth,
   }) {
     return findAll(name);
   }
@@ -208,6 +232,10 @@ class _$FindAllImpl implements FindAll {
         report,
     TResult? Function()? removeSuccessMessage,
     TResult? Function(String id, String? userId)? findOneById,
+    TResult? Function(String name, String year, String month)?
+        checkNoticeExistence,
+    TResult? Function(String name, String year, String month, String day)?
+        findAllByMonth,
   }) {
     return findAll?.call(name);
   }
@@ -225,6 +253,10 @@ class _$FindAllImpl implements FindAll {
         report,
     TResult Function()? removeSuccessMessage,
     TResult Function(String id, String? userId)? findOneById,
+    TResult Function(String name, String year, String month)?
+        checkNoticeExistence,
+    TResult Function(String name, String year, String month, String day)?
+        findAllByMonth,
     required TResult orElse(),
   }) {
     if (findAll != null) {
@@ -242,6 +274,8 @@ class _$FindAllImpl implements FindAll {
     required TResult Function(Report value) report,
     required TResult Function(RemoveSuccessMessage value) removeSuccessMessage,
     required TResult Function(FindOneById value) findOneById,
+    required TResult Function(CheckNoticeExistence value) checkNoticeExistence,
+    required TResult Function(FindAllByMonth value) findAllByMonth,
   }) {
     return findAll(this);
   }
@@ -255,6 +289,8 @@ class _$FindAllImpl implements FindAll {
     TResult? Function(Report value)? report,
     TResult? Function(RemoveSuccessMessage value)? removeSuccessMessage,
     TResult? Function(FindOneById value)? findOneById,
+    TResult? Function(CheckNoticeExistence value)? checkNoticeExistence,
+    TResult? Function(FindAllByMonth value)? findAllByMonth,
   }) {
     return findAll?.call(this);
   }
@@ -268,6 +304,8 @@ class _$FindAllImpl implements FindAll {
     TResult Function(Report value)? report,
     TResult Function(RemoveSuccessMessage value)? removeSuccessMessage,
     TResult Function(FindOneById value)? findOneById,
+    TResult Function(CheckNoticeExistence value)? checkNoticeExistence,
+    TResult Function(FindAllByMonth value)? findAllByMonth,
     required TResult orElse(),
   }) {
     if (findAll != null) {
@@ -367,6 +405,11 @@ class _$AddSkipImpl implements AddSkip {
         report,
     required TResult Function() removeSuccessMessage,
     required TResult Function(String id, String? userId) findOneById,
+    required TResult Function(String name, String year, String month)
+        checkNoticeExistence,
+    required TResult Function(
+            String name, String year, String month, String day)
+        findAllByMonth,
   }) {
     return addSkip(name);
   }
@@ -384,6 +427,10 @@ class _$AddSkipImpl implements AddSkip {
         report,
     TResult? Function()? removeSuccessMessage,
     TResult? Function(String id, String? userId)? findOneById,
+    TResult? Function(String name, String year, String month)?
+        checkNoticeExistence,
+    TResult? Function(String name, String year, String month, String day)?
+        findAllByMonth,
   }) {
     return addSkip?.call(name);
   }
@@ -401,6 +448,10 @@ class _$AddSkipImpl implements AddSkip {
         report,
     TResult Function()? removeSuccessMessage,
     TResult Function(String id, String? userId)? findOneById,
+    TResult Function(String name, String year, String month)?
+        checkNoticeExistence,
+    TResult Function(String name, String year, String month, String day)?
+        findAllByMonth,
     required TResult orElse(),
   }) {
     if (addSkip != null) {
@@ -418,6 +469,8 @@ class _$AddSkipImpl implements AddSkip {
     required TResult Function(Report value) report,
     required TResult Function(RemoveSuccessMessage value) removeSuccessMessage,
     required TResult Function(FindOneById value) findOneById,
+    required TResult Function(CheckNoticeExistence value) checkNoticeExistence,
+    required TResult Function(FindAllByMonth value) findAllByMonth,
   }) {
     return addSkip(this);
   }
@@ -431,6 +484,8 @@ class _$AddSkipImpl implements AddSkip {
     TResult? Function(Report value)? report,
     TResult? Function(RemoveSuccessMessage value)? removeSuccessMessage,
     TResult? Function(FindOneById value)? findOneById,
+    TResult? Function(CheckNoticeExistence value)? checkNoticeExistence,
+    TResult? Function(FindAllByMonth value)? findAllByMonth,
   }) {
     return addSkip?.call(this);
   }
@@ -444,6 +499,8 @@ class _$AddSkipImpl implements AddSkip {
     TResult Function(Report value)? report,
     TResult Function(RemoveSuccessMessage value)? removeSuccessMessage,
     TResult Function(FindOneById value)? findOneById,
+    TResult Function(CheckNoticeExistence value)? checkNoticeExistence,
+    TResult Function(FindAllByMonth value)? findAllByMonth,
     required TResult orElse(),
   }) {
     if (addSkip != null) {
@@ -583,6 +640,11 @@ class _$CreateImpl implements Create {
         report,
     required TResult Function() removeSuccessMessage,
     required TResult Function(String id, String? userId) findOneById,
+    required TResult Function(String name, String year, String month)
+        checkNoticeExistence,
+    required TResult Function(
+            String name, String year, String month, String day)
+        findAllByMonth,
   }) {
     return create(title, content, type, noticeGroupId, userId);
   }
@@ -600,6 +662,10 @@ class _$CreateImpl implements Create {
         report,
     TResult? Function()? removeSuccessMessage,
     TResult? Function(String id, String? userId)? findOneById,
+    TResult? Function(String name, String year, String month)?
+        checkNoticeExistence,
+    TResult? Function(String name, String year, String month, String day)?
+        findAllByMonth,
   }) {
     return create?.call(title, content, type, noticeGroupId, userId);
   }
@@ -617,6 +683,10 @@ class _$CreateImpl implements Create {
         report,
     TResult Function()? removeSuccessMessage,
     TResult Function(String id, String? userId)? findOneById,
+    TResult Function(String name, String year, String month)?
+        checkNoticeExistence,
+    TResult Function(String name, String year, String month, String day)?
+        findAllByMonth,
     required TResult orElse(),
   }) {
     if (create != null) {
@@ -634,6 +704,8 @@ class _$CreateImpl implements Create {
     required TResult Function(Report value) report,
     required TResult Function(RemoveSuccessMessage value) removeSuccessMessage,
     required TResult Function(FindOneById value) findOneById,
+    required TResult Function(CheckNoticeExistence value) checkNoticeExistence,
+    required TResult Function(FindAllByMonth value) findAllByMonth,
   }) {
     return create(this);
   }
@@ -647,6 +719,8 @@ class _$CreateImpl implements Create {
     TResult? Function(Report value)? report,
     TResult? Function(RemoveSuccessMessage value)? removeSuccessMessage,
     TResult? Function(FindOneById value)? findOneById,
+    TResult? Function(CheckNoticeExistence value)? checkNoticeExistence,
+    TResult? Function(FindAllByMonth value)? findAllByMonth,
   }) {
     return create?.call(this);
   }
@@ -660,6 +734,8 @@ class _$CreateImpl implements Create {
     TResult Function(Report value)? report,
     TResult Function(RemoveSuccessMessage value)? removeSuccessMessage,
     TResult Function(FindOneById value)? findOneById,
+    TResult Function(CheckNoticeExistence value)? checkNoticeExistence,
+    TResult Function(FindAllByMonth value)? findAllByMonth,
     required TResult orElse(),
   }) {
     if (create != null) {
@@ -795,6 +871,11 @@ class _$ReportImpl implements Report {
         report,
     required TResult Function() removeSuccessMessage,
     required TResult Function(String id, String? userId) findOneById,
+    required TResult Function(String name, String year, String month)
+        checkNoticeExistence,
+    required TResult Function(
+            String name, String year, String month, String day)
+        findAllByMonth,
   }) {
     return report(noticeId, reporterId, type, comment);
   }
@@ -812,6 +893,10 @@ class _$ReportImpl implements Report {
         report,
     TResult? Function()? removeSuccessMessage,
     TResult? Function(String id, String? userId)? findOneById,
+    TResult? Function(String name, String year, String month)?
+        checkNoticeExistence,
+    TResult? Function(String name, String year, String month, String day)?
+        findAllByMonth,
   }) {
     return report?.call(noticeId, reporterId, type, comment);
   }
@@ -829,6 +914,10 @@ class _$ReportImpl implements Report {
         report,
     TResult Function()? removeSuccessMessage,
     TResult Function(String id, String? userId)? findOneById,
+    TResult Function(String name, String year, String month)?
+        checkNoticeExistence,
+    TResult Function(String name, String year, String month, String day)?
+        findAllByMonth,
     required TResult orElse(),
   }) {
     if (report != null) {
@@ -846,6 +935,8 @@ class _$ReportImpl implements Report {
     required TResult Function(Report value) report,
     required TResult Function(RemoveSuccessMessage value) removeSuccessMessage,
     required TResult Function(FindOneById value) findOneById,
+    required TResult Function(CheckNoticeExistence value) checkNoticeExistence,
+    required TResult Function(FindAllByMonth value) findAllByMonth,
   }) {
     return report(this);
   }
@@ -859,6 +950,8 @@ class _$ReportImpl implements Report {
     TResult? Function(Report value)? report,
     TResult? Function(RemoveSuccessMessage value)? removeSuccessMessage,
     TResult? Function(FindOneById value)? findOneById,
+    TResult? Function(CheckNoticeExistence value)? checkNoticeExistence,
+    TResult? Function(FindAllByMonth value)? findAllByMonth,
   }) {
     return report?.call(this);
   }
@@ -872,6 +965,8 @@ class _$ReportImpl implements Report {
     TResult Function(Report value)? report,
     TResult Function(RemoveSuccessMessage value)? removeSuccessMessage,
     TResult Function(FindOneById value)? findOneById,
+    TResult Function(CheckNoticeExistence value)? checkNoticeExistence,
+    TResult Function(FindAllByMonth value)? findAllByMonth,
     required TResult orElse(),
   }) {
     if (report != null) {
@@ -949,6 +1044,11 @@ class _$RemoveSuccessMessageImpl implements RemoveSuccessMessage {
         report,
     required TResult Function() removeSuccessMessage,
     required TResult Function(String id, String? userId) findOneById,
+    required TResult Function(String name, String year, String month)
+        checkNoticeExistence,
+    required TResult Function(
+            String name, String year, String month, String day)
+        findAllByMonth,
   }) {
     return removeSuccessMessage();
   }
@@ -966,6 +1066,10 @@ class _$RemoveSuccessMessageImpl implements RemoveSuccessMessage {
         report,
     TResult? Function()? removeSuccessMessage,
     TResult? Function(String id, String? userId)? findOneById,
+    TResult? Function(String name, String year, String month)?
+        checkNoticeExistence,
+    TResult? Function(String name, String year, String month, String day)?
+        findAllByMonth,
   }) {
     return removeSuccessMessage?.call();
   }
@@ -983,6 +1087,10 @@ class _$RemoveSuccessMessageImpl implements RemoveSuccessMessage {
         report,
     TResult Function()? removeSuccessMessage,
     TResult Function(String id, String? userId)? findOneById,
+    TResult Function(String name, String year, String month)?
+        checkNoticeExistence,
+    TResult Function(String name, String year, String month, String day)?
+        findAllByMonth,
     required TResult orElse(),
   }) {
     if (removeSuccessMessage != null) {
@@ -1000,6 +1108,8 @@ class _$RemoveSuccessMessageImpl implements RemoveSuccessMessage {
     required TResult Function(Report value) report,
     required TResult Function(RemoveSuccessMessage value) removeSuccessMessage,
     required TResult Function(FindOneById value) findOneById,
+    required TResult Function(CheckNoticeExistence value) checkNoticeExistence,
+    required TResult Function(FindAllByMonth value) findAllByMonth,
   }) {
     return removeSuccessMessage(this);
   }
@@ -1013,6 +1123,8 @@ class _$RemoveSuccessMessageImpl implements RemoveSuccessMessage {
     TResult? Function(Report value)? report,
     TResult? Function(RemoveSuccessMessage value)? removeSuccessMessage,
     TResult? Function(FindOneById value)? findOneById,
+    TResult? Function(CheckNoticeExistence value)? checkNoticeExistence,
+    TResult? Function(FindAllByMonth value)? findAllByMonth,
   }) {
     return removeSuccessMessage?.call(this);
   }
@@ -1026,6 +1138,8 @@ class _$RemoveSuccessMessageImpl implements RemoveSuccessMessage {
     TResult Function(Report value)? report,
     TResult Function(RemoveSuccessMessage value)? removeSuccessMessage,
     TResult Function(FindOneById value)? findOneById,
+    TResult Function(CheckNoticeExistence value)? checkNoticeExistence,
+    TResult Function(FindAllByMonth value)? findAllByMonth,
     required TResult orElse(),
   }) {
     if (removeSuccessMessage != null) {
@@ -1125,6 +1239,11 @@ class _$FindOneByIdImpl implements FindOneById {
         report,
     required TResult Function() removeSuccessMessage,
     required TResult Function(String id, String? userId) findOneById,
+    required TResult Function(String name, String year, String month)
+        checkNoticeExistence,
+    required TResult Function(
+            String name, String year, String month, String day)
+        findAllByMonth,
   }) {
     return findOneById(id, userId);
   }
@@ -1142,6 +1261,10 @@ class _$FindOneByIdImpl implements FindOneById {
         report,
     TResult? Function()? removeSuccessMessage,
     TResult? Function(String id, String? userId)? findOneById,
+    TResult? Function(String name, String year, String month)?
+        checkNoticeExistence,
+    TResult? Function(String name, String year, String month, String day)?
+        findAllByMonth,
   }) {
     return findOneById?.call(id, userId);
   }
@@ -1159,6 +1282,10 @@ class _$FindOneByIdImpl implements FindOneById {
         report,
     TResult Function()? removeSuccessMessage,
     TResult Function(String id, String? userId)? findOneById,
+    TResult Function(String name, String year, String month)?
+        checkNoticeExistence,
+    TResult Function(String name, String year, String month, String day)?
+        findAllByMonth,
     required TResult orElse(),
   }) {
     if (findOneById != null) {
@@ -1176,6 +1303,8 @@ class _$FindOneByIdImpl implements FindOneById {
     required TResult Function(Report value) report,
     required TResult Function(RemoveSuccessMessage value) removeSuccessMessage,
     required TResult Function(FindOneById value) findOneById,
+    required TResult Function(CheckNoticeExistence value) checkNoticeExistence,
+    required TResult Function(FindAllByMonth value) findAllByMonth,
   }) {
     return findOneById(this);
   }
@@ -1189,6 +1318,8 @@ class _$FindOneByIdImpl implements FindOneById {
     TResult? Function(Report value)? report,
     TResult? Function(RemoveSuccessMessage value)? removeSuccessMessage,
     TResult? Function(FindOneById value)? findOneById,
+    TResult? Function(CheckNoticeExistence value)? checkNoticeExistence,
+    TResult? Function(FindAllByMonth value)? findAllByMonth,
   }) {
     return findOneById?.call(this);
   }
@@ -1202,6 +1333,8 @@ class _$FindOneByIdImpl implements FindOneById {
     TResult Function(Report value)? report,
     TResult Function(RemoveSuccessMessage value)? removeSuccessMessage,
     TResult Function(FindOneById value)? findOneById,
+    TResult Function(CheckNoticeExistence value)? checkNoticeExistence,
+    TResult Function(FindAllByMonth value)? findAllByMonth,
     required TResult orElse(),
   }) {
     if (findOneById != null) {
@@ -1222,5 +1355,446 @@ abstract class FindOneById implements NoticeEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FindOneByIdImplCopyWith<_$FindOneByIdImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CheckNoticeExistenceImplCopyWith<$Res> {
+  factory _$$CheckNoticeExistenceImplCopyWith(_$CheckNoticeExistenceImpl value,
+          $Res Function(_$CheckNoticeExistenceImpl) then) =
+      __$$CheckNoticeExistenceImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String name, String year, String month});
+}
+
+/// @nodoc
+class __$$CheckNoticeExistenceImplCopyWithImpl<$Res>
+    extends _$NoticeEventCopyWithImpl<$Res, _$CheckNoticeExistenceImpl>
+    implements _$$CheckNoticeExistenceImplCopyWith<$Res> {
+  __$$CheckNoticeExistenceImplCopyWithImpl(_$CheckNoticeExistenceImpl _value,
+      $Res Function(_$CheckNoticeExistenceImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of NoticeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? year = null,
+    Object? month = null,
+  }) {
+    return _then(_$CheckNoticeExistenceImpl(
+      null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == year
+          ? _value.year
+          : year // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == month
+          ? _value.month
+          : month // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CheckNoticeExistenceImpl implements CheckNoticeExistence {
+  const _$CheckNoticeExistenceImpl(this.name, this.year, this.month);
+
+  @override
+  final String name;
+  @override
+  final String year;
+  @override
+  final String month;
+
+  @override
+  String toString() {
+    return 'NoticeEvent.checkNoticeExistence(name: $name, year: $year, month: $month)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CheckNoticeExistenceImpl &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.year, year) || other.year == year) &&
+            (identical(other.month, month) || other.month == month));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, name, year, month);
+
+  /// Create a copy of NoticeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CheckNoticeExistenceImplCopyWith<_$CheckNoticeExistenceImpl>
+      get copyWith =>
+          __$$CheckNoticeExistenceImplCopyWithImpl<_$CheckNoticeExistenceImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String name) findAll,
+    required TResult Function(String name) addSkip,
+    required TResult Function(String title, String content, String type,
+            String noticeGroupId, String userId)
+        create,
+    required TResult Function(
+            String noticeId, String reporterId, String type, String? comment)
+        report,
+    required TResult Function() removeSuccessMessage,
+    required TResult Function(String id, String? userId) findOneById,
+    required TResult Function(String name, String year, String month)
+        checkNoticeExistence,
+    required TResult Function(
+            String name, String year, String month, String day)
+        findAllByMonth,
+  }) {
+    return checkNoticeExistence(name, year, month);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String name)? findAll,
+    TResult? Function(String name)? addSkip,
+    TResult? Function(String title, String content, String type,
+            String noticeGroupId, String userId)?
+        create,
+    TResult? Function(
+            String noticeId, String reporterId, String type, String? comment)?
+        report,
+    TResult? Function()? removeSuccessMessage,
+    TResult? Function(String id, String? userId)? findOneById,
+    TResult? Function(String name, String year, String month)?
+        checkNoticeExistence,
+    TResult? Function(String name, String year, String month, String day)?
+        findAllByMonth,
+  }) {
+    return checkNoticeExistence?.call(name, year, month);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String name)? findAll,
+    TResult Function(String name)? addSkip,
+    TResult Function(String title, String content, String type,
+            String noticeGroupId, String userId)?
+        create,
+    TResult Function(
+            String noticeId, String reporterId, String type, String? comment)?
+        report,
+    TResult Function()? removeSuccessMessage,
+    TResult Function(String id, String? userId)? findOneById,
+    TResult Function(String name, String year, String month)?
+        checkNoticeExistence,
+    TResult Function(String name, String year, String month, String day)?
+        findAllByMonth,
+    required TResult orElse(),
+  }) {
+    if (checkNoticeExistence != null) {
+      return checkNoticeExistence(name, year, month);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FindAll value) findAll,
+    required TResult Function(AddSkip value) addSkip,
+    required TResult Function(Create value) create,
+    required TResult Function(Report value) report,
+    required TResult Function(RemoveSuccessMessage value) removeSuccessMessage,
+    required TResult Function(FindOneById value) findOneById,
+    required TResult Function(CheckNoticeExistence value) checkNoticeExistence,
+    required TResult Function(FindAllByMonth value) findAllByMonth,
+  }) {
+    return checkNoticeExistence(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(FindAll value)? findAll,
+    TResult? Function(AddSkip value)? addSkip,
+    TResult? Function(Create value)? create,
+    TResult? Function(Report value)? report,
+    TResult? Function(RemoveSuccessMessage value)? removeSuccessMessage,
+    TResult? Function(FindOneById value)? findOneById,
+    TResult? Function(CheckNoticeExistence value)? checkNoticeExistence,
+    TResult? Function(FindAllByMonth value)? findAllByMonth,
+  }) {
+    return checkNoticeExistence?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FindAll value)? findAll,
+    TResult Function(AddSkip value)? addSkip,
+    TResult Function(Create value)? create,
+    TResult Function(Report value)? report,
+    TResult Function(RemoveSuccessMessage value)? removeSuccessMessage,
+    TResult Function(FindOneById value)? findOneById,
+    TResult Function(CheckNoticeExistence value)? checkNoticeExistence,
+    TResult Function(FindAllByMonth value)? findAllByMonth,
+    required TResult orElse(),
+  }) {
+    if (checkNoticeExistence != null) {
+      return checkNoticeExistence(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CheckNoticeExistence implements NoticeEvent {
+  const factory CheckNoticeExistence(
+          final String name, final String year, final String month) =
+      _$CheckNoticeExistenceImpl;
+
+  String get name;
+  String get year;
+  String get month;
+
+  /// Create a copy of NoticeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CheckNoticeExistenceImplCopyWith<_$CheckNoticeExistenceImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$FindAllByMonthImplCopyWith<$Res> {
+  factory _$$FindAllByMonthImplCopyWith(_$FindAllByMonthImpl value,
+          $Res Function(_$FindAllByMonthImpl) then) =
+      __$$FindAllByMonthImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String name, String year, String month, String day});
+}
+
+/// @nodoc
+class __$$FindAllByMonthImplCopyWithImpl<$Res>
+    extends _$NoticeEventCopyWithImpl<$Res, _$FindAllByMonthImpl>
+    implements _$$FindAllByMonthImplCopyWith<$Res> {
+  __$$FindAllByMonthImplCopyWithImpl(
+      _$FindAllByMonthImpl _value, $Res Function(_$FindAllByMonthImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of NoticeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? year = null,
+    Object? month = null,
+    Object? day = null,
+  }) {
+    return _then(_$FindAllByMonthImpl(
+      null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == year
+          ? _value.year
+          : year // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == month
+          ? _value.month
+          : month // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == day
+          ? _value.day
+          : day // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FindAllByMonthImpl implements FindAllByMonth {
+  const _$FindAllByMonthImpl(this.name, this.year, this.month, this.day);
+
+  @override
+  final String name;
+  @override
+  final String year;
+  @override
+  final String month;
+  @override
+  final String day;
+
+  @override
+  String toString() {
+    return 'NoticeEvent.findAllByMonth(name: $name, year: $year, month: $month, day: $day)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FindAllByMonthImpl &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.year, year) || other.year == year) &&
+            (identical(other.month, month) || other.month == month) &&
+            (identical(other.day, day) || other.day == day));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, name, year, month, day);
+
+  /// Create a copy of NoticeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FindAllByMonthImplCopyWith<_$FindAllByMonthImpl> get copyWith =>
+      __$$FindAllByMonthImplCopyWithImpl<_$FindAllByMonthImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String name) findAll,
+    required TResult Function(String name) addSkip,
+    required TResult Function(String title, String content, String type,
+            String noticeGroupId, String userId)
+        create,
+    required TResult Function(
+            String noticeId, String reporterId, String type, String? comment)
+        report,
+    required TResult Function() removeSuccessMessage,
+    required TResult Function(String id, String? userId) findOneById,
+    required TResult Function(String name, String year, String month)
+        checkNoticeExistence,
+    required TResult Function(
+            String name, String year, String month, String day)
+        findAllByMonth,
+  }) {
+    return findAllByMonth(name, year, month, day);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String name)? findAll,
+    TResult? Function(String name)? addSkip,
+    TResult? Function(String title, String content, String type,
+            String noticeGroupId, String userId)?
+        create,
+    TResult? Function(
+            String noticeId, String reporterId, String type, String? comment)?
+        report,
+    TResult? Function()? removeSuccessMessage,
+    TResult? Function(String id, String? userId)? findOneById,
+    TResult? Function(String name, String year, String month)?
+        checkNoticeExistence,
+    TResult? Function(String name, String year, String month, String day)?
+        findAllByMonth,
+  }) {
+    return findAllByMonth?.call(name, year, month, day);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String name)? findAll,
+    TResult Function(String name)? addSkip,
+    TResult Function(String title, String content, String type,
+            String noticeGroupId, String userId)?
+        create,
+    TResult Function(
+            String noticeId, String reporterId, String type, String? comment)?
+        report,
+    TResult Function()? removeSuccessMessage,
+    TResult Function(String id, String? userId)? findOneById,
+    TResult Function(String name, String year, String month)?
+        checkNoticeExistence,
+    TResult Function(String name, String year, String month, String day)?
+        findAllByMonth,
+    required TResult orElse(),
+  }) {
+    if (findAllByMonth != null) {
+      return findAllByMonth(name, year, month, day);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FindAll value) findAll,
+    required TResult Function(AddSkip value) addSkip,
+    required TResult Function(Create value) create,
+    required TResult Function(Report value) report,
+    required TResult Function(RemoveSuccessMessage value) removeSuccessMessage,
+    required TResult Function(FindOneById value) findOneById,
+    required TResult Function(CheckNoticeExistence value) checkNoticeExistence,
+    required TResult Function(FindAllByMonth value) findAllByMonth,
+  }) {
+    return findAllByMonth(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(FindAll value)? findAll,
+    TResult? Function(AddSkip value)? addSkip,
+    TResult? Function(Create value)? create,
+    TResult? Function(Report value)? report,
+    TResult? Function(RemoveSuccessMessage value)? removeSuccessMessage,
+    TResult? Function(FindOneById value)? findOneById,
+    TResult? Function(CheckNoticeExistence value)? checkNoticeExistence,
+    TResult? Function(FindAllByMonth value)? findAllByMonth,
+  }) {
+    return findAllByMonth?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FindAll value)? findAll,
+    TResult Function(AddSkip value)? addSkip,
+    TResult Function(Create value)? create,
+    TResult Function(Report value)? report,
+    TResult Function(RemoveSuccessMessage value)? removeSuccessMessage,
+    TResult Function(FindOneById value)? findOneById,
+    TResult Function(CheckNoticeExistence value)? checkNoticeExistence,
+    TResult Function(FindAllByMonth value)? findAllByMonth,
+    required TResult orElse(),
+  }) {
+    if (findAllByMonth != null) {
+      return findAllByMonth(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FindAllByMonth implements NoticeEvent {
+  const factory FindAllByMonth(final String name, final String year,
+      final String month, final String day) = _$FindAllByMonthImpl;
+
+  String get name;
+  String get year;
+  String get month;
+  String get day;
+
+  /// Create a copy of NoticeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$FindAllByMonthImplCopyWith<_$FindAllByMonthImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -81,3 +81,52 @@ class S3ObjectIsAllCountLoadingSelector extends S3ObjectSelector<bool> {
           builder: (context, isAllCountLoading) => builder(isAllCountLoading),
         );
 }
+
+class S3ObjectObjectsExistenceByMonthSelector
+    extends S3ObjectSelector<Map<String, bool>> {
+  S3ObjectObjectsExistenceByMonthSelector(
+      Widget Function(Map<String, bool> objectsExistenceByMonth) builder,
+      {Key? key})
+      : super(
+          key: key,
+          selector: (state) => state.objectsExistenceByMonth,
+          builder: (context, objectsExistenceByMonth) =>
+              builder(objectsExistenceByMonth),
+        );
+}
+
+class S3ObjectObjectsByDateSelector extends S3ObjectSelector<List<S3Object>> {
+  S3ObjectObjectsByDateSelector(
+      Widget Function(List<S3Object> objectsByDate) builder,
+      {Key? key})
+      : super(
+          key: key,
+          selector: (state) => state.objectsByDate,
+          builder: (context, objectsByDate) => builder(objectsByDate),
+        );
+}
+
+class S3ObjectIsObjectsExistenceByMonthLoadingSelector
+    extends S3ObjectSelector<bool> {
+  S3ObjectIsObjectsExistenceByMonthLoadingSelector(
+      Widget Function(bool isObjectsExistenceByMonthLoading) builder,
+      {Key? key})
+      : super(
+          key: key,
+          selector: (state) => state.isObjectsExistenceByMonthLoading,
+          builder: (context, isObjectsExistenceByMonthLoading) =>
+              builder(isObjectsExistenceByMonthLoading),
+        );
+}
+
+class S3ObjectIsObjectsByDateLoadingSelector extends S3ObjectSelector<bool> {
+  S3ObjectIsObjectsByDateLoadingSelector(
+      Widget Function(bool isObjectsByDateLoading) builder,
+      {Key? key})
+      : super(
+          key: key,
+          selector: (state) => state.isObjectsByDateLoading,
+          builder: (context, isObjectsByDateLoading) =>
+              builder(isObjectsByDateLoading),
+        );
+}

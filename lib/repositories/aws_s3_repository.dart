@@ -12,6 +12,10 @@ abstract class AwsS3Repository {
   Future<List<S3Object>> getS3Object(User user, int? skip, int? take);
   Future<S3Object> findOneOrFail(String id);
   Future<int> count();
+  Future<Map<String, bool>> checkObjectsExistenceByMonth(
+      String year, String month);
+  Future<List<S3Object>> getObjectsByDate(
+      String year, String month, String day);
 }
 
 class AwsS3DefaultRepository extends AwsS3Repository {
@@ -102,5 +106,29 @@ class AwsS3DefaultRepository extends AwsS3Repository {
       }
     }
     throw Exception('S3 객체 개수 조회 실패');
+  }
+
+  @override
+  Future<Map<String, bool>> checkObjectsExistenceByMonth(
+      String year, String month) async {
+    final response = await dioClient
+        .get('/aws/s3/objects/year/$year/month/$month/existence');
+    if (response.statusCode == 200) {
+      return Map<String, bool>.from(response.data);
+    }
+    throw Exception('S3 객체 조회 실패');
+  }
+
+  @override
+  Future<List<S3Object>> getObjectsByDate(
+      String year, String month, String day) async {
+    final response =
+        await dioClient.get('/aws/s3/objects/year/$year/month/$month/day/$day');
+    if (response.statusCode == 200) {
+      return (response.data as List<dynamic>)
+          .map((e) => S3Object.fromJson(e as Map<String, dynamic>))
+          .toList();
+    }
+    throw Exception('S3 객체 조회 실패');
   }
 }

@@ -14,4 +14,8 @@ class NoticeEvent with _$NoticeEvent {
   const factory NoticeEvent.removeSuccessMessage() = RemoveSuccessMessage;
   const factory NoticeEvent.findOneById(String id, String? userId) =
       FindOneById;
+  const factory NoticeEvent.checkNoticeExistence(
+      String name, String year, String month) = CheckNoticeExistence;
+  const factory NoticeEvent.findAllByMonth(
+      String name, String year, String month, String day) = FindAllByMonth;
 }

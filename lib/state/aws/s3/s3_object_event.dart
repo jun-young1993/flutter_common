@@ -14,4 +14,8 @@ class S3ObjectEvent with _$S3ObjectEvent {
   const factory S3ObjectEvent.uploadFile(File file, User user) = _UploadFile;
   const factory S3ObjectEvent.findOneOrFail(String id) = _FindOneOrFail;
   const factory S3ObjectEvent.count() = _Count;
+  const factory S3ObjectEvent.checkObjectsExistenceByMonth(
+      String year, String month) = _CheckObjectsExistenceByMonth;
+  const factory S3ObjectEvent.getObjectsByDate(
+      String year, String month, String day) = _GetObjectsByDate;
 }

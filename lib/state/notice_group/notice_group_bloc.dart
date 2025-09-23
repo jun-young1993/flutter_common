@@ -13,12 +13,37 @@ class NoticeGroupBloc extends Bloc<NoticeGroupEvent, NoticeGroupState> {
     on<NoticeGroupEvent>(
       (event, emit) async {
         await event.map(
+          initialize: (event) async {
+            await _handleEvent(
+              emit,
+              () async {
+                try {
+                  final checkNoticeGroup =
+                      await _noticeGroupRepository.findOneByName(event.name);
+                  emit(state.copyWith(noticeGroup: checkNoticeGroup));
+                } catch (e) {
+                  final noticeGroup =
+                      await _noticeGroupRepository.create(event.name);
+                  emit(state.copyWith(noticeGroup: noticeGroup));
+                }
+              },
+            );
+          },
           findNoticeGroup: (e) async {
             await _handleEvent(
               emit,
               () async {
                 final noticeGroup =
                     await _noticeGroupRepository.findOneByName(e.name);
+                emit(state.copyWith(noticeGroup: noticeGroup));
+              },
+            );
+          },
+          createNoticeGroup: (e) async {
+            await _handleEvent(
+              emit,
+              () async {
+                final noticeGroup = await _noticeGroupRepository.create(e.name);
                 emit(state.copyWith(noticeGroup: noticeGroup));
               },
             );

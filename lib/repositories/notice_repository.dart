@@ -13,6 +13,10 @@ abstract class NoticeRepository {
   Future<void> report(
       String noticeId, String reporterId, String type, String? content);
   Future<Notice> findOneById(String id, String? userId);
+  Future<Map<String, bool>> checkNoticeExistence(
+      String name, String year, String month);
+  Future<List<Notice>> findAllByMonth(
+      String name, String year, String month, String day);
 }
 
 class NoticeDefaultRepository extends NoticeRepository {
@@ -86,5 +90,31 @@ class NoticeDefaultRepository extends NoticeRepository {
       throw Exception(
           '[${response.statusCode}] Failed to report notice: ${response.statusMessage ?? 'Unknown error'}');
     }
+  }
+
+  @override
+  Future<Map<String, bool>> checkNoticeExistence(
+      String name, String year, String month) async {
+    final response = await dioClient.get(
+        '/notice/notice-group/name/$name/year/$year/month/$month/existence');
+    if (response.statusCode != 200) {
+      throw Exception(
+          '[${response.statusCode}] Failed to check notice existence: ${response.statusMessage ?? 'Unknown error'}');
+    }
+    return Map<String, bool>.from(response.data);
+  }
+
+  @override
+  Future<List<Notice>> findAllByMonth(
+      String name, String year, String month, String day) async {
+    final response = await dioClient.get(
+        '/notice/notice-group/name/$name/year/$year/month/$month/day/$day');
+    if (response.statusCode != 200) {
+      throw Exception(
+          '[${response.statusCode}] Failed to fetch notices: ${response.statusMessage ?? 'Unknown error'}');
+    }
+    return (response.data as List<dynamic>)
+        .map((e) => Notice.fromJson(e as Map<String, dynamic>))
+        .toList();
   }
 }

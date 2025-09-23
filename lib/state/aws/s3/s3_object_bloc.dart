@@ -34,6 +34,19 @@ class S3ObjectBloc extends Bloc<S3ObjectEvent, S3ObjectState> {
           emit(state.copyWith(isAllCountLoading: true));
           final allCount = await s3ObjectRepository.count();
           emit(state.copyWith(allCount: allCount, isAllCountLoading: false));
+        }, checkObjectsExistenceByMonth: (e) async {
+          emit(state.copyWith(isObjectsExistenceByMonthLoading: true));
+          final objectsExistenceByMonth = await s3ObjectRepository
+              .checkObjectsExistenceByMonth(e.year, e.month);
+          emit(state.copyWith(
+              objectsExistenceByMonth: objectsExistenceByMonth,
+              isObjectsExistenceByMonthLoading: false));
+        }, getObjectsByDate: (e) async {
+          emit(state.copyWith(isObjectsByDateLoading: true));
+          final objectsByDate =
+              await s3ObjectRepository.getObjectsByDate(e.year, e.month, e.day);
+          emit(state.copyWith(
+              objectsByDate: objectsByDate, isObjectsByDateLoading: false));
         });
       },
     );
