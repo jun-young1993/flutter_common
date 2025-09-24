@@ -56,7 +56,8 @@ class NoticeBloc extends Bloc<NoticeEvent, NoticeState> {
               emit,
               () async {
                 final notice = await _noticeRepository.create(
-                    e.title, e.content, e.type, e.noticeGroupId, e.userId);
+                    e.title, e.content, e.type, e.noticeGroupId, e.userId,
+                    createdAt: e.createdAt);
 
                 emit(state.copyWith(
                   notices: [notice, ...(state.notices ?? [])],
@@ -94,15 +95,16 @@ class NoticeBloc extends Bloc<NoticeEvent, NoticeState> {
               },
             );
           },
-          findAllByMonth: (e) async {
+          findAllByDate: (e) async {
             await _handleEvent(
               emit,
               () async {
-                emit(state.copyWith(isNoticesByMonthLoading: true));
+                emit(state
+                    .copyWith(noticesByDate: [], isNoticesByDateLoading: true));
                 final notices = await _noticeRepository.findAllByMonth(
                     e.name, e.year, e.month, e.day);
                 emit(state.copyWith(
-                    noticesByMonth: notices, isNoticesByMonthLoading: false));
+                    noticesByDate: notices, isNoticesByDateLoading: false));
               },
             );
           },

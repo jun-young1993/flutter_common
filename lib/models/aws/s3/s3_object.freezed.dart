@@ -209,7 +209,7 @@ class __$$S3ObjectImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$S3ObjectImpl implements _S3Object {
+class _$S3ObjectImpl extends _S3Object {
   const _$S3ObjectImpl(
       {required this.id,
       this.key = null,
@@ -219,7 +219,8 @@ class _$S3ObjectImpl implements _S3Object {
       this.mimetype = null,
       this.active = false,
       this.createdAt = null,
-      this.userId = null});
+      this.userId = null})
+      : super._();
 
   factory _$S3ObjectImpl.fromJson(Map<String, dynamic> json) =>
       _$$S3ObjectImplFromJson(json);
@@ -296,7 +297,7 @@ class _$S3ObjectImpl implements _S3Object {
   }
 }
 
-abstract class _S3Object implements S3Object {
+abstract class _S3Object extends S3Object {
   const factory _S3Object(
       {required final String id,
       final String? key,
@@ -307,6 +308,7 @@ abstract class _S3Object implements S3Object {
       final bool active,
       final DateTime? createdAt,
       final String? userId}) = _$S3ObjectImpl;
+  const _S3Object._() : super._();
 
   factory _S3Object.fromJson(Map<String, dynamic> json) =
       _$S3ObjectImpl.fromJson;

@@ -1,5 +1,4 @@
 import 'package:flutter_common/flutter_common.dart';
-import 'package:flutter_common/repositories/notice_repository.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 sealed class NoticePageEvent {}

@@ -18,8 +18,8 @@ class NoticeState with _$NoticeState, BaseStateMixin {
     @Default(false) bool hasMore,
     @Default(false) bool isNoticeExistenceByMonthLoading,
     @Default({}) Map<String, bool> noticeExistenceByMonth,
-    @Default([]) List<Notice>? noticesByMonth,
-    @Default(false) bool isNoticesByMonthLoading,
+    @Default([]) List<Notice>? noticesByDate,
+    @Default(false) bool isNoticesByDateLoading,
   }) = _NoticeState;
 
   const NoticeState._();

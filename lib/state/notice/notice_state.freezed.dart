@@ -28,8 +28,8 @@ mixin _$NoticeState {
       throw _privateConstructorUsedError;
   Map<String, bool> get noticeExistenceByMonth =>
       throw _privateConstructorUsedError;
-  List<Notice>? get noticesByMonth => throw _privateConstructorUsedError;
-  bool get isNoticesByMonthLoading => throw _privateConstructorUsedError;
+  List<Notice>? get noticesByDate => throw _privateConstructorUsedError;
+  bool get isNoticesByDateLoading => throw _privateConstructorUsedError;
 
   /// Create a copy of NoticeState
   /// with the given fields replaced by the non-null parameter values.
@@ -55,8 +55,8 @@ abstract class $NoticeStateCopyWith<$Res> {
       bool hasMore,
       bool isNoticeExistenceByMonthLoading,
       Map<String, bool> noticeExistenceByMonth,
-      List<Notice>? noticesByMonth,
-      bool isNoticesByMonthLoading});
+      List<Notice>? noticesByDate,
+      bool isNoticesByDateLoading});
 
   $AppExceptionCopyWith<$Res>? get error;
   $NoticeCopyWith<$Res>? get notice;
@@ -87,8 +87,8 @@ class _$NoticeStateCopyWithImpl<$Res, $Val extends NoticeState>
     Object? hasMore = null,
     Object? isNoticeExistenceByMonthLoading = null,
     Object? noticeExistenceByMonth = null,
-    Object? noticesByMonth = freezed,
-    Object? isNoticesByMonthLoading = null,
+    Object? noticesByDate = freezed,
+    Object? isNoticesByDateLoading = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -131,13 +131,13 @@ class _$NoticeStateCopyWithImpl<$Res, $Val extends NoticeState>
           ? _value.noticeExistenceByMonth
           : noticeExistenceByMonth // ignore: cast_nullable_to_non_nullable
               as Map<String, bool>,
-      noticesByMonth: freezed == noticesByMonth
-          ? _value.noticesByMonth
-          : noticesByMonth // ignore: cast_nullable_to_non_nullable
+      noticesByDate: freezed == noticesByDate
+          ? _value.noticesByDate
+          : noticesByDate // ignore: cast_nullable_to_non_nullable
               as List<Notice>?,
-      isNoticesByMonthLoading: null == isNoticesByMonthLoading
-          ? _value.isNoticesByMonthLoading
-          : isNoticesByMonthLoading // ignore: cast_nullable_to_non_nullable
+      isNoticesByDateLoading: null == isNoticesByDateLoading
+          ? _value.isNoticesByDateLoading
+          : isNoticesByDateLoading // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -190,8 +190,8 @@ abstract class _$$NoticeStateImplCopyWith<$Res>
       bool hasMore,
       bool isNoticeExistenceByMonthLoading,
       Map<String, bool> noticeExistenceByMonth,
-      List<Notice>? noticesByMonth,
-      bool isNoticesByMonthLoading});
+      List<Notice>? noticesByDate,
+      bool isNoticesByDateLoading});
 
   @override
   $AppExceptionCopyWith<$Res>? get error;
@@ -222,8 +222,8 @@ class __$$NoticeStateImplCopyWithImpl<$Res>
     Object? hasMore = null,
     Object? isNoticeExistenceByMonthLoading = null,
     Object? noticeExistenceByMonth = null,
-    Object? noticesByMonth = freezed,
-    Object? isNoticesByMonthLoading = null,
+    Object? noticesByDate = freezed,
+    Object? isNoticesByDateLoading = null,
   }) {
     return _then(_$NoticeStateImpl(
       isLoading: null == isLoading
@@ -266,13 +266,13 @@ class __$$NoticeStateImplCopyWithImpl<$Res>
           ? _value._noticeExistenceByMonth
           : noticeExistenceByMonth // ignore: cast_nullable_to_non_nullable
               as Map<String, bool>,
-      noticesByMonth: freezed == noticesByMonth
-          ? _value._noticesByMonth
-          : noticesByMonth // ignore: cast_nullable_to_non_nullable
+      noticesByDate: freezed == noticesByDate
+          ? _value._noticesByDate
+          : noticesByDate // ignore: cast_nullable_to_non_nullable
               as List<Notice>?,
-      isNoticesByMonthLoading: null == isNoticesByMonthLoading
-          ? _value.isNoticesByMonthLoading
-          : isNoticesByMonthLoading // ignore: cast_nullable_to_non_nullable
+      isNoticesByDateLoading: null == isNoticesByDateLoading
+          ? _value.isNoticesByDateLoading
+          : isNoticesByDateLoading // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -292,11 +292,11 @@ class _$NoticeStateImpl extends _NoticeState {
       this.hasMore = false,
       this.isNoticeExistenceByMonthLoading = false,
       final Map<String, bool> noticeExistenceByMonth = const {},
-      final List<Notice>? noticesByMonth = const [],
-      this.isNoticesByMonthLoading = false})
+      final List<Notice>? noticesByDate = const [],
+      this.isNoticesByDateLoading = false})
       : _notices = notices,
         _noticeExistenceByMonth = noticeExistenceByMonth,
-        _noticesByMonth = noticesByMonth,
+        _noticesByDate = noticesByDate,
         super._();
 
   @override
@@ -344,24 +344,24 @@ class _$NoticeStateImpl extends _NoticeState {
     return EqualUnmodifiableMapView(_noticeExistenceByMonth);
   }
 
-  final List<Notice>? _noticesByMonth;
+  final List<Notice>? _noticesByDate;
   @override
   @JsonKey()
-  List<Notice>? get noticesByMonth {
-    final value = _noticesByMonth;
+  List<Notice>? get noticesByDate {
+    final value = _noticesByDate;
     if (value == null) return null;
-    if (_noticesByMonth is EqualUnmodifiableListView) return _noticesByMonth;
+    if (_noticesByDate is EqualUnmodifiableListView) return _noticesByDate;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
 
   @override
   @JsonKey()
-  final bool isNoticesByMonthLoading;
+  final bool isNoticesByDateLoading;
 
   @override
   String toString() {
-    return 'NoticeState(isLoading: $isLoading, error: $error, successMessage: $successMessage, notice: $notice, notices: $notices, skipCount: $skipCount, take: $take, hasMore: $hasMore, isNoticeExistenceByMonthLoading: $isNoticeExistenceByMonthLoading, noticeExistenceByMonth: $noticeExistenceByMonth, noticesByMonth: $noticesByMonth, isNoticesByMonthLoading: $isNoticesByMonthLoading)';
+    return 'NoticeState(isLoading: $isLoading, error: $error, successMessage: $successMessage, notice: $notice, notices: $notices, skipCount: $skipCount, take: $take, hasMore: $hasMore, isNoticeExistenceByMonthLoading: $isNoticeExistenceByMonthLoading, noticeExistenceByMonth: $noticeExistenceByMonth, noticesByDate: $noticesByDate, isNoticesByDateLoading: $isNoticesByDateLoading)';
   }
 
   @override
@@ -387,10 +387,9 @@ class _$NoticeStateImpl extends _NoticeState {
             const DeepCollectionEquality().equals(
                 other._noticeExistenceByMonth, _noticeExistenceByMonth) &&
             const DeepCollectionEquality()
-                .equals(other._noticesByMonth, _noticesByMonth) &&
-            (identical(
-                    other.isNoticesByMonthLoading, isNoticesByMonthLoading) ||
-                other.isNoticesByMonthLoading == isNoticesByMonthLoading));
+                .equals(other._noticesByDate, _noticesByDate) &&
+            (identical(other.isNoticesByDateLoading, isNoticesByDateLoading) ||
+                other.isNoticesByDateLoading == isNoticesByDateLoading));
   }
 
   @override
@@ -406,8 +405,8 @@ class _$NoticeStateImpl extends _NoticeState {
       hasMore,
       isNoticeExistenceByMonthLoading,
       const DeepCollectionEquality().hash(_noticeExistenceByMonth),
-      const DeepCollectionEquality().hash(_noticesByMonth),
-      isNoticesByMonthLoading);
+      const DeepCollectionEquality().hash(_noticesByDate),
+      isNoticesByDateLoading);
 
   /// Create a copy of NoticeState
   /// with the given fields replaced by the non-null parameter values.
@@ -430,8 +429,8 @@ abstract class _NoticeState extends NoticeState {
       final bool hasMore,
       final bool isNoticeExistenceByMonthLoading,
       final Map<String, bool> noticeExistenceByMonth,
-      final List<Notice>? noticesByMonth,
-      final bool isNoticesByMonthLoading}) = _$NoticeStateImpl;
+      final List<Notice>? noticesByDate,
+      final bool isNoticesByDateLoading}) = _$NoticeStateImpl;
   const _NoticeState._() : super._();
 
   @override
@@ -455,9 +454,9 @@ abstract class _NoticeState extends NoticeState {
   @override
   Map<String, bool> get noticeExistenceByMonth;
   @override
-  List<Notice>? get noticesByMonth;
+  List<Notice>? get noticesByDate;
   @override
-  bool get isNoticesByMonthLoading;
+  bool get isNoticesByDateLoading;
 
   /// Create a copy of NoticeState
   /// with the given fields replaced by the non-null parameter values.

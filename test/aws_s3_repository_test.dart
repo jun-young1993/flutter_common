@@ -26,7 +26,7 @@ void main() {
       mockDio = MockDio();
       mockResponse = MockResponse();
       repository = AwsS3DefaultRepository(dioClient: mockDioClient);
-      
+
       // 테스트용 User 생성
       testUser = User(
         id: '73800d47-5385-4d21-9827-1aeac146a3d8',
@@ -34,6 +34,7 @@ void main() {
         email: 'test@example.com',
         type: 'user',
         isActive: true,
+        isAdmin: false,
         createdAt: '2023-01-01T00:00:00Z',
         updatedAt: '2023-01-01T00:00:00Z',
       );

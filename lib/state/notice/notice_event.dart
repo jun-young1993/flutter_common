@@ -7,7 +7,8 @@ class NoticeEvent with _$NoticeEvent {
   const factory NoticeEvent.findAll(String name) = FindAll;
   const factory NoticeEvent.addSkip(String name) = AddSkip;
   const factory NoticeEvent.create(String title, String content, String type,
-      String noticeGroupId, String userId) = Create;
+      String noticeGroupId, String userId,
+      {String? createdAt}) = Create;
   const factory NoticeEvent.report(
           String noticeId, String reporterId, String type, String? comment) =
       Report;
@@ -16,6 +17,6 @@ class NoticeEvent with _$NoticeEvent {
       FindOneById;
   const factory NoticeEvent.checkNoticeExistence(
       String name, String year, String month) = CheckNoticeExistence;
-  const factory NoticeEvent.findAllByMonth(
-      String name, String year, String month, String day) = FindAllByMonth;
+  const factory NoticeEvent.findAllByDate(
+      String name, String year, String month, String day) = FindAllByDate;
 }

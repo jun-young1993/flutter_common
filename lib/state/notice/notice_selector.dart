@@ -74,3 +74,26 @@ class NoticeNoticeExistenceByMonthSelector
               builder(noticeExistenceByMonth),
         );
 }
+
+class NoticeNoticesByDateSelector extends NoticeSelector<List<Notice>?> {
+  NoticeNoticesByDateSelector(
+      Widget Function(List<Notice>? noticesByDate) builder,
+      {Key? key})
+      : super(
+          key: key,
+          selector: (state) => state.noticesByDate,
+          builder: (context, noticesByDate) => builder(noticesByDate),
+        );
+}
+
+class NoticeIsNoticesByDateLoadingSelector extends NoticeSelector<bool> {
+  NoticeIsNoticesByDateLoadingSelector(
+      Widget Function(bool isNoticesByDateLoading) builder,
+      {Key? key})
+      : super(
+          key: key,
+          selector: (state) => state.isNoticesByDateLoading,
+          builder: (context, isNoticesByDateLoading) =>
+              builder(isNoticesByDateLoading),
+        );
+}

@@ -21,7 +21,7 @@ mixin _$NoticeEvent {
     required TResult Function(String name) findAll,
     required TResult Function(String name) addSkip,
     required TResult Function(String title, String content, String type,
-            String noticeGroupId, String userId)
+            String noticeGroupId, String userId, String? createdAt)
         create,
     required TResult Function(
             String noticeId, String reporterId, String type, String? comment)
@@ -32,7 +32,7 @@ mixin _$NoticeEvent {
         checkNoticeExistence,
     required TResult Function(
             String name, String year, String month, String day)
-        findAllByMonth,
+        findAllByDate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -40,7 +40,7 @@ mixin _$NoticeEvent {
     TResult? Function(String name)? findAll,
     TResult? Function(String name)? addSkip,
     TResult? Function(String title, String content, String type,
-            String noticeGroupId, String userId)?
+            String noticeGroupId, String userId, String? createdAt)?
         create,
     TResult? Function(
             String noticeId, String reporterId, String type, String? comment)?
@@ -50,7 +50,7 @@ mixin _$NoticeEvent {
     TResult? Function(String name, String year, String month)?
         checkNoticeExistence,
     TResult? Function(String name, String year, String month, String day)?
-        findAllByMonth,
+        findAllByDate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -58,7 +58,7 @@ mixin _$NoticeEvent {
     TResult Function(String name)? findAll,
     TResult Function(String name)? addSkip,
     TResult Function(String title, String content, String type,
-            String noticeGroupId, String userId)?
+            String noticeGroupId, String userId, String? createdAt)?
         create,
     TResult Function(
             String noticeId, String reporterId, String type, String? comment)?
@@ -68,7 +68,7 @@ mixin _$NoticeEvent {
     TResult Function(String name, String year, String month)?
         checkNoticeExistence,
     TResult Function(String name, String year, String month, String day)?
-        findAllByMonth,
+        findAllByDate,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -81,7 +81,7 @@ mixin _$NoticeEvent {
     required TResult Function(RemoveSuccessMessage value) removeSuccessMessage,
     required TResult Function(FindOneById value) findOneById,
     required TResult Function(CheckNoticeExistence value) checkNoticeExistence,
-    required TResult Function(FindAllByMonth value) findAllByMonth,
+    required TResult Function(FindAllByDate value) findAllByDate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -93,7 +93,7 @@ mixin _$NoticeEvent {
     TResult? Function(RemoveSuccessMessage value)? removeSuccessMessage,
     TResult? Function(FindOneById value)? findOneById,
     TResult? Function(CheckNoticeExistence value)? checkNoticeExistence,
-    TResult? Function(FindAllByMonth value)? findAllByMonth,
+    TResult? Function(FindAllByDate value)? findAllByDate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -105,7 +105,7 @@ mixin _$NoticeEvent {
     TResult Function(RemoveSuccessMessage value)? removeSuccessMessage,
     TResult Function(FindOneById value)? findOneById,
     TResult Function(CheckNoticeExistence value)? checkNoticeExistence,
-    TResult Function(FindAllByMonth value)? findAllByMonth,
+    TResult Function(FindAllByDate value)? findAllByDate,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -203,7 +203,7 @@ class _$FindAllImpl implements FindAll {
     required TResult Function(String name) findAll,
     required TResult Function(String name) addSkip,
     required TResult Function(String title, String content, String type,
-            String noticeGroupId, String userId)
+            String noticeGroupId, String userId, String? createdAt)
         create,
     required TResult Function(
             String noticeId, String reporterId, String type, String? comment)
@@ -214,7 +214,7 @@ class _$FindAllImpl implements FindAll {
         checkNoticeExistence,
     required TResult Function(
             String name, String year, String month, String day)
-        findAllByMonth,
+        findAllByDate,
   }) {
     return findAll(name);
   }
@@ -225,7 +225,7 @@ class _$FindAllImpl implements FindAll {
     TResult? Function(String name)? findAll,
     TResult? Function(String name)? addSkip,
     TResult? Function(String title, String content, String type,
-            String noticeGroupId, String userId)?
+            String noticeGroupId, String userId, String? createdAt)?
         create,
     TResult? Function(
             String noticeId, String reporterId, String type, String? comment)?
@@ -235,7 +235,7 @@ class _$FindAllImpl implements FindAll {
     TResult? Function(String name, String year, String month)?
         checkNoticeExistence,
     TResult? Function(String name, String year, String month, String day)?
-        findAllByMonth,
+        findAllByDate,
   }) {
     return findAll?.call(name);
   }
@@ -246,7 +246,7 @@ class _$FindAllImpl implements FindAll {
     TResult Function(String name)? findAll,
     TResult Function(String name)? addSkip,
     TResult Function(String title, String content, String type,
-            String noticeGroupId, String userId)?
+            String noticeGroupId, String userId, String? createdAt)?
         create,
     TResult Function(
             String noticeId, String reporterId, String type, String? comment)?
@@ -256,7 +256,7 @@ class _$FindAllImpl implements FindAll {
     TResult Function(String name, String year, String month)?
         checkNoticeExistence,
     TResult Function(String name, String year, String month, String day)?
-        findAllByMonth,
+        findAllByDate,
     required TResult orElse(),
   }) {
     if (findAll != null) {
@@ -275,7 +275,7 @@ class _$FindAllImpl implements FindAll {
     required TResult Function(RemoveSuccessMessage value) removeSuccessMessage,
     required TResult Function(FindOneById value) findOneById,
     required TResult Function(CheckNoticeExistence value) checkNoticeExistence,
-    required TResult Function(FindAllByMonth value) findAllByMonth,
+    required TResult Function(FindAllByDate value) findAllByDate,
   }) {
     return findAll(this);
   }
@@ -290,7 +290,7 @@ class _$FindAllImpl implements FindAll {
     TResult? Function(RemoveSuccessMessage value)? removeSuccessMessage,
     TResult? Function(FindOneById value)? findOneById,
     TResult? Function(CheckNoticeExistence value)? checkNoticeExistence,
-    TResult? Function(FindAllByMonth value)? findAllByMonth,
+    TResult? Function(FindAllByDate value)? findAllByDate,
   }) {
     return findAll?.call(this);
   }
@@ -305,7 +305,7 @@ class _$FindAllImpl implements FindAll {
     TResult Function(RemoveSuccessMessage value)? removeSuccessMessage,
     TResult Function(FindOneById value)? findOneById,
     TResult Function(CheckNoticeExistence value)? checkNoticeExistence,
-    TResult Function(FindAllByMonth value)? findAllByMonth,
+    TResult Function(FindAllByDate value)? findAllByDate,
     required TResult orElse(),
   }) {
     if (findAll != null) {
@@ -398,7 +398,7 @@ class _$AddSkipImpl implements AddSkip {
     required TResult Function(String name) findAll,
     required TResult Function(String name) addSkip,
     required TResult Function(String title, String content, String type,
-            String noticeGroupId, String userId)
+            String noticeGroupId, String userId, String? createdAt)
         create,
     required TResult Function(
             String noticeId, String reporterId, String type, String? comment)
@@ -409,7 +409,7 @@ class _$AddSkipImpl implements AddSkip {
         checkNoticeExistence,
     required TResult Function(
             String name, String year, String month, String day)
-        findAllByMonth,
+        findAllByDate,
   }) {
     return addSkip(name);
   }
@@ -420,7 +420,7 @@ class _$AddSkipImpl implements AddSkip {
     TResult? Function(String name)? findAll,
     TResult? Function(String name)? addSkip,
     TResult? Function(String title, String content, String type,
-            String noticeGroupId, String userId)?
+            String noticeGroupId, String userId, String? createdAt)?
         create,
     TResult? Function(
             String noticeId, String reporterId, String type, String? comment)?
@@ -430,7 +430,7 @@ class _$AddSkipImpl implements AddSkip {
     TResult? Function(String name, String year, String month)?
         checkNoticeExistence,
     TResult? Function(String name, String year, String month, String day)?
-        findAllByMonth,
+        findAllByDate,
   }) {
     return addSkip?.call(name);
   }
@@ -441,7 +441,7 @@ class _$AddSkipImpl implements AddSkip {
     TResult Function(String name)? findAll,
     TResult Function(String name)? addSkip,
     TResult Function(String title, String content, String type,
-            String noticeGroupId, String userId)?
+            String noticeGroupId, String userId, String? createdAt)?
         create,
     TResult Function(
             String noticeId, String reporterId, String type, String? comment)?
@@ -451,7 +451,7 @@ class _$AddSkipImpl implements AddSkip {
     TResult Function(String name, String year, String month)?
         checkNoticeExistence,
     TResult Function(String name, String year, String month, String day)?
-        findAllByMonth,
+        findAllByDate,
     required TResult orElse(),
   }) {
     if (addSkip != null) {
@@ -470,7 +470,7 @@ class _$AddSkipImpl implements AddSkip {
     required TResult Function(RemoveSuccessMessage value) removeSuccessMessage,
     required TResult Function(FindOneById value) findOneById,
     required TResult Function(CheckNoticeExistence value) checkNoticeExistence,
-    required TResult Function(FindAllByMonth value) findAllByMonth,
+    required TResult Function(FindAllByDate value) findAllByDate,
   }) {
     return addSkip(this);
   }
@@ -485,7 +485,7 @@ class _$AddSkipImpl implements AddSkip {
     TResult? Function(RemoveSuccessMessage value)? removeSuccessMessage,
     TResult? Function(FindOneById value)? findOneById,
     TResult? Function(CheckNoticeExistence value)? checkNoticeExistence,
-    TResult? Function(FindAllByMonth value)? findAllByMonth,
+    TResult? Function(FindAllByDate value)? findAllByDate,
   }) {
     return addSkip?.call(this);
   }
@@ -500,7 +500,7 @@ class _$AddSkipImpl implements AddSkip {
     TResult Function(RemoveSuccessMessage value)? removeSuccessMessage,
     TResult Function(FindOneById value)? findOneById,
     TResult Function(CheckNoticeExistence value)? checkNoticeExistence,
-    TResult Function(FindAllByMonth value)? findAllByMonth,
+    TResult Function(FindAllByDate value)? findAllByDate,
     required TResult orElse(),
   }) {
     if (addSkip != null) {
@@ -533,7 +533,8 @@ abstract class _$$CreateImplCopyWith<$Res> {
       String content,
       String type,
       String noticeGroupId,
-      String userId});
+      String userId,
+      String? createdAt});
 }
 
 /// @nodoc
@@ -554,6 +555,7 @@ class __$$CreateImplCopyWithImpl<$Res>
     Object? type = null,
     Object? noticeGroupId = null,
     Object? userId = null,
+    Object? createdAt = freezed,
   }) {
     return _then(_$CreateImpl(
       null == title
@@ -576,6 +578,10 @@ class __$$CreateImplCopyWithImpl<$Res>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -584,7 +590,8 @@ class __$$CreateImplCopyWithImpl<$Res>
 
 class _$CreateImpl implements Create {
   const _$CreateImpl(
-      this.title, this.content, this.type, this.noticeGroupId, this.userId);
+      this.title, this.content, this.type, this.noticeGroupId, this.userId,
+      {this.createdAt});
 
   @override
   final String title;
@@ -596,10 +603,12 @@ class _$CreateImpl implements Create {
   final String noticeGroupId;
   @override
   final String userId;
+  @override
+  final String? createdAt;
 
   @override
   String toString() {
-    return 'NoticeEvent.create(title: $title, content: $content, type: $type, noticeGroupId: $noticeGroupId, userId: $userId)';
+    return 'NoticeEvent.create(title: $title, content: $content, type: $type, noticeGroupId: $noticeGroupId, userId: $userId, createdAt: $createdAt)';
   }
 
   @override
@@ -612,12 +621,14 @@ class _$CreateImpl implements Create {
             (identical(other.type, type) || other.type == type) &&
             (identical(other.noticeGroupId, noticeGroupId) ||
                 other.noticeGroupId == noticeGroupId) &&
-            (identical(other.userId, userId) || other.userId == userId));
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, title, content, type, noticeGroupId, userId);
+  int get hashCode => Object.hash(
+      runtimeType, title, content, type, noticeGroupId, userId, createdAt);
 
   /// Create a copy of NoticeEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -633,7 +644,7 @@ class _$CreateImpl implements Create {
     required TResult Function(String name) findAll,
     required TResult Function(String name) addSkip,
     required TResult Function(String title, String content, String type,
-            String noticeGroupId, String userId)
+            String noticeGroupId, String userId, String? createdAt)
         create,
     required TResult Function(
             String noticeId, String reporterId, String type, String? comment)
@@ -644,9 +655,9 @@ class _$CreateImpl implements Create {
         checkNoticeExistence,
     required TResult Function(
             String name, String year, String month, String day)
-        findAllByMonth,
+        findAllByDate,
   }) {
-    return create(title, content, type, noticeGroupId, userId);
+    return create(title, content, type, noticeGroupId, userId, createdAt);
   }
 
   @override
@@ -655,7 +666,7 @@ class _$CreateImpl implements Create {
     TResult? Function(String name)? findAll,
     TResult? Function(String name)? addSkip,
     TResult? Function(String title, String content, String type,
-            String noticeGroupId, String userId)?
+            String noticeGroupId, String userId, String? createdAt)?
         create,
     TResult? Function(
             String noticeId, String reporterId, String type, String? comment)?
@@ -665,9 +676,9 @@ class _$CreateImpl implements Create {
     TResult? Function(String name, String year, String month)?
         checkNoticeExistence,
     TResult? Function(String name, String year, String month, String day)?
-        findAllByMonth,
+        findAllByDate,
   }) {
-    return create?.call(title, content, type, noticeGroupId, userId);
+    return create?.call(title, content, type, noticeGroupId, userId, createdAt);
   }
 
   @override
@@ -676,7 +687,7 @@ class _$CreateImpl implements Create {
     TResult Function(String name)? findAll,
     TResult Function(String name)? addSkip,
     TResult Function(String title, String content, String type,
-            String noticeGroupId, String userId)?
+            String noticeGroupId, String userId, String? createdAt)?
         create,
     TResult Function(
             String noticeId, String reporterId, String type, String? comment)?
@@ -686,11 +697,11 @@ class _$CreateImpl implements Create {
     TResult Function(String name, String year, String month)?
         checkNoticeExistence,
     TResult Function(String name, String year, String month, String day)?
-        findAllByMonth,
+        findAllByDate,
     required TResult orElse(),
   }) {
     if (create != null) {
-      return create(title, content, type, noticeGroupId, userId);
+      return create(title, content, type, noticeGroupId, userId, createdAt);
     }
     return orElse();
   }
@@ -705,7 +716,7 @@ class _$CreateImpl implements Create {
     required TResult Function(RemoveSuccessMessage value) removeSuccessMessage,
     required TResult Function(FindOneById value) findOneById,
     required TResult Function(CheckNoticeExistence value) checkNoticeExistence,
-    required TResult Function(FindAllByMonth value) findAllByMonth,
+    required TResult Function(FindAllByDate value) findAllByDate,
   }) {
     return create(this);
   }
@@ -720,7 +731,7 @@ class _$CreateImpl implements Create {
     TResult? Function(RemoveSuccessMessage value)? removeSuccessMessage,
     TResult? Function(FindOneById value)? findOneById,
     TResult? Function(CheckNoticeExistence value)? checkNoticeExistence,
-    TResult? Function(FindAllByMonth value)? findAllByMonth,
+    TResult? Function(FindAllByDate value)? findAllByDate,
   }) {
     return create?.call(this);
   }
@@ -735,7 +746,7 @@ class _$CreateImpl implements Create {
     TResult Function(RemoveSuccessMessage value)? removeSuccessMessage,
     TResult Function(FindOneById value)? findOneById,
     TResult Function(CheckNoticeExistence value)? checkNoticeExistence,
-    TResult Function(FindAllByMonth value)? findAllByMonth,
+    TResult Function(FindAllByDate value)? findAllByDate,
     required TResult orElse(),
   }) {
     if (create != null) {
@@ -746,18 +757,16 @@ class _$CreateImpl implements Create {
 }
 
 abstract class Create implements NoticeEvent {
-  const factory Create(
-      final String title,
-      final String content,
-      final String type,
-      final String noticeGroupId,
-      final String userId) = _$CreateImpl;
+  const factory Create(final String title, final String content,
+      final String type, final String noticeGroupId, final String userId,
+      {final String? createdAt}) = _$CreateImpl;
 
   String get title;
   String get content;
   String get type;
   String get noticeGroupId;
   String get userId;
+  String? get createdAt;
 
   /// Create a copy of NoticeEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -864,7 +873,7 @@ class _$ReportImpl implements Report {
     required TResult Function(String name) findAll,
     required TResult Function(String name) addSkip,
     required TResult Function(String title, String content, String type,
-            String noticeGroupId, String userId)
+            String noticeGroupId, String userId, String? createdAt)
         create,
     required TResult Function(
             String noticeId, String reporterId, String type, String? comment)
@@ -875,7 +884,7 @@ class _$ReportImpl implements Report {
         checkNoticeExistence,
     required TResult Function(
             String name, String year, String month, String day)
-        findAllByMonth,
+        findAllByDate,
   }) {
     return report(noticeId, reporterId, type, comment);
   }
@@ -886,7 +895,7 @@ class _$ReportImpl implements Report {
     TResult? Function(String name)? findAll,
     TResult? Function(String name)? addSkip,
     TResult? Function(String title, String content, String type,
-            String noticeGroupId, String userId)?
+            String noticeGroupId, String userId, String? createdAt)?
         create,
     TResult? Function(
             String noticeId, String reporterId, String type, String? comment)?
@@ -896,7 +905,7 @@ class _$ReportImpl implements Report {
     TResult? Function(String name, String year, String month)?
         checkNoticeExistence,
     TResult? Function(String name, String year, String month, String day)?
-        findAllByMonth,
+        findAllByDate,
   }) {
     return report?.call(noticeId, reporterId, type, comment);
   }
@@ -907,7 +916,7 @@ class _$ReportImpl implements Report {
     TResult Function(String name)? findAll,
     TResult Function(String name)? addSkip,
     TResult Function(String title, String content, String type,
-            String noticeGroupId, String userId)?
+            String noticeGroupId, String userId, String? createdAt)?
         create,
     TResult Function(
             String noticeId, String reporterId, String type, String? comment)?
@@ -917,7 +926,7 @@ class _$ReportImpl implements Report {
     TResult Function(String name, String year, String month)?
         checkNoticeExistence,
     TResult Function(String name, String year, String month, String day)?
-        findAllByMonth,
+        findAllByDate,
     required TResult orElse(),
   }) {
     if (report != null) {
@@ -936,7 +945,7 @@ class _$ReportImpl implements Report {
     required TResult Function(RemoveSuccessMessage value) removeSuccessMessage,
     required TResult Function(FindOneById value) findOneById,
     required TResult Function(CheckNoticeExistence value) checkNoticeExistence,
-    required TResult Function(FindAllByMonth value) findAllByMonth,
+    required TResult Function(FindAllByDate value) findAllByDate,
   }) {
     return report(this);
   }
@@ -951,7 +960,7 @@ class _$ReportImpl implements Report {
     TResult? Function(RemoveSuccessMessage value)? removeSuccessMessage,
     TResult? Function(FindOneById value)? findOneById,
     TResult? Function(CheckNoticeExistence value)? checkNoticeExistence,
-    TResult? Function(FindAllByMonth value)? findAllByMonth,
+    TResult? Function(FindAllByDate value)? findAllByDate,
   }) {
     return report?.call(this);
   }
@@ -966,7 +975,7 @@ class _$ReportImpl implements Report {
     TResult Function(RemoveSuccessMessage value)? removeSuccessMessage,
     TResult Function(FindOneById value)? findOneById,
     TResult Function(CheckNoticeExistence value)? checkNoticeExistence,
-    TResult Function(FindAllByMonth value)? findAllByMonth,
+    TResult Function(FindAllByDate value)? findAllByDate,
     required TResult orElse(),
   }) {
     if (report != null) {
@@ -1037,7 +1046,7 @@ class _$RemoveSuccessMessageImpl implements RemoveSuccessMessage {
     required TResult Function(String name) findAll,
     required TResult Function(String name) addSkip,
     required TResult Function(String title, String content, String type,
-            String noticeGroupId, String userId)
+            String noticeGroupId, String userId, String? createdAt)
         create,
     required TResult Function(
             String noticeId, String reporterId, String type, String? comment)
@@ -1048,7 +1057,7 @@ class _$RemoveSuccessMessageImpl implements RemoveSuccessMessage {
         checkNoticeExistence,
     required TResult Function(
             String name, String year, String month, String day)
-        findAllByMonth,
+        findAllByDate,
   }) {
     return removeSuccessMessage();
   }
@@ -1059,7 +1068,7 @@ class _$RemoveSuccessMessageImpl implements RemoveSuccessMessage {
     TResult? Function(String name)? findAll,
     TResult? Function(String name)? addSkip,
     TResult? Function(String title, String content, String type,
-            String noticeGroupId, String userId)?
+            String noticeGroupId, String userId, String? createdAt)?
         create,
     TResult? Function(
             String noticeId, String reporterId, String type, String? comment)?
@@ -1069,7 +1078,7 @@ class _$RemoveSuccessMessageImpl implements RemoveSuccessMessage {
     TResult? Function(String name, String year, String month)?
         checkNoticeExistence,
     TResult? Function(String name, String year, String month, String day)?
-        findAllByMonth,
+        findAllByDate,
   }) {
     return removeSuccessMessage?.call();
   }
@@ -1080,7 +1089,7 @@ class _$RemoveSuccessMessageImpl implements RemoveSuccessMessage {
     TResult Function(String name)? findAll,
     TResult Function(String name)? addSkip,
     TResult Function(String title, String content, String type,
-            String noticeGroupId, String userId)?
+            String noticeGroupId, String userId, String? createdAt)?
         create,
     TResult Function(
             String noticeId, String reporterId, String type, String? comment)?
@@ -1090,7 +1099,7 @@ class _$RemoveSuccessMessageImpl implements RemoveSuccessMessage {
     TResult Function(String name, String year, String month)?
         checkNoticeExistence,
     TResult Function(String name, String year, String month, String day)?
-        findAllByMonth,
+        findAllByDate,
     required TResult orElse(),
   }) {
     if (removeSuccessMessage != null) {
@@ -1109,7 +1118,7 @@ class _$RemoveSuccessMessageImpl implements RemoveSuccessMessage {
     required TResult Function(RemoveSuccessMessage value) removeSuccessMessage,
     required TResult Function(FindOneById value) findOneById,
     required TResult Function(CheckNoticeExistence value) checkNoticeExistence,
-    required TResult Function(FindAllByMonth value) findAllByMonth,
+    required TResult Function(FindAllByDate value) findAllByDate,
   }) {
     return removeSuccessMessage(this);
   }
@@ -1124,7 +1133,7 @@ class _$RemoveSuccessMessageImpl implements RemoveSuccessMessage {
     TResult? Function(RemoveSuccessMessage value)? removeSuccessMessage,
     TResult? Function(FindOneById value)? findOneById,
     TResult? Function(CheckNoticeExistence value)? checkNoticeExistence,
-    TResult? Function(FindAllByMonth value)? findAllByMonth,
+    TResult? Function(FindAllByDate value)? findAllByDate,
   }) {
     return removeSuccessMessage?.call(this);
   }
@@ -1139,7 +1148,7 @@ class _$RemoveSuccessMessageImpl implements RemoveSuccessMessage {
     TResult Function(RemoveSuccessMessage value)? removeSuccessMessage,
     TResult Function(FindOneById value)? findOneById,
     TResult Function(CheckNoticeExistence value)? checkNoticeExistence,
-    TResult Function(FindAllByMonth value)? findAllByMonth,
+    TResult Function(FindAllByDate value)? findAllByDate,
     required TResult orElse(),
   }) {
     if (removeSuccessMessage != null) {
@@ -1232,7 +1241,7 @@ class _$FindOneByIdImpl implements FindOneById {
     required TResult Function(String name) findAll,
     required TResult Function(String name) addSkip,
     required TResult Function(String title, String content, String type,
-            String noticeGroupId, String userId)
+            String noticeGroupId, String userId, String? createdAt)
         create,
     required TResult Function(
             String noticeId, String reporterId, String type, String? comment)
@@ -1243,7 +1252,7 @@ class _$FindOneByIdImpl implements FindOneById {
         checkNoticeExistence,
     required TResult Function(
             String name, String year, String month, String day)
-        findAllByMonth,
+        findAllByDate,
   }) {
     return findOneById(id, userId);
   }
@@ -1254,7 +1263,7 @@ class _$FindOneByIdImpl implements FindOneById {
     TResult? Function(String name)? findAll,
     TResult? Function(String name)? addSkip,
     TResult? Function(String title, String content, String type,
-            String noticeGroupId, String userId)?
+            String noticeGroupId, String userId, String? createdAt)?
         create,
     TResult? Function(
             String noticeId, String reporterId, String type, String? comment)?
@@ -1264,7 +1273,7 @@ class _$FindOneByIdImpl implements FindOneById {
     TResult? Function(String name, String year, String month)?
         checkNoticeExistence,
     TResult? Function(String name, String year, String month, String day)?
-        findAllByMonth,
+        findAllByDate,
   }) {
     return findOneById?.call(id, userId);
   }
@@ -1275,7 +1284,7 @@ class _$FindOneByIdImpl implements FindOneById {
     TResult Function(String name)? findAll,
     TResult Function(String name)? addSkip,
     TResult Function(String title, String content, String type,
-            String noticeGroupId, String userId)?
+            String noticeGroupId, String userId, String? createdAt)?
         create,
     TResult Function(
             String noticeId, String reporterId, String type, String? comment)?
@@ -1285,7 +1294,7 @@ class _$FindOneByIdImpl implements FindOneById {
     TResult Function(String name, String year, String month)?
         checkNoticeExistence,
     TResult Function(String name, String year, String month, String day)?
-        findAllByMonth,
+        findAllByDate,
     required TResult orElse(),
   }) {
     if (findOneById != null) {
@@ -1304,7 +1313,7 @@ class _$FindOneByIdImpl implements FindOneById {
     required TResult Function(RemoveSuccessMessage value) removeSuccessMessage,
     required TResult Function(FindOneById value) findOneById,
     required TResult Function(CheckNoticeExistence value) checkNoticeExistence,
-    required TResult Function(FindAllByMonth value) findAllByMonth,
+    required TResult Function(FindAllByDate value) findAllByDate,
   }) {
     return findOneById(this);
   }
@@ -1319,7 +1328,7 @@ class _$FindOneByIdImpl implements FindOneById {
     TResult? Function(RemoveSuccessMessage value)? removeSuccessMessage,
     TResult? Function(FindOneById value)? findOneById,
     TResult? Function(CheckNoticeExistence value)? checkNoticeExistence,
-    TResult? Function(FindAllByMonth value)? findAllByMonth,
+    TResult? Function(FindAllByDate value)? findAllByDate,
   }) {
     return findOneById?.call(this);
   }
@@ -1334,7 +1343,7 @@ class _$FindOneByIdImpl implements FindOneById {
     TResult Function(RemoveSuccessMessage value)? removeSuccessMessage,
     TResult Function(FindOneById value)? findOneById,
     TResult Function(CheckNoticeExistence value)? checkNoticeExistence,
-    TResult Function(FindAllByMonth value)? findAllByMonth,
+    TResult Function(FindAllByDate value)? findAllByDate,
     required TResult orElse(),
   }) {
     if (findOneById != null) {
@@ -1447,7 +1456,7 @@ class _$CheckNoticeExistenceImpl implements CheckNoticeExistence {
     required TResult Function(String name) findAll,
     required TResult Function(String name) addSkip,
     required TResult Function(String title, String content, String type,
-            String noticeGroupId, String userId)
+            String noticeGroupId, String userId, String? createdAt)
         create,
     required TResult Function(
             String noticeId, String reporterId, String type, String? comment)
@@ -1458,7 +1467,7 @@ class _$CheckNoticeExistenceImpl implements CheckNoticeExistence {
         checkNoticeExistence,
     required TResult Function(
             String name, String year, String month, String day)
-        findAllByMonth,
+        findAllByDate,
   }) {
     return checkNoticeExistence(name, year, month);
   }
@@ -1469,7 +1478,7 @@ class _$CheckNoticeExistenceImpl implements CheckNoticeExistence {
     TResult? Function(String name)? findAll,
     TResult? Function(String name)? addSkip,
     TResult? Function(String title, String content, String type,
-            String noticeGroupId, String userId)?
+            String noticeGroupId, String userId, String? createdAt)?
         create,
     TResult? Function(
             String noticeId, String reporterId, String type, String? comment)?
@@ -1479,7 +1488,7 @@ class _$CheckNoticeExistenceImpl implements CheckNoticeExistence {
     TResult? Function(String name, String year, String month)?
         checkNoticeExistence,
     TResult? Function(String name, String year, String month, String day)?
-        findAllByMonth,
+        findAllByDate,
   }) {
     return checkNoticeExistence?.call(name, year, month);
   }
@@ -1490,7 +1499,7 @@ class _$CheckNoticeExistenceImpl implements CheckNoticeExistence {
     TResult Function(String name)? findAll,
     TResult Function(String name)? addSkip,
     TResult Function(String title, String content, String type,
-            String noticeGroupId, String userId)?
+            String noticeGroupId, String userId, String? createdAt)?
         create,
     TResult Function(
             String noticeId, String reporterId, String type, String? comment)?
@@ -1500,7 +1509,7 @@ class _$CheckNoticeExistenceImpl implements CheckNoticeExistence {
     TResult Function(String name, String year, String month)?
         checkNoticeExistence,
     TResult Function(String name, String year, String month, String day)?
-        findAllByMonth,
+        findAllByDate,
     required TResult orElse(),
   }) {
     if (checkNoticeExistence != null) {
@@ -1519,7 +1528,7 @@ class _$CheckNoticeExistenceImpl implements CheckNoticeExistence {
     required TResult Function(RemoveSuccessMessage value) removeSuccessMessage,
     required TResult Function(FindOneById value) findOneById,
     required TResult Function(CheckNoticeExistence value) checkNoticeExistence,
-    required TResult Function(FindAllByMonth value) findAllByMonth,
+    required TResult Function(FindAllByDate value) findAllByDate,
   }) {
     return checkNoticeExistence(this);
   }
@@ -1534,7 +1543,7 @@ class _$CheckNoticeExistenceImpl implements CheckNoticeExistence {
     TResult? Function(RemoveSuccessMessage value)? removeSuccessMessage,
     TResult? Function(FindOneById value)? findOneById,
     TResult? Function(CheckNoticeExistence value)? checkNoticeExistence,
-    TResult? Function(FindAllByMonth value)? findAllByMonth,
+    TResult? Function(FindAllByDate value)? findAllByDate,
   }) {
     return checkNoticeExistence?.call(this);
   }
@@ -1549,7 +1558,7 @@ class _$CheckNoticeExistenceImpl implements CheckNoticeExistence {
     TResult Function(RemoveSuccessMessage value)? removeSuccessMessage,
     TResult Function(FindOneById value)? findOneById,
     TResult Function(CheckNoticeExistence value)? checkNoticeExistence,
-    TResult Function(FindAllByMonth value)? findAllByMonth,
+    TResult Function(FindAllByDate value)? findAllByDate,
     required TResult orElse(),
   }) {
     if (checkNoticeExistence != null) {
@@ -1576,20 +1585,20 @@ abstract class CheckNoticeExistence implements NoticeEvent {
 }
 
 /// @nodoc
-abstract class _$$FindAllByMonthImplCopyWith<$Res> {
-  factory _$$FindAllByMonthImplCopyWith(_$FindAllByMonthImpl value,
-          $Res Function(_$FindAllByMonthImpl) then) =
-      __$$FindAllByMonthImplCopyWithImpl<$Res>;
+abstract class _$$FindAllByDateImplCopyWith<$Res> {
+  factory _$$FindAllByDateImplCopyWith(
+          _$FindAllByDateImpl value, $Res Function(_$FindAllByDateImpl) then) =
+      __$$FindAllByDateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String name, String year, String month, String day});
 }
 
 /// @nodoc
-class __$$FindAllByMonthImplCopyWithImpl<$Res>
-    extends _$NoticeEventCopyWithImpl<$Res, _$FindAllByMonthImpl>
-    implements _$$FindAllByMonthImplCopyWith<$Res> {
-  __$$FindAllByMonthImplCopyWithImpl(
-      _$FindAllByMonthImpl _value, $Res Function(_$FindAllByMonthImpl) _then)
+class __$$FindAllByDateImplCopyWithImpl<$Res>
+    extends _$NoticeEventCopyWithImpl<$Res, _$FindAllByDateImpl>
+    implements _$$FindAllByDateImplCopyWith<$Res> {
+  __$$FindAllByDateImplCopyWithImpl(
+      _$FindAllByDateImpl _value, $Res Function(_$FindAllByDateImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of NoticeEvent
@@ -1602,7 +1611,7 @@ class __$$FindAllByMonthImplCopyWithImpl<$Res>
     Object? month = null,
     Object? day = null,
   }) {
-    return _then(_$FindAllByMonthImpl(
+    return _then(_$FindAllByDateImpl(
       null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -1625,8 +1634,8 @@ class __$$FindAllByMonthImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$FindAllByMonthImpl implements FindAllByMonth {
-  const _$FindAllByMonthImpl(this.name, this.year, this.month, this.day);
+class _$FindAllByDateImpl implements FindAllByDate {
+  const _$FindAllByDateImpl(this.name, this.year, this.month, this.day);
 
   @override
   final String name;
@@ -1639,14 +1648,14 @@ class _$FindAllByMonthImpl implements FindAllByMonth {
 
   @override
   String toString() {
-    return 'NoticeEvent.findAllByMonth(name: $name, year: $year, month: $month, day: $day)';
+    return 'NoticeEvent.findAllByDate(name: $name, year: $year, month: $month, day: $day)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FindAllByMonthImpl &&
+            other is _$FindAllByDateImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.year, year) || other.year == year) &&
             (identical(other.month, month) || other.month == month) &&
@@ -1661,9 +1670,8 @@ class _$FindAllByMonthImpl implements FindAllByMonth {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$FindAllByMonthImplCopyWith<_$FindAllByMonthImpl> get copyWith =>
-      __$$FindAllByMonthImplCopyWithImpl<_$FindAllByMonthImpl>(
-          this, _$identity);
+  _$$FindAllByDateImplCopyWith<_$FindAllByDateImpl> get copyWith =>
+      __$$FindAllByDateImplCopyWithImpl<_$FindAllByDateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1671,7 +1679,7 @@ class _$FindAllByMonthImpl implements FindAllByMonth {
     required TResult Function(String name) findAll,
     required TResult Function(String name) addSkip,
     required TResult Function(String title, String content, String type,
-            String noticeGroupId, String userId)
+            String noticeGroupId, String userId, String? createdAt)
         create,
     required TResult Function(
             String noticeId, String reporterId, String type, String? comment)
@@ -1682,9 +1690,9 @@ class _$FindAllByMonthImpl implements FindAllByMonth {
         checkNoticeExistence,
     required TResult Function(
             String name, String year, String month, String day)
-        findAllByMonth,
+        findAllByDate,
   }) {
-    return findAllByMonth(name, year, month, day);
+    return findAllByDate(name, year, month, day);
   }
 
   @override
@@ -1693,7 +1701,7 @@ class _$FindAllByMonthImpl implements FindAllByMonth {
     TResult? Function(String name)? findAll,
     TResult? Function(String name)? addSkip,
     TResult? Function(String title, String content, String type,
-            String noticeGroupId, String userId)?
+            String noticeGroupId, String userId, String? createdAt)?
         create,
     TResult? Function(
             String noticeId, String reporterId, String type, String? comment)?
@@ -1703,9 +1711,9 @@ class _$FindAllByMonthImpl implements FindAllByMonth {
     TResult? Function(String name, String year, String month)?
         checkNoticeExistence,
     TResult? Function(String name, String year, String month, String day)?
-        findAllByMonth,
+        findAllByDate,
   }) {
-    return findAllByMonth?.call(name, year, month, day);
+    return findAllByDate?.call(name, year, month, day);
   }
 
   @override
@@ -1714,7 +1722,7 @@ class _$FindAllByMonthImpl implements FindAllByMonth {
     TResult Function(String name)? findAll,
     TResult Function(String name)? addSkip,
     TResult Function(String title, String content, String type,
-            String noticeGroupId, String userId)?
+            String noticeGroupId, String userId, String? createdAt)?
         create,
     TResult Function(
             String noticeId, String reporterId, String type, String? comment)?
@@ -1724,11 +1732,11 @@ class _$FindAllByMonthImpl implements FindAllByMonth {
     TResult Function(String name, String year, String month)?
         checkNoticeExistence,
     TResult Function(String name, String year, String month, String day)?
-        findAllByMonth,
+        findAllByDate,
     required TResult orElse(),
   }) {
-    if (findAllByMonth != null) {
-      return findAllByMonth(name, year, month, day);
+    if (findAllByDate != null) {
+      return findAllByDate(name, year, month, day);
     }
     return orElse();
   }
@@ -1743,9 +1751,9 @@ class _$FindAllByMonthImpl implements FindAllByMonth {
     required TResult Function(RemoveSuccessMessage value) removeSuccessMessage,
     required TResult Function(FindOneById value) findOneById,
     required TResult Function(CheckNoticeExistence value) checkNoticeExistence,
-    required TResult Function(FindAllByMonth value) findAllByMonth,
+    required TResult Function(FindAllByDate value) findAllByDate,
   }) {
-    return findAllByMonth(this);
+    return findAllByDate(this);
   }
 
   @override
@@ -1758,9 +1766,9 @@ class _$FindAllByMonthImpl implements FindAllByMonth {
     TResult? Function(RemoveSuccessMessage value)? removeSuccessMessage,
     TResult? Function(FindOneById value)? findOneById,
     TResult? Function(CheckNoticeExistence value)? checkNoticeExistence,
-    TResult? Function(FindAllByMonth value)? findAllByMonth,
+    TResult? Function(FindAllByDate value)? findAllByDate,
   }) {
-    return findAllByMonth?.call(this);
+    return findAllByDate?.call(this);
   }
 
   @override
@@ -1773,19 +1781,19 @@ class _$FindAllByMonthImpl implements FindAllByMonth {
     TResult Function(RemoveSuccessMessage value)? removeSuccessMessage,
     TResult Function(FindOneById value)? findOneById,
     TResult Function(CheckNoticeExistence value)? checkNoticeExistence,
-    TResult Function(FindAllByMonth value)? findAllByMonth,
+    TResult Function(FindAllByDate value)? findAllByDate,
     required TResult orElse(),
   }) {
-    if (findAllByMonth != null) {
-      return findAllByMonth(this);
+    if (findAllByDate != null) {
+      return findAllByDate(this);
     }
     return orElse();
   }
 }
 
-abstract class FindAllByMonth implements NoticeEvent {
-  const factory FindAllByMonth(final String name, final String year,
-      final String month, final String day) = _$FindAllByMonthImpl;
+abstract class FindAllByDate implements NoticeEvent {
+  const factory FindAllByDate(final String name, final String year,
+      final String month, final String day) = _$FindAllByDateImpl;
 
   String get name;
   String get year;
@@ -1795,6 +1803,6 @@ abstract class FindAllByMonth implements NoticeEvent {
   /// Create a copy of NoticeEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$FindAllByMonthImplCopyWith<_$FindAllByMonthImpl> get copyWith =>
+  _$$FindAllByDateImplCopyWith<_$FindAllByDateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
