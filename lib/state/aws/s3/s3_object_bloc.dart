@@ -23,6 +23,7 @@ class S3ObjectBloc extends Bloc<S3ObjectEvent, S3ObjectState> {
           emit(state.copyWith(isUploading: true));
           await s3ObjectRepository.uploadFile(e.file, e.user, appKeys);
           emit(state.copyWith(isUploading: false));
+          add(S3ObjectEvent.getS3Objects(e.user, 0, 6));
         }, clearError: (e) async {
           emit(state.copyWith(
               isLoading: false, isUploading: false, error: null));

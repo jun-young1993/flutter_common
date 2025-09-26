@@ -12,8 +12,8 @@ class UserStorageLimitDefaultRepository extends UserStorageLimitRepository {
 
   @override
   Future<UserStorageLimit> initializeByS3() async {
-    final response = await dioClient.post('/user-storage-limit/default/s3');
-    if (response.statusCode != 200) {
+    final response = await dioClient.post('/user-storage-limits/default/s3');
+    if (response.statusCode != 201) {
       throw Exception('Failed to initialize user storage limit by S3');
     }
     return UserStorageLimit.fromJson(response.data);

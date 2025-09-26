@@ -59,7 +59,7 @@ class AwsS3DefaultRepository extends AwsS3Repository {
         data: formData,
         options: options,
       );
-      if (response.statusCode == 200) {
+      if (response.statusCode == 201) {
         return true;
       }
       throw Exception('파일 업로드 실패');
