@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:flutter_common/models/user/user_storage_limit.dart';
 
 part 'user.freezed.dart';
 part 'user.g.dart';
@@ -15,6 +16,7 @@ class User with _$User {
     required String createdAt,
     required String updatedAt,
     String? fcmToken,
+    @Default([]) List<UserStorageLimit> storageLimits,
   }) = _User;
 
   const User._();

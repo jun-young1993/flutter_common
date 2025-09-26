@@ -16,6 +16,10 @@ _$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
       createdAt: json['createdAt'] as String,
       updatedAt: json['updatedAt'] as String,
       fcmToken: json['fcmToken'] as String?,
+      storageLimits: (json['storageLimits'] as List<dynamic>?)
+              ?.map((e) => UserStorageLimit.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
@@ -29,4 +33,5 @@ Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
       'createdAt': instance.createdAt,
       'updatedAt': instance.updatedAt,
       'fcmToken': instance.fcmToken,
+      'storageLimits': instance.storageLimits,
     };

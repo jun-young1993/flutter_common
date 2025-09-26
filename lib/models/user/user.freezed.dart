@@ -29,6 +29,8 @@ mixin _$User {
   String get createdAt => throw _privateConstructorUsedError;
   String get updatedAt => throw _privateConstructorUsedError;
   String? get fcmToken => throw _privateConstructorUsedError;
+  List<UserStorageLimit> get storageLimits =>
+      throw _privateConstructorUsedError;
 
   /// Serializes this User to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -53,7 +55,8 @@ abstract class $UserCopyWith<$Res> {
       bool isAdmin,
       String createdAt,
       String updatedAt,
-      String? fcmToken});
+      String? fcmToken,
+      List<UserStorageLimit> storageLimits});
 }
 
 /// @nodoc
@@ -80,6 +83,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? createdAt = null,
     Object? updatedAt = null,
     Object? fcmToken = freezed,
+    Object? storageLimits = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -118,6 +122,10 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.fcmToken
           : fcmToken // ignore: cast_nullable_to_non_nullable
               as String?,
+      storageLimits: null == storageLimits
+          ? _value.storageLimits
+          : storageLimits // ignore: cast_nullable_to_non_nullable
+              as List<UserStorageLimit>,
     ) as $Val);
   }
 }
@@ -138,7 +146,8 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
       bool isAdmin,
       String createdAt,
       String updatedAt,
-      String? fcmToken});
+      String? fcmToken,
+      List<UserStorageLimit> storageLimits});
 }
 
 /// @nodoc
@@ -162,6 +171,7 @@ class __$$UserImplCopyWithImpl<$Res>
     Object? createdAt = null,
     Object? updatedAt = null,
     Object? fcmToken = freezed,
+    Object? storageLimits = null,
   }) {
     return _then(_$UserImpl(
       id: null == id
@@ -200,6 +210,10 @@ class __$$UserImplCopyWithImpl<$Res>
           ? _value.fcmToken
           : fcmToken // ignore: cast_nullable_to_non_nullable
               as String?,
+      storageLimits: null == storageLimits
+          ? _value._storageLimits
+          : storageLimits // ignore: cast_nullable_to_non_nullable
+              as List<UserStorageLimit>,
     ));
   }
 }
@@ -216,8 +230,10 @@ class _$UserImpl extends _User {
       required this.isAdmin,
       required this.createdAt,
       required this.updatedAt,
-      this.fcmToken})
-      : super._();
+      this.fcmToken,
+      final List<UserStorageLimit> storageLimits = const []})
+      : _storageLimits = storageLimits,
+        super._();
 
   factory _$UserImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserImplFromJson(json);
@@ -240,10 +256,18 @@ class _$UserImpl extends _User {
   final String updatedAt;
   @override
   final String? fcmToken;
+  final List<UserStorageLimit> _storageLimits;
+  @override
+  @JsonKey()
+  List<UserStorageLimit> get storageLimits {
+    if (_storageLimits is EqualUnmodifiableListView) return _storageLimits;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_storageLimits);
+  }
 
   @override
   String toString() {
-    return 'User(id: $id, username: $username, email: $email, type: $type, isActive: $isActive, isAdmin: $isAdmin, createdAt: $createdAt, updatedAt: $updatedAt, fcmToken: $fcmToken)';
+    return 'User(id: $id, username: $username, email: $email, type: $type, isActive: $isActive, isAdmin: $isAdmin, createdAt: $createdAt, updatedAt: $updatedAt, fcmToken: $fcmToken, storageLimits: $storageLimits)';
   }
 
   @override
@@ -264,13 +288,25 @@ class _$UserImpl extends _User {
             (identical(other.updatedAt, updatedAt) ||
                 other.updatedAt == updatedAt) &&
             (identical(other.fcmToken, fcmToken) ||
-                other.fcmToken == fcmToken));
+                other.fcmToken == fcmToken) &&
+            const DeepCollectionEquality()
+                .equals(other._storageLimits, _storageLimits));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, username, email, type,
-      isActive, isAdmin, createdAt, updatedAt, fcmToken);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      username,
+      email,
+      type,
+      isActive,
+      isAdmin,
+      createdAt,
+      updatedAt,
+      fcmToken,
+      const DeepCollectionEquality().hash(_storageLimits));
 
   /// Create a copy of User
   /// with the given fields replaced by the non-null parameter values.
@@ -298,7 +334,8 @@ abstract class _User extends User {
       required final bool isAdmin,
       required final String createdAt,
       required final String updatedAt,
-      final String? fcmToken}) = _$UserImpl;
+      final String? fcmToken,
+      final List<UserStorageLimit> storageLimits}) = _$UserImpl;
   const _User._() : super._();
 
   factory _User.fromJson(Map<String, dynamic> json) = _$UserImpl.fromJson;
@@ -321,6 +358,8 @@ abstract class _User extends User {
   String get updatedAt;
   @override
   String? get fcmToken;
+  @override
+  List<UserStorageLimit> get storageLimits;
 
   /// Create a copy of User
   /// with the given fields replaced by the non-null parameter values.
