@@ -1,8 +1,9 @@
+import 'package:flutter_common/extensions/app_exception.dart';
 import 'package:flutter_common/models/user_group/user_group.dart';
 import 'package:flutter_common/network/dio_client.dart';
 
 abstract class UserGroupRepository {
-  Future<UserGroup> getUserGroups();
+  Future<UserGroup?> getUserGroups();
   Future<UserGroup> createUserGroup(String? name, String? description);
   Future<UserGroup> addUser();
   Future<UserGroup> removeUser();
@@ -16,13 +17,24 @@ class UserGroupDefaultRepository extends UserGroupRepository {
   UserGroupDefaultRepository({required this.dioClient});
 
   @override
-  Future<UserGroup> getUserGroups() async {
-    final response = await dioClient.get('/user-groups/groups');
-    if (response.statusCode != 200) {
-      throw Exception(
-          '[${response.statusCode}] Failed to fetch user groups: ${response.statusMessage ?? 'Unknown error'}');
+  Future<UserGroup?> getUserGroups() async {
+    try {
+      final response = await dioClient.get('/user-groups/groups');
+      if (response.statusCode == 404) {
+        throw const AppException.notFound();
+      }
+      if (response.statusCode != 200) {
+        throw Exception(
+            '[${response.statusCode}] Failed to fetch user groups: ${response.statusMessage ?? 'Unknown error'}');
+      }
+
+      return UserGroup.fromJson(response.data);
+    } on AppException catch (e) {
+      if (e == const AppException.notFound()) {
+        return null;
+      }
+      rethrow;
     }
-    return UserGroup.fromJson(response.data);
   }
 
   @override
