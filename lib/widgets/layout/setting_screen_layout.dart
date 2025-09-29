@@ -129,14 +129,36 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
               ),
             );
           }
-
-          return InputCardField(
-            label: Tr.user.userName.tr(),
-            initialValue: user.username,
-            hintText: Tr.user.userName.tr(),
-            onSubmitted: (value) {
-              userBloc.add(UserEvent.updateUserName(value));
-            },
+          return Row(
+            children: [
+              Expanded(
+                  child: Text(
+                user.username ?? '',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: MediaQuery.of(context).size.width < 400 ? 16 : 20,
+                  fontWeight: FontWeight.bold,
+                  height: 1.3,
+                ),
+              )),
+              const Spacer(),
+              IconButton(
+                icon: const Icon(Icons.edit),
+                onPressed: () {
+                  InputDialog.show(
+                    title: Tr.user.userName.tr(),
+                    hintText: Tr.user.userName.tr(),
+                    initialValue: user.username ?? '',
+                    onConfirm: (value) {
+                      userBloc.add(UserEvent.updateUserName(value));
+                    },
+                    context: context,
+                  );
+                },
+                color: Colors.grey,
+                iconSize: 20,
+              ),
+            ],
           );
         }),
         SizedBox(height: SizeConstants.getColumnSpacing(context)),
