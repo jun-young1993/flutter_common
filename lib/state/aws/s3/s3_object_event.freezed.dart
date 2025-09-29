@@ -19,7 +19,7 @@ mixin _$S3ObjectEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialize,
-    required TResult Function(User user, int skip, int take) getS3Objects,
+    required TResult Function(int skip, int take) getS3Objects,
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
     required TResult Function(String id) findOneOrFail,
@@ -33,7 +33,7 @@ mixin _$S3ObjectEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialize,
-    TResult? Function(User user, int skip, int take)? getS3Objects,
+    TResult? Function(int skip, int take)? getS3Objects,
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
     TResult? Function(String id)? findOneOrFail,
@@ -45,7 +45,7 @@ mixin _$S3ObjectEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialize,
-    TResult Function(User user, int skip, int take)? getS3Objects,
+    TResult Function(int skip, int take)? getS3Objects,
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
     TResult Function(String id)? findOneOrFail,
@@ -160,7 +160,7 @@ class _$InitializeImpl implements _Initialize {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialize,
-    required TResult Function(User user, int skip, int take) getS3Objects,
+    required TResult Function(int skip, int take) getS3Objects,
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
     required TResult Function(String id) findOneOrFail,
@@ -177,7 +177,7 @@ class _$InitializeImpl implements _Initialize {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialize,
-    TResult? Function(User user, int skip, int take)? getS3Objects,
+    TResult? Function(int skip, int take)? getS3Objects,
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
     TResult? Function(String id)? findOneOrFail,
@@ -192,7 +192,7 @@ class _$InitializeImpl implements _Initialize {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialize,
-    TResult Function(User user, int skip, int take)? getS3Objects,
+    TResult Function(int skip, int take)? getS3Objects,
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
     TResult Function(String id)? findOneOrFail,
@@ -270,9 +270,7 @@ abstract class _$$GetS3ObjectsImplCopyWith<$Res> {
           _$GetS3ObjectsImpl value, $Res Function(_$GetS3ObjectsImpl) then) =
       __$$GetS3ObjectsImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({User user, int skip, int take});
-
-  $UserCopyWith<$Res> get user;
+  $Res call({int skip, int take});
 }
 
 /// @nodoc
@@ -288,15 +286,10 @@ class __$$GetS3ObjectsImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? user = null,
     Object? skip = null,
     Object? take = null,
   }) {
     return _then(_$GetS3ObjectsImpl(
-      null == user
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as User,
       null == skip
           ? _value.skip
           : skip // ignore: cast_nullable_to_non_nullable
@@ -307,25 +300,13 @@ class __$$GetS3ObjectsImplCopyWithImpl<$Res>
               as int,
     ));
   }
-
-  /// Create a copy of S3ObjectEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $UserCopyWith<$Res> get user {
-    return $UserCopyWith<$Res>(_value.user, (value) {
-      return _then(_value.copyWith(user: value));
-    });
-  }
 }
 
 /// @nodoc
 
 class _$GetS3ObjectsImpl implements _GetS3Objects {
-  const _$GetS3ObjectsImpl(this.user, this.skip, this.take);
+  const _$GetS3ObjectsImpl(this.skip, this.take);
 
-  @override
-  final User user;
   @override
   final int skip;
   @override
@@ -333,7 +314,7 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
 
   @override
   String toString() {
-    return 'S3ObjectEvent.getS3Objects(user: $user, skip: $skip, take: $take)';
+    return 'S3ObjectEvent.getS3Objects(skip: $skip, take: $take)';
   }
 
   @override
@@ -341,13 +322,12 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetS3ObjectsImpl &&
-            (identical(other.user, user) || other.user == user) &&
             (identical(other.skip, skip) || other.skip == skip) &&
             (identical(other.take, take) || other.take == take));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, user, skip, take);
+  int get hashCode => Object.hash(runtimeType, skip, take);
 
   /// Create a copy of S3ObjectEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -361,7 +341,7 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialize,
-    required TResult Function(User user, int skip, int take) getS3Objects,
+    required TResult Function(int skip, int take) getS3Objects,
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
     required TResult Function(String id) findOneOrFail,
@@ -371,14 +351,14 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     required TResult Function(String year, String month, String day)
         getObjectsByDate,
   }) {
-    return getS3Objects(user, skip, take);
+    return getS3Objects(skip, take);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialize,
-    TResult? Function(User user, int skip, int take)? getS3Objects,
+    TResult? Function(int skip, int take)? getS3Objects,
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
     TResult? Function(String id)? findOneOrFail,
@@ -386,14 +366,14 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
     TResult? Function(String year, String month, String day)? getObjectsByDate,
   }) {
-    return getS3Objects?.call(user, skip, take);
+    return getS3Objects?.call(skip, take);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialize,
-    TResult Function(User user, int skip, int take)? getS3Objects,
+    TResult Function(int skip, int take)? getS3Objects,
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
     TResult Function(String id)? findOneOrFail,
@@ -403,7 +383,7 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     required TResult orElse(),
   }) {
     if (getS3Objects != null) {
-      return getS3Objects(user, skip, take);
+      return getS3Objects(skip, take);
     }
     return orElse();
   }
@@ -462,10 +442,9 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
 }
 
 abstract class _GetS3Objects implements S3ObjectEvent {
-  const factory _GetS3Objects(final User user, final int skip, final int take) =
+  const factory _GetS3Objects(final int skip, final int take) =
       _$GetS3ObjectsImpl;
 
-  User get user;
   int get skip;
   int get take;
 
@@ -518,7 +497,7 @@ class _$ClearErrorImpl implements _ClearError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialize,
-    required TResult Function(User user, int skip, int take) getS3Objects,
+    required TResult Function(int skip, int take) getS3Objects,
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
     required TResult Function(String id) findOneOrFail,
@@ -535,7 +514,7 @@ class _$ClearErrorImpl implements _ClearError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialize,
-    TResult? Function(User user, int skip, int take)? getS3Objects,
+    TResult? Function(int skip, int take)? getS3Objects,
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
     TResult? Function(String id)? findOneOrFail,
@@ -550,7 +529,7 @@ class _$ClearErrorImpl implements _ClearError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialize,
-    TResult Function(User user, int skip, int take)? getS3Objects,
+    TResult Function(int skip, int take)? getS3Objects,
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
     TResult Function(String id)? findOneOrFail,
@@ -711,7 +690,7 @@ class _$UploadFileImpl implements _UploadFile {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialize,
-    required TResult Function(User user, int skip, int take) getS3Objects,
+    required TResult Function(int skip, int take) getS3Objects,
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
     required TResult Function(String id) findOneOrFail,
@@ -728,7 +707,7 @@ class _$UploadFileImpl implements _UploadFile {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialize,
-    TResult? Function(User user, int skip, int take)? getS3Objects,
+    TResult? Function(int skip, int take)? getS3Objects,
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
     TResult? Function(String id)? findOneOrFail,
@@ -743,7 +722,7 @@ class _$UploadFileImpl implements _UploadFile {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialize,
-    TResult Function(User user, int skip, int take)? getS3Objects,
+    TResult Function(int skip, int take)? getS3Objects,
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
     TResult Function(String id)? findOneOrFail,
@@ -894,7 +873,7 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialize,
-    required TResult Function(User user, int skip, int take) getS3Objects,
+    required TResult Function(int skip, int take) getS3Objects,
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
     required TResult Function(String id) findOneOrFail,
@@ -911,7 +890,7 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialize,
-    TResult? Function(User user, int skip, int take)? getS3Objects,
+    TResult? Function(int skip, int take)? getS3Objects,
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
     TResult? Function(String id)? findOneOrFail,
@@ -926,7 +905,7 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialize,
-    TResult Function(User user, int skip, int take)? getS3Objects,
+    TResult Function(int skip, int take)? getS3Objects,
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
     TResult Function(String id)? findOneOrFail,
@@ -1048,7 +1027,7 @@ class _$CountImpl implements _Count {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialize,
-    required TResult Function(User user, int skip, int take) getS3Objects,
+    required TResult Function(int skip, int take) getS3Objects,
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
     required TResult Function(String id) findOneOrFail,
@@ -1065,7 +1044,7 @@ class _$CountImpl implements _Count {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialize,
-    TResult? Function(User user, int skip, int take)? getS3Objects,
+    TResult? Function(int skip, int take)? getS3Objects,
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
     TResult? Function(String id)? findOneOrFail,
@@ -1080,7 +1059,7 @@ class _$CountImpl implements _Count {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialize,
-    TResult Function(User user, int skip, int take)? getS3Objects,
+    TResult Function(int skip, int take)? getS3Objects,
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
     TResult Function(String id)? findOneOrFail,
@@ -1235,7 +1214,7 @@ class _$CheckObjectsExistenceByMonthImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialize,
-    required TResult Function(User user, int skip, int take) getS3Objects,
+    required TResult Function(int skip, int take) getS3Objects,
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
     required TResult Function(String id) findOneOrFail,
@@ -1252,7 +1231,7 @@ class _$CheckObjectsExistenceByMonthImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialize,
-    TResult? Function(User user, int skip, int take)? getS3Objects,
+    TResult? Function(int skip, int take)? getS3Objects,
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
     TResult? Function(String id)? findOneOrFail,
@@ -1267,7 +1246,7 @@ class _$CheckObjectsExistenceByMonthImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialize,
-    TResult Function(User user, int skip, int take)? getS3Objects,
+    TResult Function(int skip, int take)? getS3Objects,
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
     TResult Function(String id)? findOneOrFail,
@@ -1437,7 +1416,7 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialize,
-    required TResult Function(User user, int skip, int take) getS3Objects,
+    required TResult Function(int skip, int take) getS3Objects,
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
     required TResult Function(String id) findOneOrFail,
@@ -1454,7 +1433,7 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialize,
-    TResult? Function(User user, int skip, int take)? getS3Objects,
+    TResult? Function(int skip, int take)? getS3Objects,
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
     TResult? Function(String id)? findOneOrFail,
@@ -1469,7 +1448,7 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialize,
-    TResult Function(User user, int skip, int take)? getS3Objects,
+    TResult Function(int skip, int take)? getS3Objects,
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
     TResult Function(String id)? findOneOrFail,

@@ -5,8 +5,7 @@ import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 sealed class S3ObjectPageEvent {}
 
 final class FetchNextS3Object extends S3ObjectPageEvent {
-  final User user;
-  FetchNextS3Object(this.user);
+  FetchNextS3Object();
 }
 
 final class ClearS3Object extends S3ObjectPageEvent {}
@@ -26,7 +25,6 @@ class S3ObjectPageBloc
         const limit = 10;
 
         final newItems = await s3ObjectRepository.getS3Object(
-          event.user,
           (newKey - 1) * limit,
           limit,
         );

@@ -9,7 +9,7 @@ import 'package:http_parser/http_parser.dart';
 
 abstract class AwsS3Repository {
   Future<bool> uploadFile(File file, User user, AppKeys appKey);
-  Future<List<S3Object>> getS3Object(User user, int? skip, int? take);
+  Future<List<S3Object>> getS3Object(int? skip, int? take);
   Future<S3Object> findOneOrFail(String id);
   Future<int> count();
   Future<Map<String, bool>> checkObjectsExistenceByMonth(
@@ -69,7 +69,7 @@ class AwsS3DefaultRepository extends AwsS3Repository {
   }
 
   @override
-  Future<List<S3Object>> getS3Object(User user, int? skip, int? take) async {
+  Future<List<S3Object>> getS3Object(int? skip, int? take) async {
     final response = await dioClient.get('/aws/s3/objects', queryParameters: {
       'skip': skip,
       'take': take,

@@ -10,6 +10,7 @@ class DioClient {
   final String? debugBaseUrl;
   final String? baseUrl;
   final bool? useLogInterceptor;
+  final bool? xIncludeUserGroupAdmin;
   final SharedPreferences _sharedPreferences;
   final AppKeys appKey;
 
@@ -17,6 +18,7 @@ class DioClient {
     String? debugBaseUrl,
     String? baseUrl,
     bool? useLogInterceptor,
+    bool? xIncludeUserGroupAdmin,
     required SharedPreferences sharedPreferences,
     required AppKeys appKey,
   }) {
@@ -24,6 +26,7 @@ class DioClient {
       debugBaseUrl: debugBaseUrl,
       baseUrl: baseUrl,
       useLogInterceptor: useLogInterceptor,
+      xIncludeUserGroupAdmin: xIncludeUserGroupAdmin,
       sharedPreferences: sharedPreferences,
       appKey: appKey,
     );
@@ -34,6 +37,7 @@ class DioClient {
     this.debugBaseUrl,
     this.baseUrl,
     this.useLogInterceptor,
+    this.xIncludeUserGroupAdmin,
     required SharedPreferences sharedPreferences,
     required AppKeys appKey,
   })  : _sharedPreferences = sharedPreferences,
@@ -45,6 +49,8 @@ class DioClient {
         receiveTimeout: const Duration(seconds: 10),
         headers: {
           'Content-Type': 'application/json',
+          'X-Include-User-Group-Admin': xIncludeUserGroupAdmin ?? false,
+          'X-App-Key': JunyConstants.getAppKeyStringOrThrow(appKey),
         },
       ),
     );

@@ -8,6 +8,8 @@ abstract class Tr {
   static final photo = _Photo();
   static final app = _App();
   static final common = _Common();
+  static final family = _Family();
+  static final baby = _Baby();
   static final error = _Error();
   static final message = _Message();
   static final chat = _Chat();
@@ -16,6 +18,77 @@ abstract class Tr {
   static final ad = _Ad();
   static final loan = _Loan();
   static final user = _User();
+  static final date = _Date();
+  static final validation = _Validation();
+}
+
+class _Date {
+  final year = 'date.year';
+  final month = 'date.month';
+  final day = 'date.day';
+  final yearFormat = 'date.yearFormat';
+  final monthFormat = 'date.monthFormat';
+  final dayFormat = 'date.dayFormat';
+  final day1 = 'date.day1';
+  final day2 = 'date.day2';
+  final day3 = 'date.day3';
+  final day4 = 'date.day4';
+  final day5 = 'date.day5';
+  final day6 = 'date.day6';
+  final day7 = 'date.day7';
+  final yearAndMonthFormat = 'date.yearAndMonthFormat';
+  final yearAndMonthAndDayFormat = 'date.yearAndMonthAndDayFormat';
+  final weekDayFormat = 'date.weekDayFormat';
+}
+
+class _Validation {
+  final titleOrContentRequired = 'validation.titleOrContentRequired';
+  final editSuccess = 'validation.editSuccess';
+  final deleteSuccess = 'validation.deleteSuccess';
+  final createSuccess = 'validation.createSuccess';
+  final saveSuccess = 'validation.saveSuccess';
+}
+
+class _Family {
+  final familyShare = 'family.familyShare';
+  final familyShareDescription = 'family.familyShareDescription';
+  final inviteCode = 'family.inviteCode';
+  final inviteCodeDescription = 'family.inviteCodeDescription';
+  final familyWithPreciousMoments = 'family.familyWithPreciousMoments';
+  final familyGroupName = 'family.familyGroupName';
+  final familyGroupNameHintText = 'family.familyGroupNameHintText';
+  final familyShareDescription2 = 'family.familyShareDescription2';
+  final familyShareDescription3 = 'family.familyShareDescription3';
+  final familyShareDescription3HintText =
+      'family.familyShareDescription3HintText';
+  final familyStartDescription = 'family.familyStartDescription';
+  final familyCodeCreate = 'family.familyCodeCreate';
+  final familyCodeCreateDescription = 'family.familyCodeCreateDescription';
+  final familyCodeCreateDescription2 = 'family.familyCodeCreateDescription2';
+  final familyCodeCreateDescription3 = 'family.familyCodeCreateDescription3';
+  final familyCodeCreateDescription4 = 'family.familyCodeCreateDescription4';
+  final familyCodeShare = 'family.familyCodeShare';
+  final familyMemberCountFormat = 'family.familyMemberCountFormat';
+  final familyJoin = 'family.familyJoin';
+  final familyJoinCode = 'family.familyJoinCode';
+  final familyJoinCodeDescription = 'family.familyJoinCodeDescription';
+  final familyJoinCodeDescription2 = 'family.familyJoinCodeDescription2';
+  final familyJoinCodeDescription3 = 'family.familyJoinCodeDescription3';
+  final familyJoinCodeDescription4 = 'family.familyJoinCodeDescription4';
+  final familyJoinCodeDescription5 = 'family.familyJoinCodeDescription5';
+}
+
+class _Baby {
+  final onBoardingTitle = 'baby.onBoardingTitle';
+  final onBoardingDescription = 'baby.onBoardingDescription';
+  final aiDescription = 'baby.aiDescription';
+  final aiDescription2 = 'baby.aiDescription2';
+  final onBoardingAiDescription = 'baby.onBoardingAiDescription';
+  final onBoardingAiDescription2 = 'baby.onBoardingAiDescription2';
+  final shareDescription = 'baby.shareDescription';
+  final shareDescription2 = 'baby.shareDescription2';
+  final babyLogDescription = 'baby.babyLogDescription';
+  final babyLogTagHintText = 'baby.babyLogTagHintText';
 }
 
 class _Common {
@@ -35,6 +108,30 @@ class _Common {
   final daysAgo = 'common.daysAgo';
   final monthsAgo = 'common.monthsAgo';
   final yearsAgo = 'common.yearsAgo';
+  final skip = 'common.skip';
+  final previous = 'common.previous';
+  final next = 'common.next';
+  final start = 'common.start';
+  final storageUsage = 'common.storageUsage';
+  final quickAction = 'common.quickAction';
+  final gallery = 'common.gallery';
+  final camera = 'common.camera';
+  final album = 'common.album';
+  final year = 'date.year';
+  final month = 'date.month';
+  final day = 'date.day';
+  final yearFormat = 'date.yearFormat';
+  final monthFormat = 'date.monthFormat';
+  final dayFormat = 'date.dayFormat';
+  final record = 'common.record';
+  final title = 'common.title';
+  final content = 'common.content';
+  final tag = 'common.tag';
+  final inviteCode = 'common.inviteCode';
+  final close = 'common.close';
+  final share = 'common.share';
+  final groupLeader = 'date.groupLeader';
+  final member = 'date.member';
 }
 
 class _User {
@@ -69,6 +166,9 @@ class _Photo {
   final recentPhotos = 'photo.recentPhotos';
   final uploadPhoto = 'photo.uploadPhoto';
   final noPhoto = 'photo.noPhoto';
+  final takePhoto = 'photo.takePhoto';
+  final takenPhotos = 'photo.takenPhotos';
+  final unit = 'photo.unit';
 }
 
 class _App {
