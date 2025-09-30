@@ -19,6 +19,10 @@ _$S3ObjectImpl _$$S3ObjectImplFromJson(Map<String, dynamic> json) =>
           ? null
           : DateTime.parse(json['createdAt'] as String),
       userId: json['userId'] as String? ?? null,
+      tags: (json['tags'] as List<dynamic>?)
+              ?.map((e) => S3ObjectTag.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$S3ObjectImplToJson(_$S3ObjectImpl instance) =>
@@ -32,4 +36,5 @@ Map<String, dynamic> _$$S3ObjectImplToJson(_$S3ObjectImpl instance) =>
       'active': instance.active,
       'createdAt': instance.createdAt?.toIso8601String(),
       'userId': instance.userId,
+      'tags': instance.tags,
     };

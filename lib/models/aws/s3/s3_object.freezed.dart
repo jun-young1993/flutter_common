@@ -29,6 +29,7 @@ mixin _$S3Object {
   bool get active => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
   String? get userId => throw _privateConstructorUsedError;
+  List<S3ObjectTag>? get tags => throw _privateConstructorUsedError;
 
   /// Serializes this S3Object to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -54,7 +55,8 @@ abstract class $S3ObjectCopyWith<$Res> {
       String? mimetype,
       bool active,
       DateTime? createdAt,
-      String? userId});
+      String? userId,
+      List<S3ObjectTag>? tags});
 }
 
 /// @nodoc
@@ -81,6 +83,7 @@ class _$S3ObjectCopyWithImpl<$Res, $Val extends S3Object>
     Object? active = null,
     Object? createdAt = freezed,
     Object? userId = freezed,
+    Object? tags = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -119,6 +122,10 @@ class _$S3ObjectCopyWithImpl<$Res, $Val extends S3Object>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String?,
+      tags: freezed == tags
+          ? _value.tags
+          : tags // ignore: cast_nullable_to_non_nullable
+              as List<S3ObjectTag>?,
     ) as $Val);
   }
 }
@@ -140,7 +147,8 @@ abstract class _$$S3ObjectImplCopyWith<$Res>
       String? mimetype,
       bool active,
       DateTime? createdAt,
-      String? userId});
+      String? userId,
+      List<S3ObjectTag>? tags});
 }
 
 /// @nodoc
@@ -165,6 +173,7 @@ class __$$S3ObjectImplCopyWithImpl<$Res>
     Object? active = null,
     Object? createdAt = freezed,
     Object? userId = freezed,
+    Object? tags = freezed,
   }) {
     return _then(_$S3ObjectImpl(
       id: null == id
@@ -203,6 +212,10 @@ class __$$S3ObjectImplCopyWithImpl<$Res>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String?,
+      tags: freezed == tags
+          ? _value._tags
+          : tags // ignore: cast_nullable_to_non_nullable
+              as List<S3ObjectTag>?,
     ));
   }
 }
@@ -219,8 +232,10 @@ class _$S3ObjectImpl extends _S3Object {
       this.mimetype = null,
       this.active = false,
       this.createdAt = null,
-      this.userId = null})
-      : super._();
+      this.userId = null,
+      final List<S3ObjectTag>? tags = const []})
+      : _tags = tags,
+        super._();
 
   factory _$S3ObjectImpl.fromJson(Map<String, dynamic> json) =>
       _$$S3ObjectImplFromJson(json);
@@ -251,10 +266,20 @@ class _$S3ObjectImpl extends _S3Object {
   @override
   @JsonKey()
   final String? userId;
+  final List<S3ObjectTag>? _tags;
+  @override
+  @JsonKey()
+  List<S3ObjectTag>? get tags {
+    final value = _tags;
+    if (value == null) return null;
+    if (_tags is EqualUnmodifiableListView) return _tags;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'S3Object(id: $id, key: $key, url: $url, originalName: $originalName, size: $size, mimetype: $mimetype, active: $active, createdAt: $createdAt, userId: $userId)';
+    return 'S3Object(id: $id, key: $key, url: $url, originalName: $originalName, size: $size, mimetype: $mimetype, active: $active, createdAt: $createdAt, userId: $userId, tags: $tags)';
   }
 
   @override
@@ -273,13 +298,24 @@ class _$S3ObjectImpl extends _S3Object {
             (identical(other.active, active) || other.active == active) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
-            (identical(other.userId, userId) || other.userId == userId));
+            (identical(other.userId, userId) || other.userId == userId) &&
+            const DeepCollectionEquality().equals(other._tags, _tags));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, key, url, originalName, size,
-      mimetype, active, createdAt, userId);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      key,
+      url,
+      originalName,
+      size,
+      mimetype,
+      active,
+      createdAt,
+      userId,
+      const DeepCollectionEquality().hash(_tags));
 
   /// Create a copy of S3Object
   /// with the given fields replaced by the non-null parameter values.
@@ -307,7 +343,8 @@ abstract class _S3Object extends S3Object {
       final String? mimetype,
       final bool active,
       final DateTime? createdAt,
-      final String? userId}) = _$S3ObjectImpl;
+      final String? userId,
+      final List<S3ObjectTag>? tags}) = _$S3ObjectImpl;
   const _S3Object._() : super._();
 
   factory _S3Object.fromJson(Map<String, dynamic> json) =
@@ -331,6 +368,8 @@ abstract class _S3Object extends S3Object {
   DateTime? get createdAt;
   @override
   String? get userId;
+  @override
+  List<S3ObjectTag>? get tags;
 
   /// Create a copy of S3Object
   /// with the given fields replaced by the non-null parameter values.

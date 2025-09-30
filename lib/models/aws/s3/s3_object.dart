@@ -1,3 +1,4 @@
+import 'package:flutter_common/models/aws/s3/s3_object_tag.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
 
@@ -16,6 +17,7 @@ class S3Object with _$S3Object {
     @Default(false) bool active,
     @Default(null) DateTime? createdAt,
     @Default(null) String? userId,
+    @Default([]) List<S3ObjectTag>? tags,
   }) = _S3Object;
 
   const S3Object._();
