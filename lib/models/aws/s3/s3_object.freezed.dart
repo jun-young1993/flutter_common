@@ -30,6 +30,8 @@ mixin _$S3Object {
   DateTime? get createdAt => throw _privateConstructorUsedError;
   String? get userId => throw _privateConstructorUsedError;
   List<S3ObjectTag>? get tags => throw _privateConstructorUsedError;
+  List<S3ObjectLike>? get likes => throw _privateConstructorUsedError;
+  List<S3ObjectReply>? get replies => throw _privateConstructorUsedError;
 
   /// Serializes this S3Object to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -56,7 +58,9 @@ abstract class $S3ObjectCopyWith<$Res> {
       bool active,
       DateTime? createdAt,
       String? userId,
-      List<S3ObjectTag>? tags});
+      List<S3ObjectTag>? tags,
+      List<S3ObjectLike>? likes,
+      List<S3ObjectReply>? replies});
 }
 
 /// @nodoc
@@ -84,6 +88,8 @@ class _$S3ObjectCopyWithImpl<$Res, $Val extends S3Object>
     Object? createdAt = freezed,
     Object? userId = freezed,
     Object? tags = freezed,
+    Object? likes = freezed,
+    Object? replies = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -126,6 +132,14 @@ class _$S3ObjectCopyWithImpl<$Res, $Val extends S3Object>
           ? _value.tags
           : tags // ignore: cast_nullable_to_non_nullable
               as List<S3ObjectTag>?,
+      likes: freezed == likes
+          ? _value.likes
+          : likes // ignore: cast_nullable_to_non_nullable
+              as List<S3ObjectLike>?,
+      replies: freezed == replies
+          ? _value.replies
+          : replies // ignore: cast_nullable_to_non_nullable
+              as List<S3ObjectReply>?,
     ) as $Val);
   }
 }
@@ -148,7 +162,9 @@ abstract class _$$S3ObjectImplCopyWith<$Res>
       bool active,
       DateTime? createdAt,
       String? userId,
-      List<S3ObjectTag>? tags});
+      List<S3ObjectTag>? tags,
+      List<S3ObjectLike>? likes,
+      List<S3ObjectReply>? replies});
 }
 
 /// @nodoc
@@ -174,6 +190,8 @@ class __$$S3ObjectImplCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? userId = freezed,
     Object? tags = freezed,
+    Object? likes = freezed,
+    Object? replies = freezed,
   }) {
     return _then(_$S3ObjectImpl(
       id: null == id
@@ -216,6 +234,14 @@ class __$$S3ObjectImplCopyWithImpl<$Res>
           ? _value._tags
           : tags // ignore: cast_nullable_to_non_nullable
               as List<S3ObjectTag>?,
+      likes: freezed == likes
+          ? _value._likes
+          : likes // ignore: cast_nullable_to_non_nullable
+              as List<S3ObjectLike>?,
+      replies: freezed == replies
+          ? _value._replies
+          : replies // ignore: cast_nullable_to_non_nullable
+              as List<S3ObjectReply>?,
     ));
   }
 }
@@ -233,8 +259,12 @@ class _$S3ObjectImpl extends _S3Object {
       this.active = false,
       this.createdAt = null,
       this.userId = null,
-      final List<S3ObjectTag>? tags = const []})
+      final List<S3ObjectTag>? tags = const [],
+      final List<S3ObjectLike>? likes = const [],
+      final List<S3ObjectReply>? replies = const []})
       : _tags = tags,
+        _likes = likes,
+        _replies = replies,
         super._();
 
   factory _$S3ObjectImpl.fromJson(Map<String, dynamic> json) =>
@@ -277,9 +307,31 @@ class _$S3ObjectImpl extends _S3Object {
     return EqualUnmodifiableListView(value);
   }
 
+  final List<S3ObjectLike>? _likes;
+  @override
+  @JsonKey()
+  List<S3ObjectLike>? get likes {
+    final value = _likes;
+    if (value == null) return null;
+    if (_likes is EqualUnmodifiableListView) return _likes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<S3ObjectReply>? _replies;
+  @override
+  @JsonKey()
+  List<S3ObjectReply>? get replies {
+    final value = _replies;
+    if (value == null) return null;
+    if (_replies is EqualUnmodifiableListView) return _replies;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   String toString() {
-    return 'S3Object(id: $id, key: $key, url: $url, originalName: $originalName, size: $size, mimetype: $mimetype, active: $active, createdAt: $createdAt, userId: $userId, tags: $tags)';
+    return 'S3Object(id: $id, key: $key, url: $url, originalName: $originalName, size: $size, mimetype: $mimetype, active: $active, createdAt: $createdAt, userId: $userId, tags: $tags, likes: $likes, replies: $replies)';
   }
 
   @override
@@ -299,7 +351,9 @@ class _$S3ObjectImpl extends _S3Object {
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.userId, userId) || other.userId == userId) &&
-            const DeepCollectionEquality().equals(other._tags, _tags));
+            const DeepCollectionEquality().equals(other._tags, _tags) &&
+            const DeepCollectionEquality().equals(other._likes, _likes) &&
+            const DeepCollectionEquality().equals(other._replies, _replies));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -315,7 +369,9 @@ class _$S3ObjectImpl extends _S3Object {
       active,
       createdAt,
       userId,
-      const DeepCollectionEquality().hash(_tags));
+      const DeepCollectionEquality().hash(_tags),
+      const DeepCollectionEquality().hash(_likes),
+      const DeepCollectionEquality().hash(_replies));
 
   /// Create a copy of S3Object
   /// with the given fields replaced by the non-null parameter values.
@@ -344,7 +400,9 @@ abstract class _S3Object extends S3Object {
       final bool active,
       final DateTime? createdAt,
       final String? userId,
-      final List<S3ObjectTag>? tags}) = _$S3ObjectImpl;
+      final List<S3ObjectTag>? tags,
+      final List<S3ObjectLike>? likes,
+      final List<S3ObjectReply>? replies}) = _$S3ObjectImpl;
   const _S3Object._() : super._();
 
   factory _S3Object.fromJson(Map<String, dynamic> json) =
@@ -370,6 +428,10 @@ abstract class _S3Object extends S3Object {
   String? get userId;
   @override
   List<S3ObjectTag>? get tags;
+  @override
+  List<S3ObjectLike>? get likes;
+  @override
+  List<S3ObjectReply>? get replies;
 
   /// Create a copy of S3Object
   /// with the given fields replaced by the non-null parameter values.

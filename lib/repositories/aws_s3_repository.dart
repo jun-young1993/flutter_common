@@ -5,7 +5,6 @@ import 'package:flutter_common/constants/juny_constants.dart';
 import 'package:flutter_common/models/aws/s3/s3_object.dart';
 import 'package:flutter_common/models/user/user.dart';
 import 'package:flutter_common/network/dio_client.dart';
-import 'package:http_parser/http_parser.dart';
 
 abstract class AwsS3Repository {
   Future<bool> uploadFile(File file, User user, AppKeys appKey);
@@ -16,6 +15,8 @@ abstract class AwsS3Repository {
       String year, String month);
   Future<List<S3Object>> getObjectsByDate(
       String year, String month, String day);
+  Future<bool> likeS3Object(S3Object s3Object, User user);
+  Future<bool> replyS3Object(S3Object s3Object, User user, String content);
 }
 
 class AwsS3DefaultRepository extends AwsS3Repository {
@@ -37,7 +38,6 @@ class AwsS3DefaultRepository extends AwsS3Repository {
         'files': await MultipartFile.fromFile(
           file.path,
           filename: file.path.split('/').last,
-          contentType: MediaType('image', 'png'),
         ),
       });
 
@@ -130,5 +130,33 @@ class AwsS3DefaultRepository extends AwsS3Repository {
           .toList();
     }
     throw Exception('S3 객체 조회 실패');
+  }
+
+  @override
+  Future<bool> likeS3Object(S3Object s3Object, User user) async {
+    final response = await dioClient
+        .post('/s3-object-likes/s3-object/${s3Object.id}', data: {
+      'userId': user.id,
+    });
+    if (response.statusCode == 201) {
+      return true;
+    }
+    if (response.statusCode == 409) {
+      return false;
+    }
+    throw Exception('S3 객체 좋아요 실패');
+  }
+
+  @override
+  Future<bool> replyS3Object(
+      S3Object s3Object, User user, String content) async {
+    final response = await dioClient
+        .post('/s3-object-replies/s3-object/${s3Object.id}', data: {
+      'content': content,
+    });
+    if (response.statusCode == 201) {
+      return true;
+    }
+    throw Exception('S3 객체 댓글 실패');
   }
 }

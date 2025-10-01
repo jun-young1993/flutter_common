@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter_common/models/aws/s3/s3_object.dart';
 import 'package:flutter_common/models/user/user.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -11,10 +12,15 @@ class S3ObjectEvent with _$S3ObjectEvent {
   const factory S3ObjectEvent.getS3Objects(int skip, int take) = _GetS3Objects;
   const factory S3ObjectEvent.clearError() = _ClearError;
   const factory S3ObjectEvent.uploadFile(File file, User user) = _UploadFile;
-  const factory S3ObjectEvent.findOneOrFail(String id) = _FindOneOrFail;
+  const factory S3ObjectEvent.findOneOrFail(String id, User user) =
+      _FindOneOrFail;
   const factory S3ObjectEvent.count() = _Count;
   const factory S3ObjectEvent.checkObjectsExistenceByMonth(
       String year, String month) = _CheckObjectsExistenceByMonth;
   const factory S3ObjectEvent.getObjectsByDate(
       String year, String month, String day) = _GetObjectsByDate;
+  const factory S3ObjectEvent.likeS3Object(S3Object s3Object, User user) =
+      _LikeS3Object;
+  const factory S3ObjectEvent.replyS3Object(
+      S3Object s3Object, User user, String content) = _ReplyS3Object;
 }

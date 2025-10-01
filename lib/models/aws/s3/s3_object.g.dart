@@ -23,6 +23,14 @@ _$S3ObjectImpl _$$S3ObjectImplFromJson(Map<String, dynamic> json) =>
               ?.map((e) => S3ObjectTag.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
+      likes: (json['likes'] as List<dynamic>?)
+              ?.map((e) => S3ObjectLike.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+      replies: (json['replies'] as List<dynamic>?)
+              ?.map((e) => S3ObjectReply.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$S3ObjectImplToJson(_$S3ObjectImpl instance) =>
@@ -37,4 +45,6 @@ Map<String, dynamic> _$$S3ObjectImplToJson(_$S3ObjectImpl instance) =>
       'createdAt': instance.createdAt?.toIso8601String(),
       'userId': instance.userId,
       'tags': instance.tags,
+      'likes': instance.likes,
+      'replies': instance.replies,
     };

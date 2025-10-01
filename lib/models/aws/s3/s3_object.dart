@@ -1,3 +1,5 @@
+import 'package:flutter_common/models/aws/s3/s3_object_like.dart';
+import 'package:flutter_common/models/aws/s3/s3_object_reply.dart';
 import 'package:flutter_common/models/aws/s3/s3_object_tag.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
@@ -18,6 +20,8 @@ class S3Object with _$S3Object {
     @Default(null) DateTime? createdAt,
     @Default(null) String? userId,
     @Default([]) List<S3ObjectTag>? tags,
+    @Default([]) List<S3ObjectLike>? likes,
+    @Default([]) List<S3ObjectReply>? replies,
   }) = _S3Object;
 
   const S3Object._();

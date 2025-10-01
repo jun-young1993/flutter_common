@@ -1,5 +1,6 @@
 import 'package:flutter_common/extensions/app_exception.dart';
 import 'package:flutter_common/models/aws/s3/s3_object.dart';
+import 'package:flutter_common/models/aws/s3/s3_object_like.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 's3_object_state.freezed.dart';
@@ -18,6 +19,7 @@ class S3ObjectState with _$S3ObjectState {
     @Default(false) bool isObjectsExistenceByMonthLoading,
     @Default([]) List<S3Object> objectsByDate,
     @Default(false) bool isObjectsByDateLoading,
+    @Default(null) S3ObjectLike? like,
   }) = _S3ObjectState;
 
   factory S3ObjectState.initialize() => const S3ObjectState();

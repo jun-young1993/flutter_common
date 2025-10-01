@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:flutter_common/constants/juny_constants.dart';
 import 'package:flutter_common/repositories/aws_s3_repository.dart';
 import 'package:flutter_common/state/aws/s3/s3_object_event.dart';
@@ -28,9 +29,18 @@ class S3ObjectBloc extends Bloc<S3ObjectEvent, S3ObjectState> {
           emit(state.copyWith(
               isLoading: false, isUploading: false, error: null));
         }, findOneOrFail: (e) async {
-          emit(state.copyWith(isLoading: true));
+          emit(state.copyWith(isLoading: true, like: null, s3Object: null));
           final s3Object = await s3ObjectRepository.findOneOrFail(e.id);
-          emit(state.copyWith(s3Object: s3Object, isLoading: false));
+
+          final like = s3Object.likes?.firstWhereOrNull(
+            (element) => element.userId == e.user.id,
+          );
+
+          emit(state.copyWith(
+            s3Object: s3Object,
+            like: like,
+            isLoading: false,
+          ));
         }, count: (e) async {
           emit(state.copyWith(isAllCountLoading: true));
           final allCount = await s3ObjectRepository.count();
@@ -48,6 +58,12 @@ class S3ObjectBloc extends Bloc<S3ObjectEvent, S3ObjectState> {
               await s3ObjectRepository.getObjectsByDate(e.year, e.month, e.day);
           emit(state.copyWith(
               objectsByDate: objectsByDate, isObjectsByDateLoading: false));
+        }, likeS3Object: (e) async {
+          await s3ObjectRepository.likeS3Object(e.s3Object, e.user);
+          add(S3ObjectEvent.findOneOrFail(e.s3Object.id, e.user));
+        }, replyS3Object: (e) async {
+          await s3ObjectRepository.replyS3Object(e.s3Object, e.user, e.content);
+          add(S3ObjectEvent.findOneOrFail(e.s3Object.id, e.user));
         });
       },
     );
