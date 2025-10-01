@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter_common/constants/juny_constants.dart';
 import 'package:flutter_common/models/aws/s3/s3_object.dart';
+import 'package:flutter_common/models/aws/s3/s3_object_like.dart';
+import 'package:flutter_common/models/aws/s3/s3_object_reply.dart';
 import 'package:flutter_common/models/user/user.dart';
 import 'package:flutter_common/network/dio_client.dart';
 
@@ -16,7 +18,9 @@ abstract class AwsS3Repository {
   Future<List<S3Object>> getObjectsByDate(
       String year, String month, String day);
   Future<bool> likeS3Object(S3Object s3Object, User user);
+  Future<bool> removeLikeS3Object(S3ObjectLike s3ObjectLike);
   Future<bool> replyS3Object(S3Object s3Object, User user, String content);
+  Future<bool> removeReplyS3Object(S3ObjectReply s3Object);
 }
 
 class AwsS3DefaultRepository extends AwsS3Repository {
@@ -148,6 +152,16 @@ class AwsS3DefaultRepository extends AwsS3Repository {
   }
 
   @override
+  Future<bool> removeLikeS3Object(S3ObjectLike s3ObjectLike) async {
+    final response =
+        await dioClient.delete('/s3-object-likes/${s3ObjectLike.id}');
+    if (response.statusCode == 204) {
+      return true;
+    }
+    throw Exception('S3 객체 좋아요 취소 실패');
+  }
+
+  @override
   Future<bool> replyS3Object(
       S3Object s3Object, User user, String content) async {
     final response = await dioClient
@@ -158,5 +172,15 @@ class AwsS3DefaultRepository extends AwsS3Repository {
       return true;
     }
     throw Exception('S3 객체 댓글 실패');
+  }
+
+  @override
+  Future<bool> removeReplyS3Object(S3ObjectReply s3ObjectReply) async {
+    final response =
+        await dioClient.delete('/s3-object-replies/${s3ObjectReply.id}');
+    if (response.statusCode == 204) {
+      return true;
+    }
+    throw Exception('S3 객체 댓글 취소 실패');
   }
 }

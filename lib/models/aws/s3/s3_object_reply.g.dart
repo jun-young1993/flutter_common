@@ -13,6 +13,7 @@ _$S3ObjectReplyImpl _$$S3ObjectReplyImplFromJson(Map<String, dynamic> json) =>
       s3ObjectId: json['s3ObjectId'] as String,
       content: json['content'] as String,
       createdAt: DateTime.parse(json['createdAt'] as String),
+      user: User.fromJson(json['user'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$S3ObjectReplyImplToJson(_$S3ObjectReplyImpl instance) =>
@@ -22,4 +23,5 @@ Map<String, dynamic> _$$S3ObjectReplyImplToJson(_$S3ObjectReplyImpl instance) =>
       's3ObjectId': instance.s3ObjectId,
       'content': instance.content,
       'createdAt': instance.createdAt.toIso8601String(),
+      'user': instance.user,
     };

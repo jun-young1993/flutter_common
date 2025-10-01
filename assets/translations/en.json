@@ -81,7 +81,10 @@
         "printQrCode": "Print QR Code",
         "viewInStore": "View in Store",
         "shareAppWithQrCode": "Share App with QR Code",
-        "babyLog" : "Baby Log"
+        "babyLog" : "Baby Log",
+        "noDate" : "No Date",
+        "share" : "Share",
+        "like" : "Like"
     },
     "common": {
         "yes": "Yes",
@@ -118,7 +121,12 @@
         "inviteCode": "Invite Code",
         "close": "Close",
         "groupLeader": "Group Leader",
-        "member": "Member"
+        "member": "Member",
+        "loading": "Loading...",
+        "loadingMessage": "Please wait a moment...",
+        "reply": "Reply",
+        "delete": "Delete",
+        "report": "Report"
     },
     "validation" : {
         "titleOrContentRequired": "Please enter the title or content.",
@@ -208,8 +216,11 @@
         "reportReply": "Report created successfully",
         "deleteUserDataWarning": "This action cannot be undone. All user data will be permanently deleted.",
         "deleteUserDataTitle": "Delete User Data",
-        "deleteUserDataDescription": "Are you sure you want to delete all user data?"
-    },
+        "deleteUserDataDescription": "Are you sure you want to delete all user data?",
+        "deleteDataWarning": "This action cannot be undone. Data will be permanently deleted.",
+        "deleteDataTitle": "Delete {name}",
+        "deleteDataDescription": "Are you sure you want to delete all data?"
+    },  
     "chat": {
         "clearChat": "Clear Chat",
         "clearChatConfirmation": "Are you sure you want to clear the entire chat history? This cannot be undone.",
@@ -242,7 +253,9 @@
         "notice": "Notice",
         "normal": "Normal",
         "register": "Register",
-        "createNotice": "Notice created successfully"
+        "createNotice": "Notice created successfully",
+        "firstReply": "Leave your first reply!",
+        "enterReply": "Enter a reply..."
     },
     "report": {
         "title": "Please select a reason for reporting.",

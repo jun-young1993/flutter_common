@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_common/extensions/app_exception.dart';
 import 'package:flutter_common/models/aws/s3/s3_object.dart';
+import 'package:flutter_common/models/aws/s3/s3_object_like.dart';
 import 'package:flutter_common/state/aws/s3/s3_object_bloc.dart';
 import 'package:flutter_common/state/aws/s3/s3_object_state.dart';
 
@@ -128,5 +129,14 @@ class S3ObjectIsObjectsByDateLoadingSelector extends S3ObjectSelector<bool> {
           selector: (state) => state.isObjectsByDateLoading,
           builder: (context, isObjectsByDateLoading) =>
               builder(isObjectsByDateLoading),
+        );
+}
+
+class S3ObjectLikeSelector extends S3ObjectSelector<S3ObjectLike?> {
+  S3ObjectLikeSelector(Widget Function(S3ObjectLike? like) builder, {Key? key})
+      : super(
+          key: key,
+          selector: (state) => state.like,
+          builder: (context, like) => builder(like),
         );
 }

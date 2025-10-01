@@ -1,3 +1,4 @@
+import 'package:flutter_common/models/user/user.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 's3_object_reply.freezed.dart';
@@ -11,6 +12,7 @@ class S3ObjectReply with _$S3ObjectReply {
     required String s3ObjectId,
     required String content,
     required DateTime createdAt,
+    required User user,
   }) = _S3ObjectReply;
 
   const S3ObjectReply._();

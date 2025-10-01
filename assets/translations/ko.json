@@ -83,7 +83,8 @@
         "shareAppWithQrCode": "QR 코드로 앱 공유하기",
         "babyLog" : "Baby Log",
         "noDate" : "날짜 없음",
-        "share" : "공유하기"
+        "share" : "공유하기",
+        "like" : "좋아요"
     },
     "common": {
         "yes": "예",
@@ -118,8 +119,13 @@
         "inviteCode": "초대 코드",
         "close": "닫기",
         "share": "공유",
-                "groupLeader": "그룹장",
-        "member": "맴버"
+        "groupLeader": "그룹장",
+        "member": "맴버",
+        "loading": "불러오는중...",
+        "loadingMessage": "잠시만 기다려주세요...",
+        "reply": "댓글",
+        "delete": "삭제",
+        "report": "신고"
     },
     "validation" : {
         "titleOrContentRequired": "제목 또는 내용을 입력해주세요.",
@@ -214,7 +220,10 @@
         "reportReply": "댓글 신고",
         "deleteUserDataWarning": "이 작업은 되돌릴 수 없습니다. 모든 사용자 데이터가 영구적으로 삭제됩니다.",
         "deleteUserDataTitle": "사용자 데이터 삭제",
-        "deleteUserDataDescription": "정말로 모든 사용자 데이터를 삭제하시겠습니까?"
+        "deleteUserDataDescription": "정말로 모든 사용자 데이터를 삭제하시겠습니까?",
+        "deleteDataWarning": "이 작업은 되돌릴 수 없습니다. 영구적으로 삭제됩니다.",
+        "deleteDataTitle": "{name} 삭제",
+        "deleteDataDescription": "정말로 삭제하시겠습니까?"
     },
     "chat": {
         "clearChat": "채팅 지우기",
@@ -248,7 +257,9 @@
         "notice": "공지",
         "normal": "일반",
         "register": "등록하기",
-        "createNotice": "게시글 작성 완료"
+        "createNotice": "게시글 작성 완료",
+        "firstReply": "첫 번째 댓글을 남겨보세요!",
+        "enterReply": "댓글을 입력해주세요..."
     },
     "report": {
         "title": "신고사유를 선택해주십시오.",

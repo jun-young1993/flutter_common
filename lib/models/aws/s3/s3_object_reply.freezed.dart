@@ -25,6 +25,7 @@ mixin _$S3ObjectReply {
   String get s3ObjectId => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
+  User get user => throw _privateConstructorUsedError;
 
   /// Serializes this S3ObjectReply to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -47,7 +48,10 @@ abstract class $S3ObjectReplyCopyWith<$Res> {
       String userId,
       String s3ObjectId,
       String content,
-      DateTime createdAt});
+      DateTime createdAt,
+      User user});
+
+  $UserCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -70,6 +74,7 @@ class _$S3ObjectReplyCopyWithImpl<$Res, $Val extends S3ObjectReply>
     Object? s3ObjectId = null,
     Object? content = null,
     Object? createdAt = null,
+    Object? user = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -92,7 +97,21 @@ class _$S3ObjectReplyCopyWithImpl<$Res, $Val extends S3ObjectReply>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
     ) as $Val);
+  }
+
+  /// Create a copy of S3ObjectReply
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $UserCopyWith<$Res> get user {
+    return $UserCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value) as $Val);
+    });
   }
 }
 
@@ -109,7 +128,11 @@ abstract class _$$S3ObjectReplyImplCopyWith<$Res>
       String userId,
       String s3ObjectId,
       String content,
-      DateTime createdAt});
+      DateTime createdAt,
+      User user});
+
+  @override
+  $UserCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -130,6 +153,7 @@ class __$$S3ObjectReplyImplCopyWithImpl<$Res>
     Object? s3ObjectId = null,
     Object? content = null,
     Object? createdAt = null,
+    Object? user = null,
   }) {
     return _then(_$S3ObjectReplyImpl(
       id: null == id
@@ -152,6 +176,10 @@ class __$$S3ObjectReplyImplCopyWithImpl<$Res>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
     ));
   }
 }
@@ -164,7 +192,8 @@ class _$S3ObjectReplyImpl extends _S3ObjectReply {
       required this.userId,
       required this.s3ObjectId,
       required this.content,
-      required this.createdAt})
+      required this.createdAt,
+      required this.user})
       : super._();
 
   factory _$S3ObjectReplyImpl.fromJson(Map<String, dynamic> json) =>
@@ -180,10 +209,12 @@ class _$S3ObjectReplyImpl extends _S3ObjectReply {
   final String content;
   @override
   final DateTime createdAt;
+  @override
+  final User user;
 
   @override
   String toString() {
-    return 'S3ObjectReply(id: $id, userId: $userId, s3ObjectId: $s3ObjectId, content: $content, createdAt: $createdAt)';
+    return 'S3ObjectReply(id: $id, userId: $userId, s3ObjectId: $s3ObjectId, content: $content, createdAt: $createdAt, user: $user)';
   }
 
   @override
@@ -197,13 +228,14 @@ class _$S3ObjectReplyImpl extends _S3ObjectReply {
                 other.s3ObjectId == s3ObjectId) &&
             (identical(other.content, content) || other.content == content) &&
             (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt));
+                other.createdAt == createdAt) &&
+            (identical(other.user, user) || other.user == user));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, userId, s3ObjectId, content, createdAt);
+  int get hashCode => Object.hash(
+      runtimeType, id, userId, s3ObjectId, content, createdAt, user);
 
   /// Create a copy of S3ObjectReply
   /// with the given fields replaced by the non-null parameter values.
@@ -227,7 +259,8 @@ abstract class _S3ObjectReply extends S3ObjectReply {
       required final String userId,
       required final String s3ObjectId,
       required final String content,
-      required final DateTime createdAt}) = _$S3ObjectReplyImpl;
+      required final DateTime createdAt,
+      required final User user}) = _$S3ObjectReplyImpl;
   const _S3ObjectReply._() : super._();
 
   factory _S3ObjectReply.fromJson(Map<String, dynamic> json) =
@@ -243,6 +276,8 @@ abstract class _S3ObjectReply extends S3ObjectReply {
   String get content;
   @override
   DateTime get createdAt;
+  @override
+  User get user;
 
   /// Create a copy of S3ObjectReply
   /// with the given fields replaced by the non-null parameter values.

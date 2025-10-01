@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter_common/models/aws/s3/s3_object.dart';
+import 'package:flutter_common/models/aws/s3/s3_object_like.dart';
+import 'package:flutter_common/models/aws/s3/s3_object_reply.dart';
 import 'package:flutter_common/models/user/user.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -21,6 +23,10 @@ class S3ObjectEvent with _$S3ObjectEvent {
       String year, String month, String day) = _GetObjectsByDate;
   const factory S3ObjectEvent.likeS3Object(S3Object s3Object, User user) =
       _LikeS3Object;
+  const factory S3ObjectEvent.removeLikeS3Object(
+      S3ObjectLike s3ObjectLike, User user) = _RemoveLikeS3Object;
   const factory S3ObjectEvent.replyS3Object(
       S3Object s3Object, User user, String content) = _ReplyS3Object;
+  const factory S3ObjectEvent.removeReplyS3Object(
+      S3ObjectReply s3ObjectReply, User user) = _RemoveReplyS3Object;
 }

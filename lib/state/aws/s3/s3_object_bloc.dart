@@ -61,9 +61,15 @@ class S3ObjectBloc extends Bloc<S3ObjectEvent, S3ObjectState> {
         }, likeS3Object: (e) async {
           await s3ObjectRepository.likeS3Object(e.s3Object, e.user);
           add(S3ObjectEvent.findOneOrFail(e.s3Object.id, e.user));
+        }, removeLikeS3Object: (e) async {
+          await s3ObjectRepository.removeLikeS3Object(e.s3ObjectLike);
+          add(S3ObjectEvent.findOneOrFail(e.s3ObjectLike.s3ObjectId, e.user));
         }, replyS3Object: (e) async {
           await s3ObjectRepository.replyS3Object(e.s3Object, e.user, e.content);
           add(S3ObjectEvent.findOneOrFail(e.s3Object.id, e.user));
+        }, removeReplyS3Object: (e) async {
+          await s3ObjectRepository.removeReplyS3Object(e.s3ObjectReply);
+          add(S3ObjectEvent.findOneOrFail(e.s3ObjectReply.s3ObjectId, e.user));
         });
       },
     );

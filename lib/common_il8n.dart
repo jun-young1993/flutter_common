@@ -132,6 +132,11 @@ class _Common {
   final share = 'common.share';
   final groupLeader = 'date.groupLeader';
   final member = 'date.member';
+  final loading = 'common.loading';
+  final loadingMessage = 'common.loadingMessage';
+  final reply = 'common.reply';
+  final delete = 'common.delete';
+  final report = 'common.report';
 }
 
 class _User {
@@ -210,6 +215,7 @@ class _App {
   final babyLog = 'app.babyLog';
   final noDate = 'app.noDate';
   final share = 'app.share';
+  final like = 'app.like';
 }
 
 class _Error {
@@ -245,6 +251,11 @@ class _Message {
   final deleteUserDataTitle = 'message.deleteUserDataTitle'; // 사용자 데이터 삭제
   final deleteUserDataDescription =
       'message.deleteUserDataDescription'; // 정말로 모든 사용자 데이터를 삭제하시겠습니까?
+  final deleteDataWarning =
+      'message.deleteDataWarning'; // 이 작업은 되돌릴 수 없습니다. 영구적으로 삭제됩니다.
+  final deleteDataTitle = 'message.deleteDataTitle'; // {name} 삭제
+  final deleteDataDescription =
+      'message.deleteDataDescription'; // 정말로 삭제하시겠습니까?
 }
 
 class _Chat {
@@ -302,6 +313,8 @@ class _Notice {
   final normal = 'notice.normal'; // 일반
   final register = 'notice.register'; // 등록하기
   final createNotice = 'notice.createNotice'; // 공지사항 작성 완료
+  final firstReply = 'notice.firstReply'; // 첫 번째 댓글을 남겨보세요!
+  final enterReply = 'notice.enterReply'; // 댓글을 입력해주세요
 }
 
 class _Report {
