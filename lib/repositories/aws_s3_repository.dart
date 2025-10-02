@@ -7,9 +7,11 @@ import 'package:flutter_common/models/aws/s3/s3_object_like.dart';
 import 'package:flutter_common/models/aws/s3/s3_object_reply.dart';
 import 'package:flutter_common/models/user/user.dart';
 import 'package:flutter_common/network/dio_client.dart';
+import 'package:flutter_common/widgets/dialogs/report_dialog.dart';
 
 abstract class AwsS3Repository {
   Future<bool> uploadFile(File file, User user, AppKeys appKey);
+  Future<bool> deleteFile(S3Object s3Object, User user, AppKeys appKey);
   Future<List<S3Object>> getS3Object(int? skip, int? take);
   Future<S3Object> findOneOrFail(String id);
   Future<int> count();
@@ -21,6 +23,10 @@ abstract class AwsS3Repository {
   Future<bool> removeLikeS3Object(S3ObjectLike s3ObjectLike);
   Future<bool> replyS3Object(S3Object s3Object, User user, String content);
   Future<bool> removeReplyS3Object(S3ObjectReply s3Object);
+  Future<bool> reportS3Object(
+      S3Object s3Object, ReportReason type, String? content);
+  Future<bool> reportS3ObjectReply(
+      S3ObjectReply s3ObjectReply, ReportReason type, String? content);
 }
 
 class AwsS3DefaultRepository extends AwsS3Repository {
@@ -70,6 +76,17 @@ class AwsS3DefaultRepository extends AwsS3Repository {
     } catch (e) {
       throw Exception('파일 업로드 실패: $e');
     }
+  }
+
+  @override
+  Future<bool> deleteFile(S3Object s3Object, User user, AppKeys appKey) async {
+    final appKeyString = JunyConstants.getAppKeyStringOrThrow(appKey);
+    final response =
+        await dioClient.delete('/aws/s3/$appKeyString/delete/${s3Object.id}');
+    if (response.statusCode == 200) {
+      return true;
+    }
+    throw Exception('파일 삭제 실패');
   }
 
   @override
@@ -182,5 +199,36 @@ class AwsS3DefaultRepository extends AwsS3Repository {
       return true;
     }
     throw Exception('S3 객체 댓글 취소 실패');
+  }
+
+  @override
+  Future<bool> reportS3Object(
+      S3Object s3Object, ReportReason type, String? content) async {
+    final response = await dioClient
+        .post('/s3-object-reports/s3-object/${s3Object.id}', data: {
+      'type': type.value,
+      'content': content,
+    });
+
+    if (response.statusCode == 201) {
+      return true;
+    }
+    throw Exception('S3 객체 신고 실패');
+  }
+
+  @override
+  Future<bool> reportS3ObjectReply(
+      S3ObjectReply s3ObjectReply, ReportReason type, String? content) async {
+    final response = await dioClient.post(
+        '/s3-object-reply-reports/s3-object-reply/${s3ObjectReply.id}',
+        data: {
+          'type': type.value,
+          'content': content,
+        });
+
+    if (response.statusCode == 201) {
+      return true;
+    }
+    throw Exception('S3 객체 댓글 신고 실패');
   }
 }

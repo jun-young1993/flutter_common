@@ -29,6 +29,7 @@ mixin _$S3Object {
   bool get active => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
   String? get userId => throw _privateConstructorUsedError;
+  User? get user => throw _privateConstructorUsedError;
   List<S3ObjectTag>? get tags => throw _privateConstructorUsedError;
   List<S3ObjectLike>? get likes => throw _privateConstructorUsedError;
   List<S3ObjectReply>? get replies => throw _privateConstructorUsedError;
@@ -58,9 +59,12 @@ abstract class $S3ObjectCopyWith<$Res> {
       bool active,
       DateTime? createdAt,
       String? userId,
+      User? user,
       List<S3ObjectTag>? tags,
       List<S3ObjectLike>? likes,
       List<S3ObjectReply>? replies});
+
+  $UserCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -87,6 +91,7 @@ class _$S3ObjectCopyWithImpl<$Res, $Val extends S3Object>
     Object? active = null,
     Object? createdAt = freezed,
     Object? userId = freezed,
+    Object? user = freezed,
     Object? tags = freezed,
     Object? likes = freezed,
     Object? replies = freezed,
@@ -128,6 +133,10 @@ class _$S3ObjectCopyWithImpl<$Res, $Val extends S3Object>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String?,
+      user: freezed == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User?,
       tags: freezed == tags
           ? _value.tags
           : tags // ignore: cast_nullable_to_non_nullable
@@ -141,6 +150,20 @@ class _$S3ObjectCopyWithImpl<$Res, $Val extends S3Object>
           : replies // ignore: cast_nullable_to_non_nullable
               as List<S3ObjectReply>?,
     ) as $Val);
+  }
+
+  /// Create a copy of S3Object
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $UserCopyWith<$Res>? get user {
+    if (_value.user == null) {
+      return null;
+    }
+
+    return $UserCopyWith<$Res>(_value.user!, (value) {
+      return _then(_value.copyWith(user: value) as $Val);
+    });
   }
 }
 
@@ -162,9 +185,13 @@ abstract class _$$S3ObjectImplCopyWith<$Res>
       bool active,
       DateTime? createdAt,
       String? userId,
+      User? user,
       List<S3ObjectTag>? tags,
       List<S3ObjectLike>? likes,
       List<S3ObjectReply>? replies});
+
+  @override
+  $UserCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -189,6 +216,7 @@ class __$$S3ObjectImplCopyWithImpl<$Res>
     Object? active = null,
     Object? createdAt = freezed,
     Object? userId = freezed,
+    Object? user = freezed,
     Object? tags = freezed,
     Object? likes = freezed,
     Object? replies = freezed,
@@ -230,6 +258,10 @@ class __$$S3ObjectImplCopyWithImpl<$Res>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String?,
+      user: freezed == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User?,
       tags: freezed == tags
           ? _value._tags
           : tags // ignore: cast_nullable_to_non_nullable
@@ -259,6 +291,7 @@ class _$S3ObjectImpl extends _S3Object {
       this.active = false,
       this.createdAt = null,
       this.userId = null,
+      this.user = null,
       final List<S3ObjectTag>? tags = const [],
       final List<S3ObjectLike>? likes = const [],
       final List<S3ObjectReply>? replies = const []})
@@ -296,6 +329,9 @@ class _$S3ObjectImpl extends _S3Object {
   @override
   @JsonKey()
   final String? userId;
+  @override
+  @JsonKey()
+  final User? user;
   final List<S3ObjectTag>? _tags;
   @override
   @JsonKey()
@@ -331,7 +367,7 @@ class _$S3ObjectImpl extends _S3Object {
 
   @override
   String toString() {
-    return 'S3Object(id: $id, key: $key, url: $url, originalName: $originalName, size: $size, mimetype: $mimetype, active: $active, createdAt: $createdAt, userId: $userId, tags: $tags, likes: $likes, replies: $replies)';
+    return 'S3Object(id: $id, key: $key, url: $url, originalName: $originalName, size: $size, mimetype: $mimetype, active: $active, createdAt: $createdAt, userId: $userId, user: $user, tags: $tags, likes: $likes, replies: $replies)';
   }
 
   @override
@@ -351,6 +387,7 @@ class _$S3ObjectImpl extends _S3Object {
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.user, user) || other.user == user) &&
             const DeepCollectionEquality().equals(other._tags, _tags) &&
             const DeepCollectionEquality().equals(other._likes, _likes) &&
             const DeepCollectionEquality().equals(other._replies, _replies));
@@ -369,6 +406,7 @@ class _$S3ObjectImpl extends _S3Object {
       active,
       createdAt,
       userId,
+      user,
       const DeepCollectionEquality().hash(_tags),
       const DeepCollectionEquality().hash(_likes),
       const DeepCollectionEquality().hash(_replies));
@@ -400,6 +438,7 @@ abstract class _S3Object extends S3Object {
       final bool active,
       final DateTime? createdAt,
       final String? userId,
+      final User? user,
       final List<S3ObjectTag>? tags,
       final List<S3ObjectLike>? likes,
       final List<S3ObjectReply>? replies}) = _$S3ObjectImpl;
@@ -426,6 +465,8 @@ abstract class _S3Object extends S3Object {
   DateTime? get createdAt;
   @override
   String? get userId;
+  @override
+  User? get user;
   @override
   List<S3ObjectTag>? get tags;
   @override

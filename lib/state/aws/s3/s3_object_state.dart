@@ -10,6 +10,7 @@ class S3ObjectState with _$S3ObjectState {
   const factory S3ObjectState({
     @Default(false) bool isLoading,
     @Default(false) bool isUploading,
+    @Default(false) bool isDeleting,
     @Default(null) AppException? error,
     @Default([]) List<S3Object> s3Objects,
     @Default(null) S3Object? s3Object,

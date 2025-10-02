@@ -25,6 +25,11 @@ class S3ObjectBloc extends Bloc<S3ObjectEvent, S3ObjectState> {
           await s3ObjectRepository.uploadFile(e.file, e.user, appKeys);
           emit(state.copyWith(isUploading: false));
           add(const S3ObjectEvent.getS3Objects(0, 6));
+        }, deleteFile: (e) async {
+          emit(state.copyWith(isDeleting: true));
+          await s3ObjectRepository.deleteFile(e.s3Object, e.user, appKeys);
+          emit(state.copyWith(isDeleting: false));
+          add(const S3ObjectEvent.getS3Objects(0, 6));
         }, clearError: (e) async {
           emit(state.copyWith(
               isLoading: false, isUploading: false, error: null));
@@ -70,6 +75,12 @@ class S3ObjectBloc extends Bloc<S3ObjectEvent, S3ObjectState> {
         }, removeReplyS3Object: (e) async {
           await s3ObjectRepository.removeReplyS3Object(e.s3ObjectReply);
           add(S3ObjectEvent.findOneOrFail(e.s3ObjectReply.s3ObjectId, e.user));
+        }, reportS3Object: (e) async {
+          await s3ObjectRepository.reportS3Object(
+              e.s3Object, e.type, e.content);
+        }, reportS3ObjectReply: (e) async {
+          await s3ObjectRepository.reportS3ObjectReply(
+              e.s3ObjectReply, e.type, e.content);
         });
       },
     );

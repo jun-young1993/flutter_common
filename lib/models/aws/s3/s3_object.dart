@@ -1,6 +1,7 @@
 import 'package:flutter_common/models/aws/s3/s3_object_like.dart';
 import 'package:flutter_common/models/aws/s3/s3_object_reply.dart';
 import 'package:flutter_common/models/aws/s3/s3_object_tag.dart';
+import 'package:flutter_common/models/user/user.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
 
@@ -19,6 +20,7 @@ class S3Object with _$S3Object {
     @Default(false) bool active,
     @Default(null) DateTime? createdAt,
     @Default(null) String? userId,
+    @Default(null) User? user,
     @Default([]) List<S3ObjectTag>? tags,
     @Default([]) List<S3ObjectLike>? likes,
     @Default([]) List<S3ObjectReply>? replies,
@@ -38,12 +40,12 @@ class S3Object with _$S3Object {
   }
 
   String get formattedDate {
-    if (createdAt == null) return '알 수 없음';
+    if (createdAt == null) return 'unknown';
     return DateFormat('yyyy.MM.dd').format(createdAt!);
   }
 
   String get fileSize {
-    if (size == null) return '알 수 없음';
+    if (size == null) return 'unknown';
     if (size! < 1024) return '${size}B';
     if (size! < 1024 * 1024) return '${(size! / 1024).toStringAsFixed(1)}KB';
     return '${(size! / (1024 * 1024)).toStringAsFixed(1)}MB';

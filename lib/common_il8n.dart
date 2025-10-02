@@ -20,6 +20,7 @@ abstract class Tr {
   static final user = _User();
   static final date = _Date();
   static final validation = _Validation();
+  static final file = _File();
 }
 
 class _Date {
@@ -47,6 +48,33 @@ class _Validation {
   final deleteSuccess = 'validation.deleteSuccess';
   final createSuccess = 'validation.createSuccess';
   final saveSuccess = 'validation.saveSuccess';
+}
+
+class _File {
+  final fileInfo = 'file.fileInfo';
+  final fileSize = 'file.fileSize';
+  final fileType = 'file.fileType';
+  final fileName = 'file.fileName';
+  final fileUrl = 'file.fileUrl';
+  final fileActive = 'file.fileActive';
+  final fileTags = 'file.fileTags';
+  final fileLikes = 'file.fileLikes';
+  final fileReplies = 'file.fileReplies';
+  final fileCreatedAt = 'file.fileCreatedAt';
+  final fileUpdatedAt = 'file.fileUpdatedAt';
+  final fileDeletedAt = 'file.fileDeletedAt';
+  final fileDeleted = 'file.fileDeleted';
+  final fileDeletedDescription = 'file.fileDeletedDescription';
+  final fileDeletedConfirmation = 'file.fileDeletedConfirmation';
+  final fileDeletedSuccess = 'file.fileDeletedSuccess';
+  final fileDeletedError = 'file.fileDeletedError';
+  final fileDeletedCancel = 'file.fileDeletedCancel';
+  final fileDeletedCancelConfirmation = 'file.fileDeletedCancelConfirmation';
+  final fileDeletedCancelSuccess = 'file.fileDeletedCancelSuccess';
+  final fileDeletedCancelError = 'file.fileDeletedCancelError';
+  final technicalInfo = 'file.technicalInfo';
+  final userId = 'file.userId';
+  final fileNameByUser = 'file.fileNameByUser';
 }
 
 class _Family {
@@ -137,6 +165,7 @@ class _Common {
   final reply = 'common.reply';
   final delete = 'common.delete';
   final report = 'common.report';
+  final info = 'common.info';
 }
 
 class _User {

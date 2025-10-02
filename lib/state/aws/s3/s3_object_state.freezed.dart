@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$S3ObjectState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get isUploading => throw _privateConstructorUsedError;
+  bool get isDeleting => throw _privateConstructorUsedError;
   AppException? get error => throw _privateConstructorUsedError;
   List<S3Object> get s3Objects => throw _privateConstructorUsedError;
   S3Object? get s3Object => throw _privateConstructorUsedError;
@@ -47,6 +48,7 @@ abstract class $S3ObjectStateCopyWith<$Res> {
   $Res call(
       {bool isLoading,
       bool isUploading,
+      bool isDeleting,
       AppException? error,
       List<S3Object> s3Objects,
       S3Object? s3Object,
@@ -80,6 +82,7 @@ class _$S3ObjectStateCopyWithImpl<$Res, $Val extends S3ObjectState>
   $Res call({
     Object? isLoading = null,
     Object? isUploading = null,
+    Object? isDeleting = null,
     Object? error = freezed,
     Object? s3Objects = null,
     Object? s3Object = freezed,
@@ -99,6 +102,10 @@ class _$S3ObjectStateCopyWithImpl<$Res, $Val extends S3ObjectState>
       isUploading: null == isUploading
           ? _value.isUploading
           : isUploading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isDeleting: null == isDeleting
+          ? _value.isDeleting
+          : isDeleting // ignore: cast_nullable_to_non_nullable
               as bool,
       error: freezed == error
           ? _value.error
@@ -197,6 +204,7 @@ abstract class _$$S3ObjectStateImplCopyWith<$Res>
   $Res call(
       {bool isLoading,
       bool isUploading,
+      bool isDeleting,
       AppException? error,
       List<S3Object> s3Objects,
       S3Object? s3Object,
@@ -231,6 +239,7 @@ class __$$S3ObjectStateImplCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = null,
     Object? isUploading = null,
+    Object? isDeleting = null,
     Object? error = freezed,
     Object? s3Objects = null,
     Object? s3Object = freezed,
@@ -250,6 +259,10 @@ class __$$S3ObjectStateImplCopyWithImpl<$Res>
       isUploading: null == isUploading
           ? _value.isUploading
           : isUploading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isDeleting: null == isDeleting
+          ? _value.isDeleting
+          : isDeleting // ignore: cast_nullable_to_non_nullable
               as bool,
       error: freezed == error
           ? _value.error
@@ -301,6 +314,7 @@ class _$S3ObjectStateImpl extends _S3ObjectState {
   const _$S3ObjectStateImpl(
       {this.isLoading = false,
       this.isUploading = false,
+      this.isDeleting = false,
       this.error = null,
       final List<S3Object> s3Objects = const [],
       this.s3Object = null,
@@ -322,6 +336,9 @@ class _$S3ObjectStateImpl extends _S3ObjectState {
   @override
   @JsonKey()
   final bool isUploading;
+  @override
+  @JsonKey()
+  final bool isDeleting;
   @override
   @JsonKey()
   final AppException? error;
@@ -374,7 +391,7 @@ class _$S3ObjectStateImpl extends _S3ObjectState {
 
   @override
   String toString() {
-    return 'S3ObjectState(isLoading: $isLoading, isUploading: $isUploading, error: $error, s3Objects: $s3Objects, s3Object: $s3Object, allCount: $allCount, isAllCountLoading: $isAllCountLoading, objectsExistenceByMonth: $objectsExistenceByMonth, isObjectsExistenceByMonthLoading: $isObjectsExistenceByMonthLoading, objectsByDate: $objectsByDate, isObjectsByDateLoading: $isObjectsByDateLoading, like: $like)';
+    return 'S3ObjectState(isLoading: $isLoading, isUploading: $isUploading, isDeleting: $isDeleting, error: $error, s3Objects: $s3Objects, s3Object: $s3Object, allCount: $allCount, isAllCountLoading: $isAllCountLoading, objectsExistenceByMonth: $objectsExistenceByMonth, isObjectsExistenceByMonthLoading: $isObjectsExistenceByMonthLoading, objectsByDate: $objectsByDate, isObjectsByDateLoading: $isObjectsByDateLoading, like: $like)';
   }
 
   @override
@@ -386,6 +403,8 @@ class _$S3ObjectStateImpl extends _S3ObjectState {
                 other.isLoading == isLoading) &&
             (identical(other.isUploading, isUploading) ||
                 other.isUploading == isUploading) &&
+            (identical(other.isDeleting, isDeleting) ||
+                other.isDeleting == isDeleting) &&
             (identical(other.error, error) || other.error == error) &&
             const DeepCollectionEquality()
                 .equals(other._s3Objects, _s3Objects) &&
@@ -413,6 +432,7 @@ class _$S3ObjectStateImpl extends _S3ObjectState {
       runtimeType,
       isLoading,
       isUploading,
+      isDeleting,
       error,
       const DeepCollectionEquality().hash(_s3Objects),
       s3Object,
@@ -437,6 +457,7 @@ abstract class _S3ObjectState extends S3ObjectState {
   const factory _S3ObjectState(
       {final bool isLoading,
       final bool isUploading,
+      final bool isDeleting,
       final AppException? error,
       final List<S3Object> s3Objects,
       final S3Object? s3Object,
@@ -453,6 +474,8 @@ abstract class _S3ObjectState extends S3ObjectState {
   bool get isLoading;
   @override
   bool get isUploading;
+  @override
+  bool get isDeleting;
   @override
   AppException? get error;
   @override

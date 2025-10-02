@@ -22,6 +22,7 @@ mixin _$S3ObjectEvent {
     required TResult Function(int skip, int take) getS3Objects,
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
+    required TResult Function(S3Object s3Object, User user) deleteFile,
     required TResult Function(String id, User user) findOneOrFail,
     required TResult Function() count,
     required TResult Function(String year, String month)
@@ -35,6 +36,12 @@ mixin _$S3ObjectEvent {
         replyS3Object,
     required TResult Function(S3ObjectReply s3ObjectReply, User user)
         removeReplyS3Object,
+    required TResult Function(
+            S3Object s3Object, ReportReason type, String? content)
+        reportS3Object,
+    required TResult Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)
+        reportS3ObjectReply,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -43,6 +50,7 @@ mixin _$S3ObjectEvent {
     TResult? Function(int skip, int take)? getS3Objects,
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
+    TResult? Function(S3Object s3Object, User user)? deleteFile,
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
     TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
@@ -53,6 +61,11 @@ mixin _$S3ObjectEvent {
         replyS3Object,
     TResult? Function(S3ObjectReply s3ObjectReply, User user)?
         removeReplyS3Object,
+    TResult? Function(S3Object s3Object, ReportReason type, String? content)?
+        reportS3Object,
+    TResult? Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
+        reportS3ObjectReply,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -61,6 +74,7 @@ mixin _$S3ObjectEvent {
     TResult Function(int skip, int take)? getS3Objects,
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
+    TResult Function(S3Object s3Object, User user)? deleteFile,
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
     TResult Function(String year, String month)? checkObjectsExistenceByMonth,
@@ -71,6 +85,11 @@ mixin _$S3ObjectEvent {
         replyS3Object,
     TResult Function(S3ObjectReply s3ObjectReply, User user)?
         removeReplyS3Object,
+    TResult Function(S3Object s3Object, ReportReason type, String? content)?
+        reportS3Object,
+    TResult Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
+        reportS3ObjectReply,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -80,6 +99,7 @@ mixin _$S3ObjectEvent {
     required TResult Function(_GetS3Objects value) getS3Objects,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_UploadFile value) uploadFile,
+    required TResult Function(_DeleteFile value) deleteFile,
     required TResult Function(_FindOneOrFail value) findOneOrFail,
     required TResult Function(_Count value) count,
     required TResult Function(_CheckObjectsExistenceByMonth value)
@@ -89,6 +109,8 @@ mixin _$S3ObjectEvent {
     required TResult Function(_RemoveLikeS3Object value) removeLikeS3Object,
     required TResult Function(_ReplyS3Object value) replyS3Object,
     required TResult Function(_RemoveReplyS3Object value) removeReplyS3Object,
+    required TResult Function(_ReportS3Object value) reportS3Object,
+    required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -97,6 +119,7 @@ mixin _$S3ObjectEvent {
     TResult? Function(_GetS3Objects value)? getS3Objects,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_UploadFile value)? uploadFile,
+    TResult? Function(_DeleteFile value)? deleteFile,
     TResult? Function(_FindOneOrFail value)? findOneOrFail,
     TResult? Function(_Count value)? count,
     TResult? Function(_CheckObjectsExistenceByMonth value)?
@@ -106,6 +129,8 @@ mixin _$S3ObjectEvent {
     TResult? Function(_RemoveLikeS3Object value)? removeLikeS3Object,
     TResult? Function(_ReplyS3Object value)? replyS3Object,
     TResult? Function(_RemoveReplyS3Object value)? removeReplyS3Object,
+    TResult? Function(_ReportS3Object value)? reportS3Object,
+    TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -114,6 +139,7 @@ mixin _$S3ObjectEvent {
     TResult Function(_GetS3Objects value)? getS3Objects,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_UploadFile value)? uploadFile,
+    TResult Function(_DeleteFile value)? deleteFile,
     TResult Function(_FindOneOrFail value)? findOneOrFail,
     TResult Function(_Count value)? count,
     TResult Function(_CheckObjectsExistenceByMonth value)?
@@ -123,6 +149,8 @@ mixin _$S3ObjectEvent {
     TResult Function(_RemoveLikeS3Object value)? removeLikeS3Object,
     TResult Function(_ReplyS3Object value)? replyS3Object,
     TResult Function(_RemoveReplyS3Object value)? removeReplyS3Object,
+    TResult Function(_ReportS3Object value)? reportS3Object,
+    TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -194,6 +222,7 @@ class _$InitializeImpl implements _Initialize {
     required TResult Function(int skip, int take) getS3Objects,
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
+    required TResult Function(S3Object s3Object, User user) deleteFile,
     required TResult Function(String id, User user) findOneOrFail,
     required TResult Function() count,
     required TResult Function(String year, String month)
@@ -207,6 +236,12 @@ class _$InitializeImpl implements _Initialize {
         replyS3Object,
     required TResult Function(S3ObjectReply s3ObjectReply, User user)
         removeReplyS3Object,
+    required TResult Function(
+            S3Object s3Object, ReportReason type, String? content)
+        reportS3Object,
+    required TResult Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)
+        reportS3ObjectReply,
   }) {
     return initialize();
   }
@@ -218,6 +253,7 @@ class _$InitializeImpl implements _Initialize {
     TResult? Function(int skip, int take)? getS3Objects,
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
+    TResult? Function(S3Object s3Object, User user)? deleteFile,
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
     TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
@@ -228,6 +264,11 @@ class _$InitializeImpl implements _Initialize {
         replyS3Object,
     TResult? Function(S3ObjectReply s3ObjectReply, User user)?
         removeReplyS3Object,
+    TResult? Function(S3Object s3Object, ReportReason type, String? content)?
+        reportS3Object,
+    TResult? Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
+        reportS3ObjectReply,
   }) {
     return initialize?.call();
   }
@@ -239,6 +280,7 @@ class _$InitializeImpl implements _Initialize {
     TResult Function(int skip, int take)? getS3Objects,
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
+    TResult Function(S3Object s3Object, User user)? deleteFile,
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
     TResult Function(String year, String month)? checkObjectsExistenceByMonth,
@@ -249,6 +291,11 @@ class _$InitializeImpl implements _Initialize {
         replyS3Object,
     TResult Function(S3ObjectReply s3ObjectReply, User user)?
         removeReplyS3Object,
+    TResult Function(S3Object s3Object, ReportReason type, String? content)?
+        reportS3Object,
+    TResult Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
+        reportS3ObjectReply,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -264,6 +311,7 @@ class _$InitializeImpl implements _Initialize {
     required TResult Function(_GetS3Objects value) getS3Objects,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_UploadFile value) uploadFile,
+    required TResult Function(_DeleteFile value) deleteFile,
     required TResult Function(_FindOneOrFail value) findOneOrFail,
     required TResult Function(_Count value) count,
     required TResult Function(_CheckObjectsExistenceByMonth value)
@@ -273,6 +321,8 @@ class _$InitializeImpl implements _Initialize {
     required TResult Function(_RemoveLikeS3Object value) removeLikeS3Object,
     required TResult Function(_ReplyS3Object value) replyS3Object,
     required TResult Function(_RemoveReplyS3Object value) removeReplyS3Object,
+    required TResult Function(_ReportS3Object value) reportS3Object,
+    required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
   }) {
     return initialize(this);
   }
@@ -284,6 +334,7 @@ class _$InitializeImpl implements _Initialize {
     TResult? Function(_GetS3Objects value)? getS3Objects,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_UploadFile value)? uploadFile,
+    TResult? Function(_DeleteFile value)? deleteFile,
     TResult? Function(_FindOneOrFail value)? findOneOrFail,
     TResult? Function(_Count value)? count,
     TResult? Function(_CheckObjectsExistenceByMonth value)?
@@ -293,6 +344,8 @@ class _$InitializeImpl implements _Initialize {
     TResult? Function(_RemoveLikeS3Object value)? removeLikeS3Object,
     TResult? Function(_ReplyS3Object value)? replyS3Object,
     TResult? Function(_RemoveReplyS3Object value)? removeReplyS3Object,
+    TResult? Function(_ReportS3Object value)? reportS3Object,
+    TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
   }) {
     return initialize?.call(this);
   }
@@ -304,6 +357,7 @@ class _$InitializeImpl implements _Initialize {
     TResult Function(_GetS3Objects value)? getS3Objects,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_UploadFile value)? uploadFile,
+    TResult Function(_DeleteFile value)? deleteFile,
     TResult Function(_FindOneOrFail value)? findOneOrFail,
     TResult Function(_Count value)? count,
     TResult Function(_CheckObjectsExistenceByMonth value)?
@@ -313,6 +367,8 @@ class _$InitializeImpl implements _Initialize {
     TResult Function(_RemoveLikeS3Object value)? removeLikeS3Object,
     TResult Function(_ReplyS3Object value)? replyS3Object,
     TResult Function(_RemoveReplyS3Object value)? removeReplyS3Object,
+    TResult Function(_ReportS3Object value)? reportS3Object,
+    TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -406,6 +462,7 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     required TResult Function(int skip, int take) getS3Objects,
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
+    required TResult Function(S3Object s3Object, User user) deleteFile,
     required TResult Function(String id, User user) findOneOrFail,
     required TResult Function() count,
     required TResult Function(String year, String month)
@@ -419,6 +476,12 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
         replyS3Object,
     required TResult Function(S3ObjectReply s3ObjectReply, User user)
         removeReplyS3Object,
+    required TResult Function(
+            S3Object s3Object, ReportReason type, String? content)
+        reportS3Object,
+    required TResult Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)
+        reportS3ObjectReply,
   }) {
     return getS3Objects(skip, take);
   }
@@ -430,6 +493,7 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     TResult? Function(int skip, int take)? getS3Objects,
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
+    TResult? Function(S3Object s3Object, User user)? deleteFile,
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
     TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
@@ -440,6 +504,11 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
         replyS3Object,
     TResult? Function(S3ObjectReply s3ObjectReply, User user)?
         removeReplyS3Object,
+    TResult? Function(S3Object s3Object, ReportReason type, String? content)?
+        reportS3Object,
+    TResult? Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
+        reportS3ObjectReply,
   }) {
     return getS3Objects?.call(skip, take);
   }
@@ -451,6 +520,7 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     TResult Function(int skip, int take)? getS3Objects,
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
+    TResult Function(S3Object s3Object, User user)? deleteFile,
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
     TResult Function(String year, String month)? checkObjectsExistenceByMonth,
@@ -461,6 +531,11 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
         replyS3Object,
     TResult Function(S3ObjectReply s3ObjectReply, User user)?
         removeReplyS3Object,
+    TResult Function(S3Object s3Object, ReportReason type, String? content)?
+        reportS3Object,
+    TResult Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
+        reportS3ObjectReply,
     required TResult orElse(),
   }) {
     if (getS3Objects != null) {
@@ -476,6 +551,7 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     required TResult Function(_GetS3Objects value) getS3Objects,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_UploadFile value) uploadFile,
+    required TResult Function(_DeleteFile value) deleteFile,
     required TResult Function(_FindOneOrFail value) findOneOrFail,
     required TResult Function(_Count value) count,
     required TResult Function(_CheckObjectsExistenceByMonth value)
@@ -485,6 +561,8 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     required TResult Function(_RemoveLikeS3Object value) removeLikeS3Object,
     required TResult Function(_ReplyS3Object value) replyS3Object,
     required TResult Function(_RemoveReplyS3Object value) removeReplyS3Object,
+    required TResult Function(_ReportS3Object value) reportS3Object,
+    required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
   }) {
     return getS3Objects(this);
   }
@@ -496,6 +574,7 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     TResult? Function(_GetS3Objects value)? getS3Objects,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_UploadFile value)? uploadFile,
+    TResult? Function(_DeleteFile value)? deleteFile,
     TResult? Function(_FindOneOrFail value)? findOneOrFail,
     TResult? Function(_Count value)? count,
     TResult? Function(_CheckObjectsExistenceByMonth value)?
@@ -505,6 +584,8 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     TResult? Function(_RemoveLikeS3Object value)? removeLikeS3Object,
     TResult? Function(_ReplyS3Object value)? replyS3Object,
     TResult? Function(_RemoveReplyS3Object value)? removeReplyS3Object,
+    TResult? Function(_ReportS3Object value)? reportS3Object,
+    TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
   }) {
     return getS3Objects?.call(this);
   }
@@ -516,6 +597,7 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     TResult Function(_GetS3Objects value)? getS3Objects,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_UploadFile value)? uploadFile,
+    TResult Function(_DeleteFile value)? deleteFile,
     TResult Function(_FindOneOrFail value)? findOneOrFail,
     TResult Function(_Count value)? count,
     TResult Function(_CheckObjectsExistenceByMonth value)?
@@ -525,6 +607,8 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     TResult Function(_RemoveLikeS3Object value)? removeLikeS3Object,
     TResult Function(_ReplyS3Object value)? replyS3Object,
     TResult Function(_RemoveReplyS3Object value)? removeReplyS3Object,
+    TResult Function(_ReportS3Object value)? reportS3Object,
+    TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     required TResult orElse(),
   }) {
     if (getS3Objects != null) {
@@ -593,6 +677,7 @@ class _$ClearErrorImpl implements _ClearError {
     required TResult Function(int skip, int take) getS3Objects,
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
+    required TResult Function(S3Object s3Object, User user) deleteFile,
     required TResult Function(String id, User user) findOneOrFail,
     required TResult Function() count,
     required TResult Function(String year, String month)
@@ -606,6 +691,12 @@ class _$ClearErrorImpl implements _ClearError {
         replyS3Object,
     required TResult Function(S3ObjectReply s3ObjectReply, User user)
         removeReplyS3Object,
+    required TResult Function(
+            S3Object s3Object, ReportReason type, String? content)
+        reportS3Object,
+    required TResult Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)
+        reportS3ObjectReply,
   }) {
     return clearError();
   }
@@ -617,6 +708,7 @@ class _$ClearErrorImpl implements _ClearError {
     TResult? Function(int skip, int take)? getS3Objects,
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
+    TResult? Function(S3Object s3Object, User user)? deleteFile,
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
     TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
@@ -627,6 +719,11 @@ class _$ClearErrorImpl implements _ClearError {
         replyS3Object,
     TResult? Function(S3ObjectReply s3ObjectReply, User user)?
         removeReplyS3Object,
+    TResult? Function(S3Object s3Object, ReportReason type, String? content)?
+        reportS3Object,
+    TResult? Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
+        reportS3ObjectReply,
   }) {
     return clearError?.call();
   }
@@ -638,6 +735,7 @@ class _$ClearErrorImpl implements _ClearError {
     TResult Function(int skip, int take)? getS3Objects,
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
+    TResult Function(S3Object s3Object, User user)? deleteFile,
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
     TResult Function(String year, String month)? checkObjectsExistenceByMonth,
@@ -648,6 +746,11 @@ class _$ClearErrorImpl implements _ClearError {
         replyS3Object,
     TResult Function(S3ObjectReply s3ObjectReply, User user)?
         removeReplyS3Object,
+    TResult Function(S3Object s3Object, ReportReason type, String? content)?
+        reportS3Object,
+    TResult Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
+        reportS3ObjectReply,
     required TResult orElse(),
   }) {
     if (clearError != null) {
@@ -663,6 +766,7 @@ class _$ClearErrorImpl implements _ClearError {
     required TResult Function(_GetS3Objects value) getS3Objects,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_UploadFile value) uploadFile,
+    required TResult Function(_DeleteFile value) deleteFile,
     required TResult Function(_FindOneOrFail value) findOneOrFail,
     required TResult Function(_Count value) count,
     required TResult Function(_CheckObjectsExistenceByMonth value)
@@ -672,6 +776,8 @@ class _$ClearErrorImpl implements _ClearError {
     required TResult Function(_RemoveLikeS3Object value) removeLikeS3Object,
     required TResult Function(_ReplyS3Object value) replyS3Object,
     required TResult Function(_RemoveReplyS3Object value) removeReplyS3Object,
+    required TResult Function(_ReportS3Object value) reportS3Object,
+    required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
   }) {
     return clearError(this);
   }
@@ -683,6 +789,7 @@ class _$ClearErrorImpl implements _ClearError {
     TResult? Function(_GetS3Objects value)? getS3Objects,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_UploadFile value)? uploadFile,
+    TResult? Function(_DeleteFile value)? deleteFile,
     TResult? Function(_FindOneOrFail value)? findOneOrFail,
     TResult? Function(_Count value)? count,
     TResult? Function(_CheckObjectsExistenceByMonth value)?
@@ -692,6 +799,8 @@ class _$ClearErrorImpl implements _ClearError {
     TResult? Function(_RemoveLikeS3Object value)? removeLikeS3Object,
     TResult? Function(_ReplyS3Object value)? replyS3Object,
     TResult? Function(_RemoveReplyS3Object value)? removeReplyS3Object,
+    TResult? Function(_ReportS3Object value)? reportS3Object,
+    TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
   }) {
     return clearError?.call(this);
   }
@@ -703,6 +812,7 @@ class _$ClearErrorImpl implements _ClearError {
     TResult Function(_GetS3Objects value)? getS3Objects,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_UploadFile value)? uploadFile,
+    TResult Function(_DeleteFile value)? deleteFile,
     TResult Function(_FindOneOrFail value)? findOneOrFail,
     TResult Function(_Count value)? count,
     TResult Function(_CheckObjectsExistenceByMonth value)?
@@ -712,6 +822,8 @@ class _$ClearErrorImpl implements _ClearError {
     TResult Function(_RemoveLikeS3Object value)? removeLikeS3Object,
     TResult Function(_ReplyS3Object value)? replyS3Object,
     TResult Function(_RemoveReplyS3Object value)? removeReplyS3Object,
+    TResult Function(_ReportS3Object value)? reportS3Object,
+    TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     required TResult orElse(),
   }) {
     if (clearError != null) {
@@ -817,6 +929,7 @@ class _$UploadFileImpl implements _UploadFile {
     required TResult Function(int skip, int take) getS3Objects,
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
+    required TResult Function(S3Object s3Object, User user) deleteFile,
     required TResult Function(String id, User user) findOneOrFail,
     required TResult Function() count,
     required TResult Function(String year, String month)
@@ -830,6 +943,12 @@ class _$UploadFileImpl implements _UploadFile {
         replyS3Object,
     required TResult Function(S3ObjectReply s3ObjectReply, User user)
         removeReplyS3Object,
+    required TResult Function(
+            S3Object s3Object, ReportReason type, String? content)
+        reportS3Object,
+    required TResult Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)
+        reportS3ObjectReply,
   }) {
     return uploadFile(file, user);
   }
@@ -841,6 +960,7 @@ class _$UploadFileImpl implements _UploadFile {
     TResult? Function(int skip, int take)? getS3Objects,
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
+    TResult? Function(S3Object s3Object, User user)? deleteFile,
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
     TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
@@ -851,6 +971,11 @@ class _$UploadFileImpl implements _UploadFile {
         replyS3Object,
     TResult? Function(S3ObjectReply s3ObjectReply, User user)?
         removeReplyS3Object,
+    TResult? Function(S3Object s3Object, ReportReason type, String? content)?
+        reportS3Object,
+    TResult? Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
+        reportS3ObjectReply,
   }) {
     return uploadFile?.call(file, user);
   }
@@ -862,6 +987,7 @@ class _$UploadFileImpl implements _UploadFile {
     TResult Function(int skip, int take)? getS3Objects,
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
+    TResult Function(S3Object s3Object, User user)? deleteFile,
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
     TResult Function(String year, String month)? checkObjectsExistenceByMonth,
@@ -872,6 +998,11 @@ class _$UploadFileImpl implements _UploadFile {
         replyS3Object,
     TResult Function(S3ObjectReply s3ObjectReply, User user)?
         removeReplyS3Object,
+    TResult Function(S3Object s3Object, ReportReason type, String? content)?
+        reportS3Object,
+    TResult Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
+        reportS3ObjectReply,
     required TResult orElse(),
   }) {
     if (uploadFile != null) {
@@ -887,6 +1018,7 @@ class _$UploadFileImpl implements _UploadFile {
     required TResult Function(_GetS3Objects value) getS3Objects,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_UploadFile value) uploadFile,
+    required TResult Function(_DeleteFile value) deleteFile,
     required TResult Function(_FindOneOrFail value) findOneOrFail,
     required TResult Function(_Count value) count,
     required TResult Function(_CheckObjectsExistenceByMonth value)
@@ -896,6 +1028,8 @@ class _$UploadFileImpl implements _UploadFile {
     required TResult Function(_RemoveLikeS3Object value) removeLikeS3Object,
     required TResult Function(_ReplyS3Object value) replyS3Object,
     required TResult Function(_RemoveReplyS3Object value) removeReplyS3Object,
+    required TResult Function(_ReportS3Object value) reportS3Object,
+    required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
   }) {
     return uploadFile(this);
   }
@@ -907,6 +1041,7 @@ class _$UploadFileImpl implements _UploadFile {
     TResult? Function(_GetS3Objects value)? getS3Objects,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_UploadFile value)? uploadFile,
+    TResult? Function(_DeleteFile value)? deleteFile,
     TResult? Function(_FindOneOrFail value)? findOneOrFail,
     TResult? Function(_Count value)? count,
     TResult? Function(_CheckObjectsExistenceByMonth value)?
@@ -916,6 +1051,8 @@ class _$UploadFileImpl implements _UploadFile {
     TResult? Function(_RemoveLikeS3Object value)? removeLikeS3Object,
     TResult? Function(_ReplyS3Object value)? replyS3Object,
     TResult? Function(_RemoveReplyS3Object value)? removeReplyS3Object,
+    TResult? Function(_ReportS3Object value)? reportS3Object,
+    TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
   }) {
     return uploadFile?.call(this);
   }
@@ -927,6 +1064,7 @@ class _$UploadFileImpl implements _UploadFile {
     TResult Function(_GetS3Objects value)? getS3Objects,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_UploadFile value)? uploadFile,
+    TResult Function(_DeleteFile value)? deleteFile,
     TResult Function(_FindOneOrFail value)? findOneOrFail,
     TResult Function(_Count value)? count,
     TResult Function(_CheckObjectsExistenceByMonth value)?
@@ -936,6 +1074,8 @@ class _$UploadFileImpl implements _UploadFile {
     TResult Function(_RemoveLikeS3Object value)? removeLikeS3Object,
     TResult Function(_ReplyS3Object value)? replyS3Object,
     TResult Function(_RemoveReplyS3Object value)? removeReplyS3Object,
+    TResult Function(_ReportS3Object value)? reportS3Object,
+    TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     required TResult orElse(),
   }) {
     if (uploadFile != null) {
@@ -956,6 +1096,280 @@ abstract class _UploadFile implements S3ObjectEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UploadFileImplCopyWith<_$UploadFileImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DeleteFileImplCopyWith<$Res> {
+  factory _$$DeleteFileImplCopyWith(
+          _$DeleteFileImpl value, $Res Function(_$DeleteFileImpl) then) =
+      __$$DeleteFileImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({S3Object s3Object, User user});
+
+  $S3ObjectCopyWith<$Res> get s3Object;
+  $UserCopyWith<$Res> get user;
+}
+
+/// @nodoc
+class __$$DeleteFileImplCopyWithImpl<$Res>
+    extends _$S3ObjectEventCopyWithImpl<$Res, _$DeleteFileImpl>
+    implements _$$DeleteFileImplCopyWith<$Res> {
+  __$$DeleteFileImplCopyWithImpl(
+      _$DeleteFileImpl _value, $Res Function(_$DeleteFileImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of S3ObjectEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? s3Object = null,
+    Object? user = null,
+  }) {
+    return _then(_$DeleteFileImpl(
+      null == s3Object
+          ? _value.s3Object
+          : s3Object // ignore: cast_nullable_to_non_nullable
+              as S3Object,
+      null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
+    ));
+  }
+
+  /// Create a copy of S3ObjectEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $S3ObjectCopyWith<$Res> get s3Object {
+    return $S3ObjectCopyWith<$Res>(_value.s3Object, (value) {
+      return _then(_value.copyWith(s3Object: value));
+    });
+  }
+
+  /// Create a copy of S3ObjectEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $UserCopyWith<$Res> get user {
+    return $UserCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$DeleteFileImpl implements _DeleteFile {
+  const _$DeleteFileImpl(this.s3Object, this.user);
+
+  @override
+  final S3Object s3Object;
+  @override
+  final User user;
+
+  @override
+  String toString() {
+    return 'S3ObjectEvent.deleteFile(s3Object: $s3Object, user: $user)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteFileImpl &&
+            (identical(other.s3Object, s3Object) ||
+                other.s3Object == s3Object) &&
+            (identical(other.user, user) || other.user == user));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, s3Object, user);
+
+  /// Create a copy of S3ObjectEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleteFileImplCopyWith<_$DeleteFileImpl> get copyWith =>
+      __$$DeleteFileImplCopyWithImpl<_$DeleteFileImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialize,
+    required TResult Function(int skip, int take) getS3Objects,
+    required TResult Function() clearError,
+    required TResult Function(File file, User user) uploadFile,
+    required TResult Function(S3Object s3Object, User user) deleteFile,
+    required TResult Function(String id, User user) findOneOrFail,
+    required TResult Function() count,
+    required TResult Function(String year, String month)
+        checkObjectsExistenceByMonth,
+    required TResult Function(String year, String month, String day)
+        getObjectsByDate,
+    required TResult Function(S3Object s3Object, User user) likeS3Object,
+    required TResult Function(S3ObjectLike s3ObjectLike, User user)
+        removeLikeS3Object,
+    required TResult Function(S3Object s3Object, User user, String content)
+        replyS3Object,
+    required TResult Function(S3ObjectReply s3ObjectReply, User user)
+        removeReplyS3Object,
+    required TResult Function(
+            S3Object s3Object, ReportReason type, String? content)
+        reportS3Object,
+    required TResult Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)
+        reportS3ObjectReply,
+  }) {
+    return deleteFile(s3Object, user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialize,
+    TResult? Function(int skip, int take)? getS3Objects,
+    TResult? Function()? clearError,
+    TResult? Function(File file, User user)? uploadFile,
+    TResult? Function(S3Object s3Object, User user)? deleteFile,
+    TResult? Function(String id, User user)? findOneOrFail,
+    TResult? Function()? count,
+    TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
+    TResult? Function(String year, String month, String day)? getObjectsByDate,
+    TResult? Function(S3Object s3Object, User user)? likeS3Object,
+    TResult? Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
+    TResult? Function(S3Object s3Object, User user, String content)?
+        replyS3Object,
+    TResult? Function(S3ObjectReply s3ObjectReply, User user)?
+        removeReplyS3Object,
+    TResult? Function(S3Object s3Object, ReportReason type, String? content)?
+        reportS3Object,
+    TResult? Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
+        reportS3ObjectReply,
+  }) {
+    return deleteFile?.call(s3Object, user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialize,
+    TResult Function(int skip, int take)? getS3Objects,
+    TResult Function()? clearError,
+    TResult Function(File file, User user)? uploadFile,
+    TResult Function(S3Object s3Object, User user)? deleteFile,
+    TResult Function(String id, User user)? findOneOrFail,
+    TResult Function()? count,
+    TResult Function(String year, String month)? checkObjectsExistenceByMonth,
+    TResult Function(String year, String month, String day)? getObjectsByDate,
+    TResult Function(S3Object s3Object, User user)? likeS3Object,
+    TResult Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
+    TResult Function(S3Object s3Object, User user, String content)?
+        replyS3Object,
+    TResult Function(S3ObjectReply s3ObjectReply, User user)?
+        removeReplyS3Object,
+    TResult Function(S3Object s3Object, ReportReason type, String? content)?
+        reportS3Object,
+    TResult Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
+        reportS3ObjectReply,
+    required TResult orElse(),
+  }) {
+    if (deleteFile != null) {
+      return deleteFile(s3Object, user);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_GetS3Objects value) getS3Objects,
+    required TResult Function(_ClearError value) clearError,
+    required TResult Function(_UploadFile value) uploadFile,
+    required TResult Function(_DeleteFile value) deleteFile,
+    required TResult Function(_FindOneOrFail value) findOneOrFail,
+    required TResult Function(_Count value) count,
+    required TResult Function(_CheckObjectsExistenceByMonth value)
+        checkObjectsExistenceByMonth,
+    required TResult Function(_GetObjectsByDate value) getObjectsByDate,
+    required TResult Function(_LikeS3Object value) likeS3Object,
+    required TResult Function(_RemoveLikeS3Object value) removeLikeS3Object,
+    required TResult Function(_ReplyS3Object value) replyS3Object,
+    required TResult Function(_RemoveReplyS3Object value) removeReplyS3Object,
+    required TResult Function(_ReportS3Object value) reportS3Object,
+    required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
+  }) {
+    return deleteFile(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialize value)? initialize,
+    TResult? Function(_GetS3Objects value)? getS3Objects,
+    TResult? Function(_ClearError value)? clearError,
+    TResult? Function(_UploadFile value)? uploadFile,
+    TResult? Function(_DeleteFile value)? deleteFile,
+    TResult? Function(_FindOneOrFail value)? findOneOrFail,
+    TResult? Function(_Count value)? count,
+    TResult? Function(_CheckObjectsExistenceByMonth value)?
+        checkObjectsExistenceByMonth,
+    TResult? Function(_GetObjectsByDate value)? getObjectsByDate,
+    TResult? Function(_LikeS3Object value)? likeS3Object,
+    TResult? Function(_RemoveLikeS3Object value)? removeLikeS3Object,
+    TResult? Function(_ReplyS3Object value)? replyS3Object,
+    TResult? Function(_RemoveReplyS3Object value)? removeReplyS3Object,
+    TResult? Function(_ReportS3Object value)? reportS3Object,
+    TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+  }) {
+    return deleteFile?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_GetS3Objects value)? getS3Objects,
+    TResult Function(_ClearError value)? clearError,
+    TResult Function(_UploadFile value)? uploadFile,
+    TResult Function(_DeleteFile value)? deleteFile,
+    TResult Function(_FindOneOrFail value)? findOneOrFail,
+    TResult Function(_Count value)? count,
+    TResult Function(_CheckObjectsExistenceByMonth value)?
+        checkObjectsExistenceByMonth,
+    TResult Function(_GetObjectsByDate value)? getObjectsByDate,
+    TResult Function(_LikeS3Object value)? likeS3Object,
+    TResult Function(_RemoveLikeS3Object value)? removeLikeS3Object,
+    TResult Function(_ReplyS3Object value)? replyS3Object,
+    TResult Function(_RemoveReplyS3Object value)? removeReplyS3Object,
+    TResult Function(_ReportS3Object value)? reportS3Object,
+    TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+    required TResult orElse(),
+  }) {
+    if (deleteFile != null) {
+      return deleteFile(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteFile implements S3ObjectEvent {
+  const factory _DeleteFile(final S3Object s3Object, final User user) =
+      _$DeleteFileImpl;
+
+  S3Object get s3Object;
+  User get user;
+
+  /// Create a copy of S3ObjectEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$DeleteFileImplCopyWith<_$DeleteFileImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1051,6 +1465,7 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     required TResult Function(int skip, int take) getS3Objects,
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
+    required TResult Function(S3Object s3Object, User user) deleteFile,
     required TResult Function(String id, User user) findOneOrFail,
     required TResult Function() count,
     required TResult Function(String year, String month)
@@ -1064,6 +1479,12 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
         replyS3Object,
     required TResult Function(S3ObjectReply s3ObjectReply, User user)
         removeReplyS3Object,
+    required TResult Function(
+            S3Object s3Object, ReportReason type, String? content)
+        reportS3Object,
+    required TResult Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)
+        reportS3ObjectReply,
   }) {
     return findOneOrFail(id, user);
   }
@@ -1075,6 +1496,7 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     TResult? Function(int skip, int take)? getS3Objects,
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
+    TResult? Function(S3Object s3Object, User user)? deleteFile,
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
     TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
@@ -1085,6 +1507,11 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
         replyS3Object,
     TResult? Function(S3ObjectReply s3ObjectReply, User user)?
         removeReplyS3Object,
+    TResult? Function(S3Object s3Object, ReportReason type, String? content)?
+        reportS3Object,
+    TResult? Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
+        reportS3ObjectReply,
   }) {
     return findOneOrFail?.call(id, user);
   }
@@ -1096,6 +1523,7 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     TResult Function(int skip, int take)? getS3Objects,
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
+    TResult Function(S3Object s3Object, User user)? deleteFile,
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
     TResult Function(String year, String month)? checkObjectsExistenceByMonth,
@@ -1106,6 +1534,11 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
         replyS3Object,
     TResult Function(S3ObjectReply s3ObjectReply, User user)?
         removeReplyS3Object,
+    TResult Function(S3Object s3Object, ReportReason type, String? content)?
+        reportS3Object,
+    TResult Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
+        reportS3ObjectReply,
     required TResult orElse(),
   }) {
     if (findOneOrFail != null) {
@@ -1121,6 +1554,7 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     required TResult Function(_GetS3Objects value) getS3Objects,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_UploadFile value) uploadFile,
+    required TResult Function(_DeleteFile value) deleteFile,
     required TResult Function(_FindOneOrFail value) findOneOrFail,
     required TResult Function(_Count value) count,
     required TResult Function(_CheckObjectsExistenceByMonth value)
@@ -1130,6 +1564,8 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     required TResult Function(_RemoveLikeS3Object value) removeLikeS3Object,
     required TResult Function(_ReplyS3Object value) replyS3Object,
     required TResult Function(_RemoveReplyS3Object value) removeReplyS3Object,
+    required TResult Function(_ReportS3Object value) reportS3Object,
+    required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
   }) {
     return findOneOrFail(this);
   }
@@ -1141,6 +1577,7 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     TResult? Function(_GetS3Objects value)? getS3Objects,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_UploadFile value)? uploadFile,
+    TResult? Function(_DeleteFile value)? deleteFile,
     TResult? Function(_FindOneOrFail value)? findOneOrFail,
     TResult? Function(_Count value)? count,
     TResult? Function(_CheckObjectsExistenceByMonth value)?
@@ -1150,6 +1587,8 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     TResult? Function(_RemoveLikeS3Object value)? removeLikeS3Object,
     TResult? Function(_ReplyS3Object value)? replyS3Object,
     TResult? Function(_RemoveReplyS3Object value)? removeReplyS3Object,
+    TResult? Function(_ReportS3Object value)? reportS3Object,
+    TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
   }) {
     return findOneOrFail?.call(this);
   }
@@ -1161,6 +1600,7 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     TResult Function(_GetS3Objects value)? getS3Objects,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_UploadFile value)? uploadFile,
+    TResult Function(_DeleteFile value)? deleteFile,
     TResult Function(_FindOneOrFail value)? findOneOrFail,
     TResult Function(_Count value)? count,
     TResult Function(_CheckObjectsExistenceByMonth value)?
@@ -1170,6 +1610,8 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     TResult Function(_RemoveLikeS3Object value)? removeLikeS3Object,
     TResult Function(_ReplyS3Object value)? replyS3Object,
     TResult Function(_RemoveReplyS3Object value)? removeReplyS3Object,
+    TResult Function(_ReportS3Object value)? reportS3Object,
+    TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     required TResult orElse(),
   }) {
     if (findOneOrFail != null) {
@@ -1238,6 +1680,7 @@ class _$CountImpl implements _Count {
     required TResult Function(int skip, int take) getS3Objects,
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
+    required TResult Function(S3Object s3Object, User user) deleteFile,
     required TResult Function(String id, User user) findOneOrFail,
     required TResult Function() count,
     required TResult Function(String year, String month)
@@ -1251,6 +1694,12 @@ class _$CountImpl implements _Count {
         replyS3Object,
     required TResult Function(S3ObjectReply s3ObjectReply, User user)
         removeReplyS3Object,
+    required TResult Function(
+            S3Object s3Object, ReportReason type, String? content)
+        reportS3Object,
+    required TResult Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)
+        reportS3ObjectReply,
   }) {
     return count();
   }
@@ -1262,6 +1711,7 @@ class _$CountImpl implements _Count {
     TResult? Function(int skip, int take)? getS3Objects,
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
+    TResult? Function(S3Object s3Object, User user)? deleteFile,
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
     TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
@@ -1272,6 +1722,11 @@ class _$CountImpl implements _Count {
         replyS3Object,
     TResult? Function(S3ObjectReply s3ObjectReply, User user)?
         removeReplyS3Object,
+    TResult? Function(S3Object s3Object, ReportReason type, String? content)?
+        reportS3Object,
+    TResult? Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
+        reportS3ObjectReply,
   }) {
     return count?.call();
   }
@@ -1283,6 +1738,7 @@ class _$CountImpl implements _Count {
     TResult Function(int skip, int take)? getS3Objects,
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
+    TResult Function(S3Object s3Object, User user)? deleteFile,
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
     TResult Function(String year, String month)? checkObjectsExistenceByMonth,
@@ -1293,6 +1749,11 @@ class _$CountImpl implements _Count {
         replyS3Object,
     TResult Function(S3ObjectReply s3ObjectReply, User user)?
         removeReplyS3Object,
+    TResult Function(S3Object s3Object, ReportReason type, String? content)?
+        reportS3Object,
+    TResult Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
+        reportS3ObjectReply,
     required TResult orElse(),
   }) {
     if (count != null) {
@@ -1308,6 +1769,7 @@ class _$CountImpl implements _Count {
     required TResult Function(_GetS3Objects value) getS3Objects,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_UploadFile value) uploadFile,
+    required TResult Function(_DeleteFile value) deleteFile,
     required TResult Function(_FindOneOrFail value) findOneOrFail,
     required TResult Function(_Count value) count,
     required TResult Function(_CheckObjectsExistenceByMonth value)
@@ -1317,6 +1779,8 @@ class _$CountImpl implements _Count {
     required TResult Function(_RemoveLikeS3Object value) removeLikeS3Object,
     required TResult Function(_ReplyS3Object value) replyS3Object,
     required TResult Function(_RemoveReplyS3Object value) removeReplyS3Object,
+    required TResult Function(_ReportS3Object value) reportS3Object,
+    required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
   }) {
     return count(this);
   }
@@ -1328,6 +1792,7 @@ class _$CountImpl implements _Count {
     TResult? Function(_GetS3Objects value)? getS3Objects,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_UploadFile value)? uploadFile,
+    TResult? Function(_DeleteFile value)? deleteFile,
     TResult? Function(_FindOneOrFail value)? findOneOrFail,
     TResult? Function(_Count value)? count,
     TResult? Function(_CheckObjectsExistenceByMonth value)?
@@ -1337,6 +1802,8 @@ class _$CountImpl implements _Count {
     TResult? Function(_RemoveLikeS3Object value)? removeLikeS3Object,
     TResult? Function(_ReplyS3Object value)? replyS3Object,
     TResult? Function(_RemoveReplyS3Object value)? removeReplyS3Object,
+    TResult? Function(_ReportS3Object value)? reportS3Object,
+    TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
   }) {
     return count?.call(this);
   }
@@ -1348,6 +1815,7 @@ class _$CountImpl implements _Count {
     TResult Function(_GetS3Objects value)? getS3Objects,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_UploadFile value)? uploadFile,
+    TResult Function(_DeleteFile value)? deleteFile,
     TResult Function(_FindOneOrFail value)? findOneOrFail,
     TResult Function(_Count value)? count,
     TResult Function(_CheckObjectsExistenceByMonth value)?
@@ -1357,6 +1825,8 @@ class _$CountImpl implements _Count {
     TResult Function(_RemoveLikeS3Object value)? removeLikeS3Object,
     TResult Function(_ReplyS3Object value)? replyS3Object,
     TResult Function(_RemoveReplyS3Object value)? removeReplyS3Object,
+    TResult Function(_ReportS3Object value)? reportS3Object,
+    TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     required TResult orElse(),
   }) {
     if (count != null) {
@@ -1456,6 +1926,7 @@ class _$CheckObjectsExistenceByMonthImpl
     required TResult Function(int skip, int take) getS3Objects,
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
+    required TResult Function(S3Object s3Object, User user) deleteFile,
     required TResult Function(String id, User user) findOneOrFail,
     required TResult Function() count,
     required TResult Function(String year, String month)
@@ -1469,6 +1940,12 @@ class _$CheckObjectsExistenceByMonthImpl
         replyS3Object,
     required TResult Function(S3ObjectReply s3ObjectReply, User user)
         removeReplyS3Object,
+    required TResult Function(
+            S3Object s3Object, ReportReason type, String? content)
+        reportS3Object,
+    required TResult Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)
+        reportS3ObjectReply,
   }) {
     return checkObjectsExistenceByMonth(year, month);
   }
@@ -1480,6 +1957,7 @@ class _$CheckObjectsExistenceByMonthImpl
     TResult? Function(int skip, int take)? getS3Objects,
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
+    TResult? Function(S3Object s3Object, User user)? deleteFile,
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
     TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
@@ -1490,6 +1968,11 @@ class _$CheckObjectsExistenceByMonthImpl
         replyS3Object,
     TResult? Function(S3ObjectReply s3ObjectReply, User user)?
         removeReplyS3Object,
+    TResult? Function(S3Object s3Object, ReportReason type, String? content)?
+        reportS3Object,
+    TResult? Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
+        reportS3ObjectReply,
   }) {
     return checkObjectsExistenceByMonth?.call(year, month);
   }
@@ -1501,6 +1984,7 @@ class _$CheckObjectsExistenceByMonthImpl
     TResult Function(int skip, int take)? getS3Objects,
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
+    TResult Function(S3Object s3Object, User user)? deleteFile,
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
     TResult Function(String year, String month)? checkObjectsExistenceByMonth,
@@ -1511,6 +1995,11 @@ class _$CheckObjectsExistenceByMonthImpl
         replyS3Object,
     TResult Function(S3ObjectReply s3ObjectReply, User user)?
         removeReplyS3Object,
+    TResult Function(S3Object s3Object, ReportReason type, String? content)?
+        reportS3Object,
+    TResult Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
+        reportS3ObjectReply,
     required TResult orElse(),
   }) {
     if (checkObjectsExistenceByMonth != null) {
@@ -1526,6 +2015,7 @@ class _$CheckObjectsExistenceByMonthImpl
     required TResult Function(_GetS3Objects value) getS3Objects,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_UploadFile value) uploadFile,
+    required TResult Function(_DeleteFile value) deleteFile,
     required TResult Function(_FindOneOrFail value) findOneOrFail,
     required TResult Function(_Count value) count,
     required TResult Function(_CheckObjectsExistenceByMonth value)
@@ -1535,6 +2025,8 @@ class _$CheckObjectsExistenceByMonthImpl
     required TResult Function(_RemoveLikeS3Object value) removeLikeS3Object,
     required TResult Function(_ReplyS3Object value) replyS3Object,
     required TResult Function(_RemoveReplyS3Object value) removeReplyS3Object,
+    required TResult Function(_ReportS3Object value) reportS3Object,
+    required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
   }) {
     return checkObjectsExistenceByMonth(this);
   }
@@ -1546,6 +2038,7 @@ class _$CheckObjectsExistenceByMonthImpl
     TResult? Function(_GetS3Objects value)? getS3Objects,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_UploadFile value)? uploadFile,
+    TResult? Function(_DeleteFile value)? deleteFile,
     TResult? Function(_FindOneOrFail value)? findOneOrFail,
     TResult? Function(_Count value)? count,
     TResult? Function(_CheckObjectsExistenceByMonth value)?
@@ -1555,6 +2048,8 @@ class _$CheckObjectsExistenceByMonthImpl
     TResult? Function(_RemoveLikeS3Object value)? removeLikeS3Object,
     TResult? Function(_ReplyS3Object value)? replyS3Object,
     TResult? Function(_RemoveReplyS3Object value)? removeReplyS3Object,
+    TResult? Function(_ReportS3Object value)? reportS3Object,
+    TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
   }) {
     return checkObjectsExistenceByMonth?.call(this);
   }
@@ -1566,6 +2061,7 @@ class _$CheckObjectsExistenceByMonthImpl
     TResult Function(_GetS3Objects value)? getS3Objects,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_UploadFile value)? uploadFile,
+    TResult Function(_DeleteFile value)? deleteFile,
     TResult Function(_FindOneOrFail value)? findOneOrFail,
     TResult Function(_Count value)? count,
     TResult Function(_CheckObjectsExistenceByMonth value)?
@@ -1575,6 +2071,8 @@ class _$CheckObjectsExistenceByMonthImpl
     TResult Function(_RemoveLikeS3Object value)? removeLikeS3Object,
     TResult Function(_ReplyS3Object value)? replyS3Object,
     TResult Function(_RemoveReplyS3Object value)? removeReplyS3Object,
+    TResult Function(_ReportS3Object value)? reportS3Object,
+    TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     required TResult orElse(),
   }) {
     if (checkObjectsExistenceByMonth != null) {
@@ -1689,6 +2187,7 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
     required TResult Function(int skip, int take) getS3Objects,
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
+    required TResult Function(S3Object s3Object, User user) deleteFile,
     required TResult Function(String id, User user) findOneOrFail,
     required TResult Function() count,
     required TResult Function(String year, String month)
@@ -1702,6 +2201,12 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
         replyS3Object,
     required TResult Function(S3ObjectReply s3ObjectReply, User user)
         removeReplyS3Object,
+    required TResult Function(
+            S3Object s3Object, ReportReason type, String? content)
+        reportS3Object,
+    required TResult Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)
+        reportS3ObjectReply,
   }) {
     return getObjectsByDate(year, month, day);
   }
@@ -1713,6 +2218,7 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
     TResult? Function(int skip, int take)? getS3Objects,
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
+    TResult? Function(S3Object s3Object, User user)? deleteFile,
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
     TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
@@ -1723,6 +2229,11 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
         replyS3Object,
     TResult? Function(S3ObjectReply s3ObjectReply, User user)?
         removeReplyS3Object,
+    TResult? Function(S3Object s3Object, ReportReason type, String? content)?
+        reportS3Object,
+    TResult? Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
+        reportS3ObjectReply,
   }) {
     return getObjectsByDate?.call(year, month, day);
   }
@@ -1734,6 +2245,7 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
     TResult Function(int skip, int take)? getS3Objects,
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
+    TResult Function(S3Object s3Object, User user)? deleteFile,
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
     TResult Function(String year, String month)? checkObjectsExistenceByMonth,
@@ -1744,6 +2256,11 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
         replyS3Object,
     TResult Function(S3ObjectReply s3ObjectReply, User user)?
         removeReplyS3Object,
+    TResult Function(S3Object s3Object, ReportReason type, String? content)?
+        reportS3Object,
+    TResult Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
+        reportS3ObjectReply,
     required TResult orElse(),
   }) {
     if (getObjectsByDate != null) {
@@ -1759,6 +2276,7 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
     required TResult Function(_GetS3Objects value) getS3Objects,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_UploadFile value) uploadFile,
+    required TResult Function(_DeleteFile value) deleteFile,
     required TResult Function(_FindOneOrFail value) findOneOrFail,
     required TResult Function(_Count value) count,
     required TResult Function(_CheckObjectsExistenceByMonth value)
@@ -1768,6 +2286,8 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
     required TResult Function(_RemoveLikeS3Object value) removeLikeS3Object,
     required TResult Function(_ReplyS3Object value) replyS3Object,
     required TResult Function(_RemoveReplyS3Object value) removeReplyS3Object,
+    required TResult Function(_ReportS3Object value) reportS3Object,
+    required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
   }) {
     return getObjectsByDate(this);
   }
@@ -1779,6 +2299,7 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
     TResult? Function(_GetS3Objects value)? getS3Objects,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_UploadFile value)? uploadFile,
+    TResult? Function(_DeleteFile value)? deleteFile,
     TResult? Function(_FindOneOrFail value)? findOneOrFail,
     TResult? Function(_Count value)? count,
     TResult? Function(_CheckObjectsExistenceByMonth value)?
@@ -1788,6 +2309,8 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
     TResult? Function(_RemoveLikeS3Object value)? removeLikeS3Object,
     TResult? Function(_ReplyS3Object value)? replyS3Object,
     TResult? Function(_RemoveReplyS3Object value)? removeReplyS3Object,
+    TResult? Function(_ReportS3Object value)? reportS3Object,
+    TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
   }) {
     return getObjectsByDate?.call(this);
   }
@@ -1799,6 +2322,7 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
     TResult Function(_GetS3Objects value)? getS3Objects,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_UploadFile value)? uploadFile,
+    TResult Function(_DeleteFile value)? deleteFile,
     TResult Function(_FindOneOrFail value)? findOneOrFail,
     TResult Function(_Count value)? count,
     TResult Function(_CheckObjectsExistenceByMonth value)?
@@ -1808,6 +2332,8 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
     TResult Function(_RemoveLikeS3Object value)? removeLikeS3Object,
     TResult Function(_ReplyS3Object value)? replyS3Object,
     TResult Function(_RemoveReplyS3Object value)? removeReplyS3Object,
+    TResult Function(_ReportS3Object value)? reportS3Object,
+    TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     required TResult orElse(),
   }) {
     if (getObjectsByDate != null) {
@@ -1937,6 +2463,7 @@ class _$LikeS3ObjectImpl implements _LikeS3Object {
     required TResult Function(int skip, int take) getS3Objects,
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
+    required TResult Function(S3Object s3Object, User user) deleteFile,
     required TResult Function(String id, User user) findOneOrFail,
     required TResult Function() count,
     required TResult Function(String year, String month)
@@ -1950,6 +2477,12 @@ class _$LikeS3ObjectImpl implements _LikeS3Object {
         replyS3Object,
     required TResult Function(S3ObjectReply s3ObjectReply, User user)
         removeReplyS3Object,
+    required TResult Function(
+            S3Object s3Object, ReportReason type, String? content)
+        reportS3Object,
+    required TResult Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)
+        reportS3ObjectReply,
   }) {
     return likeS3Object(s3Object, user);
   }
@@ -1961,6 +2494,7 @@ class _$LikeS3ObjectImpl implements _LikeS3Object {
     TResult? Function(int skip, int take)? getS3Objects,
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
+    TResult? Function(S3Object s3Object, User user)? deleteFile,
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
     TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
@@ -1971,6 +2505,11 @@ class _$LikeS3ObjectImpl implements _LikeS3Object {
         replyS3Object,
     TResult? Function(S3ObjectReply s3ObjectReply, User user)?
         removeReplyS3Object,
+    TResult? Function(S3Object s3Object, ReportReason type, String? content)?
+        reportS3Object,
+    TResult? Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
+        reportS3ObjectReply,
   }) {
     return likeS3Object?.call(s3Object, user);
   }
@@ -1982,6 +2521,7 @@ class _$LikeS3ObjectImpl implements _LikeS3Object {
     TResult Function(int skip, int take)? getS3Objects,
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
+    TResult Function(S3Object s3Object, User user)? deleteFile,
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
     TResult Function(String year, String month)? checkObjectsExistenceByMonth,
@@ -1992,6 +2532,11 @@ class _$LikeS3ObjectImpl implements _LikeS3Object {
         replyS3Object,
     TResult Function(S3ObjectReply s3ObjectReply, User user)?
         removeReplyS3Object,
+    TResult Function(S3Object s3Object, ReportReason type, String? content)?
+        reportS3Object,
+    TResult Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
+        reportS3ObjectReply,
     required TResult orElse(),
   }) {
     if (likeS3Object != null) {
@@ -2007,6 +2552,7 @@ class _$LikeS3ObjectImpl implements _LikeS3Object {
     required TResult Function(_GetS3Objects value) getS3Objects,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_UploadFile value) uploadFile,
+    required TResult Function(_DeleteFile value) deleteFile,
     required TResult Function(_FindOneOrFail value) findOneOrFail,
     required TResult Function(_Count value) count,
     required TResult Function(_CheckObjectsExistenceByMonth value)
@@ -2016,6 +2562,8 @@ class _$LikeS3ObjectImpl implements _LikeS3Object {
     required TResult Function(_RemoveLikeS3Object value) removeLikeS3Object,
     required TResult Function(_ReplyS3Object value) replyS3Object,
     required TResult Function(_RemoveReplyS3Object value) removeReplyS3Object,
+    required TResult Function(_ReportS3Object value) reportS3Object,
+    required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
   }) {
     return likeS3Object(this);
   }
@@ -2027,6 +2575,7 @@ class _$LikeS3ObjectImpl implements _LikeS3Object {
     TResult? Function(_GetS3Objects value)? getS3Objects,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_UploadFile value)? uploadFile,
+    TResult? Function(_DeleteFile value)? deleteFile,
     TResult? Function(_FindOneOrFail value)? findOneOrFail,
     TResult? Function(_Count value)? count,
     TResult? Function(_CheckObjectsExistenceByMonth value)?
@@ -2036,6 +2585,8 @@ class _$LikeS3ObjectImpl implements _LikeS3Object {
     TResult? Function(_RemoveLikeS3Object value)? removeLikeS3Object,
     TResult? Function(_ReplyS3Object value)? replyS3Object,
     TResult? Function(_RemoveReplyS3Object value)? removeReplyS3Object,
+    TResult? Function(_ReportS3Object value)? reportS3Object,
+    TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
   }) {
     return likeS3Object?.call(this);
   }
@@ -2047,6 +2598,7 @@ class _$LikeS3ObjectImpl implements _LikeS3Object {
     TResult Function(_GetS3Objects value)? getS3Objects,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_UploadFile value)? uploadFile,
+    TResult Function(_DeleteFile value)? deleteFile,
     TResult Function(_FindOneOrFail value)? findOneOrFail,
     TResult Function(_Count value)? count,
     TResult Function(_CheckObjectsExistenceByMonth value)?
@@ -2056,6 +2608,8 @@ class _$LikeS3ObjectImpl implements _LikeS3Object {
     TResult Function(_RemoveLikeS3Object value)? removeLikeS3Object,
     TResult Function(_ReplyS3Object value)? replyS3Object,
     TResult Function(_RemoveReplyS3Object value)? removeReplyS3Object,
+    TResult Function(_ReportS3Object value)? reportS3Object,
+    TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     required TResult orElse(),
   }) {
     if (likeS3Object != null) {
@@ -2184,6 +2738,7 @@ class _$RemoveLikeS3ObjectImpl implements _RemoveLikeS3Object {
     required TResult Function(int skip, int take) getS3Objects,
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
+    required TResult Function(S3Object s3Object, User user) deleteFile,
     required TResult Function(String id, User user) findOneOrFail,
     required TResult Function() count,
     required TResult Function(String year, String month)
@@ -2197,6 +2752,12 @@ class _$RemoveLikeS3ObjectImpl implements _RemoveLikeS3Object {
         replyS3Object,
     required TResult Function(S3ObjectReply s3ObjectReply, User user)
         removeReplyS3Object,
+    required TResult Function(
+            S3Object s3Object, ReportReason type, String? content)
+        reportS3Object,
+    required TResult Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)
+        reportS3ObjectReply,
   }) {
     return removeLikeS3Object(s3ObjectLike, user);
   }
@@ -2208,6 +2769,7 @@ class _$RemoveLikeS3ObjectImpl implements _RemoveLikeS3Object {
     TResult? Function(int skip, int take)? getS3Objects,
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
+    TResult? Function(S3Object s3Object, User user)? deleteFile,
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
     TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
@@ -2218,6 +2780,11 @@ class _$RemoveLikeS3ObjectImpl implements _RemoveLikeS3Object {
         replyS3Object,
     TResult? Function(S3ObjectReply s3ObjectReply, User user)?
         removeReplyS3Object,
+    TResult? Function(S3Object s3Object, ReportReason type, String? content)?
+        reportS3Object,
+    TResult? Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
+        reportS3ObjectReply,
   }) {
     return removeLikeS3Object?.call(s3ObjectLike, user);
   }
@@ -2229,6 +2796,7 @@ class _$RemoveLikeS3ObjectImpl implements _RemoveLikeS3Object {
     TResult Function(int skip, int take)? getS3Objects,
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
+    TResult Function(S3Object s3Object, User user)? deleteFile,
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
     TResult Function(String year, String month)? checkObjectsExistenceByMonth,
@@ -2239,6 +2807,11 @@ class _$RemoveLikeS3ObjectImpl implements _RemoveLikeS3Object {
         replyS3Object,
     TResult Function(S3ObjectReply s3ObjectReply, User user)?
         removeReplyS3Object,
+    TResult Function(S3Object s3Object, ReportReason type, String? content)?
+        reportS3Object,
+    TResult Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
+        reportS3ObjectReply,
     required TResult orElse(),
   }) {
     if (removeLikeS3Object != null) {
@@ -2254,6 +2827,7 @@ class _$RemoveLikeS3ObjectImpl implements _RemoveLikeS3Object {
     required TResult Function(_GetS3Objects value) getS3Objects,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_UploadFile value) uploadFile,
+    required TResult Function(_DeleteFile value) deleteFile,
     required TResult Function(_FindOneOrFail value) findOneOrFail,
     required TResult Function(_Count value) count,
     required TResult Function(_CheckObjectsExistenceByMonth value)
@@ -2263,6 +2837,8 @@ class _$RemoveLikeS3ObjectImpl implements _RemoveLikeS3Object {
     required TResult Function(_RemoveLikeS3Object value) removeLikeS3Object,
     required TResult Function(_ReplyS3Object value) replyS3Object,
     required TResult Function(_RemoveReplyS3Object value) removeReplyS3Object,
+    required TResult Function(_ReportS3Object value) reportS3Object,
+    required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
   }) {
     return removeLikeS3Object(this);
   }
@@ -2274,6 +2850,7 @@ class _$RemoveLikeS3ObjectImpl implements _RemoveLikeS3Object {
     TResult? Function(_GetS3Objects value)? getS3Objects,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_UploadFile value)? uploadFile,
+    TResult? Function(_DeleteFile value)? deleteFile,
     TResult? Function(_FindOneOrFail value)? findOneOrFail,
     TResult? Function(_Count value)? count,
     TResult? Function(_CheckObjectsExistenceByMonth value)?
@@ -2283,6 +2860,8 @@ class _$RemoveLikeS3ObjectImpl implements _RemoveLikeS3Object {
     TResult? Function(_RemoveLikeS3Object value)? removeLikeS3Object,
     TResult? Function(_ReplyS3Object value)? replyS3Object,
     TResult? Function(_RemoveReplyS3Object value)? removeReplyS3Object,
+    TResult? Function(_ReportS3Object value)? reportS3Object,
+    TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
   }) {
     return removeLikeS3Object?.call(this);
   }
@@ -2294,6 +2873,7 @@ class _$RemoveLikeS3ObjectImpl implements _RemoveLikeS3Object {
     TResult Function(_GetS3Objects value)? getS3Objects,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_UploadFile value)? uploadFile,
+    TResult Function(_DeleteFile value)? deleteFile,
     TResult Function(_FindOneOrFail value)? findOneOrFail,
     TResult Function(_Count value)? count,
     TResult Function(_CheckObjectsExistenceByMonth value)?
@@ -2303,6 +2883,8 @@ class _$RemoveLikeS3ObjectImpl implements _RemoveLikeS3Object {
     TResult Function(_RemoveLikeS3Object value)? removeLikeS3Object,
     TResult Function(_ReplyS3Object value)? replyS3Object,
     TResult Function(_RemoveReplyS3Object value)? removeReplyS3Object,
+    TResult Function(_ReportS3Object value)? reportS3Object,
+    TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     required TResult orElse(),
   }) {
     if (removeLikeS3Object != null) {
@@ -2439,6 +3021,7 @@ class _$ReplyS3ObjectImpl implements _ReplyS3Object {
     required TResult Function(int skip, int take) getS3Objects,
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
+    required TResult Function(S3Object s3Object, User user) deleteFile,
     required TResult Function(String id, User user) findOneOrFail,
     required TResult Function() count,
     required TResult Function(String year, String month)
@@ -2452,6 +3035,12 @@ class _$ReplyS3ObjectImpl implements _ReplyS3Object {
         replyS3Object,
     required TResult Function(S3ObjectReply s3ObjectReply, User user)
         removeReplyS3Object,
+    required TResult Function(
+            S3Object s3Object, ReportReason type, String? content)
+        reportS3Object,
+    required TResult Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)
+        reportS3ObjectReply,
   }) {
     return replyS3Object(s3Object, user, content);
   }
@@ -2463,6 +3052,7 @@ class _$ReplyS3ObjectImpl implements _ReplyS3Object {
     TResult? Function(int skip, int take)? getS3Objects,
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
+    TResult? Function(S3Object s3Object, User user)? deleteFile,
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
     TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
@@ -2473,6 +3063,11 @@ class _$ReplyS3ObjectImpl implements _ReplyS3Object {
         replyS3Object,
     TResult? Function(S3ObjectReply s3ObjectReply, User user)?
         removeReplyS3Object,
+    TResult? Function(S3Object s3Object, ReportReason type, String? content)?
+        reportS3Object,
+    TResult? Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
+        reportS3ObjectReply,
   }) {
     return replyS3Object?.call(s3Object, user, content);
   }
@@ -2484,6 +3079,7 @@ class _$ReplyS3ObjectImpl implements _ReplyS3Object {
     TResult Function(int skip, int take)? getS3Objects,
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
+    TResult Function(S3Object s3Object, User user)? deleteFile,
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
     TResult Function(String year, String month)? checkObjectsExistenceByMonth,
@@ -2494,6 +3090,11 @@ class _$ReplyS3ObjectImpl implements _ReplyS3Object {
         replyS3Object,
     TResult Function(S3ObjectReply s3ObjectReply, User user)?
         removeReplyS3Object,
+    TResult Function(S3Object s3Object, ReportReason type, String? content)?
+        reportS3Object,
+    TResult Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
+        reportS3ObjectReply,
     required TResult orElse(),
   }) {
     if (replyS3Object != null) {
@@ -2509,6 +3110,7 @@ class _$ReplyS3ObjectImpl implements _ReplyS3Object {
     required TResult Function(_GetS3Objects value) getS3Objects,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_UploadFile value) uploadFile,
+    required TResult Function(_DeleteFile value) deleteFile,
     required TResult Function(_FindOneOrFail value) findOneOrFail,
     required TResult Function(_Count value) count,
     required TResult Function(_CheckObjectsExistenceByMonth value)
@@ -2518,6 +3120,8 @@ class _$ReplyS3ObjectImpl implements _ReplyS3Object {
     required TResult Function(_RemoveLikeS3Object value) removeLikeS3Object,
     required TResult Function(_ReplyS3Object value) replyS3Object,
     required TResult Function(_RemoveReplyS3Object value) removeReplyS3Object,
+    required TResult Function(_ReportS3Object value) reportS3Object,
+    required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
   }) {
     return replyS3Object(this);
   }
@@ -2529,6 +3133,7 @@ class _$ReplyS3ObjectImpl implements _ReplyS3Object {
     TResult? Function(_GetS3Objects value)? getS3Objects,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_UploadFile value)? uploadFile,
+    TResult? Function(_DeleteFile value)? deleteFile,
     TResult? Function(_FindOneOrFail value)? findOneOrFail,
     TResult? Function(_Count value)? count,
     TResult? Function(_CheckObjectsExistenceByMonth value)?
@@ -2538,6 +3143,8 @@ class _$ReplyS3ObjectImpl implements _ReplyS3Object {
     TResult? Function(_RemoveLikeS3Object value)? removeLikeS3Object,
     TResult? Function(_ReplyS3Object value)? replyS3Object,
     TResult? Function(_RemoveReplyS3Object value)? removeReplyS3Object,
+    TResult? Function(_ReportS3Object value)? reportS3Object,
+    TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
   }) {
     return replyS3Object?.call(this);
   }
@@ -2549,6 +3156,7 @@ class _$ReplyS3ObjectImpl implements _ReplyS3Object {
     TResult Function(_GetS3Objects value)? getS3Objects,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_UploadFile value)? uploadFile,
+    TResult Function(_DeleteFile value)? deleteFile,
     TResult Function(_FindOneOrFail value)? findOneOrFail,
     TResult Function(_Count value)? count,
     TResult Function(_CheckObjectsExistenceByMonth value)?
@@ -2558,6 +3166,8 @@ class _$ReplyS3ObjectImpl implements _ReplyS3Object {
     TResult Function(_RemoveLikeS3Object value)? removeLikeS3Object,
     TResult Function(_ReplyS3Object value)? replyS3Object,
     TResult Function(_RemoveReplyS3Object value)? removeReplyS3Object,
+    TResult Function(_ReportS3Object value)? reportS3Object,
+    TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     required TResult orElse(),
   }) {
     if (replyS3Object != null) {
@@ -2688,6 +3298,7 @@ class _$RemoveReplyS3ObjectImpl implements _RemoveReplyS3Object {
     required TResult Function(int skip, int take) getS3Objects,
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
+    required TResult Function(S3Object s3Object, User user) deleteFile,
     required TResult Function(String id, User user) findOneOrFail,
     required TResult Function() count,
     required TResult Function(String year, String month)
@@ -2701,6 +3312,12 @@ class _$RemoveReplyS3ObjectImpl implements _RemoveReplyS3Object {
         replyS3Object,
     required TResult Function(S3ObjectReply s3ObjectReply, User user)
         removeReplyS3Object,
+    required TResult Function(
+            S3Object s3Object, ReportReason type, String? content)
+        reportS3Object,
+    required TResult Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)
+        reportS3ObjectReply,
   }) {
     return removeReplyS3Object(s3ObjectReply, user);
   }
@@ -2712,6 +3329,7 @@ class _$RemoveReplyS3ObjectImpl implements _RemoveReplyS3Object {
     TResult? Function(int skip, int take)? getS3Objects,
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
+    TResult? Function(S3Object s3Object, User user)? deleteFile,
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
     TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
@@ -2722,6 +3340,11 @@ class _$RemoveReplyS3ObjectImpl implements _RemoveReplyS3Object {
         replyS3Object,
     TResult? Function(S3ObjectReply s3ObjectReply, User user)?
         removeReplyS3Object,
+    TResult? Function(S3Object s3Object, ReportReason type, String? content)?
+        reportS3Object,
+    TResult? Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
+        reportS3ObjectReply,
   }) {
     return removeReplyS3Object?.call(s3ObjectReply, user);
   }
@@ -2733,6 +3356,7 @@ class _$RemoveReplyS3ObjectImpl implements _RemoveReplyS3Object {
     TResult Function(int skip, int take)? getS3Objects,
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
+    TResult Function(S3Object s3Object, User user)? deleteFile,
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
     TResult Function(String year, String month)? checkObjectsExistenceByMonth,
@@ -2743,6 +3367,11 @@ class _$RemoveReplyS3ObjectImpl implements _RemoveReplyS3Object {
         replyS3Object,
     TResult Function(S3ObjectReply s3ObjectReply, User user)?
         removeReplyS3Object,
+    TResult Function(S3Object s3Object, ReportReason type, String? content)?
+        reportS3Object,
+    TResult Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
+        reportS3ObjectReply,
     required TResult orElse(),
   }) {
     if (removeReplyS3Object != null) {
@@ -2758,6 +3387,7 @@ class _$RemoveReplyS3ObjectImpl implements _RemoveReplyS3Object {
     required TResult Function(_GetS3Objects value) getS3Objects,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_UploadFile value) uploadFile,
+    required TResult Function(_DeleteFile value) deleteFile,
     required TResult Function(_FindOneOrFail value) findOneOrFail,
     required TResult Function(_Count value) count,
     required TResult Function(_CheckObjectsExistenceByMonth value)
@@ -2767,6 +3397,8 @@ class _$RemoveReplyS3ObjectImpl implements _RemoveReplyS3Object {
     required TResult Function(_RemoveLikeS3Object value) removeLikeS3Object,
     required TResult Function(_ReplyS3Object value) replyS3Object,
     required TResult Function(_RemoveReplyS3Object value) removeReplyS3Object,
+    required TResult Function(_ReportS3Object value) reportS3Object,
+    required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
   }) {
     return removeReplyS3Object(this);
   }
@@ -2778,6 +3410,7 @@ class _$RemoveReplyS3ObjectImpl implements _RemoveReplyS3Object {
     TResult? Function(_GetS3Objects value)? getS3Objects,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_UploadFile value)? uploadFile,
+    TResult? Function(_DeleteFile value)? deleteFile,
     TResult? Function(_FindOneOrFail value)? findOneOrFail,
     TResult? Function(_Count value)? count,
     TResult? Function(_CheckObjectsExistenceByMonth value)?
@@ -2787,6 +3420,8 @@ class _$RemoveReplyS3ObjectImpl implements _RemoveReplyS3Object {
     TResult? Function(_RemoveLikeS3Object value)? removeLikeS3Object,
     TResult? Function(_ReplyS3Object value)? replyS3Object,
     TResult? Function(_RemoveReplyS3Object value)? removeReplyS3Object,
+    TResult? Function(_ReportS3Object value)? reportS3Object,
+    TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
   }) {
     return removeReplyS3Object?.call(this);
   }
@@ -2798,6 +3433,7 @@ class _$RemoveReplyS3ObjectImpl implements _RemoveReplyS3Object {
     TResult Function(_GetS3Objects value)? getS3Objects,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_UploadFile value)? uploadFile,
+    TResult Function(_DeleteFile value)? deleteFile,
     TResult Function(_FindOneOrFail value)? findOneOrFail,
     TResult Function(_Count value)? count,
     TResult Function(_CheckObjectsExistenceByMonth value)?
@@ -2807,6 +3443,8 @@ class _$RemoveReplyS3ObjectImpl implements _RemoveReplyS3Object {
     TResult Function(_RemoveLikeS3Object value)? removeLikeS3Object,
     TResult Function(_ReplyS3Object value)? replyS3Object,
     TResult Function(_RemoveReplyS3Object value)? removeReplyS3Object,
+    TResult Function(_ReportS3Object value)? reportS3Object,
+    TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     required TResult orElse(),
   }) {
     if (removeReplyS3Object != null) {
@@ -2828,5 +3466,553 @@ abstract class _RemoveReplyS3Object implements S3ObjectEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RemoveReplyS3ObjectImplCopyWith<_$RemoveReplyS3ObjectImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ReportS3ObjectImplCopyWith<$Res> {
+  factory _$$ReportS3ObjectImplCopyWith(_$ReportS3ObjectImpl value,
+          $Res Function(_$ReportS3ObjectImpl) then) =
+      __$$ReportS3ObjectImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({S3Object s3Object, ReportReason type, String? content});
+
+  $S3ObjectCopyWith<$Res> get s3Object;
+}
+
+/// @nodoc
+class __$$ReportS3ObjectImplCopyWithImpl<$Res>
+    extends _$S3ObjectEventCopyWithImpl<$Res, _$ReportS3ObjectImpl>
+    implements _$$ReportS3ObjectImplCopyWith<$Res> {
+  __$$ReportS3ObjectImplCopyWithImpl(
+      _$ReportS3ObjectImpl _value, $Res Function(_$ReportS3ObjectImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of S3ObjectEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? s3Object = null,
+    Object? type = null,
+    Object? content = freezed,
+  }) {
+    return _then(_$ReportS3ObjectImpl(
+      null == s3Object
+          ? _value.s3Object
+          : s3Object // ignore: cast_nullable_to_non_nullable
+              as S3Object,
+      null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as ReportReason,
+      freezed == content
+          ? _value.content
+          : content // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+
+  /// Create a copy of S3ObjectEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $S3ObjectCopyWith<$Res> get s3Object {
+    return $S3ObjectCopyWith<$Res>(_value.s3Object, (value) {
+      return _then(_value.copyWith(s3Object: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$ReportS3ObjectImpl implements _ReportS3Object {
+  const _$ReportS3ObjectImpl(this.s3Object, this.type, this.content);
+
+  @override
+  final S3Object s3Object;
+  @override
+  final ReportReason type;
+  @override
+  final String? content;
+
+  @override
+  String toString() {
+    return 'S3ObjectEvent.reportS3Object(s3Object: $s3Object, type: $type, content: $content)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ReportS3ObjectImpl &&
+            (identical(other.s3Object, s3Object) ||
+                other.s3Object == s3Object) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.content, content) || other.content == content));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, s3Object, type, content);
+
+  /// Create a copy of S3ObjectEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ReportS3ObjectImplCopyWith<_$ReportS3ObjectImpl> get copyWith =>
+      __$$ReportS3ObjectImplCopyWithImpl<_$ReportS3ObjectImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialize,
+    required TResult Function(int skip, int take) getS3Objects,
+    required TResult Function() clearError,
+    required TResult Function(File file, User user) uploadFile,
+    required TResult Function(S3Object s3Object, User user) deleteFile,
+    required TResult Function(String id, User user) findOneOrFail,
+    required TResult Function() count,
+    required TResult Function(String year, String month)
+        checkObjectsExistenceByMonth,
+    required TResult Function(String year, String month, String day)
+        getObjectsByDate,
+    required TResult Function(S3Object s3Object, User user) likeS3Object,
+    required TResult Function(S3ObjectLike s3ObjectLike, User user)
+        removeLikeS3Object,
+    required TResult Function(S3Object s3Object, User user, String content)
+        replyS3Object,
+    required TResult Function(S3ObjectReply s3ObjectReply, User user)
+        removeReplyS3Object,
+    required TResult Function(
+            S3Object s3Object, ReportReason type, String? content)
+        reportS3Object,
+    required TResult Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)
+        reportS3ObjectReply,
+  }) {
+    return reportS3Object(s3Object, type, content);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialize,
+    TResult? Function(int skip, int take)? getS3Objects,
+    TResult? Function()? clearError,
+    TResult? Function(File file, User user)? uploadFile,
+    TResult? Function(S3Object s3Object, User user)? deleteFile,
+    TResult? Function(String id, User user)? findOneOrFail,
+    TResult? Function()? count,
+    TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
+    TResult? Function(String year, String month, String day)? getObjectsByDate,
+    TResult? Function(S3Object s3Object, User user)? likeS3Object,
+    TResult? Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
+    TResult? Function(S3Object s3Object, User user, String content)?
+        replyS3Object,
+    TResult? Function(S3ObjectReply s3ObjectReply, User user)?
+        removeReplyS3Object,
+    TResult? Function(S3Object s3Object, ReportReason type, String? content)?
+        reportS3Object,
+    TResult? Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
+        reportS3ObjectReply,
+  }) {
+    return reportS3Object?.call(s3Object, type, content);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialize,
+    TResult Function(int skip, int take)? getS3Objects,
+    TResult Function()? clearError,
+    TResult Function(File file, User user)? uploadFile,
+    TResult Function(S3Object s3Object, User user)? deleteFile,
+    TResult Function(String id, User user)? findOneOrFail,
+    TResult Function()? count,
+    TResult Function(String year, String month)? checkObjectsExistenceByMonth,
+    TResult Function(String year, String month, String day)? getObjectsByDate,
+    TResult Function(S3Object s3Object, User user)? likeS3Object,
+    TResult Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
+    TResult Function(S3Object s3Object, User user, String content)?
+        replyS3Object,
+    TResult Function(S3ObjectReply s3ObjectReply, User user)?
+        removeReplyS3Object,
+    TResult Function(S3Object s3Object, ReportReason type, String? content)?
+        reportS3Object,
+    TResult Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
+        reportS3ObjectReply,
+    required TResult orElse(),
+  }) {
+    if (reportS3Object != null) {
+      return reportS3Object(s3Object, type, content);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_GetS3Objects value) getS3Objects,
+    required TResult Function(_ClearError value) clearError,
+    required TResult Function(_UploadFile value) uploadFile,
+    required TResult Function(_DeleteFile value) deleteFile,
+    required TResult Function(_FindOneOrFail value) findOneOrFail,
+    required TResult Function(_Count value) count,
+    required TResult Function(_CheckObjectsExistenceByMonth value)
+        checkObjectsExistenceByMonth,
+    required TResult Function(_GetObjectsByDate value) getObjectsByDate,
+    required TResult Function(_LikeS3Object value) likeS3Object,
+    required TResult Function(_RemoveLikeS3Object value) removeLikeS3Object,
+    required TResult Function(_ReplyS3Object value) replyS3Object,
+    required TResult Function(_RemoveReplyS3Object value) removeReplyS3Object,
+    required TResult Function(_ReportS3Object value) reportS3Object,
+    required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
+  }) {
+    return reportS3Object(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialize value)? initialize,
+    TResult? Function(_GetS3Objects value)? getS3Objects,
+    TResult? Function(_ClearError value)? clearError,
+    TResult? Function(_UploadFile value)? uploadFile,
+    TResult? Function(_DeleteFile value)? deleteFile,
+    TResult? Function(_FindOneOrFail value)? findOneOrFail,
+    TResult? Function(_Count value)? count,
+    TResult? Function(_CheckObjectsExistenceByMonth value)?
+        checkObjectsExistenceByMonth,
+    TResult? Function(_GetObjectsByDate value)? getObjectsByDate,
+    TResult? Function(_LikeS3Object value)? likeS3Object,
+    TResult? Function(_RemoveLikeS3Object value)? removeLikeS3Object,
+    TResult? Function(_ReplyS3Object value)? replyS3Object,
+    TResult? Function(_RemoveReplyS3Object value)? removeReplyS3Object,
+    TResult? Function(_ReportS3Object value)? reportS3Object,
+    TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+  }) {
+    return reportS3Object?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_GetS3Objects value)? getS3Objects,
+    TResult Function(_ClearError value)? clearError,
+    TResult Function(_UploadFile value)? uploadFile,
+    TResult Function(_DeleteFile value)? deleteFile,
+    TResult Function(_FindOneOrFail value)? findOneOrFail,
+    TResult Function(_Count value)? count,
+    TResult Function(_CheckObjectsExistenceByMonth value)?
+        checkObjectsExistenceByMonth,
+    TResult Function(_GetObjectsByDate value)? getObjectsByDate,
+    TResult Function(_LikeS3Object value)? likeS3Object,
+    TResult Function(_RemoveLikeS3Object value)? removeLikeS3Object,
+    TResult Function(_ReplyS3Object value)? replyS3Object,
+    TResult Function(_RemoveReplyS3Object value)? removeReplyS3Object,
+    TResult Function(_ReportS3Object value)? reportS3Object,
+    TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+    required TResult orElse(),
+  }) {
+    if (reportS3Object != null) {
+      return reportS3Object(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ReportS3Object implements S3ObjectEvent {
+  const factory _ReportS3Object(final S3Object s3Object,
+      final ReportReason type, final String? content) = _$ReportS3ObjectImpl;
+
+  S3Object get s3Object;
+  ReportReason get type;
+  String? get content;
+
+  /// Create a copy of S3ObjectEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ReportS3ObjectImplCopyWith<_$ReportS3ObjectImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ReportS3ObjectReplyImplCopyWith<$Res> {
+  factory _$$ReportS3ObjectReplyImplCopyWith(_$ReportS3ObjectReplyImpl value,
+          $Res Function(_$ReportS3ObjectReplyImpl) then) =
+      __$$ReportS3ObjectReplyImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({S3ObjectReply s3ObjectReply, ReportReason type, String? content});
+
+  $S3ObjectReplyCopyWith<$Res> get s3ObjectReply;
+}
+
+/// @nodoc
+class __$$ReportS3ObjectReplyImplCopyWithImpl<$Res>
+    extends _$S3ObjectEventCopyWithImpl<$Res, _$ReportS3ObjectReplyImpl>
+    implements _$$ReportS3ObjectReplyImplCopyWith<$Res> {
+  __$$ReportS3ObjectReplyImplCopyWithImpl(_$ReportS3ObjectReplyImpl _value,
+      $Res Function(_$ReportS3ObjectReplyImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of S3ObjectEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? s3ObjectReply = null,
+    Object? type = null,
+    Object? content = freezed,
+  }) {
+    return _then(_$ReportS3ObjectReplyImpl(
+      null == s3ObjectReply
+          ? _value.s3ObjectReply
+          : s3ObjectReply // ignore: cast_nullable_to_non_nullable
+              as S3ObjectReply,
+      null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as ReportReason,
+      freezed == content
+          ? _value.content
+          : content // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+
+  /// Create a copy of S3ObjectEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $S3ObjectReplyCopyWith<$Res> get s3ObjectReply {
+    return $S3ObjectReplyCopyWith<$Res>(_value.s3ObjectReply, (value) {
+      return _then(_value.copyWith(s3ObjectReply: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$ReportS3ObjectReplyImpl implements _ReportS3ObjectReply {
+  const _$ReportS3ObjectReplyImpl(this.s3ObjectReply, this.type, this.content);
+
+  @override
+  final S3ObjectReply s3ObjectReply;
+  @override
+  final ReportReason type;
+  @override
+  final String? content;
+
+  @override
+  String toString() {
+    return 'S3ObjectEvent.reportS3ObjectReply(s3ObjectReply: $s3ObjectReply, type: $type, content: $content)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ReportS3ObjectReplyImpl &&
+            (identical(other.s3ObjectReply, s3ObjectReply) ||
+                other.s3ObjectReply == s3ObjectReply) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.content, content) || other.content == content));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, s3ObjectReply, type, content);
+
+  /// Create a copy of S3ObjectEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ReportS3ObjectReplyImplCopyWith<_$ReportS3ObjectReplyImpl> get copyWith =>
+      __$$ReportS3ObjectReplyImplCopyWithImpl<_$ReportS3ObjectReplyImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialize,
+    required TResult Function(int skip, int take) getS3Objects,
+    required TResult Function() clearError,
+    required TResult Function(File file, User user) uploadFile,
+    required TResult Function(S3Object s3Object, User user) deleteFile,
+    required TResult Function(String id, User user) findOneOrFail,
+    required TResult Function() count,
+    required TResult Function(String year, String month)
+        checkObjectsExistenceByMonth,
+    required TResult Function(String year, String month, String day)
+        getObjectsByDate,
+    required TResult Function(S3Object s3Object, User user) likeS3Object,
+    required TResult Function(S3ObjectLike s3ObjectLike, User user)
+        removeLikeS3Object,
+    required TResult Function(S3Object s3Object, User user, String content)
+        replyS3Object,
+    required TResult Function(S3ObjectReply s3ObjectReply, User user)
+        removeReplyS3Object,
+    required TResult Function(
+            S3Object s3Object, ReportReason type, String? content)
+        reportS3Object,
+    required TResult Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)
+        reportS3ObjectReply,
+  }) {
+    return reportS3ObjectReply(s3ObjectReply, type, content);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialize,
+    TResult? Function(int skip, int take)? getS3Objects,
+    TResult? Function()? clearError,
+    TResult? Function(File file, User user)? uploadFile,
+    TResult? Function(S3Object s3Object, User user)? deleteFile,
+    TResult? Function(String id, User user)? findOneOrFail,
+    TResult? Function()? count,
+    TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
+    TResult? Function(String year, String month, String day)? getObjectsByDate,
+    TResult? Function(S3Object s3Object, User user)? likeS3Object,
+    TResult? Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
+    TResult? Function(S3Object s3Object, User user, String content)?
+        replyS3Object,
+    TResult? Function(S3ObjectReply s3ObjectReply, User user)?
+        removeReplyS3Object,
+    TResult? Function(S3Object s3Object, ReportReason type, String? content)?
+        reportS3Object,
+    TResult? Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
+        reportS3ObjectReply,
+  }) {
+    return reportS3ObjectReply?.call(s3ObjectReply, type, content);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialize,
+    TResult Function(int skip, int take)? getS3Objects,
+    TResult Function()? clearError,
+    TResult Function(File file, User user)? uploadFile,
+    TResult Function(S3Object s3Object, User user)? deleteFile,
+    TResult Function(String id, User user)? findOneOrFail,
+    TResult Function()? count,
+    TResult Function(String year, String month)? checkObjectsExistenceByMonth,
+    TResult Function(String year, String month, String day)? getObjectsByDate,
+    TResult Function(S3Object s3Object, User user)? likeS3Object,
+    TResult Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
+    TResult Function(S3Object s3Object, User user, String content)?
+        replyS3Object,
+    TResult Function(S3ObjectReply s3ObjectReply, User user)?
+        removeReplyS3Object,
+    TResult Function(S3Object s3Object, ReportReason type, String? content)?
+        reportS3Object,
+    TResult Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
+        reportS3ObjectReply,
+    required TResult orElse(),
+  }) {
+    if (reportS3ObjectReply != null) {
+      return reportS3ObjectReply(s3ObjectReply, type, content);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_GetS3Objects value) getS3Objects,
+    required TResult Function(_ClearError value) clearError,
+    required TResult Function(_UploadFile value) uploadFile,
+    required TResult Function(_DeleteFile value) deleteFile,
+    required TResult Function(_FindOneOrFail value) findOneOrFail,
+    required TResult Function(_Count value) count,
+    required TResult Function(_CheckObjectsExistenceByMonth value)
+        checkObjectsExistenceByMonth,
+    required TResult Function(_GetObjectsByDate value) getObjectsByDate,
+    required TResult Function(_LikeS3Object value) likeS3Object,
+    required TResult Function(_RemoveLikeS3Object value) removeLikeS3Object,
+    required TResult Function(_ReplyS3Object value) replyS3Object,
+    required TResult Function(_RemoveReplyS3Object value) removeReplyS3Object,
+    required TResult Function(_ReportS3Object value) reportS3Object,
+    required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
+  }) {
+    return reportS3ObjectReply(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialize value)? initialize,
+    TResult? Function(_GetS3Objects value)? getS3Objects,
+    TResult? Function(_ClearError value)? clearError,
+    TResult? Function(_UploadFile value)? uploadFile,
+    TResult? Function(_DeleteFile value)? deleteFile,
+    TResult? Function(_FindOneOrFail value)? findOneOrFail,
+    TResult? Function(_Count value)? count,
+    TResult? Function(_CheckObjectsExistenceByMonth value)?
+        checkObjectsExistenceByMonth,
+    TResult? Function(_GetObjectsByDate value)? getObjectsByDate,
+    TResult? Function(_LikeS3Object value)? likeS3Object,
+    TResult? Function(_RemoveLikeS3Object value)? removeLikeS3Object,
+    TResult? Function(_ReplyS3Object value)? replyS3Object,
+    TResult? Function(_RemoveReplyS3Object value)? removeReplyS3Object,
+    TResult? Function(_ReportS3Object value)? reportS3Object,
+    TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+  }) {
+    return reportS3ObjectReply?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_GetS3Objects value)? getS3Objects,
+    TResult Function(_ClearError value)? clearError,
+    TResult Function(_UploadFile value)? uploadFile,
+    TResult Function(_DeleteFile value)? deleteFile,
+    TResult Function(_FindOneOrFail value)? findOneOrFail,
+    TResult Function(_Count value)? count,
+    TResult Function(_CheckObjectsExistenceByMonth value)?
+        checkObjectsExistenceByMonth,
+    TResult Function(_GetObjectsByDate value)? getObjectsByDate,
+    TResult Function(_LikeS3Object value)? likeS3Object,
+    TResult Function(_RemoveLikeS3Object value)? removeLikeS3Object,
+    TResult Function(_ReplyS3Object value)? replyS3Object,
+    TResult Function(_RemoveReplyS3Object value)? removeReplyS3Object,
+    TResult Function(_ReportS3Object value)? reportS3Object,
+    TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+    required TResult orElse(),
+  }) {
+    if (reportS3ObjectReply != null) {
+      return reportS3ObjectReply(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ReportS3ObjectReply implements S3ObjectEvent {
+  const factory _ReportS3ObjectReply(
+      final S3ObjectReply s3ObjectReply,
+      final ReportReason type,
+      final String? content) = _$ReportS3ObjectReplyImpl;
+
+  S3ObjectReply get s3ObjectReply;
+  ReportReason get type;
+  String? get content;
+
+  /// Create a copy of S3ObjectEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ReportS3ObjectReplyImplCopyWith<_$ReportS3ObjectReplyImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -4,6 +4,7 @@ import 'package:flutter_common/models/aws/s3/s3_object.dart';
 import 'package:flutter_common/models/aws/s3/s3_object_like.dart';
 import 'package:flutter_common/models/aws/s3/s3_object_reply.dart';
 import 'package:flutter_common/models/user/user.dart';
+import 'package:flutter_common/widgets/dialogs/report_dialog.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 's3_object_event.freezed.dart';
@@ -14,6 +15,8 @@ class S3ObjectEvent with _$S3ObjectEvent {
   const factory S3ObjectEvent.getS3Objects(int skip, int take) = _GetS3Objects;
   const factory S3ObjectEvent.clearError() = _ClearError;
   const factory S3ObjectEvent.uploadFile(File file, User user) = _UploadFile;
+  const factory S3ObjectEvent.deleteFile(S3Object s3Object, User user) =
+      _DeleteFile;
   const factory S3ObjectEvent.findOneOrFail(String id, User user) =
       _FindOneOrFail;
   const factory S3ObjectEvent.count() = _Count;
@@ -29,4 +32,10 @@ class S3ObjectEvent with _$S3ObjectEvent {
       S3Object s3Object, User user, String content) = _ReplyS3Object;
   const factory S3ObjectEvent.removeReplyS3Object(
       S3ObjectReply s3ObjectReply, User user) = _RemoveReplyS3Object;
+  const factory S3ObjectEvent.reportS3Object(
+      S3Object s3Object, ReportReason type, String? content) = _ReportS3Object;
+
+  const factory S3ObjectEvent.reportS3ObjectReply(
+          S3ObjectReply s3ObjectReply, ReportReason type, String? content) =
+      _ReportS3ObjectReply;
 }

@@ -126,7 +126,8 @@
         "loadingMessage": "Please wait a moment...",
         "reply": "Reply",
         "delete": "Delete",
-        "report": "Report"
+        "report": "Report",
+        "info": "Info"
     },
     "validation" : {
         "titleOrContentRequired": "Please enter the title or content.",
@@ -423,5 +424,31 @@
         "remainingBalance": "Remaining Balance",
         "prepayment": "Prepayment"
 
+    },
+    "file": {
+        "fileInfo": "File Info",
+        "fileSize": "File Size",
+        "fileType": "File Type",
+        "fileName": "File Name",
+        "fileUrl": "File URL",
+        "fileActive": "File Active",
+        "fileTags": "File Tags",
+        "fileLikes": "File Likes",
+        "fileReplies": "File Replies",
+        "fileCreatedAt": "File Created At",
+        "fileUpdatedAt": "File Updated At",
+        "fileDeletedAt": "File Deleted At",
+        "fileDeleted": "File Deleted",
+        "fileDeletedDescription": "Are you sure you want to delete this file?",
+        "fileDeletedConfirmation": "Are you sure you want to delete this file?",
+        "fileDeletedSuccess": "File deleted successfully.",
+        "fileDeletedError": "An error occurred while deleting the file.",
+        "fileDeletedCancel": "File Deleted Cancel",
+        "fileDeletedCancelConfirmation": "Are you sure you want to cancel the file deletion?",
+        "fileDeletedCancelSuccess": "File deletion cancelled successfully.",
+        "fileDeletedCancelError": "An error occurred while cancelling the file deletion.",
+        "technicalInfo": "Technical Info",
+        "userId": "User ID",
+        "fileNameByUser": "File Owner Name"
     }
 } 

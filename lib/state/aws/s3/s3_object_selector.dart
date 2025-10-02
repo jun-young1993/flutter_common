@@ -140,3 +140,13 @@ class S3ObjectLikeSelector extends S3ObjectSelector<S3ObjectLike?> {
           builder: (context, like) => builder(like),
         );
 }
+
+class S3ObjectIsDeletingSelector extends S3ObjectSelector<bool> {
+  S3ObjectIsDeletingSelector(Widget Function(bool isDeleting) builder,
+      {Key? key})
+      : super(
+          key: key,
+          selector: (state) => state.isDeleting,
+          builder: (context, isDeleting) => builder(isDeleting),
+        );
+}
