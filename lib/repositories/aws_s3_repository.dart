@@ -5,6 +5,7 @@ import 'package:flutter_common/constants/juny_constants.dart';
 import 'package:flutter_common/models/aws/s3/s3_object.dart';
 import 'package:flutter_common/models/aws/s3/s3_object_like.dart';
 import 'package:flutter_common/models/aws/s3/s3_object_reply.dart';
+import 'package:flutter_common/models/aws/s3/s3_object_surround.dart';
 import 'package:flutter_common/models/user/user.dart';
 import 'package:flutter_common/network/dio_client.dart';
 import 'package:flutter_common/widgets/dialogs/report_dialog.dart';
@@ -27,6 +28,7 @@ abstract class AwsS3Repository {
       S3Object s3Object, ReportReason type, String? content);
   Future<bool> reportS3ObjectReply(
       S3ObjectReply s3ObjectReply, ReportReason type, String? content);
+  Future<S3ObjectSurround> getS3ObjectSurround(S3Object s3Object);
 }
 
 class AwsS3DefaultRepository extends AwsS3Repository {
@@ -230,5 +232,15 @@ class AwsS3DefaultRepository extends AwsS3Repository {
       return true;
     }
     throw Exception('S3 객체 댓글 신고 실패');
+  }
+
+  @override
+  Future<S3ObjectSurround> getS3ObjectSurround(S3Object s3Object) async {
+    final response =
+        await dioClient.get('/aws/s3/objects/${s3Object.id}/surrounding');
+    if (response.statusCode == 200) {
+      return S3ObjectSurround.fromJson(response.data);
+    }
+    throw Exception('S3 객체 주변 조회 실패');
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_common/extensions/app_exception.dart';
 import 'package:flutter_common/models/aws/s3/s3_object.dart';
 import 'package:flutter_common/models/aws/s3/s3_object_like.dart';
+import 'package:flutter_common/models/aws/s3/s3_object_surround.dart';
 import 'package:flutter_common/state/aws/s3/s3_object_bloc.dart';
 import 'package:flutter_common/state/aws/s3/s3_object_state.dart';
 
@@ -148,5 +149,29 @@ class S3ObjectIsDeletingSelector extends S3ObjectSelector<bool> {
           key: key,
           selector: (state) => state.isDeleting,
           builder: (context, isDeleting) => builder(isDeleting),
+        );
+}
+
+class S3ObjectIsS3ObjectSurroundLoadingSelector extends S3ObjectSelector<bool> {
+  S3ObjectIsS3ObjectSurroundLoadingSelector(
+      Widget Function(bool isS3ObjectSurroundLoading) builder,
+      {Key? key})
+      : super(
+          key: key,
+          selector: (state) => state.isS3ObjectSurroundLoading,
+          builder: (context, isS3ObjectSurroundLoading) =>
+              builder(isS3ObjectSurroundLoading),
+        );
+}
+
+class S3ObjectS3ObjectSurroundSelector
+    extends S3ObjectSelector<S3ObjectSurround?> {
+  S3ObjectS3ObjectSurroundSelector(
+      Widget Function(S3ObjectSurround? s3ObjectSurround) builder,
+      {Key? key})
+      : super(
+          key: key,
+          selector: (state) => state.s3ObjectSurround,
+          builder: (context, s3ObjectSurround) => builder(s3ObjectSurround),
         );
 }

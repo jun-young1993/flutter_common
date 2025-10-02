@@ -42,6 +42,7 @@ mixin _$S3ObjectEvent {
     required TResult Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)
         reportS3ObjectReply,
+    required TResult Function(S3Object s3Object) getS3ObjectSurround,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -66,6 +67,7 @@ mixin _$S3ObjectEvent {
     TResult? Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
+    TResult? Function(S3Object s3Object)? getS3ObjectSurround,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -90,6 +92,7 @@ mixin _$S3ObjectEvent {
     TResult Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
+    TResult Function(S3Object s3Object)? getS3ObjectSurround,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -111,6 +114,7 @@ mixin _$S3ObjectEvent {
     required TResult Function(_RemoveReplyS3Object value) removeReplyS3Object,
     required TResult Function(_ReportS3Object value) reportS3Object,
     required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
+    required TResult Function(_GetS3ObjectSurround value) getS3ObjectSurround,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -131,6 +135,7 @@ mixin _$S3ObjectEvent {
     TResult? Function(_RemoveReplyS3Object value)? removeReplyS3Object,
     TResult? Function(_ReportS3Object value)? reportS3Object,
     TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+    TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -151,6 +156,7 @@ mixin _$S3ObjectEvent {
     TResult Function(_RemoveReplyS3Object value)? removeReplyS3Object,
     TResult Function(_ReportS3Object value)? reportS3Object,
     TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+    TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -242,6 +248,7 @@ class _$InitializeImpl implements _Initialize {
     required TResult Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)
         reportS3ObjectReply,
+    required TResult Function(S3Object s3Object) getS3ObjectSurround,
   }) {
     return initialize();
   }
@@ -269,6 +276,7 @@ class _$InitializeImpl implements _Initialize {
     TResult? Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
+    TResult? Function(S3Object s3Object)? getS3ObjectSurround,
   }) {
     return initialize?.call();
   }
@@ -296,6 +304,7 @@ class _$InitializeImpl implements _Initialize {
     TResult Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
+    TResult Function(S3Object s3Object)? getS3ObjectSurround,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -323,6 +332,7 @@ class _$InitializeImpl implements _Initialize {
     required TResult Function(_RemoveReplyS3Object value) removeReplyS3Object,
     required TResult Function(_ReportS3Object value) reportS3Object,
     required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
+    required TResult Function(_GetS3ObjectSurround value) getS3ObjectSurround,
   }) {
     return initialize(this);
   }
@@ -346,6 +356,7 @@ class _$InitializeImpl implements _Initialize {
     TResult? Function(_RemoveReplyS3Object value)? removeReplyS3Object,
     TResult? Function(_ReportS3Object value)? reportS3Object,
     TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+    TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
   }) {
     return initialize?.call(this);
   }
@@ -369,6 +380,7 @@ class _$InitializeImpl implements _Initialize {
     TResult Function(_RemoveReplyS3Object value)? removeReplyS3Object,
     TResult Function(_ReportS3Object value)? reportS3Object,
     TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+    TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -482,6 +494,7 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     required TResult Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)
         reportS3ObjectReply,
+    required TResult Function(S3Object s3Object) getS3ObjectSurround,
   }) {
     return getS3Objects(skip, take);
   }
@@ -509,6 +522,7 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     TResult? Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
+    TResult? Function(S3Object s3Object)? getS3ObjectSurround,
   }) {
     return getS3Objects?.call(skip, take);
   }
@@ -536,6 +550,7 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     TResult Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
+    TResult Function(S3Object s3Object)? getS3ObjectSurround,
     required TResult orElse(),
   }) {
     if (getS3Objects != null) {
@@ -563,6 +578,7 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     required TResult Function(_RemoveReplyS3Object value) removeReplyS3Object,
     required TResult Function(_ReportS3Object value) reportS3Object,
     required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
+    required TResult Function(_GetS3ObjectSurround value) getS3ObjectSurround,
   }) {
     return getS3Objects(this);
   }
@@ -586,6 +602,7 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     TResult? Function(_RemoveReplyS3Object value)? removeReplyS3Object,
     TResult? Function(_ReportS3Object value)? reportS3Object,
     TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+    TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
   }) {
     return getS3Objects?.call(this);
   }
@@ -609,6 +626,7 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     TResult Function(_RemoveReplyS3Object value)? removeReplyS3Object,
     TResult Function(_ReportS3Object value)? reportS3Object,
     TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+    TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     required TResult orElse(),
   }) {
     if (getS3Objects != null) {
@@ -697,6 +715,7 @@ class _$ClearErrorImpl implements _ClearError {
     required TResult Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)
         reportS3ObjectReply,
+    required TResult Function(S3Object s3Object) getS3ObjectSurround,
   }) {
     return clearError();
   }
@@ -724,6 +743,7 @@ class _$ClearErrorImpl implements _ClearError {
     TResult? Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
+    TResult? Function(S3Object s3Object)? getS3ObjectSurround,
   }) {
     return clearError?.call();
   }
@@ -751,6 +771,7 @@ class _$ClearErrorImpl implements _ClearError {
     TResult Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
+    TResult Function(S3Object s3Object)? getS3ObjectSurround,
     required TResult orElse(),
   }) {
     if (clearError != null) {
@@ -778,6 +799,7 @@ class _$ClearErrorImpl implements _ClearError {
     required TResult Function(_RemoveReplyS3Object value) removeReplyS3Object,
     required TResult Function(_ReportS3Object value) reportS3Object,
     required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
+    required TResult Function(_GetS3ObjectSurround value) getS3ObjectSurround,
   }) {
     return clearError(this);
   }
@@ -801,6 +823,7 @@ class _$ClearErrorImpl implements _ClearError {
     TResult? Function(_RemoveReplyS3Object value)? removeReplyS3Object,
     TResult? Function(_ReportS3Object value)? reportS3Object,
     TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+    TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
   }) {
     return clearError?.call(this);
   }
@@ -824,6 +847,7 @@ class _$ClearErrorImpl implements _ClearError {
     TResult Function(_RemoveReplyS3Object value)? removeReplyS3Object,
     TResult Function(_ReportS3Object value)? reportS3Object,
     TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+    TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     required TResult orElse(),
   }) {
     if (clearError != null) {
@@ -949,6 +973,7 @@ class _$UploadFileImpl implements _UploadFile {
     required TResult Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)
         reportS3ObjectReply,
+    required TResult Function(S3Object s3Object) getS3ObjectSurround,
   }) {
     return uploadFile(file, user);
   }
@@ -976,6 +1001,7 @@ class _$UploadFileImpl implements _UploadFile {
     TResult? Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
+    TResult? Function(S3Object s3Object)? getS3ObjectSurround,
   }) {
     return uploadFile?.call(file, user);
   }
@@ -1003,6 +1029,7 @@ class _$UploadFileImpl implements _UploadFile {
     TResult Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
+    TResult Function(S3Object s3Object)? getS3ObjectSurround,
     required TResult orElse(),
   }) {
     if (uploadFile != null) {
@@ -1030,6 +1057,7 @@ class _$UploadFileImpl implements _UploadFile {
     required TResult Function(_RemoveReplyS3Object value) removeReplyS3Object,
     required TResult Function(_ReportS3Object value) reportS3Object,
     required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
+    required TResult Function(_GetS3ObjectSurround value) getS3ObjectSurround,
   }) {
     return uploadFile(this);
   }
@@ -1053,6 +1081,7 @@ class _$UploadFileImpl implements _UploadFile {
     TResult? Function(_RemoveReplyS3Object value)? removeReplyS3Object,
     TResult? Function(_ReportS3Object value)? reportS3Object,
     TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+    TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
   }) {
     return uploadFile?.call(this);
   }
@@ -1076,6 +1105,7 @@ class _$UploadFileImpl implements _UploadFile {
     TResult Function(_RemoveReplyS3Object value)? removeReplyS3Object,
     TResult Function(_ReportS3Object value)? reportS3Object,
     TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+    TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     required TResult orElse(),
   }) {
     if (uploadFile != null) {
@@ -1223,6 +1253,7 @@ class _$DeleteFileImpl implements _DeleteFile {
     required TResult Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)
         reportS3ObjectReply,
+    required TResult Function(S3Object s3Object) getS3ObjectSurround,
   }) {
     return deleteFile(s3Object, user);
   }
@@ -1250,6 +1281,7 @@ class _$DeleteFileImpl implements _DeleteFile {
     TResult? Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
+    TResult? Function(S3Object s3Object)? getS3ObjectSurround,
   }) {
     return deleteFile?.call(s3Object, user);
   }
@@ -1277,6 +1309,7 @@ class _$DeleteFileImpl implements _DeleteFile {
     TResult Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
+    TResult Function(S3Object s3Object)? getS3ObjectSurround,
     required TResult orElse(),
   }) {
     if (deleteFile != null) {
@@ -1304,6 +1337,7 @@ class _$DeleteFileImpl implements _DeleteFile {
     required TResult Function(_RemoveReplyS3Object value) removeReplyS3Object,
     required TResult Function(_ReportS3Object value) reportS3Object,
     required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
+    required TResult Function(_GetS3ObjectSurround value) getS3ObjectSurround,
   }) {
     return deleteFile(this);
   }
@@ -1327,6 +1361,7 @@ class _$DeleteFileImpl implements _DeleteFile {
     TResult? Function(_RemoveReplyS3Object value)? removeReplyS3Object,
     TResult? Function(_ReportS3Object value)? reportS3Object,
     TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+    TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
   }) {
     return deleteFile?.call(this);
   }
@@ -1350,6 +1385,7 @@ class _$DeleteFileImpl implements _DeleteFile {
     TResult Function(_RemoveReplyS3Object value)? removeReplyS3Object,
     TResult Function(_ReportS3Object value)? reportS3Object,
     TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+    TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     required TResult orElse(),
   }) {
     if (deleteFile != null) {
@@ -1485,6 +1521,7 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     required TResult Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)
         reportS3ObjectReply,
+    required TResult Function(S3Object s3Object) getS3ObjectSurround,
   }) {
     return findOneOrFail(id, user);
   }
@@ -1512,6 +1549,7 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     TResult? Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
+    TResult? Function(S3Object s3Object)? getS3ObjectSurround,
   }) {
     return findOneOrFail?.call(id, user);
   }
@@ -1539,6 +1577,7 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     TResult Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
+    TResult Function(S3Object s3Object)? getS3ObjectSurround,
     required TResult orElse(),
   }) {
     if (findOneOrFail != null) {
@@ -1566,6 +1605,7 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     required TResult Function(_RemoveReplyS3Object value) removeReplyS3Object,
     required TResult Function(_ReportS3Object value) reportS3Object,
     required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
+    required TResult Function(_GetS3ObjectSurround value) getS3ObjectSurround,
   }) {
     return findOneOrFail(this);
   }
@@ -1589,6 +1629,7 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     TResult? Function(_RemoveReplyS3Object value)? removeReplyS3Object,
     TResult? Function(_ReportS3Object value)? reportS3Object,
     TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+    TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
   }) {
     return findOneOrFail?.call(this);
   }
@@ -1612,6 +1653,7 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     TResult Function(_RemoveReplyS3Object value)? removeReplyS3Object,
     TResult Function(_ReportS3Object value)? reportS3Object,
     TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+    TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     required TResult orElse(),
   }) {
     if (findOneOrFail != null) {
@@ -1700,6 +1742,7 @@ class _$CountImpl implements _Count {
     required TResult Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)
         reportS3ObjectReply,
+    required TResult Function(S3Object s3Object) getS3ObjectSurround,
   }) {
     return count();
   }
@@ -1727,6 +1770,7 @@ class _$CountImpl implements _Count {
     TResult? Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
+    TResult? Function(S3Object s3Object)? getS3ObjectSurround,
   }) {
     return count?.call();
   }
@@ -1754,6 +1798,7 @@ class _$CountImpl implements _Count {
     TResult Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
+    TResult Function(S3Object s3Object)? getS3ObjectSurround,
     required TResult orElse(),
   }) {
     if (count != null) {
@@ -1781,6 +1826,7 @@ class _$CountImpl implements _Count {
     required TResult Function(_RemoveReplyS3Object value) removeReplyS3Object,
     required TResult Function(_ReportS3Object value) reportS3Object,
     required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
+    required TResult Function(_GetS3ObjectSurround value) getS3ObjectSurround,
   }) {
     return count(this);
   }
@@ -1804,6 +1850,7 @@ class _$CountImpl implements _Count {
     TResult? Function(_RemoveReplyS3Object value)? removeReplyS3Object,
     TResult? Function(_ReportS3Object value)? reportS3Object,
     TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+    TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
   }) {
     return count?.call(this);
   }
@@ -1827,6 +1874,7 @@ class _$CountImpl implements _Count {
     TResult Function(_RemoveReplyS3Object value)? removeReplyS3Object,
     TResult Function(_ReportS3Object value)? reportS3Object,
     TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+    TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     required TResult orElse(),
   }) {
     if (count != null) {
@@ -1946,6 +1994,7 @@ class _$CheckObjectsExistenceByMonthImpl
     required TResult Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)
         reportS3ObjectReply,
+    required TResult Function(S3Object s3Object) getS3ObjectSurround,
   }) {
     return checkObjectsExistenceByMonth(year, month);
   }
@@ -1973,6 +2022,7 @@ class _$CheckObjectsExistenceByMonthImpl
     TResult? Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
+    TResult? Function(S3Object s3Object)? getS3ObjectSurround,
   }) {
     return checkObjectsExistenceByMonth?.call(year, month);
   }
@@ -2000,6 +2050,7 @@ class _$CheckObjectsExistenceByMonthImpl
     TResult Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
+    TResult Function(S3Object s3Object)? getS3ObjectSurround,
     required TResult orElse(),
   }) {
     if (checkObjectsExistenceByMonth != null) {
@@ -2027,6 +2078,7 @@ class _$CheckObjectsExistenceByMonthImpl
     required TResult Function(_RemoveReplyS3Object value) removeReplyS3Object,
     required TResult Function(_ReportS3Object value) reportS3Object,
     required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
+    required TResult Function(_GetS3ObjectSurround value) getS3ObjectSurround,
   }) {
     return checkObjectsExistenceByMonth(this);
   }
@@ -2050,6 +2102,7 @@ class _$CheckObjectsExistenceByMonthImpl
     TResult? Function(_RemoveReplyS3Object value)? removeReplyS3Object,
     TResult? Function(_ReportS3Object value)? reportS3Object,
     TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+    TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
   }) {
     return checkObjectsExistenceByMonth?.call(this);
   }
@@ -2073,6 +2126,7 @@ class _$CheckObjectsExistenceByMonthImpl
     TResult Function(_RemoveReplyS3Object value)? removeReplyS3Object,
     TResult Function(_ReportS3Object value)? reportS3Object,
     TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+    TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     required TResult orElse(),
   }) {
     if (checkObjectsExistenceByMonth != null) {
@@ -2207,6 +2261,7 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
     required TResult Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)
         reportS3ObjectReply,
+    required TResult Function(S3Object s3Object) getS3ObjectSurround,
   }) {
     return getObjectsByDate(year, month, day);
   }
@@ -2234,6 +2289,7 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
     TResult? Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
+    TResult? Function(S3Object s3Object)? getS3ObjectSurround,
   }) {
     return getObjectsByDate?.call(year, month, day);
   }
@@ -2261,6 +2317,7 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
     TResult Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
+    TResult Function(S3Object s3Object)? getS3ObjectSurround,
     required TResult orElse(),
   }) {
     if (getObjectsByDate != null) {
@@ -2288,6 +2345,7 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
     required TResult Function(_RemoveReplyS3Object value) removeReplyS3Object,
     required TResult Function(_ReportS3Object value) reportS3Object,
     required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
+    required TResult Function(_GetS3ObjectSurround value) getS3ObjectSurround,
   }) {
     return getObjectsByDate(this);
   }
@@ -2311,6 +2369,7 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
     TResult? Function(_RemoveReplyS3Object value)? removeReplyS3Object,
     TResult? Function(_ReportS3Object value)? reportS3Object,
     TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+    TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
   }) {
     return getObjectsByDate?.call(this);
   }
@@ -2334,6 +2393,7 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
     TResult Function(_RemoveReplyS3Object value)? removeReplyS3Object,
     TResult Function(_ReportS3Object value)? reportS3Object,
     TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+    TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     required TResult orElse(),
   }) {
     if (getObjectsByDate != null) {
@@ -2483,6 +2543,7 @@ class _$LikeS3ObjectImpl implements _LikeS3Object {
     required TResult Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)
         reportS3ObjectReply,
+    required TResult Function(S3Object s3Object) getS3ObjectSurround,
   }) {
     return likeS3Object(s3Object, user);
   }
@@ -2510,6 +2571,7 @@ class _$LikeS3ObjectImpl implements _LikeS3Object {
     TResult? Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
+    TResult? Function(S3Object s3Object)? getS3ObjectSurround,
   }) {
     return likeS3Object?.call(s3Object, user);
   }
@@ -2537,6 +2599,7 @@ class _$LikeS3ObjectImpl implements _LikeS3Object {
     TResult Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
+    TResult Function(S3Object s3Object)? getS3ObjectSurround,
     required TResult orElse(),
   }) {
     if (likeS3Object != null) {
@@ -2564,6 +2627,7 @@ class _$LikeS3ObjectImpl implements _LikeS3Object {
     required TResult Function(_RemoveReplyS3Object value) removeReplyS3Object,
     required TResult Function(_ReportS3Object value) reportS3Object,
     required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
+    required TResult Function(_GetS3ObjectSurround value) getS3ObjectSurround,
   }) {
     return likeS3Object(this);
   }
@@ -2587,6 +2651,7 @@ class _$LikeS3ObjectImpl implements _LikeS3Object {
     TResult? Function(_RemoveReplyS3Object value)? removeReplyS3Object,
     TResult? Function(_ReportS3Object value)? reportS3Object,
     TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+    TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
   }) {
     return likeS3Object?.call(this);
   }
@@ -2610,6 +2675,7 @@ class _$LikeS3ObjectImpl implements _LikeS3Object {
     TResult Function(_RemoveReplyS3Object value)? removeReplyS3Object,
     TResult Function(_ReportS3Object value)? reportS3Object,
     TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+    TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     required TResult orElse(),
   }) {
     if (likeS3Object != null) {
@@ -2758,6 +2824,7 @@ class _$RemoveLikeS3ObjectImpl implements _RemoveLikeS3Object {
     required TResult Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)
         reportS3ObjectReply,
+    required TResult Function(S3Object s3Object) getS3ObjectSurround,
   }) {
     return removeLikeS3Object(s3ObjectLike, user);
   }
@@ -2785,6 +2852,7 @@ class _$RemoveLikeS3ObjectImpl implements _RemoveLikeS3Object {
     TResult? Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
+    TResult? Function(S3Object s3Object)? getS3ObjectSurround,
   }) {
     return removeLikeS3Object?.call(s3ObjectLike, user);
   }
@@ -2812,6 +2880,7 @@ class _$RemoveLikeS3ObjectImpl implements _RemoveLikeS3Object {
     TResult Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
+    TResult Function(S3Object s3Object)? getS3ObjectSurround,
     required TResult orElse(),
   }) {
     if (removeLikeS3Object != null) {
@@ -2839,6 +2908,7 @@ class _$RemoveLikeS3ObjectImpl implements _RemoveLikeS3Object {
     required TResult Function(_RemoveReplyS3Object value) removeReplyS3Object,
     required TResult Function(_ReportS3Object value) reportS3Object,
     required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
+    required TResult Function(_GetS3ObjectSurround value) getS3ObjectSurround,
   }) {
     return removeLikeS3Object(this);
   }
@@ -2862,6 +2932,7 @@ class _$RemoveLikeS3ObjectImpl implements _RemoveLikeS3Object {
     TResult? Function(_RemoveReplyS3Object value)? removeReplyS3Object,
     TResult? Function(_ReportS3Object value)? reportS3Object,
     TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+    TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
   }) {
     return removeLikeS3Object?.call(this);
   }
@@ -2885,6 +2956,7 @@ class _$RemoveLikeS3ObjectImpl implements _RemoveLikeS3Object {
     TResult Function(_RemoveReplyS3Object value)? removeReplyS3Object,
     TResult Function(_ReportS3Object value)? reportS3Object,
     TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+    TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     required TResult orElse(),
   }) {
     if (removeLikeS3Object != null) {
@@ -3041,6 +3113,7 @@ class _$ReplyS3ObjectImpl implements _ReplyS3Object {
     required TResult Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)
         reportS3ObjectReply,
+    required TResult Function(S3Object s3Object) getS3ObjectSurround,
   }) {
     return replyS3Object(s3Object, user, content);
   }
@@ -3068,6 +3141,7 @@ class _$ReplyS3ObjectImpl implements _ReplyS3Object {
     TResult? Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
+    TResult? Function(S3Object s3Object)? getS3ObjectSurround,
   }) {
     return replyS3Object?.call(s3Object, user, content);
   }
@@ -3095,6 +3169,7 @@ class _$ReplyS3ObjectImpl implements _ReplyS3Object {
     TResult Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
+    TResult Function(S3Object s3Object)? getS3ObjectSurround,
     required TResult orElse(),
   }) {
     if (replyS3Object != null) {
@@ -3122,6 +3197,7 @@ class _$ReplyS3ObjectImpl implements _ReplyS3Object {
     required TResult Function(_RemoveReplyS3Object value) removeReplyS3Object,
     required TResult Function(_ReportS3Object value) reportS3Object,
     required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
+    required TResult Function(_GetS3ObjectSurround value) getS3ObjectSurround,
   }) {
     return replyS3Object(this);
   }
@@ -3145,6 +3221,7 @@ class _$ReplyS3ObjectImpl implements _ReplyS3Object {
     TResult? Function(_RemoveReplyS3Object value)? removeReplyS3Object,
     TResult? Function(_ReportS3Object value)? reportS3Object,
     TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+    TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
   }) {
     return replyS3Object?.call(this);
   }
@@ -3168,6 +3245,7 @@ class _$ReplyS3ObjectImpl implements _ReplyS3Object {
     TResult Function(_RemoveReplyS3Object value)? removeReplyS3Object,
     TResult Function(_ReportS3Object value)? reportS3Object,
     TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+    TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     required TResult orElse(),
   }) {
     if (replyS3Object != null) {
@@ -3318,6 +3396,7 @@ class _$RemoveReplyS3ObjectImpl implements _RemoveReplyS3Object {
     required TResult Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)
         reportS3ObjectReply,
+    required TResult Function(S3Object s3Object) getS3ObjectSurround,
   }) {
     return removeReplyS3Object(s3ObjectReply, user);
   }
@@ -3345,6 +3424,7 @@ class _$RemoveReplyS3ObjectImpl implements _RemoveReplyS3Object {
     TResult? Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
+    TResult? Function(S3Object s3Object)? getS3ObjectSurround,
   }) {
     return removeReplyS3Object?.call(s3ObjectReply, user);
   }
@@ -3372,6 +3452,7 @@ class _$RemoveReplyS3ObjectImpl implements _RemoveReplyS3Object {
     TResult Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
+    TResult Function(S3Object s3Object)? getS3ObjectSurround,
     required TResult orElse(),
   }) {
     if (removeReplyS3Object != null) {
@@ -3399,6 +3480,7 @@ class _$RemoveReplyS3ObjectImpl implements _RemoveReplyS3Object {
     required TResult Function(_RemoveReplyS3Object value) removeReplyS3Object,
     required TResult Function(_ReportS3Object value) reportS3Object,
     required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
+    required TResult Function(_GetS3ObjectSurround value) getS3ObjectSurround,
   }) {
     return removeReplyS3Object(this);
   }
@@ -3422,6 +3504,7 @@ class _$RemoveReplyS3ObjectImpl implements _RemoveReplyS3Object {
     TResult? Function(_RemoveReplyS3Object value)? removeReplyS3Object,
     TResult? Function(_ReportS3Object value)? reportS3Object,
     TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+    TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
   }) {
     return removeReplyS3Object?.call(this);
   }
@@ -3445,6 +3528,7 @@ class _$RemoveReplyS3ObjectImpl implements _RemoveReplyS3Object {
     TResult Function(_RemoveReplyS3Object value)? removeReplyS3Object,
     TResult Function(_ReportS3Object value)? reportS3Object,
     TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+    TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     required TResult orElse(),
   }) {
     if (removeReplyS3Object != null) {
@@ -3591,6 +3675,7 @@ class _$ReportS3ObjectImpl implements _ReportS3Object {
     required TResult Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)
         reportS3ObjectReply,
+    required TResult Function(S3Object s3Object) getS3ObjectSurround,
   }) {
     return reportS3Object(s3Object, type, content);
   }
@@ -3618,6 +3703,7 @@ class _$ReportS3ObjectImpl implements _ReportS3Object {
     TResult? Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
+    TResult? Function(S3Object s3Object)? getS3ObjectSurround,
   }) {
     return reportS3Object?.call(s3Object, type, content);
   }
@@ -3645,6 +3731,7 @@ class _$ReportS3ObjectImpl implements _ReportS3Object {
     TResult Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
+    TResult Function(S3Object s3Object)? getS3ObjectSurround,
     required TResult orElse(),
   }) {
     if (reportS3Object != null) {
@@ -3672,6 +3759,7 @@ class _$ReportS3ObjectImpl implements _ReportS3Object {
     required TResult Function(_RemoveReplyS3Object value) removeReplyS3Object,
     required TResult Function(_ReportS3Object value) reportS3Object,
     required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
+    required TResult Function(_GetS3ObjectSurround value) getS3ObjectSurround,
   }) {
     return reportS3Object(this);
   }
@@ -3695,6 +3783,7 @@ class _$ReportS3ObjectImpl implements _ReportS3Object {
     TResult? Function(_RemoveReplyS3Object value)? removeReplyS3Object,
     TResult? Function(_ReportS3Object value)? reportS3Object,
     TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+    TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
   }) {
     return reportS3Object?.call(this);
   }
@@ -3718,6 +3807,7 @@ class _$ReportS3ObjectImpl implements _ReportS3Object {
     TResult Function(_RemoveReplyS3Object value)? removeReplyS3Object,
     TResult Function(_ReportS3Object value)? reportS3Object,
     TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+    TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     required TResult orElse(),
   }) {
     if (reportS3Object != null) {
@@ -3864,6 +3954,7 @@ class _$ReportS3ObjectReplyImpl implements _ReportS3ObjectReply {
     required TResult Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)
         reportS3ObjectReply,
+    required TResult Function(S3Object s3Object) getS3ObjectSurround,
   }) {
     return reportS3ObjectReply(s3ObjectReply, type, content);
   }
@@ -3891,6 +3982,7 @@ class _$ReportS3ObjectReplyImpl implements _ReportS3ObjectReply {
     TResult? Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
+    TResult? Function(S3Object s3Object)? getS3ObjectSurround,
   }) {
     return reportS3ObjectReply?.call(s3ObjectReply, type, content);
   }
@@ -3918,6 +4010,7 @@ class _$ReportS3ObjectReplyImpl implements _ReportS3ObjectReply {
     TResult Function(
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
+    TResult Function(S3Object s3Object)? getS3ObjectSurround,
     required TResult orElse(),
   }) {
     if (reportS3ObjectReply != null) {
@@ -3945,6 +4038,7 @@ class _$ReportS3ObjectReplyImpl implements _ReportS3ObjectReply {
     required TResult Function(_RemoveReplyS3Object value) removeReplyS3Object,
     required TResult Function(_ReportS3Object value) reportS3Object,
     required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
+    required TResult Function(_GetS3ObjectSurround value) getS3ObjectSurround,
   }) {
     return reportS3ObjectReply(this);
   }
@@ -3968,6 +4062,7 @@ class _$ReportS3ObjectReplyImpl implements _ReportS3ObjectReply {
     TResult? Function(_RemoveReplyS3Object value)? removeReplyS3Object,
     TResult? Function(_ReportS3Object value)? reportS3Object,
     TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+    TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
   }) {
     return reportS3ObjectReply?.call(this);
   }
@@ -3991,6 +4086,7 @@ class _$ReportS3ObjectReplyImpl implements _ReportS3ObjectReply {
     TResult Function(_RemoveReplyS3Object value)? removeReplyS3Object,
     TResult Function(_ReportS3Object value)? reportS3Object,
     TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+    TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     required TResult orElse(),
   }) {
     if (reportS3ObjectReply != null) {
@@ -4014,5 +4110,266 @@ abstract class _ReportS3ObjectReply implements S3ObjectEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ReportS3ObjectReplyImplCopyWith<_$ReportS3ObjectReplyImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GetS3ObjectSurroundImplCopyWith<$Res> {
+  factory _$$GetS3ObjectSurroundImplCopyWith(_$GetS3ObjectSurroundImpl value,
+          $Res Function(_$GetS3ObjectSurroundImpl) then) =
+      __$$GetS3ObjectSurroundImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({S3Object s3Object});
+
+  $S3ObjectCopyWith<$Res> get s3Object;
+}
+
+/// @nodoc
+class __$$GetS3ObjectSurroundImplCopyWithImpl<$Res>
+    extends _$S3ObjectEventCopyWithImpl<$Res, _$GetS3ObjectSurroundImpl>
+    implements _$$GetS3ObjectSurroundImplCopyWith<$Res> {
+  __$$GetS3ObjectSurroundImplCopyWithImpl(_$GetS3ObjectSurroundImpl _value,
+      $Res Function(_$GetS3ObjectSurroundImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of S3ObjectEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? s3Object = null,
+  }) {
+    return _then(_$GetS3ObjectSurroundImpl(
+      null == s3Object
+          ? _value.s3Object
+          : s3Object // ignore: cast_nullable_to_non_nullable
+              as S3Object,
+    ));
+  }
+
+  /// Create a copy of S3ObjectEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $S3ObjectCopyWith<$Res> get s3Object {
+    return $S3ObjectCopyWith<$Res>(_value.s3Object, (value) {
+      return _then(_value.copyWith(s3Object: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$GetS3ObjectSurroundImpl implements _GetS3ObjectSurround {
+  const _$GetS3ObjectSurroundImpl(this.s3Object);
+
+  @override
+  final S3Object s3Object;
+
+  @override
+  String toString() {
+    return 'S3ObjectEvent.getS3ObjectSurround(s3Object: $s3Object)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetS3ObjectSurroundImpl &&
+            (identical(other.s3Object, s3Object) ||
+                other.s3Object == s3Object));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, s3Object);
+
+  /// Create a copy of S3ObjectEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetS3ObjectSurroundImplCopyWith<_$GetS3ObjectSurroundImpl> get copyWith =>
+      __$$GetS3ObjectSurroundImplCopyWithImpl<_$GetS3ObjectSurroundImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialize,
+    required TResult Function(int skip, int take) getS3Objects,
+    required TResult Function() clearError,
+    required TResult Function(File file, User user) uploadFile,
+    required TResult Function(S3Object s3Object, User user) deleteFile,
+    required TResult Function(String id, User user) findOneOrFail,
+    required TResult Function() count,
+    required TResult Function(String year, String month)
+        checkObjectsExistenceByMonth,
+    required TResult Function(String year, String month, String day)
+        getObjectsByDate,
+    required TResult Function(S3Object s3Object, User user) likeS3Object,
+    required TResult Function(S3ObjectLike s3ObjectLike, User user)
+        removeLikeS3Object,
+    required TResult Function(S3Object s3Object, User user, String content)
+        replyS3Object,
+    required TResult Function(S3ObjectReply s3ObjectReply, User user)
+        removeReplyS3Object,
+    required TResult Function(
+            S3Object s3Object, ReportReason type, String? content)
+        reportS3Object,
+    required TResult Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)
+        reportS3ObjectReply,
+    required TResult Function(S3Object s3Object) getS3ObjectSurround,
+  }) {
+    return getS3ObjectSurround(s3Object);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialize,
+    TResult? Function(int skip, int take)? getS3Objects,
+    TResult? Function()? clearError,
+    TResult? Function(File file, User user)? uploadFile,
+    TResult? Function(S3Object s3Object, User user)? deleteFile,
+    TResult? Function(String id, User user)? findOneOrFail,
+    TResult? Function()? count,
+    TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
+    TResult? Function(String year, String month, String day)? getObjectsByDate,
+    TResult? Function(S3Object s3Object, User user)? likeS3Object,
+    TResult? Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
+    TResult? Function(S3Object s3Object, User user, String content)?
+        replyS3Object,
+    TResult? Function(S3ObjectReply s3ObjectReply, User user)?
+        removeReplyS3Object,
+    TResult? Function(S3Object s3Object, ReportReason type, String? content)?
+        reportS3Object,
+    TResult? Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
+        reportS3ObjectReply,
+    TResult? Function(S3Object s3Object)? getS3ObjectSurround,
+  }) {
+    return getS3ObjectSurround?.call(s3Object);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialize,
+    TResult Function(int skip, int take)? getS3Objects,
+    TResult Function()? clearError,
+    TResult Function(File file, User user)? uploadFile,
+    TResult Function(S3Object s3Object, User user)? deleteFile,
+    TResult Function(String id, User user)? findOneOrFail,
+    TResult Function()? count,
+    TResult Function(String year, String month)? checkObjectsExistenceByMonth,
+    TResult Function(String year, String month, String day)? getObjectsByDate,
+    TResult Function(S3Object s3Object, User user)? likeS3Object,
+    TResult Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
+    TResult Function(S3Object s3Object, User user, String content)?
+        replyS3Object,
+    TResult Function(S3ObjectReply s3ObjectReply, User user)?
+        removeReplyS3Object,
+    TResult Function(S3Object s3Object, ReportReason type, String? content)?
+        reportS3Object,
+    TResult Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
+        reportS3ObjectReply,
+    TResult Function(S3Object s3Object)? getS3ObjectSurround,
+    required TResult orElse(),
+  }) {
+    if (getS3ObjectSurround != null) {
+      return getS3ObjectSurround(s3Object);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_GetS3Objects value) getS3Objects,
+    required TResult Function(_ClearError value) clearError,
+    required TResult Function(_UploadFile value) uploadFile,
+    required TResult Function(_DeleteFile value) deleteFile,
+    required TResult Function(_FindOneOrFail value) findOneOrFail,
+    required TResult Function(_Count value) count,
+    required TResult Function(_CheckObjectsExistenceByMonth value)
+        checkObjectsExistenceByMonth,
+    required TResult Function(_GetObjectsByDate value) getObjectsByDate,
+    required TResult Function(_LikeS3Object value) likeS3Object,
+    required TResult Function(_RemoveLikeS3Object value) removeLikeS3Object,
+    required TResult Function(_ReplyS3Object value) replyS3Object,
+    required TResult Function(_RemoveReplyS3Object value) removeReplyS3Object,
+    required TResult Function(_ReportS3Object value) reportS3Object,
+    required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
+    required TResult Function(_GetS3ObjectSurround value) getS3ObjectSurround,
+  }) {
+    return getS3ObjectSurround(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialize value)? initialize,
+    TResult? Function(_GetS3Objects value)? getS3Objects,
+    TResult? Function(_ClearError value)? clearError,
+    TResult? Function(_UploadFile value)? uploadFile,
+    TResult? Function(_DeleteFile value)? deleteFile,
+    TResult? Function(_FindOneOrFail value)? findOneOrFail,
+    TResult? Function(_Count value)? count,
+    TResult? Function(_CheckObjectsExistenceByMonth value)?
+        checkObjectsExistenceByMonth,
+    TResult? Function(_GetObjectsByDate value)? getObjectsByDate,
+    TResult? Function(_LikeS3Object value)? likeS3Object,
+    TResult? Function(_RemoveLikeS3Object value)? removeLikeS3Object,
+    TResult? Function(_ReplyS3Object value)? replyS3Object,
+    TResult? Function(_RemoveReplyS3Object value)? removeReplyS3Object,
+    TResult? Function(_ReportS3Object value)? reportS3Object,
+    TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+    TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
+  }) {
+    return getS3ObjectSurround?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_GetS3Objects value)? getS3Objects,
+    TResult Function(_ClearError value)? clearError,
+    TResult Function(_UploadFile value)? uploadFile,
+    TResult Function(_DeleteFile value)? deleteFile,
+    TResult Function(_FindOneOrFail value)? findOneOrFail,
+    TResult Function(_Count value)? count,
+    TResult Function(_CheckObjectsExistenceByMonth value)?
+        checkObjectsExistenceByMonth,
+    TResult Function(_GetObjectsByDate value)? getObjectsByDate,
+    TResult Function(_LikeS3Object value)? likeS3Object,
+    TResult Function(_RemoveLikeS3Object value)? removeLikeS3Object,
+    TResult Function(_ReplyS3Object value)? replyS3Object,
+    TResult Function(_RemoveReplyS3Object value)? removeReplyS3Object,
+    TResult Function(_ReportS3Object value)? reportS3Object,
+    TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+    TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
+    required TResult orElse(),
+  }) {
+    if (getS3ObjectSurround != null) {
+      return getS3ObjectSurround(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetS3ObjectSurround implements S3ObjectEvent {
+  const factory _GetS3ObjectSurround(final S3Object s3Object) =
+      _$GetS3ObjectSurroundImpl;
+
+  S3Object get s3Object;
+
+  /// Create a copy of S3ObjectEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$GetS3ObjectSurroundImplCopyWith<_$GetS3ObjectSurroundImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

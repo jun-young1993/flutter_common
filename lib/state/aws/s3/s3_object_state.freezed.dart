@@ -31,6 +31,8 @@ mixin _$S3ObjectState {
   List<S3Object> get objectsByDate => throw _privateConstructorUsedError;
   bool get isObjectsByDateLoading => throw _privateConstructorUsedError;
   S3ObjectLike? get like => throw _privateConstructorUsedError;
+  S3ObjectSurround? get s3ObjectSurround => throw _privateConstructorUsedError;
+  bool get isS3ObjectSurroundLoading => throw _privateConstructorUsedError;
 
   /// Create a copy of S3ObjectState
   /// with the given fields replaced by the non-null parameter values.
@@ -58,11 +60,14 @@ abstract class $S3ObjectStateCopyWith<$Res> {
       bool isObjectsExistenceByMonthLoading,
       List<S3Object> objectsByDate,
       bool isObjectsByDateLoading,
-      S3ObjectLike? like});
+      S3ObjectLike? like,
+      S3ObjectSurround? s3ObjectSurround,
+      bool isS3ObjectSurroundLoading});
 
   $AppExceptionCopyWith<$Res>? get error;
   $S3ObjectCopyWith<$Res>? get s3Object;
   $S3ObjectLikeCopyWith<$Res>? get like;
+  $S3ObjectSurroundCopyWith<$Res>? get s3ObjectSurround;
 }
 
 /// @nodoc
@@ -93,6 +98,8 @@ class _$S3ObjectStateCopyWithImpl<$Res, $Val extends S3ObjectState>
     Object? objectsByDate = null,
     Object? isObjectsByDateLoading = null,
     Object? like = freezed,
+    Object? s3ObjectSurround = freezed,
+    Object? isS3ObjectSurroundLoading = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -147,6 +154,14 @@ class _$S3ObjectStateCopyWithImpl<$Res, $Val extends S3ObjectState>
           ? _value.like
           : like // ignore: cast_nullable_to_non_nullable
               as S3ObjectLike?,
+      s3ObjectSurround: freezed == s3ObjectSurround
+          ? _value.s3ObjectSurround
+          : s3ObjectSurround // ignore: cast_nullable_to_non_nullable
+              as S3ObjectSurround?,
+      isS3ObjectSurroundLoading: null == isS3ObjectSurroundLoading
+          ? _value.isS3ObjectSurroundLoading
+          : isS3ObjectSurroundLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -191,6 +206,20 @@ class _$S3ObjectStateCopyWithImpl<$Res, $Val extends S3ObjectState>
       return _then(_value.copyWith(like: value) as $Val);
     });
   }
+
+  /// Create a copy of S3ObjectState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $S3ObjectSurroundCopyWith<$Res>? get s3ObjectSurround {
+    if (_value.s3ObjectSurround == null) {
+      return null;
+    }
+
+    return $S3ObjectSurroundCopyWith<$Res>(_value.s3ObjectSurround!, (value) {
+      return _then(_value.copyWith(s3ObjectSurround: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -214,7 +243,9 @@ abstract class _$$S3ObjectStateImplCopyWith<$Res>
       bool isObjectsExistenceByMonthLoading,
       List<S3Object> objectsByDate,
       bool isObjectsByDateLoading,
-      S3ObjectLike? like});
+      S3ObjectLike? like,
+      S3ObjectSurround? s3ObjectSurround,
+      bool isS3ObjectSurroundLoading});
 
   @override
   $AppExceptionCopyWith<$Res>? get error;
@@ -222,6 +253,8 @@ abstract class _$$S3ObjectStateImplCopyWith<$Res>
   $S3ObjectCopyWith<$Res>? get s3Object;
   @override
   $S3ObjectLikeCopyWith<$Res>? get like;
+  @override
+  $S3ObjectSurroundCopyWith<$Res>? get s3ObjectSurround;
 }
 
 /// @nodoc
@@ -250,6 +283,8 @@ class __$$S3ObjectStateImplCopyWithImpl<$Res>
     Object? objectsByDate = null,
     Object? isObjectsByDateLoading = null,
     Object? like = freezed,
+    Object? s3ObjectSurround = freezed,
+    Object? isS3ObjectSurroundLoading = null,
   }) {
     return _then(_$S3ObjectStateImpl(
       isLoading: null == isLoading
@@ -304,6 +339,14 @@ class __$$S3ObjectStateImplCopyWithImpl<$Res>
           ? _value.like
           : like // ignore: cast_nullable_to_non_nullable
               as S3ObjectLike?,
+      s3ObjectSurround: freezed == s3ObjectSurround
+          ? _value.s3ObjectSurround
+          : s3ObjectSurround // ignore: cast_nullable_to_non_nullable
+              as S3ObjectSurround?,
+      isS3ObjectSurroundLoading: null == isS3ObjectSurroundLoading
+          ? _value.isS3ObjectSurroundLoading
+          : isS3ObjectSurroundLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -324,7 +367,9 @@ class _$S3ObjectStateImpl extends _S3ObjectState {
       this.isObjectsExistenceByMonthLoading = false,
       final List<S3Object> objectsByDate = const [],
       this.isObjectsByDateLoading = false,
-      this.like = null})
+      this.like = null,
+      this.s3ObjectSurround = null,
+      this.isS3ObjectSurroundLoading = false})
       : _s3Objects = s3Objects,
         _objectsExistenceByMonth = objectsExistenceByMonth,
         _objectsByDate = objectsByDate,
@@ -388,10 +433,16 @@ class _$S3ObjectStateImpl extends _S3ObjectState {
   @override
   @JsonKey()
   final S3ObjectLike? like;
+  @override
+  @JsonKey()
+  final S3ObjectSurround? s3ObjectSurround;
+  @override
+  @JsonKey()
+  final bool isS3ObjectSurroundLoading;
 
   @override
   String toString() {
-    return 'S3ObjectState(isLoading: $isLoading, isUploading: $isUploading, isDeleting: $isDeleting, error: $error, s3Objects: $s3Objects, s3Object: $s3Object, allCount: $allCount, isAllCountLoading: $isAllCountLoading, objectsExistenceByMonth: $objectsExistenceByMonth, isObjectsExistenceByMonthLoading: $isObjectsExistenceByMonthLoading, objectsByDate: $objectsByDate, isObjectsByDateLoading: $isObjectsByDateLoading, like: $like)';
+    return 'S3ObjectState(isLoading: $isLoading, isUploading: $isUploading, isDeleting: $isDeleting, error: $error, s3Objects: $s3Objects, s3Object: $s3Object, allCount: $allCount, isAllCountLoading: $isAllCountLoading, objectsExistenceByMonth: $objectsExistenceByMonth, isObjectsExistenceByMonthLoading: $isObjectsExistenceByMonthLoading, objectsByDate: $objectsByDate, isObjectsByDateLoading: $isObjectsByDateLoading, like: $like, s3ObjectSurround: $s3ObjectSurround, isS3ObjectSurroundLoading: $isS3ObjectSurroundLoading)';
   }
 
   @override
@@ -424,7 +475,12 @@ class _$S3ObjectStateImpl extends _S3ObjectState {
                 .equals(other._objectsByDate, _objectsByDate) &&
             (identical(other.isObjectsByDateLoading, isObjectsByDateLoading) ||
                 other.isObjectsByDateLoading == isObjectsByDateLoading) &&
-            (identical(other.like, like) || other.like == like));
+            (identical(other.like, like) || other.like == like) &&
+            (identical(other.s3ObjectSurround, s3ObjectSurround) ||
+                other.s3ObjectSurround == s3ObjectSurround) &&
+            (identical(other.isS3ObjectSurroundLoading,
+                    isS3ObjectSurroundLoading) ||
+                other.isS3ObjectSurroundLoading == isS3ObjectSurroundLoading));
   }
 
   @override
@@ -442,7 +498,9 @@ class _$S3ObjectStateImpl extends _S3ObjectState {
       isObjectsExistenceByMonthLoading,
       const DeepCollectionEquality().hash(_objectsByDate),
       isObjectsByDateLoading,
-      like);
+      like,
+      s3ObjectSurround,
+      isS3ObjectSurroundLoading);
 
   /// Create a copy of S3ObjectState
   /// with the given fields replaced by the non-null parameter values.
@@ -467,7 +525,9 @@ abstract class _S3ObjectState extends S3ObjectState {
       final bool isObjectsExistenceByMonthLoading,
       final List<S3Object> objectsByDate,
       final bool isObjectsByDateLoading,
-      final S3ObjectLike? like}) = _$S3ObjectStateImpl;
+      final S3ObjectLike? like,
+      final S3ObjectSurround? s3ObjectSurround,
+      final bool isS3ObjectSurroundLoading}) = _$S3ObjectStateImpl;
   const _S3ObjectState._() : super._();
 
   @override
@@ -496,6 +556,10 @@ abstract class _S3ObjectState extends S3ObjectState {
   bool get isObjectsByDateLoading;
   @override
   S3ObjectLike? get like;
+  @override
+  S3ObjectSurround? get s3ObjectSurround;
+  @override
+  bool get isS3ObjectSurroundLoading;
 
   /// Create a copy of S3ObjectState
   /// with the given fields replaced by the non-null parameter values.

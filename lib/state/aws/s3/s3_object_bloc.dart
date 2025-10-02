@@ -46,6 +46,7 @@ class S3ObjectBloc extends Bloc<S3ObjectEvent, S3ObjectState> {
             like: like,
             isLoading: false,
           ));
+          add(S3ObjectEvent.getS3ObjectSurround(s3Object));
         }, count: (e) async {
           emit(state.copyWith(isAllCountLoading: true));
           final allCount = await s3ObjectRepository.count();
@@ -81,6 +82,14 @@ class S3ObjectBloc extends Bloc<S3ObjectEvent, S3ObjectState> {
         }, reportS3ObjectReply: (e) async {
           await s3ObjectRepository.reportS3ObjectReply(
               e.s3ObjectReply, e.type, e.content);
+        }, getS3ObjectSurround: (e) async {
+          emit(state.copyWith(
+              isS3ObjectSurroundLoading: true, s3ObjectSurround: null));
+          final s3ObjectSurround =
+              await s3ObjectRepository.getS3ObjectSurround(e.s3Object);
+          emit(state.copyWith(
+              s3ObjectSurround: s3ObjectSurround,
+              isS3ObjectSurroundLoading: false));
         });
       },
     );

@@ -38,4 +38,6 @@ class S3ObjectEvent with _$S3ObjectEvent {
   const factory S3ObjectEvent.reportS3ObjectReply(
           S3ObjectReply s3ObjectReply, ReportReason type, String? content) =
       _ReportS3ObjectReply;
+  const factory S3ObjectEvent.getS3ObjectSurround(S3Object s3Object) =
+      _GetS3ObjectSurround;
 }
