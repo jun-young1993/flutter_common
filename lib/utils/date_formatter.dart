@@ -2,8 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_common/common_il8n.dart';
 
 class DateFormatter {
-  static String formatDateTime(DateTime dateTime) {
-    return '${dateTime.year}-${dateTime.month.toString().padLeft(2, '0')}-${dateTime.day.toString().padLeft(2, '0')}';
+  static String formatDateTime(DateTime dateTime, {bool withTime = false}) {
+    return '${dateTime.year}-${dateTime.month.toString().padLeft(2, '0')}-${dateTime.day.toString().padLeft(2, '0')}${withTime ? ' ${dateTime.hour.toString().padLeft(2, '0')}:${dateTime.minute.toString().padLeft(2, '0')}:${dateTime.second.toString().padLeft(2, '0')}' : ''}';
   }
 
   /// DateTime을 받아서 상대적인 시간을 반환합니다 (예: "3일 전", "2개월 전", "1년 전")

@@ -21,6 +21,7 @@ abstract class Tr {
   static final date = _Date();
   static final validation = _Validation();
   static final file = _File();
+  static final video = _Video();
 }
 
 class _Date {
@@ -48,6 +49,15 @@ class _Validation {
   final deleteSuccess = 'validation.deleteSuccess';
   final createSuccess = 'validation.createSuccess';
   final saveSuccess = 'validation.saveSuccess';
+}
+
+class _Video {
+  final title = 'video.title';
+  final videoTakenCancel = 'video.videoTakenCancel';
+  final videoTakenError = 'video.videoTakenError';
+  final videoSelectCancel = 'video.videoSelectCancel';
+  final videoSelectError = 'video.videoSelectError';
+  final videoSaved = 'video.videoSaved';
 }
 
 class _File {
@@ -117,6 +127,10 @@ class _Baby {
   final shareDescription2 = 'baby.shareDescription2';
   final babyLogDescription = 'baby.babyLogDescription';
   final babyLogTagHintText = 'baby.babyLogTagHintText';
+  final cameraHintText = 'baby.cameraHintText';
+  final cameraTitle = 'baby.cameraTitle';
+  final galleryTitle = 'baby.galleryTitle';
+  final reTake = 'baby.reTake';
 }
 
 class _Common {
@@ -166,6 +180,10 @@ class _Common {
   final delete = 'common.delete';
   final report = 'common.report';
   final info = 'common.info';
+  final save = 'common.save';
+  final photo = 'common.photo';
+  final video = 'common.video';
+  final duration = 'common.duration';
 }
 
 class _User {
@@ -197,12 +215,19 @@ class _Api {
 }
 
 class _Photo {
+  final title = 'photo.title';
   final recentPhotos = 'photo.recentPhotos';
   final uploadPhoto = 'photo.uploadPhoto';
   final noPhoto = 'photo.noPhoto';
   final takePhoto = 'photo.takePhoto';
   final takenPhotos = 'photo.takenPhotos';
   final unit = 'photo.unit';
+  final processing = 'photo.processing';
+  final photoTakenCancel = 'photo.photoTakenCancel';
+  final photoTakenError = 'photo.photoTakenError';
+  final photoSelectCancel = 'photo.photoSelectCancel';
+  final photoSelectError = 'photo.photoSelectError';
+  final photoSaved = 'photo.photoSaved';
 }
 
 class _App {

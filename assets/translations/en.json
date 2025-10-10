@@ -38,12 +38,26 @@
         "unknown" : "Unknown error."
     },
     "photo": {
+        "title": "Photo",
         "recentPhotos": "Recent Photos",
         "uploadPhoto": "Upload Photo",
         "noPhoto": "No photo.",
         "takePhoto": "Take Photo",
         "takenPhotos": "Taken Photos",
-        "unit": "photos"
+        "unit": "photos",
+        "processing": "Photo is being processed.",
+        "photoTakenCancel": "Photo taken cancelled.",
+        "photoTakenError": "Photo taken error: {error}",
+        "photoSelectCancel": "Photo select cancelled.",
+        "photoSelectError": "Photo select error: {error}",
+        "photoSaved": "Photo saved."
+    },
+    "video": {
+        "title": "Video",
+        "videoTakenCancel": "Video taken cancelled.",
+        "videoTakenError": "Video taken error: {error}",
+        "videoSelectCancel": "Video select cancelled.",
+        "videoSelectError": "Video select error: {error}"
     },
     "app": {
         "enable": "Enable",
@@ -127,7 +141,12 @@
         "reply": "Reply",
         "delete": "Delete",
         "report": "Report",
-        "info": "Info"
+        "info": "Info",
+        "save": "Save",
+        "photo": "Photo",
+        "video": "Video",
+        "duration": "Duration"
+
     },
     "validation" : {
         "titleOrContentRequired": "Please enter the title or content.",
@@ -189,7 +208,11 @@
         "shareDescription": "Share your precious memories with your family",
         "shareDescription2": "Safely share photos with your family members.",
         "babyLogDescription": "Write down your baby's special moments or growth records freely...\n\nExample:\n• Today I said 'Mom' for the first time!\n• I was so cute整理玩具 alone.\n• I slept well at night and woke up vigorously in the morning.",
-        "babyLogTagHintText": "Enter tag (e.g. first step, speaking, health)"
+        "babyLogTagHintText": "Enter tag (e.g. first step, speaking, health)",
+        "cameraHintText": "Take a photo directly with the camera or select from the gallery.",
+        "cameraTitle": "Take Photo with Camera",
+        "galleryTitle": "Select from Gallery",
+        "reTake": "Retake"
     },
     "error": {
         "unknownError": "An unknown error has occurred.",

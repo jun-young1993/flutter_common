@@ -38,12 +38,26 @@
         "userName": "사용자 이름"
     },
     "photo": {
+        "title": "사진",
         "recentPhotos": "최근 사진",
         "uploadPhoto": "사진 업로드",
         "noPhoto": "사진이 없습니다.",
         "takePhoto": "사진 촬영",
         "takenPhotos": "촬영한 사진",
-        "unit": "장"
+        "unit": "장",
+        "processing": "사진을 처리중 입니다.",
+        "photoTakenCancel": "사진 촬영이 취소되었습니다.",
+        "photoTakenError": "사진 촬영 중 오류가 발생했습니다: {error}",
+        "photoSelectCancel": "사진 선택이 취소되었습니다.",
+        "photoSelectError": "사진 선택 중 오류가 발생했습니다: {error}",
+        "photoSaved": "사진이 저장되었습니다."
+    },
+    "video": {
+        "title": "동영상",
+        "videoTakenCancel": "동영상 촬영이 취소되었습니다.",
+        "videoTakenError": "동영상 촬영 중 오류가 발생했습니다: {error}",
+        "videoSelectCancel": "동영상 선택이 취소되었습니다.",
+        "videoSelectError": "동영상 선택 중 오류가 발생했습니다: {error}"
     },
     "app": {
         "enable": "활성화",
@@ -126,7 +140,12 @@
         "reply": "댓글",
         "delete": "삭제",
         "report": "신고",
-        "정보" : "정보"
+        "info" : "정보",
+        "save": "저장",
+        "photo": "사진",
+        "video": "비디오",
+        "duration": "재생 시간"
+
     },
     "file": {
         "fileInfo": "파일 정보",
@@ -218,7 +237,11 @@
         "shareDescription": "가족과 함께 소중한 추억을 공유하세요",
         "shareDescription2": "안전하게 가족 구성원들과 사진을 공유할 수 있습니다.", 
         "babyLogDescription":"아이의 특별한 순간이나 성장 기록을 자유롭게 적어보세요...\n\n예시:\n• 오늘 처음으로 '엄마'라고 말했어요!\n• 혼자서 장난감을 정리하는 모습이 너무 귀여웠어요\n• 밤에 잘 잤고, 아침에 활발하게 일어났어요",
-        "babyLogTagHintText": "태그 입력 (예: 첫걸음, 말하기, 건강)"
+        "babyLogTagHintText": "태그 입력 (예: 첫걸음, 말하기, 건강)",
+        "cameraHintText": "카메라로 직접 촬영하거나 갤러리에서 선택하세요",
+        "cameraTitle": "카메라로 촬영",
+        "galleryTitle": "갤러리에서 선택",
+        "reTake": "다시 촬영"
 
     },
     "error": {
