@@ -19,7 +19,8 @@ class NoticeGroupBloc extends Bloc<NoticeGroupEvent, NoticeGroupState> {
               () async {
                 try {
                   final checkNoticeGroup =
-                      await _noticeGroupRepository.findOneByName(event.name);
+                      await _noticeGroupRepository.findOneByName(event.name,
+                          withNotices: event.withNotices);
                   emit(state.copyWith(noticeGroup: checkNoticeGroup));
                 } catch (e) {
                   final noticeGroup =

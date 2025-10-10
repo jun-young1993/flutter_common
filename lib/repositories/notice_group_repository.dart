@@ -2,7 +2,7 @@ import 'package:flutter_common/models/notice/notice_group.dart';
 import 'package:flutter_common/network/dio_client.dart';
 
 abstract class NoticeGroupRepository {
-  Future<NoticeGroup> findOneByName(String name);
+  Future<NoticeGroup> findOneByName(String name, {bool withNotices = true});
   Future<List<NoticeGroup>> findAll();
   Future<NoticeGroup> create(String name);
 }
@@ -13,8 +13,12 @@ class NoticeGroupDefaultRepository extends NoticeGroupRepository {
   NoticeGroupDefaultRepository({required this.dioClient});
 
   @override
-  Future<NoticeGroup> findOneByName(String name) async {
-    final response = await dioClient.get('/notice-group/name/$name');
+  Future<NoticeGroup> findOneByName(String name,
+      {bool withNotices = true}) async {
+    final response =
+        await dioClient.get('/notice-group/name/$name', queryParameters: {
+      'relations': withNotices ? ['notices'] : [],
+    });
     if (response.statusCode != 200) {
       throw Exception(
           '[${response.statusCode}] Failed to fetch notice group: ${response.statusMessage ?? 'Unknown error'}');

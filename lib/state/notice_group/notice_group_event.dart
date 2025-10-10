@@ -8,5 +8,6 @@ class NoticeGroupEvent with _$NoticeGroupEvent {
       _FindNoticeGroup;
   const factory NoticeGroupEvent.createNoticeGroup(String name) =
       _CreateNoticeGroup;
-  const factory NoticeGroupEvent.initialize(String name) = _Initialize;
+  const factory NoticeGroupEvent.initialize(String name,
+      {@Default(true) bool withNotices}) = _Initialize;
 }

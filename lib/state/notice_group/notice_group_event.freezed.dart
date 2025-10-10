@@ -21,21 +21,21 @@ mixin _$NoticeGroupEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String name) findNoticeGroup,
     required TResult Function(String name) createNoticeGroup,
-    required TResult Function(String name) initialize,
+    required TResult Function(String name, bool withNotices) initialize,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String name)? findNoticeGroup,
     TResult? Function(String name)? createNoticeGroup,
-    TResult? Function(String name)? initialize,
+    TResult? Function(String name, bool withNotices)? initialize,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String name)? findNoticeGroup,
     TResult Function(String name)? createNoticeGroup,
-    TResult Function(String name)? initialize,
+    TResult Function(String name, bool withNotices)? initialize,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -177,7 +177,7 @@ class _$FindNoticeGroupImpl implements _FindNoticeGroup {
   TResult when<TResult extends Object?>({
     required TResult Function(String name) findNoticeGroup,
     required TResult Function(String name) createNoticeGroup,
-    required TResult Function(String name) initialize,
+    required TResult Function(String name, bool withNotices) initialize,
   }) {
     return findNoticeGroup(name);
   }
@@ -187,7 +187,7 @@ class _$FindNoticeGroupImpl implements _FindNoticeGroup {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String name)? findNoticeGroup,
     TResult? Function(String name)? createNoticeGroup,
-    TResult? Function(String name)? initialize,
+    TResult? Function(String name, bool withNotices)? initialize,
   }) {
     return findNoticeGroup?.call(name);
   }
@@ -197,7 +197,7 @@ class _$FindNoticeGroupImpl implements _FindNoticeGroup {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String name)? findNoticeGroup,
     TResult Function(String name)? createNoticeGroup,
-    TResult Function(String name)? initialize,
+    TResult Function(String name, bool withNotices)? initialize,
     required TResult orElse(),
   }) {
     if (findNoticeGroup != null) {
@@ -328,7 +328,7 @@ class _$CreateNoticeGroupImpl implements _CreateNoticeGroup {
   TResult when<TResult extends Object?>({
     required TResult Function(String name) findNoticeGroup,
     required TResult Function(String name) createNoticeGroup,
-    required TResult Function(String name) initialize,
+    required TResult Function(String name, bool withNotices) initialize,
   }) {
     return createNoticeGroup(name);
   }
@@ -338,7 +338,7 @@ class _$CreateNoticeGroupImpl implements _CreateNoticeGroup {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String name)? findNoticeGroup,
     TResult? Function(String name)? createNoticeGroup,
-    TResult? Function(String name)? initialize,
+    TResult? Function(String name, bool withNotices)? initialize,
   }) {
     return createNoticeGroup?.call(name);
   }
@@ -348,7 +348,7 @@ class _$CreateNoticeGroupImpl implements _CreateNoticeGroup {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String name)? findNoticeGroup,
     TResult Function(String name)? createNoticeGroup,
-    TResult Function(String name)? initialize,
+    TResult Function(String name, bool withNotices)? initialize,
     required TResult orElse(),
   }) {
     if (createNoticeGroup != null) {
@@ -414,7 +414,7 @@ abstract class _$$InitializeImplCopyWith<$Res>
       __$$InitializeImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name});
+  $Res call({String name, bool withNotices});
 }
 
 /// @nodoc
@@ -431,12 +431,17 @@ class __$$InitializeImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = null,
+    Object? withNotices = null,
   }) {
     return _then(_$InitializeImpl(
       null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      withNotices: null == withNotices
+          ? _value.withNotices
+          : withNotices // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -444,14 +449,17 @@ class __$$InitializeImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$InitializeImpl implements _Initialize {
-  const _$InitializeImpl(this.name);
+  const _$InitializeImpl(this.name, {this.withNotices = true});
 
   @override
   final String name;
+  @override
+  @JsonKey()
+  final bool withNotices;
 
   @override
   String toString() {
-    return 'NoticeGroupEvent.initialize(name: $name)';
+    return 'NoticeGroupEvent.initialize(name: $name, withNotices: $withNotices)';
   }
 
   @override
@@ -459,11 +467,13 @@ class _$InitializeImpl implements _Initialize {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InitializeImpl &&
-            (identical(other.name, name) || other.name == name));
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.withNotices, withNotices) ||
+                other.withNotices == withNotices));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name);
+  int get hashCode => Object.hash(runtimeType, name, withNotices);
 
   /// Create a copy of NoticeGroupEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -478,9 +488,9 @@ class _$InitializeImpl implements _Initialize {
   TResult when<TResult extends Object?>({
     required TResult Function(String name) findNoticeGroup,
     required TResult Function(String name) createNoticeGroup,
-    required TResult Function(String name) initialize,
+    required TResult Function(String name, bool withNotices) initialize,
   }) {
-    return initialize(name);
+    return initialize(name, withNotices);
   }
 
   @override
@@ -488,9 +498,9 @@ class _$InitializeImpl implements _Initialize {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String name)? findNoticeGroup,
     TResult? Function(String name)? createNoticeGroup,
-    TResult? Function(String name)? initialize,
+    TResult? Function(String name, bool withNotices)? initialize,
   }) {
-    return initialize?.call(name);
+    return initialize?.call(name, withNotices);
   }
 
   @override
@@ -498,11 +508,11 @@ class _$InitializeImpl implements _Initialize {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String name)? findNoticeGroup,
     TResult Function(String name)? createNoticeGroup,
-    TResult Function(String name)? initialize,
+    TResult Function(String name, bool withNotices)? initialize,
     required TResult orElse(),
   }) {
     if (initialize != null) {
-      return initialize(name);
+      return initialize(name, withNotices);
     }
     return orElse();
   }
@@ -543,10 +553,12 @@ class _$InitializeImpl implements _Initialize {
 }
 
 abstract class _Initialize implements NoticeGroupEvent {
-  const factory _Initialize(final String name) = _$InitializeImpl;
+  const factory _Initialize(final String name, {final bool withNotices}) =
+      _$InitializeImpl;
 
   @override
   String get name;
+  bool get withNotices;
 
   /// Create a copy of NoticeGroupEvent
   /// with the given fields replaced by the non-null parameter values.
