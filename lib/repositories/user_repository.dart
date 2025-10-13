@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter_common/constants/juny_constants.dart';
+import 'package:flutter_common/extensions/app_exception.dart';
 import 'package:flutter_common/models/user/user.dart';
 import 'package:flutter_common/network/dio_client.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -55,6 +56,10 @@ class UserDefaultRepository extends UserRepository {
       return User.fromJson(response.data);
     }
     final response = await dioClient.get('/user/$userId');
+    if (response.statusCode == 204) {
+      sharedPreferences.remove(userIdKey);
+      throw const AppException.notFound();
+    }
     var user = User.fromJson(response.data);
 
     if (user.fcmToken == null && fcmToken != null) {
@@ -69,11 +74,11 @@ class UserDefaultRepository extends UserRepository {
   Future<void> deleteUserData(User user) async {
     final appKeyString = JunyConstants.getAppKeyStringOrThrow(appKey);
     final userIdKey = '$appKeyString-user-id';
+    sharedPreferences.remove(userIdKey);
     user = user.copyWith(isActive: false);
     final userId = user.id;
     await dioClient.put('/user/$userId', data: user.toJson());
     sharedPreferences.getString(userIdKey);
-    sharedPreferences.remove(userIdKey);
   }
 
   @override
