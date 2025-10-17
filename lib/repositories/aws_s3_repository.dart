@@ -19,7 +19,7 @@ abstract class AwsS3Repository {
   Future<Map<String, bool>> checkObjectsExistenceByMonth(
       String year, String month);
   Future<List<S3Object>> getObjectsByDate(
-      String year, String month, String day);
+      String year, String month, String day, int? skip, int? take);
   Future<bool> likeS3Object(S3Object s3Object, User user);
   Future<bool> removeLikeS3Object(S3ObjectLike s3ObjectLike);
   Future<bool> replyS3Object(S3Object s3Object, User user, String content);
@@ -144,9 +144,13 @@ class AwsS3DefaultRepository extends AwsS3Repository {
 
   @override
   Future<List<S3Object>> getObjectsByDate(
-      String year, String month, String day) async {
-    final response =
-        await dioClient.get('/aws/s3/objects/year/$year/month/$month/day/$day');
+      String year, String month, String day, int? skip, int? take) async {
+    final response = await dioClient.get(
+        '/aws/s3/objects/year/$year/month/$month/day/$day',
+        queryParameters: {
+          'skip': skip,
+          'take': take,
+        });
     if (response.statusCode == 200) {
       return (response.data as List<dynamic>)
           .map((e) => S3Object.fromJson(e as Map<String, dynamic>))

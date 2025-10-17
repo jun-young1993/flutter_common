@@ -10,7 +10,7 @@ _$S3ObjectTagImpl _$$S3ObjectTagImplFromJson(Map<String, dynamic> json) =>
     _$S3ObjectTagImpl(
       id: json['id'] as String,
       name: json['name'] as String,
-      color: json['color'] as String? ?? null,
+      color: json['color'] as String? ?? '#000000',
       type: json['type'] as String,
     );
 

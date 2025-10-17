@@ -23,7 +23,8 @@ class S3ObjectEvent with _$S3ObjectEvent {
   const factory S3ObjectEvent.checkObjectsExistenceByMonth(
       String year, String month) = _CheckObjectsExistenceByMonth;
   const factory S3ObjectEvent.getObjectsByDate(
-      String year, String month, String day) = _GetObjectsByDate;
+          String year, String month, String day, int? skip, int? take) =
+      _GetObjectsByDate;
   const factory S3ObjectEvent.likeS3Object(S3Object s3Object, User user) =
       _LikeS3Object;
   const factory S3ObjectEvent.removeLikeS3Object(

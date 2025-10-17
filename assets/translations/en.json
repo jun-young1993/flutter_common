@@ -145,7 +145,9 @@
         "save": "Save",
         "photo": "Photo",
         "video": "Video",
-        "duration": "Duration"
+        "duration": "Duration",
+        "log": "Log",
+        "writeDiary": "Write Diary"
 
     },
     "validation" : {
@@ -208,11 +210,13 @@
         "shareDescription": "Share your precious memories with your family",
         "shareDescription2": "Safely share photos with your family members.",
         "babyLogDescription": "Write down your baby's special moments or growth records freely...\n\nExample:\n• Today I said 'Mom' for the first time!\n• I was so cute整理玩具 alone.\n• I slept well at night and woke up vigorously in the morning.",
+        "babyLogDescription2": "First step, first words, special day...\nEvery moment is a precious record.",
         "babyLogTagHintText": "Enter tag (e.g. first step, speaking, health)",
         "cameraHintText": "Take a photo directly with the camera or select from the gallery.",
         "cameraTitle": "Take Photo with Camera",
         "galleryTitle": "Select from Gallery",
-        "reTake": "Retake"
+        "reTake": "Retake",
+        "writeDiary": "Write Diary"
     },
     "error": {
         "unknownError": "An unknown error has occurred.",
@@ -243,7 +247,9 @@
         "deleteUserDataDescription": "Are you sure you want to delete all user data?",
         "deleteDataWarning": "This action cannot be undone. Data will be permanently deleted.",
         "deleteDataTitle": "Delete {name}",
-        "deleteDataDescription": "Are you sure you want to delete all data?"
+        "deleteDataDescription": "Are you sure you want to delete all data?",
+        "noData": "No data.",
+        "lastData": "This is the last data."
     },  
     "chat": {
         "clearChat": "Clear Chat",

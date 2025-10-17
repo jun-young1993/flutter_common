@@ -27,7 +27,8 @@ mixin _$S3ObjectEvent {
     required TResult Function() count,
     required TResult Function(String year, String month)
         checkObjectsExistenceByMonth,
-    required TResult Function(String year, String month, String day)
+    required TResult Function(
+            String year, String month, String day, int? skip, int? take)
         getObjectsByDate,
     required TResult Function(S3Object s3Object, User user) likeS3Object,
     required TResult Function(S3ObjectLike s3ObjectLike, User user)
@@ -55,7 +56,9 @@ mixin _$S3ObjectEvent {
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
     TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
-    TResult? Function(String year, String month, String day)? getObjectsByDate,
+    TResult? Function(
+            String year, String month, String day, int? skip, int? take)?
+        getObjectsByDate,
     TResult? Function(S3Object s3Object, User user)? likeS3Object,
     TResult? Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
     TResult? Function(S3Object s3Object, User user, String content)?
@@ -80,7 +83,9 @@ mixin _$S3ObjectEvent {
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
     TResult Function(String year, String month)? checkObjectsExistenceByMonth,
-    TResult Function(String year, String month, String day)? getObjectsByDate,
+    TResult Function(
+            String year, String month, String day, int? skip, int? take)?
+        getObjectsByDate,
     TResult Function(S3Object s3Object, User user)? likeS3Object,
     TResult Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
     TResult Function(S3Object s3Object, User user, String content)?
@@ -233,7 +238,8 @@ class _$InitializeImpl implements _Initialize {
     required TResult Function() count,
     required TResult Function(String year, String month)
         checkObjectsExistenceByMonth,
-    required TResult Function(String year, String month, String day)
+    required TResult Function(
+            String year, String month, String day, int? skip, int? take)
         getObjectsByDate,
     required TResult Function(S3Object s3Object, User user) likeS3Object,
     required TResult Function(S3ObjectLike s3ObjectLike, User user)
@@ -264,7 +270,9 @@ class _$InitializeImpl implements _Initialize {
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
     TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
-    TResult? Function(String year, String month, String day)? getObjectsByDate,
+    TResult? Function(
+            String year, String month, String day, int? skip, int? take)?
+        getObjectsByDate,
     TResult? Function(S3Object s3Object, User user)? likeS3Object,
     TResult? Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
     TResult? Function(S3Object s3Object, User user, String content)?
@@ -292,7 +300,9 @@ class _$InitializeImpl implements _Initialize {
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
     TResult Function(String year, String month)? checkObjectsExistenceByMonth,
-    TResult Function(String year, String month, String day)? getObjectsByDate,
+    TResult Function(
+            String year, String month, String day, int? skip, int? take)?
+        getObjectsByDate,
     TResult Function(S3Object s3Object, User user)? likeS3Object,
     TResult Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
     TResult Function(S3Object s3Object, User user, String content)?
@@ -479,7 +489,8 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     required TResult Function() count,
     required TResult Function(String year, String month)
         checkObjectsExistenceByMonth,
-    required TResult Function(String year, String month, String day)
+    required TResult Function(
+            String year, String month, String day, int? skip, int? take)
         getObjectsByDate,
     required TResult Function(S3Object s3Object, User user) likeS3Object,
     required TResult Function(S3ObjectLike s3ObjectLike, User user)
@@ -510,7 +521,9 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
     TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
-    TResult? Function(String year, String month, String day)? getObjectsByDate,
+    TResult? Function(
+            String year, String month, String day, int? skip, int? take)?
+        getObjectsByDate,
     TResult? Function(S3Object s3Object, User user)? likeS3Object,
     TResult? Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
     TResult? Function(S3Object s3Object, User user, String content)?
@@ -538,7 +551,9 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
     TResult Function(String year, String month)? checkObjectsExistenceByMonth,
-    TResult Function(String year, String month, String day)? getObjectsByDate,
+    TResult Function(
+            String year, String month, String day, int? skip, int? take)?
+        getObjectsByDate,
     TResult Function(S3Object s3Object, User user)? likeS3Object,
     TResult Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
     TResult Function(S3Object s3Object, User user, String content)?
@@ -700,7 +715,8 @@ class _$ClearErrorImpl implements _ClearError {
     required TResult Function() count,
     required TResult Function(String year, String month)
         checkObjectsExistenceByMonth,
-    required TResult Function(String year, String month, String day)
+    required TResult Function(
+            String year, String month, String day, int? skip, int? take)
         getObjectsByDate,
     required TResult Function(S3Object s3Object, User user) likeS3Object,
     required TResult Function(S3ObjectLike s3ObjectLike, User user)
@@ -731,7 +747,9 @@ class _$ClearErrorImpl implements _ClearError {
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
     TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
-    TResult? Function(String year, String month, String day)? getObjectsByDate,
+    TResult? Function(
+            String year, String month, String day, int? skip, int? take)?
+        getObjectsByDate,
     TResult? Function(S3Object s3Object, User user)? likeS3Object,
     TResult? Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
     TResult? Function(S3Object s3Object, User user, String content)?
@@ -759,7 +777,9 @@ class _$ClearErrorImpl implements _ClearError {
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
     TResult Function(String year, String month)? checkObjectsExistenceByMonth,
-    TResult Function(String year, String month, String day)? getObjectsByDate,
+    TResult Function(
+            String year, String month, String day, int? skip, int? take)?
+        getObjectsByDate,
     TResult Function(S3Object s3Object, User user)? likeS3Object,
     TResult Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
     TResult Function(S3Object s3Object, User user, String content)?
@@ -958,7 +978,8 @@ class _$UploadFileImpl implements _UploadFile {
     required TResult Function() count,
     required TResult Function(String year, String month)
         checkObjectsExistenceByMonth,
-    required TResult Function(String year, String month, String day)
+    required TResult Function(
+            String year, String month, String day, int? skip, int? take)
         getObjectsByDate,
     required TResult Function(S3Object s3Object, User user) likeS3Object,
     required TResult Function(S3ObjectLike s3ObjectLike, User user)
@@ -989,7 +1010,9 @@ class _$UploadFileImpl implements _UploadFile {
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
     TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
-    TResult? Function(String year, String month, String day)? getObjectsByDate,
+    TResult? Function(
+            String year, String month, String day, int? skip, int? take)?
+        getObjectsByDate,
     TResult? Function(S3Object s3Object, User user)? likeS3Object,
     TResult? Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
     TResult? Function(S3Object s3Object, User user, String content)?
@@ -1017,7 +1040,9 @@ class _$UploadFileImpl implements _UploadFile {
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
     TResult Function(String year, String month)? checkObjectsExistenceByMonth,
-    TResult Function(String year, String month, String day)? getObjectsByDate,
+    TResult Function(
+            String year, String month, String day, int? skip, int? take)?
+        getObjectsByDate,
     TResult Function(S3Object s3Object, User user)? likeS3Object,
     TResult Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
     TResult Function(S3Object s3Object, User user, String content)?
@@ -1238,7 +1263,8 @@ class _$DeleteFileImpl implements _DeleteFile {
     required TResult Function() count,
     required TResult Function(String year, String month)
         checkObjectsExistenceByMonth,
-    required TResult Function(String year, String month, String day)
+    required TResult Function(
+            String year, String month, String day, int? skip, int? take)
         getObjectsByDate,
     required TResult Function(S3Object s3Object, User user) likeS3Object,
     required TResult Function(S3ObjectLike s3ObjectLike, User user)
@@ -1269,7 +1295,9 @@ class _$DeleteFileImpl implements _DeleteFile {
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
     TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
-    TResult? Function(String year, String month, String day)? getObjectsByDate,
+    TResult? Function(
+            String year, String month, String day, int? skip, int? take)?
+        getObjectsByDate,
     TResult? Function(S3Object s3Object, User user)? likeS3Object,
     TResult? Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
     TResult? Function(S3Object s3Object, User user, String content)?
@@ -1297,7 +1325,9 @@ class _$DeleteFileImpl implements _DeleteFile {
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
     TResult Function(String year, String month)? checkObjectsExistenceByMonth,
-    TResult Function(String year, String month, String day)? getObjectsByDate,
+    TResult Function(
+            String year, String month, String day, int? skip, int? take)?
+        getObjectsByDate,
     TResult Function(S3Object s3Object, User user)? likeS3Object,
     TResult Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
     TResult Function(S3Object s3Object, User user, String content)?
@@ -1506,7 +1536,8 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     required TResult Function() count,
     required TResult Function(String year, String month)
         checkObjectsExistenceByMonth,
-    required TResult Function(String year, String month, String day)
+    required TResult Function(
+            String year, String month, String day, int? skip, int? take)
         getObjectsByDate,
     required TResult Function(S3Object s3Object, User user) likeS3Object,
     required TResult Function(S3ObjectLike s3ObjectLike, User user)
@@ -1537,7 +1568,9 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
     TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
-    TResult? Function(String year, String month, String day)? getObjectsByDate,
+    TResult? Function(
+            String year, String month, String day, int? skip, int? take)?
+        getObjectsByDate,
     TResult? Function(S3Object s3Object, User user)? likeS3Object,
     TResult? Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
     TResult? Function(S3Object s3Object, User user, String content)?
@@ -1565,7 +1598,9 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
     TResult Function(String year, String month)? checkObjectsExistenceByMonth,
-    TResult Function(String year, String month, String day)? getObjectsByDate,
+    TResult Function(
+            String year, String month, String day, int? skip, int? take)?
+        getObjectsByDate,
     TResult Function(S3Object s3Object, User user)? likeS3Object,
     TResult Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
     TResult Function(S3Object s3Object, User user, String content)?
@@ -1727,7 +1762,8 @@ class _$CountImpl implements _Count {
     required TResult Function() count,
     required TResult Function(String year, String month)
         checkObjectsExistenceByMonth,
-    required TResult Function(String year, String month, String day)
+    required TResult Function(
+            String year, String month, String day, int? skip, int? take)
         getObjectsByDate,
     required TResult Function(S3Object s3Object, User user) likeS3Object,
     required TResult Function(S3ObjectLike s3ObjectLike, User user)
@@ -1758,7 +1794,9 @@ class _$CountImpl implements _Count {
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
     TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
-    TResult? Function(String year, String month, String day)? getObjectsByDate,
+    TResult? Function(
+            String year, String month, String day, int? skip, int? take)?
+        getObjectsByDate,
     TResult? Function(S3Object s3Object, User user)? likeS3Object,
     TResult? Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
     TResult? Function(S3Object s3Object, User user, String content)?
@@ -1786,7 +1824,9 @@ class _$CountImpl implements _Count {
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
     TResult Function(String year, String month)? checkObjectsExistenceByMonth,
-    TResult Function(String year, String month, String day)? getObjectsByDate,
+    TResult Function(
+            String year, String month, String day, int? skip, int? take)?
+        getObjectsByDate,
     TResult Function(S3Object s3Object, User user)? likeS3Object,
     TResult Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
     TResult Function(S3Object s3Object, User user, String content)?
@@ -1979,7 +2019,8 @@ class _$CheckObjectsExistenceByMonthImpl
     required TResult Function() count,
     required TResult Function(String year, String month)
         checkObjectsExistenceByMonth,
-    required TResult Function(String year, String month, String day)
+    required TResult Function(
+            String year, String month, String day, int? skip, int? take)
         getObjectsByDate,
     required TResult Function(S3Object s3Object, User user) likeS3Object,
     required TResult Function(S3ObjectLike s3ObjectLike, User user)
@@ -2010,7 +2051,9 @@ class _$CheckObjectsExistenceByMonthImpl
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
     TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
-    TResult? Function(String year, String month, String day)? getObjectsByDate,
+    TResult? Function(
+            String year, String month, String day, int? skip, int? take)?
+        getObjectsByDate,
     TResult? Function(S3Object s3Object, User user)? likeS3Object,
     TResult? Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
     TResult? Function(S3Object s3Object, User user, String content)?
@@ -2038,7 +2081,9 @@ class _$CheckObjectsExistenceByMonthImpl
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
     TResult Function(String year, String month)? checkObjectsExistenceByMonth,
-    TResult Function(String year, String month, String day)? getObjectsByDate,
+    TResult Function(
+            String year, String month, String day, int? skip, int? take)?
+        getObjectsByDate,
     TResult Function(S3Object s3Object, User user)? likeS3Object,
     TResult Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
     TResult Function(S3Object s3Object, User user, String content)?
@@ -2158,7 +2203,7 @@ abstract class _$$GetObjectsByDateImplCopyWith<$Res> {
           $Res Function(_$GetObjectsByDateImpl) then) =
       __$$GetObjectsByDateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String year, String month, String day});
+  $Res call({String year, String month, String day, int? skip, int? take});
 }
 
 /// @nodoc
@@ -2177,6 +2222,8 @@ class __$$GetObjectsByDateImplCopyWithImpl<$Res>
     Object? year = null,
     Object? month = null,
     Object? day = null,
+    Object? skip = freezed,
+    Object? take = freezed,
   }) {
     return _then(_$GetObjectsByDateImpl(
       null == year
@@ -2191,6 +2238,14 @@ class __$$GetObjectsByDateImplCopyWithImpl<$Res>
           ? _value.day
           : day // ignore: cast_nullable_to_non_nullable
               as String,
+      freezed == skip
+          ? _value.skip
+          : skip // ignore: cast_nullable_to_non_nullable
+              as int?,
+      freezed == take
+          ? _value.take
+          : take // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -2198,7 +2253,8 @@ class __$$GetObjectsByDateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetObjectsByDateImpl implements _GetObjectsByDate {
-  const _$GetObjectsByDateImpl(this.year, this.month, this.day);
+  const _$GetObjectsByDateImpl(
+      this.year, this.month, this.day, this.skip, this.take);
 
   @override
   final String year;
@@ -2206,10 +2262,14 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
   final String month;
   @override
   final String day;
+  @override
+  final int? skip;
+  @override
+  final int? take;
 
   @override
   String toString() {
-    return 'S3ObjectEvent.getObjectsByDate(year: $year, month: $month, day: $day)';
+    return 'S3ObjectEvent.getObjectsByDate(year: $year, month: $month, day: $day, skip: $skip, take: $take)';
   }
 
   @override
@@ -2219,11 +2279,13 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
             other is _$GetObjectsByDateImpl &&
             (identical(other.year, year) || other.year == year) &&
             (identical(other.month, month) || other.month == month) &&
-            (identical(other.day, day) || other.day == day));
+            (identical(other.day, day) || other.day == day) &&
+            (identical(other.skip, skip) || other.skip == skip) &&
+            (identical(other.take, take) || other.take == take));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, year, month, day);
+  int get hashCode => Object.hash(runtimeType, year, month, day, skip, take);
 
   /// Create a copy of S3ObjectEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -2246,7 +2308,8 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
     required TResult Function() count,
     required TResult Function(String year, String month)
         checkObjectsExistenceByMonth,
-    required TResult Function(String year, String month, String day)
+    required TResult Function(
+            String year, String month, String day, int? skip, int? take)
         getObjectsByDate,
     required TResult Function(S3Object s3Object, User user) likeS3Object,
     required TResult Function(S3ObjectLike s3ObjectLike, User user)
@@ -2263,7 +2326,7 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
         reportS3ObjectReply,
     required TResult Function(S3Object s3Object) getS3ObjectSurround,
   }) {
-    return getObjectsByDate(year, month, day);
+    return getObjectsByDate(year, month, day, skip, take);
   }
 
   @override
@@ -2277,7 +2340,9 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
     TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
-    TResult? Function(String year, String month, String day)? getObjectsByDate,
+    TResult? Function(
+            String year, String month, String day, int? skip, int? take)?
+        getObjectsByDate,
     TResult? Function(S3Object s3Object, User user)? likeS3Object,
     TResult? Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
     TResult? Function(S3Object s3Object, User user, String content)?
@@ -2291,7 +2356,7 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
         reportS3ObjectReply,
     TResult? Function(S3Object s3Object)? getS3ObjectSurround,
   }) {
-    return getObjectsByDate?.call(year, month, day);
+    return getObjectsByDate?.call(year, month, day, skip, take);
   }
 
   @override
@@ -2305,7 +2370,9 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
     TResult Function(String year, String month)? checkObjectsExistenceByMonth,
-    TResult Function(String year, String month, String day)? getObjectsByDate,
+    TResult Function(
+            String year, String month, String day, int? skip, int? take)?
+        getObjectsByDate,
     TResult Function(S3Object s3Object, User user)? likeS3Object,
     TResult Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
     TResult Function(S3Object s3Object, User user, String content)?
@@ -2321,7 +2388,7 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
     required TResult orElse(),
   }) {
     if (getObjectsByDate != null) {
-      return getObjectsByDate(year, month, day);
+      return getObjectsByDate(year, month, day, skip, take);
     }
     return orElse();
   }
@@ -2405,12 +2472,17 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
 
 abstract class _GetObjectsByDate implements S3ObjectEvent {
   const factory _GetObjectsByDate(
-          final String year, final String month, final String day) =
-      _$GetObjectsByDateImpl;
+      final String year,
+      final String month,
+      final String day,
+      final int? skip,
+      final int? take) = _$GetObjectsByDateImpl;
 
   String get year;
   String get month;
   String get day;
+  int? get skip;
+  int? get take;
 
   /// Create a copy of S3ObjectEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -2528,7 +2600,8 @@ class _$LikeS3ObjectImpl implements _LikeS3Object {
     required TResult Function() count,
     required TResult Function(String year, String month)
         checkObjectsExistenceByMonth,
-    required TResult Function(String year, String month, String day)
+    required TResult Function(
+            String year, String month, String day, int? skip, int? take)
         getObjectsByDate,
     required TResult Function(S3Object s3Object, User user) likeS3Object,
     required TResult Function(S3ObjectLike s3ObjectLike, User user)
@@ -2559,7 +2632,9 @@ class _$LikeS3ObjectImpl implements _LikeS3Object {
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
     TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
-    TResult? Function(String year, String month, String day)? getObjectsByDate,
+    TResult? Function(
+            String year, String month, String day, int? skip, int? take)?
+        getObjectsByDate,
     TResult? Function(S3Object s3Object, User user)? likeS3Object,
     TResult? Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
     TResult? Function(S3Object s3Object, User user, String content)?
@@ -2587,7 +2662,9 @@ class _$LikeS3ObjectImpl implements _LikeS3Object {
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
     TResult Function(String year, String month)? checkObjectsExistenceByMonth,
-    TResult Function(String year, String month, String day)? getObjectsByDate,
+    TResult Function(
+            String year, String month, String day, int? skip, int? take)?
+        getObjectsByDate,
     TResult Function(S3Object s3Object, User user)? likeS3Object,
     TResult Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
     TResult Function(S3Object s3Object, User user, String content)?
@@ -2809,7 +2886,8 @@ class _$RemoveLikeS3ObjectImpl implements _RemoveLikeS3Object {
     required TResult Function() count,
     required TResult Function(String year, String month)
         checkObjectsExistenceByMonth,
-    required TResult Function(String year, String month, String day)
+    required TResult Function(
+            String year, String month, String day, int? skip, int? take)
         getObjectsByDate,
     required TResult Function(S3Object s3Object, User user) likeS3Object,
     required TResult Function(S3ObjectLike s3ObjectLike, User user)
@@ -2840,7 +2918,9 @@ class _$RemoveLikeS3ObjectImpl implements _RemoveLikeS3Object {
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
     TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
-    TResult? Function(String year, String month, String day)? getObjectsByDate,
+    TResult? Function(
+            String year, String month, String day, int? skip, int? take)?
+        getObjectsByDate,
     TResult? Function(S3Object s3Object, User user)? likeS3Object,
     TResult? Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
     TResult? Function(S3Object s3Object, User user, String content)?
@@ -2868,7 +2948,9 @@ class _$RemoveLikeS3ObjectImpl implements _RemoveLikeS3Object {
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
     TResult Function(String year, String month)? checkObjectsExistenceByMonth,
-    TResult Function(String year, String month, String day)? getObjectsByDate,
+    TResult Function(
+            String year, String month, String day, int? skip, int? take)?
+        getObjectsByDate,
     TResult Function(S3Object s3Object, User user)? likeS3Object,
     TResult Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
     TResult Function(S3Object s3Object, User user, String content)?
@@ -3098,7 +3180,8 @@ class _$ReplyS3ObjectImpl implements _ReplyS3Object {
     required TResult Function() count,
     required TResult Function(String year, String month)
         checkObjectsExistenceByMonth,
-    required TResult Function(String year, String month, String day)
+    required TResult Function(
+            String year, String month, String day, int? skip, int? take)
         getObjectsByDate,
     required TResult Function(S3Object s3Object, User user) likeS3Object,
     required TResult Function(S3ObjectLike s3ObjectLike, User user)
@@ -3129,7 +3212,9 @@ class _$ReplyS3ObjectImpl implements _ReplyS3Object {
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
     TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
-    TResult? Function(String year, String month, String day)? getObjectsByDate,
+    TResult? Function(
+            String year, String month, String day, int? skip, int? take)?
+        getObjectsByDate,
     TResult? Function(S3Object s3Object, User user)? likeS3Object,
     TResult? Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
     TResult? Function(S3Object s3Object, User user, String content)?
@@ -3157,7 +3242,9 @@ class _$ReplyS3ObjectImpl implements _ReplyS3Object {
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
     TResult Function(String year, String month)? checkObjectsExistenceByMonth,
-    TResult Function(String year, String month, String day)? getObjectsByDate,
+    TResult Function(
+            String year, String month, String day, int? skip, int? take)?
+        getObjectsByDate,
     TResult Function(S3Object s3Object, User user)? likeS3Object,
     TResult Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
     TResult Function(S3Object s3Object, User user, String content)?
@@ -3381,7 +3468,8 @@ class _$RemoveReplyS3ObjectImpl implements _RemoveReplyS3Object {
     required TResult Function() count,
     required TResult Function(String year, String month)
         checkObjectsExistenceByMonth,
-    required TResult Function(String year, String month, String day)
+    required TResult Function(
+            String year, String month, String day, int? skip, int? take)
         getObjectsByDate,
     required TResult Function(S3Object s3Object, User user) likeS3Object,
     required TResult Function(S3ObjectLike s3ObjectLike, User user)
@@ -3412,7 +3500,9 @@ class _$RemoveReplyS3ObjectImpl implements _RemoveReplyS3Object {
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
     TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
-    TResult? Function(String year, String month, String day)? getObjectsByDate,
+    TResult? Function(
+            String year, String month, String day, int? skip, int? take)?
+        getObjectsByDate,
     TResult? Function(S3Object s3Object, User user)? likeS3Object,
     TResult? Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
     TResult? Function(S3Object s3Object, User user, String content)?
@@ -3440,7 +3530,9 @@ class _$RemoveReplyS3ObjectImpl implements _RemoveReplyS3Object {
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
     TResult Function(String year, String month)? checkObjectsExistenceByMonth,
-    TResult Function(String year, String month, String day)? getObjectsByDate,
+    TResult Function(
+            String year, String month, String day, int? skip, int? take)?
+        getObjectsByDate,
     TResult Function(S3Object s3Object, User user)? likeS3Object,
     TResult Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
     TResult Function(S3Object s3Object, User user, String content)?
@@ -3660,7 +3752,8 @@ class _$ReportS3ObjectImpl implements _ReportS3Object {
     required TResult Function() count,
     required TResult Function(String year, String month)
         checkObjectsExistenceByMonth,
-    required TResult Function(String year, String month, String day)
+    required TResult Function(
+            String year, String month, String day, int? skip, int? take)
         getObjectsByDate,
     required TResult Function(S3Object s3Object, User user) likeS3Object,
     required TResult Function(S3ObjectLike s3ObjectLike, User user)
@@ -3691,7 +3784,9 @@ class _$ReportS3ObjectImpl implements _ReportS3Object {
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
     TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
-    TResult? Function(String year, String month, String day)? getObjectsByDate,
+    TResult? Function(
+            String year, String month, String day, int? skip, int? take)?
+        getObjectsByDate,
     TResult? Function(S3Object s3Object, User user)? likeS3Object,
     TResult? Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
     TResult? Function(S3Object s3Object, User user, String content)?
@@ -3719,7 +3814,9 @@ class _$ReportS3ObjectImpl implements _ReportS3Object {
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
     TResult Function(String year, String month)? checkObjectsExistenceByMonth,
-    TResult Function(String year, String month, String day)? getObjectsByDate,
+    TResult Function(
+            String year, String month, String day, int? skip, int? take)?
+        getObjectsByDate,
     TResult Function(S3Object s3Object, User user)? likeS3Object,
     TResult Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
     TResult Function(S3Object s3Object, User user, String content)?
@@ -3939,7 +4036,8 @@ class _$ReportS3ObjectReplyImpl implements _ReportS3ObjectReply {
     required TResult Function() count,
     required TResult Function(String year, String month)
         checkObjectsExistenceByMonth,
-    required TResult Function(String year, String month, String day)
+    required TResult Function(
+            String year, String month, String day, int? skip, int? take)
         getObjectsByDate,
     required TResult Function(S3Object s3Object, User user) likeS3Object,
     required TResult Function(S3ObjectLike s3ObjectLike, User user)
@@ -3970,7 +4068,9 @@ class _$ReportS3ObjectReplyImpl implements _ReportS3ObjectReply {
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
     TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
-    TResult? Function(String year, String month, String day)? getObjectsByDate,
+    TResult? Function(
+            String year, String month, String day, int? skip, int? take)?
+        getObjectsByDate,
     TResult? Function(S3Object s3Object, User user)? likeS3Object,
     TResult? Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
     TResult? Function(S3Object s3Object, User user, String content)?
@@ -3998,7 +4098,9 @@ class _$ReportS3ObjectReplyImpl implements _ReportS3ObjectReply {
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
     TResult Function(String year, String month)? checkObjectsExistenceByMonth,
-    TResult Function(String year, String month, String day)? getObjectsByDate,
+    TResult Function(
+            String year, String month, String day, int? skip, int? take)?
+        getObjectsByDate,
     TResult Function(S3Object s3Object, User user)? likeS3Object,
     TResult Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
     TResult Function(S3Object s3Object, User user, String content)?
@@ -4204,7 +4306,8 @@ class _$GetS3ObjectSurroundImpl implements _GetS3ObjectSurround {
     required TResult Function() count,
     required TResult Function(String year, String month)
         checkObjectsExistenceByMonth,
-    required TResult Function(String year, String month, String day)
+    required TResult Function(
+            String year, String month, String day, int? skip, int? take)
         getObjectsByDate,
     required TResult Function(S3Object s3Object, User user) likeS3Object,
     required TResult Function(S3ObjectLike s3ObjectLike, User user)
@@ -4235,7 +4338,9 @@ class _$GetS3ObjectSurroundImpl implements _GetS3ObjectSurround {
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
     TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
-    TResult? Function(String year, String month, String day)? getObjectsByDate,
+    TResult? Function(
+            String year, String month, String day, int? skip, int? take)?
+        getObjectsByDate,
     TResult? Function(S3Object s3Object, User user)? likeS3Object,
     TResult? Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
     TResult? Function(S3Object s3Object, User user, String content)?
@@ -4263,7 +4368,9 @@ class _$GetS3ObjectSurroundImpl implements _GetS3ObjectSurround {
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
     TResult Function(String year, String month)? checkObjectsExistenceByMonth,
-    TResult Function(String year, String month, String day)? getObjectsByDate,
+    TResult Function(
+            String year, String month, String day, int? skip, int? take)?
+        getObjectsByDate,
     TResult Function(S3Object s3Object, User user)? likeS3Object,
     TResult Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
     TResult Function(S3Object s3Object, User user, String content)?

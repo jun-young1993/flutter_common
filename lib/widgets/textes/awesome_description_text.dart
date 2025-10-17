@@ -42,6 +42,8 @@ class AwesomeDescriptionText extends StatelessWidget {
             child: Text(
               text,
               textAlign: textAlign ?? TextAlign.left,
+              softWrap: true,
+              overflow: TextOverflow.visible,
               style: TextStyle(
                 color: descColor,
                 fontSize: descFontSize,

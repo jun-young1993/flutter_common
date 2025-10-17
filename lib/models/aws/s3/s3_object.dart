@@ -1,15 +1,19 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_common/models/aws/s3/s3_object_base.dart';
 import 'package:flutter_common/models/aws/s3/s3_object_like.dart';
 import 'package:flutter_common/models/aws/s3/s3_object_reply.dart';
 import 'package:flutter_common/models/aws/s3/s3_object_tag.dart';
 import 'package:flutter_common/models/user/user.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:intl/intl.dart';
 
 part 's3_object.freezed.dart';
 part 's3_object.g.dart';
 
+/// S3 객체 정보를 담는 클래스
+/// thumbnail은 S3ObjectBase를 사용하여 재귀적 참조 방지
+/// S3ObjectCommonMixin을 통해 공통 getter 로직 공유
 @freezed
-class S3Object with _$S3Object {
+class S3Object with _$S3Object, S3ObjectCommonMixin {
   const factory S3Object({
     required String id,
     @Default(null) String? key,
@@ -21,6 +25,7 @@ class S3Object with _$S3Object {
     @Default(null) DateTime? createdAt,
     @Default(null) String? userId,
     @Default(null) User? user,
+    @Default(null) S3ObjectBase? thumbnail,
     @Default([]) List<S3ObjectTag>? tags,
     @Default([]) List<S3ObjectLike>? likes,
     @Default([]) List<S3ObjectReply>? replies,
@@ -31,23 +36,25 @@ class S3Object with _$S3Object {
   factory S3Object.fromJson(Map<String, dynamic> json) =>
       _$S3ObjectFromJson(json);
 
-  bool get isImage {
-    return mimetype?.startsWith('image/') ?? false;
+  String? get thumbnailUrl {
+    if (isImage) {
+      return url;
+    }
+    if (isVideo) {
+      return thumbnail?.url;
+    }
+    return null;
   }
 
-  bool get isVideo {
-    return mimetype?.startsWith('video/') ?? false;
+  List<IconData?> get emotionIcons {
+    return tags
+            ?.where((tag) => tag.isEmotion)
+            .map((tag) => tag.icon)
+            .toList() ??
+        [];
   }
 
-  String get formattedDate {
-    if (createdAt == null) return 'unknown';
-    return DateFormat('yyyy.MM.dd').format(createdAt!);
-  }
-
-  String get fileSize {
-    if (size == null) return 'unknown';
-    if (size! < 1024) return '${size}B';
-    if (size! < 1024 * 1024) return '${(size! / 1024).toStringAsFixed(1)}KB';
-    return '${(size! / (1024 * 1024)).toStringAsFixed(1)}MB';
+  List<S3ObjectTag?> get emotions {
+    return tags?.where((tag) => tag.isEmotion).map((tag) => tag).toList() ?? [];
   }
 }

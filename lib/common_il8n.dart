@@ -126,11 +126,13 @@ class _Baby {
   final shareDescription = 'baby.shareDescription';
   final shareDescription2 = 'baby.shareDescription2';
   final babyLogDescription = 'baby.babyLogDescription';
+  final babyLogDescription2 = 'baby.babyLogDescription2';
   final babyLogTagHintText = 'baby.babyLogTagHintText';
   final cameraHintText = 'baby.cameraHintText';
   final cameraTitle = 'baby.cameraTitle';
   final galleryTitle = 'baby.galleryTitle';
   final reTake = 'baby.reTake';
+  final writeDiary = 'baby.writeDiary';
 }
 
 class _Common {
@@ -184,6 +186,10 @@ class _Common {
   final photo = 'common.photo';
   final video = 'common.video';
   final duration = 'common.duration';
+  final log = 'common.log';
+  final noData = 'common.noData';
+  final lastData = 'common.lastData';
+  final writeDiary = 'common.writeDiary';
 }
 
 class _User {
@@ -310,6 +316,8 @@ class _Message {
   final deleteDataTitle = 'message.deleteDataTitle'; // {name} 삭제
   final deleteDataDescription =
       'message.deleteDataDescription'; // 정말로 삭제하시겠습니까?
+  final noData = 'message.noData'; // 데이터가 없습니다.
+  final lastData = 'message.lastData'; // 마지막 데이터 입니다.
 }
 
 class _Chat {

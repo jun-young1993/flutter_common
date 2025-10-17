@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 's3_object.dart';
+part of 's3_object_base.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-S3Object _$S3ObjectFromJson(Map<String, dynamic> json) {
-  return _S3Object.fromJson(json);
+S3ObjectBase _$S3ObjectBaseFromJson(Map<String, dynamic> json) {
+  return _S3ObjectBase.fromJson(json);
 }
 
 /// @nodoc
-mixin _$S3Object {
+mixin _$S3ObjectBase {
   String get id => throw _privateConstructorUsedError;
   String? get key => throw _privateConstructorUsedError;
   String? get url => throw _privateConstructorUsedError;
@@ -29,26 +29,22 @@ mixin _$S3Object {
   bool get active => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
   String? get userId => throw _privateConstructorUsedError;
-  User? get user => throw _privateConstructorUsedError;
-  S3ObjectBase? get thumbnail => throw _privateConstructorUsedError;
-  List<S3ObjectTag>? get tags => throw _privateConstructorUsedError;
-  List<S3ObjectLike>? get likes => throw _privateConstructorUsedError;
-  List<S3ObjectReply>? get replies => throw _privateConstructorUsedError;
 
-  /// Serializes this S3Object to a JSON map.
+  /// Serializes this S3ObjectBase to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of S3Object
+  /// Create a copy of S3ObjectBase
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $S3ObjectCopyWith<S3Object> get copyWith =>
+  $S3ObjectBaseCopyWith<S3ObjectBase> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $S3ObjectCopyWith<$Res> {
-  factory $S3ObjectCopyWith(S3Object value, $Res Function(S3Object) then) =
-      _$S3ObjectCopyWithImpl<$Res, S3Object>;
+abstract class $S3ObjectBaseCopyWith<$Res> {
+  factory $S3ObjectBaseCopyWith(
+          S3ObjectBase value, $Res Function(S3ObjectBase) then) =
+      _$S3ObjectBaseCopyWithImpl<$Res, S3ObjectBase>;
   @useResult
   $Res call(
       {String id,
@@ -59,28 +55,20 @@ abstract class $S3ObjectCopyWith<$Res> {
       String? mimetype,
       bool active,
       DateTime? createdAt,
-      String? userId,
-      User? user,
-      S3ObjectBase? thumbnail,
-      List<S3ObjectTag>? tags,
-      List<S3ObjectLike>? likes,
-      List<S3ObjectReply>? replies});
-
-  $UserCopyWith<$Res>? get user;
-  $S3ObjectBaseCopyWith<$Res>? get thumbnail;
+      String? userId});
 }
 
 /// @nodoc
-class _$S3ObjectCopyWithImpl<$Res, $Val extends S3Object>
-    implements $S3ObjectCopyWith<$Res> {
-  _$S3ObjectCopyWithImpl(this._value, this._then);
+class _$S3ObjectBaseCopyWithImpl<$Res, $Val extends S3ObjectBase>
+    implements $S3ObjectBaseCopyWith<$Res> {
+  _$S3ObjectBaseCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of S3Object
+  /// Create a copy of S3ObjectBase
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -94,11 +82,6 @@ class _$S3ObjectCopyWithImpl<$Res, $Val extends S3Object>
     Object? active = null,
     Object? createdAt = freezed,
     Object? userId = freezed,
-    Object? user = freezed,
-    Object? thumbnail = freezed,
-    Object? tags = freezed,
-    Object? likes = freezed,
-    Object? replies = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -137,64 +120,16 @@ class _$S3ObjectCopyWithImpl<$Res, $Val extends S3Object>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String?,
-      user: freezed == user
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as User?,
-      thumbnail: freezed == thumbnail
-          ? _value.thumbnail
-          : thumbnail // ignore: cast_nullable_to_non_nullable
-              as S3ObjectBase?,
-      tags: freezed == tags
-          ? _value.tags
-          : tags // ignore: cast_nullable_to_non_nullable
-              as List<S3ObjectTag>?,
-      likes: freezed == likes
-          ? _value.likes
-          : likes // ignore: cast_nullable_to_non_nullable
-              as List<S3ObjectLike>?,
-      replies: freezed == replies
-          ? _value.replies
-          : replies // ignore: cast_nullable_to_non_nullable
-              as List<S3ObjectReply>?,
     ) as $Val);
-  }
-
-  /// Create a copy of S3Object
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $UserCopyWith<$Res>? get user {
-    if (_value.user == null) {
-      return null;
-    }
-
-    return $UserCopyWith<$Res>(_value.user!, (value) {
-      return _then(_value.copyWith(user: value) as $Val);
-    });
-  }
-
-  /// Create a copy of S3Object
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $S3ObjectBaseCopyWith<$Res>? get thumbnail {
-    if (_value.thumbnail == null) {
-      return null;
-    }
-
-    return $S3ObjectBaseCopyWith<$Res>(_value.thumbnail!, (value) {
-      return _then(_value.copyWith(thumbnail: value) as $Val);
-    });
   }
 }
 
 /// @nodoc
-abstract class _$$S3ObjectImplCopyWith<$Res>
-    implements $S3ObjectCopyWith<$Res> {
-  factory _$$S3ObjectImplCopyWith(
-          _$S3ObjectImpl value, $Res Function(_$S3ObjectImpl) then) =
-      __$$S3ObjectImplCopyWithImpl<$Res>;
+abstract class _$$S3ObjectBaseImplCopyWith<$Res>
+    implements $S3ObjectBaseCopyWith<$Res> {
+  factory _$$S3ObjectBaseImplCopyWith(
+          _$S3ObjectBaseImpl value, $Res Function(_$S3ObjectBaseImpl) then) =
+      __$$S3ObjectBaseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -206,28 +141,18 @@ abstract class _$$S3ObjectImplCopyWith<$Res>
       String? mimetype,
       bool active,
       DateTime? createdAt,
-      String? userId,
-      User? user,
-      S3ObjectBase? thumbnail,
-      List<S3ObjectTag>? tags,
-      List<S3ObjectLike>? likes,
-      List<S3ObjectReply>? replies});
-
-  @override
-  $UserCopyWith<$Res>? get user;
-  @override
-  $S3ObjectBaseCopyWith<$Res>? get thumbnail;
+      String? userId});
 }
 
 /// @nodoc
-class __$$S3ObjectImplCopyWithImpl<$Res>
-    extends _$S3ObjectCopyWithImpl<$Res, _$S3ObjectImpl>
-    implements _$$S3ObjectImplCopyWith<$Res> {
-  __$$S3ObjectImplCopyWithImpl(
-      _$S3ObjectImpl _value, $Res Function(_$S3ObjectImpl) _then)
+class __$$S3ObjectBaseImplCopyWithImpl<$Res>
+    extends _$S3ObjectBaseCopyWithImpl<$Res, _$S3ObjectBaseImpl>
+    implements _$$S3ObjectBaseImplCopyWith<$Res> {
+  __$$S3ObjectBaseImplCopyWithImpl(
+      _$S3ObjectBaseImpl _value, $Res Function(_$S3ObjectBaseImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of S3Object
+  /// Create a copy of S3ObjectBase
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -241,13 +166,8 @@ class __$$S3ObjectImplCopyWithImpl<$Res>
     Object? active = null,
     Object? createdAt = freezed,
     Object? userId = freezed,
-    Object? user = freezed,
-    Object? thumbnail = freezed,
-    Object? tags = freezed,
-    Object? likes = freezed,
-    Object? replies = freezed,
   }) {
-    return _then(_$S3ObjectImpl(
+    return _then(_$S3ObjectBaseImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -284,34 +204,14 @@ class __$$S3ObjectImplCopyWithImpl<$Res>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String?,
-      user: freezed == user
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as User?,
-      thumbnail: freezed == thumbnail
-          ? _value.thumbnail
-          : thumbnail // ignore: cast_nullable_to_non_nullable
-              as S3ObjectBase?,
-      tags: freezed == tags
-          ? _value._tags
-          : tags // ignore: cast_nullable_to_non_nullable
-              as List<S3ObjectTag>?,
-      likes: freezed == likes
-          ? _value._likes
-          : likes // ignore: cast_nullable_to_non_nullable
-              as List<S3ObjectLike>?,
-      replies: freezed == replies
-          ? _value._replies
-          : replies // ignore: cast_nullable_to_non_nullable
-              as List<S3ObjectReply>?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$S3ObjectImpl extends _S3Object {
-  const _$S3ObjectImpl(
+class _$S3ObjectBaseImpl extends _S3ObjectBase {
+  const _$S3ObjectBaseImpl(
       {required this.id,
       this.key = null,
       this.url = null,
@@ -320,19 +220,11 @@ class _$S3ObjectImpl extends _S3Object {
       this.mimetype = null,
       this.active = false,
       this.createdAt = null,
-      this.userId = null,
-      this.user = null,
-      this.thumbnail = null,
-      final List<S3ObjectTag>? tags = const [],
-      final List<S3ObjectLike>? likes = const [],
-      final List<S3ObjectReply>? replies = const []})
-      : _tags = tags,
-        _likes = likes,
-        _replies = replies,
-        super._();
+      this.userId = null})
+      : super._();
 
-  factory _$S3ObjectImpl.fromJson(Map<String, dynamic> json) =>
-      _$$S3ObjectImplFromJson(json);
+  factory _$S3ObjectBaseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$S3ObjectBaseImplFromJson(json);
 
   @override
   final String id;
@@ -360,55 +252,17 @@ class _$S3ObjectImpl extends _S3Object {
   @override
   @JsonKey()
   final String? userId;
-  @override
-  @JsonKey()
-  final User? user;
-  @override
-  @JsonKey()
-  final S3ObjectBase? thumbnail;
-  final List<S3ObjectTag>? _tags;
-  @override
-  @JsonKey()
-  List<S3ObjectTag>? get tags {
-    final value = _tags;
-    if (value == null) return null;
-    if (_tags is EqualUnmodifiableListView) return _tags;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  final List<S3ObjectLike>? _likes;
-  @override
-  @JsonKey()
-  List<S3ObjectLike>? get likes {
-    final value = _likes;
-    if (value == null) return null;
-    if (_likes is EqualUnmodifiableListView) return _likes;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  final List<S3ObjectReply>? _replies;
-  @override
-  @JsonKey()
-  List<S3ObjectReply>? get replies {
-    final value = _replies;
-    if (value == null) return null;
-    if (_replies is EqualUnmodifiableListView) return _replies;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
 
   @override
   String toString() {
-    return 'S3Object(id: $id, key: $key, url: $url, originalName: $originalName, size: $size, mimetype: $mimetype, active: $active, createdAt: $createdAt, userId: $userId, user: $user, thumbnail: $thumbnail, tags: $tags, likes: $likes, replies: $replies)';
+    return 'S3ObjectBase(id: $id, key: $key, url: $url, originalName: $originalName, size: $size, mimetype: $mimetype, active: $active, createdAt: $createdAt, userId: $userId)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$S3ObjectImpl &&
+            other is _$S3ObjectBaseImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.key, key) || other.key == key) &&
             (identical(other.url, url) || other.url == url) &&
@@ -420,52 +274,32 @@ class _$S3ObjectImpl extends _S3Object {
             (identical(other.active, active) || other.active == active) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
-            (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.user, user) || other.user == user) &&
-            (identical(other.thumbnail, thumbnail) ||
-                other.thumbnail == thumbnail) &&
-            const DeepCollectionEquality().equals(other._tags, _tags) &&
-            const DeepCollectionEquality().equals(other._likes, _likes) &&
-            const DeepCollectionEquality().equals(other._replies, _replies));
+            (identical(other.userId, userId) || other.userId == userId));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      key,
-      url,
-      originalName,
-      size,
-      mimetype,
-      active,
-      createdAt,
-      userId,
-      user,
-      thumbnail,
-      const DeepCollectionEquality().hash(_tags),
-      const DeepCollectionEquality().hash(_likes),
-      const DeepCollectionEquality().hash(_replies));
+  int get hashCode => Object.hash(runtimeType, id, key, url, originalName, size,
+      mimetype, active, createdAt, userId);
 
-  /// Create a copy of S3Object
+  /// Create a copy of S3ObjectBase
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$S3ObjectImplCopyWith<_$S3ObjectImpl> get copyWith =>
-      __$$S3ObjectImplCopyWithImpl<_$S3ObjectImpl>(this, _$identity);
+  _$$S3ObjectBaseImplCopyWith<_$S3ObjectBaseImpl> get copyWith =>
+      __$$S3ObjectBaseImplCopyWithImpl<_$S3ObjectBaseImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$S3ObjectImplToJson(
+    return _$$S3ObjectBaseImplToJson(
       this,
     );
   }
 }
 
-abstract class _S3Object extends S3Object {
-  const factory _S3Object(
+abstract class _S3ObjectBase extends S3ObjectBase {
+  const factory _S3ObjectBase(
       {required final String id,
       final String? key,
       final String? url,
@@ -474,16 +308,11 @@ abstract class _S3Object extends S3Object {
       final String? mimetype,
       final bool active,
       final DateTime? createdAt,
-      final String? userId,
-      final User? user,
-      final S3ObjectBase? thumbnail,
-      final List<S3ObjectTag>? tags,
-      final List<S3ObjectLike>? likes,
-      final List<S3ObjectReply>? replies}) = _$S3ObjectImpl;
-  const _S3Object._() : super._();
+      final String? userId}) = _$S3ObjectBaseImpl;
+  const _S3ObjectBase._() : super._();
 
-  factory _S3Object.fromJson(Map<String, dynamic> json) =
-      _$S3ObjectImpl.fromJson;
+  factory _S3ObjectBase.fromJson(Map<String, dynamic> json) =
+      _$S3ObjectBaseImpl.fromJson;
 
   @override
   String get id;
@@ -503,21 +332,11 @@ abstract class _S3Object extends S3Object {
   DateTime? get createdAt;
   @override
   String? get userId;
-  @override
-  User? get user;
-  @override
-  S3ObjectBase? get thumbnail;
-  @override
-  List<S3ObjectTag>? get tags;
-  @override
-  List<S3ObjectLike>? get likes;
-  @override
-  List<S3ObjectReply>? get replies;
 
-  /// Create a copy of S3Object
+  /// Create a copy of S3ObjectBase
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$S3ObjectImplCopyWith<_$S3ObjectImpl> get copyWith =>
+  _$$S3ObjectBaseImplCopyWith<_$S3ObjectBaseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
