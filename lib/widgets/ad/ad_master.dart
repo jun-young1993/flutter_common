@@ -188,6 +188,7 @@ abstract class IAdManager {
   Future<NativeAd?> createNativeAd({
     AdCallback? callback,
     required String adUnitId,
+    required String factoryId,
   });
   Future<AppOpenAd?> createAppOpenAd({
     AdCallback? callback,
@@ -459,6 +460,7 @@ class AdMaster implements IAdManager {
   Future<NativeAd?> createNativeAd({
     AdCallback? callback,
     required String adUnitId,
+    required String factoryId,
   }) async {
     _ensureInitialized();
 
@@ -471,7 +473,7 @@ class AdMaster implements IAdManager {
     try {
       final nativeAd = NativeAd(
         adUnitId: finalAdUnitId,
-        factoryId: 'listTile',
+        factoryId: factoryId,
         request: const AdRequest(),
         listener: NativeAdListener(
           onAdLoaded: (ad) {
@@ -680,12 +682,7 @@ class _AdMasterWidgetState extends State<AdMasterWidget> {
           );
           break;
         case AdType.native:
-          _ad = await adMaster.createNativeAd(
-            callback: widget.callback,
-            adUnitId:
-                Platform.isAndroid ? widget.androidAdUnitId : widget.adUnitId,
-          );
-          break;
+          throw UnimplementedError('native ad is not implemented');
         case AdType.appOpen:
           _ad = await adMaster.createAppOpenAd(
             callback: widget.callback,
