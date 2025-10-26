@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_common/constants/juny_constants.dart';
 import 'package:flutter_common/repositories/aws_s3_repository.dart';
 import 'package:flutter_common/state/aws/s3/s3_object_event.dart';
@@ -23,6 +24,26 @@ class S3ObjectBloc extends Bloc<S3ObjectEvent, S3ObjectState> {
         }, uploadFile: (e) async {
           emit(state.copyWith(isUploading: true));
           await s3ObjectRepository.uploadFile(e.file, e.user, appKeys);
+          emit(state.copyWith(isUploading: false));
+          add(const S3ObjectEvent.getS3Objects(0, 6));
+        }, uploadFiles: (e) async {
+          emit(state.copyWith(isUploading: true));
+
+          // 각 파일 업로드를 개별적으로 처리하여 하나가 실패해도 다른 파일들은 계속 업로드되도록 함
+          final results = await Future.wait(
+            e.files.map((file) async {
+              try {
+                return await s3ObjectRepository.uploadFile(
+                    file, e.user, appKeys);
+              } catch (error) {
+                // 개별 파일 업로드 실패를 로그로 남기고 계속 진행
+                debugPrint('🔥 [FILE UPLOAD ERROR] ${file.path}: $error');
+                return false;
+              }
+            }),
+            eagerError: false, // 모든 Future가 완료될 때까지 기다림
+          );
+
           emit(state.copyWith(isUploading: false));
           add(const S3ObjectEvent.getS3Objects(0, 6));
         }, deleteFile: (e) async {

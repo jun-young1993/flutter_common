@@ -75,6 +75,18 @@ class AwsS3DefaultRepository extends AwsS3Repository {
         return true;
       }
       throw Exception('파일 업로드 실패');
+    } on DioException catch (e) {
+      // 413 에러 처리
+      if (e.response?.statusCode == 413) {
+        throw Exception('파일 크기가 너무 큽니다. 최대 업로드 크기를 확인해주세요.');
+      }
+      // 기타 DioException 처리
+      final errorMessage = e.response?.data is String
+          ? e.response!.data as String
+          : e.response?.data?['message']?.toString() ??
+              e.message ??
+              '파일 업로드 실패';
+      throw Exception('파일 업로드 실패: $errorMessage');
     } catch (e) {
       throw Exception('파일 업로드 실패: $e');
     }

@@ -22,6 +22,7 @@ mixin _$S3ObjectEvent {
     required TResult Function(int skip, int take) getS3Objects,
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
+    required TResult Function(List<File> files, User user) uploadFiles,
     required TResult Function(S3Object s3Object, User user) deleteFile,
     required TResult Function(String id, User user) findOneOrFail,
     required TResult Function() count,
@@ -52,6 +53,7 @@ mixin _$S3ObjectEvent {
     TResult? Function(int skip, int take)? getS3Objects,
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
+    TResult? Function(List<File> files, User user)? uploadFiles,
     TResult? Function(S3Object s3Object, User user)? deleteFile,
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
@@ -79,6 +81,7 @@ mixin _$S3ObjectEvent {
     TResult Function(int skip, int take)? getS3Objects,
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
+    TResult Function(List<File> files, User user)? uploadFiles,
     TResult Function(S3Object s3Object, User user)? deleteFile,
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
@@ -107,6 +110,7 @@ mixin _$S3ObjectEvent {
     required TResult Function(_GetS3Objects value) getS3Objects,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_UploadFile value) uploadFile,
+    required TResult Function(_UploadFiles value) uploadFiles,
     required TResult Function(_DeleteFile value) deleteFile,
     required TResult Function(_FindOneOrFail value) findOneOrFail,
     required TResult Function(_Count value) count,
@@ -128,6 +132,7 @@ mixin _$S3ObjectEvent {
     TResult? Function(_GetS3Objects value)? getS3Objects,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_UploadFile value)? uploadFile,
+    TResult? Function(_UploadFiles value)? uploadFiles,
     TResult? Function(_DeleteFile value)? deleteFile,
     TResult? Function(_FindOneOrFail value)? findOneOrFail,
     TResult? Function(_Count value)? count,
@@ -149,6 +154,7 @@ mixin _$S3ObjectEvent {
     TResult Function(_GetS3Objects value)? getS3Objects,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_UploadFile value)? uploadFile,
+    TResult Function(_UploadFiles value)? uploadFiles,
     TResult Function(_DeleteFile value)? deleteFile,
     TResult Function(_FindOneOrFail value)? findOneOrFail,
     TResult Function(_Count value)? count,
@@ -233,6 +239,7 @@ class _$InitializeImpl implements _Initialize {
     required TResult Function(int skip, int take) getS3Objects,
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
+    required TResult Function(List<File> files, User user) uploadFiles,
     required TResult Function(S3Object s3Object, User user) deleteFile,
     required TResult Function(String id, User user) findOneOrFail,
     required TResult Function() count,
@@ -266,6 +273,7 @@ class _$InitializeImpl implements _Initialize {
     TResult? Function(int skip, int take)? getS3Objects,
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
+    TResult? Function(List<File> files, User user)? uploadFiles,
     TResult? Function(S3Object s3Object, User user)? deleteFile,
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
@@ -296,6 +304,7 @@ class _$InitializeImpl implements _Initialize {
     TResult Function(int skip, int take)? getS3Objects,
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
+    TResult Function(List<File> files, User user)? uploadFiles,
     TResult Function(S3Object s3Object, User user)? deleteFile,
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
@@ -330,6 +339,7 @@ class _$InitializeImpl implements _Initialize {
     required TResult Function(_GetS3Objects value) getS3Objects,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_UploadFile value) uploadFile,
+    required TResult Function(_UploadFiles value) uploadFiles,
     required TResult Function(_DeleteFile value) deleteFile,
     required TResult Function(_FindOneOrFail value) findOneOrFail,
     required TResult Function(_Count value) count,
@@ -354,6 +364,7 @@ class _$InitializeImpl implements _Initialize {
     TResult? Function(_GetS3Objects value)? getS3Objects,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_UploadFile value)? uploadFile,
+    TResult? Function(_UploadFiles value)? uploadFiles,
     TResult? Function(_DeleteFile value)? deleteFile,
     TResult? Function(_FindOneOrFail value)? findOneOrFail,
     TResult? Function(_Count value)? count,
@@ -378,6 +389,7 @@ class _$InitializeImpl implements _Initialize {
     TResult Function(_GetS3Objects value)? getS3Objects,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_UploadFile value)? uploadFile,
+    TResult Function(_UploadFiles value)? uploadFiles,
     TResult Function(_DeleteFile value)? deleteFile,
     TResult Function(_FindOneOrFail value)? findOneOrFail,
     TResult Function(_Count value)? count,
@@ -484,6 +496,7 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     required TResult Function(int skip, int take) getS3Objects,
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
+    required TResult Function(List<File> files, User user) uploadFiles,
     required TResult Function(S3Object s3Object, User user) deleteFile,
     required TResult Function(String id, User user) findOneOrFail,
     required TResult Function() count,
@@ -517,6 +530,7 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     TResult? Function(int skip, int take)? getS3Objects,
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
+    TResult? Function(List<File> files, User user)? uploadFiles,
     TResult? Function(S3Object s3Object, User user)? deleteFile,
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
@@ -547,6 +561,7 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     TResult Function(int skip, int take)? getS3Objects,
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
+    TResult Function(List<File> files, User user)? uploadFiles,
     TResult Function(S3Object s3Object, User user)? deleteFile,
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
@@ -581,6 +596,7 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     required TResult Function(_GetS3Objects value) getS3Objects,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_UploadFile value) uploadFile,
+    required TResult Function(_UploadFiles value) uploadFiles,
     required TResult Function(_DeleteFile value) deleteFile,
     required TResult Function(_FindOneOrFail value) findOneOrFail,
     required TResult Function(_Count value) count,
@@ -605,6 +621,7 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     TResult? Function(_GetS3Objects value)? getS3Objects,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_UploadFile value)? uploadFile,
+    TResult? Function(_UploadFiles value)? uploadFiles,
     TResult? Function(_DeleteFile value)? deleteFile,
     TResult? Function(_FindOneOrFail value)? findOneOrFail,
     TResult? Function(_Count value)? count,
@@ -629,6 +646,7 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     TResult Function(_GetS3Objects value)? getS3Objects,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_UploadFile value)? uploadFile,
+    TResult Function(_UploadFiles value)? uploadFiles,
     TResult Function(_DeleteFile value)? deleteFile,
     TResult Function(_FindOneOrFail value)? findOneOrFail,
     TResult Function(_Count value)? count,
@@ -710,6 +728,7 @@ class _$ClearErrorImpl implements _ClearError {
     required TResult Function(int skip, int take) getS3Objects,
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
+    required TResult Function(List<File> files, User user) uploadFiles,
     required TResult Function(S3Object s3Object, User user) deleteFile,
     required TResult Function(String id, User user) findOneOrFail,
     required TResult Function() count,
@@ -743,6 +762,7 @@ class _$ClearErrorImpl implements _ClearError {
     TResult? Function(int skip, int take)? getS3Objects,
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
+    TResult? Function(List<File> files, User user)? uploadFiles,
     TResult? Function(S3Object s3Object, User user)? deleteFile,
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
@@ -773,6 +793,7 @@ class _$ClearErrorImpl implements _ClearError {
     TResult Function(int skip, int take)? getS3Objects,
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
+    TResult Function(List<File> files, User user)? uploadFiles,
     TResult Function(S3Object s3Object, User user)? deleteFile,
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
@@ -807,6 +828,7 @@ class _$ClearErrorImpl implements _ClearError {
     required TResult Function(_GetS3Objects value) getS3Objects,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_UploadFile value) uploadFile,
+    required TResult Function(_UploadFiles value) uploadFiles,
     required TResult Function(_DeleteFile value) deleteFile,
     required TResult Function(_FindOneOrFail value) findOneOrFail,
     required TResult Function(_Count value) count,
@@ -831,6 +853,7 @@ class _$ClearErrorImpl implements _ClearError {
     TResult? Function(_GetS3Objects value)? getS3Objects,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_UploadFile value)? uploadFile,
+    TResult? Function(_UploadFiles value)? uploadFiles,
     TResult? Function(_DeleteFile value)? deleteFile,
     TResult? Function(_FindOneOrFail value)? findOneOrFail,
     TResult? Function(_Count value)? count,
@@ -855,6 +878,7 @@ class _$ClearErrorImpl implements _ClearError {
     TResult Function(_GetS3Objects value)? getS3Objects,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_UploadFile value)? uploadFile,
+    TResult Function(_UploadFiles value)? uploadFiles,
     TResult Function(_DeleteFile value)? deleteFile,
     TResult Function(_FindOneOrFail value)? findOneOrFail,
     TResult Function(_Count value)? count,
@@ -973,6 +997,7 @@ class _$UploadFileImpl implements _UploadFile {
     required TResult Function(int skip, int take) getS3Objects,
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
+    required TResult Function(List<File> files, User user) uploadFiles,
     required TResult Function(S3Object s3Object, User user) deleteFile,
     required TResult Function(String id, User user) findOneOrFail,
     required TResult Function() count,
@@ -1006,6 +1031,7 @@ class _$UploadFileImpl implements _UploadFile {
     TResult? Function(int skip, int take)? getS3Objects,
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
+    TResult? Function(List<File> files, User user)? uploadFiles,
     TResult? Function(S3Object s3Object, User user)? deleteFile,
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
@@ -1036,6 +1062,7 @@ class _$UploadFileImpl implements _UploadFile {
     TResult Function(int skip, int take)? getS3Objects,
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
+    TResult Function(List<File> files, User user)? uploadFiles,
     TResult Function(S3Object s3Object, User user)? deleteFile,
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
@@ -1070,6 +1097,7 @@ class _$UploadFileImpl implements _UploadFile {
     required TResult Function(_GetS3Objects value) getS3Objects,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_UploadFile value) uploadFile,
+    required TResult Function(_UploadFiles value) uploadFiles,
     required TResult Function(_DeleteFile value) deleteFile,
     required TResult Function(_FindOneOrFail value) findOneOrFail,
     required TResult Function(_Count value) count,
@@ -1094,6 +1122,7 @@ class _$UploadFileImpl implements _UploadFile {
     TResult? Function(_GetS3Objects value)? getS3Objects,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_UploadFile value)? uploadFile,
+    TResult? Function(_UploadFiles value)? uploadFiles,
     TResult? Function(_DeleteFile value)? deleteFile,
     TResult? Function(_FindOneOrFail value)? findOneOrFail,
     TResult? Function(_Count value)? count,
@@ -1118,6 +1147,7 @@ class _$UploadFileImpl implements _UploadFile {
     TResult Function(_GetS3Objects value)? getS3Objects,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_UploadFile value)? uploadFile,
+    TResult Function(_UploadFiles value)? uploadFiles,
     TResult Function(_DeleteFile value)? deleteFile,
     TResult Function(_FindOneOrFail value)? findOneOrFail,
     TResult Function(_Count value)? count,
@@ -1151,6 +1181,292 @@ abstract class _UploadFile implements S3ObjectEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UploadFileImplCopyWith<_$UploadFileImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UploadFilesImplCopyWith<$Res> {
+  factory _$$UploadFilesImplCopyWith(
+          _$UploadFilesImpl value, $Res Function(_$UploadFilesImpl) then) =
+      __$$UploadFilesImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<File> files, User user});
+
+  $UserCopyWith<$Res> get user;
+}
+
+/// @nodoc
+class __$$UploadFilesImplCopyWithImpl<$Res>
+    extends _$S3ObjectEventCopyWithImpl<$Res, _$UploadFilesImpl>
+    implements _$$UploadFilesImplCopyWith<$Res> {
+  __$$UploadFilesImplCopyWithImpl(
+      _$UploadFilesImpl _value, $Res Function(_$UploadFilesImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of S3ObjectEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? files = null,
+    Object? user = null,
+  }) {
+    return _then(_$UploadFilesImpl(
+      null == files
+          ? _value._files
+          : files // ignore: cast_nullable_to_non_nullable
+              as List<File>,
+      null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
+    ));
+  }
+
+  /// Create a copy of S3ObjectEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $UserCopyWith<$Res> get user {
+    return $UserCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$UploadFilesImpl implements _UploadFiles {
+  const _$UploadFilesImpl(final List<File> files, this.user) : _files = files;
+
+  final List<File> _files;
+  @override
+  List<File> get files {
+    if (_files is EqualUnmodifiableListView) return _files;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_files);
+  }
+
+  @override
+  final User user;
+
+  @override
+  String toString() {
+    return 'S3ObjectEvent.uploadFiles(files: $files, user: $user)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UploadFilesImpl &&
+            const DeepCollectionEquality().equals(other._files, _files) &&
+            (identical(other.user, user) || other.user == user));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_files), user);
+
+  /// Create a copy of S3ObjectEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UploadFilesImplCopyWith<_$UploadFilesImpl> get copyWith =>
+      __$$UploadFilesImplCopyWithImpl<_$UploadFilesImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialize,
+    required TResult Function(int skip, int take) getS3Objects,
+    required TResult Function() clearError,
+    required TResult Function(File file, User user) uploadFile,
+    required TResult Function(List<File> files, User user) uploadFiles,
+    required TResult Function(S3Object s3Object, User user) deleteFile,
+    required TResult Function(String id, User user) findOneOrFail,
+    required TResult Function() count,
+    required TResult Function(String year, String month)
+        checkObjectsExistenceByMonth,
+    required TResult Function(
+            String year, String month, String day, int? skip, int? take)
+        getObjectsByDate,
+    required TResult Function(S3Object s3Object, User user) likeS3Object,
+    required TResult Function(S3ObjectLike s3ObjectLike, User user)
+        removeLikeS3Object,
+    required TResult Function(S3Object s3Object, User user, String content)
+        replyS3Object,
+    required TResult Function(S3ObjectReply s3ObjectReply, User user)
+        removeReplyS3Object,
+    required TResult Function(
+            S3Object s3Object, ReportReason type, String? content)
+        reportS3Object,
+    required TResult Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)
+        reportS3ObjectReply,
+    required TResult Function(S3Object s3Object) getS3ObjectSurround,
+  }) {
+    return uploadFiles(files, user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialize,
+    TResult? Function(int skip, int take)? getS3Objects,
+    TResult? Function()? clearError,
+    TResult? Function(File file, User user)? uploadFile,
+    TResult? Function(List<File> files, User user)? uploadFiles,
+    TResult? Function(S3Object s3Object, User user)? deleteFile,
+    TResult? Function(String id, User user)? findOneOrFail,
+    TResult? Function()? count,
+    TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
+    TResult? Function(
+            String year, String month, String day, int? skip, int? take)?
+        getObjectsByDate,
+    TResult? Function(S3Object s3Object, User user)? likeS3Object,
+    TResult? Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
+    TResult? Function(S3Object s3Object, User user, String content)?
+        replyS3Object,
+    TResult? Function(S3ObjectReply s3ObjectReply, User user)?
+        removeReplyS3Object,
+    TResult? Function(S3Object s3Object, ReportReason type, String? content)?
+        reportS3Object,
+    TResult? Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
+        reportS3ObjectReply,
+    TResult? Function(S3Object s3Object)? getS3ObjectSurround,
+  }) {
+    return uploadFiles?.call(files, user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialize,
+    TResult Function(int skip, int take)? getS3Objects,
+    TResult Function()? clearError,
+    TResult Function(File file, User user)? uploadFile,
+    TResult Function(List<File> files, User user)? uploadFiles,
+    TResult Function(S3Object s3Object, User user)? deleteFile,
+    TResult Function(String id, User user)? findOneOrFail,
+    TResult Function()? count,
+    TResult Function(String year, String month)? checkObjectsExistenceByMonth,
+    TResult Function(
+            String year, String month, String day, int? skip, int? take)?
+        getObjectsByDate,
+    TResult Function(S3Object s3Object, User user)? likeS3Object,
+    TResult Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
+    TResult Function(S3Object s3Object, User user, String content)?
+        replyS3Object,
+    TResult Function(S3ObjectReply s3ObjectReply, User user)?
+        removeReplyS3Object,
+    TResult Function(S3Object s3Object, ReportReason type, String? content)?
+        reportS3Object,
+    TResult Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
+        reportS3ObjectReply,
+    TResult Function(S3Object s3Object)? getS3ObjectSurround,
+    required TResult orElse(),
+  }) {
+    if (uploadFiles != null) {
+      return uploadFiles(files, user);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_GetS3Objects value) getS3Objects,
+    required TResult Function(_ClearError value) clearError,
+    required TResult Function(_UploadFile value) uploadFile,
+    required TResult Function(_UploadFiles value) uploadFiles,
+    required TResult Function(_DeleteFile value) deleteFile,
+    required TResult Function(_FindOneOrFail value) findOneOrFail,
+    required TResult Function(_Count value) count,
+    required TResult Function(_CheckObjectsExistenceByMonth value)
+        checkObjectsExistenceByMonth,
+    required TResult Function(_GetObjectsByDate value) getObjectsByDate,
+    required TResult Function(_LikeS3Object value) likeS3Object,
+    required TResult Function(_RemoveLikeS3Object value) removeLikeS3Object,
+    required TResult Function(_ReplyS3Object value) replyS3Object,
+    required TResult Function(_RemoveReplyS3Object value) removeReplyS3Object,
+    required TResult Function(_ReportS3Object value) reportS3Object,
+    required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
+    required TResult Function(_GetS3ObjectSurround value) getS3ObjectSurround,
+  }) {
+    return uploadFiles(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialize value)? initialize,
+    TResult? Function(_GetS3Objects value)? getS3Objects,
+    TResult? Function(_ClearError value)? clearError,
+    TResult? Function(_UploadFile value)? uploadFile,
+    TResult? Function(_UploadFiles value)? uploadFiles,
+    TResult? Function(_DeleteFile value)? deleteFile,
+    TResult? Function(_FindOneOrFail value)? findOneOrFail,
+    TResult? Function(_Count value)? count,
+    TResult? Function(_CheckObjectsExistenceByMonth value)?
+        checkObjectsExistenceByMonth,
+    TResult? Function(_GetObjectsByDate value)? getObjectsByDate,
+    TResult? Function(_LikeS3Object value)? likeS3Object,
+    TResult? Function(_RemoveLikeS3Object value)? removeLikeS3Object,
+    TResult? Function(_ReplyS3Object value)? replyS3Object,
+    TResult? Function(_RemoveReplyS3Object value)? removeReplyS3Object,
+    TResult? Function(_ReportS3Object value)? reportS3Object,
+    TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+    TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
+  }) {
+    return uploadFiles?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_GetS3Objects value)? getS3Objects,
+    TResult Function(_ClearError value)? clearError,
+    TResult Function(_UploadFile value)? uploadFile,
+    TResult Function(_UploadFiles value)? uploadFiles,
+    TResult Function(_DeleteFile value)? deleteFile,
+    TResult Function(_FindOneOrFail value)? findOneOrFail,
+    TResult Function(_Count value)? count,
+    TResult Function(_CheckObjectsExistenceByMonth value)?
+        checkObjectsExistenceByMonth,
+    TResult Function(_GetObjectsByDate value)? getObjectsByDate,
+    TResult Function(_LikeS3Object value)? likeS3Object,
+    TResult Function(_RemoveLikeS3Object value)? removeLikeS3Object,
+    TResult Function(_ReplyS3Object value)? replyS3Object,
+    TResult Function(_RemoveReplyS3Object value)? removeReplyS3Object,
+    TResult Function(_ReportS3Object value)? reportS3Object,
+    TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+    TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
+    required TResult orElse(),
+  }) {
+    if (uploadFiles != null) {
+      return uploadFiles(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UploadFiles implements S3ObjectEvent {
+  const factory _UploadFiles(final List<File> files, final User user) =
+      _$UploadFilesImpl;
+
+  List<File> get files;
+  User get user;
+
+  /// Create a copy of S3ObjectEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UploadFilesImplCopyWith<_$UploadFilesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1258,6 +1574,7 @@ class _$DeleteFileImpl implements _DeleteFile {
     required TResult Function(int skip, int take) getS3Objects,
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
+    required TResult Function(List<File> files, User user) uploadFiles,
     required TResult Function(S3Object s3Object, User user) deleteFile,
     required TResult Function(String id, User user) findOneOrFail,
     required TResult Function() count,
@@ -1291,6 +1608,7 @@ class _$DeleteFileImpl implements _DeleteFile {
     TResult? Function(int skip, int take)? getS3Objects,
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
+    TResult? Function(List<File> files, User user)? uploadFiles,
     TResult? Function(S3Object s3Object, User user)? deleteFile,
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
@@ -1321,6 +1639,7 @@ class _$DeleteFileImpl implements _DeleteFile {
     TResult Function(int skip, int take)? getS3Objects,
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
+    TResult Function(List<File> files, User user)? uploadFiles,
     TResult Function(S3Object s3Object, User user)? deleteFile,
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
@@ -1355,6 +1674,7 @@ class _$DeleteFileImpl implements _DeleteFile {
     required TResult Function(_GetS3Objects value) getS3Objects,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_UploadFile value) uploadFile,
+    required TResult Function(_UploadFiles value) uploadFiles,
     required TResult Function(_DeleteFile value) deleteFile,
     required TResult Function(_FindOneOrFail value) findOneOrFail,
     required TResult Function(_Count value) count,
@@ -1379,6 +1699,7 @@ class _$DeleteFileImpl implements _DeleteFile {
     TResult? Function(_GetS3Objects value)? getS3Objects,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_UploadFile value)? uploadFile,
+    TResult? Function(_UploadFiles value)? uploadFiles,
     TResult? Function(_DeleteFile value)? deleteFile,
     TResult? Function(_FindOneOrFail value)? findOneOrFail,
     TResult? Function(_Count value)? count,
@@ -1403,6 +1724,7 @@ class _$DeleteFileImpl implements _DeleteFile {
     TResult Function(_GetS3Objects value)? getS3Objects,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_UploadFile value)? uploadFile,
+    TResult Function(_UploadFiles value)? uploadFiles,
     TResult Function(_DeleteFile value)? deleteFile,
     TResult Function(_FindOneOrFail value)? findOneOrFail,
     TResult Function(_Count value)? count,
@@ -1531,6 +1853,7 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     required TResult Function(int skip, int take) getS3Objects,
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
+    required TResult Function(List<File> files, User user) uploadFiles,
     required TResult Function(S3Object s3Object, User user) deleteFile,
     required TResult Function(String id, User user) findOneOrFail,
     required TResult Function() count,
@@ -1564,6 +1887,7 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     TResult? Function(int skip, int take)? getS3Objects,
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
+    TResult? Function(List<File> files, User user)? uploadFiles,
     TResult? Function(S3Object s3Object, User user)? deleteFile,
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
@@ -1594,6 +1918,7 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     TResult Function(int skip, int take)? getS3Objects,
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
+    TResult Function(List<File> files, User user)? uploadFiles,
     TResult Function(S3Object s3Object, User user)? deleteFile,
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
@@ -1628,6 +1953,7 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     required TResult Function(_GetS3Objects value) getS3Objects,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_UploadFile value) uploadFile,
+    required TResult Function(_UploadFiles value) uploadFiles,
     required TResult Function(_DeleteFile value) deleteFile,
     required TResult Function(_FindOneOrFail value) findOneOrFail,
     required TResult Function(_Count value) count,
@@ -1652,6 +1978,7 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     TResult? Function(_GetS3Objects value)? getS3Objects,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_UploadFile value)? uploadFile,
+    TResult? Function(_UploadFiles value)? uploadFiles,
     TResult? Function(_DeleteFile value)? deleteFile,
     TResult? Function(_FindOneOrFail value)? findOneOrFail,
     TResult? Function(_Count value)? count,
@@ -1676,6 +2003,7 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     TResult Function(_GetS3Objects value)? getS3Objects,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_UploadFile value)? uploadFile,
+    TResult Function(_UploadFiles value)? uploadFiles,
     TResult Function(_DeleteFile value)? deleteFile,
     TResult Function(_FindOneOrFail value)? findOneOrFail,
     TResult Function(_Count value)? count,
@@ -1757,6 +2085,7 @@ class _$CountImpl implements _Count {
     required TResult Function(int skip, int take) getS3Objects,
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
+    required TResult Function(List<File> files, User user) uploadFiles,
     required TResult Function(S3Object s3Object, User user) deleteFile,
     required TResult Function(String id, User user) findOneOrFail,
     required TResult Function() count,
@@ -1790,6 +2119,7 @@ class _$CountImpl implements _Count {
     TResult? Function(int skip, int take)? getS3Objects,
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
+    TResult? Function(List<File> files, User user)? uploadFiles,
     TResult? Function(S3Object s3Object, User user)? deleteFile,
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
@@ -1820,6 +2150,7 @@ class _$CountImpl implements _Count {
     TResult Function(int skip, int take)? getS3Objects,
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
+    TResult Function(List<File> files, User user)? uploadFiles,
     TResult Function(S3Object s3Object, User user)? deleteFile,
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
@@ -1854,6 +2185,7 @@ class _$CountImpl implements _Count {
     required TResult Function(_GetS3Objects value) getS3Objects,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_UploadFile value) uploadFile,
+    required TResult Function(_UploadFiles value) uploadFiles,
     required TResult Function(_DeleteFile value) deleteFile,
     required TResult Function(_FindOneOrFail value) findOneOrFail,
     required TResult Function(_Count value) count,
@@ -1878,6 +2210,7 @@ class _$CountImpl implements _Count {
     TResult? Function(_GetS3Objects value)? getS3Objects,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_UploadFile value)? uploadFile,
+    TResult? Function(_UploadFiles value)? uploadFiles,
     TResult? Function(_DeleteFile value)? deleteFile,
     TResult? Function(_FindOneOrFail value)? findOneOrFail,
     TResult? Function(_Count value)? count,
@@ -1902,6 +2235,7 @@ class _$CountImpl implements _Count {
     TResult Function(_GetS3Objects value)? getS3Objects,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_UploadFile value)? uploadFile,
+    TResult Function(_UploadFiles value)? uploadFiles,
     TResult Function(_DeleteFile value)? deleteFile,
     TResult Function(_FindOneOrFail value)? findOneOrFail,
     TResult Function(_Count value)? count,
@@ -2014,6 +2348,7 @@ class _$CheckObjectsExistenceByMonthImpl
     required TResult Function(int skip, int take) getS3Objects,
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
+    required TResult Function(List<File> files, User user) uploadFiles,
     required TResult Function(S3Object s3Object, User user) deleteFile,
     required TResult Function(String id, User user) findOneOrFail,
     required TResult Function() count,
@@ -2047,6 +2382,7 @@ class _$CheckObjectsExistenceByMonthImpl
     TResult? Function(int skip, int take)? getS3Objects,
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
+    TResult? Function(List<File> files, User user)? uploadFiles,
     TResult? Function(S3Object s3Object, User user)? deleteFile,
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
@@ -2077,6 +2413,7 @@ class _$CheckObjectsExistenceByMonthImpl
     TResult Function(int skip, int take)? getS3Objects,
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
+    TResult Function(List<File> files, User user)? uploadFiles,
     TResult Function(S3Object s3Object, User user)? deleteFile,
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
@@ -2111,6 +2448,7 @@ class _$CheckObjectsExistenceByMonthImpl
     required TResult Function(_GetS3Objects value) getS3Objects,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_UploadFile value) uploadFile,
+    required TResult Function(_UploadFiles value) uploadFiles,
     required TResult Function(_DeleteFile value) deleteFile,
     required TResult Function(_FindOneOrFail value) findOneOrFail,
     required TResult Function(_Count value) count,
@@ -2135,6 +2473,7 @@ class _$CheckObjectsExistenceByMonthImpl
     TResult? Function(_GetS3Objects value)? getS3Objects,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_UploadFile value)? uploadFile,
+    TResult? Function(_UploadFiles value)? uploadFiles,
     TResult? Function(_DeleteFile value)? deleteFile,
     TResult? Function(_FindOneOrFail value)? findOneOrFail,
     TResult? Function(_Count value)? count,
@@ -2159,6 +2498,7 @@ class _$CheckObjectsExistenceByMonthImpl
     TResult Function(_GetS3Objects value)? getS3Objects,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_UploadFile value)? uploadFile,
+    TResult Function(_UploadFiles value)? uploadFiles,
     TResult Function(_DeleteFile value)? deleteFile,
     TResult Function(_FindOneOrFail value)? findOneOrFail,
     TResult Function(_Count value)? count,
@@ -2303,6 +2643,7 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
     required TResult Function(int skip, int take) getS3Objects,
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
+    required TResult Function(List<File> files, User user) uploadFiles,
     required TResult Function(S3Object s3Object, User user) deleteFile,
     required TResult Function(String id, User user) findOneOrFail,
     required TResult Function() count,
@@ -2336,6 +2677,7 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
     TResult? Function(int skip, int take)? getS3Objects,
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
+    TResult? Function(List<File> files, User user)? uploadFiles,
     TResult? Function(S3Object s3Object, User user)? deleteFile,
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
@@ -2366,6 +2708,7 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
     TResult Function(int skip, int take)? getS3Objects,
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
+    TResult Function(List<File> files, User user)? uploadFiles,
     TResult Function(S3Object s3Object, User user)? deleteFile,
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
@@ -2400,6 +2743,7 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
     required TResult Function(_GetS3Objects value) getS3Objects,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_UploadFile value) uploadFile,
+    required TResult Function(_UploadFiles value) uploadFiles,
     required TResult Function(_DeleteFile value) deleteFile,
     required TResult Function(_FindOneOrFail value) findOneOrFail,
     required TResult Function(_Count value) count,
@@ -2424,6 +2768,7 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
     TResult? Function(_GetS3Objects value)? getS3Objects,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_UploadFile value)? uploadFile,
+    TResult? Function(_UploadFiles value)? uploadFiles,
     TResult? Function(_DeleteFile value)? deleteFile,
     TResult? Function(_FindOneOrFail value)? findOneOrFail,
     TResult? Function(_Count value)? count,
@@ -2448,6 +2793,7 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
     TResult Function(_GetS3Objects value)? getS3Objects,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_UploadFile value)? uploadFile,
+    TResult Function(_UploadFiles value)? uploadFiles,
     TResult Function(_DeleteFile value)? deleteFile,
     TResult Function(_FindOneOrFail value)? findOneOrFail,
     TResult Function(_Count value)? count,
@@ -2595,6 +2941,7 @@ class _$LikeS3ObjectImpl implements _LikeS3Object {
     required TResult Function(int skip, int take) getS3Objects,
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
+    required TResult Function(List<File> files, User user) uploadFiles,
     required TResult Function(S3Object s3Object, User user) deleteFile,
     required TResult Function(String id, User user) findOneOrFail,
     required TResult Function() count,
@@ -2628,6 +2975,7 @@ class _$LikeS3ObjectImpl implements _LikeS3Object {
     TResult? Function(int skip, int take)? getS3Objects,
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
+    TResult? Function(List<File> files, User user)? uploadFiles,
     TResult? Function(S3Object s3Object, User user)? deleteFile,
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
@@ -2658,6 +3006,7 @@ class _$LikeS3ObjectImpl implements _LikeS3Object {
     TResult Function(int skip, int take)? getS3Objects,
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
+    TResult Function(List<File> files, User user)? uploadFiles,
     TResult Function(S3Object s3Object, User user)? deleteFile,
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
@@ -2692,6 +3041,7 @@ class _$LikeS3ObjectImpl implements _LikeS3Object {
     required TResult Function(_GetS3Objects value) getS3Objects,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_UploadFile value) uploadFile,
+    required TResult Function(_UploadFiles value) uploadFiles,
     required TResult Function(_DeleteFile value) deleteFile,
     required TResult Function(_FindOneOrFail value) findOneOrFail,
     required TResult Function(_Count value) count,
@@ -2716,6 +3066,7 @@ class _$LikeS3ObjectImpl implements _LikeS3Object {
     TResult? Function(_GetS3Objects value)? getS3Objects,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_UploadFile value)? uploadFile,
+    TResult? Function(_UploadFiles value)? uploadFiles,
     TResult? Function(_DeleteFile value)? deleteFile,
     TResult? Function(_FindOneOrFail value)? findOneOrFail,
     TResult? Function(_Count value)? count,
@@ -2740,6 +3091,7 @@ class _$LikeS3ObjectImpl implements _LikeS3Object {
     TResult Function(_GetS3Objects value)? getS3Objects,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_UploadFile value)? uploadFile,
+    TResult Function(_UploadFiles value)? uploadFiles,
     TResult Function(_DeleteFile value)? deleteFile,
     TResult Function(_FindOneOrFail value)? findOneOrFail,
     TResult Function(_Count value)? count,
@@ -2881,6 +3233,7 @@ class _$RemoveLikeS3ObjectImpl implements _RemoveLikeS3Object {
     required TResult Function(int skip, int take) getS3Objects,
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
+    required TResult Function(List<File> files, User user) uploadFiles,
     required TResult Function(S3Object s3Object, User user) deleteFile,
     required TResult Function(String id, User user) findOneOrFail,
     required TResult Function() count,
@@ -2914,6 +3267,7 @@ class _$RemoveLikeS3ObjectImpl implements _RemoveLikeS3Object {
     TResult? Function(int skip, int take)? getS3Objects,
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
+    TResult? Function(List<File> files, User user)? uploadFiles,
     TResult? Function(S3Object s3Object, User user)? deleteFile,
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
@@ -2944,6 +3298,7 @@ class _$RemoveLikeS3ObjectImpl implements _RemoveLikeS3Object {
     TResult Function(int skip, int take)? getS3Objects,
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
+    TResult Function(List<File> files, User user)? uploadFiles,
     TResult Function(S3Object s3Object, User user)? deleteFile,
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
@@ -2978,6 +3333,7 @@ class _$RemoveLikeS3ObjectImpl implements _RemoveLikeS3Object {
     required TResult Function(_GetS3Objects value) getS3Objects,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_UploadFile value) uploadFile,
+    required TResult Function(_UploadFiles value) uploadFiles,
     required TResult Function(_DeleteFile value) deleteFile,
     required TResult Function(_FindOneOrFail value) findOneOrFail,
     required TResult Function(_Count value) count,
@@ -3002,6 +3358,7 @@ class _$RemoveLikeS3ObjectImpl implements _RemoveLikeS3Object {
     TResult? Function(_GetS3Objects value)? getS3Objects,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_UploadFile value)? uploadFile,
+    TResult? Function(_UploadFiles value)? uploadFiles,
     TResult? Function(_DeleteFile value)? deleteFile,
     TResult? Function(_FindOneOrFail value)? findOneOrFail,
     TResult? Function(_Count value)? count,
@@ -3026,6 +3383,7 @@ class _$RemoveLikeS3ObjectImpl implements _RemoveLikeS3Object {
     TResult Function(_GetS3Objects value)? getS3Objects,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_UploadFile value)? uploadFile,
+    TResult Function(_UploadFiles value)? uploadFiles,
     TResult Function(_DeleteFile value)? deleteFile,
     TResult Function(_FindOneOrFail value)? findOneOrFail,
     TResult Function(_Count value)? count,
@@ -3175,6 +3533,7 @@ class _$ReplyS3ObjectImpl implements _ReplyS3Object {
     required TResult Function(int skip, int take) getS3Objects,
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
+    required TResult Function(List<File> files, User user) uploadFiles,
     required TResult Function(S3Object s3Object, User user) deleteFile,
     required TResult Function(String id, User user) findOneOrFail,
     required TResult Function() count,
@@ -3208,6 +3567,7 @@ class _$ReplyS3ObjectImpl implements _ReplyS3Object {
     TResult? Function(int skip, int take)? getS3Objects,
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
+    TResult? Function(List<File> files, User user)? uploadFiles,
     TResult? Function(S3Object s3Object, User user)? deleteFile,
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
@@ -3238,6 +3598,7 @@ class _$ReplyS3ObjectImpl implements _ReplyS3Object {
     TResult Function(int skip, int take)? getS3Objects,
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
+    TResult Function(List<File> files, User user)? uploadFiles,
     TResult Function(S3Object s3Object, User user)? deleteFile,
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
@@ -3272,6 +3633,7 @@ class _$ReplyS3ObjectImpl implements _ReplyS3Object {
     required TResult Function(_GetS3Objects value) getS3Objects,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_UploadFile value) uploadFile,
+    required TResult Function(_UploadFiles value) uploadFiles,
     required TResult Function(_DeleteFile value) deleteFile,
     required TResult Function(_FindOneOrFail value) findOneOrFail,
     required TResult Function(_Count value) count,
@@ -3296,6 +3658,7 @@ class _$ReplyS3ObjectImpl implements _ReplyS3Object {
     TResult? Function(_GetS3Objects value)? getS3Objects,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_UploadFile value)? uploadFile,
+    TResult? Function(_UploadFiles value)? uploadFiles,
     TResult? Function(_DeleteFile value)? deleteFile,
     TResult? Function(_FindOneOrFail value)? findOneOrFail,
     TResult? Function(_Count value)? count,
@@ -3320,6 +3683,7 @@ class _$ReplyS3ObjectImpl implements _ReplyS3Object {
     TResult Function(_GetS3Objects value)? getS3Objects,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_UploadFile value)? uploadFile,
+    TResult Function(_UploadFiles value)? uploadFiles,
     TResult Function(_DeleteFile value)? deleteFile,
     TResult Function(_FindOneOrFail value)? findOneOrFail,
     TResult Function(_Count value)? count,
@@ -3463,6 +3827,7 @@ class _$RemoveReplyS3ObjectImpl implements _RemoveReplyS3Object {
     required TResult Function(int skip, int take) getS3Objects,
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
+    required TResult Function(List<File> files, User user) uploadFiles,
     required TResult Function(S3Object s3Object, User user) deleteFile,
     required TResult Function(String id, User user) findOneOrFail,
     required TResult Function() count,
@@ -3496,6 +3861,7 @@ class _$RemoveReplyS3ObjectImpl implements _RemoveReplyS3Object {
     TResult? Function(int skip, int take)? getS3Objects,
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
+    TResult? Function(List<File> files, User user)? uploadFiles,
     TResult? Function(S3Object s3Object, User user)? deleteFile,
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
@@ -3526,6 +3892,7 @@ class _$RemoveReplyS3ObjectImpl implements _RemoveReplyS3Object {
     TResult Function(int skip, int take)? getS3Objects,
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
+    TResult Function(List<File> files, User user)? uploadFiles,
     TResult Function(S3Object s3Object, User user)? deleteFile,
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
@@ -3560,6 +3927,7 @@ class _$RemoveReplyS3ObjectImpl implements _RemoveReplyS3Object {
     required TResult Function(_GetS3Objects value) getS3Objects,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_UploadFile value) uploadFile,
+    required TResult Function(_UploadFiles value) uploadFiles,
     required TResult Function(_DeleteFile value) deleteFile,
     required TResult Function(_FindOneOrFail value) findOneOrFail,
     required TResult Function(_Count value) count,
@@ -3584,6 +3952,7 @@ class _$RemoveReplyS3ObjectImpl implements _RemoveReplyS3Object {
     TResult? Function(_GetS3Objects value)? getS3Objects,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_UploadFile value)? uploadFile,
+    TResult? Function(_UploadFiles value)? uploadFiles,
     TResult? Function(_DeleteFile value)? deleteFile,
     TResult? Function(_FindOneOrFail value)? findOneOrFail,
     TResult? Function(_Count value)? count,
@@ -3608,6 +3977,7 @@ class _$RemoveReplyS3ObjectImpl implements _RemoveReplyS3Object {
     TResult Function(_GetS3Objects value)? getS3Objects,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_UploadFile value)? uploadFile,
+    TResult Function(_UploadFiles value)? uploadFiles,
     TResult Function(_DeleteFile value)? deleteFile,
     TResult Function(_FindOneOrFail value)? findOneOrFail,
     TResult Function(_Count value)? count,
@@ -3747,6 +4117,7 @@ class _$ReportS3ObjectImpl implements _ReportS3Object {
     required TResult Function(int skip, int take) getS3Objects,
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
+    required TResult Function(List<File> files, User user) uploadFiles,
     required TResult Function(S3Object s3Object, User user) deleteFile,
     required TResult Function(String id, User user) findOneOrFail,
     required TResult Function() count,
@@ -3780,6 +4151,7 @@ class _$ReportS3ObjectImpl implements _ReportS3Object {
     TResult? Function(int skip, int take)? getS3Objects,
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
+    TResult? Function(List<File> files, User user)? uploadFiles,
     TResult? Function(S3Object s3Object, User user)? deleteFile,
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
@@ -3810,6 +4182,7 @@ class _$ReportS3ObjectImpl implements _ReportS3Object {
     TResult Function(int skip, int take)? getS3Objects,
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
+    TResult Function(List<File> files, User user)? uploadFiles,
     TResult Function(S3Object s3Object, User user)? deleteFile,
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
@@ -3844,6 +4217,7 @@ class _$ReportS3ObjectImpl implements _ReportS3Object {
     required TResult Function(_GetS3Objects value) getS3Objects,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_UploadFile value) uploadFile,
+    required TResult Function(_UploadFiles value) uploadFiles,
     required TResult Function(_DeleteFile value) deleteFile,
     required TResult Function(_FindOneOrFail value) findOneOrFail,
     required TResult Function(_Count value) count,
@@ -3868,6 +4242,7 @@ class _$ReportS3ObjectImpl implements _ReportS3Object {
     TResult? Function(_GetS3Objects value)? getS3Objects,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_UploadFile value)? uploadFile,
+    TResult? Function(_UploadFiles value)? uploadFiles,
     TResult? Function(_DeleteFile value)? deleteFile,
     TResult? Function(_FindOneOrFail value)? findOneOrFail,
     TResult? Function(_Count value)? count,
@@ -3892,6 +4267,7 @@ class _$ReportS3ObjectImpl implements _ReportS3Object {
     TResult Function(_GetS3Objects value)? getS3Objects,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_UploadFile value)? uploadFile,
+    TResult Function(_UploadFiles value)? uploadFiles,
     TResult Function(_DeleteFile value)? deleteFile,
     TResult Function(_FindOneOrFail value)? findOneOrFail,
     TResult Function(_Count value)? count,
@@ -4031,6 +4407,7 @@ class _$ReportS3ObjectReplyImpl implements _ReportS3ObjectReply {
     required TResult Function(int skip, int take) getS3Objects,
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
+    required TResult Function(List<File> files, User user) uploadFiles,
     required TResult Function(S3Object s3Object, User user) deleteFile,
     required TResult Function(String id, User user) findOneOrFail,
     required TResult Function() count,
@@ -4064,6 +4441,7 @@ class _$ReportS3ObjectReplyImpl implements _ReportS3ObjectReply {
     TResult? Function(int skip, int take)? getS3Objects,
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
+    TResult? Function(List<File> files, User user)? uploadFiles,
     TResult? Function(S3Object s3Object, User user)? deleteFile,
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
@@ -4094,6 +4472,7 @@ class _$ReportS3ObjectReplyImpl implements _ReportS3ObjectReply {
     TResult Function(int skip, int take)? getS3Objects,
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
+    TResult Function(List<File> files, User user)? uploadFiles,
     TResult Function(S3Object s3Object, User user)? deleteFile,
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
@@ -4128,6 +4507,7 @@ class _$ReportS3ObjectReplyImpl implements _ReportS3ObjectReply {
     required TResult Function(_GetS3Objects value) getS3Objects,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_UploadFile value) uploadFile,
+    required TResult Function(_UploadFiles value) uploadFiles,
     required TResult Function(_DeleteFile value) deleteFile,
     required TResult Function(_FindOneOrFail value) findOneOrFail,
     required TResult Function(_Count value) count,
@@ -4152,6 +4532,7 @@ class _$ReportS3ObjectReplyImpl implements _ReportS3ObjectReply {
     TResult? Function(_GetS3Objects value)? getS3Objects,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_UploadFile value)? uploadFile,
+    TResult? Function(_UploadFiles value)? uploadFiles,
     TResult? Function(_DeleteFile value)? deleteFile,
     TResult? Function(_FindOneOrFail value)? findOneOrFail,
     TResult? Function(_Count value)? count,
@@ -4176,6 +4557,7 @@ class _$ReportS3ObjectReplyImpl implements _ReportS3ObjectReply {
     TResult Function(_GetS3Objects value)? getS3Objects,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_UploadFile value)? uploadFile,
+    TResult Function(_UploadFiles value)? uploadFiles,
     TResult Function(_DeleteFile value)? deleteFile,
     TResult Function(_FindOneOrFail value)? findOneOrFail,
     TResult Function(_Count value)? count,
@@ -4301,6 +4683,7 @@ class _$GetS3ObjectSurroundImpl implements _GetS3ObjectSurround {
     required TResult Function(int skip, int take) getS3Objects,
     required TResult Function() clearError,
     required TResult Function(File file, User user) uploadFile,
+    required TResult Function(List<File> files, User user) uploadFiles,
     required TResult Function(S3Object s3Object, User user) deleteFile,
     required TResult Function(String id, User user) findOneOrFail,
     required TResult Function() count,
@@ -4334,6 +4717,7 @@ class _$GetS3ObjectSurroundImpl implements _GetS3ObjectSurround {
     TResult? Function(int skip, int take)? getS3Objects,
     TResult? Function()? clearError,
     TResult? Function(File file, User user)? uploadFile,
+    TResult? Function(List<File> files, User user)? uploadFiles,
     TResult? Function(S3Object s3Object, User user)? deleteFile,
     TResult? Function(String id, User user)? findOneOrFail,
     TResult? Function()? count,
@@ -4364,6 +4748,7 @@ class _$GetS3ObjectSurroundImpl implements _GetS3ObjectSurround {
     TResult Function(int skip, int take)? getS3Objects,
     TResult Function()? clearError,
     TResult Function(File file, User user)? uploadFile,
+    TResult Function(List<File> files, User user)? uploadFiles,
     TResult Function(S3Object s3Object, User user)? deleteFile,
     TResult Function(String id, User user)? findOneOrFail,
     TResult Function()? count,
@@ -4398,6 +4783,7 @@ class _$GetS3ObjectSurroundImpl implements _GetS3ObjectSurround {
     required TResult Function(_GetS3Objects value) getS3Objects,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_UploadFile value) uploadFile,
+    required TResult Function(_UploadFiles value) uploadFiles,
     required TResult Function(_DeleteFile value) deleteFile,
     required TResult Function(_FindOneOrFail value) findOneOrFail,
     required TResult Function(_Count value) count,
@@ -4422,6 +4808,7 @@ class _$GetS3ObjectSurroundImpl implements _GetS3ObjectSurround {
     TResult? Function(_GetS3Objects value)? getS3Objects,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_UploadFile value)? uploadFile,
+    TResult? Function(_UploadFiles value)? uploadFiles,
     TResult? Function(_DeleteFile value)? deleteFile,
     TResult? Function(_FindOneOrFail value)? findOneOrFail,
     TResult? Function(_Count value)? count,
@@ -4446,6 +4833,7 @@ class _$GetS3ObjectSurroundImpl implements _GetS3ObjectSurround {
     TResult Function(_GetS3Objects value)? getS3Objects,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_UploadFile value)? uploadFile,
+    TResult Function(_UploadFiles value)? uploadFiles,
     TResult Function(_DeleteFile value)? deleteFile,
     TResult Function(_FindOneOrFail value)? findOneOrFail,
     TResult Function(_Count value)? count,

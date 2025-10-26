@@ -15,6 +15,8 @@ class S3ObjectEvent with _$S3ObjectEvent {
   const factory S3ObjectEvent.getS3Objects(int skip, int take) = _GetS3Objects;
   const factory S3ObjectEvent.clearError() = _ClearError;
   const factory S3ObjectEvent.uploadFile(File file, User user) = _UploadFile;
+  const factory S3ObjectEvent.uploadFiles(List<File> files, User user) =
+      _UploadFiles;
   const factory S3ObjectEvent.deleteFile(S3Object s3Object, User user) =
       _DeleteFile;
   const factory S3ObjectEvent.findOneOrFail(String id, User user) =
