@@ -1,12 +1,6 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter_contacts/contact.dart';
-import 'package:flutter_contacts/flutter_contacts.dart';
 import 'package:mcp_server/mcp_server.dart';
 import 'dart:async';
-import 'dart:io';
-import 'dart:convert';
-
-import 'package:permission_handler/permission_handler.dart';
 
 abstract class McpLocalServerRepository {
   Future<void> initialize({
@@ -97,72 +91,72 @@ class McpLocalServerDefaultRepository extends McpLocalServerRepository {
   }
 
   void _registerTools(Server server) {
-    // 연락처 목록 가져오기 툴 (예시)
+    //   // 연락처 목록 가져오기 툴 (예시)
 
-    server.addTool(
-      name: "contacts",
-      description:
-          'Get the list of contacts from the phone.  If arguments are provided, contacts will be filtered based on those conditions. If no arguments are provided, all contacts will be retrieved.',
-      // End of Selection
-      inputSchema: {
-        'type': 'object',
-        'properties': {
-          'nameFilter': {
-            'type': 'string',
-            'description': 'Filter contacts by name (optional)',
-            'default': null
-          },
-          'phoneFilter': {
-            'type': 'string',
-            'description': 'Filter contacts by phone number (optional)',
-            'default': null
-          },
-        },
-      },
-      handler: (args) async {
-        debugPrint('🔥 [args] $args');
-        debugPrint(
-            '🔥 [Permission.contacts.status] ${await Permission.contacts.status}');
-        if (await Permission.contacts.status.isDenied) {
-          await Permission.contacts.request();
-        }
-        List<Contact> contacts = await FlutterContacts.getContacts();
+    //   server.addTool(
+    //     name: "contacts",
+    //     description:
+    //         'Get the list of contacts from the phone.  If arguments are provided, contacts will be filtered based on those conditions. If no arguments are provided, all contacts will be retrieved.',
+    //     // End of Selection
+    //     inputSchema: {
+    //       'type': 'object',
+    //       'properties': {
+    //         'nameFilter': {
+    //           'type': 'string',
+    //           'description': 'Filter contacts by name (optional)',
+    //           'default': null
+    //         },
+    //         'phoneFilter': {
+    //           'type': 'string',
+    //           'description': 'Filter contacts by phone number (optional)',
+    //           'default': null
+    //         },
+    //       },
+    //     },
+    //     handler: (args) async {
+    //       debugPrint('🔥 [args] $args');
+    //       debugPrint(
+    //           '🔥 [Permission.contacts.status] ${await Permission.contacts.status}');
+    //       if (await Permission.contacts.status.isDenied) {
+    //         await Permission.contacts.request();
+    //       }
+    //       List<Contact> contacts = await FlutterContacts.getContacts();
 
-        final nameFilter = (args['nameFilter'] as String?)?.trim();
-        final phoneFilter = (args['phoneFilter'] as String?)?.trim();
+    //       final nameFilter = (args['nameFilter'] as String?)?.trim();
+    //       final phoneFilter = (args['phoneFilter'] as String?)?.trim();
 
-        final filteredContacts = contacts.where((c) {
-          final name = c.displayName;
-          if (nameFilter != null && !name.contains(nameFilter)) {
-            return false;
-          }
-          final phones = c.phones.map((p) => p.toString()).join(', ');
-          if (phoneFilter != null && !phones.contains(phoneFilter)) {
-            return false;
-          }
-          return true;
-        }).toList();
+    //       final filteredContacts = contacts.where((c) {
+    //         final name = c.displayName;
+    //         if (nameFilter != null && !name.contains(nameFilter)) {
+    //           return false;
+    //         }
+    //         final phones = c.phones.map((p) => p.toString()).join(', ');
+    //         if (phoneFilter != null && !phones.contains(phoneFilter)) {
+    //           return false;
+    //         }
+    //         return true;
+    //       }).toList();
 
-        final contactStrings = filteredContacts.map((c) {
-          final name = c.displayName;
+    //       final contactStrings = filteredContacts.map((c) {
+    //         final name = c.displayName;
 
-          final phones = c.phones.map((p) => p.toString()).join(', ');
+    //         final phones = c.phones.map((p) => p.toString()).join(', ');
 
-          return '$name($phones)';
-        }).toList();
-        debugPrint('🔥 [contactStrings] $contactStrings');
-        return CallToolResult(
-          content: [
-            TextContent(
-              text: contactStrings.isEmpty
-                  ? 'No contacts found.'
-                  : 'Contact List:\n${contactStrings.join('\r\n')}',
-            ),
-          ],
-        );
-      },
-    );
-  }
+    //         return '$name($phones)';
+    //       }).toList();
+    //       debugPrint('🔥 [contactStrings] $contactStrings');
+    //       return CallToolResult(
+    //         content: [
+    //           TextContent(
+    //             text: contactStrings.isEmpty
+    //                 ? 'No contacts found.'
+    //                 : 'Contact List:\n${contactStrings.join('\r\n')}',
+    //           ),
+    //         ],
+    //       );
+    //     },
+    //   );
+    // }
 
 //   void _registerResources(Server server) {
 //     // System info resource
@@ -371,5 +365,5 @@ class McpLocalServerDefaultRepository extends McpLocalServerRepository {
 //         );
 //       },
 //     );
-//   }
+  }
 }
