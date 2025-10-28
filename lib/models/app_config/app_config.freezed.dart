@@ -26,6 +26,8 @@ mixin _$AppConfig {
   bool get isUpdateAvailable => throw _privateConstructorUsedError;
   String get appleId => throw _privateConstructorUsedError;
   String get packageName => throw _privateConstructorUsedError;
+  String? get appStoreUrl => throw _privateConstructorUsedError;
+  String? get googlePlayUrl => throw _privateConstructorUsedError;
 
   /// Serializes this AppConfig to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -48,7 +50,9 @@ abstract class $AppConfigCopyWith<$Res> {
       String description,
       bool isUpdateAvailable,
       String appleId,
-      String packageName});
+      String packageName,
+      String? appStoreUrl,
+      String? googlePlayUrl});
 }
 
 /// @nodoc
@@ -72,6 +76,8 @@ class _$AppConfigCopyWithImpl<$Res, $Val extends AppConfig>
     Object? isUpdateAvailable = null,
     Object? appleId = null,
     Object? packageName = null,
+    Object? appStoreUrl = freezed,
+    Object? googlePlayUrl = freezed,
   }) {
     return _then(_value.copyWith(
       key: null == key
@@ -98,6 +104,14 @@ class _$AppConfigCopyWithImpl<$Res, $Val extends AppConfig>
           ? _value.packageName
           : packageName // ignore: cast_nullable_to_non_nullable
               as String,
+      appStoreUrl: freezed == appStoreUrl
+          ? _value.appStoreUrl
+          : appStoreUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      googlePlayUrl: freezed == googlePlayUrl
+          ? _value.googlePlayUrl
+          : googlePlayUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -116,7 +130,9 @@ abstract class _$$AppConfigImplCopyWith<$Res>
       String description,
       bool isUpdateAvailable,
       String appleId,
-      String packageName});
+      String packageName,
+      String? appStoreUrl,
+      String? googlePlayUrl});
 }
 
 /// @nodoc
@@ -138,6 +154,8 @@ class __$$AppConfigImplCopyWithImpl<$Res>
     Object? isUpdateAvailable = null,
     Object? appleId = null,
     Object? packageName = null,
+    Object? appStoreUrl = freezed,
+    Object? googlePlayUrl = freezed,
   }) {
     return _then(_$AppConfigImpl(
       key: null == key
@@ -164,6 +182,14 @@ class __$$AppConfigImplCopyWithImpl<$Res>
           ? _value.packageName
           : packageName // ignore: cast_nullable_to_non_nullable
               as String,
+      appStoreUrl: freezed == appStoreUrl
+          ? _value.appStoreUrl
+          : appStoreUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      googlePlayUrl: freezed == googlePlayUrl
+          ? _value.googlePlayUrl
+          : googlePlayUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -177,7 +203,9 @@ class _$AppConfigImpl extends _AppConfig {
       this.description = "",
       this.isUpdateAvailable = false,
       this.appleId = "",
-      this.packageName = ""})
+      this.packageName = "",
+      this.appStoreUrl = null,
+      this.googlePlayUrl = null})
       : super._();
 
   factory _$AppConfigImpl.fromJson(Map<String, dynamic> json) =>
@@ -199,10 +227,16 @@ class _$AppConfigImpl extends _AppConfig {
   @override
   @JsonKey()
   final String packageName;
+  @override
+  @JsonKey()
+  final String? appStoreUrl;
+  @override
+  @JsonKey()
+  final String? googlePlayUrl;
 
   @override
   String toString() {
-    return 'AppConfig(key: $key, version: $version, description: $description, isUpdateAvailable: $isUpdateAvailable, appleId: $appleId, packageName: $packageName)';
+    return 'AppConfig(key: $key, version: $version, description: $description, isUpdateAvailable: $isUpdateAvailable, appleId: $appleId, packageName: $packageName, appStoreUrl: $appStoreUrl, googlePlayUrl: $googlePlayUrl)';
   }
 
   @override
@@ -218,13 +252,17 @@ class _$AppConfigImpl extends _AppConfig {
                 other.isUpdateAvailable == isUpdateAvailable) &&
             (identical(other.appleId, appleId) || other.appleId == appleId) &&
             (identical(other.packageName, packageName) ||
-                other.packageName == packageName));
+                other.packageName == packageName) &&
+            (identical(other.appStoreUrl, appStoreUrl) ||
+                other.appStoreUrl == appStoreUrl) &&
+            (identical(other.googlePlayUrl, googlePlayUrl) ||
+                other.googlePlayUrl == googlePlayUrl));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, key, version, description,
-      isUpdateAvailable, appleId, packageName);
+      isUpdateAvailable, appleId, packageName, appStoreUrl, googlePlayUrl);
 
   /// Create a copy of AppConfig
   /// with the given fields replaced by the non-null parameter values.
@@ -249,7 +287,9 @@ abstract class _AppConfig extends AppConfig {
       final String description,
       final bool isUpdateAvailable,
       final String appleId,
-      final String packageName}) = _$AppConfigImpl;
+      final String packageName,
+      final String? appStoreUrl,
+      final String? googlePlayUrl}) = _$AppConfigImpl;
   const _AppConfig._() : super._();
 
   factory _AppConfig.fromJson(Map<String, dynamic> json) =
@@ -267,6 +307,10 @@ abstract class _AppConfig extends AppConfig {
   String get appleId;
   @override
   String get packageName;
+  @override
+  String? get appStoreUrl;
+  @override
+  String? get googlePlayUrl;
 
   /// Create a copy of AppConfig
   /// with the given fields replaced by the non-null parameter values.

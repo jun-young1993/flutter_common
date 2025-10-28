@@ -3,10 +3,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_common/common_il8n.dart';
-import 'package:flutter_common/constants/common_constants.dart';
 import 'package:flutter_common/constants/juny_constants.dart';
 import 'package:flutter_common/constants/size_constants.dart';
-import 'package:flutter_common/extensions/app_exception.dart';
 import 'package:flutter_common/models/user/user.dart';
 import 'package:flutter_common/state/app_config/app_config_bloc.dart';
 import 'package:flutter_common/state/app_config/app_config_event.dart';
@@ -18,21 +16,16 @@ import 'package:flutter_common/state/user/user_selector.dart';
 import 'package:flutter_common/state/verification/verification_bloc.dart';
 import 'package:flutter_common/state/verification/verification_event.dart';
 import 'package:flutter_common/state/verification/verification_selector.dart';
-import 'package:flutter_common/state/verification/verification_state.dart';
 import 'package:flutter_common/widgets/buttons/awesom_text_button.dart';
 import 'package:flutter_common/widgets/dialogs/app_dialog.dart';
 import 'package:flutter_common/widgets/dialogs/input_dialog.dart';
-import 'package:flutter_common/widgets/dialogs/report_dialog.dart';
 import 'package:flutter_common/widgets/layout/sections/can_update_row.dart';
 import 'package:flutter_common/widgets/layout/sections/setting/locale.dart';
 import 'package:flutter_common/widgets/layout/sections/share_app_row.dart';
 import 'package:flutter_common/widgets/lib/container/card_container.dart';
 import 'package:flutter_common/widgets/lib/container/card_container_item.dart';
-import 'package:flutter_common/widgets/fields/card_field.dart';
-import 'package:flutter_common/widgets/loader/loading_overay.dart';
 import 'package:flutter_common/widgets/textes/awesome_description_text.dart';
 import 'package:flutter_common/widgets/timer/countdown_display.dart';
-import 'package:flutter_common/widgets/toast/toast.dart';
 import 'package:flutter_common/widgets/verified/verified_banner.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
@@ -55,11 +48,14 @@ class SettingScreenLayout extends StatefulWidget {
 
 class _SettingScreenLayoutState extends State<SettingScreenLayout> {
   String? _version;
+  bool _isInitialized = false;
   UserBloc get userBloc => context.read<UserBloc>();
   AppKeys get appKey => widget.appKey;
   AppConfigBloc get appConfigBloc => context.read<AppConfigBloc>();
   VerificationBloc get verificationBloc => context.read<VerificationBloc>();
+  Locale get locale => context.locale;
 
+  /// 버전 정보를 가져오는 메서드
   Future<void> _getVersion() async {
     final packageInfo = await PackageInfo.fromPlatform();
     setState(() {
@@ -73,8 +69,17 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
   @override
   void initState() {
     super.initState();
-    appConfigBloc.add(AppConfigEvent.initialize(appKey));
     _getVersion();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // didChangeDependencies는 여러 번 호출될 수 있으므로 플래그로 한 번만 실행
+    if (!_isInitialized) {
+      _isInitialized = true;
+      appConfigBloc.add(AppConfigEvent.initialize(appKey, locale));
+    }
   }
 
   @override
@@ -389,6 +394,7 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
                   ),
                 ],
               ),
+              const SizedBox(height: 6),
               RemoteAppConfigSelector((config) {
                 if (config != null) {
                   return CanUpdateRow(
@@ -413,15 +419,10 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
                 if (config == null) {
                   return const SizedBox.shrink();
                 }
-                final url = CommonConstants.getStoreUrl(
-                    config.packageName, config.appleId);
                 return ShareAppRow(
-                  appStoreUrl: url,
-                  appName: config.description,
+                  appConfig: config,
                   invitationMessage: Tr.message.inviteMessage
                       .tr(namedArgs: {'appName': config.description}),
-                  androidPackageName: config.packageName,
-                  appleId: config.appleId,
                 );
               })
             ]),

@@ -12,6 +12,8 @@ class AppConfig with _$AppConfig {
     @Default(false) bool isUpdateAvailable,
     @Default("") String appleId,
     @Default("") String packageName,
+    @Default(null) String? appStoreUrl,
+    @Default(null) String? googlePlayUrl,
   }) = _AppConfig;
 
   const AppConfig._();

@@ -14,6 +14,8 @@ _$AppConfigImpl _$$AppConfigImplFromJson(Map<String, dynamic> json) =>
       isUpdateAvailable: json['isUpdateAvailable'] as bool? ?? false,
       appleId: json['appleId'] as String? ?? "",
       packageName: json['packageName'] as String? ?? "",
+      appStoreUrl: json['appStoreUrl'] as String? ?? null,
+      googlePlayUrl: json['googlePlayUrl'] as String? ?? null,
     );
 
 Map<String, dynamic> _$$AppConfigImplToJson(_$AppConfigImpl instance) =>
@@ -24,4 +26,6 @@ Map<String, dynamic> _$$AppConfigImplToJson(_$AppConfigImpl instance) =>
       'isUpdateAvailable': instance.isUpdateAvailable,
       'appleId': instance.appleId,
       'packageName': instance.packageName,
+      'appStoreUrl': instance.appStoreUrl,
+      'googlePlayUrl': instance.googlePlayUrl,
     };

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_common/common_il8n.dart';
 import 'package:flutter_common/constants/common_constants.dart';
+import 'package:flutter_common/state/app_config/app_config_state.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:ui' as ui;
@@ -11,23 +12,18 @@ import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 
 class ShareAppRow extends StatelessWidget {
-  final String appStoreUrl;
-  final String appName;
+  final AppConfigState appConfig;
+
   final String invitationMessage;
-  final String? androidPackageName;
-  final String? appleId;
 
   const ShareAppRow({
     Key? key,
-    required this.appStoreUrl,
-    required this.appName,
+    required this.appConfig,
     required this.invitationMessage,
-    this.androidPackageName,
-    this.appleId,
   }) : super(key: key);
 
-  String get _androidUrl => CommonConstants.getAndroidUrl(androidPackageName!);
-  String get _iosUrl => CommonConstants.getIosUrl(appleId!);
+  String get _androidUrl => CommonConstants.getAndroidUrl(appConfig);
+  String get _iosUrl => CommonConstants.getIosUrl(appConfig);
 
   @override
   Widget build(BuildContext context) {
@@ -162,7 +158,7 @@ class ShareAppRow extends StatelessWidget {
                     child: Column(
                       children: [
                         Text(
-                          appName,
+                          appConfig.description,
                           style: const TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
@@ -179,7 +175,7 @@ class ShareAppRow extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 24),
-                        if (androidPackageName != null) ...[
+                        if (appConfig.googlePlayUrl != null) ...[
                           const Text(
                             'Android',
                             style: TextStyle(
@@ -196,7 +192,7 @@ class ShareAppRow extends StatelessWidget {
                           ),
                           const SizedBox(height: 24),
                         ],
-                        if (appleId != null) ...[
+                        if (appConfig.appleId != null) ...[
                           const Text(
                             'iOS',
                             style: TextStyle(
@@ -268,7 +264,7 @@ class ShareAppRow extends StatelessWidget {
               crossAxisAlignment: pw.CrossAxisAlignment.center,
               children: [
                 pw.Text(
-                  appName,
+                  appConfig.description,
                   style: pw.TextStyle(
                     font: font,
                     fontSize: 24,
@@ -285,7 +281,7 @@ class ShareAppRow extends StatelessWidget {
                   ),
                 ),
                 pw.SizedBox(height: 30),
-                if (androidPackageName != null) ...[
+                if (appConfig.googlePlayUrl != null) ...[
                   pw.Text(
                     'Android',
                     style: pw.TextStyle(
@@ -305,7 +301,7 @@ class ShareAppRow extends StatelessWidget {
                   ),
                   pw.SizedBox(height: 24),
                 ],
-                if (appleId != null) ...[
+                if (appConfig.appleId != null) ...[
                   pw.Text(
                     'iOS',
                     style: pw.TextStyle(
@@ -341,7 +337,7 @@ class ShareAppRow extends StatelessWidget {
 
       await Printing.layoutPdf(
         onLayout: (PdfPageFormat format) async => pdf.save(),
-        name: '${appName}_QR_Code.pdf',
+        name: '${appConfig.description}_QR_Code.pdf',
       );
     } catch (e) {
       if (context.mounted) {
@@ -357,7 +353,8 @@ class ShareAppRow extends StatelessWidget {
   }
 
   void _copyAppUrl(BuildContext context) async {
-    await Clipboard.setData(ClipboardData(text: appStoreUrl));
+    await Clipboard.setData(
+        ClipboardData(text: CommonConstants.getStoreUrl(appConfig)));
     if (context.mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -369,7 +366,7 @@ class ShareAppRow extends StatelessWidget {
   }
 
   void _openStore(BuildContext context) async {
-    final url = appStoreUrl;
+    final url = CommonConstants.getStoreUrl(appConfig);
 
     if (await canLaunchUrl(Uri.parse(url))) {
       await launchUrl(Uri.parse(url));

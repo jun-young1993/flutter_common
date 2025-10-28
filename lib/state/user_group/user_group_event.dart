@@ -9,7 +9,8 @@ class UserGroupEvent with _$UserGroupEvent {
       _Create;
   const factory UserGroupEvent.clearError() = _ClearError;
   const factory UserGroupEvent.findAll() = _FindAll;
-  const factory UserGroupEvent.addUser() = _AddUser;
+  const factory UserGroupEvent.addUserByNumber(String number) =
+      _AddUserByNumber;
   const factory UserGroupEvent.removeUser() = _RemoveUser;
   const factory UserGroupEvent.updateName(String name) = _UpdateName;
   const factory UserGroupEvent.updateDescription(String description) =

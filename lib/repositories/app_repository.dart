@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_common/constants/juny_constants.dart';
 import 'package:flutter_common/models/app_config/app_config.dart';
 import 'package:flutter_common/state/app_config/app_config_state.dart';
@@ -8,7 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class AppRepository {
   Future<AppConfig> getAppConfig(AppKeys key);
-  Future<AppLanguage> getAppLanguage();
+  Future<AppLanguage> getAppLanguage(Locale defaultLocale);
   Future<void> setAppLanguage(AppLanguage language);
 }
 
@@ -49,10 +50,12 @@ class AppDefaultRepository extends AppRepository {
   }
 
   @override
-  Future<AppLanguage> getAppLanguage() async {
+  Future<AppLanguage> getAppLanguage(Locale defaultLocale) async {
     final language = _sharedPreferences.getString('language');
     if (language == null) {
-      return AppLanguage.en;
+      return defaultLocale == const Locale('ko')
+          ? AppLanguage.ko
+          : AppLanguage.en;
     }
     return AppLanguage.values.firstWhere((e) => e.name == language);
   }

@@ -29,6 +29,8 @@ class AppConfigState with _$AppConfigState {
     @Default("") String appleId,
     @Default("") String packageName,
     @Default(AppLanguage.en) AppLanguage language,
+    @Default(null) String? appStoreUrl,
+    @Default(null) String? googlePlayUrl,
   }) = _AppConfigState;
 
   factory AppConfigState.initialize() => const AppConfigState();

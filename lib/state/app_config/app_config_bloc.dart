@@ -19,14 +19,17 @@ class AppConfigBloc extends Bloc<AppConfigEvent, AppConfigState> {
         await event.map(
           initialize: (event) async {
             final appConfig = await appRepository.getAppConfig(event.key);
-            final language = await appRepository.getAppLanguage();
+            final language =
+                await appRepository.getAppLanguage(event.defaultLocale);
             emit(state.copyWith(
               version: appConfig.version,
               key: appConfig.key,
-              description: appConfig.description ?? "",
+              description: appConfig.description,
               appleId: appConfig.appleId,
               packageName: appConfig.packageName,
               language: language,
+              appStoreUrl: appConfig.appStoreUrl,
+              googlePlayUrl: appConfig.googlePlayUrl,
             ));
           },
           checkCanUpdate: (event) async {
@@ -38,8 +41,7 @@ class AppConfigBloc extends Bloc<AppConfigEvent, AppConfigState> {
             ));
           },
           moveUpdateStore: (event) async {
-            Uri storeUri = Uri.parse(
-                CommonConstants.getStoreUrl(state.packageName, state.appleId));
+            Uri storeUri = Uri.parse(CommonConstants.getStoreUrl(state));
 
             if (await canLaunchUrl(storeUri)) {
               print("launchUrl: $storeUri");

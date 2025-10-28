@@ -174,8 +174,8 @@ class _Common {
   final inviteCode = 'common.inviteCode';
   final close = 'common.close';
   final share = 'common.share';
-  final groupLeader = 'date.groupLeader';
-  final member = 'date.member';
+  final groupLeader = 'common.groupLeader';
+  final member = 'common.member';
   final loading = 'common.loading';
   final loadingMessage = 'common.loadingMessage';
   final reply = 'common.reply';

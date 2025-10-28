@@ -22,7 +22,7 @@ mixin _$UserGroupEvent {
     required TResult Function(String? name, String? description) create,
     required TResult Function() clearError,
     required TResult Function() findAll,
-    required TResult Function() addUser,
+    required TResult Function(String number) addUserByNumber,
     required TResult Function() removeUser,
     required TResult Function(String name) updateName,
     required TResult Function(String description) updateDescription,
@@ -34,7 +34,7 @@ mixin _$UserGroupEvent {
     TResult? Function(String? name, String? description)? create,
     TResult? Function()? clearError,
     TResult? Function()? findAll,
-    TResult? Function()? addUser,
+    TResult? Function(String number)? addUserByNumber,
     TResult? Function()? removeUser,
     TResult? Function(String name)? updateName,
     TResult? Function(String description)? updateDescription,
@@ -46,7 +46,7 @@ mixin _$UserGroupEvent {
     TResult Function(String? name, String? description)? create,
     TResult Function()? clearError,
     TResult Function()? findAll,
-    TResult Function()? addUser,
+    TResult Function(String number)? addUserByNumber,
     TResult Function()? removeUser,
     TResult Function(String name)? updateName,
     TResult Function(String description)? updateDescription,
@@ -59,7 +59,7 @@ mixin _$UserGroupEvent {
     required TResult Function(_Create value) create,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_FindAll value) findAll,
-    required TResult Function(_AddUser value) addUser,
+    required TResult Function(_AddUserByNumber value) addUserByNumber,
     required TResult Function(_RemoveUser value) removeUser,
     required TResult Function(_UpdateName value) updateName,
     required TResult Function(_UpdateDescription value) updateDescription,
@@ -71,7 +71,7 @@ mixin _$UserGroupEvent {
     TResult? Function(_Create value)? create,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_FindAll value)? findAll,
-    TResult? Function(_AddUser value)? addUser,
+    TResult? Function(_AddUserByNumber value)? addUserByNumber,
     TResult? Function(_RemoveUser value)? removeUser,
     TResult? Function(_UpdateName value)? updateName,
     TResult? Function(_UpdateDescription value)? updateDescription,
@@ -83,7 +83,7 @@ mixin _$UserGroupEvent {
     TResult Function(_Create value)? create,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_FindAll value)? findAll,
-    TResult Function(_AddUser value)? addUser,
+    TResult Function(_AddUserByNumber value)? addUserByNumber,
     TResult Function(_RemoveUser value)? removeUser,
     TResult Function(_UpdateName value)? updateName,
     TResult Function(_UpdateDescription value)? updateDescription,
@@ -158,7 +158,7 @@ class _$InitializeImpl implements _Initialize {
     required TResult Function(String? name, String? description) create,
     required TResult Function() clearError,
     required TResult Function() findAll,
-    required TResult Function() addUser,
+    required TResult Function(String number) addUserByNumber,
     required TResult Function() removeUser,
     required TResult Function(String name) updateName,
     required TResult Function(String description) updateDescription,
@@ -173,7 +173,7 @@ class _$InitializeImpl implements _Initialize {
     TResult? Function(String? name, String? description)? create,
     TResult? Function()? clearError,
     TResult? Function()? findAll,
-    TResult? Function()? addUser,
+    TResult? Function(String number)? addUserByNumber,
     TResult? Function()? removeUser,
     TResult? Function(String name)? updateName,
     TResult? Function(String description)? updateDescription,
@@ -188,7 +188,7 @@ class _$InitializeImpl implements _Initialize {
     TResult Function(String? name, String? description)? create,
     TResult Function()? clearError,
     TResult Function()? findAll,
-    TResult Function()? addUser,
+    TResult Function(String number)? addUserByNumber,
     TResult Function()? removeUser,
     TResult Function(String name)? updateName,
     TResult Function(String description)? updateDescription,
@@ -207,7 +207,7 @@ class _$InitializeImpl implements _Initialize {
     required TResult Function(_Create value) create,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_FindAll value) findAll,
-    required TResult Function(_AddUser value) addUser,
+    required TResult Function(_AddUserByNumber value) addUserByNumber,
     required TResult Function(_RemoveUser value) removeUser,
     required TResult Function(_UpdateName value) updateName,
     required TResult Function(_UpdateDescription value) updateDescription,
@@ -222,7 +222,7 @@ class _$InitializeImpl implements _Initialize {
     TResult? Function(_Create value)? create,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_FindAll value)? findAll,
-    TResult? Function(_AddUser value)? addUser,
+    TResult? Function(_AddUserByNumber value)? addUserByNumber,
     TResult? Function(_RemoveUser value)? removeUser,
     TResult? Function(_UpdateName value)? updateName,
     TResult? Function(_UpdateDescription value)? updateDescription,
@@ -237,7 +237,7 @@ class _$InitializeImpl implements _Initialize {
     TResult Function(_Create value)? create,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_FindAll value)? findAll,
-    TResult Function(_AddUser value)? addUser,
+    TResult Function(_AddUserByNumber value)? addUserByNumber,
     TResult Function(_RemoveUser value)? removeUser,
     TResult Function(_UpdateName value)? updateName,
     TResult Function(_UpdateDescription value)? updateDescription,
@@ -335,7 +335,7 @@ class _$CreateImpl implements _Create {
     required TResult Function(String? name, String? description) create,
     required TResult Function() clearError,
     required TResult Function() findAll,
-    required TResult Function() addUser,
+    required TResult Function(String number) addUserByNumber,
     required TResult Function() removeUser,
     required TResult Function(String name) updateName,
     required TResult Function(String description) updateDescription,
@@ -350,7 +350,7 @@ class _$CreateImpl implements _Create {
     TResult? Function(String? name, String? description)? create,
     TResult? Function()? clearError,
     TResult? Function()? findAll,
-    TResult? Function()? addUser,
+    TResult? Function(String number)? addUserByNumber,
     TResult? Function()? removeUser,
     TResult? Function(String name)? updateName,
     TResult? Function(String description)? updateDescription,
@@ -365,7 +365,7 @@ class _$CreateImpl implements _Create {
     TResult Function(String? name, String? description)? create,
     TResult Function()? clearError,
     TResult Function()? findAll,
-    TResult Function()? addUser,
+    TResult Function(String number)? addUserByNumber,
     TResult Function()? removeUser,
     TResult Function(String name)? updateName,
     TResult Function(String description)? updateDescription,
@@ -384,7 +384,7 @@ class _$CreateImpl implements _Create {
     required TResult Function(_Create value) create,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_FindAll value) findAll,
-    required TResult Function(_AddUser value) addUser,
+    required TResult Function(_AddUserByNumber value) addUserByNumber,
     required TResult Function(_RemoveUser value) removeUser,
     required TResult Function(_UpdateName value) updateName,
     required TResult Function(_UpdateDescription value) updateDescription,
@@ -399,7 +399,7 @@ class _$CreateImpl implements _Create {
     TResult? Function(_Create value)? create,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_FindAll value)? findAll,
-    TResult? Function(_AddUser value)? addUser,
+    TResult? Function(_AddUserByNumber value)? addUserByNumber,
     TResult? Function(_RemoveUser value)? removeUser,
     TResult? Function(_UpdateName value)? updateName,
     TResult? Function(_UpdateDescription value)? updateDescription,
@@ -414,7 +414,7 @@ class _$CreateImpl implements _Create {
     TResult Function(_Create value)? create,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_FindAll value)? findAll,
-    TResult Function(_AddUser value)? addUser,
+    TResult Function(_AddUserByNumber value)? addUserByNumber,
     TResult Function(_RemoveUser value)? removeUser,
     TResult Function(_UpdateName value)? updateName,
     TResult Function(_UpdateDescription value)? updateDescription,
@@ -486,7 +486,7 @@ class _$ClearErrorImpl implements _ClearError {
     required TResult Function(String? name, String? description) create,
     required TResult Function() clearError,
     required TResult Function() findAll,
-    required TResult Function() addUser,
+    required TResult Function(String number) addUserByNumber,
     required TResult Function() removeUser,
     required TResult Function(String name) updateName,
     required TResult Function(String description) updateDescription,
@@ -501,7 +501,7 @@ class _$ClearErrorImpl implements _ClearError {
     TResult? Function(String? name, String? description)? create,
     TResult? Function()? clearError,
     TResult? Function()? findAll,
-    TResult? Function()? addUser,
+    TResult? Function(String number)? addUserByNumber,
     TResult? Function()? removeUser,
     TResult? Function(String name)? updateName,
     TResult? Function(String description)? updateDescription,
@@ -516,7 +516,7 @@ class _$ClearErrorImpl implements _ClearError {
     TResult Function(String? name, String? description)? create,
     TResult Function()? clearError,
     TResult Function()? findAll,
-    TResult Function()? addUser,
+    TResult Function(String number)? addUserByNumber,
     TResult Function()? removeUser,
     TResult Function(String name)? updateName,
     TResult Function(String description)? updateDescription,
@@ -535,7 +535,7 @@ class _$ClearErrorImpl implements _ClearError {
     required TResult Function(_Create value) create,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_FindAll value) findAll,
-    required TResult Function(_AddUser value) addUser,
+    required TResult Function(_AddUserByNumber value) addUserByNumber,
     required TResult Function(_RemoveUser value) removeUser,
     required TResult Function(_UpdateName value) updateName,
     required TResult Function(_UpdateDescription value) updateDescription,
@@ -550,7 +550,7 @@ class _$ClearErrorImpl implements _ClearError {
     TResult? Function(_Create value)? create,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_FindAll value)? findAll,
-    TResult? Function(_AddUser value)? addUser,
+    TResult? Function(_AddUserByNumber value)? addUserByNumber,
     TResult? Function(_RemoveUser value)? removeUser,
     TResult? Function(_UpdateName value)? updateName,
     TResult? Function(_UpdateDescription value)? updateDescription,
@@ -565,7 +565,7 @@ class _$ClearErrorImpl implements _ClearError {
     TResult Function(_Create value)? create,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_FindAll value)? findAll,
-    TResult Function(_AddUser value)? addUser,
+    TResult Function(_AddUserByNumber value)? addUserByNumber,
     TResult Function(_RemoveUser value)? removeUser,
     TResult Function(_UpdateName value)? updateName,
     TResult Function(_UpdateDescription value)? updateDescription,
@@ -627,7 +627,7 @@ class _$FindAllImpl implements _FindAll {
     required TResult Function(String? name, String? description) create,
     required TResult Function() clearError,
     required TResult Function() findAll,
-    required TResult Function() addUser,
+    required TResult Function(String number) addUserByNumber,
     required TResult Function() removeUser,
     required TResult Function(String name) updateName,
     required TResult Function(String description) updateDescription,
@@ -642,7 +642,7 @@ class _$FindAllImpl implements _FindAll {
     TResult? Function(String? name, String? description)? create,
     TResult? Function()? clearError,
     TResult? Function()? findAll,
-    TResult? Function()? addUser,
+    TResult? Function(String number)? addUserByNumber,
     TResult? Function()? removeUser,
     TResult? Function(String name)? updateName,
     TResult? Function(String description)? updateDescription,
@@ -657,7 +657,7 @@ class _$FindAllImpl implements _FindAll {
     TResult Function(String? name, String? description)? create,
     TResult Function()? clearError,
     TResult Function()? findAll,
-    TResult Function()? addUser,
+    TResult Function(String number)? addUserByNumber,
     TResult Function()? removeUser,
     TResult Function(String name)? updateName,
     TResult Function(String description)? updateDescription,
@@ -676,7 +676,7 @@ class _$FindAllImpl implements _FindAll {
     required TResult Function(_Create value) create,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_FindAll value) findAll,
-    required TResult Function(_AddUser value) addUser,
+    required TResult Function(_AddUserByNumber value) addUserByNumber,
     required TResult Function(_RemoveUser value) removeUser,
     required TResult Function(_UpdateName value) updateName,
     required TResult Function(_UpdateDescription value) updateDescription,
@@ -691,7 +691,7 @@ class _$FindAllImpl implements _FindAll {
     TResult? Function(_Create value)? create,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_FindAll value)? findAll,
-    TResult? Function(_AddUser value)? addUser,
+    TResult? Function(_AddUserByNumber value)? addUserByNumber,
     TResult? Function(_RemoveUser value)? removeUser,
     TResult? Function(_UpdateName value)? updateName,
     TResult? Function(_UpdateDescription value)? updateDescription,
@@ -706,7 +706,7 @@ class _$FindAllImpl implements _FindAll {
     TResult Function(_Create value)? create,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_FindAll value)? findAll,
-    TResult Function(_AddUser value)? addUser,
+    TResult Function(_AddUserByNumber value)? addUserByNumber,
     TResult Function(_RemoveUser value)? removeUser,
     TResult Function(_UpdateName value)? updateName,
     TResult Function(_UpdateDescription value)? updateDescription,
@@ -724,42 +724,70 @@ abstract class _FindAll implements UserGroupEvent {
 }
 
 /// @nodoc
-abstract class _$$AddUserImplCopyWith<$Res> {
-  factory _$$AddUserImplCopyWith(
-          _$AddUserImpl value, $Res Function(_$AddUserImpl) then) =
-      __$$AddUserImplCopyWithImpl<$Res>;
+abstract class _$$AddUserByNumberImplCopyWith<$Res> {
+  factory _$$AddUserByNumberImplCopyWith(_$AddUserByNumberImpl value,
+          $Res Function(_$AddUserByNumberImpl) then) =
+      __$$AddUserByNumberImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String number});
 }
 
 /// @nodoc
-class __$$AddUserImplCopyWithImpl<$Res>
-    extends _$UserGroupEventCopyWithImpl<$Res, _$AddUserImpl>
-    implements _$$AddUserImplCopyWith<$Res> {
-  __$$AddUserImplCopyWithImpl(
-      _$AddUserImpl _value, $Res Function(_$AddUserImpl) _then)
+class __$$AddUserByNumberImplCopyWithImpl<$Res>
+    extends _$UserGroupEventCopyWithImpl<$Res, _$AddUserByNumberImpl>
+    implements _$$AddUserByNumberImplCopyWith<$Res> {
+  __$$AddUserByNumberImplCopyWithImpl(
+      _$AddUserByNumberImpl _value, $Res Function(_$AddUserByNumberImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of UserGroupEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? number = null,
+  }) {
+    return _then(_$AddUserByNumberImpl(
+      null == number
+          ? _value.number
+          : number // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$AddUserImpl implements _AddUser {
-  const _$AddUserImpl();
+class _$AddUserByNumberImpl implements _AddUserByNumber {
+  const _$AddUserByNumberImpl(this.number);
+
+  @override
+  final String number;
 
   @override
   String toString() {
-    return 'UserGroupEvent.addUser()';
+    return 'UserGroupEvent.addUserByNumber(number: $number)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$AddUserImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$AddUserByNumberImpl &&
+            (identical(other.number, number) || other.number == number));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, number);
+
+  /// Create a copy of UserGroupEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddUserByNumberImplCopyWith<_$AddUserByNumberImpl> get copyWith =>
+      __$$AddUserByNumberImplCopyWithImpl<_$AddUserByNumberImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -768,12 +796,12 @@ class _$AddUserImpl implements _AddUser {
     required TResult Function(String? name, String? description) create,
     required TResult Function() clearError,
     required TResult Function() findAll,
-    required TResult Function() addUser,
+    required TResult Function(String number) addUserByNumber,
     required TResult Function() removeUser,
     required TResult Function(String name) updateName,
     required TResult Function(String description) updateDescription,
   }) {
-    return addUser();
+    return addUserByNumber(number);
   }
 
   @override
@@ -783,12 +811,12 @@ class _$AddUserImpl implements _AddUser {
     TResult? Function(String? name, String? description)? create,
     TResult? Function()? clearError,
     TResult? Function()? findAll,
-    TResult? Function()? addUser,
+    TResult? Function(String number)? addUserByNumber,
     TResult? Function()? removeUser,
     TResult? Function(String name)? updateName,
     TResult? Function(String description)? updateDescription,
   }) {
-    return addUser?.call();
+    return addUserByNumber?.call(number);
   }
 
   @override
@@ -798,14 +826,14 @@ class _$AddUserImpl implements _AddUser {
     TResult Function(String? name, String? description)? create,
     TResult Function()? clearError,
     TResult Function()? findAll,
-    TResult Function()? addUser,
+    TResult Function(String number)? addUserByNumber,
     TResult Function()? removeUser,
     TResult Function(String name)? updateName,
     TResult Function(String description)? updateDescription,
     required TResult orElse(),
   }) {
-    if (addUser != null) {
-      return addUser();
+    if (addUserByNumber != null) {
+      return addUserByNumber(number);
     }
     return orElse();
   }
@@ -817,12 +845,12 @@ class _$AddUserImpl implements _AddUser {
     required TResult Function(_Create value) create,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_FindAll value) findAll,
-    required TResult Function(_AddUser value) addUser,
+    required TResult Function(_AddUserByNumber value) addUserByNumber,
     required TResult Function(_RemoveUser value) removeUser,
     required TResult Function(_UpdateName value) updateName,
     required TResult Function(_UpdateDescription value) updateDescription,
   }) {
-    return addUser(this);
+    return addUserByNumber(this);
   }
 
   @override
@@ -832,12 +860,12 @@ class _$AddUserImpl implements _AddUser {
     TResult? Function(_Create value)? create,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_FindAll value)? findAll,
-    TResult? Function(_AddUser value)? addUser,
+    TResult? Function(_AddUserByNumber value)? addUserByNumber,
     TResult? Function(_RemoveUser value)? removeUser,
     TResult? Function(_UpdateName value)? updateName,
     TResult? Function(_UpdateDescription value)? updateDescription,
   }) {
-    return addUser?.call(this);
+    return addUserByNumber?.call(this);
   }
 
   @override
@@ -847,21 +875,29 @@ class _$AddUserImpl implements _AddUser {
     TResult Function(_Create value)? create,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_FindAll value)? findAll,
-    TResult Function(_AddUser value)? addUser,
+    TResult Function(_AddUserByNumber value)? addUserByNumber,
     TResult Function(_RemoveUser value)? removeUser,
     TResult Function(_UpdateName value)? updateName,
     TResult Function(_UpdateDescription value)? updateDescription,
     required TResult orElse(),
   }) {
-    if (addUser != null) {
-      return addUser(this);
+    if (addUserByNumber != null) {
+      return addUserByNumber(this);
     }
     return orElse();
   }
 }
 
-abstract class _AddUser implements UserGroupEvent {
-  const factory _AddUser() = _$AddUserImpl;
+abstract class _AddUserByNumber implements UserGroupEvent {
+  const factory _AddUserByNumber(final String number) = _$AddUserByNumberImpl;
+
+  String get number;
+
+  /// Create a copy of UserGroupEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AddUserByNumberImplCopyWith<_$AddUserByNumberImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -909,7 +945,7 @@ class _$RemoveUserImpl implements _RemoveUser {
     required TResult Function(String? name, String? description) create,
     required TResult Function() clearError,
     required TResult Function() findAll,
-    required TResult Function() addUser,
+    required TResult Function(String number) addUserByNumber,
     required TResult Function() removeUser,
     required TResult Function(String name) updateName,
     required TResult Function(String description) updateDescription,
@@ -924,7 +960,7 @@ class _$RemoveUserImpl implements _RemoveUser {
     TResult? Function(String? name, String? description)? create,
     TResult? Function()? clearError,
     TResult? Function()? findAll,
-    TResult? Function()? addUser,
+    TResult? Function(String number)? addUserByNumber,
     TResult? Function()? removeUser,
     TResult? Function(String name)? updateName,
     TResult? Function(String description)? updateDescription,
@@ -939,7 +975,7 @@ class _$RemoveUserImpl implements _RemoveUser {
     TResult Function(String? name, String? description)? create,
     TResult Function()? clearError,
     TResult Function()? findAll,
-    TResult Function()? addUser,
+    TResult Function(String number)? addUserByNumber,
     TResult Function()? removeUser,
     TResult Function(String name)? updateName,
     TResult Function(String description)? updateDescription,
@@ -958,7 +994,7 @@ class _$RemoveUserImpl implements _RemoveUser {
     required TResult Function(_Create value) create,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_FindAll value) findAll,
-    required TResult Function(_AddUser value) addUser,
+    required TResult Function(_AddUserByNumber value) addUserByNumber,
     required TResult Function(_RemoveUser value) removeUser,
     required TResult Function(_UpdateName value) updateName,
     required TResult Function(_UpdateDescription value) updateDescription,
@@ -973,7 +1009,7 @@ class _$RemoveUserImpl implements _RemoveUser {
     TResult? Function(_Create value)? create,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_FindAll value)? findAll,
-    TResult? Function(_AddUser value)? addUser,
+    TResult? Function(_AddUserByNumber value)? addUserByNumber,
     TResult? Function(_RemoveUser value)? removeUser,
     TResult? Function(_UpdateName value)? updateName,
     TResult? Function(_UpdateDescription value)? updateDescription,
@@ -988,7 +1024,7 @@ class _$RemoveUserImpl implements _RemoveUser {
     TResult Function(_Create value)? create,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_FindAll value)? findAll,
-    TResult Function(_AddUser value)? addUser,
+    TResult Function(_AddUserByNumber value)? addUserByNumber,
     TResult Function(_RemoveUser value)? removeUser,
     TResult Function(_UpdateName value)? updateName,
     TResult Function(_UpdateDescription value)? updateDescription,
@@ -1077,7 +1113,7 @@ class _$UpdateNameImpl implements _UpdateName {
     required TResult Function(String? name, String? description) create,
     required TResult Function() clearError,
     required TResult Function() findAll,
-    required TResult Function() addUser,
+    required TResult Function(String number) addUserByNumber,
     required TResult Function() removeUser,
     required TResult Function(String name) updateName,
     required TResult Function(String description) updateDescription,
@@ -1092,7 +1128,7 @@ class _$UpdateNameImpl implements _UpdateName {
     TResult? Function(String? name, String? description)? create,
     TResult? Function()? clearError,
     TResult? Function()? findAll,
-    TResult? Function()? addUser,
+    TResult? Function(String number)? addUserByNumber,
     TResult? Function()? removeUser,
     TResult? Function(String name)? updateName,
     TResult? Function(String description)? updateDescription,
@@ -1107,7 +1143,7 @@ class _$UpdateNameImpl implements _UpdateName {
     TResult Function(String? name, String? description)? create,
     TResult Function()? clearError,
     TResult Function()? findAll,
-    TResult Function()? addUser,
+    TResult Function(String number)? addUserByNumber,
     TResult Function()? removeUser,
     TResult Function(String name)? updateName,
     TResult Function(String description)? updateDescription,
@@ -1126,7 +1162,7 @@ class _$UpdateNameImpl implements _UpdateName {
     required TResult Function(_Create value) create,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_FindAll value) findAll,
-    required TResult Function(_AddUser value) addUser,
+    required TResult Function(_AddUserByNumber value) addUserByNumber,
     required TResult Function(_RemoveUser value) removeUser,
     required TResult Function(_UpdateName value) updateName,
     required TResult Function(_UpdateDescription value) updateDescription,
@@ -1141,7 +1177,7 @@ class _$UpdateNameImpl implements _UpdateName {
     TResult? Function(_Create value)? create,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_FindAll value)? findAll,
-    TResult? Function(_AddUser value)? addUser,
+    TResult? Function(_AddUserByNumber value)? addUserByNumber,
     TResult? Function(_RemoveUser value)? removeUser,
     TResult? Function(_UpdateName value)? updateName,
     TResult? Function(_UpdateDescription value)? updateDescription,
@@ -1156,7 +1192,7 @@ class _$UpdateNameImpl implements _UpdateName {
     TResult Function(_Create value)? create,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_FindAll value)? findAll,
-    TResult Function(_AddUser value)? addUser,
+    TResult Function(_AddUserByNumber value)? addUserByNumber,
     TResult Function(_RemoveUser value)? removeUser,
     TResult Function(_UpdateName value)? updateName,
     TResult Function(_UpdateDescription value)? updateDescription,
@@ -1255,7 +1291,7 @@ class _$UpdateDescriptionImpl implements _UpdateDescription {
     required TResult Function(String? name, String? description) create,
     required TResult Function() clearError,
     required TResult Function() findAll,
-    required TResult Function() addUser,
+    required TResult Function(String number) addUserByNumber,
     required TResult Function() removeUser,
     required TResult Function(String name) updateName,
     required TResult Function(String description) updateDescription,
@@ -1270,7 +1306,7 @@ class _$UpdateDescriptionImpl implements _UpdateDescription {
     TResult? Function(String? name, String? description)? create,
     TResult? Function()? clearError,
     TResult? Function()? findAll,
-    TResult? Function()? addUser,
+    TResult? Function(String number)? addUserByNumber,
     TResult? Function()? removeUser,
     TResult? Function(String name)? updateName,
     TResult? Function(String description)? updateDescription,
@@ -1285,7 +1321,7 @@ class _$UpdateDescriptionImpl implements _UpdateDescription {
     TResult Function(String? name, String? description)? create,
     TResult Function()? clearError,
     TResult Function()? findAll,
-    TResult Function()? addUser,
+    TResult Function(String number)? addUserByNumber,
     TResult Function()? removeUser,
     TResult Function(String name)? updateName,
     TResult Function(String description)? updateDescription,
@@ -1304,7 +1340,7 @@ class _$UpdateDescriptionImpl implements _UpdateDescription {
     required TResult Function(_Create value) create,
     required TResult Function(_ClearError value) clearError,
     required TResult Function(_FindAll value) findAll,
-    required TResult Function(_AddUser value) addUser,
+    required TResult Function(_AddUserByNumber value) addUserByNumber,
     required TResult Function(_RemoveUser value) removeUser,
     required TResult Function(_UpdateName value) updateName,
     required TResult Function(_UpdateDescription value) updateDescription,
@@ -1319,7 +1355,7 @@ class _$UpdateDescriptionImpl implements _UpdateDescription {
     TResult? Function(_Create value)? create,
     TResult? Function(_ClearError value)? clearError,
     TResult? Function(_FindAll value)? findAll,
-    TResult? Function(_AddUser value)? addUser,
+    TResult? Function(_AddUserByNumber value)? addUserByNumber,
     TResult? Function(_RemoveUser value)? removeUser,
     TResult? Function(_UpdateName value)? updateName,
     TResult? Function(_UpdateDescription value)? updateDescription,
@@ -1334,7 +1370,7 @@ class _$UpdateDescriptionImpl implements _UpdateDescription {
     TResult Function(_Create value)? create,
     TResult Function(_ClearError value)? clearError,
     TResult Function(_FindAll value)? findAll,
-    TResult Function(_AddUser value)? addUser,
+    TResult Function(_AddUserByNumber value)? addUserByNumber,
     TResult Function(_RemoveUser value)? removeUser,
     TResult Function(_UpdateName value)? updateName,
     TResult Function(_UpdateDescription value)? updateDescription,

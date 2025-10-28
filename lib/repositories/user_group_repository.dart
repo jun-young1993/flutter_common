@@ -5,7 +5,7 @@ import 'package:flutter_common/network/dio_client.dart';
 abstract class UserGroupRepository {
   Future<UserGroup?> getUserGroups();
   Future<UserGroup> createUserGroup(String? name, String? description);
-  Future<UserGroup> addUser();
+  Future<UserGroup> addUserByNumber(String number);
   Future<UserGroup> removeUser();
   Future<UserGroup> updateName(String userGroupId, String name);
   Future<UserGroup> updateDescription(String userGroupId, String description);
@@ -49,8 +49,9 @@ class UserGroupDefaultRepository extends UserGroupRepository {
   }
 
   @override
-  Future<UserGroup> addUser() async {
-    final response = await dioClient.post('/user-groups/add-users');
+  Future<UserGroup> addUserByNumber(String number) async {
+    final response =
+        await dioClient.post('/user-groups/add-user/number/$number');
     if (response.statusCode != 201) {
       throw Exception(
           '[${response.statusCode}] Failed to add user to user group: ${response.statusMessage ?? 'Unknown error'}');

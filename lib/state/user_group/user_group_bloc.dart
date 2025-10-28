@@ -32,8 +32,9 @@ class UserGroupBloc extends Bloc<UserGroupEvent, UserGroupState> {
                 emit(state.copyWith(error: AppException.unknown(e.toString())));
               }
             },
-            addUser: (e) async {
-              final userGroup = await userGroupRepository.addUser();
+            addUserByNumber: (e) async {
+              final userGroup =
+                  await userGroupRepository.addUserByNumber(e.number);
               emit(state.copyWith(userGroup: userGroup));
             },
             removeUser: (e) async {
