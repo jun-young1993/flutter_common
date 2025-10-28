@@ -171,7 +171,8 @@
         "day5": "Fri",
         "day6": "Satur",
         "day7": "Sun",
-        "weekDayFormat": "{day} day"
+        "weekDayFormat": "{day} day",
+        "yearAndMonthAndDayFormat": "{year}-{month}-{day}"
     },
     "family": {
         "familyShare": "Family Share",
