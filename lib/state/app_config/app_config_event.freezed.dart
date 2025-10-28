@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AppConfigEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(AppKeys key, Locale defaultLocale) initialize,
+    required TResult Function(AppKeys key, Locale? defaultLocale) initialize,
     required TResult Function(AppKeys key, String version) checkCanUpdate,
     required TResult Function() moveUpdateStore,
     required TResult Function(AppLanguage language) setLanguage,
@@ -26,7 +26,7 @@ mixin _$AppConfigEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(AppKeys key, Locale defaultLocale)? initialize,
+    TResult? Function(AppKeys key, Locale? defaultLocale)? initialize,
     TResult? Function(AppKeys key, String version)? checkCanUpdate,
     TResult? Function()? moveUpdateStore,
     TResult? Function(AppLanguage language)? setLanguage,
@@ -34,7 +34,7 @@ mixin _$AppConfigEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AppKeys key, Locale defaultLocale)? initialize,
+    TResult Function(AppKeys key, Locale? defaultLocale)? initialize,
     TResult Function(AppKeys key, String version)? checkCanUpdate,
     TResult Function()? moveUpdateStore,
     TResult Function(AppLanguage language)? setLanguage,
@@ -95,7 +95,7 @@ abstract class _$$InitializeEventImplCopyWith<$Res> {
           $Res Function(_$InitializeEventImpl) then) =
       __$$InitializeEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({AppKeys key, Locale defaultLocale});
+  $Res call({AppKeys key, Locale? defaultLocale});
 }
 
 /// @nodoc
@@ -112,17 +112,17 @@ class __$$InitializeEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? key = null,
-    Object? defaultLocale = null,
+    Object? defaultLocale = freezed,
   }) {
     return _then(_$InitializeEventImpl(
       null == key
           ? _value.key
           : key // ignore: cast_nullable_to_non_nullable
               as AppKeys,
-      null == defaultLocale
+      freezed == defaultLocale
           ? _value.defaultLocale
           : defaultLocale // ignore: cast_nullable_to_non_nullable
-              as Locale,
+              as Locale?,
     ));
   }
 }
@@ -135,7 +135,7 @@ class _$InitializeEventImpl implements InitializeEvent {
   @override
   final AppKeys key;
   @override
-  final Locale defaultLocale;
+  final Locale? defaultLocale;
 
   @override
   String toString() {
@@ -167,7 +167,7 @@ class _$InitializeEventImpl implements InitializeEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(AppKeys key, Locale defaultLocale) initialize,
+    required TResult Function(AppKeys key, Locale? defaultLocale) initialize,
     required TResult Function(AppKeys key, String version) checkCanUpdate,
     required TResult Function() moveUpdateStore,
     required TResult Function(AppLanguage language) setLanguage,
@@ -178,7 +178,7 @@ class _$InitializeEventImpl implements InitializeEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(AppKeys key, Locale defaultLocale)? initialize,
+    TResult? Function(AppKeys key, Locale? defaultLocale)? initialize,
     TResult? Function(AppKeys key, String version)? checkCanUpdate,
     TResult? Function()? moveUpdateStore,
     TResult? Function(AppLanguage language)? setLanguage,
@@ -189,7 +189,7 @@ class _$InitializeEventImpl implements InitializeEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AppKeys key, Locale defaultLocale)? initialize,
+    TResult Function(AppKeys key, Locale? defaultLocale)? initialize,
     TResult Function(AppKeys key, String version)? checkCanUpdate,
     TResult Function()? moveUpdateStore,
     TResult Function(AppLanguage language)? setLanguage,
@@ -240,11 +240,11 @@ class _$InitializeEventImpl implements InitializeEvent {
 }
 
 abstract class InitializeEvent implements AppConfigEvent {
-  const factory InitializeEvent(final AppKeys key, final Locale defaultLocale) =
-      _$InitializeEventImpl;
+  const factory InitializeEvent(
+      final AppKeys key, final Locale? defaultLocale) = _$InitializeEventImpl;
 
   AppKeys get key;
-  Locale get defaultLocale;
+  Locale? get defaultLocale;
 
   /// Create a copy of AppConfigEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -330,7 +330,7 @@ class _$CheckCanUpdateEventImpl implements CheckCanUpdateEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(AppKeys key, Locale defaultLocale) initialize,
+    required TResult Function(AppKeys key, Locale? defaultLocale) initialize,
     required TResult Function(AppKeys key, String version) checkCanUpdate,
     required TResult Function() moveUpdateStore,
     required TResult Function(AppLanguage language) setLanguage,
@@ -341,7 +341,7 @@ class _$CheckCanUpdateEventImpl implements CheckCanUpdateEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(AppKeys key, Locale defaultLocale)? initialize,
+    TResult? Function(AppKeys key, Locale? defaultLocale)? initialize,
     TResult? Function(AppKeys key, String version)? checkCanUpdate,
     TResult? Function()? moveUpdateStore,
     TResult? Function(AppLanguage language)? setLanguage,
@@ -352,7 +352,7 @@ class _$CheckCanUpdateEventImpl implements CheckCanUpdateEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AppKeys key, Locale defaultLocale)? initialize,
+    TResult Function(AppKeys key, Locale? defaultLocale)? initialize,
     TResult Function(AppKeys key, String version)? checkCanUpdate,
     TResult Function()? moveUpdateStore,
     TResult Function(AppLanguage language)? setLanguage,
@@ -457,7 +457,7 @@ class _$UpdateEventImpl implements UpdateEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(AppKeys key, Locale defaultLocale) initialize,
+    required TResult Function(AppKeys key, Locale? defaultLocale) initialize,
     required TResult Function(AppKeys key, String version) checkCanUpdate,
     required TResult Function() moveUpdateStore,
     required TResult Function(AppLanguage language) setLanguage,
@@ -468,7 +468,7 @@ class _$UpdateEventImpl implements UpdateEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(AppKeys key, Locale defaultLocale)? initialize,
+    TResult? Function(AppKeys key, Locale? defaultLocale)? initialize,
     TResult? Function(AppKeys key, String version)? checkCanUpdate,
     TResult? Function()? moveUpdateStore,
     TResult? Function(AppLanguage language)? setLanguage,
@@ -479,7 +479,7 @@ class _$UpdateEventImpl implements UpdateEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AppKeys key, Locale defaultLocale)? initialize,
+    TResult Function(AppKeys key, Locale? defaultLocale)? initialize,
     TResult Function(AppKeys key, String version)? checkCanUpdate,
     TResult Function()? moveUpdateStore,
     TResult Function(AppLanguage language)? setLanguage,
@@ -603,7 +603,7 @@ class _$SetLanguageEventImpl implements SetLanguageEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(AppKeys key, Locale defaultLocale) initialize,
+    required TResult Function(AppKeys key, Locale? defaultLocale) initialize,
     required TResult Function(AppKeys key, String version) checkCanUpdate,
     required TResult Function() moveUpdateStore,
     required TResult Function(AppLanguage language) setLanguage,
@@ -614,7 +614,7 @@ class _$SetLanguageEventImpl implements SetLanguageEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(AppKeys key, Locale defaultLocale)? initialize,
+    TResult? Function(AppKeys key, Locale? defaultLocale)? initialize,
     TResult? Function(AppKeys key, String version)? checkCanUpdate,
     TResult? Function()? moveUpdateStore,
     TResult? Function(AppLanguage language)? setLanguage,
@@ -625,7 +625,7 @@ class _$SetLanguageEventImpl implements SetLanguageEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AppKeys key, Locale defaultLocale)? initialize,
+    TResult Function(AppKeys key, Locale? defaultLocale)? initialize,
     TResult Function(AppKeys key, String version)? checkCanUpdate,
     TResult Function()? moveUpdateStore,
     TResult Function(AppLanguage language)? setLanguage,

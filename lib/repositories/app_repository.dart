@@ -9,7 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class AppRepository {
   Future<AppConfig> getAppConfig(AppKeys key);
-  Future<AppLanguage> getAppLanguage(Locale defaultLocale);
+  Future<AppLanguage> getAppLanguage(Locale? defaultLocale);
   Future<void> setAppLanguage(AppLanguage language);
 }
 
@@ -50,7 +50,7 @@ class AppDefaultRepository extends AppRepository {
   }
 
   @override
-  Future<AppLanguage> getAppLanguage(Locale defaultLocale) async {
+  Future<AppLanguage> getAppLanguage(Locale? defaultLocale) async {
     final language = _sharedPreferences.getString('language');
     if (language == null) {
       return defaultLocale == const Locale('ko')

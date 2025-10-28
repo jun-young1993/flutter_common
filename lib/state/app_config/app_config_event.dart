@@ -7,7 +7,7 @@ part 'app_config_event.freezed.dart';
 
 @freezed
 class AppConfigEvent with _$AppConfigEvent {
-  const factory AppConfigEvent.initialize(AppKeys key, Locale defaultLocale) =
+  const factory AppConfigEvent.initialize(AppKeys key, Locale? defaultLocale) =
       InitializeEvent;
   const factory AppConfigEvent.checkCanUpdate(AppKeys key, String version) =
       CheckCanUpdateEvent;
