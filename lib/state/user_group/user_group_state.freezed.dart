@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$UserGroupState {
   bool get isLoading => throw _privateConstructorUsedError;
   AppException? get error => throw _privateConstructorUsedError;
+  bool get isNotFound => throw _privateConstructorUsedError;
   UserGroup? get userGroup => throw _privateConstructorUsedError;
 
   /// Create a copy of UserGroupState
@@ -33,7 +34,11 @@ abstract class $UserGroupStateCopyWith<$Res> {
           UserGroupState value, $Res Function(UserGroupState) then) =
       _$UserGroupStateCopyWithImpl<$Res, UserGroupState>;
   @useResult
-  $Res call({bool isLoading, AppException? error, UserGroup? userGroup});
+  $Res call(
+      {bool isLoading,
+      AppException? error,
+      bool isNotFound,
+      UserGroup? userGroup});
 
   $AppExceptionCopyWith<$Res>? get error;
   $UserGroupCopyWith<$Res>? get userGroup;
@@ -56,6 +61,7 @@ class _$UserGroupStateCopyWithImpl<$Res, $Val extends UserGroupState>
   $Res call({
     Object? isLoading = null,
     Object? error = freezed,
+    Object? isNotFound = null,
     Object? userGroup = freezed,
   }) {
     return _then(_value.copyWith(
@@ -67,6 +73,10 @@ class _$UserGroupStateCopyWithImpl<$Res, $Val extends UserGroupState>
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as AppException?,
+      isNotFound: null == isNotFound
+          ? _value.isNotFound
+          : isNotFound // ignore: cast_nullable_to_non_nullable
+              as bool,
       userGroup: freezed == userGroup
           ? _value.userGroup
           : userGroup // ignore: cast_nullable_to_non_nullable
@@ -111,7 +121,11 @@ abstract class _$$UserGroupStateImplCopyWith<$Res>
       __$$UserGroupStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isLoading, AppException? error, UserGroup? userGroup});
+  $Res call(
+      {bool isLoading,
+      AppException? error,
+      bool isNotFound,
+      UserGroup? userGroup});
 
   @override
   $AppExceptionCopyWith<$Res>? get error;
@@ -134,6 +148,7 @@ class __$$UserGroupStateImplCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = null,
     Object? error = freezed,
+    Object? isNotFound = null,
     Object? userGroup = freezed,
   }) {
     return _then(_$UserGroupStateImpl(
@@ -145,6 +160,10 @@ class __$$UserGroupStateImplCopyWithImpl<$Res>
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as AppException?,
+      isNotFound: null == isNotFound
+          ? _value.isNotFound
+          : isNotFound // ignore: cast_nullable_to_non_nullable
+              as bool,
       userGroup: freezed == userGroup
           ? _value.userGroup
           : userGroup // ignore: cast_nullable_to_non_nullable
@@ -157,7 +176,10 @@ class __$$UserGroupStateImplCopyWithImpl<$Res>
 
 class _$UserGroupStateImpl extends _UserGroupState {
   const _$UserGroupStateImpl(
-      {this.isLoading = false, this.error = null, this.userGroup = null})
+      {this.isLoading = false,
+      this.error = null,
+      this.isNotFound = false,
+      this.userGroup = null})
       : super._();
 
   @override
@@ -168,11 +190,14 @@ class _$UserGroupStateImpl extends _UserGroupState {
   final AppException? error;
   @override
   @JsonKey()
+  final bool isNotFound;
+  @override
+  @JsonKey()
   final UserGroup? userGroup;
 
   @override
   String toString() {
-    return 'UserGroupState(isLoading: $isLoading, error: $error, userGroup: $userGroup)';
+    return 'UserGroupState(isLoading: $isLoading, error: $error, isNotFound: $isNotFound, userGroup: $userGroup)';
   }
 
   @override
@@ -183,12 +208,15 @@ class _$UserGroupStateImpl extends _UserGroupState {
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             (identical(other.error, error) || other.error == error) &&
+            (identical(other.isNotFound, isNotFound) ||
+                other.isNotFound == isNotFound) &&
             (identical(other.userGroup, userGroup) ||
                 other.userGroup == userGroup));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, error, userGroup);
+  int get hashCode =>
+      Object.hash(runtimeType, isLoading, error, isNotFound, userGroup);
 
   /// Create a copy of UserGroupState
   /// with the given fields replaced by the non-null parameter values.
@@ -204,6 +232,7 @@ abstract class _UserGroupState extends UserGroupState {
   const factory _UserGroupState(
       {final bool isLoading,
       final AppException? error,
+      final bool isNotFound,
       final UserGroup? userGroup}) = _$UserGroupStateImpl;
   const _UserGroupState._() : super._();
 
@@ -211,6 +240,8 @@ abstract class _UserGroupState extends UserGroupState {
   bool get isLoading;
   @override
   AppException? get error;
+  @override
+  bool get isNotFound;
   @override
   UserGroup? get userGroup;
 

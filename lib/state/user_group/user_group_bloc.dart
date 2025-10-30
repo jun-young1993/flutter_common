@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_common/extensions/app_exception.dart';
 import 'package:flutter_common/flutter_common.dart';
 import 'package:flutter_common/repositories/user_group_repository.dart';
@@ -26,8 +27,21 @@ class UserGroupBloc extends Bloc<UserGroupEvent, UserGroupState> {
             },
             findAll: (e) async {
               try {
+                emit(state.copyWith(isLoading: true));
                 final userGroups = await userGroupRepository.getUserGroups();
-                emit(state.copyWith(userGroup: userGroups));
+                emit(state.copyWith(
+                    userGroup: userGroups,
+                    isLoading: false,
+                    isNotFound: false));
+              } on AppException catch (e) {
+                if (e == const AppException.notFound()) {
+                  debugPrint('🔥 [ERROR] User group not found');
+                  emit(state.copyWith(
+                      userGroup: null, isNotFound: true, isLoading: false));
+                } else {
+                  emit(state.copyWith(
+                      error: AppException.unknown(e.toString())));
+                }
               } catch (e) {
                 emit(state.copyWith(error: AppException.unknown(e.toString())));
               }

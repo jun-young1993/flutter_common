@@ -10,6 +10,7 @@ class UserGroupState with _$UserGroupState, BaseStateMixin {
   const factory UserGroupState(
       {@Default(false) bool isLoading,
       @Default(null) AppException? error,
+      @Default(false) bool isNotFound,
       @Default(null) UserGroup? userGroup}) = _UserGroupState;
 
   const UserGroupState._();

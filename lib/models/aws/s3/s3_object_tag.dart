@@ -25,7 +25,7 @@ class S3ObjectTag with _$S3ObjectTag {
         case 'neutral':
           return Icons.sentiment_neutral;
         case 'happy':
-          return Icons.sentiment_satisfied;
+          return Icons.emoji_emotions;
         case 'sad':
           return Icons.sentiment_dissatisfied;
         case 'fear':
