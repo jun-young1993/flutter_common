@@ -11,6 +11,7 @@ enum AppKeys {
 class JunyConstants {
   static const String apiBaseUrl = 'https://juny-api.kr';
   static const String mcpServerUrl = 'https://juny-api.kr/sse';
+  static const String junyBlogUrl = 'https://juny.blog';
   // static const String mcpServerUrl = 'http://localhost:3000/sse';
   // static const String mcpServerUrl =
   //     'https://public-mcp-demo-oai.agent-ready.ai';

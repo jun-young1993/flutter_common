@@ -16,6 +16,7 @@ _$AppConfigImpl _$$AppConfigImplFromJson(Map<String, dynamic> json) =>
       packageName: json['packageName'] as String? ?? "",
       appStoreUrl: json['appStoreUrl'] as String? ?? null,
       googlePlayUrl: json['googlePlayUrl'] as String? ?? null,
+      appImageUrl: json['appImageUrl'] as String? ?? null,
     );
 
 Map<String, dynamic> _$$AppConfigImplToJson(_$AppConfigImpl instance) =>
@@ -28,4 +29,5 @@ Map<String, dynamic> _$$AppConfigImplToJson(_$AppConfigImpl instance) =>
       'packageName': instance.packageName,
       'appStoreUrl': instance.appStoreUrl,
       'googlePlayUrl': instance.googlePlayUrl,
+      'appImageUrl': instance.appImageUrl,
     };

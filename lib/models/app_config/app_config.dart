@@ -14,6 +14,7 @@ class AppConfig with _$AppConfig {
     @Default("") String packageName,
     @Default(null) String? appStoreUrl,
     @Default(null) String? googlePlayUrl,
+    @Default(null) String? appImageUrl,
   }) = _AppConfig;
 
   const AppConfig._();

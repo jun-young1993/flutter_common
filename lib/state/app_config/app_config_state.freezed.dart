@@ -25,6 +25,7 @@ mixin _$AppConfigState {
   AppLanguage get language => throw _privateConstructorUsedError;
   String? get appStoreUrl => throw _privateConstructorUsedError;
   String? get googlePlayUrl => throw _privateConstructorUsedError;
+  String? get redirectUrl => throw _privateConstructorUsedError;
 
   /// Create a copy of AppConfigState
   /// with the given fields replaced by the non-null parameter values.
@@ -48,7 +49,8 @@ abstract class $AppConfigStateCopyWith<$Res> {
       String packageName,
       AppLanguage language,
       String? appStoreUrl,
-      String? googlePlayUrl});
+      String? googlePlayUrl,
+      String? redirectUrl});
 }
 
 /// @nodoc
@@ -75,6 +77,7 @@ class _$AppConfigStateCopyWithImpl<$Res, $Val extends AppConfigState>
     Object? language = null,
     Object? appStoreUrl = freezed,
     Object? googlePlayUrl = freezed,
+    Object? redirectUrl = freezed,
   }) {
     return _then(_value.copyWith(
       key: null == key
@@ -113,6 +116,10 @@ class _$AppConfigStateCopyWithImpl<$Res, $Val extends AppConfigState>
           ? _value.googlePlayUrl
           : googlePlayUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      redirectUrl: freezed == redirectUrl
+          ? _value.redirectUrl
+          : redirectUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -134,7 +141,8 @@ abstract class _$$AppConfigStateImplCopyWith<$Res>
       String packageName,
       AppLanguage language,
       String? appStoreUrl,
-      String? googlePlayUrl});
+      String? googlePlayUrl,
+      String? redirectUrl});
 }
 
 /// @nodoc
@@ -159,6 +167,7 @@ class __$$AppConfigStateImplCopyWithImpl<$Res>
     Object? language = null,
     Object? appStoreUrl = freezed,
     Object? googlePlayUrl = freezed,
+    Object? redirectUrl = freezed,
   }) {
     return _then(_$AppConfigStateImpl(
       key: null == key
@@ -197,6 +206,10 @@ class __$$AppConfigStateImplCopyWithImpl<$Res>
           ? _value.googlePlayUrl
           : googlePlayUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      redirectUrl: freezed == redirectUrl
+          ? _value.redirectUrl
+          : redirectUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -213,7 +226,8 @@ class _$AppConfigStateImpl implements _AppConfigState {
       this.packageName = "",
       this.language = AppLanguage.en,
       this.appStoreUrl = null,
-      this.googlePlayUrl = null});
+      this.googlePlayUrl = null,
+      this.redirectUrl = null});
 
   @override
   @JsonKey()
@@ -242,10 +256,13 @@ class _$AppConfigStateImpl implements _AppConfigState {
   @override
   @JsonKey()
   final String? googlePlayUrl;
+  @override
+  @JsonKey()
+  final String? redirectUrl;
 
   @override
   String toString() {
-    return 'AppConfigState(key: $key, version: $version, description: $description, isUpdateAvailable: $isUpdateAvailable, appleId: $appleId, packageName: $packageName, language: $language, appStoreUrl: $appStoreUrl, googlePlayUrl: $googlePlayUrl)';
+    return 'AppConfigState(key: $key, version: $version, description: $description, isUpdateAvailable: $isUpdateAvailable, appleId: $appleId, packageName: $packageName, language: $language, appStoreUrl: $appStoreUrl, googlePlayUrl: $googlePlayUrl, redirectUrl: $redirectUrl)';
   }
 
   @override
@@ -267,7 +284,9 @@ class _$AppConfigStateImpl implements _AppConfigState {
             (identical(other.appStoreUrl, appStoreUrl) ||
                 other.appStoreUrl == appStoreUrl) &&
             (identical(other.googlePlayUrl, googlePlayUrl) ||
-                other.googlePlayUrl == googlePlayUrl));
+                other.googlePlayUrl == googlePlayUrl) &&
+            (identical(other.redirectUrl, redirectUrl) ||
+                other.redirectUrl == redirectUrl));
   }
 
   @override
@@ -281,7 +300,8 @@ class _$AppConfigStateImpl implements _AppConfigState {
       packageName,
       language,
       appStoreUrl,
-      googlePlayUrl);
+      googlePlayUrl,
+      redirectUrl);
 
   /// Create a copy of AppConfigState
   /// with the given fields replaced by the non-null parameter values.
@@ -303,7 +323,8 @@ abstract class _AppConfigState implements AppConfigState {
       final String packageName,
       final AppLanguage language,
       final String? appStoreUrl,
-      final String? googlePlayUrl}) = _$AppConfigStateImpl;
+      final String? googlePlayUrl,
+      final String? redirectUrl}) = _$AppConfigStateImpl;
 
   @override
   String get key;
@@ -323,6 +344,8 @@ abstract class _AppConfigState implements AppConfigState {
   String? get appStoreUrl;
   @override
   String? get googlePlayUrl;
+  @override
+  String? get redirectUrl;
 
   /// Create a copy of AppConfigState
   /// with the given fields replaced by the non-null parameter values.

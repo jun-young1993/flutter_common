@@ -31,6 +31,7 @@ class AppConfigState with _$AppConfigState {
     @Default(AppLanguage.en) AppLanguage language,
     @Default(null) String? appStoreUrl,
     @Default(null) String? googlePlayUrl,
+    @Default(null) String? redirectUrl,
   }) = _AppConfigState;
 
   factory AppConfigState.initialize() => const AppConfigState();

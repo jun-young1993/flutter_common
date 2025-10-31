@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_common/constants/common_constants.dart';
+import 'package:flutter_common/constants/juny_constants.dart';
 import 'package:flutter_common/repositories/app_repository.dart';
 import 'package:flutter_common/state/app_config/app_config_event.dart';
 import 'package:flutter_common/state/app_config/app_config_state.dart';
@@ -30,6 +31,8 @@ class AppConfigBloc extends Bloc<AppConfigEvent, AppConfigState> {
               language: language,
               appStoreUrl: appConfig.appStoreUrl,
               googlePlayUrl: appConfig.googlePlayUrl,
+              redirectUrl:
+                  '${JunyConstants.junyBlogUrl}/redirect/app/store/name/${appConfig.key}',
             ));
           },
           checkCanUpdate: (event) async {
