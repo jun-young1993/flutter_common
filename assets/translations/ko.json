@@ -89,6 +89,7 @@
         "deleteUserData": "사용자 데이터 삭제",
         "confirm": "확인",
         "qrCode": "QR 코드",
+        "qrCodeTitle": "앱 QR 코드",
         "linkShare": "링크 공유",
         "copyLink": "링크 복사",
         "moveToStore": "스토어로 이동",

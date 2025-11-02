@@ -89,6 +89,7 @@
         "deleteUserData": "Delete User Data",
         "confirm": "Confirm",
         "qrCode": "QR Code",
+        "qrCodeTitle": "App QR Code",
         "linkShare": "Link Share",
         "copyLink": "Copy Link",
         "moveToStore": "Move to Store",

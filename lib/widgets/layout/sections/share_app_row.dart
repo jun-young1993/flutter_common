@@ -10,6 +10,7 @@ import 'dart:ui' as ui;
 import 'package:printing/printing.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
+import 'package:share_plus/share_plus.dart';
 
 class ShareAppRow extends StatelessWidget {
   final AppConfigState appConfig;
@@ -22,8 +23,10 @@ class ShareAppRow extends StatelessWidget {
     required this.invitationMessage,
   }) : super(key: key);
 
-  String get _androidUrl => CommonConstants.getAndroidUrl(appConfig);
-  String get _iosUrl => CommonConstants.getIosUrl(appConfig);
+  String get _androidUrl =>
+      appConfig.redirectUrl ?? CommonConstants.getAndroidUrl(appConfig);
+  String get _iosUrl =>
+      appConfig.redirectUrl ?? CommonConstants.getIosUrl(appConfig);
 
   @override
   Widget build(BuildContext context) {
@@ -139,7 +142,7 @@ class ShareAppRow extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  '앱 QR 코드',
+                  Tr.app.qrCodeTitle.tr(),
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
@@ -192,7 +195,7 @@ class ShareAppRow extends StatelessWidget {
                           ),
                           const SizedBox(height: 24),
                         ],
-                        if (appConfig.appleId != null) ...[
+                        ...[
                           const Text(
                             'iOS',
                             style: TextStyle(
@@ -301,7 +304,7 @@ class ShareAppRow extends StatelessWidget {
                   ),
                   pw.SizedBox(height: 24),
                 ],
-                if (appConfig.appleId != null) ...[
+                ...[
                   pw.Text(
                     'iOS',
                     style: pw.TextStyle(
@@ -353,20 +356,12 @@ class ShareAppRow extends StatelessWidget {
   }
 
   void _copyAppUrl(BuildContext context) async {
-    await Clipboard.setData(
-        ClipboardData(text: CommonConstants.getStoreUrl(appConfig)));
-    if (context.mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(Tr.message.completeLinkCopy.tr()),
-          duration: const Duration(seconds: 2),
-        ),
-      );
-    }
+    await Share.share(
+        appConfig.redirectUrl ?? CommonConstants.getStoreUrl(appConfig));
   }
 
   void _openStore(BuildContext context) async {
-    final url = CommonConstants.getStoreUrl(appConfig);
+    final url = appConfig.redirectUrl ?? CommonConstants.getStoreUrl(appConfig);
 
     if (await canLaunchUrl(Uri.parse(url))) {
       await launchUrl(Uri.parse(url));

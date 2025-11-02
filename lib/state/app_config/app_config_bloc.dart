@@ -44,10 +44,12 @@ class AppConfigBloc extends Bloc<AppConfigEvent, AppConfigState> {
             ));
           },
           moveUpdateStore: (event) async {
-            Uri storeUri = Uri.parse(CommonConstants.getStoreUrl(state));
+            if (state.redirectUrl == null) {
+              throw Exception("No redirect URL found");
+            }
+            Uri storeUri = Uri.parse(state.redirectUrl!);
 
             if (await canLaunchUrl(storeUri)) {
-              print("launchUrl: $storeUri");
               await launchUrl(storeUri);
             } else {
               throw Exception("Failed to launch URL: $storeUri");

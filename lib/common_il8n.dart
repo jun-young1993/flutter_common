@@ -266,6 +266,7 @@ class _App {
   final deleteUserData = 'app.deleteUserData';
   final confirm = 'app.confirm';
   final qrCode = 'app.qrCode';
+  final qrCodeTitle = 'app.qrCodeTitle';
   final linkShare = 'app.linkShare';
   final copyLink = 'app.copyLink';
   final moveToStore = 'app.moveToStore';
