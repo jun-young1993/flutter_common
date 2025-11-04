@@ -45,6 +45,7 @@ mixin _$S3ObjectEvent {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)
         reportS3ObjectReply,
     required TResult Function(S3Object s3Object) getS3ObjectSurround,
+    required TResult Function() clearUploadError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -73,6 +74,7 @@ mixin _$S3ObjectEvent {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
     TResult? Function(S3Object s3Object)? getS3ObjectSurround,
+    TResult? Function()? clearUploadError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -101,6 +103,7 @@ mixin _$S3ObjectEvent {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
     TResult Function(S3Object s3Object)? getS3ObjectSurround,
+    TResult Function()? clearUploadError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -124,6 +127,7 @@ mixin _$S3ObjectEvent {
     required TResult Function(_ReportS3Object value) reportS3Object,
     required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
     required TResult Function(_GetS3ObjectSurround value) getS3ObjectSurround,
+    required TResult Function(_ClearUploadError value) clearUploadError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -146,6 +150,7 @@ mixin _$S3ObjectEvent {
     TResult? Function(_ReportS3Object value)? reportS3Object,
     TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
+    TResult? Function(_ClearUploadError value)? clearUploadError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -168,6 +173,7 @@ mixin _$S3ObjectEvent {
     TResult Function(_ReportS3Object value)? reportS3Object,
     TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
+    TResult Function(_ClearUploadError value)? clearUploadError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -262,6 +268,7 @@ class _$InitializeImpl implements _Initialize {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)
         reportS3ObjectReply,
     required TResult Function(S3Object s3Object) getS3ObjectSurround,
+    required TResult Function() clearUploadError,
   }) {
     return initialize();
   }
@@ -293,6 +300,7 @@ class _$InitializeImpl implements _Initialize {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
     TResult? Function(S3Object s3Object)? getS3ObjectSurround,
+    TResult? Function()? clearUploadError,
   }) {
     return initialize?.call();
   }
@@ -324,6 +332,7 @@ class _$InitializeImpl implements _Initialize {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
     TResult Function(S3Object s3Object)? getS3ObjectSurround,
+    TResult Function()? clearUploadError,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -353,6 +362,7 @@ class _$InitializeImpl implements _Initialize {
     required TResult Function(_ReportS3Object value) reportS3Object,
     required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
     required TResult Function(_GetS3ObjectSurround value) getS3ObjectSurround,
+    required TResult Function(_ClearUploadError value) clearUploadError,
   }) {
     return initialize(this);
   }
@@ -378,6 +388,7 @@ class _$InitializeImpl implements _Initialize {
     TResult? Function(_ReportS3Object value)? reportS3Object,
     TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
+    TResult? Function(_ClearUploadError value)? clearUploadError,
   }) {
     return initialize?.call(this);
   }
@@ -403,6 +414,7 @@ class _$InitializeImpl implements _Initialize {
     TResult Function(_ReportS3Object value)? reportS3Object,
     TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
+    TResult Function(_ClearUploadError value)? clearUploadError,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -519,6 +531,7 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)
         reportS3ObjectReply,
     required TResult Function(S3Object s3Object) getS3ObjectSurround,
+    required TResult Function() clearUploadError,
   }) {
     return getS3Objects(skip, take);
   }
@@ -550,6 +563,7 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
     TResult? Function(S3Object s3Object)? getS3ObjectSurround,
+    TResult? Function()? clearUploadError,
   }) {
     return getS3Objects?.call(skip, take);
   }
@@ -581,6 +595,7 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
     TResult Function(S3Object s3Object)? getS3ObjectSurround,
+    TResult Function()? clearUploadError,
     required TResult orElse(),
   }) {
     if (getS3Objects != null) {
@@ -610,6 +625,7 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     required TResult Function(_ReportS3Object value) reportS3Object,
     required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
     required TResult Function(_GetS3ObjectSurround value) getS3ObjectSurround,
+    required TResult Function(_ClearUploadError value) clearUploadError,
   }) {
     return getS3Objects(this);
   }
@@ -635,6 +651,7 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     TResult? Function(_ReportS3Object value)? reportS3Object,
     TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
+    TResult? Function(_ClearUploadError value)? clearUploadError,
   }) {
     return getS3Objects?.call(this);
   }
@@ -660,6 +677,7 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     TResult Function(_ReportS3Object value)? reportS3Object,
     TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
+    TResult Function(_ClearUploadError value)? clearUploadError,
     required TResult orElse(),
   }) {
     if (getS3Objects != null) {
@@ -751,6 +769,7 @@ class _$ClearErrorImpl implements _ClearError {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)
         reportS3ObjectReply,
     required TResult Function(S3Object s3Object) getS3ObjectSurround,
+    required TResult Function() clearUploadError,
   }) {
     return clearError();
   }
@@ -782,6 +801,7 @@ class _$ClearErrorImpl implements _ClearError {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
     TResult? Function(S3Object s3Object)? getS3ObjectSurround,
+    TResult? Function()? clearUploadError,
   }) {
     return clearError?.call();
   }
@@ -813,6 +833,7 @@ class _$ClearErrorImpl implements _ClearError {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
     TResult Function(S3Object s3Object)? getS3ObjectSurround,
+    TResult Function()? clearUploadError,
     required TResult orElse(),
   }) {
     if (clearError != null) {
@@ -842,6 +863,7 @@ class _$ClearErrorImpl implements _ClearError {
     required TResult Function(_ReportS3Object value) reportS3Object,
     required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
     required TResult Function(_GetS3ObjectSurround value) getS3ObjectSurround,
+    required TResult Function(_ClearUploadError value) clearUploadError,
   }) {
     return clearError(this);
   }
@@ -867,6 +889,7 @@ class _$ClearErrorImpl implements _ClearError {
     TResult? Function(_ReportS3Object value)? reportS3Object,
     TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
+    TResult? Function(_ClearUploadError value)? clearUploadError,
   }) {
     return clearError?.call(this);
   }
@@ -892,6 +915,7 @@ class _$ClearErrorImpl implements _ClearError {
     TResult Function(_ReportS3Object value)? reportS3Object,
     TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
+    TResult Function(_ClearUploadError value)? clearUploadError,
     required TResult orElse(),
   }) {
     if (clearError != null) {
@@ -1020,6 +1044,7 @@ class _$UploadFileImpl implements _UploadFile {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)
         reportS3ObjectReply,
     required TResult Function(S3Object s3Object) getS3ObjectSurround,
+    required TResult Function() clearUploadError,
   }) {
     return uploadFile(file, user);
   }
@@ -1051,6 +1076,7 @@ class _$UploadFileImpl implements _UploadFile {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
     TResult? Function(S3Object s3Object)? getS3ObjectSurround,
+    TResult? Function()? clearUploadError,
   }) {
     return uploadFile?.call(file, user);
   }
@@ -1082,6 +1108,7 @@ class _$UploadFileImpl implements _UploadFile {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
     TResult Function(S3Object s3Object)? getS3ObjectSurround,
+    TResult Function()? clearUploadError,
     required TResult orElse(),
   }) {
     if (uploadFile != null) {
@@ -1111,6 +1138,7 @@ class _$UploadFileImpl implements _UploadFile {
     required TResult Function(_ReportS3Object value) reportS3Object,
     required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
     required TResult Function(_GetS3ObjectSurround value) getS3ObjectSurround,
+    required TResult Function(_ClearUploadError value) clearUploadError,
   }) {
     return uploadFile(this);
   }
@@ -1136,6 +1164,7 @@ class _$UploadFileImpl implements _UploadFile {
     TResult? Function(_ReportS3Object value)? reportS3Object,
     TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
+    TResult? Function(_ClearUploadError value)? clearUploadError,
   }) {
     return uploadFile?.call(this);
   }
@@ -1161,6 +1190,7 @@ class _$UploadFileImpl implements _UploadFile {
     TResult Function(_ReportS3Object value)? reportS3Object,
     TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
+    TResult Function(_ClearUploadError value)? clearUploadError,
     required TResult orElse(),
   }) {
     if (uploadFile != null) {
@@ -1306,6 +1336,7 @@ class _$UploadFilesImpl implements _UploadFiles {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)
         reportS3ObjectReply,
     required TResult Function(S3Object s3Object) getS3ObjectSurround,
+    required TResult Function() clearUploadError,
   }) {
     return uploadFiles(files, user);
   }
@@ -1337,6 +1368,7 @@ class _$UploadFilesImpl implements _UploadFiles {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
     TResult? Function(S3Object s3Object)? getS3ObjectSurround,
+    TResult? Function()? clearUploadError,
   }) {
     return uploadFiles?.call(files, user);
   }
@@ -1368,6 +1400,7 @@ class _$UploadFilesImpl implements _UploadFiles {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
     TResult Function(S3Object s3Object)? getS3ObjectSurround,
+    TResult Function()? clearUploadError,
     required TResult orElse(),
   }) {
     if (uploadFiles != null) {
@@ -1397,6 +1430,7 @@ class _$UploadFilesImpl implements _UploadFiles {
     required TResult Function(_ReportS3Object value) reportS3Object,
     required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
     required TResult Function(_GetS3ObjectSurround value) getS3ObjectSurround,
+    required TResult Function(_ClearUploadError value) clearUploadError,
   }) {
     return uploadFiles(this);
   }
@@ -1422,6 +1456,7 @@ class _$UploadFilesImpl implements _UploadFiles {
     TResult? Function(_ReportS3Object value)? reportS3Object,
     TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
+    TResult? Function(_ClearUploadError value)? clearUploadError,
   }) {
     return uploadFiles?.call(this);
   }
@@ -1447,6 +1482,7 @@ class _$UploadFilesImpl implements _UploadFiles {
     TResult Function(_ReportS3Object value)? reportS3Object,
     TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
+    TResult Function(_ClearUploadError value)? clearUploadError,
     required TResult orElse(),
   }) {
     if (uploadFiles != null) {
@@ -1597,6 +1633,7 @@ class _$DeleteFileImpl implements _DeleteFile {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)
         reportS3ObjectReply,
     required TResult Function(S3Object s3Object) getS3ObjectSurround,
+    required TResult Function() clearUploadError,
   }) {
     return deleteFile(s3Object, user);
   }
@@ -1628,6 +1665,7 @@ class _$DeleteFileImpl implements _DeleteFile {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
     TResult? Function(S3Object s3Object)? getS3ObjectSurround,
+    TResult? Function()? clearUploadError,
   }) {
     return deleteFile?.call(s3Object, user);
   }
@@ -1659,6 +1697,7 @@ class _$DeleteFileImpl implements _DeleteFile {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
     TResult Function(S3Object s3Object)? getS3ObjectSurround,
+    TResult Function()? clearUploadError,
     required TResult orElse(),
   }) {
     if (deleteFile != null) {
@@ -1688,6 +1727,7 @@ class _$DeleteFileImpl implements _DeleteFile {
     required TResult Function(_ReportS3Object value) reportS3Object,
     required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
     required TResult Function(_GetS3ObjectSurround value) getS3ObjectSurround,
+    required TResult Function(_ClearUploadError value) clearUploadError,
   }) {
     return deleteFile(this);
   }
@@ -1713,6 +1753,7 @@ class _$DeleteFileImpl implements _DeleteFile {
     TResult? Function(_ReportS3Object value)? reportS3Object,
     TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
+    TResult? Function(_ClearUploadError value)? clearUploadError,
   }) {
     return deleteFile?.call(this);
   }
@@ -1738,6 +1779,7 @@ class _$DeleteFileImpl implements _DeleteFile {
     TResult Function(_ReportS3Object value)? reportS3Object,
     TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
+    TResult Function(_ClearUploadError value)? clearUploadError,
     required TResult orElse(),
   }) {
     if (deleteFile != null) {
@@ -1876,6 +1918,7 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)
         reportS3ObjectReply,
     required TResult Function(S3Object s3Object) getS3ObjectSurround,
+    required TResult Function() clearUploadError,
   }) {
     return findOneOrFail(id, user);
   }
@@ -1907,6 +1950,7 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
     TResult? Function(S3Object s3Object)? getS3ObjectSurround,
+    TResult? Function()? clearUploadError,
   }) {
     return findOneOrFail?.call(id, user);
   }
@@ -1938,6 +1982,7 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
     TResult Function(S3Object s3Object)? getS3ObjectSurround,
+    TResult Function()? clearUploadError,
     required TResult orElse(),
   }) {
     if (findOneOrFail != null) {
@@ -1967,6 +2012,7 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     required TResult Function(_ReportS3Object value) reportS3Object,
     required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
     required TResult Function(_GetS3ObjectSurround value) getS3ObjectSurround,
+    required TResult Function(_ClearUploadError value) clearUploadError,
   }) {
     return findOneOrFail(this);
   }
@@ -1992,6 +2038,7 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     TResult? Function(_ReportS3Object value)? reportS3Object,
     TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
+    TResult? Function(_ClearUploadError value)? clearUploadError,
   }) {
     return findOneOrFail?.call(this);
   }
@@ -2017,6 +2064,7 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     TResult Function(_ReportS3Object value)? reportS3Object,
     TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
+    TResult Function(_ClearUploadError value)? clearUploadError,
     required TResult orElse(),
   }) {
     if (findOneOrFail != null) {
@@ -2108,6 +2156,7 @@ class _$CountImpl implements _Count {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)
         reportS3ObjectReply,
     required TResult Function(S3Object s3Object) getS3ObjectSurround,
+    required TResult Function() clearUploadError,
   }) {
     return count();
   }
@@ -2139,6 +2188,7 @@ class _$CountImpl implements _Count {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
     TResult? Function(S3Object s3Object)? getS3ObjectSurround,
+    TResult? Function()? clearUploadError,
   }) {
     return count?.call();
   }
@@ -2170,6 +2220,7 @@ class _$CountImpl implements _Count {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
     TResult Function(S3Object s3Object)? getS3ObjectSurround,
+    TResult Function()? clearUploadError,
     required TResult orElse(),
   }) {
     if (count != null) {
@@ -2199,6 +2250,7 @@ class _$CountImpl implements _Count {
     required TResult Function(_ReportS3Object value) reportS3Object,
     required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
     required TResult Function(_GetS3ObjectSurround value) getS3ObjectSurround,
+    required TResult Function(_ClearUploadError value) clearUploadError,
   }) {
     return count(this);
   }
@@ -2224,6 +2276,7 @@ class _$CountImpl implements _Count {
     TResult? Function(_ReportS3Object value)? reportS3Object,
     TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
+    TResult? Function(_ClearUploadError value)? clearUploadError,
   }) {
     return count?.call(this);
   }
@@ -2249,6 +2302,7 @@ class _$CountImpl implements _Count {
     TResult Function(_ReportS3Object value)? reportS3Object,
     TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
+    TResult Function(_ClearUploadError value)? clearUploadError,
     required TResult orElse(),
   }) {
     if (count != null) {
@@ -2371,6 +2425,7 @@ class _$CheckObjectsExistenceByMonthImpl
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)
         reportS3ObjectReply,
     required TResult Function(S3Object s3Object) getS3ObjectSurround,
+    required TResult Function() clearUploadError,
   }) {
     return checkObjectsExistenceByMonth(year, month);
   }
@@ -2402,6 +2457,7 @@ class _$CheckObjectsExistenceByMonthImpl
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
     TResult? Function(S3Object s3Object)? getS3ObjectSurround,
+    TResult? Function()? clearUploadError,
   }) {
     return checkObjectsExistenceByMonth?.call(year, month);
   }
@@ -2433,6 +2489,7 @@ class _$CheckObjectsExistenceByMonthImpl
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
     TResult Function(S3Object s3Object)? getS3ObjectSurround,
+    TResult Function()? clearUploadError,
     required TResult orElse(),
   }) {
     if (checkObjectsExistenceByMonth != null) {
@@ -2462,6 +2519,7 @@ class _$CheckObjectsExistenceByMonthImpl
     required TResult Function(_ReportS3Object value) reportS3Object,
     required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
     required TResult Function(_GetS3ObjectSurround value) getS3ObjectSurround,
+    required TResult Function(_ClearUploadError value) clearUploadError,
   }) {
     return checkObjectsExistenceByMonth(this);
   }
@@ -2487,6 +2545,7 @@ class _$CheckObjectsExistenceByMonthImpl
     TResult? Function(_ReportS3Object value)? reportS3Object,
     TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
+    TResult? Function(_ClearUploadError value)? clearUploadError,
   }) {
     return checkObjectsExistenceByMonth?.call(this);
   }
@@ -2512,6 +2571,7 @@ class _$CheckObjectsExistenceByMonthImpl
     TResult Function(_ReportS3Object value)? reportS3Object,
     TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
+    TResult Function(_ClearUploadError value)? clearUploadError,
     required TResult orElse(),
   }) {
     if (checkObjectsExistenceByMonth != null) {
@@ -2666,6 +2726,7 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)
         reportS3ObjectReply,
     required TResult Function(S3Object s3Object) getS3ObjectSurround,
+    required TResult Function() clearUploadError,
   }) {
     return getObjectsByDate(year, month, day, skip, take);
   }
@@ -2697,6 +2758,7 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
     TResult? Function(S3Object s3Object)? getS3ObjectSurround,
+    TResult? Function()? clearUploadError,
   }) {
     return getObjectsByDate?.call(year, month, day, skip, take);
   }
@@ -2728,6 +2790,7 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
     TResult Function(S3Object s3Object)? getS3ObjectSurround,
+    TResult Function()? clearUploadError,
     required TResult orElse(),
   }) {
     if (getObjectsByDate != null) {
@@ -2757,6 +2820,7 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
     required TResult Function(_ReportS3Object value) reportS3Object,
     required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
     required TResult Function(_GetS3ObjectSurround value) getS3ObjectSurround,
+    required TResult Function(_ClearUploadError value) clearUploadError,
   }) {
     return getObjectsByDate(this);
   }
@@ -2782,6 +2846,7 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
     TResult? Function(_ReportS3Object value)? reportS3Object,
     TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
+    TResult? Function(_ClearUploadError value)? clearUploadError,
   }) {
     return getObjectsByDate?.call(this);
   }
@@ -2807,6 +2872,7 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
     TResult Function(_ReportS3Object value)? reportS3Object,
     TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
+    TResult Function(_ClearUploadError value)? clearUploadError,
     required TResult orElse(),
   }) {
     if (getObjectsByDate != null) {
@@ -2964,6 +3030,7 @@ class _$LikeS3ObjectImpl implements _LikeS3Object {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)
         reportS3ObjectReply,
     required TResult Function(S3Object s3Object) getS3ObjectSurround,
+    required TResult Function() clearUploadError,
   }) {
     return likeS3Object(s3Object, user);
   }
@@ -2995,6 +3062,7 @@ class _$LikeS3ObjectImpl implements _LikeS3Object {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
     TResult? Function(S3Object s3Object)? getS3ObjectSurround,
+    TResult? Function()? clearUploadError,
   }) {
     return likeS3Object?.call(s3Object, user);
   }
@@ -3026,6 +3094,7 @@ class _$LikeS3ObjectImpl implements _LikeS3Object {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
     TResult Function(S3Object s3Object)? getS3ObjectSurround,
+    TResult Function()? clearUploadError,
     required TResult orElse(),
   }) {
     if (likeS3Object != null) {
@@ -3055,6 +3124,7 @@ class _$LikeS3ObjectImpl implements _LikeS3Object {
     required TResult Function(_ReportS3Object value) reportS3Object,
     required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
     required TResult Function(_GetS3ObjectSurround value) getS3ObjectSurround,
+    required TResult Function(_ClearUploadError value) clearUploadError,
   }) {
     return likeS3Object(this);
   }
@@ -3080,6 +3150,7 @@ class _$LikeS3ObjectImpl implements _LikeS3Object {
     TResult? Function(_ReportS3Object value)? reportS3Object,
     TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
+    TResult? Function(_ClearUploadError value)? clearUploadError,
   }) {
     return likeS3Object?.call(this);
   }
@@ -3105,6 +3176,7 @@ class _$LikeS3ObjectImpl implements _LikeS3Object {
     TResult Function(_ReportS3Object value)? reportS3Object,
     TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
+    TResult Function(_ClearUploadError value)? clearUploadError,
     required TResult orElse(),
   }) {
     if (likeS3Object != null) {
@@ -3256,6 +3328,7 @@ class _$RemoveLikeS3ObjectImpl implements _RemoveLikeS3Object {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)
         reportS3ObjectReply,
     required TResult Function(S3Object s3Object) getS3ObjectSurround,
+    required TResult Function() clearUploadError,
   }) {
     return removeLikeS3Object(s3ObjectLike, user);
   }
@@ -3287,6 +3360,7 @@ class _$RemoveLikeS3ObjectImpl implements _RemoveLikeS3Object {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
     TResult? Function(S3Object s3Object)? getS3ObjectSurround,
+    TResult? Function()? clearUploadError,
   }) {
     return removeLikeS3Object?.call(s3ObjectLike, user);
   }
@@ -3318,6 +3392,7 @@ class _$RemoveLikeS3ObjectImpl implements _RemoveLikeS3Object {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
     TResult Function(S3Object s3Object)? getS3ObjectSurround,
+    TResult Function()? clearUploadError,
     required TResult orElse(),
   }) {
     if (removeLikeS3Object != null) {
@@ -3347,6 +3422,7 @@ class _$RemoveLikeS3ObjectImpl implements _RemoveLikeS3Object {
     required TResult Function(_ReportS3Object value) reportS3Object,
     required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
     required TResult Function(_GetS3ObjectSurround value) getS3ObjectSurround,
+    required TResult Function(_ClearUploadError value) clearUploadError,
   }) {
     return removeLikeS3Object(this);
   }
@@ -3372,6 +3448,7 @@ class _$RemoveLikeS3ObjectImpl implements _RemoveLikeS3Object {
     TResult? Function(_ReportS3Object value)? reportS3Object,
     TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
+    TResult? Function(_ClearUploadError value)? clearUploadError,
   }) {
     return removeLikeS3Object?.call(this);
   }
@@ -3397,6 +3474,7 @@ class _$RemoveLikeS3ObjectImpl implements _RemoveLikeS3Object {
     TResult Function(_ReportS3Object value)? reportS3Object,
     TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
+    TResult Function(_ClearUploadError value)? clearUploadError,
     required TResult orElse(),
   }) {
     if (removeLikeS3Object != null) {
@@ -3556,6 +3634,7 @@ class _$ReplyS3ObjectImpl implements _ReplyS3Object {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)
         reportS3ObjectReply,
     required TResult Function(S3Object s3Object) getS3ObjectSurround,
+    required TResult Function() clearUploadError,
   }) {
     return replyS3Object(s3Object, user, content);
   }
@@ -3587,6 +3666,7 @@ class _$ReplyS3ObjectImpl implements _ReplyS3Object {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
     TResult? Function(S3Object s3Object)? getS3ObjectSurround,
+    TResult? Function()? clearUploadError,
   }) {
     return replyS3Object?.call(s3Object, user, content);
   }
@@ -3618,6 +3698,7 @@ class _$ReplyS3ObjectImpl implements _ReplyS3Object {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
     TResult Function(S3Object s3Object)? getS3ObjectSurround,
+    TResult Function()? clearUploadError,
     required TResult orElse(),
   }) {
     if (replyS3Object != null) {
@@ -3647,6 +3728,7 @@ class _$ReplyS3ObjectImpl implements _ReplyS3Object {
     required TResult Function(_ReportS3Object value) reportS3Object,
     required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
     required TResult Function(_GetS3ObjectSurround value) getS3ObjectSurround,
+    required TResult Function(_ClearUploadError value) clearUploadError,
   }) {
     return replyS3Object(this);
   }
@@ -3672,6 +3754,7 @@ class _$ReplyS3ObjectImpl implements _ReplyS3Object {
     TResult? Function(_ReportS3Object value)? reportS3Object,
     TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
+    TResult? Function(_ClearUploadError value)? clearUploadError,
   }) {
     return replyS3Object?.call(this);
   }
@@ -3697,6 +3780,7 @@ class _$ReplyS3ObjectImpl implements _ReplyS3Object {
     TResult Function(_ReportS3Object value)? reportS3Object,
     TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
+    TResult Function(_ClearUploadError value)? clearUploadError,
     required TResult orElse(),
   }) {
     if (replyS3Object != null) {
@@ -3850,6 +3934,7 @@ class _$RemoveReplyS3ObjectImpl implements _RemoveReplyS3Object {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)
         reportS3ObjectReply,
     required TResult Function(S3Object s3Object) getS3ObjectSurround,
+    required TResult Function() clearUploadError,
   }) {
     return removeReplyS3Object(s3ObjectReply, user);
   }
@@ -3881,6 +3966,7 @@ class _$RemoveReplyS3ObjectImpl implements _RemoveReplyS3Object {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
     TResult? Function(S3Object s3Object)? getS3ObjectSurround,
+    TResult? Function()? clearUploadError,
   }) {
     return removeReplyS3Object?.call(s3ObjectReply, user);
   }
@@ -3912,6 +3998,7 @@ class _$RemoveReplyS3ObjectImpl implements _RemoveReplyS3Object {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
     TResult Function(S3Object s3Object)? getS3ObjectSurround,
+    TResult Function()? clearUploadError,
     required TResult orElse(),
   }) {
     if (removeReplyS3Object != null) {
@@ -3941,6 +4028,7 @@ class _$RemoveReplyS3ObjectImpl implements _RemoveReplyS3Object {
     required TResult Function(_ReportS3Object value) reportS3Object,
     required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
     required TResult Function(_GetS3ObjectSurround value) getS3ObjectSurround,
+    required TResult Function(_ClearUploadError value) clearUploadError,
   }) {
     return removeReplyS3Object(this);
   }
@@ -3966,6 +4054,7 @@ class _$RemoveReplyS3ObjectImpl implements _RemoveReplyS3Object {
     TResult? Function(_ReportS3Object value)? reportS3Object,
     TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
+    TResult? Function(_ClearUploadError value)? clearUploadError,
   }) {
     return removeReplyS3Object?.call(this);
   }
@@ -3991,6 +4080,7 @@ class _$RemoveReplyS3ObjectImpl implements _RemoveReplyS3Object {
     TResult Function(_ReportS3Object value)? reportS3Object,
     TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
+    TResult Function(_ClearUploadError value)? clearUploadError,
     required TResult orElse(),
   }) {
     if (removeReplyS3Object != null) {
@@ -4140,6 +4230,7 @@ class _$ReportS3ObjectImpl implements _ReportS3Object {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)
         reportS3ObjectReply,
     required TResult Function(S3Object s3Object) getS3ObjectSurround,
+    required TResult Function() clearUploadError,
   }) {
     return reportS3Object(s3Object, type, content);
   }
@@ -4171,6 +4262,7 @@ class _$ReportS3ObjectImpl implements _ReportS3Object {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
     TResult? Function(S3Object s3Object)? getS3ObjectSurround,
+    TResult? Function()? clearUploadError,
   }) {
     return reportS3Object?.call(s3Object, type, content);
   }
@@ -4202,6 +4294,7 @@ class _$ReportS3ObjectImpl implements _ReportS3Object {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
     TResult Function(S3Object s3Object)? getS3ObjectSurround,
+    TResult Function()? clearUploadError,
     required TResult orElse(),
   }) {
     if (reportS3Object != null) {
@@ -4231,6 +4324,7 @@ class _$ReportS3ObjectImpl implements _ReportS3Object {
     required TResult Function(_ReportS3Object value) reportS3Object,
     required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
     required TResult Function(_GetS3ObjectSurround value) getS3ObjectSurround,
+    required TResult Function(_ClearUploadError value) clearUploadError,
   }) {
     return reportS3Object(this);
   }
@@ -4256,6 +4350,7 @@ class _$ReportS3ObjectImpl implements _ReportS3Object {
     TResult? Function(_ReportS3Object value)? reportS3Object,
     TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
+    TResult? Function(_ClearUploadError value)? clearUploadError,
   }) {
     return reportS3Object?.call(this);
   }
@@ -4281,6 +4376,7 @@ class _$ReportS3ObjectImpl implements _ReportS3Object {
     TResult Function(_ReportS3Object value)? reportS3Object,
     TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
+    TResult Function(_ClearUploadError value)? clearUploadError,
     required TResult orElse(),
   }) {
     if (reportS3Object != null) {
@@ -4430,6 +4526,7 @@ class _$ReportS3ObjectReplyImpl implements _ReportS3ObjectReply {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)
         reportS3ObjectReply,
     required TResult Function(S3Object s3Object) getS3ObjectSurround,
+    required TResult Function() clearUploadError,
   }) {
     return reportS3ObjectReply(s3ObjectReply, type, content);
   }
@@ -4461,6 +4558,7 @@ class _$ReportS3ObjectReplyImpl implements _ReportS3ObjectReply {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
     TResult? Function(S3Object s3Object)? getS3ObjectSurround,
+    TResult? Function()? clearUploadError,
   }) {
     return reportS3ObjectReply?.call(s3ObjectReply, type, content);
   }
@@ -4492,6 +4590,7 @@ class _$ReportS3ObjectReplyImpl implements _ReportS3ObjectReply {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
     TResult Function(S3Object s3Object)? getS3ObjectSurround,
+    TResult Function()? clearUploadError,
     required TResult orElse(),
   }) {
     if (reportS3ObjectReply != null) {
@@ -4521,6 +4620,7 @@ class _$ReportS3ObjectReplyImpl implements _ReportS3ObjectReply {
     required TResult Function(_ReportS3Object value) reportS3Object,
     required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
     required TResult Function(_GetS3ObjectSurround value) getS3ObjectSurround,
+    required TResult Function(_ClearUploadError value) clearUploadError,
   }) {
     return reportS3ObjectReply(this);
   }
@@ -4546,6 +4646,7 @@ class _$ReportS3ObjectReplyImpl implements _ReportS3ObjectReply {
     TResult? Function(_ReportS3Object value)? reportS3Object,
     TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
+    TResult? Function(_ClearUploadError value)? clearUploadError,
   }) {
     return reportS3ObjectReply?.call(this);
   }
@@ -4571,6 +4672,7 @@ class _$ReportS3ObjectReplyImpl implements _ReportS3ObjectReply {
     TResult Function(_ReportS3Object value)? reportS3Object,
     TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
+    TResult Function(_ClearUploadError value)? clearUploadError,
     required TResult orElse(),
   }) {
     if (reportS3ObjectReply != null) {
@@ -4706,6 +4808,7 @@ class _$GetS3ObjectSurroundImpl implements _GetS3ObjectSurround {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)
         reportS3ObjectReply,
     required TResult Function(S3Object s3Object) getS3ObjectSurround,
+    required TResult Function() clearUploadError,
   }) {
     return getS3ObjectSurround(s3Object);
   }
@@ -4737,6 +4840,7 @@ class _$GetS3ObjectSurroundImpl implements _GetS3ObjectSurround {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
     TResult? Function(S3Object s3Object)? getS3ObjectSurround,
+    TResult? Function()? clearUploadError,
   }) {
     return getS3ObjectSurround?.call(s3Object);
   }
@@ -4768,6 +4872,7 @@ class _$GetS3ObjectSurroundImpl implements _GetS3ObjectSurround {
             S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
         reportS3ObjectReply,
     TResult Function(S3Object s3Object)? getS3ObjectSurround,
+    TResult Function()? clearUploadError,
     required TResult orElse(),
   }) {
     if (getS3ObjectSurround != null) {
@@ -4797,6 +4902,7 @@ class _$GetS3ObjectSurroundImpl implements _GetS3ObjectSurround {
     required TResult Function(_ReportS3Object value) reportS3Object,
     required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
     required TResult Function(_GetS3ObjectSurround value) getS3ObjectSurround,
+    required TResult Function(_ClearUploadError value) clearUploadError,
   }) {
     return getS3ObjectSurround(this);
   }
@@ -4822,6 +4928,7 @@ class _$GetS3ObjectSurroundImpl implements _GetS3ObjectSurround {
     TResult? Function(_ReportS3Object value)? reportS3Object,
     TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
+    TResult? Function(_ClearUploadError value)? clearUploadError,
   }) {
     return getS3ObjectSurround?.call(this);
   }
@@ -4847,6 +4954,7 @@ class _$GetS3ObjectSurroundImpl implements _GetS3ObjectSurround {
     TResult Function(_ReportS3Object value)? reportS3Object,
     TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
     TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
+    TResult Function(_ClearUploadError value)? clearUploadError,
     required TResult orElse(),
   }) {
     if (getS3ObjectSurround != null) {
@@ -4867,4 +4975,232 @@ abstract class _GetS3ObjectSurround implements S3ObjectEvent {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetS3ObjectSurroundImplCopyWith<_$GetS3ObjectSurroundImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ClearUploadErrorImplCopyWith<$Res> {
+  factory _$$ClearUploadErrorImplCopyWith(_$ClearUploadErrorImpl value,
+          $Res Function(_$ClearUploadErrorImpl) then) =
+      __$$ClearUploadErrorImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ClearUploadErrorImplCopyWithImpl<$Res>
+    extends _$S3ObjectEventCopyWithImpl<$Res, _$ClearUploadErrorImpl>
+    implements _$$ClearUploadErrorImplCopyWith<$Res> {
+  __$$ClearUploadErrorImplCopyWithImpl(_$ClearUploadErrorImpl _value,
+      $Res Function(_$ClearUploadErrorImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of S3ObjectEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$ClearUploadErrorImpl implements _ClearUploadError {
+  const _$ClearUploadErrorImpl();
+
+  @override
+  String toString() {
+    return 'S3ObjectEvent.clearUploadError()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ClearUploadErrorImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialize,
+    required TResult Function(int skip, int take) getS3Objects,
+    required TResult Function() clearError,
+    required TResult Function(File file, User user) uploadFile,
+    required TResult Function(List<File> files, User user) uploadFiles,
+    required TResult Function(S3Object s3Object, User user) deleteFile,
+    required TResult Function(String id, User user) findOneOrFail,
+    required TResult Function() count,
+    required TResult Function(String year, String month)
+        checkObjectsExistenceByMonth,
+    required TResult Function(
+            String year, String month, String day, int? skip, int? take)
+        getObjectsByDate,
+    required TResult Function(S3Object s3Object, User user) likeS3Object,
+    required TResult Function(S3ObjectLike s3ObjectLike, User user)
+        removeLikeS3Object,
+    required TResult Function(S3Object s3Object, User user, String content)
+        replyS3Object,
+    required TResult Function(S3ObjectReply s3ObjectReply, User user)
+        removeReplyS3Object,
+    required TResult Function(
+            S3Object s3Object, ReportReason type, String? content)
+        reportS3Object,
+    required TResult Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)
+        reportS3ObjectReply,
+    required TResult Function(S3Object s3Object) getS3ObjectSurround,
+    required TResult Function() clearUploadError,
+  }) {
+    return clearUploadError();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialize,
+    TResult? Function(int skip, int take)? getS3Objects,
+    TResult? Function()? clearError,
+    TResult? Function(File file, User user)? uploadFile,
+    TResult? Function(List<File> files, User user)? uploadFiles,
+    TResult? Function(S3Object s3Object, User user)? deleteFile,
+    TResult? Function(String id, User user)? findOneOrFail,
+    TResult? Function()? count,
+    TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
+    TResult? Function(
+            String year, String month, String day, int? skip, int? take)?
+        getObjectsByDate,
+    TResult? Function(S3Object s3Object, User user)? likeS3Object,
+    TResult? Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
+    TResult? Function(S3Object s3Object, User user, String content)?
+        replyS3Object,
+    TResult? Function(S3ObjectReply s3ObjectReply, User user)?
+        removeReplyS3Object,
+    TResult? Function(S3Object s3Object, ReportReason type, String? content)?
+        reportS3Object,
+    TResult? Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
+        reportS3ObjectReply,
+    TResult? Function(S3Object s3Object)? getS3ObjectSurround,
+    TResult? Function()? clearUploadError,
+  }) {
+    return clearUploadError?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialize,
+    TResult Function(int skip, int take)? getS3Objects,
+    TResult Function()? clearError,
+    TResult Function(File file, User user)? uploadFile,
+    TResult Function(List<File> files, User user)? uploadFiles,
+    TResult Function(S3Object s3Object, User user)? deleteFile,
+    TResult Function(String id, User user)? findOneOrFail,
+    TResult Function()? count,
+    TResult Function(String year, String month)? checkObjectsExistenceByMonth,
+    TResult Function(
+            String year, String month, String day, int? skip, int? take)?
+        getObjectsByDate,
+    TResult Function(S3Object s3Object, User user)? likeS3Object,
+    TResult Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
+    TResult Function(S3Object s3Object, User user, String content)?
+        replyS3Object,
+    TResult Function(S3ObjectReply s3ObjectReply, User user)?
+        removeReplyS3Object,
+    TResult Function(S3Object s3Object, ReportReason type, String? content)?
+        reportS3Object,
+    TResult Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
+        reportS3ObjectReply,
+    TResult Function(S3Object s3Object)? getS3ObjectSurround,
+    TResult Function()? clearUploadError,
+    required TResult orElse(),
+  }) {
+    if (clearUploadError != null) {
+      return clearUploadError();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_GetS3Objects value) getS3Objects,
+    required TResult Function(_ClearError value) clearError,
+    required TResult Function(_UploadFile value) uploadFile,
+    required TResult Function(_UploadFiles value) uploadFiles,
+    required TResult Function(_DeleteFile value) deleteFile,
+    required TResult Function(_FindOneOrFail value) findOneOrFail,
+    required TResult Function(_Count value) count,
+    required TResult Function(_CheckObjectsExistenceByMonth value)
+        checkObjectsExistenceByMonth,
+    required TResult Function(_GetObjectsByDate value) getObjectsByDate,
+    required TResult Function(_LikeS3Object value) likeS3Object,
+    required TResult Function(_RemoveLikeS3Object value) removeLikeS3Object,
+    required TResult Function(_ReplyS3Object value) replyS3Object,
+    required TResult Function(_RemoveReplyS3Object value) removeReplyS3Object,
+    required TResult Function(_ReportS3Object value) reportS3Object,
+    required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
+    required TResult Function(_GetS3ObjectSurround value) getS3ObjectSurround,
+    required TResult Function(_ClearUploadError value) clearUploadError,
+  }) {
+    return clearUploadError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialize value)? initialize,
+    TResult? Function(_GetS3Objects value)? getS3Objects,
+    TResult? Function(_ClearError value)? clearError,
+    TResult? Function(_UploadFile value)? uploadFile,
+    TResult? Function(_UploadFiles value)? uploadFiles,
+    TResult? Function(_DeleteFile value)? deleteFile,
+    TResult? Function(_FindOneOrFail value)? findOneOrFail,
+    TResult? Function(_Count value)? count,
+    TResult? Function(_CheckObjectsExistenceByMonth value)?
+        checkObjectsExistenceByMonth,
+    TResult? Function(_GetObjectsByDate value)? getObjectsByDate,
+    TResult? Function(_LikeS3Object value)? likeS3Object,
+    TResult? Function(_RemoveLikeS3Object value)? removeLikeS3Object,
+    TResult? Function(_ReplyS3Object value)? replyS3Object,
+    TResult? Function(_RemoveReplyS3Object value)? removeReplyS3Object,
+    TResult? Function(_ReportS3Object value)? reportS3Object,
+    TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+    TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
+    TResult? Function(_ClearUploadError value)? clearUploadError,
+  }) {
+    return clearUploadError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_GetS3Objects value)? getS3Objects,
+    TResult Function(_ClearError value)? clearError,
+    TResult Function(_UploadFile value)? uploadFile,
+    TResult Function(_UploadFiles value)? uploadFiles,
+    TResult Function(_DeleteFile value)? deleteFile,
+    TResult Function(_FindOneOrFail value)? findOneOrFail,
+    TResult Function(_Count value)? count,
+    TResult Function(_CheckObjectsExistenceByMonth value)?
+        checkObjectsExistenceByMonth,
+    TResult Function(_GetObjectsByDate value)? getObjectsByDate,
+    TResult Function(_LikeS3Object value)? likeS3Object,
+    TResult Function(_RemoveLikeS3Object value)? removeLikeS3Object,
+    TResult Function(_ReplyS3Object value)? replyS3Object,
+    TResult Function(_RemoveReplyS3Object value)? removeReplyS3Object,
+    TResult Function(_ReportS3Object value)? reportS3Object,
+    TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+    TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
+    TResult Function(_ClearUploadError value)? clearUploadError,
+    required TResult orElse(),
+  }) {
+    if (clearUploadError != null) {
+      return clearUploadError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ClearUploadError implements S3ObjectEvent {
+  const factory _ClearUploadError() = _$ClearUploadErrorImpl;
 }

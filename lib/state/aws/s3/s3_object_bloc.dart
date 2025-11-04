@@ -1,6 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_common/constants/juny_constants.dart';
+import 'package:flutter_common/extensions/app_exception.dart';
 import 'package:flutter_common/repositories/aws_s3_repository.dart';
 import 'package:flutter_common/state/aws/s3/s3_object_event.dart';
 import 'package:flutter_common/state/aws/s3/s3_object_state.dart';
@@ -27,10 +28,21 @@ class S3ObjectBloc extends Bloc<S3ObjectEvent, S3ObjectState> {
           emit(state.copyWith(isUploading: false));
           add(const S3ObjectEvent.getS3Objects(0, 6));
         }, uploadFiles: (e) async {
-          emit(state.copyWith(isUploading: true, isUploadingFiles: e.files));
-          await s3ObjectRepository.uploadFiles(e.files, e.user, appKeys);
-          emit(state.copyWith(isUploading: false, isUploadingFiles: []));
-          add(const S3ObjectEvent.getS3Objects(0, 6));
+          try {
+            emit(state.copyWith(isUploading: true, isUploadingFiles: e.files));
+            await s3ObjectRepository.uploadFiles(e.files, e.user, appKeys);
+            emit(state.copyWith(isUploading: false, isUploadingFiles: []));
+            add(const S3ObjectEvent.getS3Objects(0, 6));
+          } on AppException catch (e) {
+            emit(state.copyWith(uploadError: e));
+          } catch (e) {
+            emit(state.copyWith(
+                uploadError: AppException.unknown(e.toString())));
+          } finally {
+            emit(state.copyWith(isUploading: false, isUploadingFiles: []));
+          }
+        }, clearUploadError: (e) async {
+          emit(state.copyWith(uploadError: null));
         }, deleteFile: (e) async {
           emit(state.copyWith(isDeleting: true));
           await s3ObjectRepository.deleteFile(e.s3Object, e.user, appKeys);

@@ -26,6 +26,7 @@ class S3ObjectState with _$S3ObjectState {
     @Default(null) S3ObjectLike? like,
     @Default(null) S3ObjectSurround? s3ObjectSurround,
     @Default(false) bool isS3ObjectSurroundLoading,
+    @Default(null) AppException? uploadError,
     @Default([]) List<File> isUploadingFiles,
   }) = _S3ObjectState;
 

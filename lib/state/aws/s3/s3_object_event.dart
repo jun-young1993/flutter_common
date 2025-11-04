@@ -43,4 +43,5 @@ class S3ObjectEvent with _$S3ObjectEvent {
       _ReportS3ObjectReply;
   const factory S3ObjectEvent.getS3ObjectSurround(S3Object s3Object) =
       _GetS3ObjectSurround;
+  const factory S3ObjectEvent.clearUploadError() = _ClearUploadError;
 }

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_common/constants/juny_constants.dart';
+import 'package:flutter_common/extensions/app_exception.dart';
 import 'package:flutter_common/models/aws/s3/s3_object.dart';
 import 'package:flutter_common/models/aws/s3/s3_object_like.dart';
 import 'package:flutter_common/models/aws/s3/s3_object_reply.dart';
@@ -9,6 +10,8 @@ import 'package:flutter_common/models/aws/s3/s3_object_surround.dart';
 import 'package:flutter_common/models/user/user.dart';
 import 'package:flutter_common/network/dio_client.dart';
 import 'package:flutter_common/widgets/dialogs/report_dialog.dart';
+import 'package:mime/mime.dart';
+import 'package:http_parser/http_parser.dart';
 
 abstract class AwsS3Repository {
   Future<bool> uploadFile(File file, User user, AppKeys appKey);
@@ -75,21 +78,11 @@ class AwsS3DefaultRepository extends AwsS3Repository {
       if (response.statusCode == 201) {
         return true;
       }
-      throw Exception('파일 업로드 실패' + response.data.toString());
-    } on DioException catch (e) {
-      // 413 에러 처리
-      if (e.response?.statusCode == 413) {
-        throw Exception('파일 크기가 너무 큽니다. 최대 업로드 크기를 확인해주세요.');
-      }
-      // 기타 DioException 처리
-      final errorMessage = e.response?.data is String
-          ? e.response!.data as String
-          : e.response?.data?['message']?.toString() ??
-              e.message ??
-              '파일 업로드 실패';
-      throw Exception('파일 업로드 실패: $errorMessage');
+      throw AppException.unknown('파일 업로드 실패: ${response.data}');
+    } on AppException {
+      rethrow;
     } catch (e) {
-      throw Exception('파일 업로드 실패: $e');
+      throw AppException.unknown('파일 업로드 실패: $e');
     }
   }
 
@@ -105,10 +98,15 @@ class AwsS3DefaultRepository extends AwsS3Repository {
       // 여러 파일을 MultipartFile 리스트로 변환
       final multipartFiles = await Future.wait(
         files.map(
-          (file) => MultipartFile.fromFile(
-            file.path,
-            filename: file.path.split('/').last,
-          ),
+          (file) {
+            final mimeType = lookupMimeType(file.path);
+            return MultipartFile.fromFile(
+              file.path,
+              filename: file.path.split('/').last,
+              contentType:
+                  MediaType.parse(mimeType ?? 'application/octet-stream'),
+            );
+          },
         ),
       );
 
@@ -138,22 +136,11 @@ class AwsS3DefaultRepository extends AwsS3Repository {
       if (response.statusCode == 201) {
         return true;
       }
-      throw Exception('파일 업로드 실패' + response.data.toString());
-    } on DioException catch (e) {
-      // 413 에러 처리
-      if (e.response?.statusCode == 413) {
-        throw Exception('파일 크기가 너무 큽니다. 최대 업로드 크기를 확인해주세요.' +
-            e.response!.data['message'].toString());
-      }
-      // 기타 DioException 처리
-      final errorMessage = e.response?.data is String
-          ? e.response!.data as String
-          : e.response?.data?['message']?.toString() ??
-              e.message ??
-              '파일 업로드 실패';
-      throw Exception('파일 업로드 실패: $errorMessage');
+      throw AppException.unknown('파일 업로드 실패: ${response.data}');
+    } on AppException {
+      rethrow;
     } catch (e) {
-      throw Exception('파일 업로드 실패: $e');
+      throw AppException.unknown('파일 업로드 실패: $e');
     }
   }
 

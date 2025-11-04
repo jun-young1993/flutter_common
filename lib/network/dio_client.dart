@@ -232,6 +232,11 @@ class DioClient {
         return const AppException.forbidden();
       case 404:
         return const AppException.notFound();
+      case 413:
+        return AppException.badRequest(
+          response?.data?['message']?.toString() ?? 
+          '파일 크기가 너무 큽니다. 최대 업로드 크기를 확인해주세요.',
+        );
       case 500:
       case 501:
       case 503:

@@ -188,3 +188,14 @@ class S3ObjectS3ObjectSurroundSelector
           builder: (context, s3ObjectSurround) => builder(s3ObjectSurround),
         );
 }
+
+class S3ObjectUploadErrorSelector extends S3ObjectSelector<AppException?> {
+  S3ObjectUploadErrorSelector(
+      Widget Function(AppException? uploadError) builder,
+      {Key? key})
+      : super(
+          key: key,
+          selector: (state) => state.uploadError,
+          builder: (context, uploadError) => builder(uploadError),
+        );
+}
