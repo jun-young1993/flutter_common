@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_common/extensions/app_exception.dart';
@@ -41,6 +43,17 @@ class S3ObjectIsUploadingSelector extends S3ObjectSelector<bool> {
           key: key,
           selector: (state) => state.isUploading,
           builder: (context, isUploading) => builder(isUploading),
+        );
+}
+
+class S3ObjectIsUploadingFilesSelector extends S3ObjectSelector<List<File>> {
+  S3ObjectIsUploadingFilesSelector(
+      Widget Function(List<File> isUploadingFiles) builder,
+      {Key? key})
+      : super(
+          key: key,
+          selector: (state) => state.isUploadingFiles,
+          builder: (context, isUploadingFiles) => builder(isUploadingFiles),
         );
 }
 

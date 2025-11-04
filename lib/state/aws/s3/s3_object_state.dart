@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter_common/extensions/app_exception.dart';
 import 'package:flutter_common/models/aws/s3/s3_object.dart';
 import 'package:flutter_common/models/aws/s3/s3_object_like.dart';
@@ -24,6 +26,7 @@ class S3ObjectState with _$S3ObjectState {
     @Default(null) S3ObjectLike? like,
     @Default(null) S3ObjectSurround? s3ObjectSurround,
     @Default(false) bool isS3ObjectSurroundLoading,
+    @Default([]) List<File> isUploadingFiles,
   }) = _S3ObjectState;
 
   factory S3ObjectState.initialize() => const S3ObjectState();

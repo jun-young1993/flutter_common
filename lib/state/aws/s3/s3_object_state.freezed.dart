@@ -33,6 +33,7 @@ mixin _$S3ObjectState {
   S3ObjectLike? get like => throw _privateConstructorUsedError;
   S3ObjectSurround? get s3ObjectSurround => throw _privateConstructorUsedError;
   bool get isS3ObjectSurroundLoading => throw _privateConstructorUsedError;
+  List<File> get isUploadingFiles => throw _privateConstructorUsedError;
 
   /// Create a copy of S3ObjectState
   /// with the given fields replaced by the non-null parameter values.
@@ -62,7 +63,8 @@ abstract class $S3ObjectStateCopyWith<$Res> {
       bool isObjectsByDateLoading,
       S3ObjectLike? like,
       S3ObjectSurround? s3ObjectSurround,
-      bool isS3ObjectSurroundLoading});
+      bool isS3ObjectSurroundLoading,
+      List<File> isUploadingFiles});
 
   $AppExceptionCopyWith<$Res>? get error;
   $S3ObjectCopyWith<$Res>? get s3Object;
@@ -100,6 +102,7 @@ class _$S3ObjectStateCopyWithImpl<$Res, $Val extends S3ObjectState>
     Object? like = freezed,
     Object? s3ObjectSurround = freezed,
     Object? isS3ObjectSurroundLoading = null,
+    Object? isUploadingFiles = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -162,6 +165,10 @@ class _$S3ObjectStateCopyWithImpl<$Res, $Val extends S3ObjectState>
           ? _value.isS3ObjectSurroundLoading
           : isS3ObjectSurroundLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      isUploadingFiles: null == isUploadingFiles
+          ? _value.isUploadingFiles
+          : isUploadingFiles // ignore: cast_nullable_to_non_nullable
+              as List<File>,
     ) as $Val);
   }
 
@@ -245,7 +252,8 @@ abstract class _$$S3ObjectStateImplCopyWith<$Res>
       bool isObjectsByDateLoading,
       S3ObjectLike? like,
       S3ObjectSurround? s3ObjectSurround,
-      bool isS3ObjectSurroundLoading});
+      bool isS3ObjectSurroundLoading,
+      List<File> isUploadingFiles});
 
   @override
   $AppExceptionCopyWith<$Res>? get error;
@@ -285,6 +293,7 @@ class __$$S3ObjectStateImplCopyWithImpl<$Res>
     Object? like = freezed,
     Object? s3ObjectSurround = freezed,
     Object? isS3ObjectSurroundLoading = null,
+    Object? isUploadingFiles = null,
   }) {
     return _then(_$S3ObjectStateImpl(
       isLoading: null == isLoading
@@ -347,6 +356,10 @@ class __$$S3ObjectStateImplCopyWithImpl<$Res>
           ? _value.isS3ObjectSurroundLoading
           : isS3ObjectSurroundLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      isUploadingFiles: null == isUploadingFiles
+          ? _value._isUploadingFiles
+          : isUploadingFiles // ignore: cast_nullable_to_non_nullable
+              as List<File>,
     ));
   }
 }
@@ -369,10 +382,12 @@ class _$S3ObjectStateImpl extends _S3ObjectState {
       this.isObjectsByDateLoading = false,
       this.like = null,
       this.s3ObjectSurround = null,
-      this.isS3ObjectSurroundLoading = false})
+      this.isS3ObjectSurroundLoading = false,
+      final List<File> isUploadingFiles = const []})
       : _s3Objects = s3Objects,
         _objectsExistenceByMonth = objectsExistenceByMonth,
         _objectsByDate = objectsByDate,
+        _isUploadingFiles = isUploadingFiles,
         super._();
 
   @override
@@ -439,10 +454,19 @@ class _$S3ObjectStateImpl extends _S3ObjectState {
   @override
   @JsonKey()
   final bool isS3ObjectSurroundLoading;
+  final List<File> _isUploadingFiles;
+  @override
+  @JsonKey()
+  List<File> get isUploadingFiles {
+    if (_isUploadingFiles is EqualUnmodifiableListView)
+      return _isUploadingFiles;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_isUploadingFiles);
+  }
 
   @override
   String toString() {
-    return 'S3ObjectState(isLoading: $isLoading, isUploading: $isUploading, isDeleting: $isDeleting, error: $error, s3Objects: $s3Objects, s3Object: $s3Object, allCount: $allCount, isAllCountLoading: $isAllCountLoading, objectsExistenceByMonth: $objectsExistenceByMonth, isObjectsExistenceByMonthLoading: $isObjectsExistenceByMonthLoading, objectsByDate: $objectsByDate, isObjectsByDateLoading: $isObjectsByDateLoading, like: $like, s3ObjectSurround: $s3ObjectSurround, isS3ObjectSurroundLoading: $isS3ObjectSurroundLoading)';
+    return 'S3ObjectState(isLoading: $isLoading, isUploading: $isUploading, isDeleting: $isDeleting, error: $error, s3Objects: $s3Objects, s3Object: $s3Object, allCount: $allCount, isAllCountLoading: $isAllCountLoading, objectsExistenceByMonth: $objectsExistenceByMonth, isObjectsExistenceByMonthLoading: $isObjectsExistenceByMonthLoading, objectsByDate: $objectsByDate, isObjectsByDateLoading: $isObjectsByDateLoading, like: $like, s3ObjectSurround: $s3ObjectSurround, isS3ObjectSurroundLoading: $isS3ObjectSurroundLoading, isUploadingFiles: $isUploadingFiles)';
   }
 
   @override
@@ -480,7 +504,9 @@ class _$S3ObjectStateImpl extends _S3ObjectState {
                 other.s3ObjectSurround == s3ObjectSurround) &&
             (identical(other.isS3ObjectSurroundLoading,
                     isS3ObjectSurroundLoading) ||
-                other.isS3ObjectSurroundLoading == isS3ObjectSurroundLoading));
+                other.isS3ObjectSurroundLoading == isS3ObjectSurroundLoading) &&
+            const DeepCollectionEquality()
+                .equals(other._isUploadingFiles, _isUploadingFiles));
   }
 
   @override
@@ -500,7 +526,8 @@ class _$S3ObjectStateImpl extends _S3ObjectState {
       isObjectsByDateLoading,
       like,
       s3ObjectSurround,
-      isS3ObjectSurroundLoading);
+      isS3ObjectSurroundLoading,
+      const DeepCollectionEquality().hash(_isUploadingFiles));
 
   /// Create a copy of S3ObjectState
   /// with the given fields replaced by the non-null parameter values.
@@ -527,7 +554,8 @@ abstract class _S3ObjectState extends S3ObjectState {
       final bool isObjectsByDateLoading,
       final S3ObjectLike? like,
       final S3ObjectSurround? s3ObjectSurround,
-      final bool isS3ObjectSurroundLoading}) = _$S3ObjectStateImpl;
+      final bool isS3ObjectSurroundLoading,
+      final List<File> isUploadingFiles}) = _$S3ObjectStateImpl;
   const _S3ObjectState._() : super._();
 
   @override
@@ -560,6 +588,8 @@ abstract class _S3ObjectState extends S3ObjectState {
   S3ObjectSurround? get s3ObjectSurround;
   @override
   bool get isS3ObjectSurroundLoading;
+  @override
+  List<File> get isUploadingFiles;
 
   /// Create a copy of S3ObjectState
   /// with the given fields replaced by the non-null parameter values.

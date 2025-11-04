@@ -12,6 +12,7 @@ import 'package:flutter_common/widgets/dialogs/report_dialog.dart';
 
 abstract class AwsS3Repository {
   Future<bool> uploadFile(File file, User user, AppKeys appKey);
+  Future<bool> uploadFiles(List<File> files, User user, AppKeys appKey);
   Future<bool> deleteFile(S3Object s3Object, User user, AppKeys appKey);
   Future<List<S3Object>> getS3Object(int? skip, int? take);
   Future<S3Object> findOneOrFail(String id);
@@ -74,11 +75,75 @@ class AwsS3DefaultRepository extends AwsS3Repository {
       if (response.statusCode == 201) {
         return true;
       }
-      throw Exception('파일 업로드 실패');
+      throw Exception('파일 업로드 실패' + response.data.toString());
     } on DioException catch (e) {
       // 413 에러 처리
       if (e.response?.statusCode == 413) {
         throw Exception('파일 크기가 너무 큽니다. 최대 업로드 크기를 확인해주세요.');
+      }
+      // 기타 DioException 처리
+      final errorMessage = e.response?.data is String
+          ? e.response!.data as String
+          : e.response?.data?['message']?.toString() ??
+              e.message ??
+              '파일 업로드 실패';
+      throw Exception('파일 업로드 실패: $errorMessage');
+    } catch (e) {
+      throw Exception('파일 업로드 실패: $e');
+    }
+  }
+
+  @override
+  Future<bool> uploadFiles(List<File> files, User user, AppKeys appKey) async {
+    try {
+      // AppKey를 문자열로 변환
+      final appKeyString = JunyConstants.getAppKeyStringOrThrow(appKey);
+
+      // Authorization 헤더 생성
+      final authToken = 'Bearer user:${user.id}';
+
+      // 여러 파일을 MultipartFile 리스트로 변환
+      final multipartFiles = await Future.wait(
+        files.map(
+          (file) => MultipartFile.fromFile(
+            file.path,
+            filename: file.path.split('/').last,
+          ),
+        ),
+      );
+
+      // FormData 생성 - 같은 필드 이름에 여러 파일 추가
+      final formData = FormData.fromMap({
+        'files': multipartFiles,
+      });
+
+      // 요청 옵션 설정
+      final options = Options(
+        headers: {
+          'accept': 'application/json',
+          'Authorization': authToken,
+          'Content-Type': 'multipart/form-data',
+        },
+      );
+
+      // API 엔드포인트 구성
+      final endpoint = '/aws/s3/$appKeyString/upload';
+
+      // 요청 실행
+      final response = await dioClient.post(
+        endpoint,
+        data: formData,
+        options: options,
+      );
+      if (response.statusCode == 201) {
+        return true;
+      }
+      throw Exception('파일 업로드 실패' + response.data.toString());
+    } on DioException catch (e) {
+      // 413 에러 처리
+      if (e.response?.statusCode == 413) {
+        throw Exception('파일 크기가 너무 큽니다. 최대 업로드 크기를 확인해주세요.' +
+            e.response!.data['message'].toString());
       }
       // 기타 DioException 처리
       final errorMessage = e.response?.data is String
