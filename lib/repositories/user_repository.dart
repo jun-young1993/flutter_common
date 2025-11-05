@@ -14,6 +14,9 @@ abstract class UserRepository {
   Future<void> deleteUserData(User user);
   Future<void> userBlock(User blockerUser, String blockedUserId, String reason);
   Future<User> updateUserName(String userId, String userName);
+  Future<List<String>> addAppUser({String? fcmToken});
+  Future<List<User>> getAppUserList();
+  Future<void> changeAppUser(User user);
 }
 
 class UserDefaultRepository extends UserRepository {
@@ -39,28 +42,102 @@ class UserDefaultRepository extends UserRepository {
   }
 
   @override
+  Future<void> changeAppUser(User user) async {
+    final appKeyString = JunyConstants.getAppKeyStringOrThrow(appKey);
+    final userIdKey = '$appKeyString-user-id';
+    final userListKey = '$appKeyString-user-list';
+    final userId = sharedPreferences.getString(userIdKey);
+    if (userId == null) {
+      throw const AppException.unknown('User id not found');
+    }
+    if (userId == user.id) {
+      return;
+    }
+    await sharedPreferences.setString(userIdKey, user.id);
+    final userLists = sharedPreferences.getStringList(userListKey);
+    userLists?.add(userId);
+    userLists?.remove(user.id);
+
+    final saveUserLists =
+        await sharedPreferences.setStringList(userListKey, userLists ?? []);
+    if (!saveUserLists) {
+      throw const AppException.unknown('Failed to save user list');
+    }
+  }
+
+  Future<User> createUser({String? fcmToken}) async {
+    final appKeyString = JunyConstants.getAppKeyStringOrThrow(appKey);
+
+    final response = await dioClient.post('/user', data: {
+      'username': null,
+      'email': null,
+      'password': DateTime.now().toIso8601String(),
+      'type': appKeyString,
+      'fcm_token': fcmToken,
+      'registrationIp': await printIps(),
+    });
+    return User.fromJson(response.data);
+  }
+
+  @override
+  Future<List<String>> addAppUser({String? fcmToken}) async {
+    final appKeyString = JunyConstants.getAppKeyStringOrThrow(appKey);
+    final userListKey = '$appKeyString-user-list';
+    final userLists = sharedPreferences.getStringList(userListKey);
+    final createdUser = await createUser(fcmToken: fcmToken);
+    userLists?.add(createdUser.id);
+    final saveUserLists =
+        await sharedPreferences.setStringList(userListKey, userLists ?? []);
+    if (!saveUserLists) {
+      throw const AppException.unknown('Failed to save user list');
+    }
+    return userLists ?? [];
+  }
+
+  @override
+  Future<List<User>> getAppUserList() async {
+    final appKeyString = JunyConstants.getAppKeyStringOrThrow(appKey);
+    final userListKey = '$appKeyString-user-list';
+    final userIdLists = sharedPreferences.getStringList(userListKey);
+    if (userIdLists == null || userIdLists.isEmpty) {
+      return [];
+    } else {
+      final users = await Future.wait(userIdLists.map(getUserById));
+
+      return users;
+    }
+  }
+
+  Future<User> getUserById(String userId) async {
+    final appKeyString = JunyConstants.getAppKeyStringOrThrow(appKey);
+    final userIdKey = '$appKeyString-user-id';
+    final response = await dioClient.get('/user/$userId');
+
+    if (response.statusCode == 204) {
+      sharedPreferences.remove(userIdKey);
+      throw const AppException.notFound();
+    }
+
+    return User.fromJson(response.data);
+  }
+
+  @override
   Future<User> getUserInfo({String? fcmToken}) async {
     final appKeyString = JunyConstants.getAppKeyStringOrThrow(appKey);
     final userIdKey = '$appKeyString-user-id';
     final userId = sharedPreferences.getString(userIdKey);
     if (userId == null) {
-      final response = await dioClient.post('/user', data: {
-        'username': null,
-        'email': null,
-        'password': DateTime.now().toIso8601String(),
-        'type': appKeyString,
-        'fcm_token': fcmToken,
-        'registrationIp': await printIps(),
-      });
-      sharedPreferences.setString(userIdKey, response.data['id']);
-      return User.fromJson(response.data);
+      final createdUser = await createUser(fcmToken: fcmToken);
+
+      final saveUserId =
+          await sharedPreferences.setString(userIdKey, createdUser.id);
+      if (!saveUserId) {
+        throw const AppException.unknown('Failed to save user id');
+      }
+      return createdUser;
     }
-    final response = await dioClient.get('/user/$userId');
-    if (response.statusCode == 204) {
-      sharedPreferences.remove(userIdKey);
-      throw const AppException.notFound();
-    }
-    var user = User.fromJson(response.data);
+
+    var user = await getUserById(userId);
 
     if (user.fcmToken == null && fcmToken != null) {
       user = user.copyWith(fcmToken: fcmToken);

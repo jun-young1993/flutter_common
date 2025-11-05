@@ -39,3 +39,12 @@ class UserErrorSelector extends UserSelector<AppException?> {
           builder: (context, error) => builder(error),
         );
 }
+
+class UserListSelector extends UserSelector<List<User>> {
+  UserListSelector(Widget Function(List<User> userList) builder, {Key? key})
+      : super(
+          key: key,
+          selector: (state) => state.userList,
+          builder: (context, userList) => builder(userList),
+        );
+}

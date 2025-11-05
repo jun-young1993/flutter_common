@@ -19,6 +19,7 @@ mixin _$UserState {
   bool get isLoading => throw _privateConstructorUsedError;
   User? get user => throw _privateConstructorUsedError;
   AppException? get error => throw _privateConstructorUsedError;
+  List<User> get userList => throw _privateConstructorUsedError;
 
   /// Create a copy of UserState
   /// with the given fields replaced by the non-null parameter values.
@@ -32,7 +33,8 @@ abstract class $UserStateCopyWith<$Res> {
   factory $UserStateCopyWith(UserState value, $Res Function(UserState) then) =
       _$UserStateCopyWithImpl<$Res, UserState>;
   @useResult
-  $Res call({bool isLoading, User? user, AppException? error});
+  $Res call(
+      {bool isLoading, User? user, AppException? error, List<User> userList});
 
   $UserCopyWith<$Res>? get user;
   $AppExceptionCopyWith<$Res>? get error;
@@ -56,6 +58,7 @@ class _$UserStateCopyWithImpl<$Res, $Val extends UserState>
     Object? isLoading = null,
     Object? user = freezed,
     Object? error = freezed,
+    Object? userList = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -70,6 +73,10 @@ class _$UserStateCopyWithImpl<$Res, $Val extends UserState>
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as AppException?,
+      userList: null == userList
+          ? _value.userList
+          : userList // ignore: cast_nullable_to_non_nullable
+              as List<User>,
     ) as $Val);
   }
 
@@ -110,7 +117,8 @@ abstract class _$$UserStateImplCopyWith<$Res>
       __$$UserStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isLoading, User? user, AppException? error});
+  $Res call(
+      {bool isLoading, User? user, AppException? error, List<User> userList});
 
   @override
   $UserCopyWith<$Res>? get user;
@@ -134,6 +142,7 @@ class __$$UserStateImplCopyWithImpl<$Res>
     Object? isLoading = null,
     Object? user = freezed,
     Object? error = freezed,
+    Object? userList = null,
   }) {
     return _then(_$UserStateImpl(
       isLoading: null == isLoading
@@ -148,6 +157,10 @@ class __$$UserStateImplCopyWithImpl<$Res>
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as AppException?,
+      userList: null == userList
+          ? _value._userList
+          : userList // ignore: cast_nullable_to_non_nullable
+              as List<User>,
     ));
   }
 }
@@ -156,8 +169,12 @@ class __$$UserStateImplCopyWithImpl<$Res>
 
 class _$UserStateImpl extends _UserState {
   const _$UserStateImpl(
-      {this.isLoading = false, this.user = null, this.error = null})
-      : super._();
+      {this.isLoading = false,
+      this.user = null,
+      this.error = null,
+      final List<User> userList = const []})
+      : _userList = userList,
+        super._();
 
   @override
   @JsonKey()
@@ -168,10 +185,18 @@ class _$UserStateImpl extends _UserState {
   @override
   @JsonKey()
   final AppException? error;
+  final List<User> _userList;
+  @override
+  @JsonKey()
+  List<User> get userList {
+    if (_userList is EqualUnmodifiableListView) return _userList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_userList);
+  }
 
   @override
   String toString() {
-    return 'UserState(isLoading: $isLoading, user: $user, error: $error)';
+    return 'UserState(isLoading: $isLoading, user: $user, error: $error, userList: $userList)';
   }
 
   @override
@@ -182,11 +207,13 @@ class _$UserStateImpl extends _UserState {
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             (identical(other.user, user) || other.user == user) &&
-            (identical(other.error, error) || other.error == error));
+            (identical(other.error, error) || other.error == error) &&
+            const DeepCollectionEquality().equals(other._userList, _userList));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, user, error);
+  int get hashCode => Object.hash(runtimeType, isLoading, user, error,
+      const DeepCollectionEquality().hash(_userList));
 
   /// Create a copy of UserState
   /// with the given fields replaced by the non-null parameter values.
@@ -201,7 +228,8 @@ abstract class _UserState extends UserState {
   const factory _UserState(
       {final bool isLoading,
       final User? user,
-      final AppException? error}) = _$UserStateImpl;
+      final AppException? error,
+      final List<User> userList}) = _$UserStateImpl;
   const _UserState._() : super._();
 
   @override
@@ -210,6 +238,8 @@ abstract class _UserState extends UserState {
   User? get user;
   @override
   AppException? get error;
+  @override
+  List<User> get userList;
 
   /// Create a copy of UserState
   /// with the given fields replaced by the non-null parameter values.

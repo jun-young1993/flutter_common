@@ -11,6 +11,7 @@ class UserState with _$UserState, BaseStateMixin {
     @Default(false) bool isLoading,
     @Default(null) User? user,
     @Default(null) AppException? error,
+    @Default([]) List<User> userList,
   }) = _UserState;
 
   const UserState._();
