@@ -277,6 +277,8 @@ class _App {
   final noDate = 'app.noDate';
   final share = 'app.share';
   final like = 'app.like';
+  final profileList = 'app.profileList';
+  final addProfile = 'app.addProfile';
 }
 
 class _Error {

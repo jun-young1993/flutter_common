@@ -99,7 +99,9 @@
         "babyLog" : "Baby Log",
         "noDate" : "No Date",
         "share" : "Share",
-        "like" : "Like"
+        "like" : "Like",
+        "profileList" : "Profile List",
+        "addProfile" : "Add Profile"
     },
     "common": {
         "yes": "Yes",

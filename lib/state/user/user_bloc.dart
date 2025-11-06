@@ -22,7 +22,8 @@ class UserBloc extends Bloc<UserEvent, UserState> {
           });
         }, addAppUser: (e) async {
           await _handleEvent(emit, () async {
-            await userRepository.addAppUser(fcmToken: fcmToken);
+            await userRepository.addAppUser(
+                fcmToken: fcmToken, username: e.username);
             final userList = await userRepository.getAppUserList();
             emit(state.copyWith(userList: userList));
           });

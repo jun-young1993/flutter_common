@@ -14,7 +14,7 @@ abstract class UserRepository {
   Future<void> deleteUserData(User user);
   Future<void> userBlock(User blockerUser, String blockedUserId, String reason);
   Future<User> updateUserName(String userId, String userName);
-  Future<List<String>> addAppUser({String? fcmToken});
+  Future<List<String>> addAppUser({String? fcmToken, String? username});
   Future<List<User>> getAppUserList();
   Future<void> changeAppUser(User user);
 }
@@ -65,11 +65,11 @@ class UserDefaultRepository extends UserRepository {
     }
   }
 
-  Future<User> createUser({String? fcmToken}) async {
+  Future<User> createUser({String? fcmToken, String? username}) async {
     final appKeyString = JunyConstants.getAppKeyStringOrThrow(appKey);
 
     final response = await dioClient.post('/user', data: {
-      'username': null,
+      'username': username,
       'email': null,
       'password': DateTime.now().toIso8601String(),
       'type': appKeyString,
@@ -80,11 +80,12 @@ class UserDefaultRepository extends UserRepository {
   }
 
   @override
-  Future<List<String>> addAppUser({String? fcmToken}) async {
+  Future<List<String>> addAppUser({String? fcmToken, String? username}) async {
     final appKeyString = JunyConstants.getAppKeyStringOrThrow(appKey);
     final userListKey = '$appKeyString-user-list';
     final userLists = sharedPreferences.getStringList(userListKey);
-    final createdUser = await createUser(fcmToken: fcmToken);
+    final createdUser =
+        await createUser(fcmToken: fcmToken, username: username);
     userLists?.add(createdUser.id);
     final saveUserLists =
         await sharedPreferences.setStringList(userListKey, userLists ?? []);

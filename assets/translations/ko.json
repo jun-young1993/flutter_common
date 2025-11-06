@@ -99,7 +99,9 @@
         "babyLog" : "Baby Log",
         "noDate" : "날짜 없음",
         "share" : "공유하기",
-        "like" : "좋아요"
+        "like" : "좋아요",
+        "profileList" : "프로필 목록",
+        "addProfile" : "프로필 추가"
     },
     "common": {
         "yes": "예",
@@ -225,7 +227,7 @@
         "familyJoinCodeDescription": "가족이 공유한 6자리 초대 코드를\n입력해주세요",
         "familyJoinCodeDescription2": "초대 코드 {code}로 가족 그룹에 참여합니다.",
         "familyJoinCodeDescription3":"초대 코드를 받지 못했나요? 가족에게 Baby Log 앱에서 초대 코드를 요청해보세요.",
-        "familyJoinCodeDescription4":"Baby Log 가족 그룹에 초대합니다!\n\n초대 코드: ${code}\n\nBaby Log 앱에서 위 코드를 입력하여 가족 그룹에 참여하세요.",
+        "familyJoinCodeDescription4":"Baby Log 가족 그룹에 초대합니다!\n\n초대 코드: {code}\n\nBaby Log 앱에서 위 코드를 입력하여 가족 그룹에 참여하세요.",
         "familyJoinCodeDescription5":"Baby Log 가족 그룹에 초대"
 
     },

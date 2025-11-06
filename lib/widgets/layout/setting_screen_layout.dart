@@ -19,6 +19,7 @@ import 'package:flutter_common/state/verification/verification_selector.dart';
 import 'package:flutter_common/widgets/buttons/awesom_text_button.dart';
 import 'package:flutter_common/widgets/dialogs/app_dialog.dart';
 import 'package:flutter_common/widgets/dialogs/input_dialog.dart';
+import 'package:flutter_common/widgets/fields/pretty_select_box.dart';
 import 'package:flutter_common/widgets/layout/sections/can_update_row.dart';
 import 'package:flutter_common/widgets/layout/sections/setting/locale.dart';
 import 'package:flutter_common/widgets/layout/sections/share_app_row.dart';
@@ -35,11 +36,13 @@ class SettingScreenLayout extends StatefulWidget {
       required this.appKey,
       this.topChildren = const [],
       this.bottomChildren = const [],
-      this.onUserDeleted})
+      this.onUserDeleted,
+      this.useAppUsers = false})
       : super(key: key);
   final List<Widget> topChildren;
   final List<Widget> bottomChildren;
   final void Function(User user)? onUserDeleted;
+  final bool useAppUsers;
 
   final AppKeys appKey;
   @override
@@ -54,6 +57,7 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
   AppConfigBloc get appConfigBloc => context.read<AppConfigBloc>();
   VerificationBloc get verificationBloc => context.read<VerificationBloc>();
   Locale get locale => context.locale;
+  bool get useAppUsers => widget.useAppUsers;
 
   /// 버전 정보를 가져오는 메서드
   Future<void> _getVersion() async {
@@ -357,6 +361,53 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
             ],
           );
         }),
+        SizedBox(height: SizeConstants.getColumnSpacing(context)),
+        if (useAppUsers == true) ...[
+          UserListSelector((userList) {
+            return UserInfoSelector((user) {
+              if (user == null) {
+                return const SizedBox.shrink();
+              }
+              return CardContainerItem(
+                initiallyExpanded: false,
+                icon: Icons.people_outline,
+                title: Tr.app.profileList.tr(),
+                children: [
+                  Row(
+                    children: [
+                      PrettySelectBox<User>(
+                        items: userList,
+                        label: user.username ?? 'unknown',
+                        selectedValue: user,
+                        onChanged: (value) {
+                          if (value != null) {
+                            userBloc.add(UserEvent.changeAppUser(value));
+                          }
+                        },
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.add_outlined),
+                        onPressed: () {
+                          InputDialog.show(
+                            title: Tr.app.addProfile.tr(),
+                            hintText: Tr.app.addProfile.tr(),
+                            onConfirm: (value) {
+                              userBloc
+                                  .add(UserEvent.addAppUser(username: value));
+                            },
+                            context: context,
+                          );
+                        },
+                        color: Colors.grey,
+                        iconSize: 20,
+                      ),
+                    ],
+                  )
+                ],
+              );
+            });
+          })
+        ]
       ],
     );
   }
