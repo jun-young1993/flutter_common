@@ -22,3 +22,28 @@ class UserStorageLimitS3Selector
           builder: (context, s3) => builder(s3),
         );
 }
+
+class UserStorageLimitGroupAdminDefaultStorageLimitSelector
+    extends UserStorageLimitSelector<UserStorageLimit?> {
+  UserStorageLimitGroupAdminDefaultStorageLimitSelector(
+      Widget Function(UserStorageLimit? groupAdminDefaultStorageLimit) builder,
+      {Key? key})
+      : super(
+          key: key,
+          selector: (state) => state.groupAdminDefaultStorageLimit,
+          builder: (context, groupAdminDefaultStorageLimit) =>
+              builder(groupAdminDefaultStorageLimit),
+        );
+}
+
+class UserStorageLimitGroupAdminDefaultStorageLimitIsLoadingSelector
+    extends UserStorageLimitSelector<bool> {
+  UserStorageLimitGroupAdminDefaultStorageLimitIsLoadingSelector(
+      Widget Function(bool isLoading) builder,
+      {Key? key})
+      : super(
+          key: key,
+          selector: (state) => state.groupAdminDefaultStorageLimitIsLoading,
+          builder: (context, isLoading) => builder(isLoading),
+        );
+}

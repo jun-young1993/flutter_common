@@ -19,6 +19,12 @@ mixin _$UserStorageLimitState {
   bool get s3IsLoading => throw _privateConstructorUsedError;
   AppException? get s3Error => throw _privateConstructorUsedError;
   UserStorageLimit? get s3 => throw _privateConstructorUsedError;
+  bool get groupAdminDefaultStorageLimitIsLoading =>
+      throw _privateConstructorUsedError;
+  AppException? get groupAdminDefaultStorageLimitError =>
+      throw _privateConstructorUsedError;
+  UserStorageLimit? get groupAdminDefaultStorageLimit =>
+      throw _privateConstructorUsedError;
 
   /// Create a copy of UserStorageLimitState
   /// with the given fields replaced by the non-null parameter values.
@@ -33,10 +39,18 @@ abstract class $UserStorageLimitStateCopyWith<$Res> {
           $Res Function(UserStorageLimitState) then) =
       _$UserStorageLimitStateCopyWithImpl<$Res, UserStorageLimitState>;
   @useResult
-  $Res call({bool s3IsLoading, AppException? s3Error, UserStorageLimit? s3});
+  $Res call(
+      {bool s3IsLoading,
+      AppException? s3Error,
+      UserStorageLimit? s3,
+      bool groupAdminDefaultStorageLimitIsLoading,
+      AppException? groupAdminDefaultStorageLimitError,
+      UserStorageLimit? groupAdminDefaultStorageLimit});
 
   $AppExceptionCopyWith<$Res>? get s3Error;
   $UserStorageLimitCopyWith<$Res>? get s3;
+  $AppExceptionCopyWith<$Res>? get groupAdminDefaultStorageLimitError;
+  $UserStorageLimitCopyWith<$Res>? get groupAdminDefaultStorageLimit;
 }
 
 /// @nodoc
@@ -58,6 +72,9 @@ class _$UserStorageLimitStateCopyWithImpl<$Res,
     Object? s3IsLoading = null,
     Object? s3Error = freezed,
     Object? s3 = freezed,
+    Object? groupAdminDefaultStorageLimitIsLoading = null,
+    Object? groupAdminDefaultStorageLimitError = freezed,
+    Object? groupAdminDefaultStorageLimit = freezed,
   }) {
     return _then(_value.copyWith(
       s3IsLoading: null == s3IsLoading
@@ -71,6 +88,20 @@ class _$UserStorageLimitStateCopyWithImpl<$Res,
       s3: freezed == s3
           ? _value.s3
           : s3 // ignore: cast_nullable_to_non_nullable
+              as UserStorageLimit?,
+      groupAdminDefaultStorageLimitIsLoading: null ==
+              groupAdminDefaultStorageLimitIsLoading
+          ? _value.groupAdminDefaultStorageLimitIsLoading
+          : groupAdminDefaultStorageLimitIsLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      groupAdminDefaultStorageLimitError: freezed ==
+              groupAdminDefaultStorageLimitError
+          ? _value.groupAdminDefaultStorageLimitError
+          : groupAdminDefaultStorageLimitError // ignore: cast_nullable_to_non_nullable
+              as AppException?,
+      groupAdminDefaultStorageLimit: freezed == groupAdminDefaultStorageLimit
+          ? _value.groupAdminDefaultStorageLimit
+          : groupAdminDefaultStorageLimit // ignore: cast_nullable_to_non_nullable
               as UserStorageLimit?,
     ) as $Val);
   }
@@ -102,6 +133,38 @@ class _$UserStorageLimitStateCopyWithImpl<$Res,
       return _then(_value.copyWith(s3: value) as $Val);
     });
   }
+
+  /// Create a copy of UserStorageLimitState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AppExceptionCopyWith<$Res>? get groupAdminDefaultStorageLimitError {
+    if (_value.groupAdminDefaultStorageLimitError == null) {
+      return null;
+    }
+
+    return $AppExceptionCopyWith<$Res>(
+        _value.groupAdminDefaultStorageLimitError!, (value) {
+      return _then(
+          _value.copyWith(groupAdminDefaultStorageLimitError: value) as $Val);
+    });
+  }
+
+  /// Create a copy of UserStorageLimitState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $UserStorageLimitCopyWith<$Res>? get groupAdminDefaultStorageLimit {
+    if (_value.groupAdminDefaultStorageLimit == null) {
+      return null;
+    }
+
+    return $UserStorageLimitCopyWith<$Res>(
+        _value.groupAdminDefaultStorageLimit!, (value) {
+      return _then(
+          _value.copyWith(groupAdminDefaultStorageLimit: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -113,12 +176,22 @@ abstract class _$$UserStorageLimitStateImplCopyWith<$Res>
       __$$UserStorageLimitStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool s3IsLoading, AppException? s3Error, UserStorageLimit? s3});
+  $Res call(
+      {bool s3IsLoading,
+      AppException? s3Error,
+      UserStorageLimit? s3,
+      bool groupAdminDefaultStorageLimitIsLoading,
+      AppException? groupAdminDefaultStorageLimitError,
+      UserStorageLimit? groupAdminDefaultStorageLimit});
 
   @override
   $AppExceptionCopyWith<$Res>? get s3Error;
   @override
   $UserStorageLimitCopyWith<$Res>? get s3;
+  @override
+  $AppExceptionCopyWith<$Res>? get groupAdminDefaultStorageLimitError;
+  @override
+  $UserStorageLimitCopyWith<$Res>? get groupAdminDefaultStorageLimit;
 }
 
 /// @nodoc
@@ -138,6 +211,9 @@ class __$$UserStorageLimitStateImplCopyWithImpl<$Res>
     Object? s3IsLoading = null,
     Object? s3Error = freezed,
     Object? s3 = freezed,
+    Object? groupAdminDefaultStorageLimitIsLoading = null,
+    Object? groupAdminDefaultStorageLimitError = freezed,
+    Object? groupAdminDefaultStorageLimit = freezed,
   }) {
     return _then(_$UserStorageLimitStateImpl(
       s3IsLoading: null == s3IsLoading
@@ -152,6 +228,20 @@ class __$$UserStorageLimitStateImplCopyWithImpl<$Res>
           ? _value.s3
           : s3 // ignore: cast_nullable_to_non_nullable
               as UserStorageLimit?,
+      groupAdminDefaultStorageLimitIsLoading: null ==
+              groupAdminDefaultStorageLimitIsLoading
+          ? _value.groupAdminDefaultStorageLimitIsLoading
+          : groupAdminDefaultStorageLimitIsLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      groupAdminDefaultStorageLimitError: freezed ==
+              groupAdminDefaultStorageLimitError
+          ? _value.groupAdminDefaultStorageLimitError
+          : groupAdminDefaultStorageLimitError // ignore: cast_nullable_to_non_nullable
+              as AppException?,
+      groupAdminDefaultStorageLimit: freezed == groupAdminDefaultStorageLimit
+          ? _value.groupAdminDefaultStorageLimit
+          : groupAdminDefaultStorageLimit // ignore: cast_nullable_to_non_nullable
+              as UserStorageLimit?,
     ));
   }
 }
@@ -160,7 +250,12 @@ class __$$UserStorageLimitStateImplCopyWithImpl<$Res>
 
 class _$UserStorageLimitStateImpl extends _UserStorageLimitState {
   const _$UserStorageLimitStateImpl(
-      {this.s3IsLoading = false, this.s3Error = null, this.s3 = null})
+      {this.s3IsLoading = false,
+      this.s3Error = null,
+      this.s3 = null,
+      this.groupAdminDefaultStorageLimitIsLoading = false,
+      this.groupAdminDefaultStorageLimitError = null,
+      this.groupAdminDefaultStorageLimit = null})
       : super._();
 
   @override
@@ -172,10 +267,19 @@ class _$UserStorageLimitStateImpl extends _UserStorageLimitState {
   @override
   @JsonKey()
   final UserStorageLimit? s3;
+  @override
+  @JsonKey()
+  final bool groupAdminDefaultStorageLimitIsLoading;
+  @override
+  @JsonKey()
+  final AppException? groupAdminDefaultStorageLimitError;
+  @override
+  @JsonKey()
+  final UserStorageLimit? groupAdminDefaultStorageLimit;
 
   @override
   String toString() {
-    return 'UserStorageLimitState(s3IsLoading: $s3IsLoading, s3Error: $s3Error, s3: $s3)';
+    return 'UserStorageLimitState(s3IsLoading: $s3IsLoading, s3Error: $s3Error, s3: $s3, groupAdminDefaultStorageLimitIsLoading: $groupAdminDefaultStorageLimitIsLoading, groupAdminDefaultStorageLimitError: $groupAdminDefaultStorageLimitError, groupAdminDefaultStorageLimit: $groupAdminDefaultStorageLimit)';
   }
 
   @override
@@ -186,11 +290,30 @@ class _$UserStorageLimitStateImpl extends _UserStorageLimitState {
             (identical(other.s3IsLoading, s3IsLoading) ||
                 other.s3IsLoading == s3IsLoading) &&
             (identical(other.s3Error, s3Error) || other.s3Error == s3Error) &&
-            (identical(other.s3, s3) || other.s3 == s3));
+            (identical(other.s3, s3) || other.s3 == s3) &&
+            (identical(other.groupAdminDefaultStorageLimitIsLoading,
+                    groupAdminDefaultStorageLimitIsLoading) ||
+                other.groupAdminDefaultStorageLimitIsLoading ==
+                    groupAdminDefaultStorageLimitIsLoading) &&
+            (identical(other.groupAdminDefaultStorageLimitError,
+                    groupAdminDefaultStorageLimitError) ||
+                other.groupAdminDefaultStorageLimitError ==
+                    groupAdminDefaultStorageLimitError) &&
+            (identical(other.groupAdminDefaultStorageLimit,
+                    groupAdminDefaultStorageLimit) ||
+                other.groupAdminDefaultStorageLimit ==
+                    groupAdminDefaultStorageLimit));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, s3IsLoading, s3Error, s3);
+  int get hashCode => Object.hash(
+      runtimeType,
+      s3IsLoading,
+      s3Error,
+      s3,
+      groupAdminDefaultStorageLimitIsLoading,
+      groupAdminDefaultStorageLimitError,
+      groupAdminDefaultStorageLimit);
 
   /// Create a copy of UserStorageLimitState
   /// with the given fields replaced by the non-null parameter values.
@@ -204,9 +327,13 @@ class _$UserStorageLimitStateImpl extends _UserStorageLimitState {
 
 abstract class _UserStorageLimitState extends UserStorageLimitState {
   const factory _UserStorageLimitState(
-      {final bool s3IsLoading,
-      final AppException? s3Error,
-      final UserStorageLimit? s3}) = _$UserStorageLimitStateImpl;
+          {final bool s3IsLoading,
+          final AppException? s3Error,
+          final UserStorageLimit? s3,
+          final bool groupAdminDefaultStorageLimitIsLoading,
+          final AppException? groupAdminDefaultStorageLimitError,
+          final UserStorageLimit? groupAdminDefaultStorageLimit}) =
+      _$UserStorageLimitStateImpl;
   const _UserStorageLimitState._() : super._();
 
   @override
@@ -215,6 +342,12 @@ abstract class _UserStorageLimitState extends UserStorageLimitState {
   AppException? get s3Error;
   @override
   UserStorageLimit? get s3;
+  @override
+  bool get groupAdminDefaultStorageLimitIsLoading;
+  @override
+  AppException? get groupAdminDefaultStorageLimitError;
+  @override
+  UserStorageLimit? get groupAdminDefaultStorageLimit;
 
   /// Create a copy of UserStorageLimitState
   /// with the given fields replaced by the non-null parameter values.

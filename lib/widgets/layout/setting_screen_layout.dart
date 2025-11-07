@@ -74,6 +74,9 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
   void initState() {
     super.initState();
     _getVersion();
+    if (useAppUsers == true) {
+      userBloc.add(const UserEvent.getAppUsers());
+    }
   }
 
   @override
@@ -373,36 +376,36 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
                 icon: Icons.people_outline,
                 title: Tr.app.profileList.tr(),
                 children: [
-                  Row(
-                    children: [
-                      PrettySelectBox<User>(
-                        items: userList,
-                        label: user.username ?? 'unknown',
-                        selectedValue: user,
-                        onChanged: (value) {
-                          if (value != null) {
-                            userBloc.add(UserEvent.changeAppUser(value));
-                          }
+                  Center(
+                      child: AwesomeTextButton(
+                    text: Tr.app.addProfile.tr(),
+                    fontSize: SizeConstants.getSmallButtonFontSize(context),
+                    padding: SizeConstants.getSmallButtonPadding(context),
+                    icon: Icons.add_outlined,
+                    color: Colors.green.shade600,
+                    onPressed: () {
+                      InputDialog.show(
+                        title: Tr.app.addProfile.tr(),
+                        hintText: Tr.app.addProfile.tr(),
+                        onConfirm: (value) {
+                          userBloc.add(UserEvent.addAppUser(username: value));
                         },
-                      ),
-                      IconButton(
-                        icon: const Icon(Icons.add_outlined),
-                        onPressed: () {
-                          InputDialog.show(
-                            title: Tr.app.addProfile.tr(),
-                            hintText: Tr.app.addProfile.tr(),
-                            onConfirm: (value) {
-                              userBloc
-                                  .add(UserEvent.addAppUser(username: value));
-                            },
-                            context: context,
-                          );
-                        },
-                        color: Colors.grey,
-                        iconSize: 20,
-                      ),
-                    ],
-                  )
+                        context: context,
+                      );
+                    },
+                  )),
+                  SizedBox(height: SizeConstants.getColumnSpacing(context)),
+                  PrettySelectBox<User>(
+                    items: userList,
+                    label: user.displayText,
+                    selectedValue: user,
+                    displayTextBuilder: (user) => user.displayText,
+                    onChanged: (value) {
+                      if (value != null) {
+                        userBloc.add(UserEvent.changeAppUser(value));
+                      }
+                    },
+                  ),
                 ],
               );
             });

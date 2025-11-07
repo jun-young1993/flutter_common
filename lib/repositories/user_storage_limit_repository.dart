@@ -3,6 +3,8 @@ import 'package:flutter_common/network/dio_client.dart';
 
 abstract class UserStorageLimitRepository {
   Future<UserStorageLimit> initializeByS3();
+  Future<UserStorageLimit> getGroupAdminDefaultStorageLimit(
+      StorageLimitType type);
 }
 
 class UserStorageLimitDefaultRepository extends UserStorageLimitRepository {
@@ -15,6 +17,17 @@ class UserStorageLimitDefaultRepository extends UserStorageLimitRepository {
     final response = await dioClient.post('/user-storage-limits/default/s3');
     if (response.statusCode != 201) {
       throw Exception('Failed to initialize user storage limit by S3');
+    }
+    return UserStorageLimit.fromJson(response.data);
+  }
+
+  @override
+  Future<UserStorageLimit> getGroupAdminDefaultStorageLimit(
+      StorageLimitType type) async {
+    final response = await dioClient
+        .get('/user-storage-limits/group-admin/default/${type.value}');
+    if (response.statusCode != 200) {
+      throw Exception('Failed to get group admin storage limit');
     }
     return UserStorageLimit.fromJson(response.data);
   }

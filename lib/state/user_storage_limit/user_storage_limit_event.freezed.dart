@@ -20,18 +20,22 @@ mixin _$UserStorageLimitEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() s3Initialize,
     required TResult Function() s3ClearError,
+    required TResult Function(StorageLimitType type)
+        groupAdminDefaultStorageLimit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? s3Initialize,
     TResult? Function()? s3ClearError,
+    TResult? Function(StorageLimitType type)? groupAdminDefaultStorageLimit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? s3Initialize,
     TResult Function()? s3ClearError,
+    TResult Function(StorageLimitType type)? groupAdminDefaultStorageLimit,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +43,24 @@ mixin _$UserStorageLimitEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_S3Initialize value) s3Initialize,
     required TResult Function(_S3ClearError value) s3ClearError,
+    required TResult Function(_GroupAdminDefaultStorageLimit value)
+        groupAdminDefaultStorageLimit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_S3Initialize value)? s3Initialize,
     TResult? Function(_S3ClearError value)? s3ClearError,
+    TResult? Function(_GroupAdminDefaultStorageLimit value)?
+        groupAdminDefaultStorageLimit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_S3Initialize value)? s3Initialize,
     TResult Function(_S3ClearError value)? s3ClearError,
+    TResult Function(_GroupAdminDefaultStorageLimit value)?
+        groupAdminDefaultStorageLimit,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -121,6 +131,8 @@ class _$S3InitializeImpl implements _S3Initialize {
   TResult when<TResult extends Object?>({
     required TResult Function() s3Initialize,
     required TResult Function() s3ClearError,
+    required TResult Function(StorageLimitType type)
+        groupAdminDefaultStorageLimit,
   }) {
     return s3Initialize();
   }
@@ -130,6 +142,7 @@ class _$S3InitializeImpl implements _S3Initialize {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? s3Initialize,
     TResult? Function()? s3ClearError,
+    TResult? Function(StorageLimitType type)? groupAdminDefaultStorageLimit,
   }) {
     return s3Initialize?.call();
   }
@@ -139,6 +152,7 @@ class _$S3InitializeImpl implements _S3Initialize {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? s3Initialize,
     TResult Function()? s3ClearError,
+    TResult Function(StorageLimitType type)? groupAdminDefaultStorageLimit,
     required TResult orElse(),
   }) {
     if (s3Initialize != null) {
@@ -152,6 +166,8 @@ class _$S3InitializeImpl implements _S3Initialize {
   TResult map<TResult extends Object?>({
     required TResult Function(_S3Initialize value) s3Initialize,
     required TResult Function(_S3ClearError value) s3ClearError,
+    required TResult Function(_GroupAdminDefaultStorageLimit value)
+        groupAdminDefaultStorageLimit,
   }) {
     return s3Initialize(this);
   }
@@ -161,6 +177,8 @@ class _$S3InitializeImpl implements _S3Initialize {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_S3Initialize value)? s3Initialize,
     TResult? Function(_S3ClearError value)? s3ClearError,
+    TResult? Function(_GroupAdminDefaultStorageLimit value)?
+        groupAdminDefaultStorageLimit,
   }) {
     return s3Initialize?.call(this);
   }
@@ -170,6 +188,8 @@ class _$S3InitializeImpl implements _S3Initialize {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_S3Initialize value)? s3Initialize,
     TResult Function(_S3ClearError value)? s3ClearError,
+    TResult Function(_GroupAdminDefaultStorageLimit value)?
+        groupAdminDefaultStorageLimit,
     required TResult orElse(),
   }) {
     if (s3Initialize != null) {
@@ -226,6 +246,8 @@ class _$S3ClearErrorImpl implements _S3ClearError {
   TResult when<TResult extends Object?>({
     required TResult Function() s3Initialize,
     required TResult Function() s3ClearError,
+    required TResult Function(StorageLimitType type)
+        groupAdminDefaultStorageLimit,
   }) {
     return s3ClearError();
   }
@@ -235,6 +257,7 @@ class _$S3ClearErrorImpl implements _S3ClearError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? s3Initialize,
     TResult? Function()? s3ClearError,
+    TResult? Function(StorageLimitType type)? groupAdminDefaultStorageLimit,
   }) {
     return s3ClearError?.call();
   }
@@ -244,6 +267,7 @@ class _$S3ClearErrorImpl implements _S3ClearError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? s3Initialize,
     TResult Function()? s3ClearError,
+    TResult Function(StorageLimitType type)? groupAdminDefaultStorageLimit,
     required TResult orElse(),
   }) {
     if (s3ClearError != null) {
@@ -257,6 +281,8 @@ class _$S3ClearErrorImpl implements _S3ClearError {
   TResult map<TResult extends Object?>({
     required TResult Function(_S3Initialize value) s3Initialize,
     required TResult Function(_S3ClearError value) s3ClearError,
+    required TResult Function(_GroupAdminDefaultStorageLimit value)
+        groupAdminDefaultStorageLimit,
   }) {
     return s3ClearError(this);
   }
@@ -266,6 +292,8 @@ class _$S3ClearErrorImpl implements _S3ClearError {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_S3Initialize value)? s3Initialize,
     TResult? Function(_S3ClearError value)? s3ClearError,
+    TResult? Function(_GroupAdminDefaultStorageLimit value)?
+        groupAdminDefaultStorageLimit,
   }) {
     return s3ClearError?.call(this);
   }
@@ -275,6 +303,8 @@ class _$S3ClearErrorImpl implements _S3ClearError {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_S3Initialize value)? s3Initialize,
     TResult Function(_S3ClearError value)? s3ClearError,
+    TResult Function(_GroupAdminDefaultStorageLimit value)?
+        groupAdminDefaultStorageLimit,
     required TResult orElse(),
   }) {
     if (s3ClearError != null) {
@@ -286,4 +316,162 @@ class _$S3ClearErrorImpl implements _S3ClearError {
 
 abstract class _S3ClearError implements UserStorageLimitEvent {
   const factory _S3ClearError() = _$S3ClearErrorImpl;
+}
+
+/// @nodoc
+abstract class _$$GroupAdminDefaultStorageLimitImplCopyWith<$Res> {
+  factory _$$GroupAdminDefaultStorageLimitImplCopyWith(
+          _$GroupAdminDefaultStorageLimitImpl value,
+          $Res Function(_$GroupAdminDefaultStorageLimitImpl) then) =
+      __$$GroupAdminDefaultStorageLimitImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({StorageLimitType type});
+}
+
+/// @nodoc
+class __$$GroupAdminDefaultStorageLimitImplCopyWithImpl<$Res>
+    extends _$UserStorageLimitEventCopyWithImpl<$Res,
+        _$GroupAdminDefaultStorageLimitImpl>
+    implements _$$GroupAdminDefaultStorageLimitImplCopyWith<$Res> {
+  __$$GroupAdminDefaultStorageLimitImplCopyWithImpl(
+      _$GroupAdminDefaultStorageLimitImpl _value,
+      $Res Function(_$GroupAdminDefaultStorageLimitImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of UserStorageLimitEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? type = null,
+  }) {
+    return _then(_$GroupAdminDefaultStorageLimitImpl(
+      null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as StorageLimitType,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GroupAdminDefaultStorageLimitImpl
+    implements _GroupAdminDefaultStorageLimit {
+  const _$GroupAdminDefaultStorageLimitImpl(this.type);
+
+  @override
+  final StorageLimitType type;
+
+  @override
+  String toString() {
+    return 'UserStorageLimitEvent.groupAdminDefaultStorageLimit(type: $type)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GroupAdminDefaultStorageLimitImpl &&
+            (identical(other.type, type) || other.type == type));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, type);
+
+  /// Create a copy of UserStorageLimitEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GroupAdminDefaultStorageLimitImplCopyWith<
+          _$GroupAdminDefaultStorageLimitImpl>
+      get copyWith => __$$GroupAdminDefaultStorageLimitImplCopyWithImpl<
+          _$GroupAdminDefaultStorageLimitImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() s3Initialize,
+    required TResult Function() s3ClearError,
+    required TResult Function(StorageLimitType type)
+        groupAdminDefaultStorageLimit,
+  }) {
+    return groupAdminDefaultStorageLimit(type);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? s3Initialize,
+    TResult? Function()? s3ClearError,
+    TResult? Function(StorageLimitType type)? groupAdminDefaultStorageLimit,
+  }) {
+    return groupAdminDefaultStorageLimit?.call(type);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? s3Initialize,
+    TResult Function()? s3ClearError,
+    TResult Function(StorageLimitType type)? groupAdminDefaultStorageLimit,
+    required TResult orElse(),
+  }) {
+    if (groupAdminDefaultStorageLimit != null) {
+      return groupAdminDefaultStorageLimit(type);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_S3Initialize value) s3Initialize,
+    required TResult Function(_S3ClearError value) s3ClearError,
+    required TResult Function(_GroupAdminDefaultStorageLimit value)
+        groupAdminDefaultStorageLimit,
+  }) {
+    return groupAdminDefaultStorageLimit(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_S3Initialize value)? s3Initialize,
+    TResult? Function(_S3ClearError value)? s3ClearError,
+    TResult? Function(_GroupAdminDefaultStorageLimit value)?
+        groupAdminDefaultStorageLimit,
+  }) {
+    return groupAdminDefaultStorageLimit?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_S3Initialize value)? s3Initialize,
+    TResult Function(_S3ClearError value)? s3ClearError,
+    TResult Function(_GroupAdminDefaultStorageLimit value)?
+        groupAdminDefaultStorageLimit,
+    required TResult orElse(),
+  }) {
+    if (groupAdminDefaultStorageLimit != null) {
+      return groupAdminDefaultStorageLimit(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GroupAdminDefaultStorageLimit implements UserStorageLimitEvent {
+  const factory _GroupAdminDefaultStorageLimit(final StorageLimitType type) =
+      _$GroupAdminDefaultStorageLimitImpl;
+
+  StorageLimitType get type;
+
+  /// Create a copy of UserStorageLimitEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$GroupAdminDefaultStorageLimitImplCopyWith<
+          _$GroupAdminDefaultStorageLimitImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

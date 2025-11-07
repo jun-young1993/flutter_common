@@ -75,10 +75,36 @@ class PrettySelectBox<T> extends StatelessWidget {
     return item.toString();
   }
 
+  /// Removes duplicate items from the list.
+  /// Uses equality comparison to identify duplicates.
+  List<T> _removeDuplicates(List<T> items) {
+    final uniqueItems = <T>[];
+    for (final item in items) {
+      if (!uniqueItems.contains(item)) {
+        uniqueItems.add(item);
+      }
+    }
+    return uniqueItems;
+  }
+
+  /// Validates that selectedValue exists in items list.
+  /// Returns null if selectedValue is not found in items.
+  T? _getValidatedValue(List<T> uniqueItems) {
+    if (selectedValue == null) {
+      return null;
+    }
+    // Check if selectedValue exists in unique items list
+    final foundItem = uniqueItems.where((item) => item == selectedValue).firstOrNull;
+    return foundItem;
+  }
+
   @override
   Widget build(BuildContext context) {
+    // Remove duplicates from items
+    final uniqueItems = _removeDuplicates(items);
+    final validatedValue = _getValidatedValue(uniqueItems);
     return DropdownButtonFormField<T>(
-      value: selectedValue,
+      value: validatedValue,
       hint: hint != null ? Text(hint!) : null,
       decoration: InputDecoration(
         labelText: label,
@@ -91,7 +117,7 @@ class PrettySelectBox<T> extends StatelessWidget {
               vertical: 16.0,
             ),
       ),
-      items: items.map((T item) {
+      items: uniqueItems.map((T item) {
         return DropdownMenuItem<T>(
           value: item,
           child: Text(_getDisplayText(item)),

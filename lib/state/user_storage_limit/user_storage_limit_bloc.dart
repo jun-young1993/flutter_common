@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_common/extensions/app_exception.dart';
 import 'package:flutter_common/repositories/user_storage_limit_repository.dart';
 import 'package:flutter_common/state/user_storage_limit/user_storage_limit_event.dart';
 import 'package:flutter_common/state/user_storage_limit/user_storage_limit_state.dart';
@@ -18,6 +19,29 @@ class UserStorageLimitBloc
           },
           s3ClearError: (e) async {
             emit(state.copyWith(s3IsLoading: false, s3Error: null));
+          },
+          groupAdminDefaultStorageLimit: (e) async {
+            emit(state.copyWith(
+                groupAdminDefaultStorageLimitIsLoading: true,
+                groupAdminDefaultStorageLimitError: null));
+            try {
+              final storageLimit = await userStorageLimitRepository
+                  .getGroupAdminDefaultStorageLimit(e.type);
+              emit(state.copyWith(
+                  groupAdminDefaultStorageLimit: storageLimit,
+                  groupAdminDefaultStorageLimitIsLoading: false));
+            } catch (e) {
+              if (e is AppException) {
+                emit(state.copyWith(
+                    groupAdminDefaultStorageLimitIsLoading: false,
+                    groupAdminDefaultStorageLimitError: e));
+              } else {
+                final appException = AppException.unknown(e.toString());
+                emit(state.copyWith(
+                    groupAdminDefaultStorageLimitIsLoading: false,
+                    groupAdminDefaultStorageLimitError: appException));
+              }
+            }
           },
         );
       },

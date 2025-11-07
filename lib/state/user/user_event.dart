@@ -13,5 +13,6 @@ class UserEvent with _$UserEvent {
   const factory UserEvent.clearError() = _ClearError;
   const factory UserEvent.addAppUser({String? fcmToken, String? username}) =
       _AddAppUser;
+  const factory UserEvent.getAppUsers() = _GetAppUsers;
   const factory UserEvent.changeAppUser(User user) = _ChangeAppUser;
 }

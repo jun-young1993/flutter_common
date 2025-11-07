@@ -21,4 +21,6 @@ class User with _$User {
 
   const User._();
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
+
+  String get displayText => username ?? 'unknown';
 }

@@ -14,6 +14,24 @@ enum StorageLimitType {
   monthlyUpload,
 }
 
+/// Extension to get JSON value from StorageLimitType enum.
+extension StorageLimitTypeExtension on StorageLimitType {
+  /// Returns the JSON value string for this enum value.
+  /// This matches the @JsonValue annotation in the enum definition.
+  String get value {
+    switch (this) {
+      case StorageLimitType.s3Storage:
+        return 'S3_STORAGE';
+      case StorageLimitType.fileUpload:
+        return 'FILE_UPLOAD';
+      case StorageLimitType.dailyUpload:
+        return 'DAILY_UPLOAD';
+      case StorageLimitType.monthlyUpload:
+        return 'MONTHLY_UPLOAD';
+    }
+  }
+}
+
 @freezed
 class UserStorageLimit with _$UserStorageLimit {
   const factory UserStorageLimit({

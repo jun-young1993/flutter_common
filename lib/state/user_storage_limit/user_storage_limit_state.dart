@@ -10,6 +10,9 @@ class UserStorageLimitState with _$UserStorageLimitState {
     @Default(false) bool s3IsLoading,
     @Default(null) AppException? s3Error,
     @Default(null) UserStorageLimit? s3,
+    @Default(false) bool groupAdminDefaultStorageLimitIsLoading,
+    @Default(null) AppException? groupAdminDefaultStorageLimitError,
+    @Default(null) UserStorageLimit? groupAdminDefaultStorageLimit,
   }) = _UserStorageLimitState;
 
   const UserStorageLimitState._();

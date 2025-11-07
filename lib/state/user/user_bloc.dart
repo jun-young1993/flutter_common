@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_common/extensions/app_exception.dart';
 import 'package:flutter_common/repositories/user_repository.dart';
@@ -17,8 +18,12 @@ class UserBloc extends Bloc<UserEvent, UserState> {
         await event.map(initialize: (e) async {
           await _handleEvent(emit, () async {
             final user = await userRepository.getUserInfo(fcmToken: fcmToken);
+            emit(state.copyWith(user: user));
+          });
+        }, getAppUsers: (e) async {
+          await _handleEvent(emit, () async {
             final userList = await userRepository.getAppUserList();
-            emit(state.copyWith(user: user, userList: userList));
+            emit(state.copyWith(userList: userList));
           });
         }, addAppUser: (e) async {
           await _handleEvent(emit, () async {
