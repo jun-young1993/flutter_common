@@ -26,6 +26,7 @@ mixin _$UserEvent {
     required TResult Function(String? fcmToken, String? username) addAppUser,
     required TResult Function() getAppUsers,
     required TResult Function(User user) changeAppUser,
+    required TResult Function() clearAddAppUserError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +39,7 @@ mixin _$UserEvent {
     TResult? Function(String? fcmToken, String? username)? addAppUser,
     TResult? Function()? getAppUsers,
     TResult? Function(User user)? changeAppUser,
+    TResult? Function()? clearAddAppUserError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +52,7 @@ mixin _$UserEvent {
     TResult Function(String? fcmToken, String? username)? addAppUser,
     TResult Function()? getAppUsers,
     TResult Function(User user)? changeAppUser,
+    TResult Function()? clearAddAppUserError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -63,6 +66,7 @@ mixin _$UserEvent {
     required TResult Function(_AddAppUser value) addAppUser,
     required TResult Function(_GetAppUsers value) getAppUsers,
     required TResult Function(_ChangeAppUser value) changeAppUser,
+    required TResult Function(_ClearAddAppUserError value) clearAddAppUserError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -75,6 +79,7 @@ mixin _$UserEvent {
     TResult? Function(_AddAppUser value)? addAppUser,
     TResult? Function(_GetAppUsers value)? getAppUsers,
     TResult? Function(_ChangeAppUser value)? changeAppUser,
+    TResult? Function(_ClearAddAppUserError value)? clearAddAppUserError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -87,6 +92,7 @@ mixin _$UserEvent {
     TResult Function(_AddAppUser value)? addAppUser,
     TResult Function(_GetAppUsers value)? getAppUsers,
     TResult Function(_ChangeAppUser value)? changeAppUser,
+    TResult Function(_ClearAddAppUserError value)? clearAddAppUserError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -161,6 +167,7 @@ class _$InitializeImpl implements _Initialize {
     required TResult Function(String? fcmToken, String? username) addAppUser,
     required TResult Function() getAppUsers,
     required TResult Function(User user) changeAppUser,
+    required TResult Function() clearAddAppUserError,
   }) {
     return initialize();
   }
@@ -176,6 +183,7 @@ class _$InitializeImpl implements _Initialize {
     TResult? Function(String? fcmToken, String? username)? addAppUser,
     TResult? Function()? getAppUsers,
     TResult? Function(User user)? changeAppUser,
+    TResult? Function()? clearAddAppUserError,
   }) {
     return initialize?.call();
   }
@@ -191,6 +199,7 @@ class _$InitializeImpl implements _Initialize {
     TResult Function(String? fcmToken, String? username)? addAppUser,
     TResult Function()? getAppUsers,
     TResult Function(User user)? changeAppUser,
+    TResult Function()? clearAddAppUserError,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -210,6 +219,7 @@ class _$InitializeImpl implements _Initialize {
     required TResult Function(_AddAppUser value) addAppUser,
     required TResult Function(_GetAppUsers value) getAppUsers,
     required TResult Function(_ChangeAppUser value) changeAppUser,
+    required TResult Function(_ClearAddAppUserError value) clearAddAppUserError,
   }) {
     return initialize(this);
   }
@@ -225,6 +235,7 @@ class _$InitializeImpl implements _Initialize {
     TResult? Function(_AddAppUser value)? addAppUser,
     TResult? Function(_GetAppUsers value)? getAppUsers,
     TResult? Function(_ChangeAppUser value)? changeAppUser,
+    TResult? Function(_ClearAddAppUserError value)? clearAddAppUserError,
   }) {
     return initialize?.call(this);
   }
@@ -240,6 +251,7 @@ class _$InitializeImpl implements _Initialize {
     TResult Function(_AddAppUser value)? addAppUser,
     TResult Function(_GetAppUsers value)? getAppUsers,
     TResult Function(_ChangeAppUser value)? changeAppUser,
+    TResult Function(_ClearAddAppUserError value)? clearAddAppUserError,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -342,6 +354,7 @@ class _$DeleteUserDataImpl implements _DeleteUserData {
     required TResult Function(String? fcmToken, String? username) addAppUser,
     required TResult Function() getAppUsers,
     required TResult Function(User user) changeAppUser,
+    required TResult Function() clearAddAppUserError,
   }) {
     return deleteUserData(user);
   }
@@ -357,6 +370,7 @@ class _$DeleteUserDataImpl implements _DeleteUserData {
     TResult? Function(String? fcmToken, String? username)? addAppUser,
     TResult? Function()? getAppUsers,
     TResult? Function(User user)? changeAppUser,
+    TResult? Function()? clearAddAppUserError,
   }) {
     return deleteUserData?.call(user);
   }
@@ -372,6 +386,7 @@ class _$DeleteUserDataImpl implements _DeleteUserData {
     TResult Function(String? fcmToken, String? username)? addAppUser,
     TResult Function()? getAppUsers,
     TResult Function(User user)? changeAppUser,
+    TResult Function()? clearAddAppUserError,
     required TResult orElse(),
   }) {
     if (deleteUserData != null) {
@@ -391,6 +406,7 @@ class _$DeleteUserDataImpl implements _DeleteUserData {
     required TResult Function(_AddAppUser value) addAppUser,
     required TResult Function(_GetAppUsers value) getAppUsers,
     required TResult Function(_ChangeAppUser value) changeAppUser,
+    required TResult Function(_ClearAddAppUserError value) clearAddAppUserError,
   }) {
     return deleteUserData(this);
   }
@@ -406,6 +422,7 @@ class _$DeleteUserDataImpl implements _DeleteUserData {
     TResult? Function(_AddAppUser value)? addAppUser,
     TResult? Function(_GetAppUsers value)? getAppUsers,
     TResult? Function(_ChangeAppUser value)? changeAppUser,
+    TResult? Function(_ClearAddAppUserError value)? clearAddAppUserError,
   }) {
     return deleteUserData?.call(this);
   }
@@ -421,6 +438,7 @@ class _$DeleteUserDataImpl implements _DeleteUserData {
     TResult Function(_AddAppUser value)? addAppUser,
     TResult Function(_GetAppUsers value)? getAppUsers,
     TResult Function(_ChangeAppUser value)? changeAppUser,
+    TResult Function(_ClearAddAppUserError value)? clearAddAppUserError,
     required TResult orElse(),
   }) {
     if (deleteUserData != null) {
@@ -527,6 +545,7 @@ class _$UserBlockImpl implements _UserBlock {
     required TResult Function(String? fcmToken, String? username) addAppUser,
     required TResult Function() getAppUsers,
     required TResult Function(User user) changeAppUser,
+    required TResult Function() clearAddAppUserError,
   }) {
     return userBlock(blockedUserId, reason);
   }
@@ -542,6 +561,7 @@ class _$UserBlockImpl implements _UserBlock {
     TResult? Function(String? fcmToken, String? username)? addAppUser,
     TResult? Function()? getAppUsers,
     TResult? Function(User user)? changeAppUser,
+    TResult? Function()? clearAddAppUserError,
   }) {
     return userBlock?.call(blockedUserId, reason);
   }
@@ -557,6 +577,7 @@ class _$UserBlockImpl implements _UserBlock {
     TResult Function(String? fcmToken, String? username)? addAppUser,
     TResult Function()? getAppUsers,
     TResult Function(User user)? changeAppUser,
+    TResult Function()? clearAddAppUserError,
     required TResult orElse(),
   }) {
     if (userBlock != null) {
@@ -576,6 +597,7 @@ class _$UserBlockImpl implements _UserBlock {
     required TResult Function(_AddAppUser value) addAppUser,
     required TResult Function(_GetAppUsers value) getAppUsers,
     required TResult Function(_ChangeAppUser value) changeAppUser,
+    required TResult Function(_ClearAddAppUserError value) clearAddAppUserError,
   }) {
     return userBlock(this);
   }
@@ -591,6 +613,7 @@ class _$UserBlockImpl implements _UserBlock {
     TResult? Function(_AddAppUser value)? addAppUser,
     TResult? Function(_GetAppUsers value)? getAppUsers,
     TResult? Function(_ChangeAppUser value)? changeAppUser,
+    TResult? Function(_ClearAddAppUserError value)? clearAddAppUserError,
   }) {
     return userBlock?.call(this);
   }
@@ -606,6 +629,7 @@ class _$UserBlockImpl implements _UserBlock {
     TResult Function(_AddAppUser value)? addAppUser,
     TResult Function(_GetAppUsers value)? getAppUsers,
     TResult Function(_ChangeAppUser value)? changeAppUser,
+    TResult Function(_ClearAddAppUserError value)? clearAddAppUserError,
     required TResult orElse(),
   }) {
     if (userBlock != null) {
@@ -707,6 +731,7 @@ class _$UpdateUserNameImpl implements _UpdateUserName {
     required TResult Function(String? fcmToken, String? username) addAppUser,
     required TResult Function() getAppUsers,
     required TResult Function(User user) changeAppUser,
+    required TResult Function() clearAddAppUserError,
   }) {
     return updateUserName(userName);
   }
@@ -722,6 +747,7 @@ class _$UpdateUserNameImpl implements _UpdateUserName {
     TResult? Function(String? fcmToken, String? username)? addAppUser,
     TResult? Function()? getAppUsers,
     TResult? Function(User user)? changeAppUser,
+    TResult? Function()? clearAddAppUserError,
   }) {
     return updateUserName?.call(userName);
   }
@@ -737,6 +763,7 @@ class _$UpdateUserNameImpl implements _UpdateUserName {
     TResult Function(String? fcmToken, String? username)? addAppUser,
     TResult Function()? getAppUsers,
     TResult Function(User user)? changeAppUser,
+    TResult Function()? clearAddAppUserError,
     required TResult orElse(),
   }) {
     if (updateUserName != null) {
@@ -756,6 +783,7 @@ class _$UpdateUserNameImpl implements _UpdateUserName {
     required TResult Function(_AddAppUser value) addAppUser,
     required TResult Function(_GetAppUsers value) getAppUsers,
     required TResult Function(_ChangeAppUser value) changeAppUser,
+    required TResult Function(_ClearAddAppUserError value) clearAddAppUserError,
   }) {
     return updateUserName(this);
   }
@@ -771,6 +799,7 @@ class _$UpdateUserNameImpl implements _UpdateUserName {
     TResult? Function(_AddAppUser value)? addAppUser,
     TResult? Function(_GetAppUsers value)? getAppUsers,
     TResult? Function(_ChangeAppUser value)? changeAppUser,
+    TResult? Function(_ClearAddAppUserError value)? clearAddAppUserError,
   }) {
     return updateUserName?.call(this);
   }
@@ -786,6 +815,7 @@ class _$UpdateUserNameImpl implements _UpdateUserName {
     TResult Function(_AddAppUser value)? addAppUser,
     TResult Function(_GetAppUsers value)? getAppUsers,
     TResult Function(_ChangeAppUser value)? changeAppUser,
+    TResult Function(_ClearAddAppUserError value)? clearAddAppUserError,
     required TResult orElse(),
   }) {
     if (updateUserName != null) {
@@ -856,6 +886,7 @@ class _$ClearErrorImpl implements _ClearError {
     required TResult Function(String? fcmToken, String? username) addAppUser,
     required TResult Function() getAppUsers,
     required TResult Function(User user) changeAppUser,
+    required TResult Function() clearAddAppUserError,
   }) {
     return clearError();
   }
@@ -871,6 +902,7 @@ class _$ClearErrorImpl implements _ClearError {
     TResult? Function(String? fcmToken, String? username)? addAppUser,
     TResult? Function()? getAppUsers,
     TResult? Function(User user)? changeAppUser,
+    TResult? Function()? clearAddAppUserError,
   }) {
     return clearError?.call();
   }
@@ -886,6 +918,7 @@ class _$ClearErrorImpl implements _ClearError {
     TResult Function(String? fcmToken, String? username)? addAppUser,
     TResult Function()? getAppUsers,
     TResult Function(User user)? changeAppUser,
+    TResult Function()? clearAddAppUserError,
     required TResult orElse(),
   }) {
     if (clearError != null) {
@@ -905,6 +938,7 @@ class _$ClearErrorImpl implements _ClearError {
     required TResult Function(_AddAppUser value) addAppUser,
     required TResult Function(_GetAppUsers value) getAppUsers,
     required TResult Function(_ChangeAppUser value) changeAppUser,
+    required TResult Function(_ClearAddAppUserError value) clearAddAppUserError,
   }) {
     return clearError(this);
   }
@@ -920,6 +954,7 @@ class _$ClearErrorImpl implements _ClearError {
     TResult? Function(_AddAppUser value)? addAppUser,
     TResult? Function(_GetAppUsers value)? getAppUsers,
     TResult? Function(_ChangeAppUser value)? changeAppUser,
+    TResult? Function(_ClearAddAppUserError value)? clearAddAppUserError,
   }) {
     return clearError?.call(this);
   }
@@ -935,6 +970,7 @@ class _$ClearErrorImpl implements _ClearError {
     TResult Function(_AddAppUser value)? addAppUser,
     TResult Function(_GetAppUsers value)? getAppUsers,
     TResult Function(_ChangeAppUser value)? changeAppUser,
+    TResult Function(_ClearAddAppUserError value)? clearAddAppUserError,
     required TResult orElse(),
   }) {
     if (clearError != null) {
@@ -1034,6 +1070,7 @@ class _$AddAppUserImpl implements _AddAppUser {
     required TResult Function(String? fcmToken, String? username) addAppUser,
     required TResult Function() getAppUsers,
     required TResult Function(User user) changeAppUser,
+    required TResult Function() clearAddAppUserError,
   }) {
     return addAppUser(fcmToken, username);
   }
@@ -1049,6 +1086,7 @@ class _$AddAppUserImpl implements _AddAppUser {
     TResult? Function(String? fcmToken, String? username)? addAppUser,
     TResult? Function()? getAppUsers,
     TResult? Function(User user)? changeAppUser,
+    TResult? Function()? clearAddAppUserError,
   }) {
     return addAppUser?.call(fcmToken, username);
   }
@@ -1064,6 +1102,7 @@ class _$AddAppUserImpl implements _AddAppUser {
     TResult Function(String? fcmToken, String? username)? addAppUser,
     TResult Function()? getAppUsers,
     TResult Function(User user)? changeAppUser,
+    TResult Function()? clearAddAppUserError,
     required TResult orElse(),
   }) {
     if (addAppUser != null) {
@@ -1083,6 +1122,7 @@ class _$AddAppUserImpl implements _AddAppUser {
     required TResult Function(_AddAppUser value) addAppUser,
     required TResult Function(_GetAppUsers value) getAppUsers,
     required TResult Function(_ChangeAppUser value) changeAppUser,
+    required TResult Function(_ClearAddAppUserError value) clearAddAppUserError,
   }) {
     return addAppUser(this);
   }
@@ -1098,6 +1138,7 @@ class _$AddAppUserImpl implements _AddAppUser {
     TResult? Function(_AddAppUser value)? addAppUser,
     TResult? Function(_GetAppUsers value)? getAppUsers,
     TResult? Function(_ChangeAppUser value)? changeAppUser,
+    TResult? Function(_ClearAddAppUserError value)? clearAddAppUserError,
   }) {
     return addAppUser?.call(this);
   }
@@ -1113,6 +1154,7 @@ class _$AddAppUserImpl implements _AddAppUser {
     TResult Function(_AddAppUser value)? addAppUser,
     TResult Function(_GetAppUsers value)? getAppUsers,
     TResult Function(_ChangeAppUser value)? changeAppUser,
+    TResult Function(_ClearAddAppUserError value)? clearAddAppUserError,
     required TResult orElse(),
   }) {
     if (addAppUser != null) {
@@ -1185,6 +1227,7 @@ class _$GetAppUsersImpl implements _GetAppUsers {
     required TResult Function(String? fcmToken, String? username) addAppUser,
     required TResult Function() getAppUsers,
     required TResult Function(User user) changeAppUser,
+    required TResult Function() clearAddAppUserError,
   }) {
     return getAppUsers();
   }
@@ -1200,6 +1243,7 @@ class _$GetAppUsersImpl implements _GetAppUsers {
     TResult? Function(String? fcmToken, String? username)? addAppUser,
     TResult? Function()? getAppUsers,
     TResult? Function(User user)? changeAppUser,
+    TResult? Function()? clearAddAppUserError,
   }) {
     return getAppUsers?.call();
   }
@@ -1215,6 +1259,7 @@ class _$GetAppUsersImpl implements _GetAppUsers {
     TResult Function(String? fcmToken, String? username)? addAppUser,
     TResult Function()? getAppUsers,
     TResult Function(User user)? changeAppUser,
+    TResult Function()? clearAddAppUserError,
     required TResult orElse(),
   }) {
     if (getAppUsers != null) {
@@ -1234,6 +1279,7 @@ class _$GetAppUsersImpl implements _GetAppUsers {
     required TResult Function(_AddAppUser value) addAppUser,
     required TResult Function(_GetAppUsers value) getAppUsers,
     required TResult Function(_ChangeAppUser value) changeAppUser,
+    required TResult Function(_ClearAddAppUserError value) clearAddAppUserError,
   }) {
     return getAppUsers(this);
   }
@@ -1249,6 +1295,7 @@ class _$GetAppUsersImpl implements _GetAppUsers {
     TResult? Function(_AddAppUser value)? addAppUser,
     TResult? Function(_GetAppUsers value)? getAppUsers,
     TResult? Function(_ChangeAppUser value)? changeAppUser,
+    TResult? Function(_ClearAddAppUserError value)? clearAddAppUserError,
   }) {
     return getAppUsers?.call(this);
   }
@@ -1264,6 +1311,7 @@ class _$GetAppUsersImpl implements _GetAppUsers {
     TResult Function(_AddAppUser value)? addAppUser,
     TResult Function(_GetAppUsers value)? getAppUsers,
     TResult Function(_ChangeAppUser value)? changeAppUser,
+    TResult Function(_ClearAddAppUserError value)? clearAddAppUserError,
     required TResult orElse(),
   }) {
     if (getAppUsers != null) {
@@ -1365,6 +1413,7 @@ class _$ChangeAppUserImpl implements _ChangeAppUser {
     required TResult Function(String? fcmToken, String? username) addAppUser,
     required TResult Function() getAppUsers,
     required TResult Function(User user) changeAppUser,
+    required TResult Function() clearAddAppUserError,
   }) {
     return changeAppUser(user);
   }
@@ -1380,6 +1429,7 @@ class _$ChangeAppUserImpl implements _ChangeAppUser {
     TResult? Function(String? fcmToken, String? username)? addAppUser,
     TResult? Function()? getAppUsers,
     TResult? Function(User user)? changeAppUser,
+    TResult? Function()? clearAddAppUserError,
   }) {
     return changeAppUser?.call(user);
   }
@@ -1395,6 +1445,7 @@ class _$ChangeAppUserImpl implements _ChangeAppUser {
     TResult Function(String? fcmToken, String? username)? addAppUser,
     TResult Function()? getAppUsers,
     TResult Function(User user)? changeAppUser,
+    TResult Function()? clearAddAppUserError,
     required TResult orElse(),
   }) {
     if (changeAppUser != null) {
@@ -1414,6 +1465,7 @@ class _$ChangeAppUserImpl implements _ChangeAppUser {
     required TResult Function(_AddAppUser value) addAppUser,
     required TResult Function(_GetAppUsers value) getAppUsers,
     required TResult Function(_ChangeAppUser value) changeAppUser,
+    required TResult Function(_ClearAddAppUserError value) clearAddAppUserError,
   }) {
     return changeAppUser(this);
   }
@@ -1429,6 +1481,7 @@ class _$ChangeAppUserImpl implements _ChangeAppUser {
     TResult? Function(_AddAppUser value)? addAppUser,
     TResult? Function(_GetAppUsers value)? getAppUsers,
     TResult? Function(_ChangeAppUser value)? changeAppUser,
+    TResult? Function(_ClearAddAppUserError value)? clearAddAppUserError,
   }) {
     return changeAppUser?.call(this);
   }
@@ -1444,6 +1497,7 @@ class _$ChangeAppUserImpl implements _ChangeAppUser {
     TResult Function(_AddAppUser value)? addAppUser,
     TResult Function(_GetAppUsers value)? getAppUsers,
     TResult Function(_ChangeAppUser value)? changeAppUser,
+    TResult Function(_ClearAddAppUserError value)? clearAddAppUserError,
     required TResult orElse(),
   }) {
     if (changeAppUser != null) {
@@ -1463,4 +1517,152 @@ abstract class _ChangeAppUser implements UserEvent {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ChangeAppUserImplCopyWith<_$ChangeAppUserImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ClearAddAppUserErrorImplCopyWith<$Res> {
+  factory _$$ClearAddAppUserErrorImplCopyWith(_$ClearAddAppUserErrorImpl value,
+          $Res Function(_$ClearAddAppUserErrorImpl) then) =
+      __$$ClearAddAppUserErrorImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ClearAddAppUserErrorImplCopyWithImpl<$Res>
+    extends _$UserEventCopyWithImpl<$Res, _$ClearAddAppUserErrorImpl>
+    implements _$$ClearAddAppUserErrorImplCopyWith<$Res> {
+  __$$ClearAddAppUserErrorImplCopyWithImpl(_$ClearAddAppUserErrorImpl _value,
+      $Res Function(_$ClearAddAppUserErrorImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$ClearAddAppUserErrorImpl implements _ClearAddAppUserError {
+  const _$ClearAddAppUserErrorImpl();
+
+  @override
+  String toString() {
+    return 'UserEvent.clearAddAppUserError()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ClearAddAppUserErrorImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialize,
+    required TResult Function(User user) deleteUserData,
+    required TResult Function(String blockedUserId, String reason) userBlock,
+    required TResult Function(String userName) updateUserName,
+    required TResult Function() clearError,
+    required TResult Function(String? fcmToken, String? username) addAppUser,
+    required TResult Function() getAppUsers,
+    required TResult Function(User user) changeAppUser,
+    required TResult Function() clearAddAppUserError,
+  }) {
+    return clearAddAppUserError();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialize,
+    TResult? Function(User user)? deleteUserData,
+    TResult? Function(String blockedUserId, String reason)? userBlock,
+    TResult? Function(String userName)? updateUserName,
+    TResult? Function()? clearError,
+    TResult? Function(String? fcmToken, String? username)? addAppUser,
+    TResult? Function()? getAppUsers,
+    TResult? Function(User user)? changeAppUser,
+    TResult? Function()? clearAddAppUserError,
+  }) {
+    return clearAddAppUserError?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialize,
+    TResult Function(User user)? deleteUserData,
+    TResult Function(String blockedUserId, String reason)? userBlock,
+    TResult Function(String userName)? updateUserName,
+    TResult Function()? clearError,
+    TResult Function(String? fcmToken, String? username)? addAppUser,
+    TResult Function()? getAppUsers,
+    TResult Function(User user)? changeAppUser,
+    TResult Function()? clearAddAppUserError,
+    required TResult orElse(),
+  }) {
+    if (clearAddAppUserError != null) {
+      return clearAddAppUserError();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_DeleteUserData value) deleteUserData,
+    required TResult Function(_UserBlock value) userBlock,
+    required TResult Function(_UpdateUserName value) updateUserName,
+    required TResult Function(_ClearError value) clearError,
+    required TResult Function(_AddAppUser value) addAppUser,
+    required TResult Function(_GetAppUsers value) getAppUsers,
+    required TResult Function(_ChangeAppUser value) changeAppUser,
+    required TResult Function(_ClearAddAppUserError value) clearAddAppUserError,
+  }) {
+    return clearAddAppUserError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialize value)? initialize,
+    TResult? Function(_DeleteUserData value)? deleteUserData,
+    TResult? Function(_UserBlock value)? userBlock,
+    TResult? Function(_UpdateUserName value)? updateUserName,
+    TResult? Function(_ClearError value)? clearError,
+    TResult? Function(_AddAppUser value)? addAppUser,
+    TResult? Function(_GetAppUsers value)? getAppUsers,
+    TResult? Function(_ChangeAppUser value)? changeAppUser,
+    TResult? Function(_ClearAddAppUserError value)? clearAddAppUserError,
+  }) {
+    return clearAddAppUserError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_DeleteUserData value)? deleteUserData,
+    TResult Function(_UserBlock value)? userBlock,
+    TResult Function(_UpdateUserName value)? updateUserName,
+    TResult Function(_ClearError value)? clearError,
+    TResult Function(_AddAppUser value)? addAppUser,
+    TResult Function(_GetAppUsers value)? getAppUsers,
+    TResult Function(_ChangeAppUser value)? changeAppUser,
+    TResult Function(_ClearAddAppUserError value)? clearAddAppUserError,
+    required TResult orElse(),
+  }) {
+    if (clearAddAppUserError != null) {
+      return clearAddAppUserError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ClearAddAppUserError implements UserEvent {
+  const factory _ClearAddAppUserError() = _$ClearAddAppUserErrorImpl;
 }

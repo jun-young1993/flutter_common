@@ -15,4 +15,5 @@ class UserEvent with _$UserEvent {
       _AddAppUser;
   const factory UserEvent.getAppUsers() = _GetAppUsers;
   const factory UserEvent.changeAppUser(User user) = _ChangeAppUser;
+  const factory UserEvent.clearAddAppUserError() = _ClearAddAppUserError;
 }

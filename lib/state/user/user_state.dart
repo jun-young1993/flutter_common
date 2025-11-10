@@ -8,6 +8,8 @@ part 'user_state.freezed.dart';
 @freezed
 class UserState with _$UserState, BaseStateMixin {
   const factory UserState({
+    @Default(null) AppException? addAppUserError,
+    @Default(false) bool isAddingAppUser,
     @Default(false) bool isLoading,
     @Default(null) User? user,
     @Default(null) AppException? error,

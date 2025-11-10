@@ -16,6 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$UserState {
+  AppException? get addAppUserError => throw _privateConstructorUsedError;
+  bool get isAddingAppUser => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   User? get user => throw _privateConstructorUsedError;
   AppException? get error => throw _privateConstructorUsedError;
@@ -34,8 +36,14 @@ abstract class $UserStateCopyWith<$Res> {
       _$UserStateCopyWithImpl<$Res, UserState>;
   @useResult
   $Res call(
-      {bool isLoading, User? user, AppException? error, List<User> userList});
+      {AppException? addAppUserError,
+      bool isAddingAppUser,
+      bool isLoading,
+      User? user,
+      AppException? error,
+      List<User> userList});
 
+  $AppExceptionCopyWith<$Res>? get addAppUserError;
   $UserCopyWith<$Res>? get user;
   $AppExceptionCopyWith<$Res>? get error;
 }
@@ -55,12 +63,22 @@ class _$UserStateCopyWithImpl<$Res, $Val extends UserState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? addAppUserError = freezed,
+    Object? isAddingAppUser = null,
     Object? isLoading = null,
     Object? user = freezed,
     Object? error = freezed,
     Object? userList = null,
   }) {
     return _then(_value.copyWith(
+      addAppUserError: freezed == addAppUserError
+          ? _value.addAppUserError
+          : addAppUserError // ignore: cast_nullable_to_non_nullable
+              as AppException?,
+      isAddingAppUser: null == isAddingAppUser
+          ? _value.isAddingAppUser
+          : isAddingAppUser // ignore: cast_nullable_to_non_nullable
+              as bool,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -78,6 +96,20 @@ class _$UserStateCopyWithImpl<$Res, $Val extends UserState>
           : userList // ignore: cast_nullable_to_non_nullable
               as List<User>,
     ) as $Val);
+  }
+
+  /// Create a copy of UserState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AppExceptionCopyWith<$Res>? get addAppUserError {
+    if (_value.addAppUserError == null) {
+      return null;
+    }
+
+    return $AppExceptionCopyWith<$Res>(_value.addAppUserError!, (value) {
+      return _then(_value.copyWith(addAppUserError: value) as $Val);
+    });
   }
 
   /// Create a copy of UserState
@@ -118,8 +150,15 @@ abstract class _$$UserStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {bool isLoading, User? user, AppException? error, List<User> userList});
+      {AppException? addAppUserError,
+      bool isAddingAppUser,
+      bool isLoading,
+      User? user,
+      AppException? error,
+      List<User> userList});
 
+  @override
+  $AppExceptionCopyWith<$Res>? get addAppUserError;
   @override
   $UserCopyWith<$Res>? get user;
   @override
@@ -139,12 +178,22 @@ class __$$UserStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? addAppUserError = freezed,
+    Object? isAddingAppUser = null,
     Object? isLoading = null,
     Object? user = freezed,
     Object? error = freezed,
     Object? userList = null,
   }) {
     return _then(_$UserStateImpl(
+      addAppUserError: freezed == addAppUserError
+          ? _value.addAppUserError
+          : addAppUserError // ignore: cast_nullable_to_non_nullable
+              as AppException?,
+      isAddingAppUser: null == isAddingAppUser
+          ? _value.isAddingAppUser
+          : isAddingAppUser // ignore: cast_nullable_to_non_nullable
+              as bool,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -169,13 +218,21 @@ class __$$UserStateImplCopyWithImpl<$Res>
 
 class _$UserStateImpl extends _UserState {
   const _$UserStateImpl(
-      {this.isLoading = false,
+      {this.addAppUserError = null,
+      this.isAddingAppUser = false,
+      this.isLoading = false,
       this.user = null,
       this.error = null,
       final List<User> userList = const []})
       : _userList = userList,
         super._();
 
+  @override
+  @JsonKey()
+  final AppException? addAppUserError;
+  @override
+  @JsonKey()
+  final bool isAddingAppUser;
   @override
   @JsonKey()
   final bool isLoading;
@@ -196,7 +253,7 @@ class _$UserStateImpl extends _UserState {
 
   @override
   String toString() {
-    return 'UserState(isLoading: $isLoading, user: $user, error: $error, userList: $userList)';
+    return 'UserState(addAppUserError: $addAppUserError, isAddingAppUser: $isAddingAppUser, isLoading: $isLoading, user: $user, error: $error, userList: $userList)';
   }
 
   @override
@@ -204,6 +261,10 @@ class _$UserStateImpl extends _UserState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UserStateImpl &&
+            (identical(other.addAppUserError, addAppUserError) ||
+                other.addAppUserError == addAppUserError) &&
+            (identical(other.isAddingAppUser, isAddingAppUser) ||
+                other.isAddingAppUser == isAddingAppUser) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             (identical(other.user, user) || other.user == user) &&
@@ -212,8 +273,8 @@ class _$UserStateImpl extends _UserState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, user, error,
-      const DeepCollectionEquality().hash(_userList));
+  int get hashCode => Object.hash(runtimeType, addAppUserError, isAddingAppUser,
+      isLoading, user, error, const DeepCollectionEquality().hash(_userList));
 
   /// Create a copy of UserState
   /// with the given fields replaced by the non-null parameter values.
@@ -226,12 +287,18 @@ class _$UserStateImpl extends _UserState {
 
 abstract class _UserState extends UserState {
   const factory _UserState(
-      {final bool isLoading,
+      {final AppException? addAppUserError,
+      final bool isAddingAppUser,
+      final bool isLoading,
       final User? user,
       final AppException? error,
       final List<User> userList}) = _$UserStateImpl;
   const _UserState._() : super._();
 
+  @override
+  AppException? get addAppUserError;
+  @override
+  bool get isAddingAppUser;
   @override
   bool get isLoading;
   @override

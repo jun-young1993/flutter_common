@@ -312,6 +312,55 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
             );
           });
         }),
+        SizedBox(height: SizeConstants.getColumnSpacing(context)),
+        if (useAppUsers == true) ...[
+          UserListSelector((userList) {
+            return UserInfoSelector((user) {
+              if (user == null) {
+                return const SizedBox.shrink();
+              }
+              return CardContainerItem(
+                initiallyExpanded: false,
+                icon: Icons.people_outline,
+                title: Tr.app.profileList.tr(),
+                children: [
+                  Center(
+                      child: AwesomeTextButton(
+                    text: Tr.app.addProfile.tr(),
+                    fontSize: SizeConstants.getSmallButtonFontSize(context),
+                    padding: SizeConstants.getSmallButtonPadding(context),
+                    icon: Icons.add_outlined,
+                    color: Colors.green.shade600,
+                    onPressed: () {
+                      InputDialog.show(
+                        title: Tr.app.addProfile.tr(),
+                        hintText: Tr.app.addProfile.tr(),
+                        onConfirm: (value) {
+                          userBloc.add(UserEvent.addAppUser(username: value));
+                        },
+                        context: context,
+                      );
+                    },
+                  )),
+                  SizedBox(height: SizeConstants.getColumnSpacing(context)),
+                  SizedBox(height: SizeConstants.getColumnSpacing(context)),
+                  PrettySelectBox<User>(
+                    items: [user, ...userList],
+                    label: user.displayText,
+                    selectedValue: user,
+                    displayTextBuilder: (user) => user.displayText,
+                    onChanged: (value) {
+                      if (value != null) {
+                        userBloc.add(UserEvent.changeAppUser(value));
+                      }
+                    },
+                  ),
+                ],
+              );
+            });
+          })
+        ],
+        SizedBox(height: SizeConstants.getColumnSpacing(context)),
         // 사용자 데이터 삭제 버튼 추가
         UserInfoSelector((user) {
           return Column(
@@ -364,53 +413,6 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
             ],
           );
         }),
-        SizedBox(height: SizeConstants.getColumnSpacing(context)),
-        if (useAppUsers == true) ...[
-          UserListSelector((userList) {
-            return UserInfoSelector((user) {
-              if (user == null) {
-                return const SizedBox.shrink();
-              }
-              return CardContainerItem(
-                initiallyExpanded: false,
-                icon: Icons.people_outline,
-                title: Tr.app.profileList.tr(),
-                children: [
-                  Center(
-                      child: AwesomeTextButton(
-                    text: Tr.app.addProfile.tr(),
-                    fontSize: SizeConstants.getSmallButtonFontSize(context),
-                    padding: SizeConstants.getSmallButtonPadding(context),
-                    icon: Icons.add_outlined,
-                    color: Colors.green.shade600,
-                    onPressed: () {
-                      InputDialog.show(
-                        title: Tr.app.addProfile.tr(),
-                        hintText: Tr.app.addProfile.tr(),
-                        onConfirm: (value) {
-                          userBloc.add(UserEvent.addAppUser(username: value));
-                        },
-                        context: context,
-                      );
-                    },
-                  )),
-                  SizedBox(height: SizeConstants.getColumnSpacing(context)),
-                  PrettySelectBox<User>(
-                    items: userList,
-                    label: user.displayText,
-                    selectedValue: user,
-                    displayTextBuilder: (user) => user.displayText,
-                    onChanged: (value) {
-                      if (value != null) {
-                        userBloc.add(UserEvent.changeAppUser(value));
-                      }
-                    },
-                  ),
-                ],
-              );
-            });
-          })
-        ]
       ],
     );
   }

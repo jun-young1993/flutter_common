@@ -48,3 +48,23 @@ class UserListSelector extends UserSelector<List<User>> {
           builder: (context, userList) => builder(userList),
         );
 }
+
+class UserIsAddingAppUserSelector extends UserSelector<bool> {
+  UserIsAddingAppUserSelector(Widget Function(bool isAddingAppUser) builder,
+      {Key? key})
+      : super(
+          key: key,
+          selector: (state) => state.isAddingAppUser,
+          builder: (context, isAddingAppUser) => builder(isAddingAppUser),
+        );
+}
+
+class UserAddAppUserErrorSelector extends UserSelector<AppException?> {
+  UserAddAppUserErrorSelector(Widget Function(AppException? error) builder,
+      {Key? key})
+      : super(
+          key: key,
+          selector: (state) => state.addAppUserError,
+          builder: (context, addAppUserError) => builder(addAppUserError),
+        );
+}

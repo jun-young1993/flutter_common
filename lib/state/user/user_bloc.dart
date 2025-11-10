@@ -25,23 +25,34 @@ class UserBloc extends Bloc<UserEvent, UserState> {
             final userList = await userRepository.getAppUserList();
             emit(state.copyWith(userList: userList));
           });
+        }, clearAddAppUserError: (e) async {
+          emit(state.copyWith(isAddingAppUser: false, addAppUserError: null));
         }, addAppUser: (e) async {
-          await _handleEvent(emit, () async {
+          try {
             await userRepository.addAppUser(
                 fcmToken: fcmToken, username: e.username);
             final userList = await userRepository.getAppUserList();
-            emit(state.copyWith(userList: userList));
-          });
+            emit(state.copyWith(userList: userList, isAddingAppUser: false));
+          } on AppException catch (e) {
+            emit(state.copyWith(addAppUserError: e));
+          } catch (e) {
+            emit(state.copyWith(
+                addAppUserError: AppException.unknown(e.toString())));
+          } finally {
+            emit(state.copyWith(isAddingAppUser: false));
+          }
         }, changeAppUser: (e) async {
           await _handleEvent(emit, () async {
             await userRepository.changeAppUser(e.user);
             add(const UserEvent.initialize());
+            add(const UserEvent.getAppUsers());
           });
         }, deleteUserData: (e) async {
           await _handleEvent(emit, () async {
             await userRepository.deleteUserData(e.user);
             emit(state.copyWith(user: null));
             add(const UserEvent.initialize());
+            add(const UserEvent.getAppUsers());
           });
         }, userBlock: (e) async {
           await _handleEvent(emit, () async {

@@ -50,6 +50,8 @@ class PrettySelectBox<T> extends StatelessWidget {
   /// Whether the field is enabled.
   final bool enabled;
 
+  final bool disableSelectedValueItem;
+
   /// Creates a [PrettySelectBox] widget.
   ///
   /// [items] and [label] are required.
@@ -66,6 +68,7 @@ class PrettySelectBox<T> extends StatelessWidget {
     this.borderRadius = 8.0,
     this.contentPadding,
     this.enabled = true,
+    this.disableSelectedValueItem = true,
   });
 
   String _getDisplayText(T item) {
@@ -94,7 +97,8 @@ class PrettySelectBox<T> extends StatelessWidget {
       return null;
     }
     // Check if selectedValue exists in unique items list
-    final foundItem = uniqueItems.where((item) => item == selectedValue).firstOrNull;
+    final foundItem =
+        uniqueItems.where((item) => item == selectedValue).firstOrNull;
     return foundItem;
   }
 
@@ -120,7 +124,11 @@ class PrettySelectBox<T> extends StatelessWidget {
       items: uniqueItems.map((T item) {
         return DropdownMenuItem<T>(
           value: item,
-          child: Text(_getDisplayText(item)),
+          child: Text(_getDisplayText(item),
+              style: TextStyle(
+                  color: disableSelectedValueItem && item == selectedValue
+                      ? Colors.grey
+                      : null)),
         );
       }).toList(),
       onChanged: enabled ? onChanged : null,
