@@ -23,15 +23,15 @@ class S3ObjectTag with _$S3ObjectTag {
     if (isEmotion) {
       switch (name) {
         case 'neutral':
-          return Icons.sentiment_neutral;
+          return Icons.circle; // 단색 원: 중립
         case 'happy':
-          return Icons.emoji_emotions;
+          return Icons.star; // 별: 기쁨
         case 'sad':
-          return Icons.sentiment_dissatisfied;
+          return Icons.water_drop; // 물방울: 슬픔(눈물)
         case 'fear':
-          return Icons.sentiment_very_dissatisfied;
+          return Icons.warning_amber; // 경고 삼각형: 두려움/불안
         case 'surprise':
-          return Icons.sentiment_very_satisfied;
+          return Icons.auto_awesome; // 반짝임: 놀람
         default:
           return Icons.help_outline;
       }

@@ -355,6 +355,19 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
                       }
                     },
                   ),
+                  SizedBox(height: SizeConstants.getColumnSpacing(context)),
+                  UserAddAppUserErrorSelector((error) {
+                    if (error != null) {
+                      return AwesomeDescriptionText(
+                        text: error.message ?? Tr.error.unknownError.tr(),
+                        icon: Icons.error_outline,
+                        textAlign: TextAlign.center,
+                        color: Colors.red.shade600,
+                        fontSize: SizeConstants.getTextSmallFontSize(context),
+                      );
+                    }
+                    return const SizedBox.shrink();
+                  }),
                 ],
               );
             });
