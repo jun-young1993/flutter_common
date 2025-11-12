@@ -6,6 +6,7 @@ import 'package:flutter_common/extensions/app_exception.dart';
 import 'package:flutter_common/models/aws/s3/s3_object.dart';
 import 'package:flutter_common/models/aws/s3/s3_object_like.dart';
 import 'package:flutter_common/models/aws/s3/s3_object_surround.dart';
+import 'package:flutter_common/models/aws/s3/s3_object_tag.dart';
 import 'package:flutter_common/state/aws/s3/s3_object_bloc.dart';
 import 'package:flutter_common/state/aws/s3/s3_object_state.dart';
 
@@ -197,5 +198,39 @@ class S3ObjectUploadErrorSelector extends S3ObjectSelector<AppException?> {
           key: key,
           selector: (state) => state.uploadError,
           builder: (context, uploadError) => builder(uploadError),
+        );
+}
+
+class S3ObjectIsEmotionTagsLoadingSelector extends S3ObjectSelector<bool> {
+  S3ObjectIsEmotionTagsLoadingSelector(
+      Widget Function(bool isEmotionTagsLoading) builder,
+      {Key? key})
+      : super(
+          key: key,
+          selector: (state) => state.isEmotionTagsLoading,
+          builder: (context, isEmotionTagsLoading) =>
+              builder(isEmotionTagsLoading),
+        );
+}
+
+class S3ObjectEmotionTagsSelector extends S3ObjectSelector<List<S3ObjectTag>> {
+  S3ObjectEmotionTagsSelector(
+      Widget Function(List<S3ObjectTag> emotionTags) builder,
+      {Key? key})
+      : super(
+          key: key,
+          selector: (state) => state.s3ObjectEmotionTags,
+          builder: (context, emotionTags) => builder(emotionTags),
+        );
+}
+
+class S3ObjectEmotionTagsErrorSelector extends S3ObjectSelector<AppException?> {
+  S3ObjectEmotionTagsErrorSelector(
+      Widget Function(AppException? emotionTagsError) builder,
+      {Key? key})
+      : super(
+          key: key,
+          selector: (state) => state.emotionTagsError,
+          builder: (context, emotionTagsError) => builder(emotionTagsError),
         );
 }

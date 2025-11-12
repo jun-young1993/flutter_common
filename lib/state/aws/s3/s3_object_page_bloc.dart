@@ -1,11 +1,13 @@
 import 'package:flutter_common/flutter_common.dart';
 import 'package:flutter_common/models/aws/s3/s3_object.dart';
+import 'package:flutter_common/models/aws/s3/s3_object_tag.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 sealed class S3ObjectPageEvent {}
 
 final class FetchNextS3Object extends S3ObjectPageEvent {
-  FetchNextS3Object();
+  final List<S3ObjectTag>? tags;
+  FetchNextS3Object({this.tags});
 }
 
 final class FetchS3ObjectsByDate extends S3ObjectPageEvent {
@@ -56,6 +58,7 @@ class S3ObjectPageBloc
         final newItems = await s3ObjectRepository.getS3Object(
           (newKey - 1) * limit,
           limit,
+          tags: event.tags,
         );
         final isLastPage = newItems.isEmpty;
 

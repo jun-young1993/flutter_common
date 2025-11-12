@@ -35,6 +35,10 @@ mixin _$S3ObjectState {
   bool get isS3ObjectSurroundLoading => throw _privateConstructorUsedError;
   AppException? get uploadError => throw _privateConstructorUsedError;
   List<File> get isUploadingFiles => throw _privateConstructorUsedError;
+  List<S3ObjectTag> get s3ObjectEmotionTags =>
+      throw _privateConstructorUsedError;
+  bool get isEmotionTagsLoading => throw _privateConstructorUsedError;
+  AppException? get emotionTagsError => throw _privateConstructorUsedError;
 
   /// Create a copy of S3ObjectState
   /// with the given fields replaced by the non-null parameter values.
@@ -66,13 +70,17 @@ abstract class $S3ObjectStateCopyWith<$Res> {
       S3ObjectSurround? s3ObjectSurround,
       bool isS3ObjectSurroundLoading,
       AppException? uploadError,
-      List<File> isUploadingFiles});
+      List<File> isUploadingFiles,
+      List<S3ObjectTag> s3ObjectEmotionTags,
+      bool isEmotionTagsLoading,
+      AppException? emotionTagsError});
 
   $AppExceptionCopyWith<$Res>? get error;
   $S3ObjectCopyWith<$Res>? get s3Object;
   $S3ObjectLikeCopyWith<$Res>? get like;
   $S3ObjectSurroundCopyWith<$Res>? get s3ObjectSurround;
   $AppExceptionCopyWith<$Res>? get uploadError;
+  $AppExceptionCopyWith<$Res>? get emotionTagsError;
 }
 
 /// @nodoc
@@ -107,6 +115,9 @@ class _$S3ObjectStateCopyWithImpl<$Res, $Val extends S3ObjectState>
     Object? isS3ObjectSurroundLoading = null,
     Object? uploadError = freezed,
     Object? isUploadingFiles = null,
+    Object? s3ObjectEmotionTags = null,
+    Object? isEmotionTagsLoading = null,
+    Object? emotionTagsError = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -177,6 +188,18 @@ class _$S3ObjectStateCopyWithImpl<$Res, $Val extends S3ObjectState>
           ? _value.isUploadingFiles
           : isUploadingFiles // ignore: cast_nullable_to_non_nullable
               as List<File>,
+      s3ObjectEmotionTags: null == s3ObjectEmotionTags
+          ? _value.s3ObjectEmotionTags
+          : s3ObjectEmotionTags // ignore: cast_nullable_to_non_nullable
+              as List<S3ObjectTag>,
+      isEmotionTagsLoading: null == isEmotionTagsLoading
+          ? _value.isEmotionTagsLoading
+          : isEmotionTagsLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      emotionTagsError: freezed == emotionTagsError
+          ? _value.emotionTagsError
+          : emotionTagsError // ignore: cast_nullable_to_non_nullable
+              as AppException?,
     ) as $Val);
   }
 
@@ -249,6 +272,20 @@ class _$S3ObjectStateCopyWithImpl<$Res, $Val extends S3ObjectState>
       return _then(_value.copyWith(uploadError: value) as $Val);
     });
   }
+
+  /// Create a copy of S3ObjectState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AppExceptionCopyWith<$Res>? get emotionTagsError {
+    if (_value.emotionTagsError == null) {
+      return null;
+    }
+
+    return $AppExceptionCopyWith<$Res>(_value.emotionTagsError!, (value) {
+      return _then(_value.copyWith(emotionTagsError: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -276,7 +313,10 @@ abstract class _$$S3ObjectStateImplCopyWith<$Res>
       S3ObjectSurround? s3ObjectSurround,
       bool isS3ObjectSurroundLoading,
       AppException? uploadError,
-      List<File> isUploadingFiles});
+      List<File> isUploadingFiles,
+      List<S3ObjectTag> s3ObjectEmotionTags,
+      bool isEmotionTagsLoading,
+      AppException? emotionTagsError});
 
   @override
   $AppExceptionCopyWith<$Res>? get error;
@@ -288,6 +328,8 @@ abstract class _$$S3ObjectStateImplCopyWith<$Res>
   $S3ObjectSurroundCopyWith<$Res>? get s3ObjectSurround;
   @override
   $AppExceptionCopyWith<$Res>? get uploadError;
+  @override
+  $AppExceptionCopyWith<$Res>? get emotionTagsError;
 }
 
 /// @nodoc
@@ -320,6 +362,9 @@ class __$$S3ObjectStateImplCopyWithImpl<$Res>
     Object? isS3ObjectSurroundLoading = null,
     Object? uploadError = freezed,
     Object? isUploadingFiles = null,
+    Object? s3ObjectEmotionTags = null,
+    Object? isEmotionTagsLoading = null,
+    Object? emotionTagsError = freezed,
   }) {
     return _then(_$S3ObjectStateImpl(
       isLoading: null == isLoading
@@ -390,6 +435,18 @@ class __$$S3ObjectStateImplCopyWithImpl<$Res>
           ? _value._isUploadingFiles
           : isUploadingFiles // ignore: cast_nullable_to_non_nullable
               as List<File>,
+      s3ObjectEmotionTags: null == s3ObjectEmotionTags
+          ? _value._s3ObjectEmotionTags
+          : s3ObjectEmotionTags // ignore: cast_nullable_to_non_nullable
+              as List<S3ObjectTag>,
+      isEmotionTagsLoading: null == isEmotionTagsLoading
+          ? _value.isEmotionTagsLoading
+          : isEmotionTagsLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      emotionTagsError: freezed == emotionTagsError
+          ? _value.emotionTagsError
+          : emotionTagsError // ignore: cast_nullable_to_non_nullable
+              as AppException?,
     ));
   }
 }
@@ -414,11 +471,15 @@ class _$S3ObjectStateImpl extends _S3ObjectState {
       this.s3ObjectSurround = null,
       this.isS3ObjectSurroundLoading = false,
       this.uploadError = null,
-      final List<File> isUploadingFiles = const []})
+      final List<File> isUploadingFiles = const [],
+      final List<S3ObjectTag> s3ObjectEmotionTags = const [],
+      this.isEmotionTagsLoading = false,
+      this.emotionTagsError = null})
       : _s3Objects = s3Objects,
         _objectsExistenceByMonth = objectsExistenceByMonth,
         _objectsByDate = objectsByDate,
         _isUploadingFiles = isUploadingFiles,
+        _s3ObjectEmotionTags = s3ObjectEmotionTags,
         super._();
 
   @override
@@ -498,9 +559,26 @@ class _$S3ObjectStateImpl extends _S3ObjectState {
     return EqualUnmodifiableListView(_isUploadingFiles);
   }
 
+  final List<S3ObjectTag> _s3ObjectEmotionTags;
+  @override
+  @JsonKey()
+  List<S3ObjectTag> get s3ObjectEmotionTags {
+    if (_s3ObjectEmotionTags is EqualUnmodifiableListView)
+      return _s3ObjectEmotionTags;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_s3ObjectEmotionTags);
+  }
+
+  @override
+  @JsonKey()
+  final bool isEmotionTagsLoading;
+  @override
+  @JsonKey()
+  final AppException? emotionTagsError;
+
   @override
   String toString() {
-    return 'S3ObjectState(isLoading: $isLoading, isUploading: $isUploading, isDeleting: $isDeleting, error: $error, s3Objects: $s3Objects, s3Object: $s3Object, allCount: $allCount, isAllCountLoading: $isAllCountLoading, objectsExistenceByMonth: $objectsExistenceByMonth, isObjectsExistenceByMonthLoading: $isObjectsExistenceByMonthLoading, objectsByDate: $objectsByDate, isObjectsByDateLoading: $isObjectsByDateLoading, like: $like, s3ObjectSurround: $s3ObjectSurround, isS3ObjectSurroundLoading: $isS3ObjectSurroundLoading, uploadError: $uploadError, isUploadingFiles: $isUploadingFiles)';
+    return 'S3ObjectState(isLoading: $isLoading, isUploading: $isUploading, isDeleting: $isDeleting, error: $error, s3Objects: $s3Objects, s3Object: $s3Object, allCount: $allCount, isAllCountLoading: $isAllCountLoading, objectsExistenceByMonth: $objectsExistenceByMonth, isObjectsExistenceByMonthLoading: $isObjectsExistenceByMonthLoading, objectsByDate: $objectsByDate, isObjectsByDateLoading: $isObjectsByDateLoading, like: $like, s3ObjectSurround: $s3ObjectSurround, isS3ObjectSurroundLoading: $isS3ObjectSurroundLoading, uploadError: $uploadError, isUploadingFiles: $isUploadingFiles, s3ObjectEmotionTags: $s3ObjectEmotionTags, isEmotionTagsLoading: $isEmotionTagsLoading, emotionTagsError: $emotionTagsError)';
   }
 
   @override
@@ -542,29 +620,39 @@ class _$S3ObjectStateImpl extends _S3ObjectState {
             (identical(other.uploadError, uploadError) ||
                 other.uploadError == uploadError) &&
             const DeepCollectionEquality()
-                .equals(other._isUploadingFiles, _isUploadingFiles));
+                .equals(other._isUploadingFiles, _isUploadingFiles) &&
+            const DeepCollectionEquality()
+                .equals(other._s3ObjectEmotionTags, _s3ObjectEmotionTags) &&
+            (identical(other.isEmotionTagsLoading, isEmotionTagsLoading) ||
+                other.isEmotionTagsLoading == isEmotionTagsLoading) &&
+            (identical(other.emotionTagsError, emotionTagsError) ||
+                other.emotionTagsError == emotionTagsError));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      isLoading,
-      isUploading,
-      isDeleting,
-      error,
-      const DeepCollectionEquality().hash(_s3Objects),
-      s3Object,
-      allCount,
-      isAllCountLoading,
-      const DeepCollectionEquality().hash(_objectsExistenceByMonth),
-      isObjectsExistenceByMonthLoading,
-      const DeepCollectionEquality().hash(_objectsByDate),
-      isObjectsByDateLoading,
-      like,
-      s3ObjectSurround,
-      isS3ObjectSurroundLoading,
-      uploadError,
-      const DeepCollectionEquality().hash(_isUploadingFiles));
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        isLoading,
+        isUploading,
+        isDeleting,
+        error,
+        const DeepCollectionEquality().hash(_s3Objects),
+        s3Object,
+        allCount,
+        isAllCountLoading,
+        const DeepCollectionEquality().hash(_objectsExistenceByMonth),
+        isObjectsExistenceByMonthLoading,
+        const DeepCollectionEquality().hash(_objectsByDate),
+        isObjectsByDateLoading,
+        like,
+        s3ObjectSurround,
+        isS3ObjectSurroundLoading,
+        uploadError,
+        const DeepCollectionEquality().hash(_isUploadingFiles),
+        const DeepCollectionEquality().hash(_s3ObjectEmotionTags),
+        isEmotionTagsLoading,
+        emotionTagsError
+      ]);
 
   /// Create a copy of S3ObjectState
   /// with the given fields replaced by the non-null parameter values.
@@ -593,7 +681,10 @@ abstract class _S3ObjectState extends S3ObjectState {
       final S3ObjectSurround? s3ObjectSurround,
       final bool isS3ObjectSurroundLoading,
       final AppException? uploadError,
-      final List<File> isUploadingFiles}) = _$S3ObjectStateImpl;
+      final List<File> isUploadingFiles,
+      final List<S3ObjectTag> s3ObjectEmotionTags,
+      final bool isEmotionTagsLoading,
+      final AppException? emotionTagsError}) = _$S3ObjectStateImpl;
   const _S3ObjectState._() : super._();
 
   @override
@@ -630,6 +721,12 @@ abstract class _S3ObjectState extends S3ObjectState {
   AppException? get uploadError;
   @override
   List<File> get isUploadingFiles;
+  @override
+  List<S3ObjectTag> get s3ObjectEmotionTags;
+  @override
+  bool get isEmotionTagsLoading;
+  @override
+  AppException? get emotionTagsError;
 
   /// Create a copy of S3ObjectState
   /// with the given fields replaced by the non-null parameter values.

@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter_common/models/aws/s3/s3_object.dart';
 import 'package:flutter_common/models/aws/s3/s3_object_like.dart';
 import 'package:flutter_common/models/aws/s3/s3_object_reply.dart';
+import 'package:flutter_common/models/aws/s3/s3_object_tag.dart';
 import 'package:flutter_common/models/user/user.dart';
 import 'package:flutter_common/widgets/dialogs/report_dialog.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -12,7 +13,8 @@ part 's3_object_event.freezed.dart';
 @freezed
 class S3ObjectEvent with _$S3ObjectEvent {
   const factory S3ObjectEvent.initialize() = _Initialize;
-  const factory S3ObjectEvent.getS3Objects(int skip, int take) = _GetS3Objects;
+  const factory S3ObjectEvent.getS3Objects(int skip, int take,
+      {List<S3ObjectTag>? tags}) = _GetS3Objects;
   const factory S3ObjectEvent.clearError() = _ClearError;
   const factory S3ObjectEvent.uploadFile(File file, User user) = _UploadFile;
   const factory S3ObjectEvent.uploadFiles(List<File> files, User user) =
@@ -44,4 +46,5 @@ class S3ObjectEvent with _$S3ObjectEvent {
   const factory S3ObjectEvent.getS3ObjectSurround(S3Object s3Object) =
       _GetS3ObjectSurround;
   const factory S3ObjectEvent.clearUploadError() = _ClearUploadError;
+  const factory S3ObjectEvent.initializeEmotionTags() = _InitializeEmotionTags;
 }

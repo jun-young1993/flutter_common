@@ -190,6 +190,8 @@ class _Common {
   final noData = 'common.noData';
   final lastData = 'common.lastData';
   final writeDiary = 'common.writeDiary';
+  final noSearchResult = 'common.noSearchResult';
+  final inputSearchKeyword = 'common.inputSearchKeyword';
 }
 
 class _User {

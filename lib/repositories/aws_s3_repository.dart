@@ -7,6 +7,7 @@ import 'package:flutter_common/models/aws/s3/s3_object.dart';
 import 'package:flutter_common/models/aws/s3/s3_object_like.dart';
 import 'package:flutter_common/models/aws/s3/s3_object_reply.dart';
 import 'package:flutter_common/models/aws/s3/s3_object_surround.dart';
+import 'package:flutter_common/models/aws/s3/s3_object_tag.dart';
 import 'package:flutter_common/models/user/user.dart';
 import 'package:flutter_common/network/dio_client.dart';
 import 'package:flutter_common/widgets/dialogs/report_dialog.dart';
@@ -17,7 +18,11 @@ abstract class AwsS3Repository {
   Future<bool> uploadFile(File file, User user, AppKeys appKey);
   Future<bool> uploadFiles(List<File> files, User user, AppKeys appKey);
   Future<bool> deleteFile(S3Object s3Object, User user, AppKeys appKey);
-  Future<List<S3Object>> getS3Object(int? skip, int? take);
+  Future<List<S3Object>> getS3Object(
+    int? skip,
+    int? take, {
+    List<S3ObjectTag>? tags,
+  });
   Future<S3Object> findOneOrFail(String id);
   Future<int> count();
   Future<Map<String, bool>> checkObjectsExistenceByMonth(
@@ -33,6 +38,7 @@ abstract class AwsS3Repository {
   Future<bool> reportS3ObjectReply(
       S3ObjectReply s3ObjectReply, ReportReason type, String? content);
   Future<S3ObjectSurround> getS3ObjectSurround(S3Object s3Object);
+  Future<List<S3ObjectTag>> getS3ObjectMeTags(String tagType);
 }
 
 class AwsS3DefaultRepository extends AwsS3Repository {
@@ -156,10 +162,17 @@ class AwsS3DefaultRepository extends AwsS3Repository {
   }
 
   @override
-  Future<List<S3Object>> getS3Object(int? skip, int? take) async {
+  Future<List<S3Object>> getS3Object(
+    int? skip,
+    int? take, {
+    List<S3ObjectTag>? tags,
+  }) async {
     final response = await dioClient.get('/aws/s3/objects', queryParameters: {
       'skip': skip,
       'take': take,
+      ...(tags != null && tags.isNotEmpty)
+          ? {'tagIds': tags.map((e) => e.id).toList()}
+          : {},
     });
     if (response.statusCode == 200) {
       return (response.data as List<dynamic>)
@@ -310,5 +323,16 @@ class AwsS3DefaultRepository extends AwsS3Repository {
       return S3ObjectSurround.fromJson(response.data);
     }
     throw Exception('S3 객체 주변 조회 실패');
+  }
+
+  @override
+  Future<List<S3ObjectTag>> getS3ObjectMeTags(String tagType) async {
+    final response = await dioClient.get('/s3-object-tags/me/type/$tagType');
+    if (response.statusCode == 200) {
+      return (response.data as List<dynamic>)
+          .map((e) => S3ObjectTag.fromJson(e as Map<String, dynamic>))
+          .toList();
+    }
+    throw Exception('S3 객체 태그 조회 실패');
   }
 }

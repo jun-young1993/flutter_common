@@ -148,7 +148,10 @@
         "photo": "사진",
         "video": "비디오",
         "duration": "재생 시간",
-        "log": "기록"
+        "log": "기록",
+        "writeDiary": "일기 작성",
+        "noSearchResult": "검색 결과가 없습니다.",
+        "inputSearchKeyword": "검색어를 입력하세요."
 
     },
     "file": {

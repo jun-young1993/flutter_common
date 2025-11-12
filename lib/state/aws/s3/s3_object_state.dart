@@ -4,6 +4,7 @@ import 'package:flutter_common/extensions/app_exception.dart';
 import 'package:flutter_common/models/aws/s3/s3_object.dart';
 import 'package:flutter_common/models/aws/s3/s3_object_like.dart';
 import 'package:flutter_common/models/aws/s3/s3_object_surround.dart';
+import 'package:flutter_common/models/aws/s3/s3_object_tag.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 's3_object_state.freezed.dart';
@@ -28,6 +29,9 @@ class S3ObjectState with _$S3ObjectState {
     @Default(false) bool isS3ObjectSurroundLoading,
     @Default(null) AppException? uploadError,
     @Default([]) List<File> isUploadingFiles,
+    @Default([]) List<S3ObjectTag> s3ObjectEmotionTags,
+    @Default(false) bool isEmotionTagsLoading,
+    @Default(null) AppException? emotionTagsError,
   }) = _S3ObjectState;
 
   factory S3ObjectState.initialize() => const S3ObjectState();

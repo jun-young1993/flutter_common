@@ -19,8 +19,8 @@ class S3ObjectBloc extends Bloc<S3ObjectEvent, S3ObjectState> {
           emit(S3ObjectState.initialize());
         }, getS3Objects: (e) async {
           emit(state.copyWith(isLoading: true));
-          final s3Objects =
-              await s3ObjectRepository.getS3Object(e.skip, e.take);
+          final s3Objects = await s3ObjectRepository.getS3Object(e.skip, e.take,
+              tags: e.tags);
           emit(state.copyWith(s3Objects: s3Objects, isLoading: false));
         }, uploadFile: (e) async {
           emit(state.copyWith(isUploading: true));
@@ -108,6 +108,23 @@ class S3ObjectBloc extends Bloc<S3ObjectEvent, S3ObjectState> {
           emit(state.copyWith(
               s3ObjectSurround: s3ObjectSurround,
               isS3ObjectSurroundLoading: false));
+        }, initializeEmotionTags: (e) async {
+          try {
+            emit(state.copyWith(isEmotionTagsLoading: true));
+            final emotionTags =
+                await s3ObjectRepository.getS3ObjectMeTags('emotion');
+            emit(state.copyWith(
+                s3ObjectEmotionTags: emotionTags, isEmotionTagsLoading: false));
+          } on AppException catch (e) {
+            emit(state.copyWith(
+                isEmotionTagsLoading: false, emotionTagsError: e));
+          } catch (e) {
+            emit(state.copyWith(
+                isEmotionTagsLoading: false,
+                emotionTagsError: AppException.unknown(e.toString())));
+          } finally {
+            emit(state.copyWith(isEmotionTagsLoading: false));
+          }
         });
       },
     );

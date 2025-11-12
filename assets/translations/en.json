@@ -150,7 +150,9 @@
         "video": "Video",
         "duration": "Duration",
         "log": "Log",
-        "writeDiary": "Write Diary"
+        "writeDiary": "Write Diary",
+        "noSearchResult": "No search results.",
+        "inputSearchKeyword": "Enter a search keyword."
 
     },
     "validation" : {
