@@ -37,6 +37,9 @@ class S3Object with _$S3Object, S3ObjectCommonMixin {
       _$S3ObjectFromJson(json);
 
   String? get thumbnailUrl {
+    if (thumbnail != null) {
+      return thumbnail?.url;
+    }
     if (isImage) {
       return url;
     }
