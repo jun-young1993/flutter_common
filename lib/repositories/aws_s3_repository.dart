@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_common/constants/juny_constants.dart';
 import 'package:flutter_common/extensions/app_exception.dart';
 import 'package:flutter_common/models/aws/s3/s3_object.dart';
@@ -175,9 +176,10 @@ class AwsS3DefaultRepository extends AwsS3Repository {
           : {},
     });
     if (response.statusCode == 200) {
-      return (response.data as List<dynamic>)
+      final s3Objects = (response.data as List<dynamic>)
           .map((e) => S3Object.fromJson(e as Map<String, dynamic>))
           .toList();
+      return s3Objects;
     }
     throw Exception('S3 객체 조회 실패');
   }

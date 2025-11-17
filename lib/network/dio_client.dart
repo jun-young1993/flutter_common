@@ -60,8 +60,6 @@ class DioClient {
       onRequest: (options, handler) async {
         // 사용자 ID가 있으면 Authorization 헤더 추가
         final userId = await _getCurrentUserId();
-
-        debugPrint('🔥 [USER ID] $userId');
         if (userId != null) {
           options.headers['Authorization'] = 'Bearer user:$userId';
         }
@@ -234,8 +232,8 @@ class DioClient {
         return const AppException.notFound();
       case 413:
         return AppException.badRequest(
-          response?.data?['message']?.toString() ?? 
-          '파일 크기가 너무 큽니다. 최대 업로드 크기를 확인해주세요.',
+          response?.data?['message']?.toString() ??
+              '파일 크기가 너무 큽니다. 최대 업로드 크기를 확인해주세요.',
         );
       case 500:
       case 501:

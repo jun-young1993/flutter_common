@@ -29,25 +29,21 @@ class S3Object with _$S3Object, S3ObjectCommonMixin {
     @Default([]) List<S3ObjectTag>? tags,
     @Default([]) List<S3ObjectLike>? likes,
     @Default([]) List<S3ObjectReply>? replies,
+    @Default(null) String? fileType,
+    @Default(false) bool isImage,
+    @Default(false) bool isVideo,
+    @Default(false) bool isAudio,
+    @Default(false) bool isDocument,
+    @Default(false) bool isArchive,
+    @Default(false) bool isThumbnail,
+    @Default(false) bool hasThumbnail,
+    @Default(null) String? thumbnailUrl,
   }) = _S3Object;
 
   const S3Object._();
 
   factory S3Object.fromJson(Map<String, dynamic> json) =>
       _$S3ObjectFromJson(json);
-
-  String? get thumbnailUrl {
-    if (thumbnail != null) {
-      return thumbnail?.url;
-    }
-    if (isImage) {
-      return url;
-    }
-    if (isVideo) {
-      return thumbnail?.url;
-    }
-    return null;
-  }
 
   List<IconData?> get emotionIcons {
     return tags

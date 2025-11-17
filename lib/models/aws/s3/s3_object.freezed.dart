@@ -34,6 +34,15 @@ mixin _$S3Object {
   List<S3ObjectTag>? get tags => throw _privateConstructorUsedError;
   List<S3ObjectLike>? get likes => throw _privateConstructorUsedError;
   List<S3ObjectReply>? get replies => throw _privateConstructorUsedError;
+  String? get fileType => throw _privateConstructorUsedError;
+  bool get isImage => throw _privateConstructorUsedError;
+  bool get isVideo => throw _privateConstructorUsedError;
+  bool get isAudio => throw _privateConstructorUsedError;
+  bool get isDocument => throw _privateConstructorUsedError;
+  bool get isArchive => throw _privateConstructorUsedError;
+  bool get isThumbnail => throw _privateConstructorUsedError;
+  bool get hasThumbnail => throw _privateConstructorUsedError;
+  String? get thumbnailUrl => throw _privateConstructorUsedError;
 
   /// Serializes this S3Object to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -64,7 +73,16 @@ abstract class $S3ObjectCopyWith<$Res> {
       S3ObjectBase? thumbnail,
       List<S3ObjectTag>? tags,
       List<S3ObjectLike>? likes,
-      List<S3ObjectReply>? replies});
+      List<S3ObjectReply>? replies,
+      String? fileType,
+      bool isImage,
+      bool isVideo,
+      bool isAudio,
+      bool isDocument,
+      bool isArchive,
+      bool isThumbnail,
+      bool hasThumbnail,
+      String? thumbnailUrl});
 
   $UserCopyWith<$Res>? get user;
   $S3ObjectBaseCopyWith<$Res>? get thumbnail;
@@ -99,6 +117,15 @@ class _$S3ObjectCopyWithImpl<$Res, $Val extends S3Object>
     Object? tags = freezed,
     Object? likes = freezed,
     Object? replies = freezed,
+    Object? fileType = freezed,
+    Object? isImage = null,
+    Object? isVideo = null,
+    Object? isAudio = null,
+    Object? isDocument = null,
+    Object? isArchive = null,
+    Object? isThumbnail = null,
+    Object? hasThumbnail = null,
+    Object? thumbnailUrl = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -157,6 +184,42 @@ class _$S3ObjectCopyWithImpl<$Res, $Val extends S3Object>
           ? _value.replies
           : replies // ignore: cast_nullable_to_non_nullable
               as List<S3ObjectReply>?,
+      fileType: freezed == fileType
+          ? _value.fileType
+          : fileType // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isImage: null == isImage
+          ? _value.isImage
+          : isImage // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isVideo: null == isVideo
+          ? _value.isVideo
+          : isVideo // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isAudio: null == isAudio
+          ? _value.isAudio
+          : isAudio // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isDocument: null == isDocument
+          ? _value.isDocument
+          : isDocument // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isArchive: null == isArchive
+          ? _value.isArchive
+          : isArchive // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isThumbnail: null == isThumbnail
+          ? _value.isThumbnail
+          : isThumbnail // ignore: cast_nullable_to_non_nullable
+              as bool,
+      hasThumbnail: null == hasThumbnail
+          ? _value.hasThumbnail
+          : hasThumbnail // ignore: cast_nullable_to_non_nullable
+              as bool,
+      thumbnailUrl: freezed == thumbnailUrl
+          ? _value.thumbnailUrl
+          : thumbnailUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
@@ -211,7 +274,16 @@ abstract class _$$S3ObjectImplCopyWith<$Res>
       S3ObjectBase? thumbnail,
       List<S3ObjectTag>? tags,
       List<S3ObjectLike>? likes,
-      List<S3ObjectReply>? replies});
+      List<S3ObjectReply>? replies,
+      String? fileType,
+      bool isImage,
+      bool isVideo,
+      bool isAudio,
+      bool isDocument,
+      bool isArchive,
+      bool isThumbnail,
+      bool hasThumbnail,
+      String? thumbnailUrl});
 
   @override
   $UserCopyWith<$Res>? get user;
@@ -246,6 +318,15 @@ class __$$S3ObjectImplCopyWithImpl<$Res>
     Object? tags = freezed,
     Object? likes = freezed,
     Object? replies = freezed,
+    Object? fileType = freezed,
+    Object? isImage = null,
+    Object? isVideo = null,
+    Object? isAudio = null,
+    Object? isDocument = null,
+    Object? isArchive = null,
+    Object? isThumbnail = null,
+    Object? hasThumbnail = null,
+    Object? thumbnailUrl = freezed,
   }) {
     return _then(_$S3ObjectImpl(
       id: null == id
@@ -304,6 +385,42 @@ class __$$S3ObjectImplCopyWithImpl<$Res>
           ? _value._replies
           : replies // ignore: cast_nullable_to_non_nullable
               as List<S3ObjectReply>?,
+      fileType: freezed == fileType
+          ? _value.fileType
+          : fileType // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isImage: null == isImage
+          ? _value.isImage
+          : isImage // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isVideo: null == isVideo
+          ? _value.isVideo
+          : isVideo // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isAudio: null == isAudio
+          ? _value.isAudio
+          : isAudio // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isDocument: null == isDocument
+          ? _value.isDocument
+          : isDocument // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isArchive: null == isArchive
+          ? _value.isArchive
+          : isArchive // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isThumbnail: null == isThumbnail
+          ? _value.isThumbnail
+          : isThumbnail // ignore: cast_nullable_to_non_nullable
+              as bool,
+      hasThumbnail: null == hasThumbnail
+          ? _value.hasThumbnail
+          : hasThumbnail // ignore: cast_nullable_to_non_nullable
+              as bool,
+      thumbnailUrl: freezed == thumbnailUrl
+          ? _value.thumbnailUrl
+          : thumbnailUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -325,7 +442,16 @@ class _$S3ObjectImpl extends _S3Object {
       this.thumbnail = null,
       final List<S3ObjectTag>? tags = const [],
       final List<S3ObjectLike>? likes = const [],
-      final List<S3ObjectReply>? replies = const []})
+      final List<S3ObjectReply>? replies = const [],
+      this.fileType = null,
+      this.isImage = false,
+      this.isVideo = false,
+      this.isAudio = false,
+      this.isDocument = false,
+      this.isArchive = false,
+      this.isThumbnail = false,
+      this.hasThumbnail = false,
+      this.thumbnailUrl = null})
       : _tags = tags,
         _likes = likes,
         _replies = replies,
@@ -400,8 +526,36 @@ class _$S3ObjectImpl extends _S3Object {
   }
 
   @override
+  @JsonKey()
+  final String? fileType;
+  @override
+  @JsonKey()
+  final bool isImage;
+  @override
+  @JsonKey()
+  final bool isVideo;
+  @override
+  @JsonKey()
+  final bool isAudio;
+  @override
+  @JsonKey()
+  final bool isDocument;
+  @override
+  @JsonKey()
+  final bool isArchive;
+  @override
+  @JsonKey()
+  final bool isThumbnail;
+  @override
+  @JsonKey()
+  final bool hasThumbnail;
+  @override
+  @JsonKey()
+  final String? thumbnailUrl;
+
+  @override
   String toString() {
-    return 'S3Object(id: $id, key: $key, url: $url, originalName: $originalName, size: $size, mimetype: $mimetype, active: $active, createdAt: $createdAt, userId: $userId, user: $user, thumbnail: $thumbnail, tags: $tags, likes: $likes, replies: $replies)';
+    return 'S3Object(id: $id, key: $key, url: $url, originalName: $originalName, size: $size, mimetype: $mimetype, active: $active, createdAt: $createdAt, userId: $userId, user: $user, thumbnail: $thumbnail, tags: $tags, likes: $likes, replies: $replies, fileType: $fileType, isImage: $isImage, isVideo: $isVideo, isAudio: $isAudio, isDocument: $isDocument, isArchive: $isArchive, isThumbnail: $isThumbnail, hasThumbnail: $hasThumbnail, thumbnailUrl: $thumbnailUrl)';
   }
 
   @override
@@ -426,27 +580,52 @@ class _$S3ObjectImpl extends _S3Object {
                 other.thumbnail == thumbnail) &&
             const DeepCollectionEquality().equals(other._tags, _tags) &&
             const DeepCollectionEquality().equals(other._likes, _likes) &&
-            const DeepCollectionEquality().equals(other._replies, _replies));
+            const DeepCollectionEquality().equals(other._replies, _replies) &&
+            (identical(other.fileType, fileType) ||
+                other.fileType == fileType) &&
+            (identical(other.isImage, isImage) || other.isImage == isImage) &&
+            (identical(other.isVideo, isVideo) || other.isVideo == isVideo) &&
+            (identical(other.isAudio, isAudio) || other.isAudio == isAudio) &&
+            (identical(other.isDocument, isDocument) ||
+                other.isDocument == isDocument) &&
+            (identical(other.isArchive, isArchive) ||
+                other.isArchive == isArchive) &&
+            (identical(other.isThumbnail, isThumbnail) ||
+                other.isThumbnail == isThumbnail) &&
+            (identical(other.hasThumbnail, hasThumbnail) ||
+                other.hasThumbnail == hasThumbnail) &&
+            (identical(other.thumbnailUrl, thumbnailUrl) ||
+                other.thumbnailUrl == thumbnailUrl));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      key,
-      url,
-      originalName,
-      size,
-      mimetype,
-      active,
-      createdAt,
-      userId,
-      user,
-      thumbnail,
-      const DeepCollectionEquality().hash(_tags),
-      const DeepCollectionEquality().hash(_likes),
-      const DeepCollectionEquality().hash(_replies));
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        id,
+        key,
+        url,
+        originalName,
+        size,
+        mimetype,
+        active,
+        createdAt,
+        userId,
+        user,
+        thumbnail,
+        const DeepCollectionEquality().hash(_tags),
+        const DeepCollectionEquality().hash(_likes),
+        const DeepCollectionEquality().hash(_replies),
+        fileType,
+        isImage,
+        isVideo,
+        isAudio,
+        isDocument,
+        isArchive,
+        isThumbnail,
+        hasThumbnail,
+        thumbnailUrl
+      ]);
 
   /// Create a copy of S3Object
   /// with the given fields replaced by the non-null parameter values.
@@ -479,7 +658,16 @@ abstract class _S3Object extends S3Object {
       final S3ObjectBase? thumbnail,
       final List<S3ObjectTag>? tags,
       final List<S3ObjectLike>? likes,
-      final List<S3ObjectReply>? replies}) = _$S3ObjectImpl;
+      final List<S3ObjectReply>? replies,
+      final String? fileType,
+      final bool isImage,
+      final bool isVideo,
+      final bool isAudio,
+      final bool isDocument,
+      final bool isArchive,
+      final bool isThumbnail,
+      final bool hasThumbnail,
+      final String? thumbnailUrl}) = _$S3ObjectImpl;
   const _S3Object._() : super._();
 
   factory _S3Object.fromJson(Map<String, dynamic> json) =
@@ -513,6 +701,24 @@ abstract class _S3Object extends S3Object {
   List<S3ObjectLike>? get likes;
   @override
   List<S3ObjectReply>? get replies;
+  @override
+  String? get fileType;
+  @override
+  bool get isImage;
+  @override
+  bool get isVideo;
+  @override
+  bool get isAudio;
+  @override
+  bool get isDocument;
+  @override
+  bool get isArchive;
+  @override
+  bool get isThumbnail;
+  @override
+  bool get hasThumbnail;
+  @override
+  String? get thumbnailUrl;
 
   /// Create a copy of S3Object
   /// with the given fields replaced by the non-null parameter values.

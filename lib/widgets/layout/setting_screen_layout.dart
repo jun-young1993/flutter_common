@@ -25,6 +25,7 @@ import 'package:flutter_common/widgets/layout/sections/setting/locale.dart';
 import 'package:flutter_common/widgets/layout/sections/share_app_row.dart';
 import 'package:flutter_common/widgets/lib/container/card_container.dart';
 import 'package:flutter_common/widgets/lib/container/card_container_item.dart';
+import 'package:flutter_common/widgets/modals/bottom_select_modal.dart';
 import 'package:flutter_common/widgets/textes/awesome_description_text.dart';
 import 'package:flutter_common/widgets/timer/countdown_display.dart';
 import 'package:flutter_common/widgets/verified/verified_banner.dart';
@@ -326,35 +327,46 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
                 children: [
                   Center(
                       child: AwesomeTextButton(
-                    text: Tr.app.addProfile.tr(),
+                    text: Tr.app.profileList.tr(),
                     fontSize: SizeConstants.getSmallButtonFontSize(context),
                     padding: SizeConstants.getSmallButtonPadding(context),
-                    icon: Icons.add_outlined,
-                    color: Colors.green.shade600,
+                    icon: Icons.people_outline,
                     onPressed: () {
-                      InputDialog.show(
-                        title: Tr.app.addProfile.tr(),
-                        hintText: Tr.app.addProfile.tr(),
-                        onConfirm: (value) {
-                          userBloc.add(UserEvent.addAppUser(username: value));
-                        },
+                      BottomSelectModal.show<User>(
                         context: context,
+                        title: Tr.app.profileList.tr(),
+                        items: [user, ...userList],
+                        initialValue: user,
+                        labelBuilder: (item) => item.displayText,
+                        titleActionBuilder: (ctx, selected) {
+                          return AwesomeTextButton(
+                            text: Tr.app.addProfile.tr(),
+                            fontSize:
+                                SizeConstants.getSmallButtonFontSize(context),
+                            padding:
+                                SizeConstants.getSmallButtonPadding(context),
+                            icon: Icons.add_outlined,
+                            onPressed: () {
+                              InputDialog.show(
+                                title: Tr.app.addProfile.tr(),
+                                hintText: Tr.app.addProfile.tr(),
+                                onConfirm: (value) {
+                                  userBloc.add(
+                                      UserEvent.addAppUser(username: value));
+                                },
+                                context: context,
+                              );
+                            },
+                          );
+                        },
+                        onConfirm: (value) {
+                          if (value != null) {
+                            userBloc.add(UserEvent.changeAppUser(value));
+                          }
+                        },
                       );
                     },
                   )),
-                  SizedBox(height: SizeConstants.getColumnSpacing(context)),
-                  SizedBox(height: SizeConstants.getColumnSpacing(context)),
-                  PrettySelectBox<User>(
-                    items: [user, ...userList],
-                    label: user.displayText,
-                    selectedValue: user,
-                    displayTextBuilder: (user) => user.displayText,
-                    onChanged: (value) {
-                      if (value != null) {
-                        userBloc.add(UserEvent.changeAppUser(value));
-                      }
-                    },
-                  ),
                   SizedBox(height: SizeConstants.getColumnSpacing(context)),
                   UserAddAppUserErrorSelector((error) {
                     if (error != null) {
@@ -373,7 +385,6 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
             });
           })
         ],
-        SizedBox(height: SizeConstants.getColumnSpacing(context)),
         // 사용자 데이터 삭제 버튼 추가
         UserInfoSelector((user) {
           return Column(
