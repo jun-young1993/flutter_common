@@ -34,8 +34,10 @@ class UserBloc extends Bloc<UserEvent, UserState> {
             final userList = await userRepository.getAppUserList();
             emit(state.copyWith(userList: userList, isAddingAppUser: false));
           } on AppException catch (e) {
+            debugPrint('🔥 [ERROR] AppException: $e');
             emit(state.copyWith(addAppUserError: e));
           } catch (e) {
+            debugPrint('🔥 [ERROR] Unknown error: $e');
             emit(state.copyWith(
                 addAppUserError: AppException.unknown(e.toString())));
           } finally {

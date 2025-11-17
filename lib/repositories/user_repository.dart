@@ -87,7 +87,7 @@ class UserDefaultRepository extends UserRepository {
     final userLists = sharedPreferences.getStringList(userListKey);
 
     final createdUser =
-        await createUser(fcmToken: fcmToken, username: username);
+        await createUser(fcmToken: fcmToken, username: username ?? 'unknown');
     userLists?.add(createdUser.id);
 
     final saveUserLists =
