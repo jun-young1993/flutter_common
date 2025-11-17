@@ -33,11 +33,13 @@ class UserBloc extends Bloc<UserEvent, UserState> {
                 fcmToken: fcmToken, username: e.username);
             final userList = await userRepository.getAppUserList();
             emit(state.copyWith(userList: userList, isAddingAppUser: false));
-          } on AppException catch (e) {
+          } on AppException catch (e, stackTrace) {
             debugPrint('🔥 [ERROR] AppException: $e');
+            debugPrint('🔥 [ERROR] StackTrace: $stackTrace');
             emit(state.copyWith(addAppUserError: e));
-          } catch (e) {
+          } catch (e, stackTrace) {
             debugPrint('🔥 [ERROR] Unknown error: $e');
+            debugPrint('🔥 [ERROR] StackTrace: $stackTrace');
             emit(state.copyWith(
                 addAppUserError: AppException.unknown(e.toString())));
           } finally {

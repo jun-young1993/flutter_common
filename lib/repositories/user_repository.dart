@@ -1,6 +1,4 @@
 import 'dart:io';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter_common/constants/juny_constants.dart';
 import 'package:flutter_common/extensions/app_exception.dart';
 import 'package:flutter_common/models/user/user.dart';
@@ -88,14 +86,14 @@ class UserDefaultRepository extends UserRepository {
 
     final createdUser =
         await createUser(fcmToken: fcmToken, username: username ?? 'unknown');
-    userLists?.add(createdUser.id);
+    final List<String> newUserLists = [...(userLists ?? []), createdUser.id];
 
     final saveUserLists =
-        await sharedPreferences.setStringList(userListKey, userLists!);
+        await sharedPreferences.setStringList(userListKey, newUserLists);
     if (!saveUserLists) {
       throw const AppException.unknown('Failed to save user list');
     }
-    return userLists;
+    return newUserLists;
   }
 
   @override

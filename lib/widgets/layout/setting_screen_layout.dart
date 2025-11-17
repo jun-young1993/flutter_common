@@ -19,7 +19,6 @@ import 'package:flutter_common/state/verification/verification_selector.dart';
 import 'package:flutter_common/widgets/buttons/awesom_text_button.dart';
 import 'package:flutter_common/widgets/dialogs/app_dialog.dart';
 import 'package:flutter_common/widgets/dialogs/input_dialog.dart';
-import 'package:flutter_common/widgets/fields/pretty_select_box.dart';
 import 'package:flutter_common/widgets/layout/sections/can_update_row.dart';
 import 'package:flutter_common/widgets/layout/sections/setting/locale.dart';
 import 'package:flutter_common/widgets/layout/sections/share_app_row.dart';
@@ -362,6 +361,9 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
                         onConfirm: (value) {
                           if (value != null) {
                             userBloc.add(UserEvent.changeAppUser(value));
+                            if (mounted) {
+                              Navigator.of(context).pop();
+                            }
                           }
                         },
                       );
