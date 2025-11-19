@@ -47,4 +47,6 @@ class S3ObjectEvent with _$S3ObjectEvent {
       _GetS3ObjectSurround;
   const factory S3ObjectEvent.clearUploadError() = _ClearUploadError;
   const factory S3ObjectEvent.initializeEmotionTags() = _InitializeEmotionTags;
+  const factory S3ObjectEvent.hideToggleS3Object(S3Object s3Object, User user) =
+      _HideToggleS3Object;
 }

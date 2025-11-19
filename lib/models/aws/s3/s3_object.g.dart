@@ -37,6 +37,10 @@ _$S3ObjectImpl _$$S3ObjectImplFromJson(Map<String, dynamic> json) =>
               ?.map((e) => S3ObjectReply.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
+      metadata: json['metadata'] == null
+          ? null
+          : S3ObjectMetadata.fromJson(json['metadata'] as Map<String, dynamic>),
+      isHidden: json['isHidden'] as bool? ?? false,
       fileType: json['fileType'] as String? ?? null,
       isImage: json['isImage'] as bool? ?? false,
       isVideo: json['isVideo'] as bool? ?? false,
@@ -64,6 +68,8 @@ Map<String, dynamic> _$$S3ObjectImplToJson(_$S3ObjectImpl instance) =>
       'tags': instance.tags,
       'likes': instance.likes,
       'replies': instance.replies,
+      'metadata': instance.metadata,
+      'isHidden': instance.isHidden,
       'fileType': instance.fileType,
       'isImage': instance.isImage,
       'isVideo': instance.isVideo,

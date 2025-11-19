@@ -34,6 +34,8 @@ mixin _$S3Object {
   List<S3ObjectTag>? get tags => throw _privateConstructorUsedError;
   List<S3ObjectLike>? get likes => throw _privateConstructorUsedError;
   List<S3ObjectReply>? get replies => throw _privateConstructorUsedError;
+  S3ObjectMetadata? get metadata => throw _privateConstructorUsedError;
+  bool get isHidden => throw _privateConstructorUsedError;
   String? get fileType => throw _privateConstructorUsedError;
   bool get isImage => throw _privateConstructorUsedError;
   bool get isVideo => throw _privateConstructorUsedError;
@@ -74,6 +76,8 @@ abstract class $S3ObjectCopyWith<$Res> {
       List<S3ObjectTag>? tags,
       List<S3ObjectLike>? likes,
       List<S3ObjectReply>? replies,
+      S3ObjectMetadata? metadata,
+      bool isHidden,
       String? fileType,
       bool isImage,
       bool isVideo,
@@ -86,6 +90,7 @@ abstract class $S3ObjectCopyWith<$Res> {
 
   $UserCopyWith<$Res>? get user;
   $S3ObjectBaseCopyWith<$Res>? get thumbnail;
+  $S3ObjectMetadataCopyWith<$Res>? get metadata;
 }
 
 /// @nodoc
@@ -117,6 +122,8 @@ class _$S3ObjectCopyWithImpl<$Res, $Val extends S3Object>
     Object? tags = freezed,
     Object? likes = freezed,
     Object? replies = freezed,
+    Object? metadata = freezed,
+    Object? isHidden = null,
     Object? fileType = freezed,
     Object? isImage = null,
     Object? isVideo = null,
@@ -184,6 +191,14 @@ class _$S3ObjectCopyWithImpl<$Res, $Val extends S3Object>
           ? _value.replies
           : replies // ignore: cast_nullable_to_non_nullable
               as List<S3ObjectReply>?,
+      metadata: freezed == metadata
+          ? _value.metadata
+          : metadata // ignore: cast_nullable_to_non_nullable
+              as S3ObjectMetadata?,
+      isHidden: null == isHidden
+          ? _value.isHidden
+          : isHidden // ignore: cast_nullable_to_non_nullable
+              as bool,
       fileType: freezed == fileType
           ? _value.fileType
           : fileType // ignore: cast_nullable_to_non_nullable
@@ -250,6 +265,20 @@ class _$S3ObjectCopyWithImpl<$Res, $Val extends S3Object>
       return _then(_value.copyWith(thumbnail: value) as $Val);
     });
   }
+
+  /// Create a copy of S3Object
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $S3ObjectMetadataCopyWith<$Res>? get metadata {
+    if (_value.metadata == null) {
+      return null;
+    }
+
+    return $S3ObjectMetadataCopyWith<$Res>(_value.metadata!, (value) {
+      return _then(_value.copyWith(metadata: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -275,6 +304,8 @@ abstract class _$$S3ObjectImplCopyWith<$Res>
       List<S3ObjectTag>? tags,
       List<S3ObjectLike>? likes,
       List<S3ObjectReply>? replies,
+      S3ObjectMetadata? metadata,
+      bool isHidden,
       String? fileType,
       bool isImage,
       bool isVideo,
@@ -289,6 +320,8 @@ abstract class _$$S3ObjectImplCopyWith<$Res>
   $UserCopyWith<$Res>? get user;
   @override
   $S3ObjectBaseCopyWith<$Res>? get thumbnail;
+  @override
+  $S3ObjectMetadataCopyWith<$Res>? get metadata;
 }
 
 /// @nodoc
@@ -318,6 +351,8 @@ class __$$S3ObjectImplCopyWithImpl<$Res>
     Object? tags = freezed,
     Object? likes = freezed,
     Object? replies = freezed,
+    Object? metadata = freezed,
+    Object? isHidden = null,
     Object? fileType = freezed,
     Object? isImage = null,
     Object? isVideo = null,
@@ -385,6 +420,14 @@ class __$$S3ObjectImplCopyWithImpl<$Res>
           ? _value._replies
           : replies // ignore: cast_nullable_to_non_nullable
               as List<S3ObjectReply>?,
+      metadata: freezed == metadata
+          ? _value.metadata
+          : metadata // ignore: cast_nullable_to_non_nullable
+              as S3ObjectMetadata?,
+      isHidden: null == isHidden
+          ? _value.isHidden
+          : isHidden // ignore: cast_nullable_to_non_nullable
+              as bool,
       fileType: freezed == fileType
           ? _value.fileType
           : fileType // ignore: cast_nullable_to_non_nullable
@@ -443,6 +486,8 @@ class _$S3ObjectImpl extends _S3Object {
       final List<S3ObjectTag>? tags = const [],
       final List<S3ObjectLike>? likes = const [],
       final List<S3ObjectReply>? replies = const [],
+      this.metadata = null,
+      this.isHidden = false,
       this.fileType = null,
       this.isImage = false,
       this.isVideo = false,
@@ -527,6 +572,12 @@ class _$S3ObjectImpl extends _S3Object {
 
   @override
   @JsonKey()
+  final S3ObjectMetadata? metadata;
+  @override
+  @JsonKey()
+  final bool isHidden;
+  @override
+  @JsonKey()
   final String? fileType;
   @override
   @JsonKey()
@@ -555,7 +606,7 @@ class _$S3ObjectImpl extends _S3Object {
 
   @override
   String toString() {
-    return 'S3Object(id: $id, key: $key, url: $url, originalName: $originalName, size: $size, mimetype: $mimetype, active: $active, createdAt: $createdAt, userId: $userId, user: $user, thumbnail: $thumbnail, tags: $tags, likes: $likes, replies: $replies, fileType: $fileType, isImage: $isImage, isVideo: $isVideo, isAudio: $isAudio, isDocument: $isDocument, isArchive: $isArchive, isThumbnail: $isThumbnail, hasThumbnail: $hasThumbnail, thumbnailUrl: $thumbnailUrl)';
+    return 'S3Object(id: $id, key: $key, url: $url, originalName: $originalName, size: $size, mimetype: $mimetype, active: $active, createdAt: $createdAt, userId: $userId, user: $user, thumbnail: $thumbnail, tags: $tags, likes: $likes, replies: $replies, metadata: $metadata, isHidden: $isHidden, fileType: $fileType, isImage: $isImage, isVideo: $isVideo, isAudio: $isAudio, isDocument: $isDocument, isArchive: $isArchive, isThumbnail: $isThumbnail, hasThumbnail: $hasThumbnail, thumbnailUrl: $thumbnailUrl)';
   }
 
   @override
@@ -581,6 +632,10 @@ class _$S3ObjectImpl extends _S3Object {
             const DeepCollectionEquality().equals(other._tags, _tags) &&
             const DeepCollectionEquality().equals(other._likes, _likes) &&
             const DeepCollectionEquality().equals(other._replies, _replies) &&
+            (identical(other.metadata, metadata) ||
+                other.metadata == metadata) &&
+            (identical(other.isHidden, isHidden) ||
+                other.isHidden == isHidden) &&
             (identical(other.fileType, fileType) ||
                 other.fileType == fileType) &&
             (identical(other.isImage, isImage) || other.isImage == isImage) &&
@@ -616,6 +671,8 @@ class _$S3ObjectImpl extends _S3Object {
         const DeepCollectionEquality().hash(_tags),
         const DeepCollectionEquality().hash(_likes),
         const DeepCollectionEquality().hash(_replies),
+        metadata,
+        isHidden,
         fileType,
         isImage,
         isVideo,
@@ -659,6 +716,8 @@ abstract class _S3Object extends S3Object {
       final List<S3ObjectTag>? tags,
       final List<S3ObjectLike>? likes,
       final List<S3ObjectReply>? replies,
+      final S3ObjectMetadata? metadata,
+      final bool isHidden,
       final String? fileType,
       final bool isImage,
       final bool isVideo,
@@ -701,6 +760,10 @@ abstract class _S3Object extends S3Object {
   List<S3ObjectLike>? get likes;
   @override
   List<S3ObjectReply>? get replies;
+  @override
+  S3ObjectMetadata? get metadata;
+  @override
+  bool get isHidden;
   @override
   String? get fileType;
   @override

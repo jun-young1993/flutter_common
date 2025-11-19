@@ -48,6 +48,7 @@ mixin _$S3ObjectEvent {
     required TResult Function(S3Object s3Object) getS3ObjectSurround,
     required TResult Function() clearUploadError,
     required TResult Function() initializeEmotionTags,
+    required TResult Function(S3Object s3Object, User user) hideToggleS3Object,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -79,6 +80,7 @@ mixin _$S3ObjectEvent {
     TResult? Function(S3Object s3Object)? getS3ObjectSurround,
     TResult? Function()? clearUploadError,
     TResult? Function()? initializeEmotionTags,
+    TResult? Function(S3Object s3Object, User user)? hideToggleS3Object,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -109,6 +111,7 @@ mixin _$S3ObjectEvent {
     TResult Function(S3Object s3Object)? getS3ObjectSurround,
     TResult Function()? clearUploadError,
     TResult Function()? initializeEmotionTags,
+    TResult Function(S3Object s3Object, User user)? hideToggleS3Object,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -135,6 +138,7 @@ mixin _$S3ObjectEvent {
     required TResult Function(_ClearUploadError value) clearUploadError,
     required TResult Function(_InitializeEmotionTags value)
         initializeEmotionTags,
+    required TResult Function(_HideToggleS3Object value) hideToggleS3Object,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -159,6 +163,7 @@ mixin _$S3ObjectEvent {
     TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     TResult? Function(_ClearUploadError value)? clearUploadError,
     TResult? Function(_InitializeEmotionTags value)? initializeEmotionTags,
+    TResult? Function(_HideToggleS3Object value)? hideToggleS3Object,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -183,6 +188,7 @@ mixin _$S3ObjectEvent {
     TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     TResult Function(_ClearUploadError value)? clearUploadError,
     TResult Function(_InitializeEmotionTags value)? initializeEmotionTags,
+    TResult Function(_HideToggleS3Object value)? hideToggleS3Object,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -280,6 +286,7 @@ class _$InitializeImpl implements _Initialize {
     required TResult Function(S3Object s3Object) getS3ObjectSurround,
     required TResult Function() clearUploadError,
     required TResult Function() initializeEmotionTags,
+    required TResult Function(S3Object s3Object, User user) hideToggleS3Object,
   }) {
     return initialize();
   }
@@ -314,6 +321,7 @@ class _$InitializeImpl implements _Initialize {
     TResult? Function(S3Object s3Object)? getS3ObjectSurround,
     TResult? Function()? clearUploadError,
     TResult? Function()? initializeEmotionTags,
+    TResult? Function(S3Object s3Object, User user)? hideToggleS3Object,
   }) {
     return initialize?.call();
   }
@@ -347,6 +355,7 @@ class _$InitializeImpl implements _Initialize {
     TResult Function(S3Object s3Object)? getS3ObjectSurround,
     TResult Function()? clearUploadError,
     TResult Function()? initializeEmotionTags,
+    TResult Function(S3Object s3Object, User user)? hideToggleS3Object,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -379,6 +388,7 @@ class _$InitializeImpl implements _Initialize {
     required TResult Function(_ClearUploadError value) clearUploadError,
     required TResult Function(_InitializeEmotionTags value)
         initializeEmotionTags,
+    required TResult Function(_HideToggleS3Object value) hideToggleS3Object,
   }) {
     return initialize(this);
   }
@@ -406,6 +416,7 @@ class _$InitializeImpl implements _Initialize {
     TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     TResult? Function(_ClearUploadError value)? clearUploadError,
     TResult? Function(_InitializeEmotionTags value)? initializeEmotionTags,
+    TResult? Function(_HideToggleS3Object value)? hideToggleS3Object,
   }) {
     return initialize?.call(this);
   }
@@ -433,6 +444,7 @@ class _$InitializeImpl implements _Initialize {
     TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     TResult Function(_ClearUploadError value)? clearUploadError,
     TResult Function(_InitializeEmotionTags value)? initializeEmotionTags,
+    TResult Function(_HideToggleS3Object value)? hideToggleS3Object,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -570,6 +582,7 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     required TResult Function(S3Object s3Object) getS3ObjectSurround,
     required TResult Function() clearUploadError,
     required TResult Function() initializeEmotionTags,
+    required TResult Function(S3Object s3Object, User user) hideToggleS3Object,
   }) {
     return getS3Objects(skip, take, tags);
   }
@@ -604,6 +617,7 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     TResult? Function(S3Object s3Object)? getS3ObjectSurround,
     TResult? Function()? clearUploadError,
     TResult? Function()? initializeEmotionTags,
+    TResult? Function(S3Object s3Object, User user)? hideToggleS3Object,
   }) {
     return getS3Objects?.call(skip, take, tags);
   }
@@ -637,6 +651,7 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     TResult Function(S3Object s3Object)? getS3ObjectSurround,
     TResult Function()? clearUploadError,
     TResult Function()? initializeEmotionTags,
+    TResult Function(S3Object s3Object, User user)? hideToggleS3Object,
     required TResult orElse(),
   }) {
     if (getS3Objects != null) {
@@ -669,6 +684,7 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     required TResult Function(_ClearUploadError value) clearUploadError,
     required TResult Function(_InitializeEmotionTags value)
         initializeEmotionTags,
+    required TResult Function(_HideToggleS3Object value) hideToggleS3Object,
   }) {
     return getS3Objects(this);
   }
@@ -696,6 +712,7 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     TResult? Function(_ClearUploadError value)? clearUploadError,
     TResult? Function(_InitializeEmotionTags value)? initializeEmotionTags,
+    TResult? Function(_HideToggleS3Object value)? hideToggleS3Object,
   }) {
     return getS3Objects?.call(this);
   }
@@ -723,6 +740,7 @@ class _$GetS3ObjectsImpl implements _GetS3Objects {
     TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     TResult Function(_ClearUploadError value)? clearUploadError,
     TResult Function(_InitializeEmotionTags value)? initializeEmotionTags,
+    TResult Function(_HideToggleS3Object value)? hideToggleS3Object,
     required TResult orElse(),
   }) {
     if (getS3Objects != null) {
@@ -818,6 +836,7 @@ class _$ClearErrorImpl implements _ClearError {
     required TResult Function(S3Object s3Object) getS3ObjectSurround,
     required TResult Function() clearUploadError,
     required TResult Function() initializeEmotionTags,
+    required TResult Function(S3Object s3Object, User user) hideToggleS3Object,
   }) {
     return clearError();
   }
@@ -852,6 +871,7 @@ class _$ClearErrorImpl implements _ClearError {
     TResult? Function(S3Object s3Object)? getS3ObjectSurround,
     TResult? Function()? clearUploadError,
     TResult? Function()? initializeEmotionTags,
+    TResult? Function(S3Object s3Object, User user)? hideToggleS3Object,
   }) {
     return clearError?.call();
   }
@@ -885,6 +905,7 @@ class _$ClearErrorImpl implements _ClearError {
     TResult Function(S3Object s3Object)? getS3ObjectSurround,
     TResult Function()? clearUploadError,
     TResult Function()? initializeEmotionTags,
+    TResult Function(S3Object s3Object, User user)? hideToggleS3Object,
     required TResult orElse(),
   }) {
     if (clearError != null) {
@@ -917,6 +938,7 @@ class _$ClearErrorImpl implements _ClearError {
     required TResult Function(_ClearUploadError value) clearUploadError,
     required TResult Function(_InitializeEmotionTags value)
         initializeEmotionTags,
+    required TResult Function(_HideToggleS3Object value) hideToggleS3Object,
   }) {
     return clearError(this);
   }
@@ -944,6 +966,7 @@ class _$ClearErrorImpl implements _ClearError {
     TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     TResult? Function(_ClearUploadError value)? clearUploadError,
     TResult? Function(_InitializeEmotionTags value)? initializeEmotionTags,
+    TResult? Function(_HideToggleS3Object value)? hideToggleS3Object,
   }) {
     return clearError?.call(this);
   }
@@ -971,6 +994,7 @@ class _$ClearErrorImpl implements _ClearError {
     TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     TResult Function(_ClearUploadError value)? clearUploadError,
     TResult Function(_InitializeEmotionTags value)? initializeEmotionTags,
+    TResult Function(_HideToggleS3Object value)? hideToggleS3Object,
     required TResult orElse(),
   }) {
     if (clearError != null) {
@@ -1102,6 +1126,7 @@ class _$UploadFileImpl implements _UploadFile {
     required TResult Function(S3Object s3Object) getS3ObjectSurround,
     required TResult Function() clearUploadError,
     required TResult Function() initializeEmotionTags,
+    required TResult Function(S3Object s3Object, User user) hideToggleS3Object,
   }) {
     return uploadFile(file, user);
   }
@@ -1136,6 +1161,7 @@ class _$UploadFileImpl implements _UploadFile {
     TResult? Function(S3Object s3Object)? getS3ObjectSurround,
     TResult? Function()? clearUploadError,
     TResult? Function()? initializeEmotionTags,
+    TResult? Function(S3Object s3Object, User user)? hideToggleS3Object,
   }) {
     return uploadFile?.call(file, user);
   }
@@ -1169,6 +1195,7 @@ class _$UploadFileImpl implements _UploadFile {
     TResult Function(S3Object s3Object)? getS3ObjectSurround,
     TResult Function()? clearUploadError,
     TResult Function()? initializeEmotionTags,
+    TResult Function(S3Object s3Object, User user)? hideToggleS3Object,
     required TResult orElse(),
   }) {
     if (uploadFile != null) {
@@ -1201,6 +1228,7 @@ class _$UploadFileImpl implements _UploadFile {
     required TResult Function(_ClearUploadError value) clearUploadError,
     required TResult Function(_InitializeEmotionTags value)
         initializeEmotionTags,
+    required TResult Function(_HideToggleS3Object value) hideToggleS3Object,
   }) {
     return uploadFile(this);
   }
@@ -1228,6 +1256,7 @@ class _$UploadFileImpl implements _UploadFile {
     TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     TResult? Function(_ClearUploadError value)? clearUploadError,
     TResult? Function(_InitializeEmotionTags value)? initializeEmotionTags,
+    TResult? Function(_HideToggleS3Object value)? hideToggleS3Object,
   }) {
     return uploadFile?.call(this);
   }
@@ -1255,6 +1284,7 @@ class _$UploadFileImpl implements _UploadFile {
     TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     TResult Function(_ClearUploadError value)? clearUploadError,
     TResult Function(_InitializeEmotionTags value)? initializeEmotionTags,
+    TResult Function(_HideToggleS3Object value)? hideToggleS3Object,
     required TResult orElse(),
   }) {
     if (uploadFile != null) {
@@ -1403,6 +1433,7 @@ class _$UploadFilesImpl implements _UploadFiles {
     required TResult Function(S3Object s3Object) getS3ObjectSurround,
     required TResult Function() clearUploadError,
     required TResult Function() initializeEmotionTags,
+    required TResult Function(S3Object s3Object, User user) hideToggleS3Object,
   }) {
     return uploadFiles(files, user);
   }
@@ -1437,6 +1468,7 @@ class _$UploadFilesImpl implements _UploadFiles {
     TResult? Function(S3Object s3Object)? getS3ObjectSurround,
     TResult? Function()? clearUploadError,
     TResult? Function()? initializeEmotionTags,
+    TResult? Function(S3Object s3Object, User user)? hideToggleS3Object,
   }) {
     return uploadFiles?.call(files, user);
   }
@@ -1470,6 +1502,7 @@ class _$UploadFilesImpl implements _UploadFiles {
     TResult Function(S3Object s3Object)? getS3ObjectSurround,
     TResult Function()? clearUploadError,
     TResult Function()? initializeEmotionTags,
+    TResult Function(S3Object s3Object, User user)? hideToggleS3Object,
     required TResult orElse(),
   }) {
     if (uploadFiles != null) {
@@ -1502,6 +1535,7 @@ class _$UploadFilesImpl implements _UploadFiles {
     required TResult Function(_ClearUploadError value) clearUploadError,
     required TResult Function(_InitializeEmotionTags value)
         initializeEmotionTags,
+    required TResult Function(_HideToggleS3Object value) hideToggleS3Object,
   }) {
     return uploadFiles(this);
   }
@@ -1529,6 +1563,7 @@ class _$UploadFilesImpl implements _UploadFiles {
     TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     TResult? Function(_ClearUploadError value)? clearUploadError,
     TResult? Function(_InitializeEmotionTags value)? initializeEmotionTags,
+    TResult? Function(_HideToggleS3Object value)? hideToggleS3Object,
   }) {
     return uploadFiles?.call(this);
   }
@@ -1556,6 +1591,7 @@ class _$UploadFilesImpl implements _UploadFiles {
     TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     TResult Function(_ClearUploadError value)? clearUploadError,
     TResult Function(_InitializeEmotionTags value)? initializeEmotionTags,
+    TResult Function(_HideToggleS3Object value)? hideToggleS3Object,
     required TResult orElse(),
   }) {
     if (uploadFiles != null) {
@@ -1709,6 +1745,7 @@ class _$DeleteFileImpl implements _DeleteFile {
     required TResult Function(S3Object s3Object) getS3ObjectSurround,
     required TResult Function() clearUploadError,
     required TResult Function() initializeEmotionTags,
+    required TResult Function(S3Object s3Object, User user) hideToggleS3Object,
   }) {
     return deleteFile(s3Object, user);
   }
@@ -1743,6 +1780,7 @@ class _$DeleteFileImpl implements _DeleteFile {
     TResult? Function(S3Object s3Object)? getS3ObjectSurround,
     TResult? Function()? clearUploadError,
     TResult? Function()? initializeEmotionTags,
+    TResult? Function(S3Object s3Object, User user)? hideToggleS3Object,
   }) {
     return deleteFile?.call(s3Object, user);
   }
@@ -1776,6 +1814,7 @@ class _$DeleteFileImpl implements _DeleteFile {
     TResult Function(S3Object s3Object)? getS3ObjectSurround,
     TResult Function()? clearUploadError,
     TResult Function()? initializeEmotionTags,
+    TResult Function(S3Object s3Object, User user)? hideToggleS3Object,
     required TResult orElse(),
   }) {
     if (deleteFile != null) {
@@ -1808,6 +1847,7 @@ class _$DeleteFileImpl implements _DeleteFile {
     required TResult Function(_ClearUploadError value) clearUploadError,
     required TResult Function(_InitializeEmotionTags value)
         initializeEmotionTags,
+    required TResult Function(_HideToggleS3Object value) hideToggleS3Object,
   }) {
     return deleteFile(this);
   }
@@ -1835,6 +1875,7 @@ class _$DeleteFileImpl implements _DeleteFile {
     TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     TResult? Function(_ClearUploadError value)? clearUploadError,
     TResult? Function(_InitializeEmotionTags value)? initializeEmotionTags,
+    TResult? Function(_HideToggleS3Object value)? hideToggleS3Object,
   }) {
     return deleteFile?.call(this);
   }
@@ -1862,6 +1903,7 @@ class _$DeleteFileImpl implements _DeleteFile {
     TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     TResult Function(_ClearUploadError value)? clearUploadError,
     TResult Function(_InitializeEmotionTags value)? initializeEmotionTags,
+    TResult Function(_HideToggleS3Object value)? hideToggleS3Object,
     required TResult orElse(),
   }) {
     if (deleteFile != null) {
@@ -2003,6 +2045,7 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     required TResult Function(S3Object s3Object) getS3ObjectSurround,
     required TResult Function() clearUploadError,
     required TResult Function() initializeEmotionTags,
+    required TResult Function(S3Object s3Object, User user) hideToggleS3Object,
   }) {
     return findOneOrFail(id, user);
   }
@@ -2037,6 +2080,7 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     TResult? Function(S3Object s3Object)? getS3ObjectSurround,
     TResult? Function()? clearUploadError,
     TResult? Function()? initializeEmotionTags,
+    TResult? Function(S3Object s3Object, User user)? hideToggleS3Object,
   }) {
     return findOneOrFail?.call(id, user);
   }
@@ -2070,6 +2114,7 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     TResult Function(S3Object s3Object)? getS3ObjectSurround,
     TResult Function()? clearUploadError,
     TResult Function()? initializeEmotionTags,
+    TResult Function(S3Object s3Object, User user)? hideToggleS3Object,
     required TResult orElse(),
   }) {
     if (findOneOrFail != null) {
@@ -2102,6 +2147,7 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     required TResult Function(_ClearUploadError value) clearUploadError,
     required TResult Function(_InitializeEmotionTags value)
         initializeEmotionTags,
+    required TResult Function(_HideToggleS3Object value) hideToggleS3Object,
   }) {
     return findOneOrFail(this);
   }
@@ -2129,6 +2175,7 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     TResult? Function(_ClearUploadError value)? clearUploadError,
     TResult? Function(_InitializeEmotionTags value)? initializeEmotionTags,
+    TResult? Function(_HideToggleS3Object value)? hideToggleS3Object,
   }) {
     return findOneOrFail?.call(this);
   }
@@ -2156,6 +2203,7 @@ class _$FindOneOrFailImpl implements _FindOneOrFail {
     TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     TResult Function(_ClearUploadError value)? clearUploadError,
     TResult Function(_InitializeEmotionTags value)? initializeEmotionTags,
+    TResult Function(_HideToggleS3Object value)? hideToggleS3Object,
     required TResult orElse(),
   }) {
     if (findOneOrFail != null) {
@@ -2250,6 +2298,7 @@ class _$CountImpl implements _Count {
     required TResult Function(S3Object s3Object) getS3ObjectSurround,
     required TResult Function() clearUploadError,
     required TResult Function() initializeEmotionTags,
+    required TResult Function(S3Object s3Object, User user) hideToggleS3Object,
   }) {
     return count();
   }
@@ -2284,6 +2333,7 @@ class _$CountImpl implements _Count {
     TResult? Function(S3Object s3Object)? getS3ObjectSurround,
     TResult? Function()? clearUploadError,
     TResult? Function()? initializeEmotionTags,
+    TResult? Function(S3Object s3Object, User user)? hideToggleS3Object,
   }) {
     return count?.call();
   }
@@ -2317,6 +2367,7 @@ class _$CountImpl implements _Count {
     TResult Function(S3Object s3Object)? getS3ObjectSurround,
     TResult Function()? clearUploadError,
     TResult Function()? initializeEmotionTags,
+    TResult Function(S3Object s3Object, User user)? hideToggleS3Object,
     required TResult orElse(),
   }) {
     if (count != null) {
@@ -2349,6 +2400,7 @@ class _$CountImpl implements _Count {
     required TResult Function(_ClearUploadError value) clearUploadError,
     required TResult Function(_InitializeEmotionTags value)
         initializeEmotionTags,
+    required TResult Function(_HideToggleS3Object value) hideToggleS3Object,
   }) {
     return count(this);
   }
@@ -2376,6 +2428,7 @@ class _$CountImpl implements _Count {
     TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     TResult? Function(_ClearUploadError value)? clearUploadError,
     TResult? Function(_InitializeEmotionTags value)? initializeEmotionTags,
+    TResult? Function(_HideToggleS3Object value)? hideToggleS3Object,
   }) {
     return count?.call(this);
   }
@@ -2403,6 +2456,7 @@ class _$CountImpl implements _Count {
     TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     TResult Function(_ClearUploadError value)? clearUploadError,
     TResult Function(_InitializeEmotionTags value)? initializeEmotionTags,
+    TResult Function(_HideToggleS3Object value)? hideToggleS3Object,
     required TResult orElse(),
   }) {
     if (count != null) {
@@ -2528,6 +2582,7 @@ class _$CheckObjectsExistenceByMonthImpl
     required TResult Function(S3Object s3Object) getS3ObjectSurround,
     required TResult Function() clearUploadError,
     required TResult Function() initializeEmotionTags,
+    required TResult Function(S3Object s3Object, User user) hideToggleS3Object,
   }) {
     return checkObjectsExistenceByMonth(year, month);
   }
@@ -2562,6 +2617,7 @@ class _$CheckObjectsExistenceByMonthImpl
     TResult? Function(S3Object s3Object)? getS3ObjectSurround,
     TResult? Function()? clearUploadError,
     TResult? Function()? initializeEmotionTags,
+    TResult? Function(S3Object s3Object, User user)? hideToggleS3Object,
   }) {
     return checkObjectsExistenceByMonth?.call(year, month);
   }
@@ -2595,6 +2651,7 @@ class _$CheckObjectsExistenceByMonthImpl
     TResult Function(S3Object s3Object)? getS3ObjectSurround,
     TResult Function()? clearUploadError,
     TResult Function()? initializeEmotionTags,
+    TResult Function(S3Object s3Object, User user)? hideToggleS3Object,
     required TResult orElse(),
   }) {
     if (checkObjectsExistenceByMonth != null) {
@@ -2627,6 +2684,7 @@ class _$CheckObjectsExistenceByMonthImpl
     required TResult Function(_ClearUploadError value) clearUploadError,
     required TResult Function(_InitializeEmotionTags value)
         initializeEmotionTags,
+    required TResult Function(_HideToggleS3Object value) hideToggleS3Object,
   }) {
     return checkObjectsExistenceByMonth(this);
   }
@@ -2654,6 +2712,7 @@ class _$CheckObjectsExistenceByMonthImpl
     TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     TResult? Function(_ClearUploadError value)? clearUploadError,
     TResult? Function(_InitializeEmotionTags value)? initializeEmotionTags,
+    TResult? Function(_HideToggleS3Object value)? hideToggleS3Object,
   }) {
     return checkObjectsExistenceByMonth?.call(this);
   }
@@ -2681,6 +2740,7 @@ class _$CheckObjectsExistenceByMonthImpl
     TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     TResult Function(_ClearUploadError value)? clearUploadError,
     TResult Function(_InitializeEmotionTags value)? initializeEmotionTags,
+    TResult Function(_HideToggleS3Object value)? hideToggleS3Object,
     required TResult orElse(),
   }) {
     if (checkObjectsExistenceByMonth != null) {
@@ -2838,6 +2898,7 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
     required TResult Function(S3Object s3Object) getS3ObjectSurround,
     required TResult Function() clearUploadError,
     required TResult Function() initializeEmotionTags,
+    required TResult Function(S3Object s3Object, User user) hideToggleS3Object,
   }) {
     return getObjectsByDate(year, month, day, skip, take);
   }
@@ -2872,6 +2933,7 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
     TResult? Function(S3Object s3Object)? getS3ObjectSurround,
     TResult? Function()? clearUploadError,
     TResult? Function()? initializeEmotionTags,
+    TResult? Function(S3Object s3Object, User user)? hideToggleS3Object,
   }) {
     return getObjectsByDate?.call(year, month, day, skip, take);
   }
@@ -2905,6 +2967,7 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
     TResult Function(S3Object s3Object)? getS3ObjectSurround,
     TResult Function()? clearUploadError,
     TResult Function()? initializeEmotionTags,
+    TResult Function(S3Object s3Object, User user)? hideToggleS3Object,
     required TResult orElse(),
   }) {
     if (getObjectsByDate != null) {
@@ -2937,6 +3000,7 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
     required TResult Function(_ClearUploadError value) clearUploadError,
     required TResult Function(_InitializeEmotionTags value)
         initializeEmotionTags,
+    required TResult Function(_HideToggleS3Object value) hideToggleS3Object,
   }) {
     return getObjectsByDate(this);
   }
@@ -2964,6 +3028,7 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
     TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     TResult? Function(_ClearUploadError value)? clearUploadError,
     TResult? Function(_InitializeEmotionTags value)? initializeEmotionTags,
+    TResult? Function(_HideToggleS3Object value)? hideToggleS3Object,
   }) {
     return getObjectsByDate?.call(this);
   }
@@ -2991,6 +3056,7 @@ class _$GetObjectsByDateImpl implements _GetObjectsByDate {
     TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     TResult Function(_ClearUploadError value)? clearUploadError,
     TResult Function(_InitializeEmotionTags value)? initializeEmotionTags,
+    TResult Function(_HideToggleS3Object value)? hideToggleS3Object,
     required TResult orElse(),
   }) {
     if (getObjectsByDate != null) {
@@ -3151,6 +3217,7 @@ class _$LikeS3ObjectImpl implements _LikeS3Object {
     required TResult Function(S3Object s3Object) getS3ObjectSurround,
     required TResult Function() clearUploadError,
     required TResult Function() initializeEmotionTags,
+    required TResult Function(S3Object s3Object, User user) hideToggleS3Object,
   }) {
     return likeS3Object(s3Object, user);
   }
@@ -3185,6 +3252,7 @@ class _$LikeS3ObjectImpl implements _LikeS3Object {
     TResult? Function(S3Object s3Object)? getS3ObjectSurround,
     TResult? Function()? clearUploadError,
     TResult? Function()? initializeEmotionTags,
+    TResult? Function(S3Object s3Object, User user)? hideToggleS3Object,
   }) {
     return likeS3Object?.call(s3Object, user);
   }
@@ -3218,6 +3286,7 @@ class _$LikeS3ObjectImpl implements _LikeS3Object {
     TResult Function(S3Object s3Object)? getS3ObjectSurround,
     TResult Function()? clearUploadError,
     TResult Function()? initializeEmotionTags,
+    TResult Function(S3Object s3Object, User user)? hideToggleS3Object,
     required TResult orElse(),
   }) {
     if (likeS3Object != null) {
@@ -3250,6 +3319,7 @@ class _$LikeS3ObjectImpl implements _LikeS3Object {
     required TResult Function(_ClearUploadError value) clearUploadError,
     required TResult Function(_InitializeEmotionTags value)
         initializeEmotionTags,
+    required TResult Function(_HideToggleS3Object value) hideToggleS3Object,
   }) {
     return likeS3Object(this);
   }
@@ -3277,6 +3347,7 @@ class _$LikeS3ObjectImpl implements _LikeS3Object {
     TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     TResult? Function(_ClearUploadError value)? clearUploadError,
     TResult? Function(_InitializeEmotionTags value)? initializeEmotionTags,
+    TResult? Function(_HideToggleS3Object value)? hideToggleS3Object,
   }) {
     return likeS3Object?.call(this);
   }
@@ -3304,6 +3375,7 @@ class _$LikeS3ObjectImpl implements _LikeS3Object {
     TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     TResult Function(_ClearUploadError value)? clearUploadError,
     TResult Function(_InitializeEmotionTags value)? initializeEmotionTags,
+    TResult Function(_HideToggleS3Object value)? hideToggleS3Object,
     required TResult orElse(),
   }) {
     if (likeS3Object != null) {
@@ -3458,6 +3530,7 @@ class _$RemoveLikeS3ObjectImpl implements _RemoveLikeS3Object {
     required TResult Function(S3Object s3Object) getS3ObjectSurround,
     required TResult Function() clearUploadError,
     required TResult Function() initializeEmotionTags,
+    required TResult Function(S3Object s3Object, User user) hideToggleS3Object,
   }) {
     return removeLikeS3Object(s3ObjectLike, user);
   }
@@ -3492,6 +3565,7 @@ class _$RemoveLikeS3ObjectImpl implements _RemoveLikeS3Object {
     TResult? Function(S3Object s3Object)? getS3ObjectSurround,
     TResult? Function()? clearUploadError,
     TResult? Function()? initializeEmotionTags,
+    TResult? Function(S3Object s3Object, User user)? hideToggleS3Object,
   }) {
     return removeLikeS3Object?.call(s3ObjectLike, user);
   }
@@ -3525,6 +3599,7 @@ class _$RemoveLikeS3ObjectImpl implements _RemoveLikeS3Object {
     TResult Function(S3Object s3Object)? getS3ObjectSurround,
     TResult Function()? clearUploadError,
     TResult Function()? initializeEmotionTags,
+    TResult Function(S3Object s3Object, User user)? hideToggleS3Object,
     required TResult orElse(),
   }) {
     if (removeLikeS3Object != null) {
@@ -3557,6 +3632,7 @@ class _$RemoveLikeS3ObjectImpl implements _RemoveLikeS3Object {
     required TResult Function(_ClearUploadError value) clearUploadError,
     required TResult Function(_InitializeEmotionTags value)
         initializeEmotionTags,
+    required TResult Function(_HideToggleS3Object value) hideToggleS3Object,
   }) {
     return removeLikeS3Object(this);
   }
@@ -3584,6 +3660,7 @@ class _$RemoveLikeS3ObjectImpl implements _RemoveLikeS3Object {
     TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     TResult? Function(_ClearUploadError value)? clearUploadError,
     TResult? Function(_InitializeEmotionTags value)? initializeEmotionTags,
+    TResult? Function(_HideToggleS3Object value)? hideToggleS3Object,
   }) {
     return removeLikeS3Object?.call(this);
   }
@@ -3611,6 +3688,7 @@ class _$RemoveLikeS3ObjectImpl implements _RemoveLikeS3Object {
     TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     TResult Function(_ClearUploadError value)? clearUploadError,
     TResult Function(_InitializeEmotionTags value)? initializeEmotionTags,
+    TResult Function(_HideToggleS3Object value)? hideToggleS3Object,
     required TResult orElse(),
   }) {
     if (removeLikeS3Object != null) {
@@ -3773,6 +3851,7 @@ class _$ReplyS3ObjectImpl implements _ReplyS3Object {
     required TResult Function(S3Object s3Object) getS3ObjectSurround,
     required TResult Function() clearUploadError,
     required TResult Function() initializeEmotionTags,
+    required TResult Function(S3Object s3Object, User user) hideToggleS3Object,
   }) {
     return replyS3Object(s3Object, user, content);
   }
@@ -3807,6 +3886,7 @@ class _$ReplyS3ObjectImpl implements _ReplyS3Object {
     TResult? Function(S3Object s3Object)? getS3ObjectSurround,
     TResult? Function()? clearUploadError,
     TResult? Function()? initializeEmotionTags,
+    TResult? Function(S3Object s3Object, User user)? hideToggleS3Object,
   }) {
     return replyS3Object?.call(s3Object, user, content);
   }
@@ -3840,6 +3920,7 @@ class _$ReplyS3ObjectImpl implements _ReplyS3Object {
     TResult Function(S3Object s3Object)? getS3ObjectSurround,
     TResult Function()? clearUploadError,
     TResult Function()? initializeEmotionTags,
+    TResult Function(S3Object s3Object, User user)? hideToggleS3Object,
     required TResult orElse(),
   }) {
     if (replyS3Object != null) {
@@ -3872,6 +3953,7 @@ class _$ReplyS3ObjectImpl implements _ReplyS3Object {
     required TResult Function(_ClearUploadError value) clearUploadError,
     required TResult Function(_InitializeEmotionTags value)
         initializeEmotionTags,
+    required TResult Function(_HideToggleS3Object value) hideToggleS3Object,
   }) {
     return replyS3Object(this);
   }
@@ -3899,6 +3981,7 @@ class _$ReplyS3ObjectImpl implements _ReplyS3Object {
     TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     TResult? Function(_ClearUploadError value)? clearUploadError,
     TResult? Function(_InitializeEmotionTags value)? initializeEmotionTags,
+    TResult? Function(_HideToggleS3Object value)? hideToggleS3Object,
   }) {
     return replyS3Object?.call(this);
   }
@@ -3926,6 +4009,7 @@ class _$ReplyS3ObjectImpl implements _ReplyS3Object {
     TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     TResult Function(_ClearUploadError value)? clearUploadError,
     TResult Function(_InitializeEmotionTags value)? initializeEmotionTags,
+    TResult Function(_HideToggleS3Object value)? hideToggleS3Object,
     required TResult orElse(),
   }) {
     if (replyS3Object != null) {
@@ -4082,6 +4166,7 @@ class _$RemoveReplyS3ObjectImpl implements _RemoveReplyS3Object {
     required TResult Function(S3Object s3Object) getS3ObjectSurround,
     required TResult Function() clearUploadError,
     required TResult Function() initializeEmotionTags,
+    required TResult Function(S3Object s3Object, User user) hideToggleS3Object,
   }) {
     return removeReplyS3Object(s3ObjectReply, user);
   }
@@ -4116,6 +4201,7 @@ class _$RemoveReplyS3ObjectImpl implements _RemoveReplyS3Object {
     TResult? Function(S3Object s3Object)? getS3ObjectSurround,
     TResult? Function()? clearUploadError,
     TResult? Function()? initializeEmotionTags,
+    TResult? Function(S3Object s3Object, User user)? hideToggleS3Object,
   }) {
     return removeReplyS3Object?.call(s3ObjectReply, user);
   }
@@ -4149,6 +4235,7 @@ class _$RemoveReplyS3ObjectImpl implements _RemoveReplyS3Object {
     TResult Function(S3Object s3Object)? getS3ObjectSurround,
     TResult Function()? clearUploadError,
     TResult Function()? initializeEmotionTags,
+    TResult Function(S3Object s3Object, User user)? hideToggleS3Object,
     required TResult orElse(),
   }) {
     if (removeReplyS3Object != null) {
@@ -4181,6 +4268,7 @@ class _$RemoveReplyS3ObjectImpl implements _RemoveReplyS3Object {
     required TResult Function(_ClearUploadError value) clearUploadError,
     required TResult Function(_InitializeEmotionTags value)
         initializeEmotionTags,
+    required TResult Function(_HideToggleS3Object value) hideToggleS3Object,
   }) {
     return removeReplyS3Object(this);
   }
@@ -4208,6 +4296,7 @@ class _$RemoveReplyS3ObjectImpl implements _RemoveReplyS3Object {
     TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     TResult? Function(_ClearUploadError value)? clearUploadError,
     TResult? Function(_InitializeEmotionTags value)? initializeEmotionTags,
+    TResult? Function(_HideToggleS3Object value)? hideToggleS3Object,
   }) {
     return removeReplyS3Object?.call(this);
   }
@@ -4235,6 +4324,7 @@ class _$RemoveReplyS3ObjectImpl implements _RemoveReplyS3Object {
     TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     TResult Function(_ClearUploadError value)? clearUploadError,
     TResult Function(_InitializeEmotionTags value)? initializeEmotionTags,
+    TResult Function(_HideToggleS3Object value)? hideToggleS3Object,
     required TResult orElse(),
   }) {
     if (removeReplyS3Object != null) {
@@ -4387,6 +4477,7 @@ class _$ReportS3ObjectImpl implements _ReportS3Object {
     required TResult Function(S3Object s3Object) getS3ObjectSurround,
     required TResult Function() clearUploadError,
     required TResult Function() initializeEmotionTags,
+    required TResult Function(S3Object s3Object, User user) hideToggleS3Object,
   }) {
     return reportS3Object(s3Object, type, content);
   }
@@ -4421,6 +4512,7 @@ class _$ReportS3ObjectImpl implements _ReportS3Object {
     TResult? Function(S3Object s3Object)? getS3ObjectSurround,
     TResult? Function()? clearUploadError,
     TResult? Function()? initializeEmotionTags,
+    TResult? Function(S3Object s3Object, User user)? hideToggleS3Object,
   }) {
     return reportS3Object?.call(s3Object, type, content);
   }
@@ -4454,6 +4546,7 @@ class _$ReportS3ObjectImpl implements _ReportS3Object {
     TResult Function(S3Object s3Object)? getS3ObjectSurround,
     TResult Function()? clearUploadError,
     TResult Function()? initializeEmotionTags,
+    TResult Function(S3Object s3Object, User user)? hideToggleS3Object,
     required TResult orElse(),
   }) {
     if (reportS3Object != null) {
@@ -4486,6 +4579,7 @@ class _$ReportS3ObjectImpl implements _ReportS3Object {
     required TResult Function(_ClearUploadError value) clearUploadError,
     required TResult Function(_InitializeEmotionTags value)
         initializeEmotionTags,
+    required TResult Function(_HideToggleS3Object value) hideToggleS3Object,
   }) {
     return reportS3Object(this);
   }
@@ -4513,6 +4607,7 @@ class _$ReportS3ObjectImpl implements _ReportS3Object {
     TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     TResult? Function(_ClearUploadError value)? clearUploadError,
     TResult? Function(_InitializeEmotionTags value)? initializeEmotionTags,
+    TResult? Function(_HideToggleS3Object value)? hideToggleS3Object,
   }) {
     return reportS3Object?.call(this);
   }
@@ -4540,6 +4635,7 @@ class _$ReportS3ObjectImpl implements _ReportS3Object {
     TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     TResult Function(_ClearUploadError value)? clearUploadError,
     TResult Function(_InitializeEmotionTags value)? initializeEmotionTags,
+    TResult Function(_HideToggleS3Object value)? hideToggleS3Object,
     required TResult orElse(),
   }) {
     if (reportS3Object != null) {
@@ -4692,6 +4788,7 @@ class _$ReportS3ObjectReplyImpl implements _ReportS3ObjectReply {
     required TResult Function(S3Object s3Object) getS3ObjectSurround,
     required TResult Function() clearUploadError,
     required TResult Function() initializeEmotionTags,
+    required TResult Function(S3Object s3Object, User user) hideToggleS3Object,
   }) {
     return reportS3ObjectReply(s3ObjectReply, type, content);
   }
@@ -4726,6 +4823,7 @@ class _$ReportS3ObjectReplyImpl implements _ReportS3ObjectReply {
     TResult? Function(S3Object s3Object)? getS3ObjectSurround,
     TResult? Function()? clearUploadError,
     TResult? Function()? initializeEmotionTags,
+    TResult? Function(S3Object s3Object, User user)? hideToggleS3Object,
   }) {
     return reportS3ObjectReply?.call(s3ObjectReply, type, content);
   }
@@ -4759,6 +4857,7 @@ class _$ReportS3ObjectReplyImpl implements _ReportS3ObjectReply {
     TResult Function(S3Object s3Object)? getS3ObjectSurround,
     TResult Function()? clearUploadError,
     TResult Function()? initializeEmotionTags,
+    TResult Function(S3Object s3Object, User user)? hideToggleS3Object,
     required TResult orElse(),
   }) {
     if (reportS3ObjectReply != null) {
@@ -4791,6 +4890,7 @@ class _$ReportS3ObjectReplyImpl implements _ReportS3ObjectReply {
     required TResult Function(_ClearUploadError value) clearUploadError,
     required TResult Function(_InitializeEmotionTags value)
         initializeEmotionTags,
+    required TResult Function(_HideToggleS3Object value) hideToggleS3Object,
   }) {
     return reportS3ObjectReply(this);
   }
@@ -4818,6 +4918,7 @@ class _$ReportS3ObjectReplyImpl implements _ReportS3ObjectReply {
     TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     TResult? Function(_ClearUploadError value)? clearUploadError,
     TResult? Function(_InitializeEmotionTags value)? initializeEmotionTags,
+    TResult? Function(_HideToggleS3Object value)? hideToggleS3Object,
   }) {
     return reportS3ObjectReply?.call(this);
   }
@@ -4845,6 +4946,7 @@ class _$ReportS3ObjectReplyImpl implements _ReportS3ObjectReply {
     TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     TResult Function(_ClearUploadError value)? clearUploadError,
     TResult Function(_InitializeEmotionTags value)? initializeEmotionTags,
+    TResult Function(_HideToggleS3Object value)? hideToggleS3Object,
     required TResult orElse(),
   }) {
     if (reportS3ObjectReply != null) {
@@ -4983,6 +5085,7 @@ class _$GetS3ObjectSurroundImpl implements _GetS3ObjectSurround {
     required TResult Function(S3Object s3Object) getS3ObjectSurround,
     required TResult Function() clearUploadError,
     required TResult Function() initializeEmotionTags,
+    required TResult Function(S3Object s3Object, User user) hideToggleS3Object,
   }) {
     return getS3ObjectSurround(s3Object);
   }
@@ -5017,6 +5120,7 @@ class _$GetS3ObjectSurroundImpl implements _GetS3ObjectSurround {
     TResult? Function(S3Object s3Object)? getS3ObjectSurround,
     TResult? Function()? clearUploadError,
     TResult? Function()? initializeEmotionTags,
+    TResult? Function(S3Object s3Object, User user)? hideToggleS3Object,
   }) {
     return getS3ObjectSurround?.call(s3Object);
   }
@@ -5050,6 +5154,7 @@ class _$GetS3ObjectSurroundImpl implements _GetS3ObjectSurround {
     TResult Function(S3Object s3Object)? getS3ObjectSurround,
     TResult Function()? clearUploadError,
     TResult Function()? initializeEmotionTags,
+    TResult Function(S3Object s3Object, User user)? hideToggleS3Object,
     required TResult orElse(),
   }) {
     if (getS3ObjectSurround != null) {
@@ -5082,6 +5187,7 @@ class _$GetS3ObjectSurroundImpl implements _GetS3ObjectSurround {
     required TResult Function(_ClearUploadError value) clearUploadError,
     required TResult Function(_InitializeEmotionTags value)
         initializeEmotionTags,
+    required TResult Function(_HideToggleS3Object value) hideToggleS3Object,
   }) {
     return getS3ObjectSurround(this);
   }
@@ -5109,6 +5215,7 @@ class _$GetS3ObjectSurroundImpl implements _GetS3ObjectSurround {
     TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     TResult? Function(_ClearUploadError value)? clearUploadError,
     TResult? Function(_InitializeEmotionTags value)? initializeEmotionTags,
+    TResult? Function(_HideToggleS3Object value)? hideToggleS3Object,
   }) {
     return getS3ObjectSurround?.call(this);
   }
@@ -5136,6 +5243,7 @@ class _$GetS3ObjectSurroundImpl implements _GetS3ObjectSurround {
     TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     TResult Function(_ClearUploadError value)? clearUploadError,
     TResult Function(_InitializeEmotionTags value)? initializeEmotionTags,
+    TResult Function(_HideToggleS3Object value)? hideToggleS3Object,
     required TResult orElse(),
   }) {
     if (getS3ObjectSurround != null) {
@@ -5229,6 +5337,7 @@ class _$ClearUploadErrorImpl implements _ClearUploadError {
     required TResult Function(S3Object s3Object) getS3ObjectSurround,
     required TResult Function() clearUploadError,
     required TResult Function() initializeEmotionTags,
+    required TResult Function(S3Object s3Object, User user) hideToggleS3Object,
   }) {
     return clearUploadError();
   }
@@ -5263,6 +5372,7 @@ class _$ClearUploadErrorImpl implements _ClearUploadError {
     TResult? Function(S3Object s3Object)? getS3ObjectSurround,
     TResult? Function()? clearUploadError,
     TResult? Function()? initializeEmotionTags,
+    TResult? Function(S3Object s3Object, User user)? hideToggleS3Object,
   }) {
     return clearUploadError?.call();
   }
@@ -5296,6 +5406,7 @@ class _$ClearUploadErrorImpl implements _ClearUploadError {
     TResult Function(S3Object s3Object)? getS3ObjectSurround,
     TResult Function()? clearUploadError,
     TResult Function()? initializeEmotionTags,
+    TResult Function(S3Object s3Object, User user)? hideToggleS3Object,
     required TResult orElse(),
   }) {
     if (clearUploadError != null) {
@@ -5328,6 +5439,7 @@ class _$ClearUploadErrorImpl implements _ClearUploadError {
     required TResult Function(_ClearUploadError value) clearUploadError,
     required TResult Function(_InitializeEmotionTags value)
         initializeEmotionTags,
+    required TResult Function(_HideToggleS3Object value) hideToggleS3Object,
   }) {
     return clearUploadError(this);
   }
@@ -5355,6 +5467,7 @@ class _$ClearUploadErrorImpl implements _ClearUploadError {
     TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     TResult? Function(_ClearUploadError value)? clearUploadError,
     TResult? Function(_InitializeEmotionTags value)? initializeEmotionTags,
+    TResult? Function(_HideToggleS3Object value)? hideToggleS3Object,
   }) {
     return clearUploadError?.call(this);
   }
@@ -5382,6 +5495,7 @@ class _$ClearUploadErrorImpl implements _ClearUploadError {
     TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     TResult Function(_ClearUploadError value)? clearUploadError,
     TResult Function(_InitializeEmotionTags value)? initializeEmotionTags,
+    TResult Function(_HideToggleS3Object value)? hideToggleS3Object,
     required TResult orElse(),
   }) {
     if (clearUploadError != null) {
@@ -5468,6 +5582,7 @@ class _$InitializeEmotionTagsImpl implements _InitializeEmotionTags {
     required TResult Function(S3Object s3Object) getS3ObjectSurround,
     required TResult Function() clearUploadError,
     required TResult Function() initializeEmotionTags,
+    required TResult Function(S3Object s3Object, User user) hideToggleS3Object,
   }) {
     return initializeEmotionTags();
   }
@@ -5502,6 +5617,7 @@ class _$InitializeEmotionTagsImpl implements _InitializeEmotionTags {
     TResult? Function(S3Object s3Object)? getS3ObjectSurround,
     TResult? Function()? clearUploadError,
     TResult? Function()? initializeEmotionTags,
+    TResult? Function(S3Object s3Object, User user)? hideToggleS3Object,
   }) {
     return initializeEmotionTags?.call();
   }
@@ -5535,6 +5651,7 @@ class _$InitializeEmotionTagsImpl implements _InitializeEmotionTags {
     TResult Function(S3Object s3Object)? getS3ObjectSurround,
     TResult Function()? clearUploadError,
     TResult Function()? initializeEmotionTags,
+    TResult Function(S3Object s3Object, User user)? hideToggleS3Object,
     required TResult orElse(),
   }) {
     if (initializeEmotionTags != null) {
@@ -5567,6 +5684,7 @@ class _$InitializeEmotionTagsImpl implements _InitializeEmotionTags {
     required TResult Function(_ClearUploadError value) clearUploadError,
     required TResult Function(_InitializeEmotionTags value)
         initializeEmotionTags,
+    required TResult Function(_HideToggleS3Object value) hideToggleS3Object,
   }) {
     return initializeEmotionTags(this);
   }
@@ -5594,6 +5712,7 @@ class _$InitializeEmotionTagsImpl implements _InitializeEmotionTags {
     TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     TResult? Function(_ClearUploadError value)? clearUploadError,
     TResult? Function(_InitializeEmotionTags value)? initializeEmotionTags,
+    TResult? Function(_HideToggleS3Object value)? hideToggleS3Object,
   }) {
     return initializeEmotionTags?.call(this);
   }
@@ -5621,6 +5740,7 @@ class _$InitializeEmotionTagsImpl implements _InitializeEmotionTags {
     TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
     TResult Function(_ClearUploadError value)? clearUploadError,
     TResult Function(_InitializeEmotionTags value)? initializeEmotionTags,
+    TResult Function(_HideToggleS3Object value)? hideToggleS3Object,
     required TResult orElse(),
   }) {
     if (initializeEmotionTags != null) {
@@ -5632,4 +5752,317 @@ class _$InitializeEmotionTagsImpl implements _InitializeEmotionTags {
 
 abstract class _InitializeEmotionTags implements S3ObjectEvent {
   const factory _InitializeEmotionTags() = _$InitializeEmotionTagsImpl;
+}
+
+/// @nodoc
+abstract class _$$HideToggleS3ObjectImplCopyWith<$Res> {
+  factory _$$HideToggleS3ObjectImplCopyWith(_$HideToggleS3ObjectImpl value,
+          $Res Function(_$HideToggleS3ObjectImpl) then) =
+      __$$HideToggleS3ObjectImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({S3Object s3Object, User user});
+
+  $S3ObjectCopyWith<$Res> get s3Object;
+  $UserCopyWith<$Res> get user;
+}
+
+/// @nodoc
+class __$$HideToggleS3ObjectImplCopyWithImpl<$Res>
+    extends _$S3ObjectEventCopyWithImpl<$Res, _$HideToggleS3ObjectImpl>
+    implements _$$HideToggleS3ObjectImplCopyWith<$Res> {
+  __$$HideToggleS3ObjectImplCopyWithImpl(_$HideToggleS3ObjectImpl _value,
+      $Res Function(_$HideToggleS3ObjectImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of S3ObjectEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? s3Object = null,
+    Object? user = null,
+  }) {
+    return _then(_$HideToggleS3ObjectImpl(
+      null == s3Object
+          ? _value.s3Object
+          : s3Object // ignore: cast_nullable_to_non_nullable
+              as S3Object,
+      null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
+    ));
+  }
+
+  /// Create a copy of S3ObjectEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $S3ObjectCopyWith<$Res> get s3Object {
+    return $S3ObjectCopyWith<$Res>(_value.s3Object, (value) {
+      return _then(_value.copyWith(s3Object: value));
+    });
+  }
+
+  /// Create a copy of S3ObjectEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $UserCopyWith<$Res> get user {
+    return $UserCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$HideToggleS3ObjectImpl implements _HideToggleS3Object {
+  const _$HideToggleS3ObjectImpl(this.s3Object, this.user);
+
+  @override
+  final S3Object s3Object;
+  @override
+  final User user;
+
+  @override
+  String toString() {
+    return 'S3ObjectEvent.hideToggleS3Object(s3Object: $s3Object, user: $user)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$HideToggleS3ObjectImpl &&
+            (identical(other.s3Object, s3Object) ||
+                other.s3Object == s3Object) &&
+            (identical(other.user, user) || other.user == user));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, s3Object, user);
+
+  /// Create a copy of S3ObjectEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$HideToggleS3ObjectImplCopyWith<_$HideToggleS3ObjectImpl> get copyWith =>
+      __$$HideToggleS3ObjectImplCopyWithImpl<_$HideToggleS3ObjectImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialize,
+    required TResult Function(int skip, int take, List<S3ObjectTag>? tags)
+        getS3Objects,
+    required TResult Function() clearError,
+    required TResult Function(File file, User user) uploadFile,
+    required TResult Function(List<File> files, User user) uploadFiles,
+    required TResult Function(S3Object s3Object, User user) deleteFile,
+    required TResult Function(String id, User user) findOneOrFail,
+    required TResult Function() count,
+    required TResult Function(String year, String month)
+        checkObjectsExistenceByMonth,
+    required TResult Function(
+            String year, String month, String day, int? skip, int? take)
+        getObjectsByDate,
+    required TResult Function(S3Object s3Object, User user) likeS3Object,
+    required TResult Function(S3ObjectLike s3ObjectLike, User user)
+        removeLikeS3Object,
+    required TResult Function(S3Object s3Object, User user, String content)
+        replyS3Object,
+    required TResult Function(S3ObjectReply s3ObjectReply, User user)
+        removeReplyS3Object,
+    required TResult Function(
+            S3Object s3Object, ReportReason type, String? content)
+        reportS3Object,
+    required TResult Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)
+        reportS3ObjectReply,
+    required TResult Function(S3Object s3Object) getS3ObjectSurround,
+    required TResult Function() clearUploadError,
+    required TResult Function() initializeEmotionTags,
+    required TResult Function(S3Object s3Object, User user) hideToggleS3Object,
+  }) {
+    return hideToggleS3Object(s3Object, user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialize,
+    TResult? Function(int skip, int take, List<S3ObjectTag>? tags)?
+        getS3Objects,
+    TResult? Function()? clearError,
+    TResult? Function(File file, User user)? uploadFile,
+    TResult? Function(List<File> files, User user)? uploadFiles,
+    TResult? Function(S3Object s3Object, User user)? deleteFile,
+    TResult? Function(String id, User user)? findOneOrFail,
+    TResult? Function()? count,
+    TResult? Function(String year, String month)? checkObjectsExistenceByMonth,
+    TResult? Function(
+            String year, String month, String day, int? skip, int? take)?
+        getObjectsByDate,
+    TResult? Function(S3Object s3Object, User user)? likeS3Object,
+    TResult? Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
+    TResult? Function(S3Object s3Object, User user, String content)?
+        replyS3Object,
+    TResult? Function(S3ObjectReply s3ObjectReply, User user)?
+        removeReplyS3Object,
+    TResult? Function(S3Object s3Object, ReportReason type, String? content)?
+        reportS3Object,
+    TResult? Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
+        reportS3ObjectReply,
+    TResult? Function(S3Object s3Object)? getS3ObjectSurround,
+    TResult? Function()? clearUploadError,
+    TResult? Function()? initializeEmotionTags,
+    TResult? Function(S3Object s3Object, User user)? hideToggleS3Object,
+  }) {
+    return hideToggleS3Object?.call(s3Object, user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialize,
+    TResult Function(int skip, int take, List<S3ObjectTag>? tags)? getS3Objects,
+    TResult Function()? clearError,
+    TResult Function(File file, User user)? uploadFile,
+    TResult Function(List<File> files, User user)? uploadFiles,
+    TResult Function(S3Object s3Object, User user)? deleteFile,
+    TResult Function(String id, User user)? findOneOrFail,
+    TResult Function()? count,
+    TResult Function(String year, String month)? checkObjectsExistenceByMonth,
+    TResult Function(
+            String year, String month, String day, int? skip, int? take)?
+        getObjectsByDate,
+    TResult Function(S3Object s3Object, User user)? likeS3Object,
+    TResult Function(S3ObjectLike s3ObjectLike, User user)? removeLikeS3Object,
+    TResult Function(S3Object s3Object, User user, String content)?
+        replyS3Object,
+    TResult Function(S3ObjectReply s3ObjectReply, User user)?
+        removeReplyS3Object,
+    TResult Function(S3Object s3Object, ReportReason type, String? content)?
+        reportS3Object,
+    TResult Function(
+            S3ObjectReply s3ObjectReply, ReportReason type, String? content)?
+        reportS3ObjectReply,
+    TResult Function(S3Object s3Object)? getS3ObjectSurround,
+    TResult Function()? clearUploadError,
+    TResult Function()? initializeEmotionTags,
+    TResult Function(S3Object s3Object, User user)? hideToggleS3Object,
+    required TResult orElse(),
+  }) {
+    if (hideToggleS3Object != null) {
+      return hideToggleS3Object(s3Object, user);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_GetS3Objects value) getS3Objects,
+    required TResult Function(_ClearError value) clearError,
+    required TResult Function(_UploadFile value) uploadFile,
+    required TResult Function(_UploadFiles value) uploadFiles,
+    required TResult Function(_DeleteFile value) deleteFile,
+    required TResult Function(_FindOneOrFail value) findOneOrFail,
+    required TResult Function(_Count value) count,
+    required TResult Function(_CheckObjectsExistenceByMonth value)
+        checkObjectsExistenceByMonth,
+    required TResult Function(_GetObjectsByDate value) getObjectsByDate,
+    required TResult Function(_LikeS3Object value) likeS3Object,
+    required TResult Function(_RemoveLikeS3Object value) removeLikeS3Object,
+    required TResult Function(_ReplyS3Object value) replyS3Object,
+    required TResult Function(_RemoveReplyS3Object value) removeReplyS3Object,
+    required TResult Function(_ReportS3Object value) reportS3Object,
+    required TResult Function(_ReportS3ObjectReply value) reportS3ObjectReply,
+    required TResult Function(_GetS3ObjectSurround value) getS3ObjectSurround,
+    required TResult Function(_ClearUploadError value) clearUploadError,
+    required TResult Function(_InitializeEmotionTags value)
+        initializeEmotionTags,
+    required TResult Function(_HideToggleS3Object value) hideToggleS3Object,
+  }) {
+    return hideToggleS3Object(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialize value)? initialize,
+    TResult? Function(_GetS3Objects value)? getS3Objects,
+    TResult? Function(_ClearError value)? clearError,
+    TResult? Function(_UploadFile value)? uploadFile,
+    TResult? Function(_UploadFiles value)? uploadFiles,
+    TResult? Function(_DeleteFile value)? deleteFile,
+    TResult? Function(_FindOneOrFail value)? findOneOrFail,
+    TResult? Function(_Count value)? count,
+    TResult? Function(_CheckObjectsExistenceByMonth value)?
+        checkObjectsExistenceByMonth,
+    TResult? Function(_GetObjectsByDate value)? getObjectsByDate,
+    TResult? Function(_LikeS3Object value)? likeS3Object,
+    TResult? Function(_RemoveLikeS3Object value)? removeLikeS3Object,
+    TResult? Function(_ReplyS3Object value)? replyS3Object,
+    TResult? Function(_RemoveReplyS3Object value)? removeReplyS3Object,
+    TResult? Function(_ReportS3Object value)? reportS3Object,
+    TResult? Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+    TResult? Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
+    TResult? Function(_ClearUploadError value)? clearUploadError,
+    TResult? Function(_InitializeEmotionTags value)? initializeEmotionTags,
+    TResult? Function(_HideToggleS3Object value)? hideToggleS3Object,
+  }) {
+    return hideToggleS3Object?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_GetS3Objects value)? getS3Objects,
+    TResult Function(_ClearError value)? clearError,
+    TResult Function(_UploadFile value)? uploadFile,
+    TResult Function(_UploadFiles value)? uploadFiles,
+    TResult Function(_DeleteFile value)? deleteFile,
+    TResult Function(_FindOneOrFail value)? findOneOrFail,
+    TResult Function(_Count value)? count,
+    TResult Function(_CheckObjectsExistenceByMonth value)?
+        checkObjectsExistenceByMonth,
+    TResult Function(_GetObjectsByDate value)? getObjectsByDate,
+    TResult Function(_LikeS3Object value)? likeS3Object,
+    TResult Function(_RemoveLikeS3Object value)? removeLikeS3Object,
+    TResult Function(_ReplyS3Object value)? replyS3Object,
+    TResult Function(_RemoveReplyS3Object value)? removeReplyS3Object,
+    TResult Function(_ReportS3Object value)? reportS3Object,
+    TResult Function(_ReportS3ObjectReply value)? reportS3ObjectReply,
+    TResult Function(_GetS3ObjectSurround value)? getS3ObjectSurround,
+    TResult Function(_ClearUploadError value)? clearUploadError,
+    TResult Function(_InitializeEmotionTags value)? initializeEmotionTags,
+    TResult Function(_HideToggleS3Object value)? hideToggleS3Object,
+    required TResult orElse(),
+  }) {
+    if (hideToggleS3Object != null) {
+      return hideToggleS3Object(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _HideToggleS3Object implements S3ObjectEvent {
+  const factory _HideToggleS3Object(final S3Object s3Object, final User user) =
+      _$HideToggleS3ObjectImpl;
+
+  S3Object get s3Object;
+  User get user;
+
+  /// Create a copy of S3ObjectEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$HideToggleS3ObjectImplCopyWith<_$HideToggleS3ObjectImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

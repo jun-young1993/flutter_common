@@ -50,6 +50,16 @@ class S3ObjectBase with _$S3ObjectBase, S3ObjectCommonMixin {
     @Default(false) bool active,
     @Default(null) DateTime? createdAt,
     @Default(null) String? userId,
+    @Default(false) bool isHidden,
+    @Default(null) String? fileType,
+    @Default(false) bool isImage,
+    @Default(false) bool isVideo,
+    @Default(false) bool isAudio,
+    @Default(false) bool isDocument,
+    @Default(false) bool isArchive,
+    @Default(false) bool isThumbnail,
+    @Default(false) bool hasThumbnail,
+    @Default(null) String? thumbnailUrl,
   }) = _S3ObjectBase;
 
   const S3ObjectBase._();

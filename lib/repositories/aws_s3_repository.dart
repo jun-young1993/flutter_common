@@ -40,6 +40,7 @@ abstract class AwsS3Repository {
       S3ObjectReply s3ObjectReply, ReportReason type, String? content);
   Future<S3ObjectSurround> getS3ObjectSurround(S3Object s3Object);
   Future<List<S3ObjectTag>> getS3ObjectMeTags(String tagType);
+  Future<bool> hideToggleS3Object(S3Object s3Object);
 }
 
 class AwsS3DefaultRepository extends AwsS3Repository {
@@ -336,5 +337,15 @@ class AwsS3DefaultRepository extends AwsS3Repository {
           .toList();
     }
     throw Exception('S3 객체 태그 조회 실패');
+  }
+
+  @override
+  Future<bool> hideToggleS3Object(S3Object s3Object) async {
+    final response =
+        await dioClient.post('/aws/s3/objects/${s3Object.id}/toggle/hidden');
+    if (response.statusCode == 200) {
+      return true;
+    }
+    throw Exception('S3 객체 숨김 토글 실패');
   }
 }

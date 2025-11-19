@@ -125,6 +125,9 @@ class S3ObjectBloc extends Bloc<S3ObjectEvent, S3ObjectState> {
           } finally {
             emit(state.copyWith(isEmotionTagsLoading: false));
           }
+        }, hideToggleS3Object: (e) async {
+          await s3ObjectRepository.hideToggleS3Object(e.s3Object);
+          add(S3ObjectEvent.findOneOrFail(e.s3Object.id, e.user));
         });
       },
     );

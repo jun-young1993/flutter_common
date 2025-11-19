@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_common/models/aws/s3/s3_object_base.dart';
 import 'package:flutter_common/models/aws/s3/s3_object_like.dart';
+import 'package:flutter_common/models/aws/s3/s3_object_metadata.dart';
 import 'package:flutter_common/models/aws/s3/s3_object_reply.dart';
 import 'package:flutter_common/models/aws/s3/s3_object_tag.dart';
 import 'package:flutter_common/models/user/user.dart';
@@ -29,6 +30,8 @@ class S3Object with _$S3Object, S3ObjectCommonMixin {
     @Default([]) List<S3ObjectTag>? tags,
     @Default([]) List<S3ObjectLike>? likes,
     @Default([]) List<S3ObjectReply>? replies,
+    @Default(null) S3ObjectMetadata? metadata,
+    @Default(false) bool isHidden,
     @Default(null) String? fileType,
     @Default(false) bool isImage,
     @Default(false) bool isVideo,
