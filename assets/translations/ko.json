@@ -151,7 +151,8 @@
         "log": "기록",
         "writeDiary": "일기 작성",
         "noSearchResult": "검색 결과가 없습니다.",
-        "inputSearchKeyword": "검색어를 입력하세요."
+        "inputSearchKeyword": "검색어를 입력하세요.",
+        "metadata": "메타데이터"
 
     },
     "file": {

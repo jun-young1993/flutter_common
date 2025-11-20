@@ -342,7 +342,7 @@ class AwsS3DefaultRepository extends AwsS3Repository {
   @override
   Future<bool> hideToggleS3Object(S3Object s3Object) async {
     final response =
-        await dioClient.post('/aws/s3/objects/${s3Object.id}/toggle/hidden');
+        await dioClient.patch('/aws/s3/objects/${s3Object.id}/toggle/hidden');
     if (response.statusCode == 200) {
       return true;
     }

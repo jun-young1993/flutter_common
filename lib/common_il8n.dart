@@ -192,6 +192,7 @@ class _Common {
   final writeDiary = 'common.writeDiary';
   final noSearchResult = 'common.noSearchResult';
   final inputSearchKeyword = 'common.inputSearchKeyword';
+  final metadata = 'common.metadata';
 }
 
 class _User {

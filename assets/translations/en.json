@@ -152,7 +152,8 @@
         "log": "Log",
         "writeDiary": "Write Diary",
         "noSearchResult": "No search results.",
-        "inputSearchKeyword": "Enter a search keyword."
+        "inputSearchKeyword": "Enter a search keyword.",
+        "metadata": "Metadata"
 
     },
     "validation" : {

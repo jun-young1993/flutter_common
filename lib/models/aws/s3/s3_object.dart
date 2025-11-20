@@ -48,6 +48,10 @@ class S3Object with _$S3Object, S3ObjectCommonMixin {
   factory S3Object.fromJson(Map<String, dynamic> json) =>
       _$S3ObjectFromJson(json);
 
+  String? get caption {
+    return metadata?.caption;
+  }
+
   List<IconData?> get emotionIcons {
     return tags
             ?.where((tag) => tag.isEmotion)
