@@ -22,6 +22,7 @@ S3ObjectMetadata _$S3ObjectMetadataFromJson(Map<String, dynamic> json) {
 mixin _$S3ObjectMetadata {
   String get id => throw _privateConstructorUsedError;
   String? get caption => throw _privateConstructorUsedError;
+  String? get captionKo => throw _privateConstructorUsedError;
 
   /// Serializes this S3ObjectMetadata to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -39,7 +40,7 @@ abstract class $S3ObjectMetadataCopyWith<$Res> {
           S3ObjectMetadata value, $Res Function(S3ObjectMetadata) then) =
       _$S3ObjectMetadataCopyWithImpl<$Res, S3ObjectMetadata>;
   @useResult
-  $Res call({String id, String? caption});
+  $Res call({String id, String? caption, String? captionKo});
 }
 
 /// @nodoc
@@ -59,6 +60,7 @@ class _$S3ObjectMetadataCopyWithImpl<$Res, $Val extends S3ObjectMetadata>
   $Res call({
     Object? id = null,
     Object? caption = freezed,
+    Object? captionKo = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -68,6 +70,10 @@ class _$S3ObjectMetadataCopyWithImpl<$Res, $Val extends S3ObjectMetadata>
       caption: freezed == caption
           ? _value.caption
           : caption // ignore: cast_nullable_to_non_nullable
+              as String?,
+      captionKo: freezed == captionKo
+          ? _value.captionKo
+          : captionKo // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -81,7 +87,7 @@ abstract class _$$S3ObjectMetadataImplCopyWith<$Res>
       __$$S3ObjectMetadataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String? caption});
+  $Res call({String id, String? caption, String? captionKo});
 }
 
 /// @nodoc
@@ -99,6 +105,7 @@ class __$$S3ObjectMetadataImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? caption = freezed,
+    Object? captionKo = freezed,
   }) {
     return _then(_$S3ObjectMetadataImpl(
       id: null == id
@@ -109,6 +116,10 @@ class __$$S3ObjectMetadataImplCopyWithImpl<$Res>
           ? _value.caption
           : caption // ignore: cast_nullable_to_non_nullable
               as String?,
+      captionKo: freezed == captionKo
+          ? _value.captionKo
+          : captionKo // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -116,7 +127,8 @@ class __$$S3ObjectMetadataImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$S3ObjectMetadataImpl extends _S3ObjectMetadata {
-  const _$S3ObjectMetadataImpl({required this.id, this.caption = null})
+  const _$S3ObjectMetadataImpl(
+      {required this.id, this.caption = null, this.captionKo = null})
       : super._();
 
   factory _$S3ObjectMetadataImpl.fromJson(Map<String, dynamic> json) =>
@@ -127,10 +139,13 @@ class _$S3ObjectMetadataImpl extends _S3ObjectMetadata {
   @override
   @JsonKey()
   final String? caption;
+  @override
+  @JsonKey()
+  final String? captionKo;
 
   @override
   String toString() {
-    return 'S3ObjectMetadata(id: $id, caption: $caption)';
+    return 'S3ObjectMetadata(id: $id, caption: $caption, captionKo: $captionKo)';
   }
 
   @override
@@ -139,12 +154,14 @@ class _$S3ObjectMetadataImpl extends _S3ObjectMetadata {
         (other.runtimeType == runtimeType &&
             other is _$S3ObjectMetadataImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.caption, caption) || other.caption == caption));
+            (identical(other.caption, caption) || other.caption == caption) &&
+            (identical(other.captionKo, captionKo) ||
+                other.captionKo == captionKo));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, caption);
+  int get hashCode => Object.hash(runtimeType, id, caption, captionKo);
 
   /// Create a copy of S3ObjectMetadata
   /// with the given fields replaced by the non-null parameter values.
@@ -166,7 +183,8 @@ class _$S3ObjectMetadataImpl extends _S3ObjectMetadata {
 abstract class _S3ObjectMetadata extends S3ObjectMetadata {
   const factory _S3ObjectMetadata(
       {required final String id,
-      final String? caption}) = _$S3ObjectMetadataImpl;
+      final String? caption,
+      final String? captionKo}) = _$S3ObjectMetadataImpl;
   const _S3ObjectMetadata._() : super._();
 
   factory _S3ObjectMetadata.fromJson(Map<String, dynamic> json) =
@@ -176,6 +194,8 @@ abstract class _S3ObjectMetadata extends S3ObjectMetadata {
   String get id;
   @override
   String? get caption;
+  @override
+  String? get captionKo;
 
   /// Create a copy of S3ObjectMetadata
   /// with the given fields replaced by the non-null parameter values.

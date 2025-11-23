@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_common/flutter_common.dart';
 import 'package:flutter_common/models/aws/s3/s3_object_base.dart';
 import 'package:flutter_common/models/aws/s3/s3_object_like.dart';
 import 'package:flutter_common/models/aws/s3/s3_object_metadata.dart';
@@ -48,8 +49,12 @@ class S3Object with _$S3Object, S3ObjectCommonMixin {
   factory S3Object.fromJson(Map<String, dynamic> json) =>
       _$S3ObjectFromJson(json);
 
-  String? get caption {
-    return metadata?.caption;
+  String? caption(BuildContext context) {
+    if (context.locale == const Locale('ko') && metadata?.captionKo != null) {
+      return metadata?.captionKo;
+    } else {
+      return metadata?.caption;
+    }
   }
 
   List<IconData?> get emotionIcons {

@@ -11,6 +11,7 @@ _$S3ObjectMetadataImpl _$$S3ObjectMetadataImplFromJson(
     _$S3ObjectMetadataImpl(
       id: json['id'] as String,
       caption: json['caption'] as String? ?? null,
+      captionKo: json['captionKo'] as String? ?? null,
     );
 
 Map<String, dynamic> _$$S3ObjectMetadataImplToJson(
@@ -18,4 +19,5 @@ Map<String, dynamic> _$$S3ObjectMetadataImplToJson(
     <String, dynamic>{
       'id': instance.id,
       'caption': instance.caption,
+      'captionKo': instance.captionKo,
     };

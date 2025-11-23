@@ -8,6 +8,7 @@ class S3ObjectMetadata with _$S3ObjectMetadata {
   const factory S3ObjectMetadata({
     required String id,
     @Default(null) String? caption,
+    @Default(null) String? captionKo,
   }) = _S3ObjectMetadata;
 
   const S3ObjectMetadata._();
