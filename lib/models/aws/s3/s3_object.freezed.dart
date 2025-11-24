@@ -31,6 +31,7 @@ mixin _$S3Object {
   String? get userId => throw _privateConstructorUsedError;
   User? get user => throw _privateConstructorUsedError;
   S3ObjectBase? get thumbnail => throw _privateConstructorUsedError;
+  S3ObjectBase? get lowRes => throw _privateConstructorUsedError;
   List<S3ObjectTag>? get tags => throw _privateConstructorUsedError;
   List<S3ObjectLike>? get likes => throw _privateConstructorUsedError;
   List<S3ObjectReply>? get replies => throw _privateConstructorUsedError;
@@ -73,6 +74,7 @@ abstract class $S3ObjectCopyWith<$Res> {
       String? userId,
       User? user,
       S3ObjectBase? thumbnail,
+      S3ObjectBase? lowRes,
       List<S3ObjectTag>? tags,
       List<S3ObjectLike>? likes,
       List<S3ObjectReply>? replies,
@@ -90,6 +92,7 @@ abstract class $S3ObjectCopyWith<$Res> {
 
   $UserCopyWith<$Res>? get user;
   $S3ObjectBaseCopyWith<$Res>? get thumbnail;
+  $S3ObjectBaseCopyWith<$Res>? get lowRes;
   $S3ObjectMetadataCopyWith<$Res>? get metadata;
 }
 
@@ -119,6 +122,7 @@ class _$S3ObjectCopyWithImpl<$Res, $Val extends S3Object>
     Object? userId = freezed,
     Object? user = freezed,
     Object? thumbnail = freezed,
+    Object? lowRes = freezed,
     Object? tags = freezed,
     Object? likes = freezed,
     Object? replies = freezed,
@@ -178,6 +182,10 @@ class _$S3ObjectCopyWithImpl<$Res, $Val extends S3Object>
       thumbnail: freezed == thumbnail
           ? _value.thumbnail
           : thumbnail // ignore: cast_nullable_to_non_nullable
+              as S3ObjectBase?,
+      lowRes: freezed == lowRes
+          ? _value.lowRes
+          : lowRes // ignore: cast_nullable_to_non_nullable
               as S3ObjectBase?,
       tags: freezed == tags
           ? _value.tags
@@ -270,6 +278,20 @@ class _$S3ObjectCopyWithImpl<$Res, $Val extends S3Object>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
+  $S3ObjectBaseCopyWith<$Res>? get lowRes {
+    if (_value.lowRes == null) {
+      return null;
+    }
+
+    return $S3ObjectBaseCopyWith<$Res>(_value.lowRes!, (value) {
+      return _then(_value.copyWith(lowRes: value) as $Val);
+    });
+  }
+
+  /// Create a copy of S3Object
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
   $S3ObjectMetadataCopyWith<$Res>? get metadata {
     if (_value.metadata == null) {
       return null;
@@ -301,6 +323,7 @@ abstract class _$$S3ObjectImplCopyWith<$Res>
       String? userId,
       User? user,
       S3ObjectBase? thumbnail,
+      S3ObjectBase? lowRes,
       List<S3ObjectTag>? tags,
       List<S3ObjectLike>? likes,
       List<S3ObjectReply>? replies,
@@ -320,6 +343,8 @@ abstract class _$$S3ObjectImplCopyWith<$Res>
   $UserCopyWith<$Res>? get user;
   @override
   $S3ObjectBaseCopyWith<$Res>? get thumbnail;
+  @override
+  $S3ObjectBaseCopyWith<$Res>? get lowRes;
   @override
   $S3ObjectMetadataCopyWith<$Res>? get metadata;
 }
@@ -348,6 +373,7 @@ class __$$S3ObjectImplCopyWithImpl<$Res>
     Object? userId = freezed,
     Object? user = freezed,
     Object? thumbnail = freezed,
+    Object? lowRes = freezed,
     Object? tags = freezed,
     Object? likes = freezed,
     Object? replies = freezed,
@@ -407,6 +433,10 @@ class __$$S3ObjectImplCopyWithImpl<$Res>
       thumbnail: freezed == thumbnail
           ? _value.thumbnail
           : thumbnail // ignore: cast_nullable_to_non_nullable
+              as S3ObjectBase?,
+      lowRes: freezed == lowRes
+          ? _value.lowRes
+          : lowRes // ignore: cast_nullable_to_non_nullable
               as S3ObjectBase?,
       tags: freezed == tags
           ? _value._tags
@@ -483,6 +513,7 @@ class _$S3ObjectImpl extends _S3Object {
       this.userId = null,
       this.user = null,
       this.thumbnail = null,
+      this.lowRes = null,
       final List<S3ObjectTag>? tags = const [],
       final List<S3ObjectLike>? likes = const [],
       final List<S3ObjectReply>? replies = const [],
@@ -537,6 +568,9 @@ class _$S3ObjectImpl extends _S3Object {
   @override
   @JsonKey()
   final S3ObjectBase? thumbnail;
+  @override
+  @JsonKey()
+  final S3ObjectBase? lowRes;
   final List<S3ObjectTag>? _tags;
   @override
   @JsonKey()
@@ -606,7 +640,7 @@ class _$S3ObjectImpl extends _S3Object {
 
   @override
   String toString() {
-    return 'S3Object(id: $id, key: $key, url: $url, originalName: $originalName, size: $size, mimetype: $mimetype, active: $active, createdAt: $createdAt, userId: $userId, user: $user, thumbnail: $thumbnail, tags: $tags, likes: $likes, replies: $replies, metadata: $metadata, isHidden: $isHidden, fileType: $fileType, isImage: $isImage, isVideo: $isVideo, isAudio: $isAudio, isDocument: $isDocument, isArchive: $isArchive, isThumbnail: $isThumbnail, hasThumbnail: $hasThumbnail, thumbnailUrl: $thumbnailUrl)';
+    return 'S3Object(id: $id, key: $key, url: $url, originalName: $originalName, size: $size, mimetype: $mimetype, active: $active, createdAt: $createdAt, userId: $userId, user: $user, thumbnail: $thumbnail, lowRes: $lowRes, tags: $tags, likes: $likes, replies: $replies, metadata: $metadata, isHidden: $isHidden, fileType: $fileType, isImage: $isImage, isVideo: $isVideo, isAudio: $isAudio, isDocument: $isDocument, isArchive: $isArchive, isThumbnail: $isThumbnail, hasThumbnail: $hasThumbnail, thumbnailUrl: $thumbnailUrl)';
   }
 
   @override
@@ -629,6 +663,7 @@ class _$S3ObjectImpl extends _S3Object {
             (identical(other.user, user) || other.user == user) &&
             (identical(other.thumbnail, thumbnail) ||
                 other.thumbnail == thumbnail) &&
+            (identical(other.lowRes, lowRes) || other.lowRes == lowRes) &&
             const DeepCollectionEquality().equals(other._tags, _tags) &&
             const DeepCollectionEquality().equals(other._likes, _likes) &&
             const DeepCollectionEquality().equals(other._replies, _replies) &&
@@ -668,6 +703,7 @@ class _$S3ObjectImpl extends _S3Object {
         userId,
         user,
         thumbnail,
+        lowRes,
         const DeepCollectionEquality().hash(_tags),
         const DeepCollectionEquality().hash(_likes),
         const DeepCollectionEquality().hash(_replies),
@@ -713,6 +749,7 @@ abstract class _S3Object extends S3Object {
       final String? userId,
       final User? user,
       final S3ObjectBase? thumbnail,
+      final S3ObjectBase? lowRes,
       final List<S3ObjectTag>? tags,
       final List<S3ObjectLike>? likes,
       final List<S3ObjectReply>? replies,
@@ -754,6 +791,8 @@ abstract class _S3Object extends S3Object {
   User? get user;
   @override
   S3ObjectBase? get thumbnail;
+  @override
+  S3ObjectBase? get lowRes;
   @override
   List<S3ObjectTag>? get tags;
   @override

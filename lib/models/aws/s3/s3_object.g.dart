@@ -25,6 +25,9 @@ _$S3ObjectImpl _$$S3ObjectImplFromJson(Map<String, dynamic> json) =>
       thumbnail: json['thumbnail'] == null
           ? null
           : S3ObjectBase.fromJson(json['thumbnail'] as Map<String, dynamic>),
+      lowRes: json['lowRes'] == null
+          ? null
+          : S3ObjectBase.fromJson(json['lowRes'] as Map<String, dynamic>),
       tags: (json['tags'] as List<dynamic>?)
               ?.map((e) => S3ObjectTag.fromJson(e as Map<String, dynamic>))
               .toList() ??
@@ -65,6 +68,7 @@ Map<String, dynamic> _$$S3ObjectImplToJson(_$S3ObjectImpl instance) =>
       'userId': instance.userId,
       'user': instance.user,
       'thumbnail': instance.thumbnail,
+      'lowRes': instance.lowRes,
       'tags': instance.tags,
       'likes': instance.likes,
       'replies': instance.replies,

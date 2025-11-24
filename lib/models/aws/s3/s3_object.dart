@@ -28,6 +28,7 @@ class S3Object with _$S3Object, S3ObjectCommonMixin {
     @Default(null) String? userId,
     @Default(null) User? user,
     @Default(null) S3ObjectBase? thumbnail,
+    @Default(null) S3ObjectBase? lowRes,
     @Default([]) List<S3ObjectTag>? tags,
     @Default([]) List<S3ObjectLike>? likes,
     @Default([]) List<S3ObjectReply>? replies,
@@ -55,6 +56,27 @@ class S3Object with _$S3Object, S3ObjectCommonMixin {
     } else {
       return metadata?.caption;
     }
+  }
+
+  String? get lowResUrl {
+    if (lowRes == null) return null;
+    return lowRes?.url;
+  }
+
+  String? get mediaUrl {
+    if (isVideo || isImage) {
+      if (lowResUrl != null) {
+        return lowResUrl;
+      }
+    }
+    return url;
+  }
+
+  String? get lowResUrlOrOriginalUrl {
+    if (lowResUrl != null) {
+      return lowResUrl;
+    }
+    return url;
   }
 
   List<IconData?> get emotionIcons {
