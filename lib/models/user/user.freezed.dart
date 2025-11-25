@@ -28,6 +28,7 @@ mixin _$User {
   bool get isAdmin => throw _privateConstructorUsedError;
   String get createdAt => throw _privateConstructorUsedError;
   String get updatedAt => throw _privateConstructorUsedError;
+  List<UserGroup>? get userGroups => throw _privateConstructorUsedError;
   String? get fcmToken => throw _privateConstructorUsedError;
   List<UserStorageLimit> get storageLimits =>
       throw _privateConstructorUsedError;
@@ -55,6 +56,7 @@ abstract class $UserCopyWith<$Res> {
       bool isAdmin,
       String createdAt,
       String updatedAt,
+      List<UserGroup>? userGroups,
       String? fcmToken,
       List<UserStorageLimit> storageLimits});
 }
@@ -82,6 +84,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? isAdmin = null,
     Object? createdAt = null,
     Object? updatedAt = null,
+    Object? userGroups = freezed,
     Object? fcmToken = freezed,
     Object? storageLimits = null,
   }) {
@@ -118,6 +121,10 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as String,
+      userGroups: freezed == userGroups
+          ? _value.userGroups
+          : userGroups // ignore: cast_nullable_to_non_nullable
+              as List<UserGroup>?,
       fcmToken: freezed == fcmToken
           ? _value.fcmToken
           : fcmToken // ignore: cast_nullable_to_non_nullable
@@ -146,6 +153,7 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
       bool isAdmin,
       String createdAt,
       String updatedAt,
+      List<UserGroup>? userGroups,
       String? fcmToken,
       List<UserStorageLimit> storageLimits});
 }
@@ -170,6 +178,7 @@ class __$$UserImplCopyWithImpl<$Res>
     Object? isAdmin = null,
     Object? createdAt = null,
     Object? updatedAt = null,
+    Object? userGroups = freezed,
     Object? fcmToken = freezed,
     Object? storageLimits = null,
   }) {
@@ -206,6 +215,10 @@ class __$$UserImplCopyWithImpl<$Res>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as String,
+      userGroups: freezed == userGroups
+          ? _value._userGroups
+          : userGroups // ignore: cast_nullable_to_non_nullable
+              as List<UserGroup>?,
       fcmToken: freezed == fcmToken
           ? _value.fcmToken
           : fcmToken // ignore: cast_nullable_to_non_nullable
@@ -230,9 +243,11 @@ class _$UserImpl extends _User {
       required this.isAdmin,
       required this.createdAt,
       required this.updatedAt,
+      final List<UserGroup>? userGroups = const [],
       this.fcmToken,
       final List<UserStorageLimit> storageLimits = const []})
-      : _storageLimits = storageLimits,
+      : _userGroups = userGroups,
+        _storageLimits = storageLimits,
         super._();
 
   factory _$UserImpl.fromJson(Map<String, dynamic> json) =>
@@ -254,6 +269,17 @@ class _$UserImpl extends _User {
   final String createdAt;
   @override
   final String updatedAt;
+  final List<UserGroup>? _userGroups;
+  @override
+  @JsonKey()
+  List<UserGroup>? get userGroups {
+    final value = _userGroups;
+    if (value == null) return null;
+    if (_userGroups is EqualUnmodifiableListView) return _userGroups;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   final String? fcmToken;
   final List<UserStorageLimit> _storageLimits;
@@ -267,7 +293,7 @@ class _$UserImpl extends _User {
 
   @override
   String toString() {
-    return 'User(id: $id, username: $username, email: $email, type: $type, isActive: $isActive, isAdmin: $isAdmin, createdAt: $createdAt, updatedAt: $updatedAt, fcmToken: $fcmToken, storageLimits: $storageLimits)';
+    return 'User(id: $id, username: $username, email: $email, type: $type, isActive: $isActive, isAdmin: $isAdmin, createdAt: $createdAt, updatedAt: $updatedAt, userGroups: $userGroups, fcmToken: $fcmToken, storageLimits: $storageLimits)';
   }
 
   @override
@@ -287,6 +313,8 @@ class _$UserImpl extends _User {
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
                 other.updatedAt == updatedAt) &&
+            const DeepCollectionEquality()
+                .equals(other._userGroups, _userGroups) &&
             (identical(other.fcmToken, fcmToken) ||
                 other.fcmToken == fcmToken) &&
             const DeepCollectionEquality()
@@ -305,6 +333,7 @@ class _$UserImpl extends _User {
       isAdmin,
       createdAt,
       updatedAt,
+      const DeepCollectionEquality().hash(_userGroups),
       fcmToken,
       const DeepCollectionEquality().hash(_storageLimits));
 
@@ -334,6 +363,7 @@ abstract class _User extends User {
       required final bool isAdmin,
       required final String createdAt,
       required final String updatedAt,
+      final List<UserGroup>? userGroups,
       final String? fcmToken,
       final List<UserStorageLimit> storageLimits}) = _$UserImpl;
   const _User._() : super._();
@@ -356,6 +386,8 @@ abstract class _User extends User {
   String get createdAt;
   @override
   String get updatedAt;
+  @override
+  List<UserGroup>? get userGroups;
   @override
   String? get fcmToken;
   @override

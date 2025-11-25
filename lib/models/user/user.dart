@@ -1,3 +1,4 @@
+import 'package:flutter_common/models/user_group/user_group.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter_common/models/user/user_storage_limit.dart';
 
@@ -15,6 +16,7 @@ class User with _$User {
     required bool isAdmin,
     required String createdAt,
     required String updatedAt,
+    @Default([]) List<UserGroup>? userGroups,
     String? fcmToken,
     @Default([]) List<UserStorageLimit> storageLimits,
   }) = _User;
