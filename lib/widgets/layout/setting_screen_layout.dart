@@ -352,6 +352,9 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
                                 onConfirm: (value) {
                                   userBloc.add(
                                       UserEvent.addAppUser(username: value));
+                                  if (context.mounted) {
+                                    Navigator.of(context).pop();
+                                  }
                                 },
                                 context: context,
                               );
@@ -361,7 +364,7 @@ class _SettingScreenLayoutState extends State<SettingScreenLayout> {
                         onConfirm: (value) {
                           if (value != null) {
                             userBloc.add(UserEvent.changeAppUser(value));
-                            if (mounted) {
+                            if (context.mounted) {
                               Navigator.of(context).pop();
                             }
                           }
