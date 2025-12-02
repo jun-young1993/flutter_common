@@ -5,14 +5,17 @@ import 'package:flutter_common/repositories/app_reward_repository.dart';
 import 'package:flutter_common/repositories/user_repository.dart';
 import 'package:flutter_common/state/app_reward/app_reward_event.dart';
 import 'package:flutter_common/state/app_reward/app_reward_state.dart';
+import 'package:flutter_common/widgets/ad/ad_master.dart';
 
 class AppRewardBloc extends Bloc<AppRewardEvent, AppRewardState> {
   final AppRewardRepository appRewardRepository;
   final UserRepository userRepository;
+  final AdMaster adMaster;
 
   AppRewardBloc({
     required this.appRewardRepository,
     required this.userRepository,
+    required this.adMaster,
   }) : super(AppRewardState.initialize()) {
     on<AppRewardEvent>(
       (event, emit) async {
