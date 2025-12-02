@@ -53,6 +53,8 @@ _$S3ObjectImpl _$$S3ObjectImplFromJson(Map<String, dynamic> json) =>
       isThumbnail: json['isThumbnail'] as bool? ?? false,
       hasThumbnail: json['hasThumbnail'] as bool? ?? false,
       thumbnailUrl: json['thumbnailUrl'] as String? ?? null,
+      lowResUrl: json['lowResUrl'] as String? ?? null,
+      shareUrl: json['shareUrl'] as String? ?? null,
     );
 
 Map<String, dynamic> _$$S3ObjectImplToJson(_$S3ObjectImpl instance) =>
@@ -83,4 +85,6 @@ Map<String, dynamic> _$$S3ObjectImplToJson(_$S3ObjectImpl instance) =>
       'isThumbnail': instance.isThumbnail,
       'hasThumbnail': instance.hasThumbnail,
       'thumbnailUrl': instance.thumbnailUrl,
+      'lowResUrl': instance.lowResUrl,
+      'shareUrl': instance.shareUrl,
     };

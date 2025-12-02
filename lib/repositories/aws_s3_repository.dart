@@ -7,6 +7,7 @@ import 'package:flutter_common/extensions/app_exception.dart';
 import 'package:flutter_common/models/aws/s3/s3_object.dart';
 import 'package:flutter_common/models/aws/s3/s3_object_like.dart';
 import 'package:flutter_common/models/aws/s3/s3_object_reply.dart';
+import 'package:flutter_common/models/aws/s3/s3_object_share.dart';
 import 'package:flutter_common/models/aws/s3/s3_object_surround.dart';
 import 'package:flutter_common/models/aws/s3/s3_object_tag.dart';
 import 'package:flutter_common/models/user/user.dart';
@@ -41,6 +42,8 @@ abstract class AwsS3Repository {
   Future<S3ObjectSurround> getS3ObjectSurround(S3Object s3Object);
   Future<List<S3ObjectTag>> getS3ObjectMeTags(String tagType);
   Future<bool> hideToggleS3Object(S3Object s3Object);
+  Future<S3ObjectShare> createS3ObjectShare(List<S3Object> s3Objects, User user,
+      String? shareCode, String? title, String? description);
 }
 
 class AwsS3DefaultRepository extends AwsS3Repository {
@@ -347,5 +350,23 @@ class AwsS3DefaultRepository extends AwsS3Repository {
       return true;
     }
     throw Exception('S3 객체 숨김 토글 실패');
+  }
+
+  @override
+  Future<S3ObjectShare> createS3ObjectShare(List<S3Object> s3Objects, User user,
+      String? shareCode, String? title, String? description) async {
+    final expiredAt =
+        DateTime.now().add(const Duration(days: 7)).toIso8601String();
+    final response = await dioClient.post('/s3-object-shares', data: {
+      's3ObjectId': s3Objects.map((e) => e.id).toList(),
+      'expiredAt': expiredAt,
+      'shareCode': shareCode,
+      'title': title,
+      'description': description
+    });
+    if (response.statusCode == 201) {
+      return S3ObjectShare.fromJson(response.data);
+    }
+    throw Exception('S3 객체 공유 생성 실패');
   }
 }

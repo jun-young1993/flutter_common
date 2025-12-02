@@ -46,6 +46,8 @@ mixin _$S3Object {
   bool get isThumbnail => throw _privateConstructorUsedError;
   bool get hasThumbnail => throw _privateConstructorUsedError;
   String? get thumbnailUrl => throw _privateConstructorUsedError;
+  String? get lowResUrl => throw _privateConstructorUsedError;
+  String? get shareUrl => throw _privateConstructorUsedError;
 
   /// Serializes this S3Object to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -88,7 +90,9 @@ abstract class $S3ObjectCopyWith<$Res> {
       bool isArchive,
       bool isThumbnail,
       bool hasThumbnail,
-      String? thumbnailUrl});
+      String? thumbnailUrl,
+      String? lowResUrl,
+      String? shareUrl});
 
   $UserCopyWith<$Res>? get user;
   $S3ObjectBaseCopyWith<$Res>? get thumbnail;
@@ -137,6 +141,8 @@ class _$S3ObjectCopyWithImpl<$Res, $Val extends S3Object>
     Object? isThumbnail = null,
     Object? hasThumbnail = null,
     Object? thumbnailUrl = freezed,
+    Object? lowResUrl = freezed,
+    Object? shareUrl = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -243,6 +249,14 @@ class _$S3ObjectCopyWithImpl<$Res, $Val extends S3Object>
           ? _value.thumbnailUrl
           : thumbnailUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      lowResUrl: freezed == lowResUrl
+          ? _value.lowResUrl
+          : lowResUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      shareUrl: freezed == shareUrl
+          ? _value.shareUrl
+          : shareUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
@@ -337,7 +351,9 @@ abstract class _$$S3ObjectImplCopyWith<$Res>
       bool isArchive,
       bool isThumbnail,
       bool hasThumbnail,
-      String? thumbnailUrl});
+      String? thumbnailUrl,
+      String? lowResUrl,
+      String? shareUrl});
 
   @override
   $UserCopyWith<$Res>? get user;
@@ -388,6 +404,8 @@ class __$$S3ObjectImplCopyWithImpl<$Res>
     Object? isThumbnail = null,
     Object? hasThumbnail = null,
     Object? thumbnailUrl = freezed,
+    Object? lowResUrl = freezed,
+    Object? shareUrl = freezed,
   }) {
     return _then(_$S3ObjectImpl(
       id: null == id
@@ -494,6 +512,14 @@ class __$$S3ObjectImplCopyWithImpl<$Res>
           ? _value.thumbnailUrl
           : thumbnailUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      lowResUrl: freezed == lowResUrl
+          ? _value.lowResUrl
+          : lowResUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      shareUrl: freezed == shareUrl
+          ? _value.shareUrl
+          : shareUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -527,7 +553,9 @@ class _$S3ObjectImpl extends _S3Object {
       this.isArchive = false,
       this.isThumbnail = false,
       this.hasThumbnail = false,
-      this.thumbnailUrl = null})
+      this.thumbnailUrl = null,
+      this.lowResUrl = null,
+      this.shareUrl = null})
       : _tags = tags,
         _likes = likes,
         _replies = replies,
@@ -637,10 +665,16 @@ class _$S3ObjectImpl extends _S3Object {
   @override
   @JsonKey()
   final String? thumbnailUrl;
+  @override
+  @JsonKey()
+  final String? lowResUrl;
+  @override
+  @JsonKey()
+  final String? shareUrl;
 
   @override
   String toString() {
-    return 'S3Object(id: $id, key: $key, url: $url, originalName: $originalName, size: $size, mimetype: $mimetype, active: $active, createdAt: $createdAt, userId: $userId, user: $user, thumbnail: $thumbnail, lowRes: $lowRes, tags: $tags, likes: $likes, replies: $replies, metadata: $metadata, isHidden: $isHidden, fileType: $fileType, isImage: $isImage, isVideo: $isVideo, isAudio: $isAudio, isDocument: $isDocument, isArchive: $isArchive, isThumbnail: $isThumbnail, hasThumbnail: $hasThumbnail, thumbnailUrl: $thumbnailUrl)';
+    return 'S3Object(id: $id, key: $key, url: $url, originalName: $originalName, size: $size, mimetype: $mimetype, active: $active, createdAt: $createdAt, userId: $userId, user: $user, thumbnail: $thumbnail, lowRes: $lowRes, tags: $tags, likes: $likes, replies: $replies, metadata: $metadata, isHidden: $isHidden, fileType: $fileType, isImage: $isImage, isVideo: $isVideo, isAudio: $isAudio, isDocument: $isDocument, isArchive: $isArchive, isThumbnail: $isThumbnail, hasThumbnail: $hasThumbnail, thumbnailUrl: $thumbnailUrl, lowResUrl: $lowResUrl, shareUrl: $shareUrl)';
   }
 
   @override
@@ -685,7 +719,11 @@ class _$S3ObjectImpl extends _S3Object {
             (identical(other.hasThumbnail, hasThumbnail) ||
                 other.hasThumbnail == hasThumbnail) &&
             (identical(other.thumbnailUrl, thumbnailUrl) ||
-                other.thumbnailUrl == thumbnailUrl));
+                other.thumbnailUrl == thumbnailUrl) &&
+            (identical(other.lowResUrl, lowResUrl) ||
+                other.lowResUrl == lowResUrl) &&
+            (identical(other.shareUrl, shareUrl) ||
+                other.shareUrl == shareUrl));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -717,7 +755,9 @@ class _$S3ObjectImpl extends _S3Object {
         isArchive,
         isThumbnail,
         hasThumbnail,
-        thumbnailUrl
+        thumbnailUrl,
+        lowResUrl,
+        shareUrl
       ]);
 
   /// Create a copy of S3Object
@@ -763,7 +803,9 @@ abstract class _S3Object extends S3Object {
       final bool isArchive,
       final bool isThumbnail,
       final bool hasThumbnail,
-      final String? thumbnailUrl}) = _$S3ObjectImpl;
+      final String? thumbnailUrl,
+      final String? lowResUrl,
+      final String? shareUrl}) = _$S3ObjectImpl;
   const _S3Object._() : super._();
 
   factory _S3Object.fromJson(Map<String, dynamic> json) =
@@ -821,6 +863,10 @@ abstract class _S3Object extends S3Object {
   bool get hasThumbnail;
   @override
   String? get thumbnailUrl;
+  @override
+  String? get lowResUrl;
+  @override
+  String? get shareUrl;
 
   /// Create a copy of S3Object
   /// with the given fields replaced by the non-null parameter values.
