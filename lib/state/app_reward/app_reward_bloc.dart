@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_common/extensions/app_exception.dart';
 import 'package:flutter_common/models/app-reward/point_transaction.dart';
@@ -6,6 +7,49 @@ import 'package:flutter_common/repositories/user_repository.dart';
 import 'package:flutter_common/state/app_reward/app_reward_event.dart';
 import 'package:flutter_common/state/app_reward/app_reward_state.dart';
 import 'package:flutter_common/widgets/ad/ad_master.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart' hide AdError;
+
+class ShowRewardAdCallBack implements AdCallback {
+  @override
+  void onAdLoaded() {
+    debugPrint('🔥 [INFO] RewardedAd loaded');
+  }
+
+  @override
+  void onRewardedAdLoaded(RewardedAd ad) {
+    // TODO: implement onRewardedAdLoaded
+    debugPrint('🔥 [INFO] RewardedAd loaded');
+    ad.show(
+      onUserEarnedReward: (_, reward) {
+        debugPrint('🔥 [INFO] RewardedAd user earned reward: $reward');
+        // TODO: implement onUserEarnedReward
+      },
+    );
+  }
+
+  @override
+  void onInterstitialAdLoaded(InterstitialAd ad) {
+    // TODO: implement onInterstitialAdLoaded
+  }
+  @override
+  void onRewardedAdUserEarnedReward(RewardItem reward) {
+    // TODO: implement onRewardedAdUserEarnedReward
+  }
+
+  @override
+  void onAdFailedToLoad(AdError error) {
+    debugPrint('🔥 [ERROR] RewardedAd failed to load: $error');
+  }
+
+  @override
+  void onAdShown() {}
+
+  @override
+  void onAdClosed() {}
+
+  @override
+  void onAdClicked() {}
+}
 
 class AppRewardBloc extends Bloc<AppRewardEvent, AppRewardState> {
   final AppRewardRepository appRewardRepository;
@@ -91,6 +135,14 @@ class AppRewardBloc extends Bloc<AppRewardEvent, AppRewardState> {
               } else {
                 throw const AppException.unknown('Failed to create withdrawal');
               }
+            });
+          },
+          showRewardAd: (e) async {
+            await _handleEvent(emit, () async {
+              await adMaster.createRewardedAd(
+                adUnitId: e.adUnitId,
+                callback: e.callback ?? ShowRewardAdCallBack(),
+              );
             });
           },
         );

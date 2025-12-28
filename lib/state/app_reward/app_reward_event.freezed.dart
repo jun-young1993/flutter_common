@@ -25,6 +25,8 @@ mixin _$AppRewardEvent {
     required TResult Function(String bankName, String accountNumber,
             String accountHolder, int withdrawalAmount)
         createWithdrawal,
+    required TResult Function(String adUnitId, AdCallback? callback)
+        showRewardAd,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -36,6 +38,7 @@ mixin _$AppRewardEvent {
     TResult? Function(String bankName, String accountNumber,
             String accountHolder, int withdrawalAmount)?
         createWithdrawal,
+    TResult? Function(String adUnitId, AdCallback? callback)? showRewardAd,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -47,6 +50,7 @@ mixin _$AppRewardEvent {
     TResult Function(String bankName, String accountNumber,
             String accountHolder, int withdrawalAmount)?
         createWithdrawal,
+    TResult Function(String adUnitId, AdCallback? callback)? showRewardAd,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -57,6 +61,7 @@ mixin _$AppRewardEvent {
     required TResult Function(_GetPointTransactions value) getPointTransactions,
     required TResult Function(_GetDailyUserReward value) getDailyUserReward,
     required TResult Function(_CreateWithdrawal value) createWithdrawal,
+    required TResult Function(_ShowRewardAd value) showRewardAd,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -66,6 +71,7 @@ mixin _$AppRewardEvent {
     TResult? Function(_GetPointTransactions value)? getPointTransactions,
     TResult? Function(_GetDailyUserReward value)? getDailyUserReward,
     TResult? Function(_CreateWithdrawal value)? createWithdrawal,
+    TResult? Function(_ShowRewardAd value)? showRewardAd,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -75,6 +81,7 @@ mixin _$AppRewardEvent {
     TResult Function(_GetPointTransactions value)? getPointTransactions,
     TResult Function(_GetDailyUserReward value)? getDailyUserReward,
     TResult Function(_CreateWithdrawal value)? createWithdrawal,
+    TResult Function(_ShowRewardAd value)? showRewardAd,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -149,6 +156,8 @@ class _$InitializeImpl implements _Initialize {
     required TResult Function(String bankName, String accountNumber,
             String accountHolder, int withdrawalAmount)
         createWithdrawal,
+    required TResult Function(String adUnitId, AdCallback? callback)
+        showRewardAd,
   }) {
     return initialize();
   }
@@ -163,6 +172,7 @@ class _$InitializeImpl implements _Initialize {
     TResult? Function(String bankName, String accountNumber,
             String accountHolder, int withdrawalAmount)?
         createWithdrawal,
+    TResult? Function(String adUnitId, AdCallback? callback)? showRewardAd,
   }) {
     return initialize?.call();
   }
@@ -177,6 +187,7 @@ class _$InitializeImpl implements _Initialize {
     TResult Function(String bankName, String accountNumber,
             String accountHolder, int withdrawalAmount)?
         createWithdrawal,
+    TResult Function(String adUnitId, AdCallback? callback)? showRewardAd,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -193,6 +204,7 @@ class _$InitializeImpl implements _Initialize {
     required TResult Function(_GetPointTransactions value) getPointTransactions,
     required TResult Function(_GetDailyUserReward value) getDailyUserReward,
     required TResult Function(_CreateWithdrawal value) createWithdrawal,
+    required TResult Function(_ShowRewardAd value) showRewardAd,
   }) {
     return initialize(this);
   }
@@ -205,6 +217,7 @@ class _$InitializeImpl implements _Initialize {
     TResult? Function(_GetPointTransactions value)? getPointTransactions,
     TResult? Function(_GetDailyUserReward value)? getDailyUserReward,
     TResult? Function(_CreateWithdrawal value)? createWithdrawal,
+    TResult? Function(_ShowRewardAd value)? showRewardAd,
   }) {
     return initialize?.call(this);
   }
@@ -217,6 +230,7 @@ class _$InitializeImpl implements _Initialize {
     TResult Function(_GetPointTransactions value)? getPointTransactions,
     TResult Function(_GetDailyUserReward value)? getDailyUserReward,
     TResult Function(_CreateWithdrawal value)? createWithdrawal,
+    TResult Function(_ShowRewardAd value)? showRewardAd,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -278,6 +292,8 @@ class _$ClearErrorImpl implements _ClearError {
     required TResult Function(String bankName, String accountNumber,
             String accountHolder, int withdrawalAmount)
         createWithdrawal,
+    required TResult Function(String adUnitId, AdCallback? callback)
+        showRewardAd,
   }) {
     return clearError();
   }
@@ -292,6 +308,7 @@ class _$ClearErrorImpl implements _ClearError {
     TResult? Function(String bankName, String accountNumber,
             String accountHolder, int withdrawalAmount)?
         createWithdrawal,
+    TResult? Function(String adUnitId, AdCallback? callback)? showRewardAd,
   }) {
     return clearError?.call();
   }
@@ -306,6 +323,7 @@ class _$ClearErrorImpl implements _ClearError {
     TResult Function(String bankName, String accountNumber,
             String accountHolder, int withdrawalAmount)?
         createWithdrawal,
+    TResult Function(String adUnitId, AdCallback? callback)? showRewardAd,
     required TResult orElse(),
   }) {
     if (clearError != null) {
@@ -322,6 +340,7 @@ class _$ClearErrorImpl implements _ClearError {
     required TResult Function(_GetPointTransactions value) getPointTransactions,
     required TResult Function(_GetDailyUserReward value) getDailyUserReward,
     required TResult Function(_CreateWithdrawal value) createWithdrawal,
+    required TResult Function(_ShowRewardAd value) showRewardAd,
   }) {
     return clearError(this);
   }
@@ -334,6 +353,7 @@ class _$ClearErrorImpl implements _ClearError {
     TResult? Function(_GetPointTransactions value)? getPointTransactions,
     TResult? Function(_GetDailyUserReward value)? getDailyUserReward,
     TResult? Function(_CreateWithdrawal value)? createWithdrawal,
+    TResult? Function(_ShowRewardAd value)? showRewardAd,
   }) {
     return clearError?.call(this);
   }
@@ -346,6 +366,7 @@ class _$ClearErrorImpl implements _ClearError {
     TResult Function(_GetPointTransactions value)? getPointTransactions,
     TResult Function(_GetDailyUserReward value)? getDailyUserReward,
     TResult Function(_CreateWithdrawal value)? createWithdrawal,
+    TResult Function(_ShowRewardAd value)? showRewardAd,
     required TResult orElse(),
   }) {
     if (clearError != null) {
@@ -408,6 +429,8 @@ class _$GetPointTransactionsImpl implements _GetPointTransactions {
     required TResult Function(String bankName, String accountNumber,
             String accountHolder, int withdrawalAmount)
         createWithdrawal,
+    required TResult Function(String adUnitId, AdCallback? callback)
+        showRewardAd,
   }) {
     return getPointTransactions();
   }
@@ -422,6 +445,7 @@ class _$GetPointTransactionsImpl implements _GetPointTransactions {
     TResult? Function(String bankName, String accountNumber,
             String accountHolder, int withdrawalAmount)?
         createWithdrawal,
+    TResult? Function(String adUnitId, AdCallback? callback)? showRewardAd,
   }) {
     return getPointTransactions?.call();
   }
@@ -436,6 +460,7 @@ class _$GetPointTransactionsImpl implements _GetPointTransactions {
     TResult Function(String bankName, String accountNumber,
             String accountHolder, int withdrawalAmount)?
         createWithdrawal,
+    TResult Function(String adUnitId, AdCallback? callback)? showRewardAd,
     required TResult orElse(),
   }) {
     if (getPointTransactions != null) {
@@ -452,6 +477,7 @@ class _$GetPointTransactionsImpl implements _GetPointTransactions {
     required TResult Function(_GetPointTransactions value) getPointTransactions,
     required TResult Function(_GetDailyUserReward value) getDailyUserReward,
     required TResult Function(_CreateWithdrawal value) createWithdrawal,
+    required TResult Function(_ShowRewardAd value) showRewardAd,
   }) {
     return getPointTransactions(this);
   }
@@ -464,6 +490,7 @@ class _$GetPointTransactionsImpl implements _GetPointTransactions {
     TResult? Function(_GetPointTransactions value)? getPointTransactions,
     TResult? Function(_GetDailyUserReward value)? getDailyUserReward,
     TResult? Function(_CreateWithdrawal value)? createWithdrawal,
+    TResult? Function(_ShowRewardAd value)? showRewardAd,
   }) {
     return getPointTransactions?.call(this);
   }
@@ -476,6 +503,7 @@ class _$GetPointTransactionsImpl implements _GetPointTransactions {
     TResult Function(_GetPointTransactions value)? getPointTransactions,
     TResult Function(_GetDailyUserReward value)? getDailyUserReward,
     TResult Function(_CreateWithdrawal value)? createWithdrawal,
+    TResult Function(_ShowRewardAd value)? showRewardAd,
     required TResult orElse(),
   }) {
     if (getPointTransactions != null) {
@@ -565,6 +593,8 @@ class _$GetDailyUserRewardImpl implements _GetDailyUserReward {
     required TResult Function(String bankName, String accountNumber,
             String accountHolder, int withdrawalAmount)
         createWithdrawal,
+    required TResult Function(String adUnitId, AdCallback? callback)
+        showRewardAd,
   }) {
     return getDailyUserReward(type);
   }
@@ -579,6 +609,7 @@ class _$GetDailyUserRewardImpl implements _GetDailyUserReward {
     TResult? Function(String bankName, String accountNumber,
             String accountHolder, int withdrawalAmount)?
         createWithdrawal,
+    TResult? Function(String adUnitId, AdCallback? callback)? showRewardAd,
   }) {
     return getDailyUserReward?.call(type);
   }
@@ -593,6 +624,7 @@ class _$GetDailyUserRewardImpl implements _GetDailyUserReward {
     TResult Function(String bankName, String accountNumber,
             String accountHolder, int withdrawalAmount)?
         createWithdrawal,
+    TResult Function(String adUnitId, AdCallback? callback)? showRewardAd,
     required TResult orElse(),
   }) {
     if (getDailyUserReward != null) {
@@ -609,6 +641,7 @@ class _$GetDailyUserRewardImpl implements _GetDailyUserReward {
     required TResult Function(_GetPointTransactions value) getPointTransactions,
     required TResult Function(_GetDailyUserReward value) getDailyUserReward,
     required TResult Function(_CreateWithdrawal value) createWithdrawal,
+    required TResult Function(_ShowRewardAd value) showRewardAd,
   }) {
     return getDailyUserReward(this);
   }
@@ -621,6 +654,7 @@ class _$GetDailyUserRewardImpl implements _GetDailyUserReward {
     TResult? Function(_GetPointTransactions value)? getPointTransactions,
     TResult? Function(_GetDailyUserReward value)? getDailyUserReward,
     TResult? Function(_CreateWithdrawal value)? createWithdrawal,
+    TResult? Function(_ShowRewardAd value)? showRewardAd,
   }) {
     return getDailyUserReward?.call(this);
   }
@@ -633,6 +667,7 @@ class _$GetDailyUserRewardImpl implements _GetDailyUserReward {
     TResult Function(_GetPointTransactions value)? getPointTransactions,
     TResult Function(_GetDailyUserReward value)? getDailyUserReward,
     TResult Function(_CreateWithdrawal value)? createWithdrawal,
+    TResult Function(_ShowRewardAd value)? showRewardAd,
     required TResult orElse(),
   }) {
     if (getDailyUserReward != null) {
@@ -765,6 +800,8 @@ class _$CreateWithdrawalImpl implements _CreateWithdrawal {
     required TResult Function(String bankName, String accountNumber,
             String accountHolder, int withdrawalAmount)
         createWithdrawal,
+    required TResult Function(String adUnitId, AdCallback? callback)
+        showRewardAd,
   }) {
     return createWithdrawal(
         bankName, accountNumber, accountHolder, withdrawalAmount);
@@ -780,6 +817,7 @@ class _$CreateWithdrawalImpl implements _CreateWithdrawal {
     TResult? Function(String bankName, String accountNumber,
             String accountHolder, int withdrawalAmount)?
         createWithdrawal,
+    TResult? Function(String adUnitId, AdCallback? callback)? showRewardAd,
   }) {
     return createWithdrawal?.call(
         bankName, accountNumber, accountHolder, withdrawalAmount);
@@ -795,6 +833,7 @@ class _$CreateWithdrawalImpl implements _CreateWithdrawal {
     TResult Function(String bankName, String accountNumber,
             String accountHolder, int withdrawalAmount)?
         createWithdrawal,
+    TResult Function(String adUnitId, AdCallback? callback)? showRewardAd,
     required TResult orElse(),
   }) {
     if (createWithdrawal != null) {
@@ -812,6 +851,7 @@ class _$CreateWithdrawalImpl implements _CreateWithdrawal {
     required TResult Function(_GetPointTransactions value) getPointTransactions,
     required TResult Function(_GetDailyUserReward value) getDailyUserReward,
     required TResult Function(_CreateWithdrawal value) createWithdrawal,
+    required TResult Function(_ShowRewardAd value) showRewardAd,
   }) {
     return createWithdrawal(this);
   }
@@ -824,6 +864,7 @@ class _$CreateWithdrawalImpl implements _CreateWithdrawal {
     TResult? Function(_GetPointTransactions value)? getPointTransactions,
     TResult? Function(_GetDailyUserReward value)? getDailyUserReward,
     TResult? Function(_CreateWithdrawal value)? createWithdrawal,
+    TResult? Function(_ShowRewardAd value)? showRewardAd,
   }) {
     return createWithdrawal?.call(this);
   }
@@ -836,6 +877,7 @@ class _$CreateWithdrawalImpl implements _CreateWithdrawal {
     TResult Function(_GetPointTransactions value)? getPointTransactions,
     TResult Function(_GetDailyUserReward value)? getDailyUserReward,
     TResult Function(_CreateWithdrawal value)? createWithdrawal,
+    TResult Function(_ShowRewardAd value)? showRewardAd,
     required TResult orElse(),
   }) {
     if (createWithdrawal != null) {
@@ -861,5 +903,188 @@ abstract class _CreateWithdrawal implements AppRewardEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CreateWithdrawalImplCopyWith<_$CreateWithdrawalImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ShowRewardAdImplCopyWith<$Res> {
+  factory _$$ShowRewardAdImplCopyWith(
+          _$ShowRewardAdImpl value, $Res Function(_$ShowRewardAdImpl) then) =
+      __$$ShowRewardAdImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String adUnitId, AdCallback? callback});
+}
+
+/// @nodoc
+class __$$ShowRewardAdImplCopyWithImpl<$Res>
+    extends _$AppRewardEventCopyWithImpl<$Res, _$ShowRewardAdImpl>
+    implements _$$ShowRewardAdImplCopyWith<$Res> {
+  __$$ShowRewardAdImplCopyWithImpl(
+      _$ShowRewardAdImpl _value, $Res Function(_$ShowRewardAdImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AppRewardEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? adUnitId = null,
+    Object? callback = freezed,
+  }) {
+    return _then(_$ShowRewardAdImpl(
+      null == adUnitId
+          ? _value.adUnitId
+          : adUnitId // ignore: cast_nullable_to_non_nullable
+              as String,
+      callback: freezed == callback
+          ? _value.callback
+          : callback // ignore: cast_nullable_to_non_nullable
+              as AdCallback?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ShowRewardAdImpl implements _ShowRewardAd {
+  const _$ShowRewardAdImpl(this.adUnitId, {this.callback});
+
+  @override
+  final String adUnitId;
+  @override
+  final AdCallback? callback;
+
+  @override
+  String toString() {
+    return 'AppRewardEvent.showRewardAd(adUnitId: $adUnitId, callback: $callback)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ShowRewardAdImpl &&
+            (identical(other.adUnitId, adUnitId) ||
+                other.adUnitId == adUnitId) &&
+            (identical(other.callback, callback) ||
+                other.callback == callback));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, adUnitId, callback);
+
+  /// Create a copy of AppRewardEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ShowRewardAdImplCopyWith<_$ShowRewardAdImpl> get copyWith =>
+      __$$ShowRewardAdImplCopyWithImpl<_$ShowRewardAdImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialize,
+    required TResult Function() clearError,
+    required TResult Function() getPointTransactions,
+    required TResult Function(PointTransactionSource? type) getDailyUserReward,
+    required TResult Function(String bankName, String accountNumber,
+            String accountHolder, int withdrawalAmount)
+        createWithdrawal,
+    required TResult Function(String adUnitId, AdCallback? callback)
+        showRewardAd,
+  }) {
+    return showRewardAd(adUnitId, callback);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialize,
+    TResult? Function()? clearError,
+    TResult? Function()? getPointTransactions,
+    TResult? Function(PointTransactionSource? type)? getDailyUserReward,
+    TResult? Function(String bankName, String accountNumber,
+            String accountHolder, int withdrawalAmount)?
+        createWithdrawal,
+    TResult? Function(String adUnitId, AdCallback? callback)? showRewardAd,
+  }) {
+    return showRewardAd?.call(adUnitId, callback);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialize,
+    TResult Function()? clearError,
+    TResult Function()? getPointTransactions,
+    TResult Function(PointTransactionSource? type)? getDailyUserReward,
+    TResult Function(String bankName, String accountNumber,
+            String accountHolder, int withdrawalAmount)?
+        createWithdrawal,
+    TResult Function(String adUnitId, AdCallback? callback)? showRewardAd,
+    required TResult orElse(),
+  }) {
+    if (showRewardAd != null) {
+      return showRewardAd(adUnitId, callback);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_ClearError value) clearError,
+    required TResult Function(_GetPointTransactions value) getPointTransactions,
+    required TResult Function(_GetDailyUserReward value) getDailyUserReward,
+    required TResult Function(_CreateWithdrawal value) createWithdrawal,
+    required TResult Function(_ShowRewardAd value) showRewardAd,
+  }) {
+    return showRewardAd(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialize value)? initialize,
+    TResult? Function(_ClearError value)? clearError,
+    TResult? Function(_GetPointTransactions value)? getPointTransactions,
+    TResult? Function(_GetDailyUserReward value)? getDailyUserReward,
+    TResult? Function(_CreateWithdrawal value)? createWithdrawal,
+    TResult? Function(_ShowRewardAd value)? showRewardAd,
+  }) {
+    return showRewardAd?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_ClearError value)? clearError,
+    TResult Function(_GetPointTransactions value)? getPointTransactions,
+    TResult Function(_GetDailyUserReward value)? getDailyUserReward,
+    TResult Function(_CreateWithdrawal value)? createWithdrawal,
+    TResult Function(_ShowRewardAd value)? showRewardAd,
+    required TResult orElse(),
+  }) {
+    if (showRewardAd != null) {
+      return showRewardAd(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ShowRewardAd implements AppRewardEvent {
+  const factory _ShowRewardAd(final String adUnitId,
+      {final AdCallback? callback}) = _$ShowRewardAdImpl;
+
+  String get adUnitId;
+  AdCallback? get callback;
+
+  /// Create a copy of AppRewardEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ShowRewardAdImplCopyWith<_$ShowRewardAdImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
