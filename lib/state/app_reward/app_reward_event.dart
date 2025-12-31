@@ -21,7 +21,8 @@ class AppRewardEvent with _$AppRewardEvent {
     int withdrawalAmount,
   ) = _CreateWithdrawal;
   const factory AppRewardEvent.showRewardAd(
-    String adUnitId, {
+    String adUnitId,
+    String rewardName, {
     AdCallback? callback,
   }) = _ShowRewardAd;
 }

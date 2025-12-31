@@ -25,7 +25,8 @@ mixin _$AppRewardEvent {
     required TResult Function(String bankName, String accountNumber,
             String accountHolder, int withdrawalAmount)
         createWithdrawal,
-    required TResult Function(String adUnitId, AdCallback? callback)
+    required TResult Function(
+            String adUnitId, String rewardName, AdCallback? callback)
         showRewardAd,
   }) =>
       throw _privateConstructorUsedError;
@@ -38,7 +39,8 @@ mixin _$AppRewardEvent {
     TResult? Function(String bankName, String accountNumber,
             String accountHolder, int withdrawalAmount)?
         createWithdrawal,
-    TResult? Function(String adUnitId, AdCallback? callback)? showRewardAd,
+    TResult? Function(String adUnitId, String rewardName, AdCallback? callback)?
+        showRewardAd,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,7 +52,8 @@ mixin _$AppRewardEvent {
     TResult Function(String bankName, String accountNumber,
             String accountHolder, int withdrawalAmount)?
         createWithdrawal,
-    TResult Function(String adUnitId, AdCallback? callback)? showRewardAd,
+    TResult Function(String adUnitId, String rewardName, AdCallback? callback)?
+        showRewardAd,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -156,7 +159,8 @@ class _$InitializeImpl implements _Initialize {
     required TResult Function(String bankName, String accountNumber,
             String accountHolder, int withdrawalAmount)
         createWithdrawal,
-    required TResult Function(String adUnitId, AdCallback? callback)
+    required TResult Function(
+            String adUnitId, String rewardName, AdCallback? callback)
         showRewardAd,
   }) {
     return initialize();
@@ -172,7 +176,8 @@ class _$InitializeImpl implements _Initialize {
     TResult? Function(String bankName, String accountNumber,
             String accountHolder, int withdrawalAmount)?
         createWithdrawal,
-    TResult? Function(String adUnitId, AdCallback? callback)? showRewardAd,
+    TResult? Function(String adUnitId, String rewardName, AdCallback? callback)?
+        showRewardAd,
   }) {
     return initialize?.call();
   }
@@ -187,7 +192,8 @@ class _$InitializeImpl implements _Initialize {
     TResult Function(String bankName, String accountNumber,
             String accountHolder, int withdrawalAmount)?
         createWithdrawal,
-    TResult Function(String adUnitId, AdCallback? callback)? showRewardAd,
+    TResult Function(String adUnitId, String rewardName, AdCallback? callback)?
+        showRewardAd,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -292,7 +298,8 @@ class _$ClearErrorImpl implements _ClearError {
     required TResult Function(String bankName, String accountNumber,
             String accountHolder, int withdrawalAmount)
         createWithdrawal,
-    required TResult Function(String adUnitId, AdCallback? callback)
+    required TResult Function(
+            String adUnitId, String rewardName, AdCallback? callback)
         showRewardAd,
   }) {
     return clearError();
@@ -308,7 +315,8 @@ class _$ClearErrorImpl implements _ClearError {
     TResult? Function(String bankName, String accountNumber,
             String accountHolder, int withdrawalAmount)?
         createWithdrawal,
-    TResult? Function(String adUnitId, AdCallback? callback)? showRewardAd,
+    TResult? Function(String adUnitId, String rewardName, AdCallback? callback)?
+        showRewardAd,
   }) {
     return clearError?.call();
   }
@@ -323,7 +331,8 @@ class _$ClearErrorImpl implements _ClearError {
     TResult Function(String bankName, String accountNumber,
             String accountHolder, int withdrawalAmount)?
         createWithdrawal,
-    TResult Function(String adUnitId, AdCallback? callback)? showRewardAd,
+    TResult Function(String adUnitId, String rewardName, AdCallback? callback)?
+        showRewardAd,
     required TResult orElse(),
   }) {
     if (clearError != null) {
@@ -429,7 +438,8 @@ class _$GetPointTransactionsImpl implements _GetPointTransactions {
     required TResult Function(String bankName, String accountNumber,
             String accountHolder, int withdrawalAmount)
         createWithdrawal,
-    required TResult Function(String adUnitId, AdCallback? callback)
+    required TResult Function(
+            String adUnitId, String rewardName, AdCallback? callback)
         showRewardAd,
   }) {
     return getPointTransactions();
@@ -445,7 +455,8 @@ class _$GetPointTransactionsImpl implements _GetPointTransactions {
     TResult? Function(String bankName, String accountNumber,
             String accountHolder, int withdrawalAmount)?
         createWithdrawal,
-    TResult? Function(String adUnitId, AdCallback? callback)? showRewardAd,
+    TResult? Function(String adUnitId, String rewardName, AdCallback? callback)?
+        showRewardAd,
   }) {
     return getPointTransactions?.call();
   }
@@ -460,7 +471,8 @@ class _$GetPointTransactionsImpl implements _GetPointTransactions {
     TResult Function(String bankName, String accountNumber,
             String accountHolder, int withdrawalAmount)?
         createWithdrawal,
-    TResult Function(String adUnitId, AdCallback? callback)? showRewardAd,
+    TResult Function(String adUnitId, String rewardName, AdCallback? callback)?
+        showRewardAd,
     required TResult orElse(),
   }) {
     if (getPointTransactions != null) {
@@ -593,7 +605,8 @@ class _$GetDailyUserRewardImpl implements _GetDailyUserReward {
     required TResult Function(String bankName, String accountNumber,
             String accountHolder, int withdrawalAmount)
         createWithdrawal,
-    required TResult Function(String adUnitId, AdCallback? callback)
+    required TResult Function(
+            String adUnitId, String rewardName, AdCallback? callback)
         showRewardAd,
   }) {
     return getDailyUserReward(type);
@@ -609,7 +622,8 @@ class _$GetDailyUserRewardImpl implements _GetDailyUserReward {
     TResult? Function(String bankName, String accountNumber,
             String accountHolder, int withdrawalAmount)?
         createWithdrawal,
-    TResult? Function(String adUnitId, AdCallback? callback)? showRewardAd,
+    TResult? Function(String adUnitId, String rewardName, AdCallback? callback)?
+        showRewardAd,
   }) {
     return getDailyUserReward?.call(type);
   }
@@ -624,7 +638,8 @@ class _$GetDailyUserRewardImpl implements _GetDailyUserReward {
     TResult Function(String bankName, String accountNumber,
             String accountHolder, int withdrawalAmount)?
         createWithdrawal,
-    TResult Function(String adUnitId, AdCallback? callback)? showRewardAd,
+    TResult Function(String adUnitId, String rewardName, AdCallback? callback)?
+        showRewardAd,
     required TResult orElse(),
   }) {
     if (getDailyUserReward != null) {
@@ -800,7 +815,8 @@ class _$CreateWithdrawalImpl implements _CreateWithdrawal {
     required TResult Function(String bankName, String accountNumber,
             String accountHolder, int withdrawalAmount)
         createWithdrawal,
-    required TResult Function(String adUnitId, AdCallback? callback)
+    required TResult Function(
+            String adUnitId, String rewardName, AdCallback? callback)
         showRewardAd,
   }) {
     return createWithdrawal(
@@ -817,7 +833,8 @@ class _$CreateWithdrawalImpl implements _CreateWithdrawal {
     TResult? Function(String bankName, String accountNumber,
             String accountHolder, int withdrawalAmount)?
         createWithdrawal,
-    TResult? Function(String adUnitId, AdCallback? callback)? showRewardAd,
+    TResult? Function(String adUnitId, String rewardName, AdCallback? callback)?
+        showRewardAd,
   }) {
     return createWithdrawal?.call(
         bankName, accountNumber, accountHolder, withdrawalAmount);
@@ -833,7 +850,8 @@ class _$CreateWithdrawalImpl implements _CreateWithdrawal {
     TResult Function(String bankName, String accountNumber,
             String accountHolder, int withdrawalAmount)?
         createWithdrawal,
-    TResult Function(String adUnitId, AdCallback? callback)? showRewardAd,
+    TResult Function(String adUnitId, String rewardName, AdCallback? callback)?
+        showRewardAd,
     required TResult orElse(),
   }) {
     if (createWithdrawal != null) {
@@ -912,7 +930,7 @@ abstract class _$$ShowRewardAdImplCopyWith<$Res> {
           _$ShowRewardAdImpl value, $Res Function(_$ShowRewardAdImpl) then) =
       __$$ShowRewardAdImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String adUnitId, AdCallback? callback});
+  $Res call({String adUnitId, String rewardName, AdCallback? callback});
 }
 
 /// @nodoc
@@ -929,12 +947,17 @@ class __$$ShowRewardAdImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? adUnitId = null,
+    Object? rewardName = null,
     Object? callback = freezed,
   }) {
     return _then(_$ShowRewardAdImpl(
       null == adUnitId
           ? _value.adUnitId
           : adUnitId // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == rewardName
+          ? _value.rewardName
+          : rewardName // ignore: cast_nullable_to_non_nullable
               as String,
       callback: freezed == callback
           ? _value.callback
@@ -947,16 +970,18 @@ class __$$ShowRewardAdImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ShowRewardAdImpl implements _ShowRewardAd {
-  const _$ShowRewardAdImpl(this.adUnitId, {this.callback});
+  const _$ShowRewardAdImpl(this.adUnitId, this.rewardName, {this.callback});
 
   @override
   final String adUnitId;
+  @override
+  final String rewardName;
   @override
   final AdCallback? callback;
 
   @override
   String toString() {
-    return 'AppRewardEvent.showRewardAd(adUnitId: $adUnitId, callback: $callback)';
+    return 'AppRewardEvent.showRewardAd(adUnitId: $adUnitId, rewardName: $rewardName, callback: $callback)';
   }
 
   @override
@@ -966,12 +991,14 @@ class _$ShowRewardAdImpl implements _ShowRewardAd {
             other is _$ShowRewardAdImpl &&
             (identical(other.adUnitId, adUnitId) ||
                 other.adUnitId == adUnitId) &&
+            (identical(other.rewardName, rewardName) ||
+                other.rewardName == rewardName) &&
             (identical(other.callback, callback) ||
                 other.callback == callback));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, adUnitId, callback);
+  int get hashCode => Object.hash(runtimeType, adUnitId, rewardName, callback);
 
   /// Create a copy of AppRewardEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -991,10 +1018,11 @@ class _$ShowRewardAdImpl implements _ShowRewardAd {
     required TResult Function(String bankName, String accountNumber,
             String accountHolder, int withdrawalAmount)
         createWithdrawal,
-    required TResult Function(String adUnitId, AdCallback? callback)
+    required TResult Function(
+            String adUnitId, String rewardName, AdCallback? callback)
         showRewardAd,
   }) {
-    return showRewardAd(adUnitId, callback);
+    return showRewardAd(adUnitId, rewardName, callback);
   }
 
   @override
@@ -1007,9 +1035,10 @@ class _$ShowRewardAdImpl implements _ShowRewardAd {
     TResult? Function(String bankName, String accountNumber,
             String accountHolder, int withdrawalAmount)?
         createWithdrawal,
-    TResult? Function(String adUnitId, AdCallback? callback)? showRewardAd,
+    TResult? Function(String adUnitId, String rewardName, AdCallback? callback)?
+        showRewardAd,
   }) {
-    return showRewardAd?.call(adUnitId, callback);
+    return showRewardAd?.call(adUnitId, rewardName, callback);
   }
 
   @override
@@ -1022,11 +1051,12 @@ class _$ShowRewardAdImpl implements _ShowRewardAd {
     TResult Function(String bankName, String accountNumber,
             String accountHolder, int withdrawalAmount)?
         createWithdrawal,
-    TResult Function(String adUnitId, AdCallback? callback)? showRewardAd,
+    TResult Function(String adUnitId, String rewardName, AdCallback? callback)?
+        showRewardAd,
     required TResult orElse(),
   }) {
     if (showRewardAd != null) {
-      return showRewardAd(adUnitId, callback);
+      return showRewardAd(adUnitId, rewardName, callback);
     }
     return orElse();
   }
@@ -1076,10 +1106,11 @@ class _$ShowRewardAdImpl implements _ShowRewardAd {
 }
 
 abstract class _ShowRewardAd implements AppRewardEvent {
-  const factory _ShowRewardAd(final String adUnitId,
+  const factory _ShowRewardAd(final String adUnitId, final String rewardName,
       {final AdCallback? callback}) = _$ShowRewardAdImpl;
 
   String get adUnitId;
+  String get rewardName;
   AdCallback? get callback;
 
   /// Create a copy of AppRewardEvent

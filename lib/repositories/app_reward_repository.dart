@@ -1,3 +1,4 @@
+import 'package:flutter_common/constants/juny_constants.dart';
 import 'package:flutter_common/models/app-reward/point_transaction.dart';
 import 'package:flutter_common/models/app-reward/user_point_balance.dart';
 import 'package:flutter_common/models/user/user.dart';
@@ -22,6 +23,12 @@ abstract class AppRewardRepository {
     String accountNumber,
     String accountHolder,
     int withdrawalAmount,
+  );
+
+  Future<bool> showRewardAdTransaction(
+    User user,
+    String rewardName,
+    AppKeys appKey,
   );
 }
 
@@ -84,5 +91,25 @@ class AppRewardDefaultRepository extends AppRewardRepository {
       return true;
     }
     throw Exception('Failed to create withdrawal');
+  }
+
+  @override
+  Future<bool> showRewardAdTransaction(
+    User user,
+    String rewardName,
+    AppKeys appKey,
+  ) async {
+    final response = await dioClient.post('/app-reward/reward/admob', data: {
+      'userId': user.id,
+      'source': 'admob_reward',
+      'rewardName': rewardName,
+      'appId': appKey
+    });
+
+    if (response.statusCode == 201) {
+      return true;
+    }
+    print('🔥 [ERROR] Failed to show reward ad transaction: ${response.data}');
+    throw Exception('Failed to show reward ad transaction');
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_common/constants/juny_constants.dart';
 import 'package:flutter_common/extensions/app_exception.dart';
 import 'package:flutter_common/models/app-reward/point_transaction.dart';
 import 'package:flutter_common/repositories/app_reward_repository.dart';
@@ -10,6 +11,9 @@ import 'package:flutter_common/widgets/ad/ad_master.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart' hide AdError;
 
 class ShowRewardAdCallBack implements AdCallback {
+  final Function(RewardItem) onUserEarnedReward;
+  ShowRewardAdCallBack({required this.onUserEarnedReward});
+
   @override
   void onAdLoaded() {
     debugPrint('🔥 [INFO] RewardedAd loaded');
@@ -22,7 +26,7 @@ class ShowRewardAdCallBack implements AdCallback {
     ad.show(
       onUserEarnedReward: (_, reward) {
         debugPrint('🔥 [INFO] RewardedAd user earned reward: $reward');
-        // TODO: implement onUserEarnedReward
+        onUserEarnedReward(reward);
       },
     );
   }
@@ -55,11 +59,13 @@ class AppRewardBloc extends Bloc<AppRewardEvent, AppRewardState> {
   final AppRewardRepository appRewardRepository;
   final UserRepository userRepository;
   final AdMaster adMaster;
+  final AppKeys appKeys;
 
   AppRewardBloc({
     required this.appRewardRepository,
     required this.userRepository,
     required this.adMaster,
+    required this.appKeys,
   }) : super(AppRewardState.initialize()) {
     on<AppRewardEvent>(
       (event, emit) async {
@@ -141,7 +147,18 @@ class AppRewardBloc extends Bloc<AppRewardEvent, AppRewardState> {
             await _handleEvent(emit, () async {
               await adMaster.createRewardedAd(
                 adUnitId: e.adUnitId,
-                callback: e.callback ?? ShowRewardAdCallBack(),
+                callback: e.callback ??
+                    ShowRewardAdCallBack(
+                      onUserEarnedReward: (reward) async {
+                        final user = await userRepository.getUserInfo();
+
+                        await appRewardRepository.showRewardAdTransaction(
+                          user,
+                          e.rewardName,
+                          appKeys,
+                        );
+                      },
+                    ),
               );
             });
           },
