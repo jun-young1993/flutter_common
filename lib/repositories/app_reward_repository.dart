@@ -103,7 +103,7 @@ class AppRewardDefaultRepository extends AppRewardRepository {
       'userId': user.id,
       'source': 'admob_reward',
       'rewardName': rewardName,
-      'appId': appKey
+      'appId': JunyConstants.appKeys[appKey]
     });
 
     if (response.statusCode == 201) {
