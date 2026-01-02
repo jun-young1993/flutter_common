@@ -12,11 +12,14 @@ import 'package:google_mobile_ads/google_mobile_ads.dart' hide AdError;
 
 class ShowRewardAdCallBack implements AdCallback {
   final Function(RewardItem) onUserEarnedReward;
-  ShowRewardAdCallBack({required this.onUserEarnedReward});
+  final Function() onDone;
+  ShowRewardAdCallBack(
+      {required this.onUserEarnedReward, required this.onDone});
 
   @override
   void onAdLoaded() {
     debugPrint('🔥 [INFO] RewardedAd loaded');
+    onDone();
   }
 
   @override
@@ -29,30 +32,41 @@ class ShowRewardAdCallBack implements AdCallback {
         onUserEarnedReward(reward);
       },
     );
+    onDone();
   }
 
   @override
   void onInterstitialAdLoaded(InterstitialAd ad) {
     // TODO: implement onInterstitialAdLoaded
+    onDone();
   }
+
   @override
   void onRewardedAdUserEarnedReward(RewardItem reward) {
     // TODO: implement onRewardedAdUserEarnedReward
+    onDone();
   }
 
   @override
   void onAdFailedToLoad(AdError error) {
     debugPrint('🔥 [ERROR] RewardedAd failed to load: $error');
+    onDone();
   }
 
   @override
-  void onAdShown() {}
+  void onAdShown() {
+    onDone();
+  }
 
   @override
-  void onAdClosed() {}
+  void onAdClosed() {
+    onDone();
+  }
 
   @override
-  void onAdClicked() {}
+  void onAdClicked() {
+    onDone();
+  }
 }
 
 class AppRewardBloc extends Bloc<AppRewardEvent, AppRewardState> {
@@ -145,20 +159,21 @@ class AppRewardBloc extends Bloc<AppRewardEvent, AppRewardState> {
           },
           showRewardAd: (e) async {
             await _handleEvent(emit, () async {
+              emit(state.copyWith(isRewardAdLoading: true));
               await adMaster.createRewardedAd(
                 adUnitId: e.adUnitId,
                 callback: e.callback ??
-                    ShowRewardAdCallBack(
-                      onUserEarnedReward: (reward) async {
-                        final user = await userRepository.getUserInfo();
+                    ShowRewardAdCallBack(onUserEarnedReward: (reward) async {
+                      final user = await userRepository.getUserInfo();
 
-                        await appRewardRepository.showRewardAdTransaction(
-                          user,
-                          e.rewardName,
-                          appKeys,
-                        );
-                      },
-                    ),
+                      await appRewardRepository.showRewardAdTransaction(
+                        user,
+                        e.rewardName,
+                        appKeys,
+                      );
+                    }, onDone: () {
+                      emit(state.copyWith(isRewardAdLoading: false));
+                    }),
               );
             });
           },

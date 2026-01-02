@@ -23,6 +23,7 @@ mixin _$AppRewardState {
       throw _privateConstructorUsedError;
   Map<PointTransactionSource, UserReward?> get dailyUserReward =>
       throw _privateConstructorUsedError;
+  bool get isRewardAdLoading => throw _privateConstructorUsedError;
 
   /// Create a copy of AppRewardState
   /// with the given fields replaced by the non-null parameter values.
@@ -42,7 +43,8 @@ abstract class $AppRewardStateCopyWith<$Res> {
       AppException? error,
       UserPointBalance? userPointBalance,
       List<PointTransaction>? pointTransactions,
-      Map<PointTransactionSource, UserReward?> dailyUserReward});
+      Map<PointTransactionSource, UserReward?> dailyUserReward,
+      bool isRewardAdLoading});
 
   $AppExceptionCopyWith<$Res>? get error;
   $UserPointBalanceCopyWith<$Res>? get userPointBalance;
@@ -68,6 +70,7 @@ class _$AppRewardStateCopyWithImpl<$Res, $Val extends AppRewardState>
     Object? userPointBalance = freezed,
     Object? pointTransactions = freezed,
     Object? dailyUserReward = null,
+    Object? isRewardAdLoading = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -90,6 +93,10 @@ class _$AppRewardStateCopyWithImpl<$Res, $Val extends AppRewardState>
           ? _value.dailyUserReward
           : dailyUserReward // ignore: cast_nullable_to_non_nullable
               as Map<PointTransactionSource, UserReward?>,
+      isRewardAdLoading: null == isRewardAdLoading
+          ? _value.isRewardAdLoading
+          : isRewardAdLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -135,7 +142,8 @@ abstract class _$$AppRewardStateImplCopyWith<$Res>
       AppException? error,
       UserPointBalance? userPointBalance,
       List<PointTransaction>? pointTransactions,
-      Map<PointTransactionSource, UserReward?> dailyUserReward});
+      Map<PointTransactionSource, UserReward?> dailyUserReward,
+      bool isRewardAdLoading});
 
   @override
   $AppExceptionCopyWith<$Res>? get error;
@@ -161,6 +169,7 @@ class __$$AppRewardStateImplCopyWithImpl<$Res>
     Object? userPointBalance = freezed,
     Object? pointTransactions = freezed,
     Object? dailyUserReward = null,
+    Object? isRewardAdLoading = null,
   }) {
     return _then(_$AppRewardStateImpl(
       isLoading: null == isLoading
@@ -183,6 +192,10 @@ class __$$AppRewardStateImplCopyWithImpl<$Res>
           ? _value._dailyUserReward
           : dailyUserReward // ignore: cast_nullable_to_non_nullable
               as Map<PointTransactionSource, UserReward?>,
+      isRewardAdLoading: null == isRewardAdLoading
+          ? _value.isRewardAdLoading
+          : isRewardAdLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -195,8 +208,8 @@ class _$AppRewardStateImpl extends _AppRewardState {
       this.error = null,
       this.userPointBalance = null,
       final List<PointTransaction>? pointTransactions = const [],
-      final Map<PointTransactionSource, UserReward?> dailyUserReward =
-          const {}})
+      final Map<PointTransactionSource, UserReward?> dailyUserReward = const {},
+      this.isRewardAdLoading = false})
       : _pointTransactions = pointTransactions,
         _dailyUserReward = dailyUserReward,
         super._();
@@ -232,8 +245,12 @@ class _$AppRewardStateImpl extends _AppRewardState {
   }
 
   @override
+  @JsonKey()
+  final bool isRewardAdLoading;
+
+  @override
   String toString() {
-    return 'AppRewardState(isLoading: $isLoading, error: $error, userPointBalance: $userPointBalance, pointTransactions: $pointTransactions, dailyUserReward: $dailyUserReward)';
+    return 'AppRewardState(isLoading: $isLoading, error: $error, userPointBalance: $userPointBalance, pointTransactions: $pointTransactions, dailyUserReward: $dailyUserReward, isRewardAdLoading: $isRewardAdLoading)';
   }
 
   @override
@@ -249,7 +266,9 @@ class _$AppRewardStateImpl extends _AppRewardState {
             const DeepCollectionEquality()
                 .equals(other._pointTransactions, _pointTransactions) &&
             const DeepCollectionEquality()
-                .equals(other._dailyUserReward, _dailyUserReward));
+                .equals(other._dailyUserReward, _dailyUserReward) &&
+            (identical(other.isRewardAdLoading, isRewardAdLoading) ||
+                other.isRewardAdLoading == isRewardAdLoading));
   }
 
   @override
@@ -259,7 +278,8 @@ class _$AppRewardStateImpl extends _AppRewardState {
       error,
       userPointBalance,
       const DeepCollectionEquality().hash(_pointTransactions),
-      const DeepCollectionEquality().hash(_dailyUserReward));
+      const DeepCollectionEquality().hash(_dailyUserReward),
+      isRewardAdLoading);
 
   /// Create a copy of AppRewardState
   /// with the given fields replaced by the non-null parameter values.
@@ -273,12 +293,12 @@ class _$AppRewardStateImpl extends _AppRewardState {
 
 abstract class _AppRewardState extends AppRewardState {
   const factory _AppRewardState(
-          {final bool isLoading,
-          final AppException? error,
-          final UserPointBalance? userPointBalance,
-          final List<PointTransaction>? pointTransactions,
-          final Map<PointTransactionSource, UserReward?> dailyUserReward}) =
-      _$AppRewardStateImpl;
+      {final bool isLoading,
+      final AppException? error,
+      final UserPointBalance? userPointBalance,
+      final List<PointTransaction>? pointTransactions,
+      final Map<PointTransactionSource, UserReward?> dailyUserReward,
+      final bool isRewardAdLoading}) = _$AppRewardStateImpl;
   const _AppRewardState._() : super._();
 
   @override
@@ -291,6 +311,8 @@ abstract class _AppRewardState extends AppRewardState {
   List<PointTransaction>? get pointTransactions;
   @override
   Map<PointTransactionSource, UserReward?> get dailyUserReward;
+  @override
+  bool get isRewardAdLoading;
 
   /// Create a copy of AppRewardState
   /// with the given fields replaced by the non-null parameter values.

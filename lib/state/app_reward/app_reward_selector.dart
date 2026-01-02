@@ -55,3 +55,13 @@ class AppRewardDailyUserRewardSelector
           builder: (context, dailyUserReward) => builder(dailyUserReward),
         );
 }
+
+class AppRewardRewardAdLoadingSelector extends AppRewardSelector<bool> {
+  AppRewardRewardAdLoadingSelector(
+      Widget Function(bool isRewardAdLoading) builder,
+      {super.key})
+      : super(
+          selector: (state) => state.isRewardAdLoading,
+          builder: (context, isRewardAdLoading) => builder(isRewardAdLoading),
+        );
+}

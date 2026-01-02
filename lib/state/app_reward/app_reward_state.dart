@@ -13,6 +13,7 @@ class AppRewardState with _$AppRewardState {
     @Default(null) UserPointBalance? userPointBalance,
     @Default([]) List<PointTransaction>? pointTransactions,
     @Default({}) Map<PointTransactionSource, UserReward?> dailyUserReward,
+    @Default(false) bool isRewardAdLoading,
   }) = _AppRewardState;
 
   const AppRewardState._();
