@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_common/extensions/app_exception.dart';
 import 'package:flutter_common/models/app-reward/point_transaction.dart';
 import 'package:flutter_common/models/app-reward/user_point_balance.dart';
 import 'package:flutter_common/state/app_reward/app_reward_bloc.dart';
@@ -63,5 +64,14 @@ class AppRewardRewardAdLoadingSelector extends AppRewardSelector<bool> {
       : super(
           selector: (state) => state.isRewardAdLoading,
           builder: (context, isRewardAdLoading) => builder(isRewardAdLoading),
+        );
+}
+
+class AppRewardRewardAdErrorSelector extends AppRewardSelector<AppException?> {
+  AppRewardRewardAdErrorSelector(Widget Function(AppException? error) builder,
+      {super.key})
+      : super(
+          selector: (state) => state.error,
+          builder: (context, error) => builder(error),
         );
 }
