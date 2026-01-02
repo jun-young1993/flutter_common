@@ -163,19 +163,19 @@ class AppRewardBloc extends Bloc<AppRewardEvent, AppRewardState> {
               await adMaster.createRewardedAd(
                 adUnitId: e.adUnitId,
                 callback: e.callback ??
-                    ShowRewardAdCallBack(onUserEarnedReward: (reward) async {
-                      final user = await userRepository.getUserInfo();
+                    ShowRewardAdCallBack(
+                        onUserEarnedReward: (reward) async {
+                          final user = await userRepository.getUserInfo();
 
-                      await appRewardRepository.showRewardAdTransaction(
-                        user,
-                        e.rewardName,
-                        appKeys,
-                      );
-                      emit(state.copyWith(isRewardAdLoading: false));
-                    }, onDone: () {
-                      emit(state.copyWith(isRewardAdLoading: false));
-                    }),
+                          await appRewardRepository.showRewardAdTransaction(
+                            user,
+                            e.rewardName,
+                            appKeys,
+                          );
+                        },
+                        onDone: () {}),
               );
+              emit(state.copyWith(isRewardAdLoading: false));
             });
           },
         );
