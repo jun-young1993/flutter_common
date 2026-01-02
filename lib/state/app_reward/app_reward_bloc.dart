@@ -171,6 +171,7 @@ class AppRewardBloc extends Bloc<AppRewardEvent, AppRewardState> {
                         e.rewardName,
                         appKeys,
                       );
+                      emit(state.copyWith(isRewardAdLoading: false));
                     }, onDone: () {
                       emit(state.copyWith(isRewardAdLoading: false));
                     }),
